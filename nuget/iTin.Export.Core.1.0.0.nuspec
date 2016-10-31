@@ -8,7 +8,7 @@
         <owners>iTin</owners>
         <licenseUrl>https://raw.githubusercontent.com/iAJTin/iExportEngine/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/iAJTin/iExportEngine</projectUrl>
-		<iconUrl>https://github.com/iAJTin/iExportEngine/blob/master/nuget/iTin.Export.png</iconUrl>
+	<iconUrl>https://github.com/iAJTin/iExportEngine/blob/master/nuget/iTin.Export.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>iTin Export Engine Core, contains a tab-separated values (txt), comma-seprated values (csv), XML spreadsheet 2003 (xml) and SQL Script (sql) native writers</description>
         <copyright>Copyright © 2016 iAJTin</copyright>
