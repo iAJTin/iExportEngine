@@ -1,0 +1,3725 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+  
+  <!-- ================================== -->
+  <!-- Definition of new basic data types -->
+  <!-- ================================== -->
+  
+  <!-- Boolean data type -->
+  <xs:simpleType name="yesNoType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        Represents a boolean value
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="Yes">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents the boolean value 'true'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="No">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents the boolean value 'false'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- String data type. Defines an empty string. -->
+  <xs:simpleType id="emptyStringType" name="emptyStringType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Integer data type. Represents an integer, the minimum allowed value is 1. -->
+  <xs:simpleType name='intMinValueIsOneType'>
+    <xs:restriction base='xs:integer'>
+      <xs:minInclusive value='1'/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Integer data type. Represents an integer, the minimum allowed value is -1. -->
+  <xs:simpleType name='intMinValueIsMinusOneType'>
+    <xs:restriction base='xs:integer'>
+      <xs:minInclusive value='-1'/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Integer array. Defines an integer array where each element is greater or equal to 1. -->
+  <xs:simpleType name="integerArrayWhereMinValueIsOneType">
+    <xs:list itemType="intMinValueIsOneType"/>
+  </xs:simpleType>
+
+  <!-- Integer array. Defines an integer array where each element is greater or equal to -1. -->
+  <xs:simpleType name="integerArrayWhereMinValueIsMinusOneType">
+    <xs:list itemType="intMinValueIsMinusOneType"/>
+  </xs:simpleType>
+
+  
+  <!-- =============================== -->
+  <!-- Definition of string data types -->
+  <!-- =============================== -->
+
+  <!-- Path. Represents a path -->
+  <xs:simpleType name="pathType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^(.*/)?(?:$|(.+?)(?:(\.[^.]*$)|$))"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- String array. Defines a string array. -->
+  <xs:simpleType name="stringArrayType">
+    <xs:list itemType="xs:string"/>
+  </xs:simpleType>
+
+  
+  <!-- ================================ -->
+  <!-- Definition of drawing data types -->
+  <!-- ================================ -->
+  
+  <!-- RGB color. Expressed in hexadecimal notation (#RRGGBB). -->
+  <xs:simpleType name="rgbHexColorType" id ="rgbHexColorType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="#[0-9a-fA-F]{6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- RGB color. Defined by a value representing a % for each RGB component. -->
+  <xs:simpleType name="scColorType" id ="scColorType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value ="sc#\W\d+.\d+\W\d+.\d+\W\d+.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- RGB color. Defined by name or by its RGB components. -->
+  <xs:simpleType name="rgbColorType" id ="rgbColorType">
+    <xs:union memberTypes="rgbHexColorType rgbNameColorType scColorType"/>
+  </xs:simpleType>
+  
+  <!-- System colors. Represents a list of known system colors. -->
+  <xs:simpleType name="rgbNameColorType" id="rgbNameColorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AliceBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F0F8FF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AntiqueWhite">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FAEBD7.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Aqua">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00FFFF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Aquamarine">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #7FFFD4.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Azure">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F0FFFF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Beige">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F5F5DC.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bisque">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFE4C4.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Black">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #000000.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BlanchedAlmond">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFEBCD.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Blue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #0000FF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BlueViolet">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #8A2BE2.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brown">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #A52A2A.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BurlyWood">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DEB887.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CadetBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #5F9EA0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Chartreuse">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #7FFF00.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Chocolate">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #D2691E.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Coral">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF7F50.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CornflowerBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #6495ED.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cornsilk">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFF8DC.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Crimson">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DC143C.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cyan">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00FFFF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00008B.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkCyan">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #008B8B.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkGoldenrod">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #B8860B.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkGray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #A9A9A9.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #006400.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkKhaki">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #BDB76B.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkMagenta">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #8B008B.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkOliveGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #556B2F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkOrange">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF8C00.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkOrchid">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #9932CC.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkRed">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #8B0000.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkSalmon">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #E9967A.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkSeaGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #8FBC8F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkSlateBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #483D8B.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkSlateGray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #2F4F4F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkTurquoise">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00CED1.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DarkViolet">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #9400D3.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeepPink">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF1493.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeepSkyBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00BFFF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DimGray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #696969.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DodgerBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #1E90FF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Firebrick">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #B22222.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FloralWhite">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFAF0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ForestGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #228B22.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fuchsia">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF00FF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gainsboro">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DCDCDC.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GhostWhite">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F8F8FF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gold">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFD700.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Goldenrod">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DAA520.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #808080.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Green">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #008000.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GreenYellow">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #ADFF2F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Honeydew">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F0FFF0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HotPink">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF69B4.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IndianRed">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #CD5C5C.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Indigo">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #4B0082.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ivory">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFFF0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Khaki">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F0E68C.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lavender">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #E6E6FA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LavenderBlush">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFF0F5.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LawnGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #7CFC00.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LemonChiffon">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFACD.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #ADD8E6.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightCoral">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F08080.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightCyan">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #E0FFFF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightGoldenrodYellow">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FAFAD2.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightGray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #D3D3D3.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #90EE90.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightPink">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFB6C1.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightSalmon">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFA07A.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightSeaGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #20B2AA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightSkyBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #87CEFA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightSlateGray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #778899.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightSteelBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #B0C4DE.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LightYellow">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFFE0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lime">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00FF00.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LimeGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #32CD32.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Linen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FAF0E6.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Magenta">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF00FF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maroon">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #800000.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumAquamarine">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #66CDAA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #0000CD.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumOrchid">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #BA55D3.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumPurple">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #9370DB.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumSeaGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #3CB371.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumSlateBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #7B68EE.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumSpringGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00FA9A.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumTurquoise">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #48D1CC.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MediumVioletRed">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #C71585.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MidnightBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #191970.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MintCream">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F5FFFA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MistyRose">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFE4E1.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Moccasin">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFE4B5.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NavajoWhite">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFDEAD.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Navy">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #000080.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OldLace">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FDF5E6.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Olive">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #808000.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OliveDrab">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #6B8E23.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Orange">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFA500.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OrangeRed">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF4500.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Orchid">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DA70D6.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PaleGoldenrod">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #EEE8AA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PaleGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #98FB98.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PaleTurquoise">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #AFEEEE.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PaleVioletRed">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DB7093.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PapayaWhip">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFEFD5.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PeachPuff">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFDAB9.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Peru">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #CD853F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pink">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFC0CB.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Plum">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #DDA0DD.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PowderBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #B0E0E6.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Purple">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #800080.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Red">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF0000.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RosyBrown">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #BC8F8F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RoyalBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #4169E1.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SaddleBrown">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #8B4513.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Salmon">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FA8072.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SandyBrown">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F4A460.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SeaGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #2E8B57.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SeaShell">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFF5EE.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sienna">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #A0522D.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Silver">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #C0C0C0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SkyBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #87CEEB.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SlateBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #6A5ACD.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SlateGray">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #708090.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Snow">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFAFA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SpringGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #00FF7F.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SteelBlue">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #4682B4.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tan">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #D2B48C.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Teal">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #008080.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Thistle">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #D8BFD8.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tomato">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF6347.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Transparent">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FF6347.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Turquoise">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #40E0D0.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Violet">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #EE82EE.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wheat">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F5DEB3.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="White">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFFFF.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WhiteSmoke">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #F5F5F5.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Yellow">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #FFFF00.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="YellowGreen">
+        <xs:annotation>
+          <xs:documentation>Gets a system-defined color that has an RGB value of #9ACD32.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Horizontal alignment. List of possible types of horizontal alignment. -->
+  <xs:simpleType name="HorizontalAlignmentListType">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="Left">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Content is aligned horizontally on the left.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Center">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Content is aligned horizontally in the center.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Right">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Content is aligned horizontally on the right.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Vertical alignment. List of possible types of Vertical alignment. -->
+  <xs:simpleType name="VerticalAlignmentListType">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="Top">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Content is aligned vertically at the top.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Center">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Content is aligned vertically at the center.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bottom">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Content is aligned vertically at the bottom.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Pattern type. List of possible types of patterns. -->
+  <xs:simpleType name="PatternListType">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            None
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Solid">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Solid
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray75">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Attenuated to 75%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray50">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Attenuated to 50%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray25">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Attenuated to 25%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray125">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Attenuated to 12,5%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray625">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Attenuated to 6,25%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HorzStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In horizontal stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VertStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In vertical stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ReverseDiagStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In reverse diagonal stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DiagStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In diagonal stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DiagCross">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In diagonal cross
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThickDiagCross">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In thick diagonal cross
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThinDiagCross">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In thin diagonal cross
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThinDiagStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In thin diagonal stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThinHorzCross">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In thin horizontal cross
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThinHorzStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In thin horizontal stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThinVertStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In thin vertical stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ThinReverseDiagStripe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            In reverse thin diagonal stripes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Orientations. List of possible types of orientation. -->
+  <xs:simpleType id="OrientationListType" name="OrientationListType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        Specifies the possibles orientations
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Automatic">
+        <xs:annotation>
+          <xs:documentation>The orientation is automatic.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Downward">
+        <xs:annotation>
+          <xs:documentation>The orientation is downward.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Horizontal">
+        <xs:annotation>
+          <xs:documentation>The orientation is horizontal.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Upward">
+        <xs:annotation>
+          <xs:documentation>The orientation is upward.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Vertical">
+        <xs:annotation>
+          <xs:documentation>The orientation is vertical.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- System fonts. Represents a list of known list of fonts. -->
+  <xs:simpleType name="fontNameListType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        List of fonts.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Aharoni">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Aharoni font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Andalus">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Andalus font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Angsana New">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Angsana New font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AngsanaUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            AngsanaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Arabic Typesetting">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Arabic Typesetting font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Arial">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Arial font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Arial Black">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Arial Black font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Batang">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Batang font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BatangChe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            BatangChe font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Browallia New">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Browallia New font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Browallia New">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            BrowalliaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Calibri">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Calibri font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cambria">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Cambria font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cambria Math">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Cambria Math font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Candara">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Candara font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Comic Sans MS">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Comic Sans MS font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Consolas">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Consolas font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Constantia">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Constantia font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Corbel">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Corbel font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cordia New">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Cordia New font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CordiaUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            CordiaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CordiaUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            CordiaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Courier">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Courier font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Courier New">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Courier New font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DaunPenh">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            DaunPenh font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="David">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            David font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DFKai-SB">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            DFKai-SB font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DilleniaUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            DilleniaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DokChampa">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            DokChampa font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dotum">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Dotum font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DotomChe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            DotomChe font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Estrangelo Edessa">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Estrangelo Edessa font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EucrosiaUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            EucrosiaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Euphemia">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Euphemia font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FangSong">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            FangSong font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Franklin Gothic Medium">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Franklin Gothic Medium font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FrankRuehl">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            FrankRuehl font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FreesiaUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            FreesiaUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gautami">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Gautami font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Georgia">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Georgia font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gisha">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Gisha font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gulim">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Gulim font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GulimChe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            GulimChe font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gungsuh">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Gungsuh font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GungsuhChe">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            GungsuhChe font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Impact">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Impact font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IrisUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            IrisUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Iskoola Pota">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Iskoola Pota font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="JasmineUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            JasmineUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="KaiTi">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            KaiTi font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kalinga">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Kalinga font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kartika">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Kartika font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="KodchiangUTC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            KodchiangUTC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Latha">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Latha font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Leelawadee">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Leelawadee font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Levenim MT">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Levenim MT font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LilyUPC">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            LilyUPC font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lucida Console">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Lucida Console font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lucida Sans Unicode">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Lucida Sans Unicode font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Malgun Gothic">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Malgun Gothic font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mangal">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Mangal font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Meiryo">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Meiryo font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Microsoft Himalaya">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Microsoft Himalaya font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Microsoft JhengHei">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Microsoft JhengHei font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Microsoft Sans Serif">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Microsoft Sans Serif font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Microsoft Uighur">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Microsoft Uighur font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Microsoft YaHei">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Microsoft YaHei font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Microsoft Yi Baiti">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Microsoft Yi Baiti font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MingLiU">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MingLiU font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MingLiU-ExtB">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MingLiU-ExtB font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MingLiU_HKSCS">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MingLiU_HKSCS font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MingLiU_HKSCS-ExtB">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MingLiU_HKSCS-ExtB font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Miriam">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Miriam font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Miriam Fixed">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Miriam Fixed font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Modern">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Modern font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mongolian Baiti">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Mongolian Baiti font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MoolBoran">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MoolBoran font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS Gothic">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS Gothic font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS Mincho">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS Mincho font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS PGothic">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS PGothic font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS PMincho">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS PMincho font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS Sans Saerif">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS Sans Saerif font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS Serif">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS Serif font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS UI Gothic">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MS UI Gothic font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MV Boli">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            MV Boli font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Narkisim">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Narkisim font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NSimSun">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            NSimSun font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Nyala">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Nyala font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Palatino Linotype">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Palatino Linotype font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Plantagenet Cherokee">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Plantagenet Cherokee font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PMingLiU">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            PMingLiU font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PMingLiU-ExtB">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            PMingLiU-ExtB font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Raavi">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Raavi font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Rod">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Rod font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Roman">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Roman font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Script">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Script font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Segoe Print">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Segoe Print font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Segoe Script">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Segoe Script font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Segoe UI">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Segoe UI font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Shruti">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Shruti font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SimHei">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            SimHei font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Simplified Arabic">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Simplified Arabic font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SimSun">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            SimSun font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SimSun-ExtB">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            SimSun-ExtB font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Small Fonts">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Small Fonts font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sylfaen">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Sylfaen font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Symbol">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Symbol font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tahoma">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Tahoma font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Times New Roman">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Times New Roman font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Traditional Arabic">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Traditional Arabic font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Trebuchet MS">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Trebuchet MS font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tunga">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Tunga font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Verdana">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Verdana font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Vrinda">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Vrinda font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Webdings">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Webdings font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wingdings">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Wingdings font.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Font sizes. Represents a list of available sizes for font. -->
+  <xs:simpleType name="fontSizeListType" id="fontSizeListType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        List of available sizes for font
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="9"/>
+      <xs:enumeration value="10"/>
+      <xs:enumeration value="12"/>
+      <xs:enumeration value="13"/>
+      <xs:enumeration value="14"/>
+      <xs:enumeration value="15"/>
+      <xs:enumeration value="16"/>
+      <xs:enumeration value="17"/>
+      <xs:enumeration value="18"/>
+      <xs:enumeration value="20"/>
+      <xs:enumeration value="22"/>
+      <xs:enumeration value="24"/>
+      <xs:enumeration value="26"/>
+      <xs:enumeration value="28"/>
+      <xs:enumeration value="32"/>
+      <xs:enumeration value="36"/>
+      <xs:enumeration value="40"/>
+      <xs:enumeration value="48"/>
+      <xs:enumeration value="56"/>
+      <xs:enumeration value="64"/>
+      <xs:enumeration value="72"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  
+  <!-- ====================================== -->
+  <!-- Definition of miscellaneous data types -->
+  <!-- ====================================== -->
+
+  <!-- Mail address. Represents a mail address. -->
+  <xs:simpleType name="mailAddressType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9_]+([-+][A-Za-z0-9_]+)*@[A-Za-z0-9_]+([-.][A-Za-z0-9_]+)*\.[A-Za-z0-9_]+([-.][A-Za-z0-9_]+)*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Address list. Represents a mail address list. -->
+  <xs:simpleType name="mailAddressListType">
+    <xs:list itemType="mailAddressType" />
+  </xs:simpleType>
+
+  <!-- IP Address. Represents an ip address, range 1.0.0.0 to 255.255.255.255 -->
+  <xs:simpleType id="ipAddressType" name="ipAddressType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- System cultures. Represents a list of known cultures.  -->
+  <xs:simpleType name="knownCultureListType" id="knownCultureListType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Current">
+        <xs:annotation>
+          <xs:documentation>Current culture.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="af">
+        <xs:annotation>
+          <xs:documentation>Afrikaans</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="af-ZA">
+        <xs:annotation>
+          <xs:documentation>Afrikaans (South Africa)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="am">
+        <xs:annotation>
+          <xs:documentation>Amharic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="am-ET">
+        <xs:annotation>
+          <xs:documentation>Amharic (Ethiopia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar">
+        <xs:annotation>
+          <xs:documentation>Arabic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-SA">
+        <xs:annotation>
+          <xs:documentation>Arabic (Saudi Arabia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-IQ">
+        <xs:annotation>
+          <xs:documentation>Arabic (Iraq)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-EG">
+        <xs:annotation>
+          <xs:documentation>Arabic (Egypt)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-LY">
+        <xs:annotation>
+          <xs:documentation>Arabic (Libya)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-DZ">
+        <xs:annotation>
+          <xs:documentation>Arabic (Algeria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-MA">
+        <xs:annotation>
+          <xs:documentation>Arabic (Morocco)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-TN">
+        <xs:annotation>
+          <xs:documentation>Arabic (Tunisia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-OM">
+        <xs:annotation>
+          <xs:documentation>Arabic (Oman)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-YE">
+        <xs:annotation>
+          <xs:documentation>Arabic (Yemen)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-SY">
+        <xs:annotation>
+          <xs:documentation>Arabic (Syria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-JO">
+        <xs:annotation>
+          <xs:documentation>Arabic (Jordan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-LB">
+        <xs:annotation>
+          <xs:documentation>Arabic (Lebanon)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-KW">
+        <xs:annotation>
+          <xs:documentation>Arabic (Kuwait)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-AE">
+        <xs:annotation>
+          <xs:documentation>Arabic (U.A.E.)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-BH">
+        <xs:annotation>
+          <xs:documentation>Arabic (Bahrain)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ar-QA">
+        <xs:annotation>
+          <xs:documentation>Arabic (Qatar)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="arn">
+        <xs:annotation>
+          <xs:documentation>Mapudungun</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="arn-CL">
+        <xs:annotation>
+          <xs:documentation>Mapudungun (Chile)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="as">
+        <xs:annotation>
+          <xs:documentation>Assamese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="as-IN">
+        <xs:annotation>
+          <xs:documentation>Assamese (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="az">
+        <xs:annotation>
+          <xs:documentation>Azeri</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="az-Latn-AZ">
+        <xs:annotation>
+          <xs:documentation>Azeri (Latin, Azerbaijan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="az-Cyrl-AZ">
+        <xs:annotation>
+          <xs:documentation>Azeri (Cyrillic, Azerbaijan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="az-Cyrl">
+        <xs:annotation>
+          <xs:documentation>Azeri (Cyrillic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="az-Latn">
+        <xs:annotation>
+          <xs:documentation>Azeri (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ba">
+        <xs:annotation>
+          <xs:documentation>Bashkir</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ba-RU">
+        <xs:annotation>
+          <xs:documentation>Bashkir (Russia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="be">
+        <xs:annotation>
+          <xs:documentation>Belarusian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="be-BY">
+        <xs:annotation>
+          <xs:documentation>Belarusian (Belarus)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bg">
+        <xs:annotation>
+          <xs:documentation>Bulgarian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bg-BG">
+        <xs:annotation>
+          <xs:documentation>Bulgarian (Bulgaria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bn">
+        <xs:annotation>
+          <xs:documentation>Bengali</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bn-IN">
+        <xs:annotation>
+          <xs:documentation>Bengali (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bn-BD">
+        <xs:annotation>
+          <xs:documentation>Bengali (Bangladesh)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bo">
+        <xs:annotation>
+          <xs:documentation>Tibetan</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bo-CN">
+        <xs:annotation>
+          <xs:documentation>Tibetan (PRC)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="br">
+        <xs:annotation>
+          <xs:documentation>Breton</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="br-FR">
+        <xs:annotation>
+          <xs:documentation>Breton (France)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bs-Latn-BA">
+        <xs:annotation>
+          <xs:documentation>Bosnian (Latin, Bosnia and Herzegovina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bs-Cyrl-BA">
+        <xs:annotation>
+          <xs:documentation>Bosnian (Cyrillic, Bosnia and Herzegovina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bs-Cyrl">
+        <xs:annotation>
+          <xs:documentation>Bosnian (Cyrillic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bs-Latn">
+        <xs:annotation>
+          <xs:documentation>Bosnian (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bs">
+        <xs:annotation>
+          <xs:documentation>Bosnian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ca">
+        <xs:annotation>
+          <xs:documentation>Catalan</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ca-ES">
+        <xs:annotation>
+          <xs:documentation>Catalan (Catalan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="co">
+        <xs:annotation>
+          <xs:documentation>Corsican</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="co-FR">
+        <xs:annotation>
+          <xs:documentation>Corsican (France)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cs">
+        <xs:annotation>
+          <xs:documentation>Czech</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cs-CZ">
+        <xs:annotation>
+          <xs:documentation>Czech (Czech Republic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cy">
+        <xs:annotation>
+          <xs:documentation>Welsh</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cy-GB">
+        <xs:annotation>
+          <xs:documentation>Welsh (United Kingdom)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="da">
+        <xs:annotation>
+          <xs:documentation>Danish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="da-DK">
+        <xs:annotation>
+          <xs:documentation>Danish (Denmark)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de">
+        <xs:annotation>
+          <xs:documentation>German</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de-DE">
+        <xs:annotation>
+          <xs:documentation>German (Germany)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de-CH">
+        <xs:annotation>
+          <xs:documentation>German (Switzerland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de-AT">
+        <xs:annotation>
+          <xs:documentation>German (Austria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de-LU">
+        <xs:annotation>
+          <xs:documentation>German (Luxembourg)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de-LI">
+        <xs:annotation>
+          <xs:documentation>German (Liechtenstein)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dsb-DE">
+        <xs:annotation>
+          <xs:documentation>Lower Sorbian (Germany)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dsb">
+        <xs:annotation>
+          <xs:documentation>Lower Sorbian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dv">
+        <xs:annotation>
+          <xs:documentation>Divehi</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dv-MV">
+        <xs:annotation>
+          <xs:documentation>Divehi (Maldives)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="el">
+        <xs:annotation>
+          <xs:documentation>Greek</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="el-GR">
+        <xs:annotation>
+          <xs:documentation>Greek (Greece)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en">
+        <xs:annotation>
+          <xs:documentation>English</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-US">
+        <xs:annotation>
+          <xs:documentation>English (United States)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-GB">
+        <xs:annotation>
+          <xs:documentation>English (United Kingdom)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-AU">
+        <xs:annotation>
+          <xs:documentation>English (Australia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-CA">
+        <xs:annotation>
+          <xs:documentation>English (Canada)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-NZ">
+        <xs:annotation>
+          <xs:documentation>English (New Zealand)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-IE">
+        <xs:annotation>
+          <xs:documentation>English (Ireland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-ZA">
+        <xs:annotation>
+          <xs:documentation>English (South Africa)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-JM">
+        <xs:annotation>
+          <xs:documentation>English (Jamaica)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-029">
+        <xs:annotation>
+          <xs:documentation>English (Caribbean)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-BZ">
+        <xs:annotation>
+          <xs:documentation>English (Belize)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-TT">
+        <xs:annotation>
+          <xs:documentation>English (Trinidad and Tobago)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-ZW">
+        <xs:annotation>
+          <xs:documentation>English (Zimbabwe)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-PH">
+        <xs:annotation>
+          <xs:documentation>English (Republic of the Philippines)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-IN">
+        <xs:annotation>
+          <xs:documentation>English (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-MY">
+        <xs:annotation>
+          <xs:documentation>English (Malaysia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="en-SG">
+        <xs:annotation>
+          <xs:documentation>English (Singapore)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es">
+        <xs:annotation>
+          <xs:documentation>Spanish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-MX">
+        <xs:annotation>
+          <xs:documentation>Spanish (Mexico)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-ES">
+        <xs:annotation>
+          <xs:documentation>Spanish (Spain, International Sort)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-GT">
+        <xs:annotation>
+          <xs:documentation>Spanish (Guatemala)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-CR">
+        <xs:annotation>
+          <xs:documentation>Spanish (Costa Rica)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-PA">
+        <xs:annotation>
+          <xs:documentation>Spanish (Panama)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-DO">
+        <xs:annotation>
+          <xs:documentation>Spanish (Dominican Republic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-VE">
+        <xs:annotation>
+          <xs:documentation>Spanish (Bolivarian Republic of Venezuela)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-CO">
+        <xs:annotation>
+          <xs:documentation>Spanish (Colombia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-PE">
+        <xs:annotation>
+          <xs:documentation>Spanish (Peru)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-AR">
+        <xs:annotation>
+          <xs:documentation>Spanish (Argentina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-EC">
+        <xs:annotation>
+          <xs:documentation>Spanish (Ecuador)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-CL">
+        <xs:annotation>
+          <xs:documentation>Spanish (Chile)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-UY">
+        <xs:annotation>
+          <xs:documentation>Spanish (Uruguay)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-PY">
+        <xs:annotation>
+          <xs:documentation>Spanish (Paraguay)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-BO">
+        <xs:annotation>
+          <xs:documentation>Spanish (Bolivia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-SV">
+        <xs:annotation>
+          <xs:documentation>Spanish (El Salvador)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-HN">
+        <xs:annotation>
+          <xs:documentation>Spanish (Honduras)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-NI">
+        <xs:annotation>
+          <xs:documentation>Spanish (Nicaragua)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-PR">
+        <xs:annotation>
+          <xs:documentation>Spanish (Puerto Rico)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es-US">
+        <xs:annotation>
+          <xs:documentation>Spanish (United States)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="et">
+        <xs:annotation>
+          <xs:documentation>Estonian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="et-EE">
+        <xs:annotation>
+          <xs:documentation>Estonian (Estonia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="eu">
+        <xs:annotation>
+          <xs:documentation>Basque</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="eu-ES">
+        <xs:annotation>
+          <xs:documentation>Basque (Basque)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fa">
+        <xs:annotation>
+          <xs:documentation>Persian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fa-IR">
+        <xs:annotation>
+          <xs:documentation>Persian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fi">
+        <xs:annotation>
+          <xs:documentation>Finnish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fi-FI">
+        <xs:annotation>
+          <xs:documentation>Finnish (Finland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fil">
+        <xs:annotation>
+          <xs:documentation>Filipino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fil-PH">
+        <xs:annotation>
+          <xs:documentation>Filipino (Philippines)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fo">
+        <xs:annotation>
+          <xs:documentation>Faroese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fo-FO">
+        <xs:annotation>
+          <xs:documentation>Faroese (Faroe Islands)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr">
+        <xs:annotation>
+          <xs:documentation>French</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr-FR">
+        <xs:annotation>
+          <xs:documentation>French (France)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr-BE">
+        <xs:annotation>
+          <xs:documentation>French (Belgium)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr-CA">
+        <xs:annotation>
+          <xs:documentation>French (Canada)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr-CH">
+        <xs:annotation>
+          <xs:documentation>French (Switzerland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr-LU">
+        <xs:annotation>
+          <xs:documentation>French (Luxembourg)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr-MC">
+        <xs:annotation>
+          <xs:documentation>French (Monaco)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fy">
+        <xs:annotation>
+          <xs:documentation>Frisian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fy-NL">
+        <xs:annotation>
+          <xs:documentation>Frisian (Netherlands)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ga">
+        <xs:annotation>
+          <xs:documentation>Irish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ga-IE">
+        <xs:annotation>
+          <xs:documentation>Irish (Ireland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gd">
+        <xs:annotation>
+          <xs:documentation>Scottish Gaelic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gd-GB">
+        <xs:annotation>
+          <xs:documentation>Scottish Gaelic (United Kingdom)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gl">
+        <xs:annotation>
+          <xs:documentation>Galician</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gl-ES">
+        <xs:annotation>
+          <xs:documentation>Galician (Galician)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gsw">
+        <xs:annotation>
+          <xs:documentation>Alsatian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gsw-FR">
+        <xs:annotation>
+          <xs:documentation>Alsatian (France)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gu">
+        <xs:annotation>
+          <xs:documentation>Gujarati</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gu-IN">
+        <xs:annotation>
+          <xs:documentation>Gujarati (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ha">
+        <xs:annotation>
+          <xs:documentation>Hausa</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ha-Latn-NG">
+        <xs:annotation>
+          <xs:documentation>Hausa (Latin, Nigeria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ha-Latn">
+        <xs:annotation>
+          <xs:documentation>Hausa (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="he">
+        <xs:annotation>
+          <xs:documentation>Hebrew</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="he-IL">
+        <xs:annotation>
+          <xs:documentation>Hebrew (Israel)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hi">
+        <xs:annotation>
+          <xs:documentation>Hindi</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hi-IN">
+        <xs:annotation>
+          <xs:documentation>Hindi (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hr">
+        <xs:annotation>
+          <xs:documentation>Croatian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hr-HR">
+        <xs:annotation>
+          <xs:documentation>Croatian (Croatia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hr-BA">
+        <xs:annotation>
+          <xs:documentation>Croatian (Latin, Bosnia and Herzegovina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hsb">
+        <xs:annotation>
+          <xs:documentation>Upper Sorbian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hsb-DE">
+        <xs:annotation>
+          <xs:documentation>Upper Sorbian (Germany)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hu">
+        <xs:annotation>
+          <xs:documentation>Hungarian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hu-HU">
+        <xs:annotation>
+          <xs:documentation>Hungarian (Hungary)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hy">
+        <xs:annotation>
+          <xs:documentation>Armenian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hy-AM">
+        <xs:annotation>
+          <xs:documentation>Armenian (Armenia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="id">
+        <xs:annotation>
+          <xs:documentation>Indonesian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="id-ID">
+        <xs:annotation>
+          <xs:documentation>Indonesian (Indonesia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ig">
+        <xs:annotation>
+          <xs:documentation>Igbo</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ig-NG">
+        <xs:annotation>
+          <xs:documentation>Igbo (Nigeria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ii">
+        <xs:annotation>
+          <xs:documentation>Yi</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ii-CN">
+        <xs:annotation>
+          <xs:documentation>Yi (PRC)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="is">
+        <xs:annotation>
+          <xs:documentation>Icelandic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="is-IS">
+        <xs:annotation>
+          <xs:documentation>Icelandic (Iceland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="it">
+        <xs:annotation>
+          <xs:documentation>Italian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="it-IT">
+        <xs:annotation>
+          <xs:documentation>Italian (Italy)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="it-CH">
+        <xs:annotation>
+          <xs:documentation>Italian (Switzerland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="iu">
+        <xs:annotation>
+          <xs:documentation>Inuktitut</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="iu-Cans-CA">
+        <xs:annotation>
+          <xs:documentation>Inuktitut (Syllabics, Canada)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="iu-Latn-CA">
+        <xs:annotation>
+          <xs:documentation>Inuktitut (Latin, Canada)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="iu-Cans">
+        <xs:annotation>
+          <xs:documentation>Inuktitut (Syllabics)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="iu-Latn">
+        <xs:annotation>
+          <xs:documentation>Inuktitut (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ja">
+        <xs:annotation>
+          <xs:documentation>Japanese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ja-JP">
+        <xs:annotation>
+          <xs:documentation>Japanese (Japan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ka">
+        <xs:annotation>
+          <xs:documentation>Georgian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ka-GE">
+        <xs:annotation>
+          <xs:documentation>Georgian (Georgia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kk">
+        <xs:annotation>
+          <xs:documentation>Kazakh</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kk-KZ">
+        <xs:annotation>
+          <xs:documentation>Kazakh (Kazakhstan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kl">
+        <xs:annotation>
+          <xs:documentation>Greenlandic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kl-GL">
+        <xs:annotation>
+          <xs:documentation>Greenlandic (Greenland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="km">
+        <xs:annotation>
+          <xs:documentation>Khmer</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="km-KH">
+        <xs:annotation>
+          <xs:documentation>Khmer (Cambodia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kn">
+        <xs:annotation>
+          <xs:documentation>Kannada</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kn-IN">
+        <xs:annotation>
+          <xs:documentation>Kannada (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ko">
+        <xs:annotation>
+          <xs:documentation>Korean</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ko-KR">
+        <xs:annotation>
+          <xs:documentation>Korean (Korea)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kok">
+        <xs:annotation>
+          <xs:documentation>Konkani</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kok-IN">
+        <xs:annotation>
+          <xs:documentation>Konkani (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ky">
+        <xs:annotation>
+          <xs:documentation>Kyrgyz</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ky-KG">
+        <xs:annotation>
+          <xs:documentation>Kyrgyz (Kyrgyzstan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lb">
+        <xs:annotation>
+          <xs:documentation>Luxembourgish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lb-LU">
+        <xs:annotation>
+          <xs:documentation>Luxembourgish (Luxembourg)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lo">
+        <xs:annotation>
+          <xs:documentation>Lao</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lo-LA">
+        <xs:annotation>
+          <xs:documentation>Lao (Lao P.D.R.)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lt">
+        <xs:annotation>
+          <xs:documentation>Lithuanian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lt-LT">
+        <xs:annotation>
+          <xs:documentation>Lithuanian (Lithuania)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lv">
+        <xs:annotation>
+          <xs:documentation>Latvian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lv-LV">
+        <xs:annotation>
+          <xs:documentation>Latvian (Latvia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mi">
+        <xs:annotation>
+          <xs:documentation>Maori</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mi-NZ">
+        <xs:annotation>
+          <xs:documentation>Maori (New Zealand)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mk">
+        <xs:annotation>
+          <xs:documentation>Macedonian (FYROM)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mk-MK">
+        <xs:annotation>
+          <xs:documentation>Macedonian (Former Yugoslav Republic of Macedonia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ml">
+        <xs:annotation>
+          <xs:documentation>Malayalam</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ml-IN">
+        <xs:annotation>
+          <xs:documentation>Malayalam (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mn">
+        <xs:annotation>
+          <xs:documentation>Mongolian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mn-MN">
+        <xs:annotation>
+          <xs:documentation>Mongolian (Cyrillic, Mongolia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mn-Mong-CN">
+        <xs:annotation>
+          <xs:documentation>Mongolian (Traditional Mongolian, PRC)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mn-Cyrl">
+        <xs:annotation>
+          <xs:documentation>Mongolian (Cyrillic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mn-Mong">
+        <xs:annotation>
+          <xs:documentation>Mongolian (Traditional Mongolian)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="moh">
+        <xs:annotation>
+          <xs:documentation>Mohawk</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="moh-CA">
+        <xs:annotation>
+          <xs:documentation>Mohawk (Mohawk)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mr">
+        <xs:annotation>
+          <xs:documentation>Marathi</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mr-IN">
+        <xs:annotation>
+          <xs:documentation>Marathi (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ms">
+        <xs:annotation>
+          <xs:documentation>Malay</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ms-MY">
+        <xs:annotation>
+          <xs:documentation>Malay (Malaysia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ms-BN">
+        <xs:annotation>
+          <xs:documentation>Malay (Brunei Darussalam)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mt">
+        <xs:annotation>
+          <xs:documentation>Maltese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mt-MT">
+        <xs:annotation>
+          <xs:documentation>Maltese (Malta)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no">
+        <xs:annotation>
+          <xs:documentation>Norwegian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nb-NO">
+        <xs:annotation>
+          <xs:documentation>Norwegian, Bokmål (Norway)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nb">
+        <xs:annotation>
+          <xs:documentation>Norwegian (Bokmål)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ne">
+        <xs:annotation>
+          <xs:documentation>Nepali</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ne-NP">
+        <xs:annotation>
+          <xs:documentation>Nepali (Nepal)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nl">
+        <xs:annotation>
+          <xs:documentation>Dutch</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nl-NL">
+        <xs:annotation>
+          <xs:documentation>Dutch (Netherlands)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nl-BE">
+        <xs:annotation>
+          <xs:documentation>Dutch (Belgium)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nn-NO">
+        <xs:annotation>
+          <xs:documentation>Norwegian, Nynorsk (Norway)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nn">
+        <xs:annotation>
+          <xs:documentation>Norwegian (Nynorsk)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nso">
+        <xs:annotation>
+          <xs:documentation>Sesotho sa Leboa</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nso-ZA">
+        <xs:annotation>
+          <xs:documentation>Sesotho sa Leboa (South Africa)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oc">
+        <xs:annotation>
+          <xs:documentation>Occitan</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oc-FR">
+        <xs:annotation>
+          <xs:documentation>Occitan (France)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="or">
+        <xs:annotation>
+          <xs:documentation>Oriya</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="or-IN">
+        <xs:annotation>
+          <xs:documentation>Oriya (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pa">
+        <xs:annotation>
+          <xs:documentation>Punjabi</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pa-IN">
+        <xs:annotation>
+          <xs:documentation>Punjabi (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pl">
+        <xs:annotation>
+          <xs:documentation>Polish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pl-PL">
+        <xs:annotation>
+          <xs:documentation>Polish (Poland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="prs">
+        <xs:annotation>
+          <xs:documentation>Dari</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="prs-AF">
+        <xs:annotation>
+          <xs:documentation>Dari (Afghanistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ps">
+        <xs:annotation>
+          <xs:documentation>Pashto</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ps-AF">
+        <xs:annotation>
+          <xs:documentation>Pashto (Afghanistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pt">
+        <xs:annotation>
+          <xs:documentation>Portuguese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pt-BR">
+        <xs:annotation>
+          <xs:documentation>Portuguese (Brazil)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pt-PT">
+        <xs:annotation>
+          <xs:documentation>Portuguese (Portugal)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="qut">
+        <xs:annotation>
+          <xs:documentation>K'iche</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="qut-GT">
+        <xs:annotation>
+          <xs:documentation>K'iche (Guatemala)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="quz">
+        <xs:annotation>
+          <xs:documentation>Quechua</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="quz-BO">
+        <xs:annotation>
+          <xs:documentation>Quechua (Bolivia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="quz-EC">
+        <xs:annotation>
+          <xs:documentation>Quechua (Ecuador)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="quz-PE">
+        <xs:annotation>
+          <xs:documentation>Quechua (Peru)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rm">
+        <xs:annotation>
+          <xs:documentation>Romansh</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rm-CH">
+        <xs:annotation>
+          <xs:documentation>Romansh (Switzerland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ro">
+        <xs:annotation>
+          <xs:documentation>Romanian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ro-RO">
+        <xs:annotation>
+          <xs:documentation>Romanian (Romania)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ru">
+        <xs:annotation>
+          <xs:documentation>Russian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ru-RU">
+        <xs:annotation>
+          <xs:documentation>Russian (Russia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rw">
+        <xs:annotation>
+          <xs:documentation>Kinyarwanda</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rw-RW">
+        <xs:annotation>
+          <xs:documentation>Kinyarwanda (Rwanda)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sa">
+        <xs:annotation>
+          <xs:documentation>Sanskrit</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sa-IN">
+        <xs:annotation>
+          <xs:documentation>Sanskrit (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sah">
+        <xs:annotation>
+          <xs:documentation>Yakut</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sah-RU">
+        <xs:annotation>
+          <xs:documentation>Yakut (Russia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se">
+        <xs:annotation>
+          <xs:documentation>Sami (Northern)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se-NO">
+        <xs:annotation>
+          <xs:documentation>Sami, Northern (Norway)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se-SE">
+        <xs:annotation>
+          <xs:documentation>Sami, Northern (Sweden)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se-FI">
+        <xs:annotation>
+          <xs:documentation>Sami, Northern (Finland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="si">
+        <xs:annotation>
+          <xs:documentation>Sinhala</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="si-LK">
+        <xs:annotation>
+          <xs:documentation>Sinhala (Sri Lanka)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sk">
+        <xs:annotation>
+          <xs:documentation>Slovak</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sk-SK">
+        <xs:annotation>
+          <xs:documentation>Slovak (Slovakia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sl">
+        <xs:annotation>
+          <xs:documentation>Slovenian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sl-SI">
+        <xs:annotation>
+          <xs:documentation>Slovenian (Slovenia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sma-NO">
+        <xs:annotation>
+          <xs:documentation>Sami, Southern (Norway)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sma-SE">
+        <xs:annotation>
+          <xs:documentation>Sami, Southern (Sweden)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sma">
+        <xs:annotation>
+          <xs:documentation>Sami (Southern)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smj-NO">
+        <xs:annotation>
+          <xs:documentation>Sami, Lule (Norway)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smj-SE">
+        <xs:annotation>
+          <xs:documentation>Sami, Lule (Sweden)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smj">
+        <xs:annotation>
+          <xs:documentation>Sami (Lule)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smn-FI">
+        <xs:annotation>
+          <xs:documentation>Sami, Inari (Finland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smn">
+        <xs:annotation>
+          <xs:documentation>Sami (Inari)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sms-FI">
+        <xs:annotation>
+          <xs:documentation>Sami, Skolt (Finland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sms">
+        <xs:annotation>
+          <xs:documentation>Sami (Skolt)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sq">
+        <xs:annotation>
+          <xs:documentation>Albanian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sq-AL">
+        <xs:annotation>
+          <xs:documentation>Albanian (Albania)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Latn-CS">
+        <xs:annotation>
+          <xs:documentation>Serbian (Latin, Serbia and Montenegro (Former))</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Cyrl-CS">
+        <xs:annotation>
+          <xs:documentation>Serbian (Cyrillic, Serbia and Montenegro (Former))</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Latn-BA">
+        <xs:annotation>
+          <xs:documentation>Serbian (Latin, Bosnia and Herzegovina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Cyrl-BA">
+        <xs:annotation>
+          <xs:documentation>Serbian (Cyrillic, Bosnia and Herzegovina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Latn-RS">
+        <xs:annotation>
+          <xs:documentation>Serbian (Latin, Serbia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Cyrl-RS">
+        <xs:annotation>
+          <xs:documentation>Serbian (Cyrillic, Serbia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Latn-ME">
+        <xs:annotation>
+          <xs:documentation>Serbian (Latin, Montenegro)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Cyrl-ME">
+        <xs:annotation>
+          <xs:documentation>Serbian (Cyrillic, Montenegro)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Cyrl">
+        <xs:annotation>
+          <xs:documentation>Serbian (Cyrillic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr-Latn">
+        <xs:annotation>
+          <xs:documentation>Serbian (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sr">
+        <xs:annotation>
+          <xs:documentation>Serbian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sv">
+        <xs:annotation>
+          <xs:documentation>Swedish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sv-SE">
+        <xs:annotation>
+          <xs:documentation>Swedish (Sweden)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sv-FI">
+        <xs:annotation>
+          <xs:documentation>Swedish (Finland)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sw">
+        <xs:annotation>
+          <xs:documentation>Kiswahili</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sw-KE">
+        <xs:annotation>
+          <xs:documentation>Kiswahili (Kenya)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="syr">
+        <xs:annotation>
+          <xs:documentation>Syriac</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="syr-SY">
+        <xs:annotation>
+          <xs:documentation>Syriac (Syria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ta">
+        <xs:annotation>
+          <xs:documentation>Tamil</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ta-IN">
+        <xs:annotation>
+          <xs:documentation>Tamil (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="te">
+        <xs:annotation>
+          <xs:documentation>Telugu</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="te-IN">
+        <xs:annotation>
+          <xs:documentation>Telugu (India)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tg">
+        <xs:annotation>
+          <xs:documentation>Tajik</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tg-Cyrl-TJ">
+        <xs:annotation>
+          <xs:documentation>Tajik (Cyrillic, Tajikistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tg-Cyrl">
+        <xs:annotation>
+          <xs:documentation>Tajik (Cyrillic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="th">
+        <xs:annotation>
+          <xs:documentation>Thai</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="th-TH">
+        <xs:annotation>
+          <xs:documentation>Thai (Thailand)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tk">
+        <xs:annotation>
+          <xs:documentation>Turkmen</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tk-TM">
+        <xs:annotation>
+          <xs:documentation>Turkmen (Turkmenistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tn">
+        <xs:annotation>
+          <xs:documentation>Setswana</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tn-ZA">
+        <xs:annotation>
+          <xs:documentation>Setswana (South Africa)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tr">
+        <xs:annotation>
+          <xs:documentation>Turkish</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tr-TR">
+        <xs:annotation>
+          <xs:documentation>Turkish (Turkey)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tt">
+        <xs:annotation>
+          <xs:documentation>Tatar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tt-RU">
+        <xs:annotation>
+          <xs:documentation>Tatar (Russia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tzm">
+        <xs:annotation>
+          <xs:documentation>Tamazight</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tzm-Latn-DZ">
+        <xs:annotation>
+          <xs:documentation>Tamazight (Latin, Algeria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tzm-Latn">
+        <xs:annotation>
+          <xs:documentation>Tamazight (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ug">
+        <xs:annotation>
+          <xs:documentation>Uyghur</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ug-CN">
+        <xs:annotation>
+          <xs:documentation>Uyghur (PRC)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uk">
+        <xs:annotation>
+          <xs:documentation>Ukrainian</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uk-UA">
+        <xs:annotation>
+          <xs:documentation>Ukrainian (Ukraine)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ur">
+        <xs:annotation>
+          <xs:documentation>Urdu</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ur-PK">
+        <xs:annotation>
+          <xs:documentation>Urdu (Islamic Republic of Pakistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uz">
+        <xs:annotation>
+          <xs:documentation>Uzbek</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uz-Latn-UZ">
+        <xs:annotation>
+          <xs:documentation>Uzbek (Latin, Uzbekistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uz-Cyrl-UZ">
+        <xs:annotation>
+          <xs:documentation>Uzbek (Cyrillic, Uzbekistan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uz-Cyrl">
+        <xs:annotation>
+          <xs:documentation>Uzbek (Cyrillic)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uz-Latn">
+        <xs:annotation>
+          <xs:documentation>Uzbek (Latin)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vi">
+        <xs:annotation>
+          <xs:documentation>Vietnamese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vi-VN">
+        <xs:annotation>
+          <xs:documentation>Vietnamese (Vietnam)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wo">
+        <xs:annotation>
+          <xs:documentation>Wolof</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wo-SN">
+        <xs:annotation>
+          <xs:documentation>Wolof (Senegal)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xh">
+        <xs:annotation>
+          <xs:documentation>isiXhosa</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xh-ZA">
+        <xs:annotation>
+          <xs:documentation>isiXhosa (South Africa)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="yo">
+        <xs:annotation>
+          <xs:documentation>Yoruba</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="yo-NG">
+        <xs:annotation>
+          <xs:documentation>Yoruba (Nigeria)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-Hans">
+        <xs:annotation>
+          <xs:documentation>Chinese (Simplified)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-TW">
+        <xs:annotation>
+          <xs:documentation>Chinese (Traditional, Taiwan)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-CN">
+        <xs:annotation>
+          <xs:documentation>Chinese (Simplified, PRC)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-HK">
+        <xs:annotation>
+          <xs:documentation>Chinese (Traditional, Hong Kong S.A.R.)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-SG">
+        <xs:annotation>
+          <xs:documentation>Chinese (Simplified, Singapore)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-MO">
+        <xs:annotation>
+          <xs:documentation>Chinese (Traditional, Macao S.A.R.)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh">
+        <xs:annotation>
+          <xs:documentation>Chinese</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-Hant">
+        <xs:annotation>
+          <xs:documentation>Chinese (Traditional)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-CHS">
+        <xs:annotation>
+          <xs:documentation>Chinese (Simplified) Legacy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zh-CHT">
+        <xs:annotation>
+          <xs:documentation>Chinese (Traditional) Legacy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zu">
+        <xs:annotation>
+          <xs:documentation>isiZulu</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zu-ZA">
+        <xs:annotation>
+          <xs:documentation>isiZulu (South Africa)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Bindable type: Represents a call to external assembly. -->
+  <xs:simpleType id="bindableType" name="bindableType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- identifier Type: Represents a valid name for an identifier. -->
+  <xs:simpleType id="identifierType" name="identifierType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\w%@#-_]+" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

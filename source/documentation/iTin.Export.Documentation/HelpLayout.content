@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="9a2d0ca5-f618-4861-b96b-a66744344370" visible="True" isDefault="true" isSelected="true" title="User's Guide" tocTitle="User's Guide" />
+  <Topic id="850505d3-caa1-4003-a30d-cafc912aa89a" visible="True" title="Programmer's Guide" tocTitle="Programmer's Guide" linkText="Programmer's Guide" />
+  <Topic id="d2774ce7-dd79-43c7-af97-5eec27fca008" visible="True" apiParentMode="InsertAsChild" title="Api Reference" tocTitle="Api Reference" linkText="Api Reference" />
+</Topics>

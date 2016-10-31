@@ -1,0 +1,2106 @@
+<Model>
+  <Exports>
+    <Class name="info">
+      <summary>
+        Root element of <strong>iTin Export Engine</strong> configuration file that contains a list with export definition.
+      </summary>
+      <remarks>
+        <para>
+          Represents <strong><c>TEE</c> root</strong> element of a configuration file.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+            &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+              &lt;Export/&gt;
+              &lt;Export/&gt;
+              ...
+            &lt;/Exports&gt;
+          </code>
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <list type="table">
+          <listheader>
+            <term>Attribute</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term>xmlns</term>
+            <description>
+              Namespace for the <c>iTin Export Engine (TEE)</c> configuration file.<br/>
+            </description>
+          </item>
+        </list>
+        <note>
+          The xsd schema file that will be used to validate the document are located in the location
+          <c>VisualStudioInstallationFolder\Xml\Schemas</c>, also gives us the intellisense to write quickly the document.
+        </note>
+        <para>
+          <strong>Elements</strong>
+        </para>
+        <list type="table">
+          <listheader>
+            <term>Element</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term>
+              <see cref="P:iTin.Export.Model.ExportsModel.Items" />
+            </term>
+            <description>Collection of export configurations. Each element is composed of a description and a data table definition.</description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        The following example shows a full configuration file.
+        <code lang="xml">
+          &lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+          &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+          &lt;Export Name="iTin" Current="Yes"&gt;
+          &lt;Description&gt;Sample 1&lt;/Description&gt;
+          &lt;Table Name="SCR3SFL"
+          AutoFilter="Yes"
+          AutoFitColumns="Yes"
+          Alias="iTin Sample 1"&gt;
+          &lt;Exporter&gt;
+          &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
+          &lt;Behaviors&gt;
+          &lt;Download/&gt;
+          &lt;TransformFile Save="Yes"/&gt;
+          &lt;/Behaviors&gt;
+          &lt;/Exporter&gt;
+          &lt;Output&gt;
+          &lt;File&gt;ExampleI&lt;/File&gt;
+          &lt;Path&gt;~\Samples\Output\Writers\Demo\XML Spreadsheet&lt;/Path&gt;
+          &lt;/Output&gt;
+          &lt;Styles&gt;
+          &lt;Style Name="Header"&gt;
+          &lt;Content Color="#D9E1F2"&gt;
+          &lt;Alignment Horizontal="Left"/&gt;
+          &lt;Text/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11" Bold="Yes"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="PeriodValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;DateTime Format="Year-Month"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="EuropeValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="AfricaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="AsiaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="NorthAmericaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="SouthAmericaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="AustraliaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;/Styles&gt;
+          &lt;Fields&gt;
+          &lt;Field Name="PERIOD" Alias="Period"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="PeriodValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="EUROPE" Alias="Europe"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="EuropeValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="AFRICA" Alias="Africa"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="AfricaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="ASIA" Alias="Asia"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="AsiaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="NORTHAMERICA" Alias="North America"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="NorthAmericaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="SOUTHAMERICA" Alias="South America"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="SouthAmericaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="AUSTRALIA" Alias="Australia"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="AustraliaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;/Fields&gt;
+          &lt;/Table&gt;
+          &lt;/Export&gt;
+          &lt;/Exports&gt;
+
+        </code>
+      </example>
+    </Class>
+  </Exports>
+
+  
+  <Properties>
+    <Class name="info">
+      <summary>
+        Collection of custom properties. Each element is a custom property, it contains name/value.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: Any element, except collections.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;Properties&gt;
+              &lt;Property/&gt;
+              &lt;Property/&gt;
+              ...
+            &lt;/Properties&gt;
+          </code>
+        </para>
+        <para>
+          <para>
+            <strong>Compatibility table with native writers.</strong>
+          </para>
+          <table>
+            <thead>
+              <tr>
+                <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center">X</td>
+                <td align="center">X</td>
+                <td align="center">X</td>
+                <td align="center">X</td>
+              </tr>
+            </tbody>
+          </table>
+          A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        </para>
+      </remarks>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="PropertiesModel{T}" /> class.
+          </summary>
+          <param name="parent">The parent of the custom-properties collection.</param>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of the custom-properties collection.</summary>
+          <value>A <see cref="T:iTin.Export.Model.BaseModel{T}" /> that represents the parent of the custom-properties collection.</value>
+        </Property>
+      </Properties>
+    </Public>
+  </Properties>
+
+  <Property>
+    <Class name="info">
+      <summary>
+        Represents a custom property, it contains name/value.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Properties</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.PropertiesModel" />.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;Property/&gt;
+          </code>
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.PropertyModel.Name" /></td>
+              <td align="center">No</td>
+              <td>Name of property.</td>
+            </tr>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.PropertyModel.Value" /></td>
+              <td align="center">No</td>
+              <td>Value of property.</td>
+            </tr>
+          </tbody>
+        </table>
+        <para>
+          <para>
+            <strong>Compatibility table with native writers.</strong>
+          </para>
+          <table>
+            <thead>
+              <tr>
+                <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center">X</td>
+                <td align="center">X</td>
+                <td align="center">X</td>
+                <td align="center">X</td>
+              </tr>
+            </tbody>
+          </table>
+          A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        </para>
+      </remarks>
+    </Class>
+    <Public>
+      <Properties>
+        <Property name="Name">
+          <summary>
+            Gets or sets name of custom property.
+          </summary>
+          <value>
+            Name of custom property.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Property Name="string" .../&gt;
+            </code>
+            <para>
+              <para>
+                <strong>Compatibility table with native writers.</strong>
+              </para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+        </Property>
+        <Property name="Value">
+          <summary>
+            Gets or sets value of custom property.
+          </summary>
+          <value>
+            Value of custom property.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Property Value="string" .../&gt;
+            </code>
+            <para>
+              <para>
+                <strong>Compatibility table with native writers.</strong>
+              </para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+        </Property>
+        <Property name="Owner">
+          <summary>
+            Gets the <see cref="T:iTin.Export.Model.PropertiesModel" /> that owns this <see cref="T:iTin.Export.Model.PropertyModel" />.
+          </summary>
+          <value>
+            The <see cref="T:iTin.Export.Model.PropertiesModel" /> that owns this <see cref="T:iTin.Export.Model.PropertyModel" />.
+          </value>
+        </Property>
+      </Properties>
+    </Public>
+    <Internal>
+      <Methods>
+        <Method name="SetOwner">
+          <summary>
+            Sets the <see cref="T:iTin.Export.Model.PropertiesModel" /> that owns this <see cref="T:iTin.Export.Model.PropertyModel" />.
+          </summary>
+          <param name="reference">
+            The <see cref="T:iTin.Export.Model.PropertiesModel" /> that owns this <see cref="T:iTin.Export.Model.PropertyModel" />.
+          </param>
+        </Method>
+      </Methods>
+    </Internal>
+  </Property>
+
+
+  <Table>
+    <Class name="info">
+      <summary>
+        Includes the description of export table.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Export</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportModel"/>.<br/>
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;Table ...&gt;
+            &lt;Logo/&gt;
+            &lt;Exporter/&gt;
+            &lt;Output/&gt;
+            &lt;Location/&gt;
+            &lt;Styles/&gt;
+            &lt;Fixed/&gt;
+            &lt;Groups/&gt;
+            &lt;Fields/&gt;
+            &lt;Charts/&gt;
+            &lt;/Table&gt;
+          </code>
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.TableModel.Name"/></td>
+              <td align="center">No</td>
+              <td>Name of the table.</td>
+            </tr>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.TableModel.Alias"/></td>
+              <td align="center">Yes</td>
+              <td>Alias of the table. The default is an empty string ("").</td>
+            </tr>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.TableModel.AutoFilter"/></td>
+              <td align="center">Yes</td>
+              <td>Determines whether displays the AutoFilter. The default is <see cref="iTin.Export.Model.YesNo.No"/>.</td>
+            </tr>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.TableModel.AutoFitColumns"/></td>
+              <td align="center">Yes</td>
+              <td>Determines whether adjusts column width automatically. The default is <see cref="iTin.Export.Model.YesNo.No"/>.</td>
+            </tr>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.TableModel.ShowGridLines"/></td>
+              <td align="center">Yes</td>
+              <td>Determines whether shows grid lines. The default is <see cref="iTin.Export.Model.YesNo.Yes"/>.</td>
+            </tr>
+          </tbody>
+        </table>
+        <para>
+          <strong>Elements</strong>
+        </para>
+        <list type="table">
+          <listheader>
+            <term>Element</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Logo"/></term>
+            <description>Defines logo configuration, includes image file path, size, location, effects and visibility.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Exporter"/></term>
+            <description>Defines the type of exporter to use and their behavior.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Output"/></term>
+            <description>Defines output configuration, includes path, file name and optionaly the adapter operating system.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Location"/></term>
+            <description>Defines the location of the table in the host, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format. You can only choose one of the modes. If this tag does not define the defaults is by coordinates.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Styles"/></term>
+            <description>Collection of user-defined styles. Each element defines type of content, such as the background color, the alignment type, the data type and the font type.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Groups"/></term>
+            <description>Collection of user-defined groups. Each element is result from the union of several data field.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Fixed"/></term>
+            <description>Collection of user-defined pieces. Each element is a collection of smaller pieces result of splitting the reference field.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Fields"/></term>
+            <description>Collection of data fields. Each element is a data field.</description>
+          </item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.TableModel.Charts"/></term>
+            <description>Collection of user-defined charts. Each element represents a user-defined chart.</description>
+          </item>
+        </list>
+        <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+      </remarks>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.TableModel"/> class.
+          </summary>
+        </Constructor>        
+      </Constructors>
+      <Properties>
+        <Property name="Alias">
+          <summary>Gets or sets the alias of the table.</summary>
+          <value>The alias of the table. The default is an empty string ("").</value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table Alias="string" ...&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="OnlyLast"]/*'/>
+          </remarks>
+          <example>
+            <code lang="xml">
+              &lt;Table Alias="Sample alias"&gt;
+              ...
+              &lt;/Table&gt;
+
+            </code>
+            <code lang="cs">
+              ...
+              TableModel table = new TableModel
+              {
+              Name = "Sample name",
+              Alias = "Sample alias",
+              AutoFilter = YesNo.Yes,
+              Location = new[] { 2, 2 },
+              AutoFitColumns = YesNo.Yes,
+              } ;
+              ...
+            </code>
+          </example>
+        </Property>
+        <Property name="AutoFilter">
+          <summary>
+            Gets or sets a value indicating whether displays the autofilter.
+          </summary>
+          <value>
+            <see cref="iTin.Export.Model.YesNo.Yes"/> if displays the autofilter; otherwise, <see cref="iTin.Export.Model.YesNo.No"/>. The default is <see cref="iTin.Export.Model.YesNo.No"/>.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table AutoFilter="Yes|No" ...&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="OnlyLast"]/*'/>
+          </remarks>
+          <example>
+            <code lang="xml">
+              &lt;Table AutoFilter="Yes"&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <code lang="cs">
+              ...
+              TableModel table = new TableModel
+              {
+              Name = "Sample name",
+              Alias = "Sample alias",
+              AutoFilter = YesNo.Yes,
+              Location = new[] { 2, 2 },
+              AutoFitColumns = YesNo.Yes,
+              } ;
+              ...
+            </code>
+          </example>
+          <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        </Property>
+        <Property name="AutoFitColumns">
+          <summary>
+            Gets or sets a value indicating whether adjusts column width automatically.
+          </summary>
+          <value>
+            <see cref="iTin.Export.Model.YesNo.Yes"/> if adjusts column width automatically.; otherwise, <see cref="iTin.Export.Model.YesNo.No"/>. The default is <see cref="iTin.Export.Model.YesNo.No"/>.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table AutoFitColumns="Yes|No" ...&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="OnlyLast"]/*'/>
+          </remarks>
+          <example>
+            <code lang="xml">
+              &lt;Table AutoFitColumns="Yes"&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <code lang="cs">
+              ...
+              TableModel table = new TableModel
+              {
+              Name = "Sample name",
+              Alias = "Sample alias",
+              AutoFilter = YesNo.Yes,
+              Location = new[] { 2, 2 },
+              AutoFitColumns = YesNo.Yes,
+              } ;
+              ...
+            </code>
+          </example>
+          <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        </Property>
+        <Property name="Charts">
+          <summary>
+            Gets or sets collection of user-defined charts.
+          </summary>
+          <value>
+            Collection of user-defined charts. Each element represents a user-defined chart.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Charts .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="None"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="Logo">
+           <summary>
+             Gets or sets a reference to the logo model defined for this table.            
+          </summary>
+           <value>
+             Reference to the logo model defined for this table. Includes image file path, size, location, effects and visibility.            
+          </value>
+           <remarks>
+             <code lang="xml" title="TEE Object Element Usage">
+               &lt;Table&gt;
+                 &lt;Logo .../&gt;
+                 ...
+               &lt;/Table&gt;              
+            </code>
+             <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="None"]/*'/>
+           </remarks>
+        </Property>
+        <Property name="Exporter">
+          <summary>
+            Gets or sets a reference to the exporter model defined for this table
+          </summary>
+          <value>
+            Reference to the exporter model defined for this table.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Exporter .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="Fields">
+          <summary>
+            Gets or sets collection of data fields.
+          </summary>
+          <value>
+            Collection of data fields. Each element is a data field.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Fields .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="Fixed">
+          <summary>
+            Gets or sets collection of user-defined pieces.
+          </summary>
+          <value>
+            Collection of user-defined pieces. Each element is a collection of smaller pieces result of splitting the reference field.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Fixed .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="Groups">
+          <summary>
+            Gets or sets collection of user-defined groups.
+          </summary>
+          <value>
+            Collection of user-defined groups. Each element is result from the union of several data field.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Groups .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="HasFields">
+          <summary>Gets a value indicating whether there are fields defined.</summary>
+          <value><strong>true</strong> if there are fields defined; otherwise, <strong>false</strong>.</value>
+        </Property>
+        <Property name="Location">
+          <summary>
+            Gets or sets a reference which contains the location of the table in the host, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format.
+            You can only choose one of the modes. If this tag does not define the defaults is by coordinates
+          </summary>
+          <value>
+            Reference to the location of the table in the host
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Location .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="OnlyLast"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="Name">
+          <summary>
+            Gets or sets name of the table.
+          </summary>
+          <value>
+            The name of the table.
+            Are only allow strings made ​​up of letters, numbers and following special chars <strong>
+              '<c>_ - # * @ % $</c>'
+            </strong>.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table Name="string" ...&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+          <example>
+            <code lang="xml">
+              &lt;Table Name="Sample name"&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <code lang="cs">
+              ...
+              TableModel table = new TableModel
+              {
+              Name = "Sample name",
+              Alias = "Sample alias",
+              AutoFilter = YesNo.Yes,
+              Location = new[] { 2, 2 },
+              AutoFitColumns = YesNo.Yes,
+              } ;
+              ...
+            </code>
+          </example>
+          <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
+          <exception cref="T:iTin.Export.Model.InvalidFieldIdentifierNameException">If <paramref name="value" /> not is a valid field identifier name.</exception>
+        </Property>
+        <Property name="Output">
+          <summary>
+            Gets or sets a reference to output configuration model, it includes path and file name.
+          </summary>
+          <value>
+            Reference to output configuration model, it includes path and file name.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table&gt;
+              &lt;Output .../&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+        </Property>
+        <Property name="Parent">
+          <summary>Gets the parent container of the table.</summary>
+          <value>An <see cref="T:iTin.Export.Model.ExportModel" /> that represents the parent of the table.</value>
+        </Property>
+        <Property name="ShowGridLines">
+          <summary>
+            Gets or sets a value indicating whether show grid lines.
+          </summary>
+          <value>
+            <see cref="iTin.Export.Model.YesNo.Yes"/> if show grid lines.; otherwise, <see cref="iTin.Export.Model.YesNo.No"/>. The default is <see cref="iTin.Export.Model.YesNo.Yes"/>.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Table ShowGridLines="Yes|No" ...&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="OnlyLast"]/*'/>
+          </remarks>
+          <example>
+            <code lang="xml">
+              &lt;Table ShowGridLines="No"&gt;
+              ...
+              &lt;/Table&gt;
+            </code>
+            <code lang="cs">
+              ...
+              TableModel table = new TableModel
+              {
+              Name = "Sample name",
+              Alias = "Sample alias",
+              AutoFilter = YesNo.Yes,
+              Location = new[] { 2, 2 },
+              ShowGridLines = YesNo.No,
+              AutoFitColumns = YesNo.Yes,
+              } ;
+              ...
+            </code>
+          </example>
+          <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        </Property>
+        <Property name="Styles">
+           <summary>
+             Gets or sets the styles.
+          </summary>
+           <value>
+             The styles.
+          </value>
+        </Property>
+      </Properties>
+      <Overrides>
+        <Methods>
+          <Method name="ToString">
+            <summary>Returns a string that represents the current data type.</summary>
+            <returns>A <see cref="T:System.String" /> that represents the current object.</returns>
+            <remarks>This method <see cref="M:iTin.Export.Model.TableModel.ToString"/> returns a string that includes the name and a value indicating the export mode for this table.</remarks>
+          </Method>
+        </Methods>
+      </Overrides>
+      <Methods>
+        <Method name="GetHeaderColumnsSize">
+          <summary>Gets a dictionary containing the pair of header column number / size in pixels of the same.</summary>
+          <param name="adapter">The adapter.</param>
+          <returns>Dictionary containing the pair of header column number / size in pixels of the same.</returns>
+        </Method>
+      </Methods>
+    </Public>
+  </Table>
+  
+  <Logo>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.LogoModel" /> class.
+          </summary>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of the logo.</summary>
+          <value>A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of the logo.</value>
+        </Property>
+      </Properties>
+    </Public>
+  </Logo>
+
+  <Exporter>
+    <Public>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of the exporter.</summary>
+          <value>
+            A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of the exporter.
+          </value>
+        </Property>
+      </Properties>
+    </Public>
+  </Exporter>
+
+  <Output>
+    <Class name="info">
+      <summary>
+        Defines output configuration, includes path, file name and optionaly the adapter operating system.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Table</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.TableModel" />.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;Output ..."&gt;
+              &lt;Path/&gt;
+              &lt;File/&gt;
+            &lt;/Output&gt;            
+          </code>          
+        </para>
+        <para><strong>Attributes</strong></para>
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.OutputModel.Target" /></td>
+              <td align="center">Yes</td>
+              <td>Use this attribute to specify target operating system. The default is <see cref="iTin.Export.Model.KnownOutputTarget.Windows" />.</td>
+            </tr>
+          </tbody>
+        </table>
+        <para><strong>Elements</strong></para>
+        <list type="table">
+          <listheader>
+            <term>Element</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term><see cref="P:iTin.Export.Model.OutputModel.File" /></term>
+            <description>The output file name without extension.</description></item>
+          <item>
+            <term><see cref="P:iTin.Export.Model.OutputModel.Path" /></term>
+            <description>The output file path. To specify a relative path use the character (~).</description>
+          </item>
+        </list>
+        <para>
+          <para><strong>Compatibility table with native writers.</strong></para>
+          <table>
+            <thead>
+              <tr>
+                <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center">X</td>
+                <td align="center">X</td>
+                <td align="center">X</td>
+                <td align="center">X</td>
+              </tr>
+            </tbody>
+          </table>
+          A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        </para>
+      </remarks>
+      <example>
+        The following example show how to use this element.
+        <code lang="xml">
+          &lt;?xml version="1.0" encoding="utf-8"?&gt;
+          
+          &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+            &lt;Export Name="Test" Current="Yes"&gt;
+              &lt;Description&gt;Sample Export&lt;/Description&gt;
+              &lt;Table Name="R740D01"
+                    AutoFilter="Yes"
+                    AutoFitColumns="Yes"
+                    Alias="Table alias"&gt;
+          
+                &lt;Location&gt;
+                  &lt;ByCoordenates Coordenates="1 3"/&gt;
+                &lt;/Location&gt;
+          
+                &lt;Exporter&gt;
+                  &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
+                  &lt;Behaviors&gt;
+                    &lt;Download/&gt;
+                    &lt;TransformFile Save="Yes"/&gt;
+                  &lt;/Behaviors&gt;
+                &lt;/Exporter&gt;
+          
+                &lt;Output&gt;
+                  &lt;File&gt;SampleExport&lt;/File&gt;
+                  &lt;Path&gt;~\Samples\Output\Writers&lt;/Path&gt;
+                &lt;/Output&gt;
+                ...
+                ...
+              &lt;/Table&gt;
+            &lt;/Export&gt;
+          &lt;/Exports&gt;          
+        </code>        
+      </example>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>Initializes a new instance of the <see cref="T:iTin.Export.Model.OutputModel" /> class.</summary>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="EndOfFile">
+          <summary>Gets representation for end of file mark.</summary>
+          <value>A <see cref="T:System.String" /> that represents end of file mark.</value>
+        </Property>
+        <Property name="File">
+          <summary>
+            Gets or sets the output file name without extension.
+          </summary>
+          <value>
+            The output file name without extension.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Output ...&gt;
+                &lt;File&gt;string&lt;/File&gt;
+                ...
+              &lt;/Output&gt;
+            </code>
+            <para>
+              <para><strong>Compatibility table with native writers.</strong></para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+          <example>
+            The following example show how to use this element.
+            <code lang="xml">
+              &lt;?xml version="1.0" encoding="utf-8"?&gt;
+          
+              &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+                &lt;Export Name="Test" Current="Yes"&gt;
+                  &lt;Description&gt;Sample Export&lt;/Description&gt;
+                  &lt;Table Name="R740D01"
+                        AutoFilter="Yes"
+                        AutoFitColumns="Yes"
+                        Alias="Table alias"&gt;
+          
+                    &lt;Location&gt;
+                      &lt;ByCoordenates Coordenates="1 3"/&gt;
+                    &lt;/Location&gt;
+          
+                    &lt;Exporter&gt;
+                      &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
+                      &lt;Behaviors&gt;
+                        &lt;Download/&gt;
+                        &lt;TransformFile Save="Yes"/&gt;
+                      &lt;/Behaviors&gt;
+                    &lt;/Exporter&gt;
+          
+                    &lt;Output&gt;
+                      &lt;File&gt;SampleExport&lt;/File&gt;
+                      &lt;Path&gt;~\Samples\Output\Writers&lt;/Path&gt;
+                    &lt;/Output&gt;
+                    ...
+                    ...
+                  &lt;/Table&gt;
+                &lt;/Export&gt;
+              &lt;/Exports&gt;          
+            </code>        
+          </example>
+          <exception cref="T:System.ArgumentNullException">
+            If <paramref name="value" /> is <strong>null</strong>.
+          </exception>
+          <exception cref="T:iTin.Export.Model.InvalidFileNameException">
+            If <paramref name="value" /> is an invalid file name.
+          </exception>
+        </Property>
+        <Property name="NewLineDelimiter">
+          <summary>Gets representation for a new line by operating system.</summary>
+          <value>
+            A <see cref="T:System.String" /> that represents a new line.
+          </value>
+        </Property>
+        <Property name="Parent">
+          <summary>Gets the parent container of the output.</summary>
+          <value>
+            A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of the output.
+          </value>
+        </Property>
+        <Property name="Path">
+          <summary>
+            Gets or sets the output file path. To specify a relative path use the character (~).
+          </summary>
+          <value>
+            The output file path. To specify a relative path use the character (~).
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Output ...&gt;
+                &lt;Path&gt;string&lt;/File&gt;
+                ...
+              &lt;/Output&gt;
+            </code>
+            <para>
+              <para><strong>Compatibility table with native writers.</strong></para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+          <example>
+            The following example show how to use this element.
+            <code lang="xml">
+              &lt;?xml version="1.0" encoding="utf-8"?&gt;
+          
+              &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+                &lt;Export Name="Test" Current="Yes"&gt;
+                  &lt;Description&gt;Sample Export&lt;/Description&gt;
+                  &lt;Table Name="R740D01"
+                        AutoFilter="Yes"
+                        AutoFitColumns="Yes"
+                        Alias="Table alias"&gt;
+          
+                    &lt;Location&gt;
+                      &lt;ByCoordenates Coordenates="1 3"/&gt;
+                    &lt;/Location&gt;
+          
+                    &lt;Exporter&gt;
+                      &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
+                      &lt;Behaviors&gt;
+                        &lt;Download/&gt;
+                        &lt;TransformFile Save="Yes"/&gt;
+                      &lt;/Behaviors&gt;
+                    &lt;/Exporter&gt;
+          
+                    &lt;Output&gt;
+                      &lt;File&gt;SampleExport&lt;/File&gt;
+                      &lt;Path&gt;~\Samples\Output\Writers&lt;/Path&gt;
+                    &lt;/Output&gt;
+                    ...
+                    ...
+                  &lt;/Table&gt;
+                &lt;/Export&gt;
+              &lt;/Exports&gt;          
+            </code>        
+          </example>
+          <exception cref="T:System.ArgumentNullException">
+            If <paramref name="value" /> is <strong>null</strong>.
+          </exception>
+          <exception cref="T:iTin.Export.Model.InvalidPathNameException">
+            If <paramref name="value" /> is an invalid path name.
+          </exception>
+        </Property>
+        <Property name="Target">
+          <summary>
+            Gets or sets a value that determines target operating system.
+          </summary>
+          <value>
+            One of the <see cref="T:iTin.Export.Model.KnownOutputTarget" /> values. The default is <see cref="iTin.Export.Model.KnownOutputTarget.Windows" />.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Output Target="Windows|DOS|MacOS"&gt;
+                ...
+              &lt;/Output&gt;
+            </code>
+            <para>
+              <para>
+                <strong>Compatibility table with native writers.</strong>
+              </para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">X</td>
+                    <td align="center">No has effect</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+          <example>
+            The following example show how to use this element.
+            <code lang="xml">
+              &lt;?xml version="1.0" encoding="utf-8"?&gt;
+          
+              &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+                &lt;Export Name="Test" Current="Yes"&gt;
+                  &lt;Description&gt;Sample Export&lt;/Description&gt;
+                  &lt;Table Name="R740D01"
+                        AutoFilter="Yes"
+                        AutoFitColumns="Yes"
+                        Alias="Table alias"&gt;
+          
+                    &lt;Location&gt;
+                      &lt;ByCoordenates Coordenates="1 3"/&gt;
+                    &lt;/Location&gt;
+          
+                    &lt;Exporter&gt;
+                      &lt;Writer Name="CsvWriter"/&gt;
+                      &lt;Behaviors&gt;
+                        &lt;Download/&gt;
+                      &lt;/Behaviors&gt;
+                    &lt;/Exporter&gt;
+          
+                    &lt;Output Target="Windows"&gt;
+                      &lt;File&gt;SampleExport&lt;/File&gt;
+                      &lt;Path&gt;~\Samples\Output\Writers&lt;/Path&gt;
+                    &lt;/Output&gt;
+                    ...
+                    ...
+                  &lt;/Table&gt;
+                &lt;/Export&gt;
+              &lt;/Exports&gt;          
+            </code>        
+          </example>
+          <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            If specified value is outside the range of valid values.
+          </exception>
+        </Property>
+      </Properties>
+    </Public>
+  </Output>
+
+  <Styles>
+    <Class name="info">
+      <summary>
+        Root element of <strong>iTin Export Engine</strong> configuration file that contains a list with export definition.
+      </summary>
+      <remarks>
+        <para>
+          Represents <strong>
+            <c>TEE</c> root
+          </strong> element of a configuration file.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+            &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+            &lt;Export/&gt;
+            &lt;Export/&gt;
+            ...
+            &lt;/Exports&gt;
+          </code>
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <list type="table">
+          <listheader>
+            <term>Attribute</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term>xmlns</term>
+            <description>
+              Namespace for the <c>iTin Export Engine (TEE)</c> configuration file.<br/>
+            </description>
+          </item>
+        </list>
+        <note>
+          The xsd schema file that will be used to validate the document are located in the location
+          <c>VisualStudioInstallationFolder\Xml\Schemas</c>, also gives us the intellisense to write quickly the document.
+        </note>
+        <para>
+          <strong>Elements</strong>
+        </para>
+        <list type="table">
+          <listheader>
+            <term>Element</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term>
+              <see cref="P:iTin.Export.Model.ExportsModel.Items" />
+            </term>
+            <description>Collection of export configurations. Each element is composed of a description and a data table definition.</description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        The following example shows a full configuration file.
+        <code lang="xml">
+          &lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+          &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+          &lt;Export Name="iTin" Current="Yes"&gt;
+          &lt;Description&gt;Sample 1&lt;/Description&gt;
+          &lt;Table Name="SCR3SFL"
+          AutoFilter="Yes"
+          AutoFitColumns="Yes"
+          Alias="iTin Sample 1"&gt;
+          &lt;Exporter&gt;
+          &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
+          &lt;Behaviors&gt;
+          &lt;Download/&gt;
+          &lt;TransformFile Save="Yes"/&gt;
+          &lt;/Behaviors&gt;
+          &lt;/Exporter&gt;
+          &lt;Output&gt;
+          &lt;File&gt;ExampleI&lt;/File&gt;
+          &lt;Path&gt;~\Samples\Output\Writers\Demo\XML Spreadsheet&lt;/Path&gt;
+          &lt;/Output&gt;
+          &lt;Styles&gt;
+          &lt;Style Name="Header"&gt;
+          &lt;Content Color="#D9E1F2"&gt;
+          &lt;Alignment Horizontal="Left"/&gt;
+          &lt;Text/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11" Bold="Yes"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="PeriodValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;DateTime Format="Year-Month"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="EuropeValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="AfricaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="AsiaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="NorthAmericaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="SouthAmericaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;Style Name="AustraliaValue"&gt;
+          &lt;Content Color="#B4C6E7"&gt;
+          &lt;Alignment Horizontal="Right"/&gt;
+          &lt;Number Decimals="1" Separator="Yes"/&gt;
+          &lt;/Content&gt;
+          &lt;Font Name="Calibri" Size="11"/&gt;
+          &lt;/Style&gt;
+          &lt;/Styles&gt;
+          &lt;Fields&gt;
+          &lt;Field Name="PERIOD" Alias="Period"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="PeriodValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="EUROPE" Alias="Europe"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="EuropeValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="AFRICA" Alias="Africa"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="AfricaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="ASIA" Alias="Asia"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="AsiaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="NORTHAMERICA" Alias="North America"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="NorthAmericaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="SOUTHAMERICA" Alias="South America"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="SouthAmericaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;Field Name="AUSTRALIA" Alias="Australia"&gt;
+          &lt;Header Style="Header"/&gt;
+          &lt;Value Style="AustraliaValue"/&gt;
+          &lt;/Field&gt;
+          &lt;/Fields&gt;
+          &lt;/Table&gt;
+          &lt;/Export&gt;
+          &lt;/Exports&gt;
+
+        </code>
+      </example>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>Initializes a new instance of the <see cref="T:iTin.Export.Model.StylesModel" /> class.</summary>
+          <param name="parent">The parent of the user-styles collection.</param>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of the styles.</summary>
+          <value>A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of the styles.</value>
+        </Property>
+      </Properties>
+    </Public>
+  </Styles>
+
+  <Fixed>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.FixedModel" /> class.
+          </summary>
+          <param name="parent">The parent of the user-defined pieces collection.</param>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of the user-defined pieces collection.</summary>
+          <value>
+            A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of the user-defined pieces collection.
+          </value>
+        </Property>
+      </Properties>
+    </Public>
+  </Fixed>
+  
+  <Groups>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.GroupsModel" /> class.
+          </summary>
+          <param name="parent">The parent of the user-groups collection.</param>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of the groups.</summary>
+          <value>
+            A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of the groups.
+          </value>
+        </Property>
+      </Properties>
+    </Public>
+  </Groups>
+
+  <Fields>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.FieldsModel" /> class.
+          </summary>
+          <param name="parent">The parent of the collection of data fields.</param>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of collection of data fields.</summary>
+          <value>A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of collection of data fields.</value>
+        </Property>
+      </Properties>
+    </Public>
+  </Fields>
+
+  <Charts>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>Initializes a new instance of the <see cref="T:iTin.Export.Model.ChartsModel" /> class.</summary>
+          <param name="parent">The parent of collection of user-defined charts.</param>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Parent">
+          <summary>Gets the parent container of collection of user-defined charts.</summary>
+          <value>A <see cref="T:iTin.Export.Model.TableModel" /> that represents the parent of collection of user-defined charts.</value>
+        </Property>
+      </Properties>
+    </Public>
+  </Charts>
+
+  <Location>
+    <Class name="info">
+      <summary>
+        Defines the location of an element in the host, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format.
+        You can only choose one of the modes. If this tag does not define the defaults is by coordinates
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Table</c></strong>, please see <see cref="T:iTin.Export.Model.TableModel" /><br/>
+          - Or - <strong><c>Logo</c></strong>, please see <see cref="T:iTin.Export.Model.LogoModel" /><br/>
+          - Or - <strong><c>Charts</c></strong>, please see <see cref="T:iTin.Export.Model.ChartsModel" /><br/> 
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;Location&gt;
+              &lt;ByCoordenates/&gt;
+              &lt;ByAlignment/&gt;
+            &lt;/Location&gt;           
+          </code>          
+        </para>
+        <para><strong>Elements</strong></para>
+        <list type="table">
+          <listheader>
+            <term>Element</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term><see cref="P:iTin.Export.Model.LocationModel.Mode" /></term>
+            <description>Element location mode in the host.</description></item>
+        </list>
+        <para>
+          <para><strong>Compatibility table with native writers.</strong></para>
+          <table>
+            <thead>
+              <tr>
+                <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+                <td align="center">X</td>
+              </tr>
+            </tbody>
+          </table>
+          A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        </para>
+      </remarks>
+      <example>
+        The following example show how to use this element.
+        <code lang="xml">
+          &lt;?xml version="1.0" encoding="utf-8"?&gt;
+          
+          &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
+            &lt;Export Name="Test" Current="Yes"&gt;
+              &lt;Description&gt;Sample Export&lt;/Description&gt;
+              &lt;Table Name="R740D01"
+                    AutoFilter="Yes"
+                    AutoFitColumns="Yes"
+                    Alias="Table alias"&gt;
+          
+                &lt;Location&gt;
+                  &lt;ByCoordenates Coordenates="3 4"/&gt;
+                &lt;/Location&gt;
+          
+                &lt;Exporter&gt;
+                  &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
+                  &lt;Behaviors&gt;
+                    &lt;Download/&gt;
+                    &lt;TransformFile Save="Yes"/&gt;
+                  &lt;/Behaviors&gt;
+                &lt;/Exporter&gt;
+          
+                &lt;Output&gt;
+                  &lt;File&gt;SampleExport&lt;/File&gt;
+                  &lt;Path&gt;~\Samples\Output\Writers&lt;/Path&gt;
+                &lt;/Output&gt;
+                ...
+                ...
+              &lt;/Table&gt;
+            &lt;/Export&gt;
+          &lt;/Exports&gt;          
+        </code>        
+      </example>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>Initializes a new instance of the <see cref="T:iTin.Export.Model.LocationModel" /> class.</summary>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="LocationType">
+          <summary>
+            Gets a value indicating table position type.
+          </summary>
+          <value>
+            One of the <see cref="T:iTin.Export.Model.KnownElementLocation" /> values.
+          </value>
+        </Property>
+        <Property name="Mode">
+          <summary>
+            Gets or sets a reference to the location mode used in the host.
+          </summary>
+          <value>
+            Reference to the positioning mode used in the host.
+          </value>
+          <remarks>
+            <para>
+              The following table shows the different location modes types.
+            </para>
+            <list type="table">
+              <listheader>
+                <term>Mode</term>
+                <description>Description</description>
+              </listheader>
+              <item>
+                <term><see cref="T:iTin.Export.Model.CoordenatesModel" /></term>
+                <description>Represents a location mode appropiate when a host has a tabular format such as for example Microsoft® Excel.</description>
+              </item>
+              <item>
+                <term><see cref="T:iTin.Export.Model.AlignmentModel" /></term>
+                <description>Represents a location mode appropiate when a host hasn't a tabular format such as for example Microsoft® Word, Adobe® PDF.</description>
+              </item>
+            </list>
+          </remarks>
+        </Property>
+      </Properties>
+    </Public>
+  </Location>
+
+  <Coordenates>
+    <Class name="info">
+      <summary>
+        Defines content alignment by cartesian coordenates.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Location</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.LocationModel" />.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;ByCoordenates .../&gt;
+          </code>          
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.CoordenatesModel.Coordenates" /></td>
+              <td align="center">Yes</td>
+              <td>A <see cref="T:System.Drawing.Point" /> expressed in cartesian coordenates. The default is <c>'1 1'</c>.</td>
+            </tr>
+          </tbody>
+        </table>
+        <para>
+          <para>
+            <strong>Compatibility table with native writers.</strong>
+          </para>
+          <table>
+            <thead>
+              <tr>
+                <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+                <td align="center">X</td>
+              </tr>
+            </tbody>
+          </table>
+          A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        </para>
+      </remarks>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.CoordenatesModel" /> class.
+        </summary>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Coordenates">
+          <summary>
+            Gets or sets an array of integers that represent a point expressed in cartesian coordenates.
+          </summary>
+          <value>
+            An array of two positions of <see cref="T:System.Int32" />, that represent the table location. The default is '1 1'.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;ByCoordenates Coordenates="int int" ...&gt;
+                ...
+              &lt;/ByCoordenates&gt;
+            </code>
+            <para>
+              <para><strong>Compatibility table with native writers.</strong></para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">No has effect</td>
+                    <td align="center">No has effect</td>
+                    <td align="center">No has effect</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+          <example>
+            The following example show how to use this element.
+            <code lang="xml">
+              &lt;ByCoordenates Coordenates="2 2"&gt;
+              ...
+              &lt;/ByCoordenates&gt;
+            </code>
+            <code lang="cs">
+              ...
+              CoordenatesModel coordenatesLocation = new CoordenatesModel 
+                                                         {
+                                                             Coordenates = new { 2, 2 } 
+                                                         };
+              TableModel table = new TableModel 
+                                     {
+                                         Name = "Sample name",
+                                         Alias = "Sample alias",
+                                         AutoFilter = YesNo.Yes,
+                                         Location = coordenatesLocation,
+                                         AutoFitColumns = YesNo.Yes,
+                                     } ;
+               ...
+             </code>
+          </example>
+        </Property>
+        <Property name="TableCoordenates">
+          <summary>
+            Gets coordenates of table.
+          </summary>
+          <value>
+            A <see cref="T:System.Drawing.Point" /> structure that contains coordenates of table.
+          </value>
+        </Property>
+      </Properties>
+    </Public>
+  </Coordenates>
+  
+  <Alignment>
+    <Class name="info">
+      <summary>
+        Defines content alignment.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Location</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.LocationModel" />.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;ByAlignment .../&gt;
+          </code>          
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.AlignmentModel.Horizontal" /></td>
+              <td align="center">Yes</td>
+              <td>Horizontal alignment. The default is <see cref="iTin.Export.Model.KnownHorizontalAlignment.Center" /></td>
+            </tr>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.AlignmentModel.SkipLines" /></td>
+              <td align="center">Yes</td>
+              <td>Number of lines to skip. The default is <c>0</c>.</td>
+            </tr>
+          </tbody>
+        </table>
+        <para>
+          <para>
+            <strong>Compatibility table with native writers.</strong>
+          </para>
+          <table>
+            <thead>
+              <tr>
+                <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+                <td align="center">No has effect</td>
+              </tr>
+            </tbody>
+          </table>
+          A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        </para>
+      </remarks>
+    </Class>
+    <Public>
+      <Constructors>
+        <Constructor name="ctor1">
+          <summary>
+            Initializes a new instance of the <see cref="T:iTin.Export.Model.AlignmentModel" /> class.
+        </summary>
+        </Constructor>
+      </Constructors>
+      <Properties>
+        <Property name="Horizontal">
+          <summary>
+            Gets or sets horizontal alignment.
+          </summary>
+          <value>
+            One of the <see cref="T:iTin.Export.Model.KnownHorizontalAlignment" /> values. The default is <see cref="iTin.Export.Model.KnownHorizontalAlignment.Center" />.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;ByAlignment Horizontal="Left|Center|Right" .../&gt;
+            </code>
+            <para>
+              <para>
+                <strong>Compatibility table with native writers.</strong>
+              </para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">No has effect</td>
+                    <td align="center">No has effect</td>
+                    <td align="center">No has effect</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+          <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            If specified value is outside the range of valid values.
+          </exception>
+        </Property>
+        <Property name="SkipLines">
+          <summary>
+            Gets or sets number of lines to skip.
+          </summary>
+          <value>
+            Returns the number of lines to skip. The default is <c>0</c>.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;ByAlignment SkipLines="non-negative integer" .../&gt;
+            </code>
+            <para>
+              <para>
+                <strong>Compatibility table with native writers.</strong>
+              </para>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+                    <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+                    <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+                    <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td align="center">No has effect</td>
+                    <td align="center">No has effect</td>
+                    <td align="center">No has effect</td>
+                    <td align="center">X</td>
+                  </tr>
+                </tbody>
+              </table>
+              A <strong><c>X</c></strong> value indicates that the writer supports this element.
+            </para>
+          </remarks>
+          <exception cref="T:System.ComponentModel.InvalidOperationException">
+            If specified value is less than 0.
+          </exception>
+        </Property>
+      </Properties>
+    </Public>
+  </Alignment>
+  
+  
+  
+  <MailMessageAttachment>
+    <Class name="info">
+      <summary>
+        Represents an attachment of an e-mail.
+      </summary>
+      <remarks>
+        <para>
+          Belongs to: <strong><c>Attachments</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.MailMessageAttachmentsModel"/>.
+          <code lang="xml" title="TEE Object Element Usage">
+            &lt;Attachment/&gt;
+          </code>
+        </para>
+        <para>
+          <strong>Attributes</strong>
+        </para>
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><see cref="P:iTin.Export.Model.MailMessageAttachmentModel.Path"/></td>
+              <td align="center">No</td>
+              <td>Path to the file name you want to attach. Requires full file path.</td>
+            </tr>
+          </tbody>
+        </table>
+        <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+      </remarks>
+      <example>
+        <code lang="xml">
+          &lt;Behaviors&gt;
+            &lt;Downdload LocalCopy="Yes"/&gt;
+            &lt;TransformFile Execute="Yes" Indented="Yes" Save="Yes" Path="~\Output"/&gt;
+            &lt;Mail Execute="Yes" Async="Yes" &gt;
+              &lt;Server&gt;
+                &lt;Credentials&gt;
+                  &lt;Credential SSL="Yes" Name="one" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+                &lt;/Credentials&gt;
+              &lt;/Server&gt;
+              &lt;Messages&gt;
+                &lt;Message Credential="one" Send="Yes"&gt;
+                  &lt;From Address="emailaddress-one@gmail.com"/&gt;
+                  &lt;To Addresses="emailaddress-two@hotmail.com emailaddress-three@hotmail.com"/&gt;
+                  &lt;CC Addresses="emailaddress-four@hotmail.com emailaddress-five@hotmail.com"/&gt;
+                  &lt;Subject&gt;New report&lt;/Subject&gt;
+                  &lt;Body&gt;Hello, this is your report, sending from iTin.Export&lt;/Body&gt;
+                  &lt;Attachments&gt;
+                    &lt;Attachment Path="C:\Users\somefile.txt"/&gt;
+                    &lt;Attachment Path="C:\Users\Downloads\Photos Sample.zip"/&gt;
+                  &lt;/Attachments&gt;
+                &lt;/Message&gt;
+              &lt;/Messages&gt;
+            &lt;/Mail&gt;
+          &lt;/Behaviors&gt;
+        </code>
+      </example>
+    </Class>
+    <Public>
+      <Properties>
+        <Property name="Owner">
+          <summary>
+            Gets the <see cref="T:iTin.Export.Model.MailMessageAttachmentsModel"/> that owns this <see cref="T:iTin.Export.Model.MailMessageAttachmentModel"/>.
+          </summary>
+          <value>
+            The <see cref="T:iTin.Export.Model.MailMessageAttachmentsModel"/> that owns this <see cref="T:iTin.Export.Model.MailMessageAttachmentModel"/>.
+          </value>
+        </Property>
+        <Property name="Path">
+          <summary>
+            Gets or sets the path to the file name you want to attach.
+          </summary>
+          <value>
+            A <see cref="T:System.String"/> that contains the path to the file name you want to attach. Requires full file path.
+          </value>
+          <remarks>
+            <code lang="xml" title="TEE Object Element Usage">
+              &lt;Attachment Path="string"/&gt;
+            </code>
+            <include file='iTin.Export.Documentation.Common.xml' path='Common/Elements/CompabilityWritersTable/Table[@name="Full"]/*'/>
+          </remarks>
+          <example>
+            <code lang="xml">
+              &lt;Behaviors&gt;
+                &lt;Downdload LocalCopy="Yes"/&gt;
+                &lt;TransformFile Execute="Yes" Indented="Yes" Save="Yes" Path="~\Output"/&gt;
+                &lt;Mail Execute="Yes" Async="Yes" &gt;
+                  &lt;Server&gt;
+                    &lt;Credentials&gt;
+                      &lt;Credential SSL="Yes" Name="one" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+                    &lt;/Credentials&gt;
+                  &lt;/Server&gt;
+                  &lt;Messages&gt;
+                    &lt;Message Credential="one" Send="Yes"&gt;
+                      &lt;From Address="emailaddress-one@gmail.com"/&gt;
+                      &lt;To Addresses="emailaddress-two@hotmail.com emailaddress-three@hotmail.com"/&gt;
+                      &lt;CC Addresses="emailaddress-four@hotmail.com emailaddress-five@hotmail.com"/&gt;
+                      &lt;Subject&gt;New report&lt;/Subject&gt;
+                      &lt;Body&gt;Hello, this is your report, sending from iTin.Export&lt;/Body&gt;
+                      &lt;Attachments&gt;
+                        &lt;Attachment Path="C:\Users\somefile.txt"/&gt;
+                        &lt;Attachment Path="C:\Users\Downloads\Photos Sample.zip"/&gt;
+                      &lt;/Attachments&gt;
+                    &lt;/Message&gt;
+                  &lt;/Messages&gt;
+                &lt;/Mail&gt;
+              &lt;/Behaviors&gt;              
+            </code>          
+          </example>
+          <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
+          <exception cref="T:iTin.Export.Model.InvalidPathNameException">If <paramref name="value" /> is an invalid path.</exception>
+        </Property>
+      </Properties>
+      <Methods>
+        <Method name="SetOwner">
+          <summary>
+            Sets the <see cref="T:iTin.Export.Model.MailMessageAttachmentsModel"/> that owns this <see cref="T:iTin.Export.Model.MailMessageAttachmentModel"/>.
+          </summary>
+          <param name="reference">
+            The <see cref="T:iTin.Export.Model.MailMessageAttachmentsModel"/> that owns this <see cref="T:iTin.Export.Model.MailMessageAttachmentModel"/>.
+          </param>
+        </Method>
+      </Methods>
+    </Public>
+  </MailMessageAttachment>
+  
+</Model>
+
+
+
+<!-- Class: Alignment
+      · Falta: 
+         - Excepciones: SkipLines
+-->

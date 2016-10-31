@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6CD99304-9218-4C77-8DEB-F37FBF2217B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iTin.Export</RootNamespace>
+    <AssemblyName>iTin.Export.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\iTin.Export.Core.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>3</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\references\Ionic.Zip.1.9.1.8\net40\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\References\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\Native\DataSetAdapter.cs" />
+    <Compile Include="Adapters\Native\XmlAdapter.cs" />
+    <Compile Include="ComponentModel\Abstract classes\BaseWriterStream.cs" />
+    <Compile Include="ComponentModel\Abstract classes\BaseWriter.cs" />
+    <Compile Include="ComponentModel\Abstract classes\BaseWriterXml.cs" />
+    <Compile Include="ComponentModel\Abstract classes\BaseWriterDirect.cs" />
+    <Compile Include="ComponentModel\Abstract classes\BaseInput.cs" />
+    <Compile Include="ComponentModel\Attributes\InputOptionsAttribute.cs" />
+    <Compile Include="ComponentModel\Attributes\AdapterOptionsAttribute.cs" />
+    <Compile Include="ComponentModel\Attributes\EnumDescriptionAttribute.cs" />
+    <Compile Include="ComponentModel\Cache\AdaptersCache.cs" />
+    <Compile Include="ComponentModel\Resolver\NonTabularFormulaResolver.cs" />
+    <Compile Include="ComponentModel\Resolver\ExcelFormulaResolver.cs" />
+    <Compile Include="ComponentModel\AdapterDataModel.cs" />
+    <Compile Include="ComponentModel\InputExtendedInformation.cs" />
+    <Compile Include="ComponentModel\Interfaces\IInput.cs" />
+    <Compile Include="ComponentModel\Interfaces\ISettings.cs" />
+    <Compile Include="ComponentModel\Interfaces\IAdapterOptions.cs" />
+    <Compile Include="ComponentModel\AdapterExtendedInformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentModel\WriterExtendedInformation.cs" />
+    <Compile Include="Drawing\ComponentModel\EffectTypeConverter.cs" />
+    <Compile Include="Drawing\ComponentModel\EnumDescriptionConverter.cs" />
+    <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="Extensions\SecureStringExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\DataExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helper\CopierHelper.cs" />
+    <Compile Include="Inputs\ArrayListInput.cs" />
+    <Compile Include="Inputs\DataRowInput.cs" />
+    <Compile Include="Inputs\DataSetInput.cs" />
+    <Compile Include="Inputs\DataTableInput.cs" />
+    <Compile Include="Inputs\EnumerableInput.cs" />
+    <Compile Include="Inputs\XmlInput.cs" />
+    <Compile Include="Model\BindableProperty.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseComplexModelCollection.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseLineModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Const.KnownInputPacketFormat.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownBorderPosition.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownBorderLineStyle.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownPatternType.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLineType.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.References.ReferenceModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ColumnsHeadersModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.PacketFieldModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Export.BlockLines.Block.BlockLineItemModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Export.BlockLines.BlockLineModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Export.BlockLinesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Lines.TextLine.TextModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Lines.TextLineModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Lines.EmptyLineModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Headers.ColumnHeader.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.Document.HeaderModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.Document.FooterModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.LinesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Style.BordersModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.BorderModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.PatternModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.StylesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownUnit.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailAttachmentsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.MailMessagesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Server.ServerCredentialsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.FixedItemModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.Item.PiecesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.FixedModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.HostsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.GroupsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.FieldsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.Plot.ChartSeriesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.PlotsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ChartsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.BehaviorsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseSimpleModelCollection.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Logo.LogoImageModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.ReferencesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FlipModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.ImageModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ImagesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.ResourcesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.OpacityEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.DarkEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.MoreDarkEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.MoreBrightnessEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.BrightnessEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleBlueEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleGreenEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleRedEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.DisabledEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseEffectModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.HostModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDocumentOrientation.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDocumentSize.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.DocumentModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.RootModel.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.MarginsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.AlignmentModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownElementPosition.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.LocationModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownFlipStyle.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownEffectType.cs" />
+    <Compile Include="Drawing\Extensions\ImageExtensions.cs" />
+    <Compile Include="Drawing\Helpers\ImageHelper.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.LogoModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.IBehavior.cs" />
+    <Compile Include="Helper\ErrorMessageHelper.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.ToDropboxBehaviorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.CoordenatesModel.cs" />
+    <Compile Include="ComponentModel\AdapterParameters.cs" />
+    <Compile Include="ComponentModel\FieldValueInformation.cs" />
+    <Compile Include="Web\Cloud\OAuth.cs" />
+    <Compile Include="Web\Cloud\Apis\SkyDriveRestApi.cs" />
+    <Compile Include="Web\Cloud\Apis\DropboxRestApi.cs" />
+    <Compile Include="Web\Cloud\OAuthToken.cs" />
+    <Compile Include="Web\Cloud\Clients\DropboxClient.cs" />
+    <Compile Include="Web\Cloud\OAuthBase.cs" />
+    <Compile Include="Web\Cloud\Clients\DropboxSignInDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web\Cloud\Clients\DropboxSignInDialog.Designer.cs">
+      <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Cloud\AuthenticateMode.cs" />
+    <Compile Include="Web\Cloud\Clients\SkyDriveSignInDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web\Cloud\Clients\SkyDriveSignInDialog.Designer.cs">
+      <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.ToSkyDriveBehaviorModel.cs" />
+    <Compile Include="Model\Exceptions\InvalidSeriesDefinitionException.cs" />
+    <Compile Include="Model\Exceptions\InvalidStylesDefinitionException.cs" />
+    <Compile Include="Model\Exceptions\InvalidFieldsDefinitionException.cs" />
+    <Compile Include="Model\Exceptions\InvalidFieldIdentifierNameException.cs" />
+    <Compile Include="Model\Exceptions\InvalidPathNameException.cs" />
+    <Compile Include="Model\Exceptions\InvalidFileNameException.cs" />
+    <Compile Include="Model\Exceptions\InvalidIdentifierNameException.cs" />
+    <Compile Include="Web\Exceptions\MissingPageAsyncAttributeException.cs" />
+    <Compile Include="Web\MimeMapping.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLabelPosition.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLabelOrientation.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionLabelsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownAxisOrientation.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionMarksModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionValuesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.AxisDefinitionModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.AxisModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartAxesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartTitleModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Border.ShadowModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownWidthLineStyle.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLineStyle.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownTickMarkStyle.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownPlotGridLine.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.ChartPlotModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownSpecialFormat.cs" />
+    <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Helper\RegularExpressionHelper.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\Mail.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.DownloadBehaviorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.MailServerModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.MailMessageModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.Attachments.MailAttachmentModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailMessageCcModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailMessageFromModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailMessageToModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Server.Credentials.ServerCredentialModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.MailBehaviorModel.cs" />
+    <Compile Include="Web\HttpResponseInfo.cs" />
+    <Compile Include="ComponentModel\KnownWriterIdentifier.cs" />
+    <Compile Include="ComponentModel\Abstract classes\BaseAdapter.cs" />
+    <Compile Include="ComponentModel\Interfaces\IAdapter.cs" />
+    <Compile Include="ComponentModel\Cache\WritersCache.cs" />
+    <Compile Include="ComponentModel\Interfaces\IWriterDirect.cs" />
+    <Compile Include="ComponentModel\Cache\WritersCacheSettings.cs" />
+    <Compile Include="ComponentModel\Interfaces\IWriterStream.cs" />
+    <Compile Include="ComponentModel\Interfaces\IWriter.cs" />
+    <Compile Include="ComponentModel\Interfaces\IWriterOptions.cs" />
+    <Compile Include="ComponentModel\Interfaces\IWriterXml.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Helper\StreamHelper.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseBehaviorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.TransformFileBehaviorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownTrimMode.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownWriterFilter.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownRelativeFilePath.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.FixedFieldModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.GroupFieldModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.GapFieldModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.DataFieldModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownFieldType.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FieldAggegateModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FieldHeaderModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FieldValueModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseDataFieldModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownAggregateLocation.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownAggregateType.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Designer.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDataType.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.ScientificErrorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.PercentageErrorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.ScientificDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.PercentageDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.DatetimeErrorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDatetimeFormat.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.DatetimeDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.CurrencyDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownCulture.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.TextDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.NumberDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.NegativeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.NumericErrorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Base.Class.BaseErrorModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.CommentModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownNegativeSign.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownBasicColor.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.NumericDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.RealDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseDataTypeModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.ContentModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownHorizontalAlignment.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownVerticalAlignment.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.ContentAlignmentModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FontModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.StyleModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.Item.Pieces.PieceModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Const.KnownItemGroupSeparator.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Groups.Group.GroupItemModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Groups.GroupModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.ChartModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartLegendModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartBorderModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.Plot.Series.ChartSerieModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownChartType.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLegendLocation.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Template.Writer.TemplateWriterSettingsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Base.Class.WriterModelBase.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ExporterModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownRecordToShow.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.WriterModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FilterModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownExporter.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.TemplateModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Template.TemplateWriterModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.XsltModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.YesNo.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Base.Class.BaseModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.OutputModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.PropertiesModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Shared.Class.PropertyModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.TableModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.ExportModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownOutputTarget.cs" />
+    <Compile Include="HttpExportSettings.cs" />
+    <Compile Include="Drawing\Extensions\ColorExtensions.cs" />
+    <Compile Include="ComponentModel\Attributes\WriterOptionsAttribute.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="Drawing\Helpers\ColorHelper.cs" />
+    <Compile Include="Helper\SentinelHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ErrorMessage.Designer.cs">
+      <DependentUpon>ErrorMessage.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorMessage.es.Designer.cs">
+      <DependentUpon>ErrorMessage.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ExportSettings.cs" />
+    <Compile Include="Web\Cloud\Clients\SkyDriveClient.cs" />
+    <Compile Include="Model\XsltExtensions.cs" />
+    <Compile Include="Writers\Native\Comma-Separated Values [ csv ]\CsvWriter.cs" />
+    <Compile Include="Writers\Native\Report Definition [ rdlc ]\ReportDefinitionWriter.cs" />
+    <Compile Include="Writers\Native\SQL Script [ sql ]\SqlScriptWriter.cs" />
+    <Compile Include="Writers\Native\Tab-Separated Values [ txt ]\TsvWriter.cs" />
+    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\KnownlSpreadsheet2003Expression.cs" />
+    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003Extensions.cs" />
+    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003Helper.cs" />
+    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003TabularWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Model\Schemas\ExportModelSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Model\Schemas\ExportModelBaseTypes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Model\Schemas\ExportModelSharedTypes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Web\Cloud\Clients\DropboxSignInDialog.ca.resx">
+      <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\Cloud\Clients\DropboxSignInDialog.es.resx">
+      <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\Cloud\Clients\DropboxSignInDialog.resx">
+      <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\Cloud\Clients\SkyDriveSignInDialog.ca.resx">
+      <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\Cloud\Clients\SkyDriveSignInDialog.es.resx">
+      <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\Cloud\Clients\SkyDriveSignInDialog.resx">
+      <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorMessage.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessage.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorMessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessage.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="iTin.Export.Documentation.Common.xml" />
+    <Content Include="iTin.Export.Documentation.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties DocumentXCommentEditorState="&lt;HtmlEditState&gt;&#xA;  &lt;Attributes&gt;&#xA;    &lt;Attribute key=&quot;scrollPosition&quot; valuetype=&quot;integer&quot;&gt;1077&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;TabContainerSelectedTabIndex&quot; valuetype=&quot;integer&quot;&gt;1&lt;/Attribute&gt;&#xA;  &lt;/Attributes&gt;&#xA;&lt;/HtmlEditState&gt;" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

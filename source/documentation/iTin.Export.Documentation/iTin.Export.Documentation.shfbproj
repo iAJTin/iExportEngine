@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8b5e4067-8a2f-41ca-bf57-187b04a7431c}</ProjectGuid>
+    <SHFBSchemaVersion>2015.6.5.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation1</AssemblyName>
+    <RootNamespace>Documentation1</RootNamespace>
+    <Name>ASNA.Export.Documentation</Name>
+    <!-- SHFB properties -->
+    <OutputPath>Documentation\</OutputPath>
+    <HtmlHelpName>iTin Export Engine</HtmlHelpName>
+    <Language>en-US</Language>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="ASNA.Export.Model" isExposed="True">
+        <Filter entryType="Class" fullName="ASNA.Export.Model.CustomDataTypeModel" filterName="CustomDataTypeModel" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <ComponentConfigurations>
+    </ComponentConfigurations>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Core\iTin.Export.Core.csproj" />
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Queries.iSeries\iTin.Export.Queries.iSeries.csproj" />
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Queries.SqlServer\iTin.Export.Queries.SqlServer.csproj" />
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Queries.SqlServerCe\iTin.Export.Queries.SqlServerCe.csproj" />
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Writers.Adobe\iTin.Export.Writers.Adobe.csproj" />
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Writers.OpenXml.Docx\iTin.Export.Writers.OpenXml.Docx.csproj" />
+      <DocumentationSource sourceFile="..\..\library\iTin.Export.Writers.OpenXml.Xlsx\iTin.Export.Writers.OpenXml.Xlsx.csproj" />
+    </DocumentationSources>
+    <HelpAttributes />
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="iTin.Export" isDocumented="True">The &lt;c&gt;iTin.Export&lt;/c&gt; namespace provides classes that are used to export from several data source types, both for development of desktop and web.
+&lt;br /&gt;
+&lt;br /&gt;
+The classes in this namespace divide into the following categories:
+&lt;list type="bullet"&gt;
+       &lt;item&gt;
+             &lt;description&gt;
+Export types classes. See the 
+&lt;see cref="T:iTin.Export.DataRowInput" /&gt;,  
+&lt;see cref="T:iTin.Export.DataSetInput" /&gt;, 
+&lt;see cref="T:iTin.Export.DataTableInput" /&gt;, 
+&lt;see cref="T:iTin.Export.XmlInput" /&gt;  classes.
+&lt;/description&gt;
+       &lt;/item&gt;
+       &lt;item&gt;
+             &lt;description&gt;Settings classes. See the &lt;see cref="T:iTin.Export.ExportSettings" /&gt;,  &lt;see cref="T:iTin.Export.HttpExportSettings" /&gt; classes.&lt;/description&gt;
+       &lt;/item&gt;
+   &lt;/list&gt;</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="iTin.Export.ComponentModel" isDocumented="True">The &lt;c&gt;iTin.Export.ComponentModel&lt;/c&gt; namespace provides classes that are used to implement targets and writers.This namespace includes the base classes and interfaces for implementing writers and targets.
+&lt;br /&gt;
+&lt;br /&gt;
+The classes in this namespace divide into the following categories:
+&lt;list type="bullet"&gt;
+       &lt;item&gt;
+             &lt;description&gt;Export classes. See the &lt;see cref="T:iTin.Export.ComponentModel.BaseExport" /&gt; class.&lt;/description&gt;
+       &lt;/item&gt;
+       &lt;item&gt;
+             &lt;description&gt;Targets classes. See the &lt;see cref="T:iTin.Export.ComponentModel.BaseTarget" /&gt;,  &lt;see cref="T:iTin.Export.ComponentModel.ITarget" /&gt; classes.&lt;/description&gt;
+       &lt;/item&gt;
+       &lt;item&gt;
+             &lt;description&gt;
+             Writers classes. See the 
+&lt;see cref="T:iTin.Export.ComponentModel.BaseWriter" /&gt;, 
+&lt;see cref="T:iTin.Export.ComponentModel.BaseWriterXml" /&gt;,  
+&lt;see cref="T:iTin.Export.ComponentModel.BaseWriterDirect" /&gt;,  
+&lt;see cref="T:iTin.Export.ComponentModel.BaseWriterStream" /&gt;, 
+&lt;see cref="T:iTin.Export.ComponentModel.IWriter" /&gt;, 
+&lt;see cref="T:iTin.Export.ComponentModel.IWriterXml" /&gt;,
+&lt;see cref="T:iTin.Export.ComponentModel.IWriterDirect" /&gt;,  
+&lt;see cref="T:iTin.Export.ComponentModel.IWriterStream" /&gt; 
+classes.
+&lt;/description&gt;
+       &lt;/item&gt;
+       &lt;item&gt;
+             &lt;description&gt;&lt;c&gt;MEF&lt;/c&gt; Attributes classes. See the &lt;see cref="T:iTin.Export.ComponentModel.ExportOptionsAttribute" /&gt; class.&lt;/description&gt;
+       &lt;/item&gt;
+   &lt;/list&gt;</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="iTin.Export.Helper" isDocumented="True">The &lt;c&gt;iTin.Export.Helper&lt;/c&gt; namespace provides helper static classes.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="iTin.Export.Model" isDocumented="True">The &lt;c&gt;iTin.Export.Model&lt;/c&gt; namespace represents &lt;c&gt;XML&lt;/c&gt; model. This namespace provides classes for manipulating the &lt;c&gt;XML&lt;/c&gt; data model.
+&lt;br /&gt;
+&lt;br /&gt;
+The classes in this namespace divide into the following categories:
+&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Exports class. Represents to the root node of a model, See the &lt;see cref="T:iTin.Export.Model.ExportsModel" /&gt; class.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Export classes. See the &lt;see cref="T:iTin.Export.Model.ExportModel" /&gt; class.&lt;/description&gt;
+   &lt;/item&gt;
+   &lt;item&gt;
+     &lt;description&gt;Table class. See the &lt;see cref="T:iTin.Export.Model.TableModel" /&gt;  class.&lt;/description&gt;    
+   &lt;/item&gt;
+ &lt;item&gt;
+     &lt;description&gt;Exporter classes. See the &lt;see cref="T:iTin.Export.Model.ExporterModel" /&gt;, &lt;see cref="T:iTin.Export.Model.BehaviorsModel" /&gt;, &lt;see cref="T:iTin.Export.Model.DownloadBehaviorModel" /&gt;, &lt;see cref="T:iTin.Export.Model.TransformFileBehaviorModel" /&gt;, &lt;see cref="T:iTin.Export.Model.MailBehaviorModel" /&gt; classes.&lt;/description&gt;
+  &lt;/item&gt;  
+  &lt;item&gt;
+    &lt;description&gt;Style classes. See the &lt;see cref="T:iTin.Export.Model.StylesModel" /&gt;, &lt;see cref="T:iTin.Export.Model.StyleModel" /&gt;,  &lt;see cref="T:iTin.Export.Model.ContentModel" /&gt;  classes.&lt;/description&gt;    
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Data types classes. See the &lt;see cref="T:iTin.Export.Model.TextDataTypeModel" /&gt;, &lt;see cref="T:iTin.Export.Model.NumericDataTypeModel" /&gt;,&lt;see cref="T:iTin.Export.Model.CurrencyDataTypeModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ScientificDataTypeModel" /&gt;, &lt;see cref="T:iTin.Export.Model.PercentageDataTypeModel" /&gt;, &lt;see cref="T:iTin.Export.Model.DatetimeDataTypeModel" /&gt;, &lt;see cref="T:iTin.Export.Model.SpecialDataTypeModel" /&gt; classes.&lt;/description&gt;   &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Definition of new field types classes. See the &lt;see cref="T:iTin.Export.Model.GroupModel" /&gt;, &lt;see cref="T:iTin.Export.Model.FixedModel" /&gt; classes.&lt;/description&gt;        
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Fields classes. See the &lt;see cref="T:iTin.Export.Model.FieldsModel" /&gt;, &lt;see cref="T:iTin.Export.Model.DataFieldModel" /&gt;, &lt;see cref="T:iTin.Export.Model.FixedFieldModel" /&gt;, &lt;see cref="T:iTin.Export.Model.GroupFieldModel" /&gt; , &lt;see cref="T:iTin.Export.Model.GapFieldModel" /&gt; classes.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Charts classes. See the &lt;see cref="T:iTin.Export.Model.ChartsModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ChartModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ChartTitleModel" /&gt;,&lt;see cref="T:iTin.Export.Model.ChartLegendModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ChartPlotsModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ChartPlotModel" /&gt;, &lt;see cref="T:iTin.Export.Model.AxisModel" /&gt;, &lt;see cref="T:iTin.Export.Model.AxisDefinitionModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ChartSeriesModel" /&gt;, &lt;see cref="T:iTin.Export.Model.ChartSerieModel" /&gt; classes.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Model Exception types classes. See the &lt;see cref="T:iTin.Export.Model.InvalidFieldIdentifierNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidFieldsDefinitionException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidFileNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidIdentifierNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidPathNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /&gt;, &lt;see ref="T:iTin.Export.Model.InvalidStylesDefinitionException"/&gt; classes.&lt;/description&gt; 
+  &lt;/item&gt;
+&lt;/list&gt;</NamespaceSummaryItem>
+    </NamespaceSummaries>
+    <PlugInConfigurations>
+    </PlugInConfigurations>
+    <BuildLogFile />
+    <HtmlHelp1xCompilerPath />
+    <HtmlHelp2xCompilerPath />
+    <SandcastlePath />
+    <WorkingPath />
+    <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
+    <HelpFileFormat>HtmlHelp1, MSHelpViewer</HelpFileFormat>
+    <IndentHtml>False</IndentHtml>
+    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <KeepLogFile>False</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <CppCommentsFixup>True</CppCommentsFixup>
+    <CleanIntermediates>True</CleanIntermediates>
+    <SyntaxFilters>Standard</SyntaxFilters>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <PresentationStyle>VS2010</PresentationStyle>
+    <Preliminary>True</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <HelpTitle>iTin Export Engine</HelpTitle>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <CatalogProductId>VS</CatalogProductId>
+    <TocParentId>-1</TocParentId>
+    <TocParentVersion>100</TocParentVersion>
+    <TopicVersion>100</TopicVersion>
+    <TocOrder>-1</TocOrder>
+    <SelfBranded>True</SelfBranded>
+    <ProductTitle>iTin Export Engine</ProductTitle>
+    <VendorName>iTin</VendorName>
+    <MSHelpViewerSdkLinkType>Msdn</MSHelpViewerSdkLinkType>
+    <CatalogVersion>100</CatalogVersion>
+    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
+    <HtmlSdkLinkType>None</HtmlSdkLinkType>
+    <IncludeFavorites>True</IncludeFavorites>
+    <BinaryTOC>True</BinaryTOC>
+    <FooterText>Programmer&amp;#39%3bs Documentation</FooterText>
+    <TransformComponentArguments>
+      <Argument Key="logoFile" Value="Logo.png" />
+      <Argument Key="logoHeight" Value="" />
+      <Argument Key="logoWidth" Value="" />
+      <Argument Key="logoAltText" Value="iTin Export Engine" />
+      <Argument Key="logoPlacement" Value="left" />
+      <Argument Key="logoAlignment" Value="left" />
+    </TransformComponentArguments>
+    <ProjectSummary>
+    </ProjectSummary>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
+    <CatalogName>VisualStudio11</CatalogName>
+    <HelpFileVersion>1.0.0</HelpFileVersion>
+    <PlugInNamespaces>ms.vsipcc+, ms.vsexpresscc+</PlugInNamespaces>
+    <CollectionTocStyle>Hierarchical</CollectionTocStyle>
+    <MSHelp2SdkLinkType>None</MSHelp2SdkLinkType>
+    <IncludeStopWordList>True</IncludeStopWordList>
+    <ComponentPath />
+    <MaximumGroupParts>2</MaximumGroupParts>
+    <NamespaceGrouping>False</NamespaceGrouping>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in
+       order for Visual Studio to perform the build.  The others are optional
+       common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Documentation\" />
+    <Folder Include="Icons\" />
+    <Folder Include="Images" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\Logo.png">
+      <ImageId>Package</ImageId>
+      <AlternateText>Package</AlternateText>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ApiReference.aml" />
+    <None Include="ProgrammersGuide.aml" />
+    <None Include="UsersGuide.aml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentLayout Include="HelpLayout.content" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Border-Medium.png">
+      <ImageId>Border-Medium</ImageId>
+      <AlternateText>Border-Medium</AlternateText>
+    </Content>
+    <Content Include="Images\Border-Thick.png">
+      <ImageId>Border-Thick</ImageId>
+      <AlternateText>Border-Thick</AlternateText>
+    </Content>
+    <Content Include="Images\Border-Thin.png">
+      <ImageId>Border-Thin</ImageId>
+      <AlternateText>Border-Thin</AlternateText>
+    </Content>
+    <Image Include="Images\Title01 - copia.png">
+      <ImageId>Title01 - copia</ImageId>
+      <AlternateText>Title 01 - copia</AlternateText>
+    </Image>
+    <Image Include="Images\Title01.png">
+      <ImageId>Title01</ImageId>
+      <AlternateText>Title 01</AlternateText>
+    </Image>
+  </ItemGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

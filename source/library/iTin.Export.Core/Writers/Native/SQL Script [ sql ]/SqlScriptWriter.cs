@@ -1,0 +1,186 @@
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+
+using iTin.Export.ComponentModel;
+
+namespace iTin.Export.Writers.Native
+{
+    /// <summary>
+    /// Represents custom writer for SQL script (SQL format). 
+    /// </summary>
+    [Export(typeof(IWriter))]
+    [WriterOptions(Name = "SqlScriptWriter", Author = "iTin", Company = "iTin", Version = 1, Extension = "sql", Description = "SQL Script Writer")]
+    public class SqlScriptWriter : BaseWriterDirect
+    {
+        #region Field Constant Members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string SpaceString = " ";
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string SqlComment = "-- ";
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string FieldSeparatorString = ", ";
+        #endregion
+
+        #region Field Static Members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private static readonly string[] SpecialChars = { "\'", "\"" };
+        #endregion
+
+        #region Field Members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private StringBuilder sqlBuilder;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private StringBuilder sqlErrorBuilder;
+        #endregion
+
+        #region Protected Override Methods
+
+            #region [protected] {override} (void) Execute(): Generates SQL script.
+            /// <summary>
+            /// Generates <c>SQL</c> script.
+            /// </summary>
+            protected override void Execute()
+            {                
+                // initialize
+                var items = Table.Fields;
+                
+                // get target data
+                var rows = Adapter.ToXml().ToArray();
+                
+                // sql document result
+                sqlBuilder = new StringBuilder();
+
+                // add script header
+                CreateScriptheader();
+
+                // add sentences
+                foreach (var row in rows)
+                {
+                    sqlErrorBuilder = new StringBuilder();
+
+                    var values = new Collection<string>();
+                    foreach (var field in items)
+                    {
+                        field.DataSource = row;
+                        var value = field.Value.GetValue(Adapter.SpecialChars);
+                        var parsedValue = ParseField(value.FormattedValue);
+                        values.Add(parsedValue);
+                    }
+
+                    CreateSqlSentence(values);
+                }
+
+                // add document to result list.
+                Result.Add(Encoding.UTF8.GetBytes(sqlBuilder.ToString()));
+            }
+            #endregion
+
+        #endregion
+
+        #region Private Static Methods
+
+            #region [private] {static} (string) ParseField(string): Gets parsed value.
+            /// <summary>
+            /// Gets parsed value.
+            /// </summary>
+            /// <param name="value">Value to check.</param>
+            /// <returns>
+            /// Parsed value.
+            /// </returns>
+            private static string ParseField(string value)
+            {
+                return SpecialChars.Aggregate(value, (current, specialChar) => current.Replace(specialChar, @"\" + specialChar));
+            }
+            #endregion
+
+        #endregion
+
+        #region Private Methods
+
+            #region [private] (void) AddSqlError(string, string): Adds an SQL error.
+            /// <summary>
+            /// Adds an SQL error.
+            /// </summary>
+            /// <param name="name">Field name.</param>
+            /// <param name="value">Field value.</param>
+            private void AddSqlError(string name, string value)
+            {
+                sqlErrorBuilder.Append(Table.Output.NewLineDelimiter);
+                sqlErrorBuilder.Append(SqlComment);
+                sqlErrorBuilder.Append("Field Value Error");
+                sqlErrorBuilder.Append(Table.Output.NewLineDelimiter);
+                sqlErrorBuilder.Append(SqlComment);
+                sqlErrorBuilder.Append("Field:");
+                sqlErrorBuilder.Append(SpaceString);
+                sqlErrorBuilder.Append(name);
+                sqlErrorBuilder.Append(Table.Output.NewLineDelimiter);
+                sqlErrorBuilder.Append(SqlComment);
+                sqlErrorBuilder.Append("Value:");
+                sqlErrorBuilder.Append(SpaceString);
+                sqlErrorBuilder.Append(value);            
+            }                   
+            #endregion
+
+            #region [private] (void) CreateScriptheader(): Creates script header.
+            /// <summary>
+            /// Creates script header.
+            /// </summary>
+            private void CreateScriptheader()
+            {
+                sqlBuilder.Append("-- Generated by iTin.Export.Writers.Native.");
+                sqlBuilder.Append(ExtendedInformation.Name);
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+
+                sqlBuilder.Append("-- Writer:");
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append(ExtendedInformation.Name);
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+
+                sqlBuilder.Append("-- Company:");
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append(ExtendedInformation.Company);
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+
+                sqlBuilder.Append("-- Author:");
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append(ExtendedInformation.Author);
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+
+                sqlBuilder.Append("-- Version:");
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append(ExtendedInformation.Version);
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+            }
+            #endregion
+
+            #region [private] (void) CreateSqlSentence(IEnumerable<string>): Creates the SQL sentence.
+            /// <summary>
+            /// Creates the SQL sentence.
+            /// </summary>
+            /// <param name="values">The values.</param>
+            private void CreateSqlSentence(IEnumerable<string> values)
+            {
+                sqlBuilder.Append("INSERT INTO");
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append(Table.Name);
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append("VALUES");
+                sqlBuilder.Append(SpaceString);
+                sqlBuilder.Append("(");
+                sqlBuilder.Append(string.Join(FieldSeparatorString, values.ToArray()));
+                sqlBuilder.Append(")");
+                sqlBuilder.Append(Table.Output.NewLineDelimiter);
+            }
+            #endregion
+
+        #endregion
+    }
+}

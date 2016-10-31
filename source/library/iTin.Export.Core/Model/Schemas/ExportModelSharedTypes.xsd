@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- Common base types -->
+  <xs:include schemaLocation="ExportModelBaseTypes.xsd" />
+
+  <!-- ================== -->
+  <!-- Element Attributes -->
+  <!-- ================== -->
+
+  <!-- LocationAttribute: Logo's location -->
+  <xs:simpleType name="LocationAttribute" id="LocationAttribute">
+    <xs:restriction base="integerArrayWhereMinValueIsOneType">
+      <xs:length value="2" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- NormalSizeAttribute: Normal size attribute, each element is greater or equal to 1 -->
+  <xs:simpleType name="NormalSizeAttribute" id="NormalSizeAttribute">
+    <xs:restriction base="integerArrayWhereMinValueIsOneType">
+      <xs:length value="2" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- SpecialSizeAttribute: Special size attribute, each element is greater or equal to -1 -->
+  <xs:simpleType name="SpecialSizeAttribute" id="SpecialSizeAttribute">
+    <xs:restriction base="integerArrayWhereMinValueIsMinusOneType">
+      <xs:length value="2" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  
+  <!-- =============================== -->
+  <!-- Definition of common data types -->
+  <!-- =============================== -->
+
+  <!-- YesNo: Boolean type. -->
+  <xs:simpleType id="YesNo" name="YesNo">
+    <xs:union memberTypes="yesNoType bindableType"/>
+  </xs:simpleType>
+
+  <!-- FieldNameString: Represents a valid field name. -->
+  <xs:simpleType id="FieldNameString" name="FieldNameString">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([\w%@\*#-_]+)" />
+      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+    
+  </xs:simpleType>
+
+  <!-- EmptyString. Empty string. -->
+  <xs:simpleType name="EmptyString" id ="EmptyString">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- ElementNameString: No strings are allowed with special characters, except underscore char, sign char, numeral char, at char and percent and dollar simbol.
+  Only allowed strings made of letters, numbers and allowed special characters and after replaces all occurrences of the tab
+  characters (#x09), newline (#x0A) and # x0D (carriage return) with spaces (#x20), after all contiguous sequences of spaces are collapsed
+  to a single space and finally removes the leading and trailing spaces.
+  -->
+  <xs:simpleType id="ElementNameString" name="ElementNameString">
+    <xs:union memberTypes="identifierType bindableType"/>
+  </xs:simpleType>
+
+  <!-- ElementNameStringOrEmpty. ElementNameString or empty string. -->
+  <xs:simpleType name="ElementNameStringOrEmpty" id ="ElementNameStringOrEmpty">
+    <xs:union memberTypes="ElementNameString EmptyString"/>
+  </xs:simpleType>
+
+
+  <!-- ================================ -->
+  <!-- Definition of known enumerations -->
+  <!-- ================================ -->
+
+  <!-- KnownAnyValue: Asterisc char representation. -->
+  <xs:simpleType id="KnownAnyValue" name="KnownAnyValue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="*">
+        <xs:annotation>
+          <xs:documentation>Any</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownAutodetectValue: Auto detect string. -->
+  <xs:simpleType id="KnownAutodetectValue" name="KnownAutodetectValue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Autodetect">
+        <xs:annotation>
+          <xs:documentation>Autodetect</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownDataTimeValues: Known datatime values. -->
+  <xs:simpleType id="KnownDataTimeValues" name="KnownDataTimeValues">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MinValue">
+        <xs:annotation>
+          <xs:documentation>
+            Represents the smallest possible value of DateTime
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MaxValue">
+        <xs:annotation>
+          <xs:documentation>
+            Represents the largest possible value of DateTime.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Today">
+        <xs:annotation>
+          <xs:documentation>
+            Represents the current date.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownDefaultPathValue: Reprsents defaults path. -->
+  <xs:simpleType id="KnownDefaultPathValue" name="KnownDefaultPathValue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default">
+        <xs:annotation>
+          <xs:documentation>Default path</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownEffectType: Specifies effects applicable to an image. -->
+  <xs:simpleType id="KnownEffectType" name="KnownEffectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            No effects
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Disabled">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Disabled
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GrayScale">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Gray Scale
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GrayScaleRed">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Gray Scale - Except red color.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GrayScaleGreen">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Gray Scale - Except green color.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GrayScaleBlue">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Gray Scale - Except blue color.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brightness">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Increases brightness slightly.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MoreBrightness">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Increases brightness.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dark">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Decreases the brightness slightly.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MoreDark">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Decreases brightness.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent05">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 5%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent10">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 10%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent20">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 20%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent30">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 30%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent40">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 40%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent50">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 50%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent60">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 60%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent70">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 70%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent80">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 80%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpacityPercent90">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Opacity 90%
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownEffectTypeArray: Represents an array of elements of type effect. -->
+  <xs:simpleType name="KnownEffectTypeArray">
+    <xs:list itemType="KnownEffectType" />
+  </xs:simpleType>
+
+  <!-- KnownItemGroupSeparator: Group field item Separators. -->
+  <xs:simpleType id="KnownItemGroupSeparator" name="KnownItemGroupSeparator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            ''
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Space">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            ' '
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dash">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            '-'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dot">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            '.'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Comma">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            ','
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Slash">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            '/'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Backslash">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            '\'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Colon">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            ':'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Semi Colon">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            ';'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="New Line">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            'New Line'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownTickMarkStyle: Axes tick mark style. -->
+  <xs:simpleType id="KnownTickMarkStyle" name="KnownTickMarkStyle">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>No mark.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cross">
+        <xs:annotation>
+          <xs:documentation>Crosses the axis.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Inside">
+        <xs:annotation>
+          <xs:documentation>Inside the axis.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Outside">
+        <xs:annotation>
+          <xs:documentation>Outside the axis.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownTrimMode: Known trim mode. -->
+  <xs:simpleType id="KnownTrimMode" name="KnownTrimMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All">
+        <xs:annotation>
+          <xs:documentation>
+            Removes all blanks current string.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="End">
+        <xs:annotation>
+          <xs:documentation>
+            Removes all white-space from the end of the current string.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Start">
+        <xs:annotation>
+          <xs:documentation>
+            Removes all white-space from the beginning of the current string.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownWriterName: Known writer's name. -->
+  <xs:simpleType id="KnownWriterName" name="KnownWriterName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CsvWriter">
+        <xs:annotation>
+          <xs:documentation>CSV (Comma-Seperated Values) (*.csv)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TsvWriter">
+        <xs:annotation>
+          <xs:documentation>TSV (Tab-Seperated Values) (*.txt)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Spreadsheet2003TabularWriter">
+        <xs:annotation>
+          <xs:documentation>XML Spreadsheet 2003 (*.xml)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="XlsTabularInteropWriter">
+        <xs:annotation>
+          <xs:documentation>MS Excel Workbook (*.xls). Requires iTin.Export.Writers.Microsoft.Interop assembly. This writer not is appropiate for ASP.NET applications, use only in desktop applications.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="XlsxTabularWriter">
+        <xs:annotation>
+          <xs:documentation>MS Excel Workbook (*.xlsx). Requires iTin.Export.Writers.OpenXML assembly</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DocxTabularWriter">
+        <xs:annotation>
+          <xs:documentation>MS Word Document (*.docx). Requires iTin.Export.Writers.OpenXML assembly</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SqlScriptWriter">
+        <xs:annotation>
+          <xs:documentation>SQL Script (*.sql)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PdfTabularWriter">
+        <xs:annotation>
+          <xs:documentation>Portable Document Format (*.pdf). Requires iTin.Export.Writers.Adobe assembly</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PdfTabularInteropWriter">
+        <xs:annotation>
+          <xs:documentation>Portable Document Format (*.pdf). Requires iTin.Export.Writers.Microsoft.Interop assembly. This writer not is appropiate for ASP.NET applications, use only in desktop applications.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownBorderPosition: Known border position. -->
+  <xs:simpleType id="KnownBorderPosition" name="KnownBorderPosition">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="Left">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Left border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Top">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Top border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Right">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Right border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bottom">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Bottom border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DiagonalLeft">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Diagonal-Left border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DiagonalRight">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Diagonal-Right border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownBorderLineStyle: Known border line style. -->
+  <xs:simpleType name="KnownBorderLineStyle">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            No border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Continuous">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Use the default border line style.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dash">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Dashed border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dot">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Dotted border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DashDot">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Dash-dot border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DashDotDot">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Dash-dot-dot border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SlantDashDot">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Slanted dash-dot border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Double">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Double-line border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- KnownWidthLineStyle: Known border weight. -->
+  <xs:simpleType name="KnownWidthLineStyle">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="Hairline">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Dotted border with small dots.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Thin">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Thin border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Medium">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Medium border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Thick">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Thick border.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>
