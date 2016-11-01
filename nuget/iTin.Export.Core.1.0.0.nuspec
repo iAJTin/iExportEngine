@@ -17,6 +17,6 @@
     <files>
         <file src="..\source\library\iTin.Export.Core\readme.txt" target="content\readme.txt" />
         <file src="..\source\library\iTin.Export.Core\bin\Release\iTin.Export.Core.dll" target="lib\net40\iTin.Export.Core.dll" />
-        <file src="..\references\all\Ionic.Zip.dll" target="lib\net40\Ionic.Zip.dll" />
+        <file src="..\references\Ionic.Zip.1.9.1.8\net40\Ionic.Zip.dll" target="lib\net40\Ionic.Zip.dll" />
     </files>
 </package>
