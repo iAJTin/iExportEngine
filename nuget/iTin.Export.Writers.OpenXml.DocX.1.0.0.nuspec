@@ -8,7 +8,7 @@
         <owners>iTin</owners>
         <licenseUrl>https://raw.githubusercontent.com/iAJTin/iExportEngine/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/iAJTin/iExportEngine</projectUrl>
-        <iconUrl>https://github.com/iAJTin/iExportEngine/blob/master/nuget/iTin.Export.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Contains a docx writer for iTin Export Engine</description>
         <copyright>Copyright © 2016 iAJTin</copyright>
@@ -19,6 +19,6 @@
     </metadata>
     <files>
        <file src="..\source\library\iTin.Export.Writers.OpenXml.DocX\bin\Release\iTin.Export.Writers.OpenXml.DocX.dll" target="lib\net40\iTin.Export.Writers.OpenXml.DocX.dll" />
-       <file src="..\references\all\DocX.dll" target="lib\net40\DocX.dll" />
+       <file src="..\references\DocX.1.0.0.13\net40\DocX.dll" target="lib\net40\DocX.dll" />
     </files>
 </package>
