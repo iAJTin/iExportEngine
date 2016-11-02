@@ -26,8 +26,6 @@
   </a>
 </p>
 
-To connect with Fernando on LinkedIn please follow https://www.linkedin.com/in/fernando-garcía-vega-02493b44
-
 ***
 
 # What is iExportEngine?
