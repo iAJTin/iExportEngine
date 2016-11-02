@@ -7,6 +7,9 @@
 <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
 </a>
 
+<a href="https://www.nuget.org/packages/iTin.Export.Core/">
+<img alt="NuGet Version" src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+</a>
 ***
 
 # What is iExportEngine?
