@@ -32,24 +32,33 @@
 <table style="width:100%">
   <tr>
     <td>
-        <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" />
+      <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" />
     </td>
     <td>
       <a href="https://www.nuget.org/packages/iTin.Export.Core/">
         <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
       </a>
     </td>
-    <td>50</td>
   </tr>
   <tr>
-    <td><img src="https://img.shields.io/badge/-iTin.Export.Writers.Adobe-green.svg?style=flat" /></td>
-    <td><img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Writers.Adobe.svg" /></td>
-    <td>94</td>
+    <td>
+      <img src="https://img.shields.io/badge/-iTin.Export.Writers.Adobe-green.svg?style=flat" />
+    </td>
+    <td>
+      <a href="https://www.nuget.org/packages/iTin.Export.Writers.Adobe/">
+        <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Writers.Adobe.svg" />
+      </a>/
+    </td>
   </tr>
   <tr>
-    <td><img src="https://img.shields.io/badge/-iTin.Export.Writers.OpenXml.Xlsx-green.svg?style=flat" /></td>
-    <td><img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Writers.OpenXml.Xlsx.svg" /> </td>
-    <td>80</td>
+    <td>
+      <img src="https://img.shields.io/badge/-iTin.Export.Writers.OpenXml.Xlsx-green.svg?style=flat" />
+    </td>
+    <td>
+      <a href="https://www.nuget.org/packages/iTin.Export.Writers.OpenXml.Xlsx/">
+        <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Writers.OpenXml.Xlsx.svg" />
+      </a>
+    </td>
   </tr>
 </table>
 
