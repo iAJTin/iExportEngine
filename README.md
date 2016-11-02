@@ -36,13 +36,13 @@
     <td>50</td>
   </tr>
   <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
+    <td><img src="https://img.shields.io/badge/-iTin.Export.Writers.Adobe-green.svg?style=flat" /></td>
+    <td><img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Writers.Adobe.svg" /></td>
     <td>94</td>
   </tr>
   <tr>
-    <td>John</td>
-    <td>Doe</td>
+    <td><img src="https://img.shields.io/badge/-iTin.Export.Writers.OpenXml.Xlsx-green.svg?style=flat" /></td>
+    <td><img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Writers.OpenXml.Xlsx.svg" /> </td>
     <td>80</td>
   </tr>
 </table>
