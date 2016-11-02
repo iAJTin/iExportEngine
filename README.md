@@ -11,7 +11,7 @@
 <table>
   <tr>
     <td>
-      <a href="https://rawgit.com/iAJTin/iExportEngine/tree/master/source/library/iTin.Export.Core">
+      <a href="https://github.com/iAJTin/iExportEngine/tree/master/source/library/iTin.Export.Core">
         <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat"/>
       </a>
     </td>
