@@ -6,7 +6,7 @@
 
 [<img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat"/>](https://github.com/iAJTin/iExportEngine)
 
-|[<img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />](https://github.com/iAJTin/iExportEngine)|[<img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" />](https://www.nuget.org/packages/iTin.Export.Core/")|
+|[<img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" />](https://github.com/iAJTin/iExportEngine)|[<img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" />](https://www.nuget.org/packages/iTin.Export.Core/")|
 |--|--|
 
 <table style="width:100%" border="0">
