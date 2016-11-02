@@ -31,8 +31,14 @@
 
 <table style="width:100%">
   <tr>
-    <td><img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" /></td>
-    <td><img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> </td>
+    <td>
+        <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" />
+    </td>
+    <td>
+      <a href="https://www.nuget.org/packages/iTin.Export.Core/">
+        <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
+      </a>
+    </td>
     <td>50</td>
   </tr>
   <tr>
