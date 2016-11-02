@@ -4,7 +4,7 @@
 
 
 <a href="https://www.nuget.org/packages/iTin.Export.Core/">
-<img alt="NuGet Version" src="https://img.shields.io/nuget/v/iExportEngine.svg" /> 
+<img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
 </a>
 
 ***
