@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://cdn.rawgit.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png"  
-       height="130">
+       height="64">
 </p>
 
 [GitHub](https://github.com/iAJTin/iExportEngine)
