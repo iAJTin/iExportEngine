@@ -8,7 +8,7 @@
 <table style="width:100%" border="0">
   <tr>
     <td>
-      <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" />
+      [<img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat"/>](https://rawgit.com/iAJTin/iExportEngine/tree/master/source/library/iTin.Export.Core)
     </td>
     <td>
       <a href="https://www.nuget.org/packages/iTin.Export.Core/">
