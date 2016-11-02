@@ -3,16 +3,22 @@
        height="32">
 </p>
 
-
-[<img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat"/>](https://github.com/iAJTin/iExportEngine)
+<p align="left">
+  <a href="https://github.com/iAJTin/iExportEngine">
+    <img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat"/>
+  </a>
+</p>
 <table style="width:100%" border="0">
   <tr>
     <td>
-      [<img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat"/>](https://rawgit.com/iAJTin/iExportEngine/tree/master/source/library/iTin.Export.Core)
+      <a href="https://rawgit.com/iAJTin/iExportEngine/tree/master/source/library/iTin.Export.Core">
+        <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat"/>
+      </a>
     </td>
     <td>
       <a href="https://www.nuget.org/packages/iTin.Export.Core/">
-        <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
+        <img alt="NuGet Version" 
+             src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
       </a>
     </td>
   </tr>
