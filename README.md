@@ -3,9 +3,9 @@
        height="32">
 </p>
 
-<p>
-  [<img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />](https://github.com/iAJTin/iExportEngine)
-</p>
+
+[<img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />](https://github.com/iAJTin/iExportEngine)
+
 
 <table style="width:100%" border="0">
   <tr>
