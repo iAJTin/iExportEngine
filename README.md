@@ -8,7 +8,7 @@
   <img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />
 </p>
 
-<table style="width:100%">
+<table style="width:100%" border="0">
   <tr>
     <td>
       <img src="https://img.shields.io/badge/-iTin.Export.Core-green.svg?style=flat" />
