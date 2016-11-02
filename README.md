@@ -3,7 +3,7 @@
        height="32">
 </p>
 
-[GitHub](https://github.com/iAJTin/iExportEngine)
+[<img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />](https://github.com/iAJTin/iExportEngine)
 <p align="left">
   <img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />
 </p>
