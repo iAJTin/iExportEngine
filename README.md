@@ -1,4 +1,7 @@
-<img alt="iTinExportEngine" src="https://cdn.rawgit.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png" />
+<p align="center">
+  <img src="https://cdn.rawgit.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png"  
+       height="130">
+</p>
 
 [GitHub](https://github.com/iAJTin/iExportEngine)
 <p align="left">
