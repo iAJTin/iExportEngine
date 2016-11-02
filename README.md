@@ -2,17 +2,22 @@
 [GitHub](https://github.com/iAJTin/iExportEngine)
 
 <p align="center">
-	<img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />
+  <img alt="" src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat" />
 </p>
 
 <p align="center">
-	<a href="https://www.nuget.org/packages/iTin.Export.Core/">
-		<img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
-	</a>
-
-	<a href="https://www.nuget.org/packages/iTin.Export.Core/">
-		<img alt="NuGet Version" src="https://img.shields.io/github/license/mashape/apistatus.svg" />
-	</a>
+  <a href="https://www.nuget.org/packages/iTin.Export.Core/">
+    <img alt="NuGet Version" src="https://img.shields.io/nuget/v/iTin.Export.Core.svg" /> 
+  </a>
+  <a href="https://www.nuget.org/packages/iTin.Export.Writers.OpenXml.Xlsx/">
+    <img alt="NuGet Version" src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+  </a>
+  <a href="https://www.nuget.org/iTin.Export.Writers.OpenXml.DocX/">
+    <img alt="NuGet Version" src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+  </a>
+  <a href="https://www.nuget.org/packages/iTin.Export.Core/">
+    <img alt="NuGet Version" src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+  </a>
 </p>
 
 ***
