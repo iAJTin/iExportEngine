@@ -3,12 +3,12 @@
        height="32">
 </p>
 
-<p align="left">
+<p>
   <a href="https://github.com/iAJTin/iExportEngine">
     <img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat"/>
   </a>
 </p>
-<table style="width:100%" border="0">
+<table>
   <tr>
     <td>
       <a href="https://rawgit.com/iAJTin/iExportEngine/tree/master/source/library/iTin.Export.Core">
