@@ -63,4 +63,6 @@
 
 # What is iExportEngine?
 
-iTin Export Engine (ITEE) is a standalone and extensible engine for data export of XML, DataSets, typed ArrayList, DataRow array inputs by native/custom writers to MSExcel, Comma-Separated Values (csv), Tab-Separated Values (txt), SQL Script (sql), XML Spreadsheet 2003 (xml), Portable Document Format (pdf), MS Excel (xlsx), MS Word (docx), using an XML configuration 
+iTin Export Engine (ITEE) is a standalone engine for data export that allows developers use a modular system based in Managed Extensibility Framework (MEF).
+
+Export data from XML, DataSets, typed ArrayList, DataRow array inputs by native/custom writers to MSExcel, Comma-Separated Values (csv), Tab-Separated Values (txt), SQL Script (sql), XML Spreadsheet 2003 (xml), Portable Document Format (pdf), MS Excel (xlsx), MS Word (docx), using an XML configuration 
