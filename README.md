@@ -1,12 +1,23 @@
-<p>
+<p align="center">
   <img src="https://cdn.rawgit.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png"  
        height="32">
 </p>
-<p>
+<p align="center">
   <a href="https://github.com/iAJTin/iExportEngine">
     <img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat"/>
   </a>
 </p>
+
+***
+
+# What is iExportEngine?
+
+iTin Export Engine (ITEE) is a standalone engine for data export that allows developers use a modular system based in Managed Extensibility Framework (MEF).
+
+You can export easily data from XML, DataSets, typed ArrayList, DataRow array inputs by native/custom writers to MSExcel, Comma-Separated Values (csv), Tab-Separated Values (txt), SQL Script (sql), XML Spreadsheet 2003 (xml), Portable Document Format (pdf), MS Excel (xlsx), MS Word (docx), using an XML configuration file.
+
+# Install via NuGet
+
 <table>
   <tr>
     <td>
@@ -58,22 +69,6 @@
     </td>
   </tr>
 </table>
-
-***
-
-# What is iExportEngine?
-
-iTin Export Engine (ITEE) is a standalone engine for data export that allows developers use a modular system based in Managed Extensibility Framework (MEF).
-
-You can export easily data from XML, DataSets, typed ArrayList, DataRow array inputs by native/custom writers to MSExcel, Comma-Separated Values (csv), Tab-Separated Values (txt), SQL Script (sql), XML Spreadsheet 2003 (xml), Portable Document Format (pdf), MS Excel (xlsx), MS Word (docx), using an XML configuration file.
-
-# Install via NuGet
-
-`Install-Package iTin.Export.Core`  
-`Install-Package iTin.Export.Writers.Adobe`  
-`Install-Package iTin.Export.Writers.OpenXml.Xlsx`  
-`Install-Package iTin.Export.Writers.OpenXml.DocX`
-
 
 # How can I send feedback!!!
 
