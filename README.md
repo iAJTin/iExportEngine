@@ -2,7 +2,6 @@
   <img src="https://cdn.rawgit.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png"  
        height="32">
 </p>
-*
 <p>
   <a href="https://github.com/iAJTin/iExportEngine">
     <img src="https://img.shields.io/badge/iTin-iExportEngine-green.svg?style=flat"/>
