@@ -69,9 +69,8 @@ You can export easily data from XML, DataSets, typed ArrayList, DataRow array in
 
 # Install via NuGet
 
-'''
-Install-Package iTin.Export.Core
-'''
+'Install-Package iTin.Export.Core'
+
 
 # How can I send feedback!!!
 
