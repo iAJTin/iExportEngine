@@ -69,7 +69,7 @@ You can export easily data from XML, DataSets, typed ArrayList, DataRow array in
 
 # How can I send feedback!!!
 
-If you have found iExportEngine useful at work or in a personal project, I would love to hear about it. Equally if you have decided not to use iExportEngine, please send me and email stating why this is so. I will use this feedback to improve iExportEngine in future releases.
+If you have found **iExportEngine** useful at work or in a personal project, I would love to hear about it. Equally if you have decided not to use **iExportEngine**, please send me and email stating why this is so. I will use this feedback to improve **iExportEngine** in future releases.
 
 My email address is fdo.garcia.vega@gmail.com
 
