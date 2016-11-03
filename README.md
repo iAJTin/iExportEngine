@@ -67,6 +67,12 @@ iTin Export Engine (ITEE) is a standalone engine for data export that allows dev
 
 You can export easily data from XML, DataSets, typed ArrayList, DataRow array inputs by native/custom writers to MSExcel, Comma-Separated Values (csv), Tab-Separated Values (txt), SQL Script (sql), XML Spreadsheet 2003 (xml), Portable Document Format (pdf), MS Excel (xlsx), MS Word (docx), using an XML configuration file.
 
+# Install via NuGet
+
+'''
+Install-Package iTin.Export.Core
+'''
+
 # How can I send feedback!!!
 
 If you have found **iExportEngine** useful at work or in a personal project, I would love to hear about it. If you have decided not to use **iExportEngine**, please send me and email stating why this is so. I will use this feedback to improve **iExportEngine** in future releases.
