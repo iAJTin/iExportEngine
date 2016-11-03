@@ -72,10 +72,6 @@
     <Content Include="resources\database\ChinookDatabase.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\database\CmDatabase.sdf" />
-    <Content Include="resources\database\DscDatabase.sdf" />
-    <Content Include="resources\database\McsDatabase.sdf" />
-    <Content Include="resources\database\TamarDatabase.sdf" />
     <Content Include="resources\functions\iTin.Export.Queries.SqlServerCe.Functions.dll" />
     <Content Include="resources\images\banner-careers.png" />
     <Content Include="resources\input\InvoiceXmlInput.xml" />
