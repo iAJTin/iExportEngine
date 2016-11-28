@@ -176,6 +176,13 @@ namespace OfficeOpenXml.Drawing.Chart
             private static void FormatFromModel(this IEnumerable<ExcelChartAxis> axes, ChartAxesModel model)
             {
                 var axesList = axes.ToList();
+
+                var hasAnyAxes = axesList.Any();
+                if (!hasAnyAxes)
+                {
+                    return;
+                }
+
                 var axesListAsXml = ChartHelper.ToAxisXmlFrom(axesList).ToList();
 
                 // Primary axis.

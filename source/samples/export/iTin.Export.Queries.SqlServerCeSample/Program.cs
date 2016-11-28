@@ -17,33 +17,38 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
         static void Main(string[] args)
         {
             Watch.Start();
-            InvoiceXmlSample.RunSample();
+            ProductXmlSample.RunSample();
             _xmlTime = Watch.Elapsed;
             Watch.Stop();
 
-            Console.WriteLine();
+            //Watch.Start();
+            //InvoiceXmlSample.RunSample();
+            //_xmlTime = Watch.Elapsed;
+            //Watch.Stop();
 
-            Watch.Reset();
-            Watch.Start();
-            InvoiceArrayListSample.RunSample();
-            _arraylistTime = Watch.Elapsed;
-            Watch.Stop();
+            //Console.WriteLine();
 
-            Console.WriteLine();
+            //Watch.Reset();
+            //Watch.Start();
+            //InvoiceArrayListSample.RunSample();
+            //_arraylistTime = Watch.Elapsed;
+            //Watch.Stop();
 
-            Watch.Reset();
-            Watch.Start();
-            InvoiceDataSetSample.RunSample();
-            _datasetTime = Watch.Elapsed;
-            Watch.Stop();
+            //Console.WriteLine();
 
-            Console.WriteLine();
+            //Watch.Reset();
+            //Watch.Start();
+            //InvoiceDataSetSample.RunSample();
+            //_datasetTime = Watch.Elapsed;
+            //Watch.Stop();
 
-            Watch.Reset();
-            Watch.Start();
-            InvoiceEnumerableSample.RunSample();
-            _enumerableTime = Watch.Elapsed;
-            Watch.Stop();
+            //Console.WriteLine();
+
+            //Watch.Reset();
+            //Watch.Start();
+            //InvoiceEnumerableSample.RunSample();
+            //_enumerableTime = Watch.Elapsed;
+            //Watch.Stop();
 
             WriteElapsedTime(_xmlTime, _arraylistTime, _datasetTime, _enumerableTime);
             Console.WriteLine(LastStepText);

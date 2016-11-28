@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Drawing;
 using System.Globalization;
@@ -210,7 +211,15 @@ namespace iTin.Export.Writers.OpenXml.Office
                                 var valueLenght = value.FormattedValue.Length;
 
                                 var cell = worksheet.Cells[y + row, x + col];
-                                cell.Value = value.FormattedValue;
+                                if (value.IsNumeric)
+                                {
+                                    cell.Value = decimal.Parse(value.FormattedValue);
+                                }
+                                else
+                                {
+                                    cell.Value = value.FormattedValue;
+                                }
+
                                 cell.AddErrorComment(value);
                                 cell.StyleName = value.Style.Name ?? StyleModel.NameOfDefaultStyle;
                                 cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
@@ -380,7 +389,14 @@ namespace iTin.Export.Writers.OpenXml.Office
                         #region autofitcolumns?
                         if (Table.AutoFitColumns == YesNo.Yes)
                         {
-                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns(0);
+                            try
+                            {
+                                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns(1);
+                            }
+                            catch (Exception)
+                            {
+                            }
+
                             worksheet.AutoFitGroupColumns(fieldDictionary, this);
                         }
                         #endregion
@@ -440,9 +456,12 @@ namespace iTin.Export.Writers.OpenXml.Office
                                     {
                                         if (mainchart == null)
                                         {
-                                            mainchart = worksheet.Drawings.AddChart(
-                                                serie.Field,
-                                                serie.ChartType.ToEppChartType());
+                                            mainchart = 
+                                                worksheet
+                                                    .Drawings
+                                                        .AddChart(
+                                                            serie.Field,
+                                                            serie.ChartType.ToEppChartType());
                                             mainchart.Name = plot.Name;
                                         }
 
@@ -462,7 +481,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                                         workchart.Series.Add(
                                             ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex),
                                             ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex, rowsCount + dataSerieY, axisColumnIndex));
-                                    sr.Header = serie.Legend;
+                                    sr.Header = serie.Name;
                                 }
                             }
 

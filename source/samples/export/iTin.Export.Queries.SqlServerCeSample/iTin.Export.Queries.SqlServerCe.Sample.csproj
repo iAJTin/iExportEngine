@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductXmlSample.cs" />
     <Compile Include="model\InvoiceEnumerableSample.cs" />
     <Compile Include="model\InvoiceXmlSample.cs" />
     <Compile Include="model\InvoiceArrayListSample.cs" />
@@ -66,6 +67,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\configuration\ProductConfigurationFile.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\InvoiceConfigurationFile.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -75,6 +79,8 @@
     <Content Include="resources\functions\iTin.Export.Queries.SqlServerCe.Functions.dll" />
     <Content Include="resources\images\banner-careers.png" />
     <Content Include="resources\input\InvoiceXmlInput.xml" />
+    <Content Include="resources\input\ProductXmlInput.xml" />
+    <Content Include="resources\input\Sales.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

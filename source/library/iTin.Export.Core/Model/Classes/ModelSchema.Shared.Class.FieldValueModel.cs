@@ -350,7 +350,6 @@ namespace iTin.Export.Model
                                 if (fieldAsAttribute == null)
                                 {
                                     fieldAsAttribute = Parent.DataSource.Attribute(parsedName.ToLowerInvariant());
-                                    
                                 }                                
                             }
 

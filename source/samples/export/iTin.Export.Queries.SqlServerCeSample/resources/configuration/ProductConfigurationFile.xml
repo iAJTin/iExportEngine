@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+ 
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx"/>
+    </Hosts>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="Blue">
+          <Text/>
+        </Content>
+        <Font Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="ValueTextStyle">
+        <Content>
+          <Text/>
+        </Content>
+      </Style>   
+      <Style Name="NumericStandardStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
+        <Content>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+      <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
+        <Content>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="epplus-xlsx" Current="Yes">
+    <Description>EPPlus - Product sample without pie chart</Description>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Product sample">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>          
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Charts>
+        <Chart>
+          <Location>
+            <ByCoordenates Coordenates="6 1"/>
+          </Location>
+          <Title>
+            <Text>Total</Text>
+            <Font Size="12" Bold="Yes"/>
+          </Title>
+          <Legend Show="Yes">
+            <Border Show="Yes"/>
+            <Font Size="12" Bold="Yes"/>
+          </Legend>
+          <Plots>
+            <Plot Name="plot1">
+              <Series>
+                <Serie Type="Pie3D" Axis="PRODUCT" Field="VALUE" Name="ProductSerie"/>
+              </Series>
+            </Plot>
+          </Plots>
+        </Chart>
+      </Charts>
+      <Output>
+        <Path>~\output\dataset</Path>
+        <File>ProductSampleFromConfigFile</File>
+      </Output>
+    </Table>
+  </Export>
+  
+  <Export Name="epplus-graph-xlsx" Current="No">
+    <Description>EPPlus - Product sample with pie chart</Description>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Product sample">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>          
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\dataset</Path>
+        <File>ProductSampleFromConfigFile</File>
+      </Output>
+    </Table>
+  </Export>
+
+
+</Exports>

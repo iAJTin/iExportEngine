@@ -49,9 +49,9 @@ namespace iTin.Export.Model
     ///       <td>Name of field that contains data.</td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ChartSerieModel.Legend" /></td>
+    ///       <td><see cref="P:iTin.Export.Model.ChartSerieModel.Name" /></td>
     ///       <td align="center">No</td>
-    ///       <td>Text of legend for this serie.</td>
+    ///       <td>Name of this serie.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -309,18 +309,18 @@ namespace iTin.Export.Model
                     field = value;
                 }
             }
-            #endregion
+        #endregion
 
-            #region [public] (string) Legend: Gets or sets text of legend for this serie.
+            #region [public] (string) Name: Gets or sets name of this serie.
             /// <summary>
-            /// Gets or sets name of legend for this serie.
+            /// Gets or sets name of this serie.
             /// </summary>
             /// <value>
             /// Text of legend for this serie.
             /// </value>
             /// <remarks>
             /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Serie Legend="string" .../&gt;
+            /// &lt;Serie Name="string" .../&gt;
             /// </code>
             /// <para>
             /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -346,7 +346,7 @@ namespace iTin.Export.Model
             /// </para>
             /// </remarks>
             [XmlAttribute]
-            public string Legend { get; set; }
+            public string Name { get; set; }
             #endregion
 
             #region [public] (ChartSeriesModel) Owner: Gets the element that owns this.

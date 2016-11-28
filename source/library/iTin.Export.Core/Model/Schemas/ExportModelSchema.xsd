@@ -2033,7 +2033,7 @@
     <xs:attribute name="Color" type="rgbColorType" use="optional" default="Black">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Preferred color for this data serie. The default is 'Black'.
+          Preferred color for this data serie. The default is 'Black'. For Pie3D chart type is automatic.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -2044,10 +2044,10 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Legend" type="xs:string" use="required">
+    <xs:attribute name="Name" type="xs:string" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Text of legend for this serie.
+          Defines the name of this serie.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

@@ -26,14 +26,23 @@ namespace OfficeOpenXml.Drawing.Chart
             SentinelHelper.ArgumentNull(model);
 
             var xmlSerieList = ChartXmlHelper.GetElementsByTagName("c:v");
-            var textNode = xmlSerieList.FirstOrDefault(n => n.ParentNode.ParentNode.Name.Equals("ser") && n.InnerText.Equals(model.Legend));
+            var textNode = xmlSerieList.FirstOrDefault(n => n.ParentNode.ParentNode.Name.Equals("ser") && n.InnerText.Equals(model.Name));
             if (textNode == null)
             {
                 return;
             }
 
-            var areaChartSeriesNode = textNode.ParentNode.ParentNode;
-            areaChartSeriesNode.AddShapePropertiesNode(model);
+            var charType = model.ChartType;
+            switch (charType)
+            {
+                case KnownChartType.Pie3D:
+                    break;
+
+                default:
+                    var areaChartSeriesNode = textNode.ParentNode.ParentNode;
+                    areaChartSeriesNode.AddShapePropertiesNode(model);
+                    break;
+            }
         }
         #endregion
 
