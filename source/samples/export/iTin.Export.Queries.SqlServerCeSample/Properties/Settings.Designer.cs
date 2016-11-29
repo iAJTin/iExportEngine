@@ -80,5 +80,29 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
                 this["ProductExportConfigurationFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample_9-1.xml")]
+        public string Sample91ExportConfigurationFile {
+            get {
+                return ((string)(this["Sample91ExportConfigurationFile"]));
+            }
+            set {
+                this["Sample91ExportConfigurationFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SalesXmlInput.xml")]
+        public string SalesXmlInput {
+            get {
+                return ((string)(this["SalesXmlInput"]));
+            }
+            set {
+                this["SalesXmlInput"] = value;
+            }
+        }
     }
 }

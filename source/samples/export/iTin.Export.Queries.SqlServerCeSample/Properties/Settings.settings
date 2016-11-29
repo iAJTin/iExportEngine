@@ -21,5 +21,11 @@
     <Setting Name="ProductExportConfigurationFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\configuration\ProductConfigurationFile.xml</Value>
     </Setting>
+    <Setting Name="Sample91ExportConfigurationFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample_9-1.xml</Value>
+    </Setting>
+    <Setting Name="SalesXmlInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\SalesXmlInput.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

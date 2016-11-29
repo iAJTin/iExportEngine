@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+ 
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx"/>
+    </Hosts>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="Blue">
+          <Text/>
+        </Content>
+        <Font Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="ValueTextStyle">
+        <Content>
+          <Text/>
+        </Content>
+      </Style>   
+      <Style Name="NumericStandardStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
+        <Content>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+      <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
+        <Content>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="epplus-xlsx" Current="Yes">
+    <Description>Sample 9.1 - A table linked to a stacked area chart</Description>
+    <Table Host="xlsx"
+           Name="Sales"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="Sample 9.1 - A table linked to a stacked area chart">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>          
+      </Exporter>
+      <Fields>
+        <Field Name="Period" Alias="Period">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="EUROPE" Alias="Europe">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="AFRICA" Alias="Africa">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="ASIA" Alias="Asia">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="NORTHAMERICA" Alias="North America">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="SOUTHAMERICA" Alias="South America">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="AUSTRALIA" Alias="Australia">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Charts>
+        <Chart>
+          <Location>
+            <ByCoordenates Coordenates="8 1"/>
+          </Location>
+          <Legend Show="Yes">
+            <Border Show="Yes"/>
+            <Font Size="12" Bold="Yes"/>
+          </Legend>
+          <Plots>
+            <Plot Name="plot1">
+              <Series>
+                <Serie Type="AreaStacked3D" Axis="Period" Field="EUROPE" Name="Europe" Color="Blue"/>
+              </Series>
+            </Plot>
+          </Plots>
+        </Chart>
+      </Charts>
+      <Output>
+        <Path>~\output\dataset</Path>
+        <File>Sample91FromConfigFile</File>
+      </Output>
+    </Table>
+  </Export>
+
+</Exports>

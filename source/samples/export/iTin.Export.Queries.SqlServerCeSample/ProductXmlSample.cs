@@ -20,7 +20,8 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             Console.WriteLine(new string('-', 52));
 
             Console.WriteLine(OneStepText);
-            var invoiceXmlInputUri = new Uri(Properties.Settings.Default.ProductXmlInput, UriKind.Relative);
+            //var invoiceXmlInputUri = new Uri(Properties.Settings.Default.ProductXmlInput, UriKind.Relative);
+            var invoiceXmlInputUri = new Uri(Properties.Settings.Default.SalesXmlInput, UriKind.Relative);
             var export = new XmlInput(invoiceXmlInputUri);
 
             Console.Write(TwoStepText);
@@ -28,7 +29,8 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             Console.WriteLine(ThreeStepText);
 
             Console.WriteLine(FiveStepText);
-            var configuration = new Uri(Properties.Settings.Default.ProductExportConfigurationFile, UriKind.Relative);
+            //var configuration = new Uri(Properties.Settings.Default.ProductExportConfigurationFile, UriKind.Relative);
+            var configuration = new Uri(Properties.Settings.Default.Sample91ExportConfigurationFile, UriKind.Relative);
             export.Export(ExportSettings.ImportFrom(configuration, "epplus-xlsx"));
         }
     }

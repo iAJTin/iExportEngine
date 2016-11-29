@@ -67,6 +67,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\configuration\Sample_9-1.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\ProductConfigurationFile.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -80,7 +83,7 @@
     <Content Include="resources\images\banner-careers.png" />
     <Content Include="resources\input\InvoiceXmlInput.xml" />
     <Content Include="resources\input\ProductXmlInput.xml" />
-    <Content Include="resources\input\Sales.xml" />
+    <Content Include="resources\input\SalesXmlInput.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
