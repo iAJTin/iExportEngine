@@ -7,51 +7,62 @@
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
-        <Content Color="Blue">
+        <Content Color="#BD4F46">
           <Text/>
         </Content>
         <Font Color="White" Bold="Yes"/>
       </Style>
-      <Style Name="ValueTextStyle">
+      <Style Name="AggregateStyle" Inherits="HeaderStyle">
         <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="1"/>
+        </Content>
+      </Style>
+      <Style Name="ValueTextStyle">
+        <Content Color="#E4B7B7">
           <Text/>
         </Content>
       </Style>   
-      <Style Name="NumericStandardStyle">
+      <Style Name="DateTimeStandardWithBorderStyle" Inherits="ValueTextStyle">
         <Content>
+          <Text/>
+        </Content>
+      </Style>
+      <Style Name="NumericStandardStyle">
+        <Content Color="#B6DDE9">
           <Alignment Horizontal="Right"/>
-          <Number/>
+          <Number Decimals="1"/>
         </Content>
       </Style>
       <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
         <Borders>
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
-        <Content>
+        <Content Color="#B6DDE9">
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content>
+        <Content Color="#B6DDE9">
           <Number Decimals="0"/>
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
-        <Content>
-          <Number Decimals="0"/>
+        <Content Color="#B6DDE9">
+          <Number Decimals="1"/>
         </Content>
       </Style>
     </Styles>
   </Global.Resources>
 
-  <Export Name="epplus-xlsx" Current="Yes">
-    <Description>EPPlus - Product sample without pie chart</Description>
+  <Export Name="sample92" Current="Yes">
+    <Description>Sample 9.2 - A table linked to a column/line chart</Description>
     <Table Host="xlsx"
-           Name="Product"
+           Name="Sales"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
-           Alias="EPPlus - Product sample">
+           Alias="Sample 9.2 - A table linked to a column/line chart">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>          
       </Exporter>
@@ -83,22 +94,28 @@
         </Field>
       </Fields>
       <Charts>
-        <Chart>
+        <Chart Size="800 600">
           <Location>
-            <ByCoordenates Coordenates="6 1"/>
+            <ByCoordenates Coordenates="8 1"/>
           </Location>
-          <Title>
-            <Text>Total</Text>
-            <Font Size="12" Bold="Yes"/>
-          </Title>
           <Legend Show="Yes">
             <Border Show="Yes"/>
             <Font Size="12" Bold="Yes"/>
           </Legend>
+          <Axes>
+            <Primary>
+              <Values GridLines="Major"/>
+            </Primary>
+          </Axes>
           <Plots>
             <Plot Name="plot1">
               <Series>
-                <Serie Type="Pie3D" Axis="PRODUCT" Field="VALUE" Name="ProductSerie"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="EUROPE" Name="Europe" Color="#285A8F"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AFRICA" Name="AFRICA" Color="#336EA9"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="ASIA" Name="ASIA" Color="#3572B1"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="NORTHAMERICA" Name="NORTHAMERICA" Color="#628AC5"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="SOUTHAMERICA" Name="SOUTHAMERICA" Color="#93ADCD"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AUSTRALIA" Name="AUSTRALIA" Color="#BCCCDE"/>
               </Series>
             </Plot>
           </Plots>
@@ -106,54 +123,9 @@
       </Charts>
       <Output>
         <Path>~\output\dataset</Path>
-        <File>ProductSampleFromConfigFile</File>
+        <File>Sample92FromConfigFile</File>
       </Output>
     </Table>
   </Export>
-  
-  <Export Name="epplus-graph-xlsx" Current="No">
-    <Description>EPPlus - Product sample with pie chart</Description>
-    <Table Host="xlsx"
-           Name="Product"
-           AutoFilter="Yes"
-           AutoFitColumns="Yes"
-           Alias="EPPlus - Product sample">
-      <Exporter>
-        <Writer Name="XlsxTabularWriter"/>          
-      </Exporter>
-      <Fields>
-        <Field Name="ID" Alias="Id">
-          <Header Style="HeaderStyle"/>
-          <Value Style="ValueTextStyle"/>
-          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
-        </Field>
-        <Field Name="PRODUCT" Alias="Product">
-          <Header Style="HeaderStyle"/>
-          <Value Style="ValueTextStyle"/>
-          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
-        </Field>
-        <Field Name="QUANTITY" Alias="Quantity">
-          <Header Style="HeaderStyle"/>
-          <Value Style="NumericWithoutDecimalsStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
-        </Field>
-        <Field Name="PRICE" Alias="Price">
-          <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
-        </Field>
-        <Field Name="VALUE" Alias="Value">
-          <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
-        </Field>
-      </Fields>
-      <Output>
-        <Path>~\output\dataset</Path>
-        <File>ProductSampleFromConfigFile</File>
-      </Output>
-    </Table>
-  </Export>
-
 
 </Exports>

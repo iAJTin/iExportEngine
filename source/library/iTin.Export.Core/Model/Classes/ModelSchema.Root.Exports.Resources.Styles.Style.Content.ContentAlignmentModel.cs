@@ -108,6 +108,23 @@ namespace iTin.Export.Model
                 Vertical = DefaultVerticalAlignment;
                 Horizontal = DefaultHorizontalAlignment;
             }
+        #endregion
+
+        #endregion
+
+        #region public static properties
+
+            #region [public] {static} (ContentAlignmentModel) Default: Gets default alignament.
+            /// <summary>
+            /// Gets default alignament.
+            /// </summary>
+            /// <value>
+            /// Default alignament
+            /// </value>
+            public static ContentAlignmentModel Default
+            {
+                get { return new ContentAlignmentModel(); }
+            }
             #endregion
 
         #endregion
@@ -290,11 +307,11 @@ namespace iTin.Export.Model
             }
             #endregion
 
-        #region [public] (void) Combine(ContentAlignmentModel): Combines this instance with reference parameter.
-        /// <summary>
-        /// Combines this instance with reference parameter.
-        /// </summary>
-        public void Combine(ContentAlignmentModel reference)
+            #region [public] (void) Combine(ContentAlignmentModel): Combines this instance with reference parameter.
+            /// <summary>
+            /// Combines this instance with reference parameter.
+            /// </summary>
+            public void Combine(ContentAlignmentModel reference)
             {
                 if (vertical.Equals(DefaultVerticalAlignment))
                 {

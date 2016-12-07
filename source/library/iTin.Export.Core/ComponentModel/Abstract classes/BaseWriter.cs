@@ -320,13 +320,13 @@ namespace iTin.Export.ComponentModel
             /// Generates output in the format supported by each specialized class.
             /// </summary>
             protected abstract void Execute();
-            #endregion
+        #endregion
 
         #endregion
 
         #region Protected Virtual Methods
 
-            #region [protected] {virtual} (string) GetValueByReflection(string):
+            #region [protected] {virtual} (object) GetValueByReflection(string):
             /// <summary>
             /// Gets the value by reflection.
             /// </summary>
@@ -334,7 +334,7 @@ namespace iTin.Export.ComponentModel
             /// <returns>
             /// A <see cref="T:System.String"/> that contains property, method or raw value.
             /// </returns>
-            protected virtual string GetValueByReflection(string value)
+            protected virtual object GetValueByReflection(string value)
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -416,7 +416,7 @@ namespace iTin.Export.ComponentModel
                     }
                 }
 
-                return returnValue.ToString();
+                return returnValue; //.ToString();
             }
             #endregion
 

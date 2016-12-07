@@ -18,14 +18,17 @@
     <Setting Name="ProductXmlInput" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\input\ProductXmlInput.xml</Value>
     </Setting>
-    <Setting Name="ProductExportConfigurationFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\ProductConfigurationFile.xml</Value>
+    <Setting Name="Sample90" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample90.xml</Value>
     </Setting>
-    <Setting Name="Sample91ExportConfigurationFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\Sample_9-1.xml</Value>
+    <Setting Name="Sample91" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample91.xml</Value>
     </Setting>
     <Setting Name="SalesXmlInput" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\input\SalesXmlInput.xml</Value>
+    </Setting>
+    <Setting Name="Sample92" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample92.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

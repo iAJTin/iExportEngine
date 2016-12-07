@@ -71,25 +71,25 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ProductConfigurationFile.xml")]
-        public string ProductExportConfigurationFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample90.xml")]
+        public string Sample90 {
             get {
-                return ((string)(this["ProductExportConfigurationFile"]));
+                return ((string)(this["Sample90"]));
             }
             set {
-                this["ProductExportConfigurationFile"] = value;
+                this["Sample90"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample_9-1.xml")]
-        public string Sample91ExportConfigurationFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample91.xml")]
+        public string Sample91 {
             get {
-                return ((string)(this["Sample91ExportConfigurationFile"]));
+                return ((string)(this["Sample91"]));
             }
             set {
-                this["Sample91ExportConfigurationFile"] = value;
+                this["Sample91"] = value;
             }
         }
         
@@ -102,6 +102,18 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
             }
             set {
                 this["SalesXmlInput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample92.xml")]
+        public string Sample92 {
+            get {
+                return ((string)(this["Sample92"]));
+            }
+            set {
+                this["Sample92"] = value;
             }
         }
     }

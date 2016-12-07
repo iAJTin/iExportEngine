@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+ 
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx"/>
+    </Hosts>
+    <Images>
+      <Image Key="banner">
+        <Effects>
+          <Opacity percent="70"/>
+        </Effects>
+        <Path>~\resources\images\banner-careers.png</Path>
+      </Image>
+    </Images>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="Navy">
+          <Text/>
+        </Content>
+        <Font Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="ValueTextStyle">
+        <Content>
+          <Text/>
+        </Content>
+      </Style>   
+      <Style Name="NumericStandardStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
+        <Content>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+      <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
+        <Content>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+      <Style Name="EmptyLineStyle">
+        <Content Color="#BD4F46">
+          <Alignment Horizontal="Center"/>
+          <Text/>
+        </Content>
+        <Font Name="Segoe UI" Color="White"/>
+      </Style>
+      <Style Name="TitleLineStyle" Inherits="EmptyLineStyle">
+        <Content>
+          <Alignment Horizontal="Left"/>
+        </Content>
+        <Font Size="18" Bold="Yes"/>
+      </Style>
+      <Style Name="FirstLineStyle">
+        <Content Color="#BD4F46">
+         <Alignment Horizontal="Left"/>
+         <DateTime Format="Short Date" Locale="en-US"/>
+        </Content>
+        <Font Name="Segoe UI" Color="White"/>
+      </Style>
+    </Styles>
+    <Lines>
+      <EmptyLine Key="ReportEmptyLine" Style="EmptyLineStyle" Merge="7"/>
+      <TextLine Key="ReportTitleLine" Style="TitleLineStyle">
+        <Text Merge="7">EPPlus demo samples </Text>
+      </TextLine>
+      <TextLine Key="ReportFirstLine" Style="FirstLineStyle">
+       <Text>Date:</Text>
+       <Text Merge="6">{Bind:GetCurrentDatetime}</Text>
+     </TextLine>
+    </Lines>
+  </Global.Resources>
+
+  <Export Name="sample90" Current="Yes">
+    <Description>EPPlus - Some data</Description>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Some data">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>          
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\sample9x</Path>
+        <File>sample90-file</File>
+      </Output>
+    </Table>
+  </Export>
+  
+  <Export Name="sample90-chart">
+    <Description>EPPlus - Some data and a pie chart</Description>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Some data and a pie chart">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>          
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Charts>
+        <Chart Size="640 300">
+          <Location>
+            <ByCoordenates Coordenates="6 1"/>
+          </Location>
+          <Title>
+            <Text>Total</Text>
+            <Font Size="12" Bold="Yes"/>
+          </Title>
+          <Legend Show="Yes">
+            <Border Show="Yes"/>
+            <Font Size="12" Bold="Yes"/>
+          </Legend>
+          <Plots>
+            <Plot Name="plot1">
+              <Series>
+                <Serie Type="Pie3D" Axis="PRODUCT" Field="VALUE" Name="ProductSerie"/>
+              </Series>
+            </Plot>
+          </Plots>
+        </Chart>
+      </Charts>
+      <Output>
+        <Path>~\output\sample9x</Path>
+        <File>sample90-file-chart</File>
+      </Output>
+    </Table>
+  </Export>
+
+  <Export Name="sample90-banner">
+    <Description>EPPlus - Some data</Description>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Some data">
+      <Location>
+        <ByCoordenates Coordenates="4 3"/>
+      </Location>
+      <Logo>
+        <Image Key="banner"/>
+        <Location>
+          <ByCoordenates/>
+        </Location>
+      </Logo>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\sample9x</Path>
+        <File>sample90-file-banner</File>
+      </Output>
+    </Table>
+  </Export>
+
+  <Export Name="sample90-headerinfo">
+    <Description>EPPlus - Some data</Description>
+    <BlockLines>
+      <Block Key="Block01">
+        <Location>
+          <ByCoordenates/>
+        </Location>
+        <Items Keys="ReportTitleLine ReportEmptyLine ReportFirstLine"/>
+      </Block>
+    </BlockLines>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Some data">
+      <Location>
+        <ByCoordenates Coordenates="2 5"/>
+      </Location>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\sample9x</Path>
+        <File>sample90-file-headerinfo</File>
+      </Output>
+    </Table>
+  </Export>
+
+</Exports>
+
+<!--<Style Name="ReportTitleStyle" Inherits ="ReportEmptyLineStyle">
+  <Content Color="#BD4F46">
+    <Alignment Horizontal="Center"/>
+    <Text/>
+  </Content>
+  <Font Name="Segoe UI" Color="White" Size="18" Bold="Yes"/>
+</Style>-->

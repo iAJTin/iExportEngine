@@ -73,7 +73,14 @@ namespace OfficeOpenXml.Style
             {
                 SentinelHelper.ArgumentNull(style);
                 SentinelHelper.ArgumentNull(model);
-            
+
+                var hasInheritStyle = !string.IsNullOrEmpty(model.Inherits);
+                if (hasInheritStyle)
+                {
+                    var inheritStyle = model.TryGetInheritStyle();
+                    model.Combine(inheritStyle);
+                }
+
                 style.Font.SetFromFont(model.Font.ToFont());
                 style.Font.Color.SetColor(model.Font.GetColor());
 

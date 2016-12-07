@@ -85,16 +85,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private StyleModel parent;
+        private StyleModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PatternModel pattern;
+        private PatternModel _pattern;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private BaseDataTypeModel dataType;
+        private BaseDataTypeModel _dataType;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ContentAlignmentModel alignment;
+        private ContentAlignmentModel _alignment;
         #endregion
 
         #region constructor/s
@@ -106,6 +106,23 @@ namespace iTin.Export.Model
             public ContentModel()
             {
                 Color = DefaultColor;
+            }
+            #endregion
+
+        #endregion
+
+        #region public static properties
+
+            #region [public] {static} (ContentModel) Default: Gets default content.
+            /// <summary>
+            /// Gets default content.
+            /// </summary>
+            /// <value>
+            /// Default content
+            /// </value>
+            public static ContentModel Default
+            {
+                get { return new ContentModel(); }
             }
             #endregion
 
@@ -230,11 +247,11 @@ namespace iTin.Export.Model
             {
                 get
                 {
-                    return alignment ?? (alignment = new ContentAlignmentModel());
+                    return _alignment ?? (_alignment = ContentAlignmentModel.Default);
                 }
                 set
                 {
-                    alignment = value;
+                    _alignment = value;
                 }
             }
             #endregion
@@ -244,11 +261,11 @@ namespace iTin.Export.Model
             {
                 get
                 {
-                    return pattern ?? (pattern = new PatternModel());
+                    return _pattern ?? (_pattern = new PatternModel());
                 }
                 set
                 {
-                    pattern = value;
+                    _pattern = value;
                 }
             }
             #endregion
@@ -347,26 +364,26 @@ namespace iTin.Export.Model
             {
                 get
                 {
-                    if (dataType != null)
+                    if (_dataType != null)
                     {
-                        dataType.SetParent(this);
+                        _dataType.SetParent(this);
                     }
                     else
                     {
                         if (Parent.Inherits == null)
                         {
-                            dataType = new TextDataTypeModel();
+                            _dataType = new TextDataTypeModel();
                         }
                         
                     }
 
-                    return dataType;                    
+                    return _dataType;                    
                 }
                 set
                 {
                     if (value != null)
                     {
-                        dataType = value;
+                        _dataType = value;
                     }
                 }
             }
@@ -383,10 +400,9 @@ namespace iTin.Export.Model
             [Browsable(false)]
             public StyleModel Parent
             {
-                get { return parent; }
+                get { return _parent; }
             }
             #endregion
-
 
         #endregion
 
@@ -445,37 +461,37 @@ namespace iTin.Export.Model
                 }
 
                 var referenceDataType = reference.DataType;
-                if (dataType == null)
+                if (_dataType == null)
                 {
                     switch (referenceDataType.Type)
                     {
                         case KnownDataType.Currency:
-                            dataType = new CurrencyDataTypeModel();
+                            _dataType = new CurrencyDataTypeModel();
                             break;
 
                         case KnownDataType.Datetime:
-                            dataType = new DatetimeDataTypeModel();
+                            _dataType = new DatetimeDataTypeModel();
                             break;
 
                         case KnownDataType.Numeric:
-                            dataType = new NumberDataTypeModel();
+                            _dataType = new NumberDataTypeModel();
                             break;
 
                         case KnownDataType.Percentage:
-                            dataType = new PercentageDataTypeModel();
+                            _dataType = new PercentageDataTypeModel();
                             break;
 
                         case KnownDataType.Scientific:
-                            dataType = new ScientificDataTypeModel();
+                            _dataType = new ScientificDataTypeModel();
                             break;
 
                         default:
-                            dataType = new TextDataTypeModel();
+                            _dataType = new TextDataTypeModel();
                             break;
                     }                  
                 }
 
-                if (dataType.Type.Equals(referenceDataType.Type))
+                if (_dataType.Type.Equals(referenceDataType.Type))
                 {
                     DataType.Combine(referenceDataType);
                 }
@@ -526,7 +542,7 @@ namespace iTin.Export.Model
             /// <param name="reference">Reference to parent.</param>
             internal void SetParent(StyleModel reference)
             {
-                parent = reference;
+                _parent = reference;
             }
             #endregion
 

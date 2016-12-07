@@ -229,9 +229,15 @@ namespace iTin.Export.Model
                     _name = value;
                 }
             }
-            #endregion
+        #endregion
 
             #region [public] (string) Inherits: Gets or sets the name of parent style.
+            /// <summary>
+            /// Gets or sets the name of parent style.
+            /// </summary>
+            /// <value>
+            /// The name of parent style.
+            /// </value>
             [XmlAttribute]
             [DefaultValue("")]
             public string Inherits
@@ -291,19 +297,6 @@ namespace iTin.Export.Model
             {
                 get
                 {
-                    if (!string.IsNullOrEmpty(Inherits))
-                    {
-                        if (InheritStyle != Empty)
-                        {
-                            if (_borders == null)
-                            {
-                                _borders = new BordersModel(this);
-                            }
-                            
-                            _borders.Combine(InheritStyle.Borders);
-                        }
-                    }
-
                     return _borders ?? (_borders = new BordersModel(this));
                 }
                 set
@@ -353,17 +346,9 @@ namespace iTin.Export.Model
             {
                 get
                 {
-                    if (!string.IsNullOrEmpty(Inherits))
-                    {
-                        if (InheritStyle != Empty)
-                        {
-                            _content.Combine(InheritStyle.Content);
-                        }
-                    }
-
                     if (_content == null)
                     {
-                        _content = new ContentModel();
+                        _content = ContentModel.Default;
                     }
 
                     _content.SetParent(this);
@@ -417,20 +402,7 @@ namespace iTin.Export.Model
             {
                 get
                 {
-                    if (!string.IsNullOrEmpty(Inherits))
-                    {
-                        if (InheritStyle != Empty)
-                        {
-                            if (_font == null)
-                            {
-                                _font = new FontModel();
-                            }
-                            
-                           _font.Combine(InheritStyle.Font);
-                        }
-                    }
-
-                    return _font ?? (_font = new FontModel());
+                    return _font ?? (_font = FontModel.Default);
                 }
                 set
                 {
@@ -560,7 +532,12 @@ namespace iTin.Export.Model
 
                 if (forceInherits)
                 {
-                    Inherits = reference.Inherits;
+                    var hasInheritStyle = !string.IsNullOrEmpty(reference.Inherits);
+                    if (hasInheritStyle)
+                    {
+                        var inheritStyle = reference.TryGetInheritStyle();
+                        reference.Combine(inheritStyle);
+                    }
                 }
 
                 Borders.Combine(reference.Borders);
@@ -577,6 +554,17 @@ namespace iTin.Export.Model
             internal void SetOwner(StylesModel reference)
             {
                 _owner = reference;
+            }
+            #endregion
+
+            #region [public] (StyleModel) TryGetInheritStyle(): Try gets a reference to inherit model.
+            /// <summary>
+            /// Try gets a reference to inherit model.
+            /// </summary>
+            /// <returns>A inherit style.</returns>
+            public StyleModel TryGetInheritStyle()
+            {
+                return InheritStyle;
             }
             #endregion
 

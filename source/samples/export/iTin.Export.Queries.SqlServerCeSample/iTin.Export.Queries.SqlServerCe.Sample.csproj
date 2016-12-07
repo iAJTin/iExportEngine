@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductXmlSample.cs" />
+    <Compile Include="Sample9XSample.cs" />
     <Compile Include="model\InvoiceEnumerableSample.cs" />
     <Compile Include="model\InvoiceXmlSample.cs" />
     <Compile Include="model\InvoiceArrayListSample.cs" />
@@ -67,10 +67,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\configuration\Sample_9-1.xml">
+    <Content Include="resources\configuration\Sample92.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ProductConfigurationFile.xml">
+    <Content Include="resources\configuration\Sample91.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\Sample90.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\InvoiceConfigurationFile.xml">
@@ -95,10 +98,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="output\arraylist\" />
-    <Folder Include="output\dataset\" />
-    <Folder Include="output\enumerable\" />
-    <Folder Include="output\xml\" />
+    <Folder Include="output\sample9x\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\library\iTin.Export.Core\iTin.Export.Core.csproj">

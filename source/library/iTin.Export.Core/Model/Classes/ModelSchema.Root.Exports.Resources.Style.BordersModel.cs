@@ -77,12 +77,14 @@ namespace iTin.Export.Model
                         foreach (var referenceBorder in reference)
                         {
                             var border = GetBy(referenceBorder.Position);
-                            if (border == null)
+                            if (border != null)
                             {
-                                var newBorder = referenceBorder.Clone();
-                                newBorder.SetOwner(this);
-                                Add(newBorder);
+                                continue;
                             }
+
+                            var newBorder = referenceBorder.Clone();
+                            newBorder.SetOwner(this);
+                            Add(newBorder);
                         }
                     }
                 }

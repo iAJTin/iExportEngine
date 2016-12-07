@@ -211,15 +211,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                                 var valueLenght = value.FormattedValue.Length;
 
                                 var cell = worksheet.Cells[y + row, x + col];
-                                if (value.IsNumeric)
-                                {
-                                    cell.Value = decimal.Parse(value.FormattedValue);
-                                }
-                                else
-                                {
-                                    cell.Value = value.FormattedValue;
-                                }
-
+                                cell.Value = value.Value;                        
                                 cell.AddErrorComment(value);
                                 cell.StyleName = value.Style.Name ?? StyleModel.NameOfDefaultStyle;
                                 cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
@@ -303,8 +295,8 @@ namespace iTin.Export.Writers.OpenXml.Office
                                     var times = line.Repeat == 0 ? 1 : line.Repeat;
                                     for (var i = 1; i <= times; i++)
                                     {
-                                        var dx = 0;
                                         int merge;
+                                        var dx = 0;
                                         ExcelRange cell;
                                         var lineType = line.LineType;
                                         switch (lineType)
@@ -339,32 +331,39 @@ namespace iTin.Export.Writers.OpenXml.Office
                                                     merge = item.Merge;
                                                     if (merge > 0)
                                                     {
-                                                        var range = ExcelCellBase.GetAddress(blocklineY + dy, blocklineX + dx, blocklineY + dy, blocklineX + dx + merge - 1);
-                                                        cell = worksheet.Cells[range];
-                                                        cell.Merge = true; 
+                                                        var range = 
+                                                            ExcelCellBase
+                                                                .GetAddress(
+                                                                    blocklineY + dy,
+                                                                    blocklineX + dx, 
+                                                                    blocklineY + dy, 
+                                                                    blocklineX + dx + merge - 1);
+                                                        cell = worksheet.Cells[range];                                                    
+                                                        cell.Merge = true;
                                                     }
                                                     else
                                                     {
                                                         cell = worksheet.Cells[blocklineY + dy, blocklineX + dx];
                                                     }
 
-                                                    if (item.Style == null)
-                                                    {
-                                                        cell.StyleName = item.Owner.Style ?? StyleModel.Default.Name;                                                        
-                                                    }
-                                                    else
-                                                    {
-                                                        cell.StyleName = item.Style;
-                                                    }
+                                                    cell.StyleName = 
+                                                        string.IsNullOrEmpty(item.Style)
+                                                            ? (item.Owner.Style ?? StyleModel.Default.Name)
+                                                            : item.Style;
 
                                                     var text = GetValueByReflection(item.Value);
                                                     cell.Value = text;
-                                                    dx++;
-                                                }
 
-                                                break;
-                                        }                                           
-                                    
+                                                    dx++;
+                                                    if (merge > 0)
+                                                    {
+                                                        dx += merge - 1;
+                                                    }
+                                            }
+
+                                            break;
+                                        }  
+                                                                             
                                         dy++;
                                     }
                                 }                                    

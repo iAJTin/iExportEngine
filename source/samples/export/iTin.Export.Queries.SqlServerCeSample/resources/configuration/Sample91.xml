@@ -7,45 +7,56 @@
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
-        <Content Color="Blue">
+        <Content Color="#D7EEF7">
           <Text/>
         </Content>
-        <Font Color="White" Bold="Yes"/>
+        <Font Bold="Yes"/>
+      </Style>
+      <Style Name="AggregateStyle" Inherits="HeaderStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="1"/>
+        </Content>
       </Style>
       <Style Name="ValueTextStyle">
-        <Content>
+        <Content Color="#B6DDE9">
           <Text/>
         </Content>
       </Style>   
-      <Style Name="NumericStandardStyle">
+      <Style Name="DateTimeStandardWithBorderStyle" Inherits="ValueTextStyle">
         <Content>
+          <Text/>
+        </Content>
+      </Style>
+      <Style Name="NumericStandardStyle">
+        <Content Color="#B6DDE9">
           <Alignment Horizontal="Right"/>
-          <Number/>
+          <Number Decimals="1"/>
         </Content>
       </Style>
       <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
         <Borders>
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
-        <Content>
+        <Content Color="#B6DDE9">
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content>
+        <Content Color="#B6DDE9">
           <Number Decimals="0"/>
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
-        <Content>
-          <Number Decimals="0"/>
+        <Content Color="#B6DDE9">
+          <Number Decimals="1"/>
         </Content>
       </Style>
     </Styles>
   </Global.Resources>
 
-  <Export Name="epplus-xlsx" Current="Yes">
+  <Export Name="sample91" Current="Yes">
     <Description>Sample 9.1 - A table linked to a stacked area chart</Description>
     <Table Host="xlsx"
            Name="Sales"
@@ -58,42 +69,42 @@
       <Fields>
         <Field Name="Period" Alias="Period">
           <Header Style="HeaderStyle"/>
-          <Value Style="ValueTextStyle"/>
-          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+          <Value Style="DateTimeStandardWithBorderStyle"/>
+          <Aggregate Location="Bottom" Type="Text" Style="HeaderStyle" Text="Total" Show="Yes"/>
         </Field>
         <Field Name="EUROPE" Alias="Europe">
           <Header Style="HeaderStyle"/>
-          <Value Style="ValueTextStyle"/>
-          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="AFRICA" Alias="Africa">
           <Header Style="HeaderStyle"/>
-          <Value Style="NumericWithoutDecimalsStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="ASIA" Alias="Asia">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="NORTHAMERICA" Alias="North America">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="SOUTHAMERICA" Alias="South America">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="AUSTRALIA" Alias="Australia">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
       </Fields>
       <Charts>
-        <Chart>
+        <Chart Size="800 600">
           <Location>
             <ByCoordenates Coordenates="8 1"/>
           </Location>
@@ -101,10 +112,20 @@
             <Border Show="Yes"/>
             <Font Size="12" Bold="Yes"/>
           </Legend>
+          <Axes>
+            <Primary>
+              <Values GridLines="Major"/>
+            </Primary>
+          </Axes>
           <Plots>
             <Plot Name="plot1">
               <Series>
-                <Serie Type="AreaStacked3D" Axis="Period" Field="EUROPE" Name="Europe" Color="Blue"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="EUROPE" Name="Europe" Color="#285A8F"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AFRICA" Name="AFRICA" Color="#336EA9"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="ASIA" Name="ASIA" Color="#3572B1"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="NORTHAMERICA" Name="NORTHAMERICA" Color="#628AC5"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="SOUTHAMERICA" Name="SOUTHAMERICA" Color="#93ADCD"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AUSTRALIA" Name="AUSTRALIA" Color="#BCCCDE"/>
               </Series>
             </Plot>
           </Plots>
