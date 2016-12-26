@@ -98,7 +98,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="output\sample9x\" />
+    <Folder Include="output\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\library\iTin.Export.Core\iTin.Export.Core.csproj">

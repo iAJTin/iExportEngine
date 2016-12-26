@@ -26,13 +26,13 @@ namespace iTin.Export.ComponentModel
 
         #region Field Members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly Collection<byte[]> result;
+        private readonly Collection<byte[]> _result;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly WriterExtendedInformation extendedInformation;
+        private readonly WriterExtendedInformation _extendedInformation;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private bool disposed;
+        private bool _disposed;
         #endregion
 
         #region Constructor/s
@@ -43,8 +43,8 @@ namespace iTin.Export.ComponentModel
             /// </summary>
             protected BaseWriter()
             {
-                result = new Collection<byte[]>();
-                extendedInformation = new WriterExtendedInformation(this);
+                _result = new Collection<byte[]>();
+                _extendedInformation = new WriterExtendedInformation(this);
             }
             #endregion
 
@@ -74,7 +74,7 @@ namespace iTin.Export.ComponentModel
             /// </value>
             public WriterExtendedInformation ExtendedInformation
             {
-                get { return extendedInformation; }
+                get { return _extendedInformation; }
             }
             #endregion
 
@@ -223,7 +223,7 @@ namespace iTin.Export.ComponentModel
             /// </value>
             protected Collection<byte[]> Result 
             {
-                get { return result; }
+                get { return _result; }
             }
         #endregion
 
@@ -346,7 +346,6 @@ namespace iTin.Export.ComponentModel
                 {
                     return value;
                 }
-
 
                 var assemblies = new List<Assembly> { this.GetType().Assembly };
                 var references = DataModel.References;
@@ -540,7 +539,7 @@ namespace iTin.Export.ComponentModel
             private void Dispose(bool disposing)
             {
                 // Check to see if Dispose has already been called.
-                if (disposed)
+                if (_disposed)
                 {
                     return;
                 }
@@ -557,7 +556,7 @@ namespace iTin.Export.ComponentModel
                 ReleaseUnmanagedResources();
 
                 // Note disposing has been done.
-                disposed = true;
+                _disposed = true;
             }
             #endregion
 

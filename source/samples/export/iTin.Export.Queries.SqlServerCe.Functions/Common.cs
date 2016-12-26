@@ -14,7 +14,8 @@ namespace iTin.Export.Queries.SqlServerCe.Functions
         {
             get
             {
-                return DateTime.Now.AddDays(2);
+                return DateTime.Now;
+                
             }
         }
 
@@ -29,38 +30,6 @@ namespace iTin.Export.Queries.SqlServerCe.Functions
             get
             {
                 return DateTime.Now.TimeOfDay;
-            }
-        }
-
-        public static string GetXlsxExportDescription
-        {
-            get
-            {
-                return "Employee query sample";
-            }
-        }
-
-        public static string GetEmployeeIdFieldName
-        {
-            get
-            {
-                return "EmployeeId";
-            }
-        }
-
-        public static string GetEmailFieldName
-        {
-            get
-            {
-                return "Email";
-            }
-        }
-
-        public static string GetEmployeeIdHeaderStyleName
-        {
-            get
-            {
-                return "HeaderStyle";
             }
         }
     }

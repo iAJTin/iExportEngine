@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
- 
+
+  <References>
+    <Reference Path="~\Resources\Functions\" Assembly="iTin.Export.Queries.SqlServerCe.Functions"/>
+  </References>
+
   <Global.Resources>
     <Hosts>
       <Host Key="xlsx"/>
@@ -77,9 +81,17 @@
         <Text Merge="7">EPPlus demo samples </Text>
       </TextLine>
       <TextLine Key="ReportFirstLine" Style="FirstLineStyle">
-       <Text>Date:</Text>
-       <Text Merge="6">{Bind:GetCurrentDatetime}</Text>
-     </TextLine>
+        <Text>Date:</Text>
+        <Text Merge="6">2016-12-24</Text>
+      </TextLine>
+      <TextLine Key="ReportFirstLineBuiltInFunctions" Style="FirstLineStyle">
+        <Text>Date:</Text>
+        <Text Merge="6">{Bind:GetCurrentDatetime}</Text>
+      </TextLine>
+      <TextLine Key="ReportFirstLineFromCustomFunctions" Style="FirstLineStyle">
+        <Text>Date:</Text>
+        <Text Merge="6">{Bind:Common.GetCurrentDatetime}</Text>
+      </TextLine>
     </Lines>
   </Global.Resources>
 
@@ -121,7 +133,7 @@
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\sample9x</Path>
+        <Path>~\output\sample9x\fromconfigfile</Path>
         <File>sample90-file</File>
       </Output>
     </Table>
@@ -187,7 +199,7 @@
         </Chart>
       </Charts>
       <Output>
-        <Path>~\output\sample9x</Path>
+        <Path>~\output\sample9x\fromconfigfile</Path>
         <File>sample90-file-chart</File>
       </Output>
     </Table>
@@ -240,7 +252,7 @@
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\sample9x</Path>
+        <Path>~\output\sample9x\fromconfigfile</Path>
         <File>sample90-file-banner</File>
       </Output>
     </Table>
@@ -295,18 +307,120 @@
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\sample9x</Path>
+        <Path>~\output\sample9x\fromconfigfile</Path>
         <File>sample90-file-headerinfo</File>
       </Output>
     </Table>
   </Export>
 
-</Exports>
+  <Export Name="sample90-headerinfo-built-in-functions">
+    <Description>EPPlus - Built-in functions</Description>
+    <BlockLines>
+      <Block Key="Block01">
+        <Location>
+          <ByCoordenates/>
+        </Location>
+        <Items Keys="ReportTitleLine ReportEmptyLine ReportFirstLineBuiltInFunctions"/>
+      </Block>
+    </BlockLines>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Some data">
+      <Location>
+        <ByCoordenates Coordenates="2 5"/>
+      </Location>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\sample9x\fromconfigfile</Path>
+        <File>sample90-headerinfo-built-in-functions</File>
+      </Output>
+    </Table>
+  </Export>
 
-<!--<Style Name="ReportTitleStyle" Inherits ="ReportEmptyLineStyle">
-  <Content Color="#BD4F46">
-    <Alignment Horizontal="Center"/>
-    <Text/>
-  </Content>
-  <Font Name="Segoe UI" Color="White" Size="18" Bold="Yes"/>
-</Style>-->
+  <Export Name="sample90-headerinfo-custom-functions">
+    <Description>EPPlus - Built-in functions</Description>
+    <BlockLines>
+      <Block Key="Block01">
+        <Location>
+          <ByCoordenates/>
+        </Location>
+        <Items Keys="ReportTitleLine ReportEmptyLine ReportFirstLineFromCustomFunctions"/>
+      </Block>
+    </BlockLines>
+    <Table Host="xlsx"
+           Name="Product"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="EPPlus - Some data">
+      <Location>
+        <ByCoordenates Coordenates="2 5"/>
+      </Location>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericWithoutDecimalsStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\sample9x\fromconfigfile</Path>
+        <File>sample90-headerinfo-custom-functions</File>
+      </Output>
+    </Table>
+  </Export>
+
+</Exports>
