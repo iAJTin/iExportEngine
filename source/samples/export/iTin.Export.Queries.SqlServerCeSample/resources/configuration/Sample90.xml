@@ -148,7 +148,7 @@
            Alias="EPPlus - Some data and a pie chart">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>          
-      </Exporter>
+      </Exporter>plot1
       <Fields>
         <Field Name="ID" Alias="Id">
           <Header Style="HeaderStyle"/>

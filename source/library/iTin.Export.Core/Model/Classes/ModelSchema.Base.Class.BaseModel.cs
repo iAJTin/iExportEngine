@@ -317,7 +317,8 @@ namespace iTin.Export.Model
                             .Replace("<Headers />", string.Empty)
                             .Replace("<Footer />", string.Empty)
                             .Replace("<Charts />", string.Empty)
-                            .Replace("<Charts />", string.Empty)
+                            .Replace("<Plots />", string.Empty)
+                            .Replace("<Series />", string.Empty)
                             .Replace("<Aggregate />", string.Empty);
                     var xmlFile = new FileInfo(fileName);
 
@@ -329,7 +330,7 @@ namespace iTin.Export.Model
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw;
                 }
             }
             #endregion
