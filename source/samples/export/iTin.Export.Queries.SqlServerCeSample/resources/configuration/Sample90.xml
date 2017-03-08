@@ -206,7 +206,7 @@
   </Export>
 
   <Export Name="sample90-banner">
-    <Description>EPPlus - Some data</Description>
+    <Description>EPPlus - Some data with banner</Description>
     <Table Host="xlsx"
            Name="Product"
            AutoFilter="Yes"
@@ -259,7 +259,7 @@
   </Export>
 
   <Export Name="sample90-headerinfo">
-    <Description>EPPlus - Some data</Description>
+    <Description>EPPlus - Some data with header</Description>
     <BlockLines>
       <Block Key="Block01">
         <Location>
@@ -272,7 +272,7 @@
            Name="Product"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
-           Alias="EPPlus - Some data">
+           Alias="EPPlus - Some data with header">
       <Location>
         <ByCoordenates Coordenates="2 5"/>
       </Location>
@@ -369,7 +369,7 @@
   </Export>
 
   <Export Name="sample90-headerinfo-custom-functions">
-    <Description>EPPlus - Built-in functions</Description>
+    <Description>EPPlus - custom functions</Description>
     <BlockLines>
       <Block Key="Block01">
         <Location>

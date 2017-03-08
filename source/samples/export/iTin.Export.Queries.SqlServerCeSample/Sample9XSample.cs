@@ -8,7 +8,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
     public class Sample9XSample
     {
         private const string EpplusHeader          = " 9 - EPPlus samples";
-        private const string OneStepText           = " a. Read data from file";
+        private const string OneStepText           = " a. Read data from xml file";
         private const string TwoStepText           = " b. Export data";
         private const string ThreeStepText         = "   . MS Excel (xlsx)";
         private const string FourStepText          = "     - From code";
@@ -35,12 +35,29 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
 
             Console.WriteLine(FourStepText);
             Console.WriteLine(FirstSampleStepText);
-            var sample90ModelConfiguration = CreateSample90Model();
-            export.Export(ExportSettings.CreateFromModel(sample90ModelConfiguration, "sample90"));
+            //var sample90ModelConfiguration = CreateSample90Model();
+            //export.Export(ExportSettings.CreateFromModel(sample90ModelConfiguration, "sample90"));
 
-            //Console.WriteLine(SecondSampleStepText);
-            //var sample90ChartModelConfiguration = CreateChartSample90Model();
-            //export.Export(ExportSettings.CreateFromModel(sample90ChartModelConfiguration, "sample90-chart"));
+            Console.WriteLine(SecondSampleStepText);
+            var sample90ChartModelConfiguration = CreateChartSample90Model();
+            export.Export(ExportSettings.CreateFromModel(sample90ChartModelConfiguration, "sample90-chart"));
+
+            Console.WriteLine(ThirdSampleStepText);
+            var sample90BannerModelConfiguration = CreateBannerSample90Model();
+            export.Export(ExportSettings.CreateFromModel(sample90BannerModelConfiguration, "sample90-banner"));
+
+            Console.WriteLine(FourthSampleStepText);
+            var sample90HeaderInfoModelConfiguration = CreateHeaderInfoSample90Model();
+            export.Export(ExportSettings.CreateFromModel(sample90HeaderInfoModelConfiguration, "sample90-headerinfo"));
+
+            Console.WriteLine(FifthSampleStepText);
+            var sample90HeaderInfoBuiltInFunctionsModelConfiguration = CreateHeaderInfoBuiltInFunctionsSample90Model();
+            export.Export(ExportSettings.CreateFromModel(sample90HeaderInfoBuiltInFunctionsModelConfiguration, "sample90-headerinfo-built-in-functions"));
+
+            Console.WriteLine(SixthSampleStepText);
+            var sample90HeaderInfoCustomFunctionsModelConfiguration = CreateHeaderInfoCustomFunctionsSample90Model();
+            export.Export(ExportSettings.CreateFromModel(sample90HeaderInfoCustomFunctionsModelConfiguration, "sample90-headerinfo-custom-functions"));
+
 
             Console.WriteLine(FiveStepText);
             Console.WriteLine(FirstSampleStepText);
@@ -409,408 +426,828 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
                 };
         }
 
+        private static ExportsModel CreateBannerSample90Model()
+        {
+            return
+                new ExportsModel
+                {
+                    Resources =
+                    {
+                        Hosts = {new HostModel {Key = "xlsx"}},
+                        Images =
+                        {
+                            new ImageModel
+                            {
+                                Key = "banner",
+                                Path = @"~\resources\images\banner-careers.png",
+                                Effects = { new OpacityEffectModel { Percent = 70f } },
+                            },
+                        },
+                        Styles =
+                        {
+                            new StyleModel
+                            {
+                                Name = "HeaderStyle",
+                                Content = {Color = "Navy"},
+                                Font = new FontModel {Color = "White", Bold = YesNo.Yes}
+                            },
+                            new StyleModel {Name = "ValueTextStyle"},
+                            new StyleModel
+                            {
+                                Name = "NumericStandardStyle",
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericStandardWithBorderStyle",
+                                Inherits = "NumericStandardStyle",
+                                Borders =
+                                {
+                                    new BorderModel
+                                    {
+                                        Color = "Black",
+                                        Position = KnownBorderPosition.Top,
+                                        Weight = KnownWidthLineStyle.Thin,
+                                        LineStyle = KnownBorderLineStyle.Continuous
+                                    }
+                                },
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsStyle",
+                                Inherits = "NumericStandardStyle",
+                                Content = {DataType = new NumberDataTypeModel {Decimals = 0}}
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsWithBorderStyle",
+                                Inherits = "NumericStandardWithBorderStyle",
+                                Content = { DataType = new NumberDataTypeModel { Decimals = 0 } }
+                            }
+                        }
+                    },
+                    Items =
+                    {
+                        new ExportModel
+                        {
+                            Name = "sample90-banner",
+                            Current = YesNo.Yes,
+                            Description = "EPPlus - Some data with banner",
+                            Table = new TableModel
+                            {
+                                Host = "xlsx",
+                                Name = "Product",
+                                AutoFilter = YesNo.Yes,
+                                ShowGridLines = YesNo.No,
+                                AutoFitColumns = YesNo.Yes,
+                                Alias = "EPPlus - Some data",
+                                Exporter = {Current = new WriterModel {Name = "XlsxTabularWriter"}},
+                                Output = {Path = @"~\output\sample9x\fromcode", File = "sample90-file-banner"},
+                                Location = { Mode= new CoordenatesModel { Coordenates = new[] { 4, 3} } },
+                                Logo =
+                                {
+                                    Image = { Key = "banner" },
+                                    Location = { Mode= new CoordenatesModel() }
+                                },
+                                Fields =
+                                {
+                                    new DataFieldModel
+                                    {
+                                        Name = "ID",
+                                        Alias = "Id",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRODUCT",
+                                        Alias = "Product",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "QUANTITY",
+                                        Alias = "Quantity",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericWithoutDecimalsStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRICE",
+                                        Alias = "Price",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "VALUE",
+                                        Alias = "Value",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+        }
+
+        private static ExportsModel CreateHeaderInfoSample90Model()
+        {
+            return
+                new ExportsModel
+                {
+                    Resources =
+                    {
+                        Hosts = {new HostModel {Key = "xlsx"}},
+                        Styles =
+                        {
+                            new StyleModel
+                            {
+                                Name = "HeaderStyle",
+                                Content = {Color = "Navy"},
+                                Font = new FontModel {Color = "White", Bold = YesNo.Yes}
+                            },
+                            new StyleModel {Name = "ValueTextStyle"},
+                            new StyleModel
+                            {
+                                Name = "NumericStandardStyle",
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericStandardWithBorderStyle",
+                                Inherits = "NumericStandardStyle",
+                                Borders =
+                                {
+                                    new BorderModel
+                                    {
+                                        Color = "Black",
+                                        Position = KnownBorderPosition.Top,
+                                        Weight = KnownWidthLineStyle.Thin,
+                                        LineStyle = KnownBorderLineStyle.Continuous
+                                    }
+                                },
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsStyle",
+                                Inherits = "NumericStandardStyle",
+                                Content = {DataType = new NumberDataTypeModel {Decimals = 0}}
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsWithBorderStyle",
+                                Inherits = "NumericStandardWithBorderStyle",
+                                Content = { DataType = new NumberDataTypeModel { Decimals = 0 } }
+                            },
+                            new StyleModel
+                            {
+                                Name = "EmptyLineStyle",
+                                Content =
+                                {
+                                    Color = "#BD4F46",
+                                    Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Center },
+                                },
+                                Font = new FontModel { Name = "Segoe UI", Color = "White" }
+                            },
+                            new StyleModel
+                            {
+                                Name = "TitleLineStyle",
+                                Inherits = "EmptyLineStyle",
+                                Content = { Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left } },
+                                Font = new FontModel { Size = 18f, Bold = YesNo.Yes }
+                            },
+                            new StyleModel
+                            {
+                                Name = "FirstLineStyle",
+                                Content =
+                                {
+                                    Color = "#BD4F46",
+                                    Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left },
+                                    DataType = new DatetimeDataTypeModel { Format=KnownDatetimeFormat.ShortDatePattern, Locale=KnownCulture.enUS }
+                                },
+                                Font = new FontModel { Name = "Segoe UI", Color = "White" }
+                            },
+                        },
+                        Lines =
+                        {
+                            new EmptyLineModel
+                            {
+                                Key = "ReportEmptyLine",
+                                Style = "EmptyLineStyle",
+                                Merge = 7
+                            },
+                            new TextLineModel
+                            {
+                                Key = "ReportTitleLine",
+                                Style = "TitleLineStyle",
+                                Items = { new TextModel { Merge = 7, Value = "EPPlus demo samples" } }
+                            },
+                            new TextLineModel
+                            {
+                                Key = "ReportFirstLine",
+                                Style = "FirstLineStyle",
+                                Items =
+                                {
+                                    new TextModel { Value = "Date:" },
+                                    new TextModel { Merge = 6, Value = "2017-01-01" }
+                                }
+                            },
+                        }
+                    },
+                    Items =
+                    {
+                        new ExportModel
+                        {
+                            Name = "sample90-headerinfo",
+                            Current = YesNo.Yes,
+                            Description = "EPPlus - Some data with header",
+                            BlockLines =
+                            {
+                                new BlockLineModel
+                                {
+                                    Key = "Block01",
+                                    Location = { Mode= new CoordenatesModel() },
+                                    Items = { Keys = { "ReportTitleLine", "ReportEmptyLine", "ReportFirstLine" } }
+                                }
+                            },
+                            Table = new TableModel
+                            {
+                                Host = "xlsx",
+                                Name = "Product",
+                                AutoFilter = YesNo.Yes,
+                                ShowGridLines = YesNo.No,
+                                AutoFitColumns = YesNo.Yes,
+                                Alias = "EPPlus - Some data with header",
+                                Exporter = {Current = new WriterModel {Name = "XlsxTabularWriter"}},
+                                Output = {Path = @"~\output\sample9x\fromcode", File = "sample90-file-headerinfo"},
+                                Location = { Mode= new CoordenatesModel { Coordenates = new[] { 2, 5} } },
+                                Fields =
+                                {
+                                    new DataFieldModel
+                                    {
+                                        Name = "ID",
+                                        Alias = "Id",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRODUCT",
+                                        Alias = "Product",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "QUANTITY",
+                                        Alias = "Quantity",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericWithoutDecimalsStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRICE",
+                                        Alias = "Price",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "VALUE",
+                                        Alias = "Value",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+        }
+
+        private static ExportsModel CreateHeaderInfoBuiltInFunctionsSample90Model()
+        {
+            return
+                new ExportsModel
+                {
+                    Resources =
+                    {
+                        Hosts = {new HostModel {Key = "xlsx"}},
+                        Styles =
+                        {
+                            new StyleModel
+                            {
+                                Name = "HeaderStyle",
+                                Content = {Color = "Navy"},
+                                Font = new FontModel {Color = "White", Bold = YesNo.Yes}
+                            },
+                            new StyleModel {Name = "ValueTextStyle"},
+                            new StyleModel
+                            {
+                                Name = "NumericStandardStyle",
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericStandardWithBorderStyle",
+                                Inherits = "NumericStandardStyle",
+                                Borders =
+                                {
+                                    new BorderModel
+                                    {
+                                        Color = "Black",
+                                        Position = KnownBorderPosition.Top,
+                                        Weight = KnownWidthLineStyle.Thin,
+                                        LineStyle = KnownBorderLineStyle.Continuous
+                                    }
+                                },
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsStyle",
+                                Inherits = "NumericStandardStyle",
+                                Content = {DataType = new NumberDataTypeModel {Decimals = 0}}
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsWithBorderStyle",
+                                Inherits = "NumericStandardWithBorderStyle",
+                                Content = { DataType = new NumberDataTypeModel { Decimals = 0 } }
+                            },
+                            new StyleModel
+                            {
+                                Name = "EmptyLineStyle",
+                                Content =
+                                {
+                                    Color = "#BD4F46",
+                                    Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Center },
+                                },
+                                Font = new FontModel { Name = "Segoe UI", Color = "White" }
+                            },
+                            new StyleModel
+                            {
+                                Name = "TitleLineStyle",
+                                Inherits = "EmptyLineStyle",
+                                Content = { Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left } },
+                                Font = new FontModel { Size = 18f, Bold = YesNo.Yes }
+                            },
+                            new StyleModel
+                            {
+                                Name = "FirstLineStyle",
+                                Content =
+                                {
+                                    Color = "#BD4F46",
+                                    Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left },
+                                    DataType = new DatetimeDataTypeModel { Format=KnownDatetimeFormat.ShortDatePattern, Locale=KnownCulture.enUS }
+                                },
+                                Font = new FontModel { Name = "Segoe UI", Color = "White" }
+                            },
+                        },
+                        Lines =
+                        {
+                            new EmptyLineModel
+                            {
+                                Key = "ReportEmptyLine",
+                                Style = "EmptyLineStyle",
+                                Merge = 7
+                            },
+                            new TextLineModel
+                            {
+                                Key = "ReportTitleLine",
+                                Style = "TitleLineStyle",
+                                Items = { new TextModel { Merge = 7, Value = "EPPlus demo samples" } }
+                            },
+                            new TextLineModel
+                            {
+                                Key = "ReportFirstLineBuiltInFunctions",
+                                Style = "FirstLineStyle",
+                                Items =
+                                {
+                                    new TextModel { Value = "Date:" },
+                                    new TextModel { Merge = 6, Value = "{Bind:GetCurrentDatetime}" }
+                                }
+                            },
+                        }
+                    },
+                    Items =
+                    {
+                        new ExportModel
+                        {
+                            Name = "sample90-headerinfo-built-in-functions",
+                            Current = YesNo.Yes,
+                            Description = "EPPlus - Built-in functions",
+                            BlockLines =
+                            {
+                                new BlockLineModel
+                                {
+                                    Key = "Block01",
+                                    Location = { Mode= new CoordenatesModel() },
+                                    Items = { Keys = { "ReportTitleLine", "ReportEmptyLine", "ReportFirstLineBuiltInFunctions" } }
+                                }
+                            },
+                            Table = new TableModel
+                            {
+                                Host = "xlsx",
+                                Name = "Product",
+                                AutoFilter = YesNo.Yes,
+                                ShowGridLines = YesNo.No,
+                                AutoFitColumns = YesNo.Yes,
+                                Alias = "EPPlus - Built-in functions",
+                                Exporter = {Current = new WriterModel {Name = "XlsxTabularWriter"}},
+                                Output = {Path = @"~\output\sample9x\fromcode", File = "sample90-headerinfo-built-in-functions"},
+                                Location = { Mode= new CoordenatesModel { Coordenates = new[] { 2, 5} } },
+                                Fields =
+                                {
+                                    new DataFieldModel
+                                    {
+                                        Name = "ID",
+                                        Alias = "Id",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRODUCT",
+                                        Alias = "Product",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "QUANTITY",
+                                        Alias = "Quantity",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericWithoutDecimalsStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRICE",
+                                        Alias = "Price",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "VALUE",
+                                        Alias = "Value",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+        }
+
+        private static ExportsModel CreateHeaderInfoCustomFunctionsSample90Model()
+        {
+            return
+                new ExportsModel
+                {
+                    References =
+                    {
+                        new ReferenceModel { Path = @"~\Resources\Functions\", Assembly="iTin.Export.Queries.SqlServerCe.Functions" }
+                    },
+                    Resources =
+                    {
+                        Hosts = {new HostModel {Key = "xlsx"}},
+                        Styles =
+                        {
+                            new StyleModel
+                            {
+                                Name = "HeaderStyle",
+                                Content = {Color = "Navy"},
+                                Font = new FontModel {Color = "White", Bold = YesNo.Yes}
+                            },
+                            new StyleModel {Name = "ValueTextStyle"},
+                            new StyleModel
+                            {
+                                Name = "NumericStandardStyle",
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericStandardWithBorderStyle",
+                                Inherits = "NumericStandardStyle",
+                                Borders =
+                                {
+                                    new BorderModel
+                                    {
+                                        Color = "Black",
+                                        Position = KnownBorderPosition.Top,
+                                        Weight = KnownWidthLineStyle.Thin,
+                                        LineStyle = KnownBorderLineStyle.Continuous
+                                    }
+                                },
+                                Content =
+                                {
+                                    Alignment = new ContentAlignmentModel {Horizontal = KnownHorizontalAlignment.Right},
+                                    DataType = new NumberDataTypeModel()
+                                }
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsStyle",
+                                Inherits = "NumericStandardStyle",
+                                Content = {DataType = new NumberDataTypeModel {Decimals = 0}}
+                            },
+                            new StyleModel
+                            {
+                                Name = "NumericWithoutDecimalsWithBorderStyle",
+                                Inherits = "NumericStandardWithBorderStyle",
+                                Content = { DataType = new NumberDataTypeModel { Decimals = 0 } }
+                            },
+                            new StyleModel
+                            {
+                                Name = "EmptyLineStyle",
+                                Content =
+                                {
+                                    Color = "#BD4F46",
+                                    Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Center },
+                                },
+                                Font = new FontModel { Name = "Segoe UI", Color = "White" }
+                            },
+                            new StyleModel
+                            {
+                                Name = "TitleLineStyle",
+                                Inherits = "EmptyLineStyle",
+                                Content = { Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left } },
+                                Font = new FontModel { Size = 18f, Bold = YesNo.Yes }
+                            },
+                            new StyleModel
+                            {
+                                Name = "FirstLineStyle",
+                                Content =
+                                {
+                                    Color = "#BD4F46",
+                                    Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left },
+                                    DataType = new DatetimeDataTypeModel { Format=KnownDatetimeFormat.ShortDatePattern, Locale=KnownCulture.enUS }
+                                },
+                                Font = new FontModel { Name = "Segoe UI", Color = "White" }
+                            },
+                        },
+                        Lines =
+                        {
+                            new EmptyLineModel
+                            {
+                                Key = "ReportEmptyLine",
+                                Style = "EmptyLineStyle",
+                                Merge = 7
+                            },
+                            new TextLineModel
+                            {
+                                Key = "ReportTitleLine",
+                                Style = "TitleLineStyle",
+                                Items = { new TextModel { Merge = 7, Value = "EPPlus demo samples" } }
+                            },
+                            new TextLineModel
+                            {
+                                Key = "ReportFirstLineFromCustomFunctions",
+                                Style = "FirstLineStyle",
+                                Items =
+                                {
+                                    new TextModel { Value = "Date:" },
+                                    new TextModel { Merge = 6, Value = "{Bind:Common.GetCurrentDatetime}" }
+                                }
+                            },
+                        }
+                    },
+                    Items =
+                    {
+                        new ExportModel
+                        {
+                            Name = "sample90-headerinfo-custom-functions",
+                            Current = YesNo.Yes,
+                            Description = "EPPlus - custom functions",
+                            BlockLines =
+                            {
+                                new BlockLineModel
+                                {
+                                    Key = "Block01",
+                                    Location = { Mode= new CoordenatesModel() },
+                                    Items = { Keys = { "ReportTitleLine", "ReportEmptyLine", "ReportFirstLineFromCustomFunctions" } }
+                                }
+                            },
+                            Table = new TableModel
+                            {
+                                Host = "xlsx",
+                                Name = "Product",
+                                AutoFilter = YesNo.Yes,
+                                ShowGridLines = YesNo.No,
+                                AutoFitColumns = YesNo.Yes,
+                                Alias = "EPPlus - custom functions",
+                                Exporter = {Current = new WriterModel {Name = "XlsxTabularWriter"}},
+                                Output = {Path = @"~\output\sample9x\fromcode", File = "sample90-headerinfo-custom-functions"},
+                                Location = { Mode= new CoordenatesModel { Coordenates = new[] { 2, 5} } },
+                                Fields =
+                                {
+                                    new DataFieldModel
+                                    {
+                                        Name = "ID",
+                                        Alias = "Id",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRODUCT",
+                                        Alias = "Product",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "ValueTextStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "QUANTITY",
+                                        Alias = "Quantity",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericWithoutDecimalsStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericWithoutDecimalsWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "PRICE",
+                                        Alias = "Price",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    },
+                                    new DataFieldModel
+                                    {
+                                        Name = "VALUE",
+                                        Alias = "Value",
+                                        Header = {Style = "HeaderStyle"},
+                                        Value = {Style = "NumericStandardStyle"},
+                                        Aggregate =
+                                        {
+                                            Location = KnownAggregateLocation.Bottom,
+                                            AggregateType = KnownAggregateType.Sum,
+                                            Style = "NumericStandardWithBorderStyle",
+                                            Show = YesNo.Yes
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+        }
     }
 }
-
-
-//private static ExportsModel CreateSample90Model()
-//{
-//    return
-//        new ExportsModel
-//        {
-//            Resources =
-//            {
-//                        Hosts = { new HostModel {Key = "xlsx"} },
-//                        Images = { new ImageModel { Key = "banner", Path = @"~\resources\images\banner-careers.png", Effects = {new OpacityEffectModel {Percent = 70} } } },
-//                        Styles =
-//                        {
-//                            new StyleModel { Name = "HeaderStyle", Content = { Color ="Navy"}, Font = new FontModel {Color = "White", Bold = YesNo.Yes} },
-//                            new StyleModel { Name = "ValueTextStyle" },
-//                            new StyleModel { Name = "NumericStandardStyle", Content = { Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Right }, DataType = new NumberDataTypeModel() } },
-//                            new StyleModel { Name = "NumericStandardWithBorderStyle", Inherits = "NumericStandardStyle", Borders = { new BorderModel { Color = "Black", Position = KnownBorderPosition.Top, Weight = KnownWidthLineStyle.Thin, LineStyle = KnownBorderLineStyle.Continuous } }, Content = { Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Right }, DataType = new NumberDataTypeModel() } },
-//                            new StyleModel { Name = "NumericWithoutDecimalsStyle", Inherits = "NumericStandardStyle", Content = { DataType = new NumberDataTypeModel { Decimals = 0 } } },
-//                            new StyleModel { Name = "NumericWithoutDecimalsWithBorderStyle", Inherits = "NumericStandardWithBorderStyle", Content = { DataType = new NumberDataTypeModel { Decimals = 0 } } },
-//                            new StyleModel { Name = "EmptyLineStyle", Content = { Color = "#BD4F46", Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Center }, DataType= new TextDataTypeModel()}, Font = {Name = "Segoe UI", Color = "White" } },
-//                            new StyleModel { Name = "TitleLineStyle", Inherits="EmptyLineStyle", Content = { Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left } }, Font = new FontModel { Size = 18, Bold = YesNo.Yes } },
-//                            new StyleModel { Name = "FirstLineStyle", Content = {Color = "#BD4F46", DataType = new DatetimeDataTypeModel { Format = KnownDatetimeFormat.ShortDatePattern, Locale= KnownCulture.enUS } }, Font = { Name = "Segoe UI", Color = "White" } }
-//                        },
-//                        Lines =
-//                        {
-//                            new TextLineModel
-//                            {
-//                                Key = "ReportTitleLine",
-//                                Style = "ReportTitleStyle",
-//                                Items = {new TextModel {Merge = 13, Value = "Invoice report from code"}}
-//                            },
-//                            new TextLineModel
-//                            {
-//                                Key = "ReportInformationLine01",
-//                                Style = "ReportInformationLineStyle",
-//                                Items =
-//                                {
-//                                    new TextModel {Value = "Fecha desde:"},
-//                                    new TextModel
-//                                    {
-//                                        Merge = 7,
-//                                        Style = "ReportInformationLine01Style",
-//                                        Value = "{Bind:GetCurrentDatetime}"
-//                                    }
-//                                }
-//                            },
-//                            new TextLineModel
-//                            {
-//                                Key = "ReportInformationLine02",
-//                                Style = "ReportInformationLineStyle",
-//                                Items =
-//                                {
-//                                    new TextModel {Value = "Fecha hasta:"},
-//                                    new TextModel
-//                                    {
-//                                        Merge = 7,
-//                                        Style = "ReportInformationLine02Style",
-//                                        Value = "{Bind:Common.GetCurrentDatetime}"
-//                                    }
-//                                }
-//                            }
-//                        },
-//                        Groups =
-//                        {
-//                            new GroupModel
-//                            {
-//                                Name = "CustomerName",
-//                                Fields =
-//                                {
-//                                    new GroupItemModel {Name = "CUSTOMERFIRSTNAME", Separator = ", "},
-//                                    new GroupItemModel {Name = "CUSTOMERLASTNAME"}
-//                                }
-//                            }
-//                        }
-//            },
-//            Items =
-//            {
-//                        new ExportModel
-//                        {
-//                            Name = "xmlinput-xlsx",
-//                            Current = YesNo.Yes,
-//                            Description = "Invoice query sample",
-//                            BlockLines =
-//                            {
-//                                new BlockLineModel
-//                                {
-//                                    Key = "Block01",
-//                                    Location = {Mode = new CoordenatesModel {Coordenates = new[] {1, 3}}},
-//                                    Items =
-//                                    {
-//                                        Keys = {"ReportTitleLine", "ReportInformationLine01", "ReportInformationLine02"}
-//                                    }
-//                                }
-//                            },
-//                            Table = new TableModel
-//                            {
-//                                Alias = "Invoice query sample - ArrayList",
-//                                Host = "xlsx",
-//                                Name = "Invoice",
-//                                AutoFilter = YesNo.Yes,
-//                                ShowGridLines = YesNo.No,
-//                                AutoFitColumns = YesNo.Yes,
-//                                Output = {Path = @"~\output\xml", File = "InvoiceQuerySampleFromCode"},
-//                                Location = {Mode = new CoordenatesModel {Coordenates = new[] {1, 7}}},
-//                                Logo =
-//                                {
-//                                    Image = {Key = "banner"},
-//                                    Location = {Mode = new CoordenatesModel {Coordenates = new[] {4, 1}}}
-//                                },
-//                                Exporter =
-//                                {
-//                                    Current = new WriterModel {Name = "XlsxTabularWriter"},
-//                                    Behaviors = {new DownloadBehaviorModel()}
-//                                },
-//                                Headers =
-//                                {
-//                                    new ColumnHeaderModel
-//                                    {
-//                                        From = "ID",
-//                                        To = "DATE",
-//                                        Style = "HeaderStringNoBorderStyle",
-//                                        Text = "Invoice"
-//                                    },
-//                                    new ColumnHeaderModel
-//                                    {
-//                                        From = "CustomerName",
-//                                        To = "CUSTOMEREMAIL",
-//                                        Style = "HeaderStringNoBorderStyle",
-//                                        Text = "Customer information"
-//                                    },
-//                                    new ColumnHeaderModel
-//                                    {
-//                                        From = "BILLINGADDRESS",
-//                                        To = "TOTAL",
-//                                        Style = "HeaderStringNoBorderStyle",
-//                                        Text = "Bill information"
-//                                    }
-//                                },
-//                                Fields =
-//                                {
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "ID",
-//                                        Alias = "Id",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueNumericStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Count,
-//                                            Style = "HeaderNumericStyle",
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "DATE",
-//                                        Alias = "Title",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueDatetimeStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new GroupFieldModel
-//                                    {
-//                                        Name = "CustomerName",
-//                                        Alias = "Customer",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "CUSTOMERPHONE",
-//                                        Alias = "Phone",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "CUSTOMEREMAIL",
-//                                        Alias = "Email",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "BILLINGADDRESS",
-//                                        Alias = "Address",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "BILLINGCITY",
-//                                        Alias = "City",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "BILLINGSTATE",
-//                                        Alias = "State",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "BILLINGCOUNTRY",
-//                                        Alias = "Country",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "BILLINGPOSTALCODE",
-//                                        Alias = "Postal Code",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueStringStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Text,
-//                                            Style = "HeaderStringNoBorderStyle",
-//                                            Text = string.Empty,
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    },
-//                                    new DataFieldModel
-//                                    {
-//                                        Name = "TOTAL",
-//                                        Alias = "Total",
-//                                        Header = {Style = "HeaderStringStyle"},
-//                                        Value = {Style = "ValueDecimalStyle"},
-//                                        Aggregate =
-//                                        {
-//                                            Location = KnownAggregateLocation.Top,
-//                                            AggregateType = KnownAggregateType.Sum,
-//                                            Style = "HeaderDecimalStyle",
-//                                            Show = YesNo.Yes
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//            }
-//        };
-//}
-
-//private static ExportsModel CreateSample90Model()
-//{
-//    return
-//        new ExportsModel
-//        {
-//            References =
-//                {
-//                            new ReferenceModel { Path = @"~\resources\functions\", Assembly = "iTin.Export.Queries.SqlServerCe.Functions" }
-//                },
-//            Resources =
-//                {
-//                            Hosts =
-//                            {
-//                                new HostModel { Key = "xlsx", Document = { Size = KnownDocumentSize.A3, Orientation = KnownDocumentOrientation.Landscape, Margins = { Bottom = 10, Top = 10, Right = 10, Left = 10, Units = KnownUnit.Millimeters }}}
-//                            },
-//                            Images =
-//                            {
-//                                new ImageModel { Key = "banner", Path = @"~\resources\images\banner-careers.png", Effects = { new OpacityEffectModel { Percent = 90 } } }
-//                            },
-//                            Styles =
-//                            {
-//                                new StyleModel { Name = "ReportTitleStyle", Content = { Alignment = { Horizontal = KnownHorizontalAlignment.Center } }, Font = new FontModel { Name = "Calibri", Size = 18, Bold = YesNo.Yes }},
-//                                new StyleModel { Name = "ReportInformationLineStyle", Font = new FontModel { Name = "Calibri", Bold = YesNo.Yes }},
-//                                new StyleModel { Name = "ReportInformationLine01Style", Content = { DataType = new DatetimeDataTypeModel { Locale = KnownCulture.enUS, Format = KnownDatetimeFormat.LongDatePattern }}, Font = { Name = "Calibri"}},
-//                                new StyleModel { Name = "ReportInformationLine02Style", Content = { DataType = new DatetimeDataTypeModel { Locale = KnownCulture.enUS, Format = KnownDatetimeFormat.LongDatePattern }}, Font = { Name = "Calibri"}},
-//                                new StyleModel { Name = "HeaderDecimalStyle", Content = { Color = "#ED7D31", Alignment = { Horizontal = KnownHorizontalAlignment.Right }, DataType = new NumberDataTypeModel { Separator = YesNo.Yes }}, Font = new FontModel { Name = "Calibri", Size = 12, Color = "White", Bold = YesNo.Yes }},
-//                                new StyleModel { Name = "HeaderStringStyle", Content = { Color = "#ED7D31" }, Font = new FontModel { Name = "Calibri", Size = 11, Color = "White", Bold = YesNo.Yes }, Borders = { new BorderModel { Color = "Black", Position = KnownBorderPosition.Bottom, Weight = KnownWidthLineStyle.Medium, LineStyle = KnownBorderLineStyle.Continuous }}},
-//                                new StyleModel { Name = "HeaderStringNoBorderStyle", Content = { Color = "#ED7D31" }, Font = { Name = "Calibri", Color = "White", Bold = YesNo.Yes, Size = 12}},
-//                                new StyleModel { Name = "HeaderNumericStyle", Content = { Color = "#ED7D31", Alignment = { Horizontal = KnownHorizontalAlignment.Right }, DataType = new NumberDataTypeModel { Decimals = 0 }}, Font = new FontModel { Name = "Calibri", Size = 12, Color = "White", Bold = YesNo.Yes }},
-//                                new StyleModel { Name = "ValueDatetimeStyle", Content = { Color = "#FCE4D6", DataType = new DatetimeDataTypeModel() }, Font = { Name = "Calibri" }},
-//                                new StyleModel { Name = "ValueDecimalStyle", Content = { Color = "#FCE4D6", Alignment = { Horizontal = KnownHorizontalAlignment.Right }, DataType = new NumberDataTypeModel { Separator = YesNo.Yes }}, Font = new FontModel { Name = "Calibri" }},
-//                                new StyleModel { Name = "ValueNumericStyle", Content = { Color = "#ED7D31", Alignment = { Horizontal = KnownHorizontalAlignment.Right }, DataType = new NumberDataTypeModel { Decimals = 0 }}, Font = new FontModel { Name = "Calibri", Color = "White" }},
-//                                new StyleModel { Name = "ValueStringStyle", Content = { Color = "#FCE4D6" }, Font = { Name = "Calibri" }},
-//                            },
-//                            Lines =
-//                            {
-//                                new TextLineModel { Key = "ReportTitleLine", Style = "ReportTitleStyle", Items = { new TextModel { Merge = 13, Value = "Invoice report from code" } } },
-//                                new TextLineModel { Key = "ReportInformationLine01", Style = "ReportInformationLineStyle", Items = { new TextModel { Value = "Fecha desde:" }, new TextModel { Merge = 7, Style = "ReportInformationLine01Style", Value = "{Bind:GetCurrentDatetime}" }}},
-//                                new TextLineModel { Key = "ReportInformationLine02", Style = "ReportInformationLineStyle", Items = { new TextModel { Value = "Fecha hasta:" }, new TextModel { Merge = 7, Style = "ReportInformationLine02Style", Value = "{Bind:Common.GetCurrentDatetime}" }}}
-//                            },
-//                            Groups =
-//                            {
-//                                new GroupModel { Name = "CustomerName", Fields = { new GroupItemModel { Name = "CUSTOMERFIRSTNAME", Separator =", "}, new GroupItemModel { Name = "CUSTOMERLASTNAME"}}}
-//                            }
-//                },
-//            Items =
-//                {
-//                            new ExportModel
-//                                {
-//                                    Name = "xmlinput-xlsx",
-//                                    Current = YesNo.Yes,
-//                                    Description = "Invoice query sample",
-//                                    BlockLines =
-//                                    {
-//                                        new BlockLineModel { Key = "Block01", Location = { Mode = new CoordenatesModel { Coordenates = new[] {1, 3} }}, Items = { Keys = { "ReportTitleLine", "ReportInformationLine01", "ReportInformationLine02" }}}
-//                                    },
-//                                    Table = new TableModel
-//                                    {
-//                                        Alias = "Invoice query sample - ArrayList",
-//                                        Host = "xlsx",
-//                                        Name = "Invoice",
-//                                        AutoFilter = YesNo.Yes,
-//                                        ShowGridLines = YesNo.No,
-//                                        AutoFitColumns = YesNo.Yes,
-//                                        Output = { Path = @"~\output\xml", File = "InvoiceQuerySampleFromCode" },
-//                                        Location = { Mode = new CoordenatesModel { Coordenates = new[] {1, 7} }},
-//                                        Logo = { Image = { Key = "banner" }, Location = { Mode = new CoordenatesModel { Coordenates = new[] {4, 1} }}},
-//                                        Exporter = { Current = new WriterModel { Name = "XlsxTabularWriter" }, Behaviors = { new DownloadBehaviorModel() }},
-//                                        Headers =
-//                                        {
-//                                            new ColumnHeaderModel {From = "ID", To = "DATE", Style = "HeaderStringNoBorderStyle", Text = "Invoice"},
-//                                            new ColumnHeaderModel {From = "CustomerName", To = "CUSTOMEREMAIL", Style = "HeaderStringNoBorderStyle", Text = "Customer information"},
-//                                            new ColumnHeaderModel {From = "BILLINGADDRESS", To = "TOTAL", Style = "HeaderStringNoBorderStyle", Text = "Bill information"}
-//                                        },
-//                                        Fields =
-//                                        {
-//                                            new DataFieldModel { Name = "ID", Alias = "Id", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueNumericStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Count, Style = "HeaderNumericStyle", Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "DATE", Alias = "Title", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueDatetimeStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new GroupFieldModel { Name = "CustomerName", Alias = "Customer", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "CUSTOMERPHONE", Alias = "Phone", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "CUSTOMEREMAIL", Alias = "Email", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "BILLINGADDRESS", Alias = "Address", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "BILLINGCITY", Alias = "City", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "BILLINGSTATE", Alias = "State", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "BILLINGCOUNTRY", Alias = "Country", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "BILLINGPOSTALCODE", Alias = "Postal Code", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueStringStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Text, Style = "HeaderStringNoBorderStyle", Text = string.Empty, Show = YesNo.Yes }},
-//                                            new DataFieldModel { Name = "TOTAL", Alias = "Total", Header = { Style = "HeaderStringStyle" }, Value = { Style = "ValueDecimalStyle" }, Aggregate = { Location = KnownAggregateLocation.Top, AggregateType = KnownAggregateType.Sum, Style = "HeaderDecimalStyle", Show = YesNo.Yes }}
-//                                        }
-//                                    }
-//                                }
-//                }
-//        };
-//}

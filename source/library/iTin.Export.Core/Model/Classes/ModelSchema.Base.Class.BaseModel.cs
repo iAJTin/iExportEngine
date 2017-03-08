@@ -305,10 +305,18 @@ namespace iTin.Export.Model
                     var xmlString = Serialize();
                     xmlString =
                         xmlString
-                            .Replace("<Properties>", string.Empty)
+                            .Replace("<References />", string.Empty)
+                            .Replace("<Properties />", string.Empty)
+                            .Replace("<Font />", string.Empty)
+                            .Replace("<Text />", string.Empty)
+                            .Replace("<Lines />", string.Empty)
+                            .Replace("<Images />", string.Empty)
+                            .Replace("<Margins />", string.Empty)
+                            .Replace("<Alignment />", string.Empty)
                             .Replace("<Fixed />", string.Empty)
                             .Replace("<Styles />", string.Empty)
                             .Replace("<Groups />", string.Empty)
+                            .Replace("<Negative />", string.Empty)
                             .Replace("<Pattern />", string.Empty)
                             .Replace("<Borders />", string.Empty)
                             .Replace("<Filter />", string.Empty)
@@ -319,9 +327,9 @@ namespace iTin.Export.Model
                             .Replace("<Charts />", string.Empty)
                             .Replace("<Plots />", string.Empty)
                             .Replace("<Series />", string.Empty)
+                            .Replace("<Behaviors />", string.Empty)
                             .Replace("<Aggregate />", string.Empty);
                     var xmlFile = new FileInfo(fileName);
-
                     using (var stream = xmlFile.CreateText())
                     {
                         stream.Write(xmlString);
@@ -378,6 +386,7 @@ namespace iTin.Export.Model
                 {
                     string xml;
                     stream = new MemoryStream();
+
                     Serializer.Serialize(stream, this);
                     stream.Seek(0, SeekOrigin.Begin);
 
