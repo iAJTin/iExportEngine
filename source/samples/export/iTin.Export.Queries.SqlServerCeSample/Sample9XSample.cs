@@ -40,7 +40,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
 
             Console.WriteLine(SecondSampleStepText);
             var sample90ChartModelConfiguration = CreateChartSample90Model();
-            export.Export(ExportSettings.CreateFromModel(sample90ChartModelConfiguration, "sample90-chart"));
+            //export.Export(ExportSettings.CreateFromModel(sample90ChartModelConfiguration, "sample90-chart"));
 
             Console.WriteLine(ThirdSampleStepText);
             var sample90BannerModelConfiguration = CreateBannerSample90Model();
