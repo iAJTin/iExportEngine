@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-
-using iTin.Export.Adapters.Native;
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Inputs
 {
+    using System.Collections.Generic;
+
+    using Adapters.Native;
+    using ComponentModel;
+    using Helper;
+
+    /// <inheritdoc />
     /// <summary>
     /// Class than allows you to export an object of type <see cref="T:System.Data.DataRow" />.
     /// </summary>
@@ -13,6 +15,7 @@ namespace iTin.Export.Inputs
     [InputOptions(AdapterType = typeof(DataSetAdapter))]
     public class EnumerableInput<T> : DataTableInput where T : class
     {
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.EnumerableInput{T}" /> class.
         /// </summary>

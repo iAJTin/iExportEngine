@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Xml.Linq;
-
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Xml.Linq;
+
+    using Model;
+
     /// <summary>
     /// Declares a generic target.
     /// </summary>

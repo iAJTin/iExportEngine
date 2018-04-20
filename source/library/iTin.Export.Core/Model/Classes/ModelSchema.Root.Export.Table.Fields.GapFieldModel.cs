@@ -1,4 +1,5 @@
-﻿namespace iTin.Export.Model
+﻿
+namespace iTin.Export.Model
 {
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseDataFieldModel" /> class.<br/>
@@ -78,35 +79,29 @@
     {
         #region public override properties
 
-            #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type.
-            /// <summary>
-            /// Gets a value indicating data field type.
-            /// </summary>
-            /// <value>
-            /// Always returns <see cref="iTin.Export.Model.KnownFieldType.Gap" />.
-            /// </value>
-            public override KnownFieldType FieldType
-            {
-                get { return KnownFieldType.Gap; }
-            }
-            #endregion
+        #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type
+        /// <summary>
+        /// Gets a value indicating data field type.
+        /// </summary>
+        /// <value>
+        /// Always returns <see cref="iTin.Export.Model.KnownFieldType.Gap" />.
+        /// </value>
+        public override KnownFieldType FieldType => KnownFieldType.Gap;
+        #endregion
 
         #endregion
 
         #region protected override properties
 
-            #region [protected] {override} (bool) CanSetData: Gets a value indicating whether current data field supports data.
-            /// <summary>
-            /// Gets a value indicating whether current data field supports data.
-            /// </summary>
-            /// <value>
-            /// Always returns <strong>false</strong>".
-            /// </value>
-            protected override bool CanSetData
-            {
-                get { return false; }
-            }
-            #endregion
+        #region [protected] {override} (bool) CanSetData: Gets a value indicating whether current data field supports data
+        /// <summary>
+        /// Gets a value indicating whether current data field supports data.
+        /// </summary>
+        /// <value>
+        /// Always returns <strong>false</strong>".
+        /// </value>
+        protected override bool CanSetData => false;
+        #endregion
 
         #endregion
     }

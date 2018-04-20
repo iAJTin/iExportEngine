@@ -1,21 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.IO;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     /// <summary>
     /// Root element of <strong>iTin Export Engine</strong> configuration file that contains a list with export definition.
     /// </summary>
     /// <remarks>
-    /// <para>Represents <strong><c>AEE</c> root</strong> element of a configuration file.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <para>Represents <strong>ITEE root</strong> element of a configuration file.
+    /// <code lang="xml" title="ITEE Object Element Usage">
     ///  &lt;?xml version="1.0" encoding="utf-8"?&gt;
     /// 
     ///  &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
@@ -341,148 +342,159 @@ namespace iTin.Export.Model
 
         #region public static methods
 
-            #region [public] {static} (T) GetDefaultPropertyValue<T>(Type, string): Gets the default value for specified property.
-            /// <summary>
-            /// Gets the default value for specified property.
-            /// </summary>
-            /// <typeparam name="T">Property type</typeparam>
-            /// <param name="type">Type containing the property to check.</param>
-            /// <param name="property">Property name.</param>
-            /// <returns>
-            /// Property Default.
-            /// </returns>
-            [DebuggerStepThrough]
-            public static T GetDefaultPropertyValue<T>(Type type, string property)
+        #region [public] {static} (T) GetDefaultPropertyValue<T>(Type, string): Gets the default value for specified property.
+        /// <summary>
+        /// Gets the default value for specified property.
+        /// </summary>
+        /// <typeparam name="T">Property type</typeparam>
+        /// <param name="type">Type containing the property to check.</param>
+        /// <param name="property">Property name.</param>
+        /// <returns>
+        /// Property Default.
+        /// </returns>
+        [DebuggerStepThrough]
+        public static T GetDefaultPropertyValue<T>(Type type, string property)
+        {
+            SentinelHelper.ArgumentNull(type);
+            SentinelHelper.ArgumentNull(property);
+
+            var pi = type.GetProperty(property);
+            var da = (DefaultValueAttribute)pi.GetCustomAttributes(typeof(DefaultValueAttribute), false)[0];
+            return (T)da.Value;
+        }
+        #endregion
+
+        #region [public] {static} (string) GetRelativeFilePathParsed(ExportModel, KnownRelativeFilePath): Gets a valid full path from a relative path.
+        /// <summary>
+        /// Gets a valid full path from a relative path.
+        /// </summary>
+        /// <param name="model">Model in which search.</param>
+        /// <param name="element">Element to recover.</param>
+        /// <returns>
+        /// Valid full path.
+        /// </returns>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        [DebuggerStepThrough]
+        public static string GetRelativeFilePathParsed(ExportModel model, KnownRelativeFilePath element)
+        {
+            SentinelHelper.ArgumentNull(model);
+            SentinelHelper.IsEnumValid(element);
+
+            var relativePath = model.Table.Output.Path;
+            var relativeFilename = model.Table.Output.File;
+            var exporter = model.Table.Exporter;
+            var relativePathIsRooted = relativeFilename.StartsWith("~");
+
+            switch (element)
             {
-                SentinelHelper.ArgumentNull(type);
-                SentinelHelper.ArgumentNull(property);
+                case KnownRelativeFilePath.Output:
+                    relativePath = Path.Combine(model.Table.Output.Path, model.Table.Output.File);
+                    break;
 
-                var pi = type.GetProperty(property);
-                var da = (DefaultValueAttribute)pi.GetCustomAttributes(typeof(DefaultValueAttribute), false)[0];
-                return (T)da.Value;
-            }
-            #endregion
+                case KnownRelativeFilePath.Template:
+                    relativePath = ((TemplateModel)exporter.Current).File;
+                    break;
 
-            #region [public] {static} (string) GetRelativeFilePathParsed(ExportModel, KnownRelativeFilePath): Gets a valid full path from a relative path.
-            /// <summary>
-            /// Gets a valid full path from a relative path.
-            /// </summary>
-            /// <param name="model">Model in which search.</param>
-            /// <param name="element">Element to recover.</param>
-            /// <returns>
-            /// Valid full path.
-            /// </returns>
-            /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-            [DebuggerStepThrough]
-            public static string GetRelativeFilePathParsed(ExportModel model, KnownRelativeFilePath element)
-            {
-                SentinelHelper.ArgumentNull(model);
-                SentinelHelper.IsEnumValid(element);
+                case KnownRelativeFilePath.Transform:
+                    relativePath = (string)exporter.Current;
+                    break;
 
-                var relativePath = model.Table.Output.Path;
-                var relativeFilename = model.Table.Output.File;
-                var exporter = model.Table.Exporter;
-                switch (element)
-                {
-                    case KnownRelativeFilePath.Output:
-                        relativePath = Path.Combine(model.Table.Output.Path, model.Table.Output.File);
-                        break;
+                case KnownRelativeFilePath.TransformFileBehaviorDir:
+                    var behavior = exporter.Behaviors.Get<TransformFileBehaviorModel>();
+                    var transformFilePath = behavior.Path;
+                    var defaultTransformFilePath = GetDefaultPropertyValue<string>(typeof(TransformFileBehaviorModel), "Path");
 
-                    case KnownRelativeFilePath.Template:
-                        relativePath = ((TemplateModel)exporter.Current).File;
-                        break;
-
-                    case KnownRelativeFilePath.Transform:
-                        relativePath = (string)exporter.Current;
-                        break;
-
-                    case KnownRelativeFilePath.TransformFileBehaviorDir:
-                        var behavior = exporter.Behaviors.Get<TransformFileBehaviorModel>();
-                        var transformFilePath = behavior.Path;
-                        var defaultTransformFilePath = GetDefaultPropertyValue<string>(typeof(TransformFileBehaviorModel), "Path");
-
-                        relativePath = relativePath.Replace(relativeFilename, string.Empty);
-                        if (!transformFilePath.Equals(defaultTransformFilePath, StringComparison.Ordinal) && !string.IsNullOrEmpty(transformFilePath))
-                        {
-                            relativePath = transformFilePath;
-                        }
-
-                        break;
-
-                    case KnownRelativeFilePath.WriterFilter:
-                        relativePath = ((WriterModel)exporter.Current).Filter.Path;
-                        break;
-                }
-
-                return GetRelativeFilePathParsed(model, relativePath);
-            }
-            #endregion
-
-            #region [public] {static} (string) GetRelativeFilePathParsed(ExportModel, string): Gets a valid full path from a relative path.
-            /// <summary>
-            /// Gets a valid full path from a relative path.
-            /// </summary>
-            /// <param name="model">Model in which search.</param>
-            /// <param name="relativePath">Relative path to parsed.</param>
-            /// <returns>
-            /// Valid full path.
-            /// </returns>
-            /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-            //[DebuggerStepThrough]
-            public static string GetRelativeFilePathParsed(ExportModel model, string relativePath)
-            {
-                SentinelHelper.ArgumentNull(relativePath);
-
-                var isRelativePath = relativePath.Trim().StartsWith("~", StringComparison.Ordinal);
-                if (isRelativePath)
-                {
-                    if (relativePath.Length.Equals(1) || !relativePath[1].Equals('\\'))
+                    relativePath = relativePath.Replace(relativeFilename, string.Empty);
+                    if (!transformFilePath.Equals(defaultTransformFilePath, StringComparison.Ordinal) && !string.IsNullOrEmpty(transformFilePath))
                     {
-                        relativePath = relativePath.Insert(1, "\\");
+                        relativePath = transformFilePath;
                     }
 
-                    var callingPath = model.GetType().Assembly.CodeBase;
-                    var callingUri = new Uri(callingPath);
-                    var candidateUri = new UriBuilder(callingUri);
-                    var unscapedCandidateUri = Uri.UnescapeDataString(candidateUri.Path);
-                    var candidateRootPath = Path.GetDirectoryName(unscapedCandidateUri);
+                    break;
 
-                    var outputPartialPath = string.Empty;
-                    if (!relativePath.Equals(@"~\"))
-                    {
-                        outputPartialPath = relativePath.Split(new[] { @"~\" }, StringSplitOptions.RemoveEmptyEntries)[0];
-                    }
-
-                    var rootPath = candidateRootPath.ToUpperInvariant().Replace(@"BIN\DEBUG", string.Empty);
-                    return Path.Combine(rootPath, outputPartialPath);
-                }
-
-                return relativePath;
+                case KnownRelativeFilePath.WriterFilter:
+                    relativePath = ((WriterModel)exporter.Current).Filter.Path;
+                    break;
             }
-            #endregion
 
-            #region [public] {static} (string) GetXmlEnumAttributeFromItem(Enum): Gets a string containing the attribute value an element XmlEnumAttribute.
-            /// <summary>
-            /// Gets a string containing the attribute value an element <see cref="T:System.Xml.Serialization.XmlEnumAttribute"/>.
-            /// </summary>
-            /// <param name="item">Element containing the attribute.</param>
-            /// <returns>
-            /// The attribute value of the element.
-            /// </returns>
-            [DebuggerStepThrough]
-            public static string GetXmlEnumAttributeFromItem(Enum item)
+            return GetRelativeFilePathParsed(model, relativePathIsRooted ? $"~{relativePath}" : relativePath);
+        }
+        #endregion
+
+        #region [public] {static} (string) GetRelativeFilePathParsed(ExportModel, string): Gets a valid full path from a relative path.
+        /// <summary>
+        /// Gets a valid full path from a relative path.
+        /// </summary>
+        /// <param name="model">Model in which search.</param>
+        /// <param name="targetPath">Relative path to parsed.</param>
+        /// <returns>
+        /// Valid full path.
+        /// </returns>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        //[DebuggerStepThrough]
+        public static string GetRelativeFilePathParsed(ExportModel model, string targetPath)
+        {
+            SentinelHelper.ArgumentNull(targetPath);
+
+            var relativePathNormalized = targetPath.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+            var isRelativePath = relativePathNormalized.Trim().StartsWith("~", StringComparison.Ordinal);
+            if (!isRelativePath)
             {
-                SentinelHelper.ArgumentNull(item);
-
-                var itemType = item.GetType();
-                var itemName = Enum.GetName(itemType, item);
-                var mi = itemType.GetMember(itemName);
-                var xmlEnumAttribute = (XmlEnumAttribute)Attribute.GetCustomAttribute(mi[0], typeof(XmlEnumAttribute));
-                var attributeValue = xmlEnumAttribute.Name;
-
-                return attributeValue;
+                return targetPath;
             }
-            #endregion
+
+            if (relativePathNormalized.Length.Equals(1))
+            {
+                relativePathNormalized = relativePathNormalized.Insert(1, Path.DirectorySeparatorChar.ToString());
+            }
+            else if (!relativePathNormalized[1].Equals(Path.DirectorySeparatorChar))
+            {
+                relativePathNormalized = relativePathNormalized.Insert(1, Path.DirectorySeparatorChar.ToString());
+            }
+
+            var callingPath = model.GetType().Assembly.CodeBase;
+            var callingUri = new Uri(callingPath);
+            var candidateUri = new UriBuilder(callingUri);
+            var unscapedCandidateUri = Uri.UnescapeDataString(candidateUri.Path);
+            var candidateRootPath = Path.GetDirectoryName(unscapedCandidateUri);
+
+            var outputPartialPath = string.Empty;
+            var rootPattern = $"~{Path.DirectorySeparatorChar}";
+            if (!relativePathNormalized.Equals(rootPattern))
+            {
+                outputPartialPath = relativePathNormalized.Split(new[] { rootPattern }, StringSplitOptions.RemoveEmptyEntries)[0];
+            }
+
+            var rootPath = candidateRootPath.ToUpperInvariant()
+                .Replace("BIN", string.Empty)
+                .Replace($"{Path.DirectorySeparatorChar}DEBUG", string.Empty);
+            return Path.Combine(rootPath, outputPartialPath);
+
+        }
+        #endregion
+
+        #region [public] {static} (string) GetXmlEnumAttributeFromItem(Enum): Gets a string containing the attribute value an element XmlEnumAttribute.
+        /// <summary>
+        /// Gets a string containing the attribute value an element <see cref="T:System.Xml.Serialization.XmlEnumAttribute"/>.
+        /// </summary>
+        /// <param name="item">Element containing the attribute.</param>
+        /// <returns>
+        /// The attribute value of the element.
+        /// </returns>
+        [DebuggerStepThrough]
+        public static string GetXmlEnumAttributeFromItem(Enum item)
+        {
+            SentinelHelper.ArgumentNull(item);
+
+            var itemType = item.GetType();
+            var itemName = Enum.GetName(itemType, item);
+            var mi = itemType.GetMember(itemName);
+            var xmlEnumAttribute = (XmlEnumAttribute)Attribute.GetCustomAttribute(mi[0], typeof(XmlEnumAttribute));
+            var attributeValue = xmlEnumAttribute.Name;
+
+            return attributeValue;
+        }
+        #endregion
 
         #endregion
 

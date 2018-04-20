@@ -1,13 +1,14 @@
-using System.IO;
-using System.Text;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-using iTin.Export.Web.Cloud;
-using iTin.Export.Web.Cloud.Apis;
 
 namespace iTin.Export.Model
 {
+    using System.IO;
+    using System.Text;
+
+    using ComponentModel;
+    using Helper;
+    using Web.Cloud;
+    using Web.Cloud.Apis;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.ToDropboxBehaviorModel" /> class.<br/>
     /// Which represents a upload file behavior to Dropbox cloud service. Upload the result of export to Dropbox.
@@ -69,23 +70,23 @@ namespace iTin.Export.Model
     {
         #region protected override methods
 
-            #region [protected] {override} (void) ExecuteBehavior(IWriter, ExportSettings): Code for execute download behavior.
-            /// <summary>
-            /// Code for execute download behavior.
-            /// </summary>
-            /// <param name="writer">The writer.</param>
-            /// <param name="settings">Exporter settings.</param>
-            protected override void ExecuteBehavior(IWriter writer, ExportSettings settings)
-            {
-                var filenameBuilder1 = new StringBuilder();
-                filenameBuilder1.Append(FileHelper.TinExportTempDirectory);
-                filenameBuilder1.Append(Path.DirectorySeparatorChar);
-                filenameBuilder1.Append(writer.ResponseInfo.ExtractFileName());
+        #region [protected] {override} (void) ExecuteBehavior(IWriter, ExportSettings): Code for execute download behavior
+        /// <summary>
+        /// Code for execute download behavior.
+        /// </summary>
+        /// <param name="writer">The writer.</param>
+        /// <param name="settings">Exporter settings.</param>
+        protected override void ExecuteBehavior(IWriter writer, ExportSettings settings)
+        {
+            var filenameBuilder1 = new StringBuilder();
+            filenameBuilder1.Append(FileHelper.TinExportTempDirectory);
+            filenameBuilder1.Append(Path.DirectorySeparatorChar);
+            filenameBuilder1.Append(writer.ResponseInfo.ExtractFileName());
 
-                var dropbox = DropboxRestApi.ClientFrom(AuthenticateMode.Desktop);
-                dropbox.UploadFile("dropbox", writer.ResponseInfo.ExtractFileName(), filenameBuilder1.ToString());
-            }
-            #endregion
+            var dropbox = DropboxRestApi.ClientFrom(AuthenticateMode.Desktop);
+            dropbox.UploadFile("dropbox", writer.ResponseInfo.ExtractFileName(), filenameBuilder1.ToString());
+        }
+        #endregion
 
         #endregion
     }

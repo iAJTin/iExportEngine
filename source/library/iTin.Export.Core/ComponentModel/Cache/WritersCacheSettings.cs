@@ -1,11 +1,12 @@
-using System.Collections.Generic;
 
 namespace iTin.Export.ComponentModel
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Represents <see cref="T:iTin.Export.ComponentModel.WritersCache" /> settings.
     /// </summary>
-    sealed class WritersCacheSettings
+    internal sealed class WritersCacheSettings
     {
         /// <summary>
         /// Gets the container's path.

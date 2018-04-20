@@ -12,23 +12,17 @@ namespace iTin.Export.ComponentModel
         /// <value>
         /// The default.
         /// </value>
-        public static FieldValueInformation Default
+        public static FieldValueInformation Default => new FieldValueInformation
         {
-            get
-            {
-                return new FieldValueInformation
-                           {
-                               Comment = null,
-                               IsNumeric = false,
-                               IsNegative = false,
-                               IsErrorValue = false,
-                               Value = string.Empty,
-                               Style = StyleModel.Default,
-                               NegativeColor = Color.Empty,
-                               FormattedValue = string.Empty,
-                           };
-            }
-        }
+            Comment = null,
+            IsNumeric = false,
+            IsNegative = false,
+            IsErrorValue = false,
+            Value = string.Empty,
+            Style = StyleModel.Default,
+            NegativeColor = Color.Empty,
+            FormattedValue = string.Empty,
+        };
 
         /// <summary>
         /// Gets or sets the data.

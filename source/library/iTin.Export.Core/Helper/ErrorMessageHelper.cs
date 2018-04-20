@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Helper
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+
+    using Model;
+
     /// <summary> 
     /// Static class than contains methods for creates error messages.
     /// </summary>
     static class ErrorMessageHelper
     {
-        #region [public] {static} (StringBuilder) FieldIdentifierNameErrorMessage(string, string, string): Returns a StringBuilder than contains the error message for wrong field identifier.
+        #region [public] {static} (StringBuilder) FieldIdentifierNameErrorMessage(string, string, string): Returns a StringBuilder than contains the error message for wrong field identifier
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong field identifier.
         /// </summary>
@@ -39,7 +40,7 @@ namespace iTin.Export.Helper
         }
         #endregion
 
-        #region [public] {static} (StringBuilder) FormatFieldErrorMessage(Dictionary<BaseDataFieldModel, List<string>>): Returns a StringBuilder than contains the error message for wrong field definitions.
+        #region [public] {static} (StringBuilder) FormatFieldErrorMessage(Dictionary<BaseDataFieldModel, List<string>>): Returns a StringBuilder than contains the error message for wrong field definitions
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong field definitions.
         /// </summary>
@@ -84,7 +85,7 @@ namespace iTin.Export.Helper
         }
         #endregion
 
-        #region [public] {static} (StringBuilder) FormatSeriesErrorMessage(Dictionary<ChartSerieModel, List<string>>): Returns a StringBuilder than contains the error message for wrong series definitions.
+        #region [public] {static} (StringBuilder) FormatSeriesErrorMessage(Dictionary<ChartSerieModel, List<string>>): Returns a StringBuilder than contains the error message for wrong series definitions
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong series definitions.
         /// </summary>
@@ -120,7 +121,7 @@ namespace iTin.Export.Helper
         }
         #endregion
 
-        #region [public] {static} (StringBuilder) FormatStyleErrorMessage(Dictionary<BaseDataFieldModel, List<string>>): Returns a StringBuilder than contains the error message for wrong field style definitions.
+        #region [public] {static} (StringBuilder) FormatStyleErrorMessage(Dictionary<BaseDataFieldModel, List<string>>): Returns a StringBuilder than contains the error message for wrong field style definitions
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong field style definitions.
         /// </summary>
@@ -208,7 +209,7 @@ namespace iTin.Export.Helper
         }
         #endregion
 
-        #region [public] {static} (StringBuilder) ModelIdentifierNameErrorMessage(string, string, string): Returns a StringBuilder than contains the error message for wrong identifier.
+        #region [public] {static} (StringBuilder) ModelIdentifierNameErrorMessage(string, string, string): Returns a StringBuilder than contains the error message for wrong identifier
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong identifier.
         /// </summary>
@@ -234,7 +235,7 @@ namespace iTin.Export.Helper
         }
         #endregion
 
-        #region [public] {static} (StringBuilder) ModelFileNameErrorMessage(string, string): Returns a StringBuilder than contains the error message for wrong file name.
+        #region [public] {static} (StringBuilder) ModelFileNameErrorMessage(string, string): Returns a StringBuilder than contains the error message for wrong file name
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong file name.
         /// </summary>
@@ -257,7 +258,7 @@ namespace iTin.Export.Helper
         }
         #endregion
 
-        #region [public] {static} (StringBuilder) ModelPathErrorMessage(string, string): Returns a StringBuilder than contains the error message for wrong path.
+        #region [public] {static} (StringBuilder) ModelPathErrorMessage(string, string): Returns a StringBuilder than contains the error message for wrong path
         /// <summary>
         /// Returns a <see cref="T:System.Text.StringBuilder" /> than contains the error message for wrong path.
         /// </summary>

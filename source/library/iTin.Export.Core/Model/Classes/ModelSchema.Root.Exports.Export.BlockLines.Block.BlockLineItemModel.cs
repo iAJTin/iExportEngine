@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+
     public partial class BlockLineItemModel
     {
         public BlockLineItemModel()

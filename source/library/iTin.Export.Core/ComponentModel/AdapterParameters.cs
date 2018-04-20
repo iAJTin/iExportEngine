@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.Composition;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System.ComponentModel.Composition;
+
     /// <summary>
     /// Target parameters
     /// </summary>

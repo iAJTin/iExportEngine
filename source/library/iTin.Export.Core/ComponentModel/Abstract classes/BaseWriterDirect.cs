@@ -1,4 +1,5 @@
-﻿namespace iTin.Export.ComponentModel
+﻿
+namespace iTin.Export.ComponentModel
 {
     /// <summary>
     /// A Specialization of <see cref="BaseWriter" /> Class, than implements interface <see cref="T:iTin.Export.ComponentModel.IWriterDirect" />.
@@ -6,18 +7,13 @@
     /// </summary>
     public abstract class BaseWriterDirect : BaseWriter, IWriterDirect
     {
+        /// <inheritdoc />
         /// <summary>
         /// Gets a value than identifies the type of writer.
         /// </summary>
         /// <value>
-        /// Always returns ​the <see cref="iTin.Export.ComponentModel.KnownWriterIdentifier.WriterDirect" /> value.
+        /// Always returns ​the <see cref="F:iTin.Export.ComponentModel.KnownWriterIdentifier.WriterDirect" /> value.
         /// </value>
-        public override KnownWriterIdentifier WriterIdentifier
-        {
-            get
-            {
-                return KnownWriterIdentifier.WriterDirect;
-            }
-        }
+        public override KnownWriterIdentifier WriterIdentifier => KnownWriterIdentifier.WriterDirect;
     }
 }

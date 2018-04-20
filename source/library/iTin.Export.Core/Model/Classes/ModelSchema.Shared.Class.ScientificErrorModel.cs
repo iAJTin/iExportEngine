@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System;
+
     /// <summary>
     /// A Specialization of <see cref="NumericErrorModel" /> class.
     /// Represents the error structure for scientific data type. Allows us to set a default value and an additional comment.
@@ -9,7 +10,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Scientific</c></strong>. For more information, please see <see cref="iTin.Export.Model.ScientificDataTypeModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Error&gt;
     ///   &lt;Comment/&gt;
     /// &lt;/Error&gt;
@@ -86,37 +87,38 @@ namespace iTin.Export.Model
     {
         #region public methods
 
-            #region [public] {new} (ScientificErrorModel) Clone(): Clones this instance.
-            /// <summary>
-            /// Clones this instance.
-            /// </summary>
-            /// <returns>A new object that is a copy of this instance.</returns>
-            public new ScientificErrorModel Clone()
-            {
-                var scientificErrorCloned = (ScientificErrorModel)MemberwiseClone();
-                scientificErrorCloned.Comment = Comment.Clone();
-                scientificErrorCloned.Properties = Properties.Clone();
+        #region [public] {new} (ScientificErrorModel) Clone(): Clones this instance
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public new ScientificErrorModel Clone()
+        {
+            var scientificErrorCloned = (ScientificErrorModel)MemberwiseClone();
+            scientificErrorCloned.Comment = Comment.Clone();
+            scientificErrorCloned.Properties = Properties.Clone();
 
-                return scientificErrorCloned;
-            }
-            #endregion
+            return scientificErrorCloned;
+        }
+        #endregion
 
         #endregion
 
         #region private methods
 
-            #region [private] (object) Clone(): Creates a new object that is a copy of the current instance.
-            /// <summary>
-            /// Creates a new object that is a copy of the current instance.
-            /// </summary>
-            /// <returns>
-            /// A new object that is a copy of this instance.
-            /// </returns>
-            object ICloneable.Clone()
-            {
-                return Clone();
-            }
-            #endregion
+        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+        #endregion
 
         #endregion
     }

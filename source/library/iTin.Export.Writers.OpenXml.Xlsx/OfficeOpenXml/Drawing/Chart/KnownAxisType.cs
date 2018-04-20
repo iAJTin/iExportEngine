@@ -1,4 +1,5 @@
-﻿namespace OfficeOpenXml.Drawing.Chart
+﻿
+namespace OfficeOpenXml.Drawing.Chart
 {
     /// <summary>
     /// Known axis types.

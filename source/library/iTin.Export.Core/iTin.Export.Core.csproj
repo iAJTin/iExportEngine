@@ -110,6 +110,7 @@
     <Compile Include="ComponentModel\Attributes\InputOptionsAttribute.cs" />
     <Compile Include="ComponentModel\Attributes\AdapterOptionsAttribute.cs" />
     <Compile Include="ComponentModel\Attributes\EnumDescriptionAttribute.cs" />
+    <Compile Include="ComponentModel\Cache\SafeDirectoryCatalog.cs" />
     <Compile Include="ComponentModel\Cache\AdaptersCache.cs" />
     <Compile Include="ComponentModel\Resolver\NonTabularFormulaResolver.cs" />
     <Compile Include="ComponentModel\Resolver\ExcelFormulaResolver.cs" />

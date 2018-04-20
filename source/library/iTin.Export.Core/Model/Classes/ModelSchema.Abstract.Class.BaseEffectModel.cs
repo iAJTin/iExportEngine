@@ -1,10 +1,11 @@
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing.Imaging;
-using System.Xml.Serialization;
 
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Drawing.Imaging;
+    using System.Xml.Serialization;
+
     /// <summary>
     /// Base class for different effects compatible with <strong><c>iTin Export Engine</c></strong>.<br/>
     /// Which acts as the base class for different image effects.
@@ -67,49 +68,46 @@ namespace iTin.Export.Model
 
         #region public properties
 
-            #region [public] (GlobalResourceImageModel) Owner: Gets the element that owns this.
-            /// <summary>
-            /// Gets the element that owns this effect.
-            /// </summary>
-            /// <value>
-            /// The <see cref="T:iTin.Export.Model.ImageModel" /> that owns this effect.
-            /// </value>
-            [XmlIgnore]
-            [Browsable(false)]
-            public ImageModel Owner
-            {
-                get { return _owner; }
-            }
-            #endregion
+        #region [public] (GlobalResourceImageModel) Owner: Gets the element that owns this
+        /// <summary>
+        /// Gets the element that owns this effect.
+        /// </summary>
+        /// <value>
+        /// The <see cref="T:iTin.Export.Model.ImageModel" /> that owns this effect.
+        /// </value>
+        [XmlIgnore]
+        [Browsable(false)]
+        public ImageModel Owner => _owner;
+        #endregion
 
         #endregion
 
         #region public methods
 
-            #region [public] (void) SetOwner(ImageModel): Sets the element that owns this.
-            /// <summary>
-            /// Sets the element that owns this effect.
-            /// </summary>
-            /// <param name="reference">Reference to owner.</param>
-            public void SetOwner(ImageModel reference)
-            {
-                _owner = reference;
-            }
-            #endregion
+        #region [public] (void) SetOwner(ImageModel): Sets the element that owns this
+        /// <summary>
+        /// Sets the element that owns this effect.
+        /// </summary>
+        /// <param name="reference">Reference to owner.</param>
+        public void SetOwner(ImageModel reference)
+        {
+            _owner = reference;
+        }
+        #endregion
 
         #endregion
 
         #region public abstract methods
 
-            #region [public] {abstract} (ImageAttributes) Apply(): Gets the manipulation of the colors in an image to an effect.
-            /// <summary>
-            /// Gets the manipulation of the colors in an image to an effect.
-            /// </summary>
-            /// <returns>
-            /// A <see cref="T:System.Drawing.Imaging.ImageAttributes" /> object that contains the information about how bitmap colors are manipulated. 
-            /// </returns>
-            public abstract ImageAttributes Apply();
-            #endregion
+        #region [public] {abstract} (ImageAttributes) Apply(): Gets the manipulation of the colors in an image to an effect
+        /// <summary>
+        /// Gets the manipulation of the colors in an image to an effect.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.Drawing.Imaging.ImageAttributes" /> object that contains the information about how bitmap colors are manipulated. 
+        /// </returns>
+        public abstract ImageAttributes Apply();
+        #endregion
 
         #endregion
     }

@@ -1,13 +1,15 @@
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing.Imaging;
-using System.Xml.Serialization;
-
-using iTin.Export.Drawing.Helper;
-using iTin.Export.Helper;
 
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Drawing.Imaging;
+    using System.Xml.Serialization;
+
+    using iTin.Export.Drawing.Helper;
+
+    using Helper;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseEffectModel"/> class.<br/>
     /// Which represents opacity effect.
@@ -62,61 +64,51 @@ namespace iTin.Export.Model
 
         #region constructor/s
 
-            #region [public] OpacityEffectModel(): Initializes a new instance of this class.
-            /// <summary>
-            /// Initializes a new instance of the <see cref="T:iTin.Export.Model.OpacityEffectModel"/> class.
-            /// </summary>
-            public OpacityEffectModel()
-            {
-                Percent = DefaultPercent;
-            }
-            #endregion
+        #region [public] OpacityEffectModel(): Initializes a new instance of this class
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.OpacityEffectModel"/> class.
+        /// </summary>
+        public OpacityEffectModel()
+        {
+            Percent = DefaultPercent;
+        }
+        #endregion
 
         #endregion
 
         #region public properties
 
-            [XmlAttribute("percent")]
-            [DefaultValue(DefaultPercent)]
-            public float Percent
+        [XmlAttribute("percent")]
+        [DefaultValue(DefaultPercent)]
+        public float Percent
+        {
+            get => _percent;
+            set
             {
-                get
-                {
-                    return _percent;
-                }
-                set
-                {
-                    SentinelHelper.ArgumentOutOfRange("value", value, 0.0f, 100.0f, "El valor debe estar comprendido entre 0 y 100");
+                SentinelHelper.ArgumentOutOfRange("value", value, 0.0f, 100.0f, "El valor debe estar comprendido entre 0 y 100");
 
-                    _percent = value;
-                }
+                _percent = value;
             }
+        }
 
         #endregion
 
         #region public override properties
 
-        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
-            public override bool IsDefault
-            {
-                get
-                {
-                    return Percent.Equals(DefaultPercent);
-                }
-            }
-            #endregion
+        public override bool IsDefault => Percent.Equals(DefaultPercent);
+        #endregion
 
         #endregion
 
         #region public override methods
 
-            public override ImageAttributes Apply()
-            {
-                return ImageHelper.GetImageAttributesFromOpacityValueEffect(_percent);
-            }
+        public override ImageAttributes Apply()
+        {
+            return ImageHelper.GetImageAttributesFromOpacityValueEffect(_percent);
+        }
 
         #endregion
-
     }
 }

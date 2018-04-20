@@ -1,15 +1,15 @@
-﻿using System.Xml;
-
-using iTin.Export.Helper;
-using iTin.Export.Model;
-using iTin.Export.Writers.OpenXml.Office;
-
-using OfficeOpenXml.Drawing.Chart;
-using OfficeOpenXml.Drawing.Chart.Xml;
-using OfficeOpenXml.Utils.iTin;
-
+﻿
 namespace OfficeOpenXml.Drawing
 {
+    using iTin.Export.Helper;
+    using iTin.Export.Model;
+    using iTin.Export.Writers.OpenXml.Office;
+
+    using Chart;
+    using Chart.Xml;
+
+    using Utils.iTin;
+
     /// <summary>
     /// Static class than contains common extension methods for objects of the namespace <see cref="OfficeOpenXml.Drawing"/>.
     /// </summary>
@@ -42,9 +42,8 @@ namespace OfficeOpenXml.Drawing
                 return;
             }
 
-            XmlNode shapePropertiesNode;
             var root = ChartXmlHelper.FromKnownChartElement(element);
-            var exist = ChartXmlHelper.TryGetElementFrom(root, "c:spPr", out shapePropertiesNode);
+            var exist = ChartXmlHelper.TryGetElementFrom(root, "c:spPr", out var shapePropertiesNode);
             shapePropertiesNode.AddEffectContainerNode(model.Shadow);
 
             if (!exist)

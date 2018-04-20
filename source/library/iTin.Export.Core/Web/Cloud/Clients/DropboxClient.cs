@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Net;
-using System.Text;
-using System.Web;
-
-using iTin.Export.Web.Cloud.Apis;
-
+﻿
 namespace iTin.Export.Web.Cloud.Clients
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using System.Net;
+    using System.Text;
+    using System.Web;
+
+    using Apis;
+
     /// <summary>
     /// Represents a basic client for access to cloud service on Dropbox.
     /// </summary>

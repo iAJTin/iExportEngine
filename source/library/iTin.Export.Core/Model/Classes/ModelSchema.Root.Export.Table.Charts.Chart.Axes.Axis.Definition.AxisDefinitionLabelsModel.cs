@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     /// <summary>
     /// Represents the visual setting the labels of a axis.
     /// </summary>
@@ -111,246 +112,221 @@ namespace iTin.Export.Model
         
         #region constructor/s
 
-            #region [public] AxisDefinitionLabelsModel(): Initializes a new instance of this class.
-            /// <summary>
-            /// Initializes a new instance of the <see cref="T:iTin.Export.Model.AxisDefinitionLabelsModel" /> class.
-            /// </summary>
-            public AxisDefinitionLabelsModel()
-            {
-                Position = DefaultPosition;
-                Alignment = DefaultAlignment;
-                Orientation = DefaultOrientation;
-            }
-            #endregion
+        #region [public] AxisDefinitionLabelsModel(): Initializes a new instance of this class
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.AxisDefinitionLabelsModel" /> class.
+        /// </summary>
+        public AxisDefinitionLabelsModel()
+        {
+            Position = DefaultPosition;
+            Alignment = DefaultAlignment;
+            Orientation = DefaultOrientation;
+        }
+        #endregion
 
         #endregion
 
         #region public properties
 
-            #region [public] (KnownHorizontalAlignment) Alignment: Gets or sets preferred alignment for axis labels.
-            /// <summary>
-            /// Gets or sets preferred alignment for axis labels.
-            /// </summary>
-            /// <value>
-            /// Preferred alignment for axis labels. The default is <see cref="iTin.Export.Model.KnownHorizontalAlignment.Center" />.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Labels Alignment="Left|Center|Right" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-            [XmlAttribute]
-            [DefaultValue(DefaultAlignment)]
-            public KnownHorizontalAlignment Alignment
+        #region [public] (KnownHorizontalAlignment) Alignment: Gets or sets preferred alignment for axis labels
+        /// <summary>
+        /// Gets or sets preferred alignment for axis labels.
+        /// </summary>
+        /// <value>
+        /// Preferred alignment for axis labels. The default is <see cref="iTin.Export.Model.KnownHorizontalAlignment.Center" />.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Labels Alignment="Left|Center|Right" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        [XmlAttribute]
+        [DefaultValue(DefaultAlignment)]
+        public KnownHorizontalAlignment Alignment
+        {
+            get => alignment;
+            set
             {
-                get
-                {
-                    return alignment;
-                }
-                set
-                {
-                    SentinelHelper.IsEnumValid(value);
+                SentinelHelper.IsEnumValid(value);
 
-                    alignment = value;
-                }
+                alignment = value;
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (FontModel) Font: Gets or sets a reference to the font model defined for this title.
-            /// <summary>
-            /// Gets or sets a reference to the font model defined for this title.
-            /// </summary>
-            /// <value>
-            ///   <para>Type: <see cref="FontModel"/></para>
-            ///   <para>Reference to the font model defined for this title.</para>
-            /// </value>
-            public FontModel Font
+        #region [public] (FontModel) Font: Gets or sets a reference to the font model defined for this title
+        /// <summary>
+        /// Gets or sets a reference to the font model defined for this title.
+        /// </summary>
+        /// <value>
+        ///   <para>Type: <see cref="FontModel"/></para>
+        ///   <para>Reference to the font model defined for this title.</para>
+        /// </value>
+        public FontModel Font
+        {
+            get => font ?? (font = new FontModel());
+            set => font = value;
+        }
+        #endregion
+
+        #region [public] (KnownLabelOrientation) Orientation: Gets or sets preferred orientation for axis labels
+        /// <summary>
+        /// Gets or sets preferred orientation for axis labels.
+        /// </summary>
+        /// <value>
+        /// Preferred orientation for axis labels. The default is <see cref="iTin.Export.Model.KnownLabelOrientation.Automatic" />.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Labels Orientation="Automatic|Downward|Horizontal|Upward|Vertical" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        [XmlAttribute]
+        [DefaultValue(DefaultOrientation)]
+        public KnownLabelOrientation Orientation
+        {
+            get => orientation;
+            set
             {
-                get
-                {
-                    return font ?? (font = new FontModel());
-                }
-                set
-                {
-                    font = value;
-                }
-            }
-            #endregion
+                SentinelHelper.IsEnumValid(value);
 
-            #region [public] (KnownLabelOrientation) Orientation: Gets or sets preferred orientation for axis labels.
-            /// <summary>
-            /// Gets or sets preferred orientation for axis labels.
-            /// </summary>
-            /// <value>
-            /// Preferred orientation for axis labels. The default is <see cref="iTin.Export.Model.KnownLabelOrientation.Automatic" />.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Labels Orientation="Automatic|Downward|Horizontal|Upward|Vertical" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-            [XmlAttribute]
-            [DefaultValue(DefaultOrientation)]
-            public KnownLabelOrientation Orientation
+                orientation = value;
+            }
+        }
+        #endregion
+
+        #region [public] (AxisDefinitionModel) Parent: Gets the parent element of the element
+        /// <summary>
+        /// Gets the parent element of the element.
+        /// </summary>
+        /// <value>
+        /// The element that represents the container element of the element.
+        /// </value>
+        [Browsable(false)]
+        public AxisDefinitionModel Parent => parent;
+        #endregion
+
+        #region [public] (KnownLabelPosition) Position: Gets or sets preferred position for axis labels
+        /// <summary>
+        /// Gets or sets preferred position for axis labels.
+        /// </summary>
+        /// <value>
+        /// Preferred position for axis labels. The default is <see cref="iTin.Export.Model.KnownLabelPosition.Low" />.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Labels Position="None|High|Low|NextToAxis" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        [XmlAttribute]
+        [DefaultValue(DefaultPosition)]
+        public KnownLabelPosition Position
+        {
+            get => position;
+            set
             {
-                get
-                {
-                    return orientation;
-                }
-                set
-                {
-                    SentinelHelper.IsEnumValid(value);
+                SentinelHelper.IsEnumValid(value);
 
-                    orientation = value;
-                }
+                position = value;
             }
-            #endregion
-
-            #region [public] (AxisDefinitionModel) Parent: Gets the parent element of the element.
-            /// <summary>
-            /// Gets the parent element of the element.
-            /// </summary>
-            /// <value>
-            /// The element that represents the container element of the element.
-            /// </value>
-            [Browsable(false)]
-            public AxisDefinitionModel Parent
-            {
-                get { return parent; }
-            }
-            #endregion
-
-            #region [public] (KnownLabelPosition) Position: Gets or sets preferred position for axis labels.
-            /// <summary>
-            /// Gets or sets preferred position for axis labels.
-            /// </summary>
-            /// <value>
-            /// Preferred position for axis labels. The default is <see cref="iTin.Export.Model.KnownLabelPosition.Low" />.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Labels Position="None|High|Low|NextToAxis" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-            [XmlAttribute]
-            [DefaultValue(DefaultPosition)]
-            public KnownLabelPosition Position
-            {
-                get
-                {
-                    return position;
-                }
-                set
-                {
-                    SentinelHelper.IsEnumValid(value);
-
-                    position = value;
-                }
-            }
-            #endregion
+        }
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
-            /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
-            public override bool IsDefault
-            {
-                get
-                {
-                    return 
-                        Font.IsDefault &&
-                        Position.Equals(DefaultPosition) &&
-                        Alignment.Equals(DefaultAlignment) &&
-                        Orientation.Equals(DefaultOrientation);
-                }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
+        public override bool IsDefault => Font.IsDefault &&
+                                          Position.Equals(DefaultPosition) &&
+                                          Alignment.Equals(DefaultAlignment) &&
+                                          Orientation.Equals(DefaultOrientation);
+        #endregion
 
         #endregion
 
         #region internal methods
 
-            #region [internal] (void) SetParent(AxisDefinitionModel): Sets the parent element of the element.
-            /// <summary>
-            /// Sets the parent element of the element.
-            /// </summary>
-            /// <param name="reference">Reference to parent.</param>
-            internal void SetParent(AxisDefinitionModel reference)
-            {
-                parent = reference;
-            }
-            #endregion
+        #region [internal] (void) SetParent(AxisDefinitionModel): Sets the parent element of the element
+        /// <summary>
+        /// Sets the parent element of the element.
+        /// </summary>
+        /// <param name="reference">Reference to parent.</param>
+        internal void SetParent(AxisDefinitionModel reference)
+        {
+            parent = reference;
+        }
+        #endregion
 
         #endregion
     }

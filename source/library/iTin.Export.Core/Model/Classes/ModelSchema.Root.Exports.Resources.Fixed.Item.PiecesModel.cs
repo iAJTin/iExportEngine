@@ -1,7 +1,8 @@
-﻿using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using Helper;
+
     /// <summary>
     /// Contains a collection of pieces. Each element is a new collection of smaller fields resulting from splitting a reference field.
     /// </summary>
@@ -76,21 +77,22 @@ namespace iTin.Export.Model
     {
         #region constructor/s
 
-            #region [public] PiecesModel(FixedItemModel):
-            /// <summary>
-            /// Initializes a new instance of the <see cref="iTin.Export.Model.PiecesModel"/> class.
-            /// </summary>
-            /// <param name="parent">The parent.</param>
-            public PiecesModel(FixedItemModel parent)
-                : base(parent)
-            {
-            }
-            #endregion
+        #region [public] PiecesModel(FixedItemModel):
+        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.PiecesModel" /> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        public PiecesModel(FixedItemModel parent)
+            : base(parent)
+        {
+        }
+        #endregion
 
         #endregion
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="item"></param>
         protected override void SetOwner(PieceModel item)
@@ -100,16 +102,16 @@ namespace iTin.Export.Model
             item.SetOwner(this);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public override PieceModel GetBy(string value)
         {
             return string.IsNullOrEmpty(value)
-                                ? null
-                                : Find(s => s.Name.Equals(value));
+                ? null
+                : Find(s => s.Name.Equals(value));
         }
     }
 }

@@ -1,16 +1,17 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Text;
-
-using iTin.Export.Helper;
-using iTin.Export.Model;
-
-using OfficeOpenXml;
-using OfficeOpenXml.Drawing;
-using OfficeOpenXml.Drawing.Chart;
-
+﻿
 namespace iTin.Export.Writers.OpenXml.Office
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Text;
+
+    using OfficeOpenXml;
+    using OfficeOpenXml.Drawing;
+    using OfficeOpenXml.Drawing.Chart;
+
+    using Helper;
+    using Model;
+
     /// <summary>
     /// Contains common extensions for data model objects.
     /// </summary>

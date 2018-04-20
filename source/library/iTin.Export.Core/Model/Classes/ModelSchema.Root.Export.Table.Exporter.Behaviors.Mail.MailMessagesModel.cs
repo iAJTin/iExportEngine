@@ -1,24 +1,25 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Helper;
+
     public partial class MailMessagesModel
     {
         #region constructor/s
 
-            #region [public] MailMessagesModel(MailBehaviorModel):
-            /// <summary>
-            /// Initializes a new instance of the <see cref="MailMessagesModel"/> class.
-            /// </summary>
-            /// <param name="parent">The parent.</param>
-            public MailMessagesModel(MailBehaviorModel parent)
-                : base(parent)
-            {
-            }
-            #endregion
+        #region [public] MailMessagesModel(MailBehaviorModel):
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MailMessagesModel"/> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        public MailMessagesModel(MailBehaviorModel parent)
+            : base(parent)
+        {
+        }
+        #endregion
 
         #endregion
 
@@ -29,7 +30,7 @@ namespace iTin.Export.Model
             item.SetOwner(this);
         }
 
-        #region [public] {static} (IEnumerable<MailMessageModel>) GetRange(IEnumerable<MailMessageModel>, string): Returns an enumerator to message list containing only those who meet the credential condition.
+        #region [public] {static} (IEnumerable<MailMessageModel>) GetRange(IEnumerable<MailMessageModel>, string): Returns an enumerator to message list containing only those who meet the credential condition
         /// <summary>
         /// Returns an enumerator to message list containing only those who meet the credential condition.
         /// </summary>
@@ -46,7 +47,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] {static} (IEnumerable<MailMessageModel>) GetRange(IEnumerable<MailMessageModel>, YesNo): Returns an enumerator to message list containing only those who meet the condition.
+        #region [public] {static} (IEnumerable<MailMessageModel>) GetRange(IEnumerable<MailMessageModel>, YesNo): Returns an enumerator to message list containing only those who meet the condition
         /// <summary>
         /// Returns an enumerator to message list containing only those who meet the condition.
         /// </summary>

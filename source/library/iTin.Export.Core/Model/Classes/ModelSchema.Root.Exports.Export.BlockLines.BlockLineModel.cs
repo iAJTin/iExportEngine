@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Class[@name="info"]/*'/>
     public partial class BlockLineModel
     {
@@ -33,24 +34,15 @@ namespace iTin.Export.Model
 
         public LocationModel Location
         {
-            get
-            {
-                return location ?? (location = new LocationModel());
-            }
-            set
-            {
-                location = value;
-            }
+            get => location ?? (location = new LocationModel());
+            set => location = value;
         }
 
         [XmlAttribute]
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get
-            {
-                return show;
-            }
+            get => show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -64,19 +56,13 @@ namespace iTin.Export.Model
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default.
-            /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
-            public override bool IsDefault
-            {
-                get
-                {
-                    return
-                        Items.IsDefault &&
-                        Location.IsDefault &&
-                        Show.Equals(DefaultShow);
-                }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
+        /// <inheritdoc />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        public override bool IsDefault => Items.IsDefault &&
+                                          Location.IsDefault &&
+                                          Show.Equals(DefaultShow);
+        #endregion
 
         #endregion
     }

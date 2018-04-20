@@ -1,4 +1,5 @@
-﻿namespace iTin.Export.Model
+﻿
+namespace iTin.Export.Model
 {
     /// <summary>
     /// Specifies the orientation of a control on the drawing surface.

@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Globalization;
-using System.Text;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-using iTin.Export.Model;
-
-using OfficeOpenXml.Style;
-
+﻿
 namespace OfficeOpenXml
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Drawing;
+    using System.Globalization;
+    using System.Text;
+
+    using iTin.Export.ComponentModel;
+    using iTin.Export.Helper;
+    using iTin.Export.Model;
+
+    using Style;
+
     /// <summary>
     /// Static class than contains common extension methods for objects of the namespace <see cref="N:OfficeOpenXml"/>.
     /// </summary>
     static class OfficeOpenXmlExtension
     {
-        #region [public] {static} (void) AddErrorComment(this OfficeOpenXml.ExcelRangeBase, FieldValueInformation): Writes a error comment for specified cell.
+        #region [public] {static} (void) AddErrorComment(this OfficeOpenXml.ExcelRangeBase, FieldValueInformation): Writes a error comment for specified cell
         /// <summary>
         /// Writes a error comment for specified cell.
         /// </summary>
@@ -55,7 +56,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (void) AppendLogo(this OfficeOpenXml.ExcelWorksheet, LogoModel): Appends the logo to specified worksheet.
+        #region [public] {static} (void) AppendLogo(this OfficeOpenXml.ExcelWorksheet, LogoModel): Appends the logo to specified worksheet
         /// <summary>
         /// Appends the logo to specified worksheet.
         /// </summary>
@@ -114,7 +115,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (void) AutoFitGroupColumns(this OfficeOpenXml.ExcelWorksheet, IDictionary<BaseDataFieldModel, int>, IWriter): Automatics the fit group columns.
+        #region [public] {static} (void) AutoFitGroupColumns(this OfficeOpenXml.ExcelWorksheet, IDictionary<BaseDataFieldModel, int>, IWriter): Automatics the fit group columns
         /// <summary>
         /// Automatics the fit group columns.
         /// </summary>
@@ -163,7 +164,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (void) CreateFromModel(OfficeOpenXml.ExcelStyles, StylesModel): Creates list of styles.
+        #region [public] {static} (void) CreateFromModel(OfficeOpenXml.ExcelStyles, StylesModel): Creates list of styles
         /// <summary>
         /// Creates list of styles.
         /// </summary>
@@ -188,7 +189,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (float) GetRangeFromModel(this ExcelWorksheet, int, ColumnHeaderModel): Returns a new range which represents the column header.
+        #region [public] {static} (float) GetRangeFromModel(this ExcelWorksheet, int, ColumnHeaderModel): Returns a new range which represents the column header
         /// <summary>
         /// Returns a new range which represents the column header.
         /// </summary>
@@ -218,7 +219,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (double) PixelsToColumnWidth(this OfficeOpenXml.ExcelWorksheet, int): Returns pixels convert to excel column width.
+        #region [public] {static} (double) PixelsToColumnWidth(this OfficeOpenXml.ExcelWorksheet, int): Returns pixels convert to excel column width
         /// <summary>
         ///  Returns pixels convert to excel column width.
         /// </summary>
@@ -248,7 +249,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (ExcelPrinterSettings) SetMarginsFromModel(this OfficeOpenXml.ExcelPrinterSettings, MarginsModel): Sets the margins of document from model.
+        #region [public] {static} (ExcelPrinterSettings) SetMarginsFromModel(this OfficeOpenXml.ExcelPrinterSettings, MarginsModel): Sets the margins of document from model
         /// <summary>
         /// Sets the margins of document from model.
         /// </summary>

@@ -1,12 +1,13 @@
-﻿using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using Helper;
+
     /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Class[@name="info"]/*'/>
     public partial class BlockLinesModel
     {
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="parent"></param>
         public BlockLinesModel(ExportModel parent)

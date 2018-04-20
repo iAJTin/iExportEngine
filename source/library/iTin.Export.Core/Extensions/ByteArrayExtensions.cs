@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-
-using Ionic.Zip;
-
+﻿
 namespace iTin.Export
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
+    using Ionic.Zip;
+
+    using ComponentModel;
+    using Helper;
+
     /// <summary>
     /// Static class than contains extension methods for objects <see cref="T:System.Array" /> of type <see cref="T:System.Byte" />.
     /// </summary> 

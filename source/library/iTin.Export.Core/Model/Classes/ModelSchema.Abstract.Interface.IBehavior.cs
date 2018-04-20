@@ -1,7 +1,8 @@
-﻿using iTin.Export.ComponentModel;
-
+﻿
 namespace iTin.Export.Model
 {
+    using ComponentModel;
+
     /// <summary>
     /// Declares a generic behavior to use to with an exporter.
     /// </summary>

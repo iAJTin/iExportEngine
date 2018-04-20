@@ -1,12 +1,13 @@
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
 
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using ComponentModel;
+    using Helper;
+
     /// <summary>
     /// Implements interface <see cref="T:iTin.Export.Model.IBehavior" />.
     /// Which acts as the base class for different behaviors of an exporter supported by <strong><c>iTin Export Engine</c></strong>.<br/>

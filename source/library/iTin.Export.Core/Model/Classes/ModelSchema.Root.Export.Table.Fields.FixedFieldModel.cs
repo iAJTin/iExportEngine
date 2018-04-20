@@ -1,10 +1,11 @@
-﻿using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseDataFieldModel" /> class.<br/>
     /// Represents a piece of a field fixed-width data.
@@ -101,154 +102,145 @@ namespace iTin.Export.Model
 
         #region public properties
 
-            #region [public] (string) Pieces: Gets or sets name of the collection of pieces.
-            /// <summary>
-            /// Gets or sets the name of the field.
-            /// </summary>
-            /// <value>
-            /// Name of the collection of pieces.
-            /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Fixed Pieces="string" ...&gt;
-            /// ...
-            /// &lt;/Fixed&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
-            /// <exception cref="iTin.Export.Model.InvalidIdentifierNameException">If <paramref name="value" /> not is a valid identifier name.</exception>
-            [XmlAttribute]
-            public string Pieces
+        #region [public] (string) Pieces: Gets or sets name of the collection of pieces
+        /// <summary>
+        /// Gets or sets the name of the field.
+        /// </summary>
+        /// <value>
+        /// Name of the collection of pieces.
+        /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Fixed Pieces="string" ...&gt;
+        /// ...
+        /// &lt;/Fixed&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
+        /// <exception cref="iTin.Export.Model.InvalidIdentifierNameException">If <paramref name="value" /> not is a valid identifier name.</exception>
+        [XmlAttribute]
+        public string Pieces
+        {
+            get => _pieces;
+            set
             {
-                get
-                {
-                    return _pieces;
-                }
-                set
-                {
-                    SentinelHelper.ArgumentNull(value);
-                    SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Fixed", "Pieces", value)));
+                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Fixed", "Pieces", value)));
 
-                    _pieces = value;
-                }
+                _pieces = value;
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (string) Piece: Gets or sets name of the piece.
-            /// <summary>
-            /// Gets or sets name of the piece.
-            /// </summary>
-            /// <value>
-            /// Name of the piece.
-            /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Fixed Piece="string" ...&gt;
-            /// ...
-            /// &lt;/Fixed&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
-            /// <exception cref="iTin.Export.Model.InvalidIdentifierNameException">If <paramref name="value" /> not is a valid identifier name.</exception>
-            [XmlAttribute]
-            public string Piece
+        #region [public] (string) Piece: Gets or sets name of the piece
+        /// <summary>
+        /// Gets or sets name of the piece.
+        /// </summary>
+        /// <value>
+        /// Name of the piece.
+        /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Fixed Piece="string" ...&gt;
+        /// ...
+        /// &lt;/Fixed&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
+        /// <exception cref="iTin.Export.Model.InvalidIdentifierNameException">If <paramref name="value" /> not is a valid identifier name.</exception>
+        [XmlAttribute]
+        public string Piece
+        {
+            get => _piece;
+            set
             {
-                get
-                {
-                    return _piece;
-                }
-                set
-                {
-                    SentinelHelper.ArgumentNull(value);
-                    SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Fixed", "Piece", value)));
+                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Fixed", "Piece", value)));
 
-                    _piece = value;
-                }
+                _piece = value;
             }
-            #endregion
+        }
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type.
-            /// <summary>
-            /// Gets a value indicating data field type.
-            /// </summary>
-            /// <value>
-            /// Always returns <see cref="iTin.Export.Model.KnownFieldType.Fixed" />.
-            /// </value>
-            public override KnownFieldType FieldType
-            {
-                get { return KnownFieldType.Fixed; }
-            }
-            #endregion
+        #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type.
+        /// <summary>
+        /// Gets a value indicating data field type.
+        /// </summary>
+        /// <value>
+        /// Always returns <see cref="iTin.Export.Model.KnownFieldType.Fixed" />.
+        /// </value>
+        public override KnownFieldType FieldType => KnownFieldType.Fixed;
+        #endregion
 
         #endregion
 
         #region public override methods
 
-            #region [public] {override} (string) ToString(): Returns a string that represents the current object.
-            /// <summary>
-            /// Returns a string that represents the current object.
-            /// </summary>
-            /// <returns>
-            /// A <see cref="T:System.String" /> that represents the current object.
-            /// </returns>
-            /// <remarks>
-            /// This method <see cref="FixedFieldModel.ToString()"/> returns a string that includes name of piece and alias of field for this field.
-            /// </remarks>
-            public override string ToString()
-            {                
-                return string.Format("Pieces=\"{0}\", Piece=\"{1}\", {2}", Pieces, Piece, base.ToString());
-            }
-            #endregion
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that represents the current object.
+        /// </returns>
+        /// <remarks>
+        /// This method <see cref="FixedFieldModel.ToString()"/> returns a string that includes name of piece and alias of field for this field.
+        /// </remarks>
+        public override string ToString()
+        {                
+            return $"Pieces=\"{Pieces}\", Piece=\"{Piece}\", {base.ToString()}";
+        }
+        #endregion
 
         #endregion
     }

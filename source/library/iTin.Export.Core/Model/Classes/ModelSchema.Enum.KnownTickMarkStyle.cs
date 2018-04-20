@@ -1,8 +1,9 @@
-using System;
-using System.CodeDom.Compiler;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.CodeDom.Compiler;
+
     /// <summary>
     /// Specifies the position of major and minor tick marks for an axis.
     /// </summary>

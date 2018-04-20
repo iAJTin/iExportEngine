@@ -1,8 +1,9 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
     /// Specifies the known writer search criteria.
     /// </summary>

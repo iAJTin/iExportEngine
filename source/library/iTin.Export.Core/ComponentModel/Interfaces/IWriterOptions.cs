@@ -1,4 +1,5 @@
-﻿namespace iTin.Export.ComponentModel
+﻿
+namespace iTin.Export.ComponentModel
 {
     /// <summary>
     /// Attribute that allows you to add extra metadata to a writer.

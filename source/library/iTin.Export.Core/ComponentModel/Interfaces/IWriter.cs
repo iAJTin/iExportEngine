@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-using iTin.Export.Model;
-using iTin.Export.Web;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
+    using Model;
+    using Web;
+
     /// <summary>
     /// Declares a generic writer.
     /// </summary>

@@ -1,9 +1,10 @@
-using System.Drawing.Imaging;
-
-using iTin.Export.Drawing.Helper;
 
 namespace iTin.Export.Model
 {
+    using System.Drawing.Imaging;
+
+    using iTin.Export.Drawing.Helper;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseEffectModel"/> class.<br/>
     /// Which represents gray-scale effect.

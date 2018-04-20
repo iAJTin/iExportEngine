@@ -1,10 +1,11 @@
-﻿using System.Threading;
-using System.Windows.Forms;
-
-using iTin.Export.Web.Cloud.Clients;
-
+﻿
 namespace iTin.Export.Web.Cloud.Apis
 {
+    using System.Threading;
+    using System.Windows.Forms;
+
+    using Clients;
+
     /// <summary>
     /// Static class that contains the SkyDrive <strong><c>REST API</c></strong>.
     /// </summary>

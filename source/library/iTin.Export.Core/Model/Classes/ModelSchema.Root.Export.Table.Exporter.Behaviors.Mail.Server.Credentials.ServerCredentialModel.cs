@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     /// <summary>
     /// Representing a server credential authentication.
     /// </summary>
@@ -143,434 +144,416 @@ namespace iTin.Export.Model
 
         #region constructor/s
 
-            #region [public] ServerCredentialModel(): Initializes a new instance of this class.
-            /// <summary>
-            /// Initializes a new instance of the <see cref="T:iTin.Export.Model.ServerCredentialModel" /> class.
-            /// </summary>
-            public ServerCredentialModel()
-            {
-                SSL = DefaultSSL;
-                Port = DefaultPort;
-                Domain = DefaultDomain;
-            }
-            #endregion
+        #region [public] ServerCredentialModel(): Initializes a new instance of this class
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.ServerCredentialModel" /> class.
+        /// </summary>
+        public ServerCredentialModel()
+        {
+            SSL = DefaultSSL;
+            Port = DefaultPort;
+            Domain = DefaultDomain;
+        }
+        #endregion
 
         #endregion
 
         #region public properties
 
-            #region [public] (string) Domain: Gets or sets the domain or computer name that verifies the credential.
-            /// <summary>
-            /// Gets or sets the domain or computer name that verifies the credential.
-            /// </summary>
-            /// <value>
-            /// The name of the domain associated with the credential. The default is an empty string ("").
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential Domain="string" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            [XmlAttribute]
-            [DefaultValue(DefaultDomain)]
-            public string Domain { get; set; }
-            #endregion
+        #region [public] (string) Domain: Gets or sets the domain or computer name that verifies the credential
+        /// <summary>
+        /// Gets or sets the domain or computer name that verifies the credential.
+        /// </summary>
+        /// <value>
+        /// The name of the domain associated with the credential. The default is an empty string ("").
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential Domain="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        [DefaultValue(DefaultDomain)]
+        public string Domain { get; set; }
+        #endregion
 
-            #region [public] (string) Host: Gets or sets the name or IP address of the host used for SMTP transactions.
-            /// <summary>
-            /// Gets or sets the name or IP address of the host used for SMTP transactions.
-            /// </summary>
-            /// <value>
-            /// A <see cref="T:System.String" /> that contains the name or IP address of the computer to use for SMTP transactions.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential Host="string" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            [XmlAttribute]
-            public string Host
+        #region [public] (string) Host: Gets or sets the name or IP address of the host used for SMTP transactions
+        /// <summary>
+        /// Gets or sets the name or IP address of the host used for SMTP transactions.
+        /// </summary>
+        /// <value>
+        /// A <see cref="T:System.String" /> that contains the name or IP address of the computer to use for SMTP transactions.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential Host="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        public string Host
+        {
+            get => host;
+            set
             {
-                get
+                if (string.IsNullOrEmpty(value))
                 {
-                    return host;
+                    host = value;
                 }
-                set
+                else
                 {
-                    if (string.IsNullOrEmpty(value))
+                    if (!char.IsDigit(value[0]))
                     {
                         host = value;
                     }
                     else
-                    {
-                        if (!char.IsDigit(value[0]))
+                    {                        
+                        var isValidIpAddress = false;
+                        if (!string.IsNullOrEmpty(value))
                         {
-                            host = value;
+                            isValidIpAddress = RegularExpressionHelper.IsValidIpAddress(value);
                         }
-                        else
-                        {                        
-                            var isValidIpAddress = false;
-                            if (!string.IsNullOrEmpty(value))
-                            {
-                                isValidIpAddress = RegularExpressionHelper.IsValidIpAddress(value);
-                            }
 
-                            host = isValidIpAddress 
-                                            ? value 
-                                            : string.Empty;
-                        }                        
-                    }
+                        host = isValidIpAddress 
+                                        ? value 
+                                        : string.Empty;
+                    }                        
                 }
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (string) Name: Gets or sets the identifier name of credential.
-            /// <summary>
-            /// Gets or sets the identifier name of credential.
-            /// </summary>
-            /// <value>
-            /// The identifier name of credential.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential Name="string" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            [XmlAttribute]
-            public string Name { get; set; }
-            #endregion
+        #region [public] (string) Name: Gets or sets the identifier name of credential
+        /// <summary>
+        /// Gets or sets the identifier name of credential.
+        /// </summary>
+        /// <value>
+        /// The identifier name of credential.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential Name="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        public string Name { get; set; }
+        #endregion
 
-            #region [public] (ServerCredentialsModel) Owner: Gets the element that owns this.
-            /// <summary>
-            /// Gets the element that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
-            /// </summary>
-            /// <value>
-            /// The <see cref="T:iTin.Export.Model.ServerCredentialsModel" /> that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
-            /// </value>
-            [Browsable(false)]
-            public ServerCredentialsModel Owner
+        #region [public] (ServerCredentialsModel) Owner: Gets the element that owns this
+        /// <summary>
+        /// Gets the element that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
+        /// </summary>
+        /// <value>
+        /// The <see cref="T:iTin.Export.Model.ServerCredentialsModel" /> that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
+        /// </value>
+        [Browsable(false)]
+        public ServerCredentialsModel Owner => owner;
+        #endregion
+
+        #region [public] (string) Password: Gets or sets the password for the user name associated with the credential
+        /// <summary>
+        /// Gets or sets the password for the user name associated with the credential.
+        /// </summary>
+        /// <value>
+        /// The password associated with the credential.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential Password="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        public string Password { get; set; }
+        #endregion
+
+        #region [public] (int) Port: Gets or sets the port used for SMTP transactions
+        /// <summary>
+        /// Gets or sets the port used for SMTP transactions.
+        /// </summary>
+        /// <value>
+        /// An <see cref="T:System.Int32"/> that contains the port number on the SMTP host. The default value is 25.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential Port="int" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Port="25" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        [DefaultValue(DefaultPort)]
+        public int Port
+        {
+            get => port;
+            set
             {
-                get { return owner; }
+                SentinelHelper.IsTrue(value <= 0, "El valor no puede ser menor o igual a 0");
+
+                port = value;
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (string) Password: Gets or sets the password for the user name associated with the credential.
-            /// <summary>
-            /// Gets or sets the password for the user name associated with the credential.
-            /// </summary>
-            /// <value>
-            /// The password associated with the credential.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential Password="string" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            [XmlAttribute]
-            public string Password { get; set; }
-            #endregion
-
-            #region [public] (int) Port: Gets or sets the port used for SMTP transactions.
-            /// <summary>
-            /// Gets or sets the port used for SMTP transactions.
-            /// </summary>
-            /// <value>
-            /// An <see cref="T:System.Int32"/> that contains the port number on the SMTP host. The default value is 25.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential Port="int" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential Name="firstcredential" UserName="address@gmail.com" password="pwd" Port="25" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            [XmlAttribute]
-            [DefaultValue(DefaultPort)]
-            public int Port
+        #region [public] (YesNo) SSL: Gets or sets a value that determines whether uses Secure Sockets Layer (SSL) to encrypt the connection
+        /// <summary>
+        /// Gets or sets a value indicating whether uses Secure Sockets Layer (SSL) to encrypt the connection.
+        /// </summary>
+        /// <value>
+        /// <see cref="iTin.Export.Model.YesNo.Yes" /> uses Secure Sockets Layer (SSL) to encrypt the connection; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential SSL="Yes|No" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential SSL="Yes" Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        [XmlAttribute]
+        [DefaultValue(DefaultSSL)]
+        public YesNo SSL
+        {
+            get => ssl;
+            set
             {
-                get
-                {
-                    return port;
-                }
-                set
-                {
-                    SentinelHelper.IsTrue(value <= 0, "El valor no puede ser menor o igual a 0");
+                SentinelHelper.IsEnumValid(value);
 
-                    port = value;
-                }
+                ssl = value;
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (YesNo) SSL: Gets or sets a value that determines whether uses Secure Sockets Layer (SSL) to encrypt the connection.
-            /// <summary>
-            /// Gets or sets a value indicating whether uses Secure Sockets Layer (SSL) to encrypt the connection.
-            /// </summary>
-            /// <value>
-            /// <see cref="iTin.Export.Model.YesNo.Yes" /> uses Secure Sockets Layer (SSL) to encrypt the connection; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential SSL="Yes|No" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential SSL="Yes" Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-            [XmlAttribute]
-            [DefaultValue(DefaultSSL)]
-            public YesNo SSL
-            {
-                get
-                {
-                    return ssl;
-                }
-                set
-                {
-                    SentinelHelper.IsEnumValid(value);
-
-                    ssl = value;
-                }
-            }
-            #endregion
-
-            #region [public] (string) UserName: Gets or sets the user name associated with the credential.
-            /// <summary>
-            /// Gets or sets the user name associated with the credential.
-            /// </summary>
-            /// <value>
-            /// The user name associated with the credential.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Credential UserName="string" .../&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Credential SSL="Yes" Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
-            /// </code>
-            /// </example>
-            [XmlAttribute]
-            public string UserName { get; set; }
-            #endregion
+        #region [public] (string) UserName: Gets or sets the user name associated with the credential
+        /// <summary>
+        /// Gets or sets the user name associated with the credential.
+        /// </summary>
+        /// <value>
+        /// The user name associated with the credential.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Credential UserName="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Credential SSL="Yes" Name="firstcredential" UserName="address@gmail.com" password="pwd" Host="smtp.gmail.com"/&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        public string UserName { get; set; }
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
-            /// <summary>
-            /// Gets a value indicating whether this instance is default.
-            /// </summary>
-            /// <value>
-            /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
-            /// </value>
-            public override bool IsDefault
-            {
-                get
-                {
-                    return 
-                        SSL.Equals(DefaultSSL) &&
-                        Port.Equals(DefaultPort) &&
-                        Domain.Equals(DefaultDomain);
-                }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating whether this instance is default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => SSL.Equals(DefaultSSL) &&
+                                          Port.Equals(DefaultPort) &&
+                                          Domain.Equals(DefaultDomain);
+        #endregion
 
         #endregion
 
         #region public methods
 
-            #region [public] (void) SetOwner(ServerCredentialsModel): Sets the element that owns this.
-            /// <summary>
-            /// Sets the element that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
-            /// </summary>
-            /// <param name="reference">Reference to owner.</param>
-            public void SetOwner(ServerCredentialsModel reference)
-            {
-                owner = reference;
-            }
-            #endregion
+        #region [public] (void) SetOwner(ServerCredentialsModel): Sets the element that owns this
+        /// <summary>
+        /// Sets the element that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
+        /// </summary>
+        /// <param name="reference">Reference to owner.</param>
+        public void SetOwner(ServerCredentialsModel reference)
+        {
+            owner = reference;
+        }
+        #endregion
 
         #endregion
     }

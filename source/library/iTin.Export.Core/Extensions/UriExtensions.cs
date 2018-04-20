@@ -1,11 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Xml.Xsl;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export
 {
+    using System;
+    using System.IO;
+    using System.Xml.Xsl;
+
+    using Helper;
+
     /// <summary>
     /// Static class than contains extension methods for objects of type <see cref="System.Uri" />.
     /// </summary>

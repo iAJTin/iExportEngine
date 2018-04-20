@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseSimpleModelCollection{TItem, TParent}" /> class.<br/>.
     /// Which acts as the base class for nodes of model which are of collection type
@@ -77,72 +78,66 @@ namespace iTin.Export.Model
     {
         #region constructor/s
 
-            #region [protected] BaseComplexModelCollection(TParent): Initializes a new instance of the class.
-            /// <summary>
-            /// Initializes a new instance of the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}"/> class.
-            /// </summary>
-            /// <param name="parent">c.</param>
-            protected BaseComplexModelCollection(TParent parent) : base(parent)
-            {
-            }
+        #region [protected] BaseComplexModelCollection(TParent): Initializes a new instance of the class
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}"/> class.
+        /// </summary>
+        /// <param name="parent">c.</param>
+        protected BaseComplexModelCollection(TParent parent) : base(parent)
+        {
+        }
         #endregion
 
         #endregion
 
         #region public indexer
 
-            #region [public] (TItem) this[TSearch]: Gets or sets the element specified parameter search.
-            /// <summary>
-            /// Gets or sets the element specified by <paramref name="value" />.
-            /// </summary>
-            /// <value>
-            /// Item
-            /// </value>
-            /// <param name="value">Zero-based index of the element to get or set.</param>
-            /// <returns>
-            /// The value.
-            /// </returns>
-            public TItem this[TSearch value]
-            {
-                get
-                {
-                    return GetBy(value);                    
-                }
-            }
+        #region [public] (TItem) this[TSearch]: Gets or sets the element specified parameter search
+        /// <summary>
+        /// Gets or sets the element specified by <paramref name="value" />.
+        /// </summary>
+        /// <value>
+        /// Item
+        /// </value>
+        /// <param name="value">Zero-based index of the element to get or set.</param>
+        /// <returns>
+        /// The value.
+        /// </returns>
+        public TItem this[TSearch value] => GetBy(value);
         #endregion
 
         #endregion
 
         #region public methods
 
-            #region [public] (void) Contains(TSearch): Determines whether an element is in the collection.
-            /// <summary>
-            /// Determines whether an element is in the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}" />.
-            /// </summary>
-            /// <param name="value">The object to locate in the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}" />.</param>
-            /// <returns>
-            ///   <strong>true</strong> if <paramref name="value" /> is found in the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}" />; otherwise, <strong>false</strong>.
-            /// </returns>
-            public bool Contains(TSearch value)
-            {
-                return GetBy(value) != null;
-            }
+        #region [public] (void) Contains(TSearch): Determines whether an element is in the collection
+        /// <summary>
+        /// Determines whether an element is in the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}" />.
+        /// </summary>
+        /// <param name="value">The object to locate in the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}" />.</param>
+        /// <returns>
+        ///   <strong>true</strong> if <paramref name="value" /> is found in the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}" />; otherwise, <strong>false</strong>.
+        /// </returns>
+        public bool Contains(TSearch value)
+        {
+            return GetBy(value) != null;
+        }
         #endregion
 
         #endregion
 
         #region public abstract methods
 
-            #region [public] (void) GetBy(TSearch): Returns the element specified.
-            /// <summary>
-            /// Returns the element specified.
-            /// </summary>
-            /// <param name="value">The object to locate in the <see cref="BaseSimpleModelCollection{TItem, TParent}" />.</param>
-            /// <returns>
-            ///   <strong>true</strong> if <paramref name="value" /> is found in the <see cref="BaseSimpleModelCollection{TItem, TParent}" />; otherwise, <strong>false</strong>.
-            /// </returns>
-            public abstract TItem GetBy(TSearch value);
-            #endregion
+        #region [public] (void) GetBy(TSearch): Returns the element specified
+        /// <summary>
+        /// Returns the element specified.
+        /// </summary>
+        /// <param name="value">The object to locate in the <see cref="BaseSimpleModelCollection{TItem, TParent}" />.</param>
+        /// <returns>
+        ///   <strong>true</strong> if <paramref name="value" /> is found in the <see cref="BaseSimpleModelCollection{TItem, TParent}" />; otherwise, <strong>false</strong>.
+        /// </returns>
+        public abstract TItem GetBy(TSearch value);
+        #endregion
 
         #endregion
     }

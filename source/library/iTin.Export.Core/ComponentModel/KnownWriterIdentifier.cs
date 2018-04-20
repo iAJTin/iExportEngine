@@ -1,4 +1,5 @@
-﻿namespace iTin.Export.ComponentModel
+﻿
+namespace iTin.Export.ComponentModel
 {
     /// <summary>
     /// Known writer types 
@@ -18,6 +19,6 @@
         /// <summary>
         /// XML writer, for more information please see <see cref="T:iTin.Export.ComponentModel.BaseWriterXml" />.       
         /// </summary>
-        WriterXml,
+        WriterXml
     }
 }

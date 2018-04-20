@@ -1,18 +1,21 @@
-﻿using System.Data;
-using System.Linq;
-
-using iTin.Export.Adapters.Native;
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Inputs
 {
+    using System.Data;
+    using System.Linq;
+
+    using Adapters.Native;
+    using ComponentModel;
+    using Helper;
+
+    /// <inheritdoc />
     /// <summary>
     /// Class than allows you to export an object of type <see cref="T:System.Data.DataTable" />.
     /// </summary>
     [InputOptions(AdapterType = typeof(DataSetAdapter))]
     public class DataTableInput : DataRowInput
     {
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.DataTableInput" /> class.
         /// </summary>
@@ -22,6 +25,7 @@ namespace iTin.Export.Inputs
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.DataTableInput" /> class.
         /// </summary>

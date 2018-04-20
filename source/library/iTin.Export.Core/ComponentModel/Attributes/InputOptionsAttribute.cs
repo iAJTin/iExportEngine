@@ -1,7 +1,9 @@
-﻿using System;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System;
+
+    /// <inheritdoc />
     /// <summary>
     /// Declares input attribute.
     /// </summary>

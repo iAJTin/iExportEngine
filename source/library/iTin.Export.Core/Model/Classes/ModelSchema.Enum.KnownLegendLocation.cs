@@ -1,9 +1,10 @@
-using System;
-using System.CodeDom.Compiler;
-using System.Xml.Serialization;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.CodeDom.Compiler;
+    using System.Xml.Serialization;
+
     /// <summary>
     ///  Specifies the known locations for legend.
     /// </summary>

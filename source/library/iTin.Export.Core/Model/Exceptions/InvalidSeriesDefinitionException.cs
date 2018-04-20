@@ -1,18 +1,21 @@
-using System;
-using System.Globalization;
-using System.Runtime.Serialization;
-using System.Text;
-
-using iTin.Export.Helper;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.Globalization;
+    using System.Runtime.Serialization;
+    using System.Text;
+
+    using Helper;
+
+    /// <inheritdoc />
     /// <summary>
     /// This class represents the exception that is thrown when the serie field or axis in export model is invalid.
     /// </summary>
     [Serializable]
     public class InvalidSeriesDefinitionException : Exception
     {
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /> class.
         /// </summary>
@@ -21,6 +24,7 @@ namespace iTin.Export.Model
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.
         /// </summary>
@@ -30,6 +34,7 @@ namespace iTin.Export.Model
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.
         /// </summary>
@@ -39,6 +44,7 @@ namespace iTin.Export.Model
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.
         /// </summary>
@@ -49,6 +55,7 @@ namespace iTin.Export.Model
           {
           }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /> class with serialized data.
         /// </summary>

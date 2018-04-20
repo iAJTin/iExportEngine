@@ -1,8 +1,9 @@
-using System;
-using System.Diagnostics;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.Diagnostics;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.RealDataTypeModel" /> class.<br/>
     /// Displays a number in exponential notation, which replaces part of the number with E + n, where E (exponent) multiplies the preceding number by 10 to n.
@@ -93,138 +94,127 @@ namespace iTin.Export.Model
 
         #region public properties
 
-            #region [public] (ScientificErrorModel) Error: Error: Gets or sets a reference that contains scientific data type error settings.
-            /// <summary>
-            /// Gets or sets a reference that contains scientific data type error settings.
-            /// </summary>
-            /// <value>
-            /// Scientific data type error settings
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Scientific ...&gt;
-            ///   &lt;Error/&gt;
-            /// &lt;/Number&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// <code lang="xml">
-            /// &lt;Style Name="Scientific"&gt;
-            ///   &lt;Content Color="White"&gt;
-            ///     &lt;Scientific Decimals="3"&gt;
-            ///       &lt;Error Value="-9999"&gt;
-            ///         &lt;Comment Show="Yes"&gt;
-            ///           &lt;Text>Wrong value:  &lt;/Text&gt;
-            ///         &lt;/Comment&gt;
-            ///       &lt;/Error&gt;           
-            ///     &lt;/Scientific&gt;
-            ///   &lt;/Content&gt;
-            /// &lt;/Style&gt;
-            /// </code>
-            /// </example>
-            public ScientificErrorModel Error
-            {
-                get
-                {
-                    return error ?? (error = new ScientificErrorModel());
-                }
-                set
-                {
-                    error = value;
-                }
-            }
-            #endregion
+        #region [public] (ScientificErrorModel) Error: Error: Gets or sets a reference that contains scientific data type error settings
+        /// <summary>
+        /// Gets or sets a reference that contains scientific data type error settings.
+        /// </summary>
+        /// <value>
+        /// Scientific data type error settings
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Scientific ...&gt;
+        ///   &lt;Error/&gt;
+        /// &lt;/Number&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml">
+        /// &lt;Style Name="Scientific"&gt;
+        ///   &lt;Content Color="White"&gt;
+        ///     &lt;Scientific Decimals="3"&gt;
+        ///       &lt;Error Value="-9999"&gt;
+        ///         &lt;Comment Show="Yes"&gt;
+        ///           &lt;Text>Wrong value:  &lt;/Text&gt;
+        ///         &lt;/Comment&gt;
+        ///       &lt;/Error&gt;           
+        ///     &lt;/Scientific&gt;
+        ///   &lt;/Content&gt;
+        /// &lt;/Style&gt;
+        /// </code>
+        /// </example>
+        public ScientificErrorModel Error
+        {
+            get => error ?? (error = new ScientificErrorModel());
+            set => error = value;
+        }
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
-            /// <summary>
-            /// Gets a value indicating whether this instance is default.
-            /// </summary>
-            /// <value>
-            /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
-            /// </value>
-            public override bool IsDefault
-            {
-                get
-                {
-                    return base.IsDefault && 
-                           Error.IsDefault;
-                }
-            }
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating whether this instance is default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => base.IsDefault && Error.IsDefault;
         #endregion
 
         #endregion
 
         #region public methods
 
-            #region [public] {new} (ScientificDataTypeModel) Clone(): Clones this instance.
-            /// <summary>
-            /// Clones this instance.
-            /// </summary>
-            /// <returns>A new object that is a copy of this instance.</returns>
-            public new ScientificDataTypeModel Clone()
-            {
-                var scientificyDataTypeCloned = (ScientificDataTypeModel)MemberwiseClone();
-                scientificyDataTypeCloned.Error = Error.Clone();
-                scientificyDataTypeCloned.Properties = Properties.Clone();
+        #region [public] {new} (ScientificDataTypeModel) Clone(): Clones this instance
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public new ScientificDataTypeModel Clone()
+        {
+            var scientificyDataTypeCloned = (ScientificDataTypeModel)MemberwiseClone();
+            scientificyDataTypeCloned.Error = Error.Clone();
+            scientificyDataTypeCloned.Properties = Properties.Clone();
 
-                return scientificyDataTypeCloned;
-            }
-            #endregion
+            return scientificyDataTypeCloned;
+        }
+        #endregion
 
-            #region [public] (void) Combine(ScientificDataTypeModel): Combines this instance with reference parameter.
-            /// <summary>
-            /// Combines this instance with reference parameter.
-            /// </summary>
-            public void Combine(ScientificDataTypeModel reference)
-            {
-                Error.Combine(reference.Error);
+        #region [public] (void) Combine(ScientificDataTypeModel): Combines this instance with reference parameter
+        /// <summary>
+        /// Combines this instance with reference parameter.
+        /// </summary>
+        public void Combine(ScientificDataTypeModel reference)
+        {
+            Error.Combine(reference.Error);
 
-                base.Combine(reference);
-            }
-            #endregion
+            base.Combine(reference);
+        }
+        #endregion
 
         #endregion
 
         #region private methods
 
-            #region [private] (object) Clone(): Creates a new object that is a copy of the current instance.
-            /// <summary>
-            /// Creates a new object that is a copy of the current instance.
-            /// </summary>
-            /// <returns>
-            /// A new object that is a copy of this instance.
-            /// </returns>
-            object ICloneable.Clone()
-            {
-                return Clone();
-            }
-            #endregion
+        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+        #endregion
 
         #endregion
     }

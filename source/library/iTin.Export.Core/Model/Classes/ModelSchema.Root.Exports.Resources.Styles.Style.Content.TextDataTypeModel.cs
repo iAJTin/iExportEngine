@@ -1,9 +1,8 @@
-using System;
-using System.Drawing;
-using System.Web.UI.WebControls;
 
 namespace iTin.Export.Model
 {
+    using System;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseDataTypeModel" /> class.<br/>
     /// Treats the content as text and displays the content exactly as written, even when numbers are typed.
@@ -53,36 +52,37 @@ namespace iTin.Export.Model
     {
         #region public methods
 
-            #region [public] {new} (TextDataTypeModel) Clone(): Clones this instance.
-            /// <summary>
-            /// Clones this instance.
-            /// </summary>
-            /// <returns>A new object that is a copy of this instance.</returns>
-            public new TextDataTypeModel Clone()
-            {
-                var textDataTypeCloned = (TextDataTypeModel)MemberwiseClone();
-                textDataTypeCloned.Properties = Properties.Clone();
+        #region [public] {new} (TextDataTypeModel) Clone(): Clones this instance
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public new TextDataTypeModel Clone()
+        {
+            var textDataTypeCloned = (TextDataTypeModel)MemberwiseClone();
+            textDataTypeCloned.Properties = Properties.Clone();
 
-                return textDataTypeCloned;
-            }
-            #endregion
+            return textDataTypeCloned;
+        }
+        #endregion
 
         #endregion
 
         #region private methods
 
-            #region [private] (object) Clone(): Creates a new object that is a copy of the current instance.
-            /// <summary>
-            /// Creates a new object that is a copy of the current instance.
-            /// </summary>
-            /// <returns>
-            /// A new object that is a copy of this instance.
-            /// </returns>
-            object ICloneable.Clone()
-            {
-                return Clone();
-            }
-            #endregion
+        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+        #endregion
 
         #endregion
     }

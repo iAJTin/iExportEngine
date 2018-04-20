@@ -1,12 +1,13 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     /// <summary>
     /// Defines a single style, includes definition for a font type, type of content, such as the background color, the alignment type and the data type.
     /// </summary>
@@ -138,452 +139,409 @@ namespace iTin.Export.Model
 
         #region public static properties
 
-            #region [public] {static} (StyleModel) Default: Gets a default style.
-            /// <summary>
-            /// Gets a default style.
-            /// </summary>
-            /// <value>
-            /// A default style.
-            /// </value>
-            public static StyleModel Default
+        #region [public] {static} (StyleModel) Default: Gets a default style
+        /// <summary>
+        /// Gets a default style.
+        /// </summary>
+        /// <value>
+        /// A default style.
+        /// </value>
+        public static StyleModel Default
+        {
+            get
             {
-                get
-                {
-                    var @default = Empty;
-                    @default.Name = NameOfDefaultStyle;
+                var @default = Empty;
+                @default.Name = NameOfDefaultStyle;
 
-                    return @default;
-                }
+                return @default;
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] {static} (StyleModel) Empty: Gets an empty style.
-            /// <summary>
-            /// Gets an empty style.
-            /// </summary>
-            /// <value>
-            /// An empty style.
-            /// </value>
-            public static StyleModel Empty
-            {
-                get { return new StyleModel(); }
-            }
+        #region [public] {static} (StyleModel) Empty: Gets an empty style
+        /// <summary>
+        /// Gets an empty style.
+        /// </summary>
+        /// <value>
+        /// An empty style.
+        /// </value>
+        public static StyleModel Empty => new StyleModel();
         #endregion
 
         #endregion
 
         #region public properties
 
-            #region [public] (string) Name: Gets or sets the name of the style.
-            /// <summary>
-            /// Gets or sets the name of the style.
-            /// </summary>
-            /// <value>
-            /// The name of the style.
-            /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Style Name="string"&gt;
-            /// ...
-            /// ...
-            /// &lt;/Style&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
-            /// <exception cref="T:iTin.Export.Model.InvalidIdentifierNameException"><paramref name="value" /> not is a valid identifier name.</exception>
-            [XmlAttribute]
-            public string Name
+        #region [public] (string) Name: Gets or sets the name of the style
+        /// <summary>
+        /// Gets or sets the name of the style.
+        /// </summary>
+        /// <value>
+        /// The name of the style.
+        /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Style Name="string"&gt;
+        /// ...
+        /// ...
+        /// &lt;/Style&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
+        /// <exception cref="T:iTin.Export.Model.InvalidIdentifierNameException"><paramref name="value" /> not is a valid identifier name.</exception>
+        [XmlAttribute]
+        public string Name
+        {
+            get => _name;
+            set
             {
-                get
-                {
-                    return _name;
-                }
-                set
-                {
-                    SentinelHelper.ArgumentNull(value);
-                    SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Style", "Name", value)));
+                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Style", "Name", value)));
 
-                    _name = value;
-                }
+                _name = value;
             }
+        }
         #endregion
 
-            #region [public] (string) Inherits: Gets or sets the name of parent style.
-            /// <summary>
-            /// Gets or sets the name of parent style.
-            /// </summary>
-            /// <value>
-            /// The name of parent style.
-            /// </value>
-            [XmlAttribute]
-            [DefaultValue("")]
-            public string Inherits
+        #region [public] (string) Inherits: Gets or sets the name of parent style
+        /// <summary>
+        /// Gets or sets the name of parent style.
+        /// </summary>
+        /// <value>
+        /// The name of parent style.
+        /// </value>
+        [XmlAttribute]
+        [DefaultValue("")]
+        public string Inherits
+        {
+            get => _inherits;
+            set
             {
-                get
-                {
-                    return _inherits;
-                }
-                set
-                {
-                    SentinelHelper.ArgumentNull(value);
-                    SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Style", "Name", value)));
+                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Style", "Name", value)));
 
-                    _inherits = value;
-                }
+                _inherits = value;
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (BordersModel) Borders: Gets or sets the collection of border properties.
-            /// <summary>
-            /// Gets or sets the collection of border properties.
-            /// </summary>
-            /// <value>
-            /// Collection of border properties. Each element defines a border.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Style&gt;
-            ///   &lt;Borders&gt;
-            /// &lt;/Style&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            [XmlArrayItem("Border", typeof(BorderModel), IsNullable = false)]
-            public BordersModel Borders
+        #region [public] (BordersModel) Borders: Gets or sets the collection of border properties
+        /// <summary>
+        /// Gets or sets the collection of border properties.
+        /// </summary>
+        /// <value>
+        /// Collection of border properties. Each element defines a border.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Style&gt;
+        ///   &lt;Borders&gt;
+        /// &lt;/Style&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        [XmlArrayItem("Border", typeof(BorderModel), IsNullable = false)]
+        public BordersModel Borders
+        {
+            get => _borders ?? (_borders = new BordersModel(this));
+            set => _borders = value;
+        }
+        #endregion
+
+        #region [public] (ContentModel) Content: Gets or sets a reference to the content model
+        /// <summary>
+        /// Gets or sets a reference to the content model.
+        /// </summary>
+        /// <value>
+        /// Reference that contains the definition of as shown the content of a field.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Style&gt;
+        ///   &lt;Content&gt;
+        /// &lt;/Style&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        public ContentModel Content
+        {
+            get
             {
-                get
+                if (_content == null)
                 {
-                    return _borders ?? (_borders = new BordersModel(this));
+                    _content = ContentModel.Default;
                 }
-                set
-                {
-                    _borders = value;
-                }
+
+                _content.SetParent(this);
+
+                return _content;
             }
-            #endregion
+            set => _content = value;
+        }
+        #endregion
 
-            #region [public] (ContentModel) Content: Gets or sets a reference to the content model.
-            /// <summary>
-            /// Gets or sets a reference to the content model.
-            /// </summary>
-            /// <value>
-            /// Reference that contains the definition of as shown the content of a field.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Style&gt;
-            ///   &lt;Content&gt;
-            /// &lt;/Style&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            public ContentModel Content
-            {
-                get
-                {
-                    if (_content == null)
-                    {
-                        _content = ContentModel.Default;
-                    }
+        #region [public] (FontModel) Font: Gets or sets the font model
+        /// <summary>
+        /// Gets or sets the font model.
+        /// </summary>
+        /// <value>
+        /// Reference that contains the definition of a font.            
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Style&gt;
+        ///   &lt;Font/&gt;
+        /// &lt;/Style&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        public FontModel Font
+        {
+            get => _font ?? (_font = FontModel.Default);
+            set => _font = value;
+        }
+        #endregion
 
-                    _content.SetParent(this);
+        #region [public] (bool) IsEmpty: Gets a value indicating whether this style is an empty style
+        /// <summary>
+        /// Gets a value indicating whether this style is an empty style.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if is an empty style; otherwise, <strong>false</strong>.
+        /// </value>        
+        public bool IsEmpty => IsDefault;
+        #endregion
 
-                    return _content;
-                }
-                set
-                {
-                    _content = value;
-                }
-            }
-            #endregion
-
-            #region [public] (FontModel) Font: Gets or sets the font model.
-            /// <summary>
-            /// Gets or sets the font model.
-            /// </summary>
-            /// <value>
-            /// Reference that contains the definition of a font.            
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Style&gt;
-            ///   &lt;Font/&gt;
-            /// &lt;/Style&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            public FontModel Font
-            {
-                get
-                {
-                    return _font ?? (_font = FontModel.Default);
-                }
-                set
-                {
-                    _font = value;
-                }
-            }
-            #endregion
-
-            #region [public] (bool) IsEmpty: Gets a value indicating whether this style is an empty style.
-            /// <summary>
-            /// Gets a value indicating whether this style is an empty style.
-            /// </summary>
-            /// <value>
-            /// <strong>true</strong> if is an empty style; otherwise, <strong>false</strong>.
-            /// </value>        
-            public bool IsEmpty
-            {
-                get
-                {
-                    return IsDefault;
-                }
-            }
-            #endregion
-
-            #region [public] (StylesModel) Owner: Gets the element that owns this.
-            /// <summary>
-            /// Gets the element that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
-            /// </summary>
-            /// <value>
-            /// The <see cref="T:iTin.Export.Model.StylesModel" /> that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
-            /// </value>
-            [XmlIgnore]
-            [Browsable(false)]
-            public StylesModel Owner
-            {
-                get { return _owner; }
-            }
-            #endregion
+        #region [public] (StylesModel) Owner: Gets the element that owns this
+        /// <summary>
+        /// Gets the element that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
+        /// </summary>
+        /// <value>
+        /// The <see cref="T:iTin.Export.Model.StylesModel" /> that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
+        /// </value>
+        [XmlIgnore]
+        [Browsable(false)]
+        public StylesModel Owner => _owner;
+        #endregion
 
         #endregion
 
         #region private properties
 
-            #region [private] (StyleModel) InheritStyle: Gets a reference to inherit model.
-            /// <summary>
-            /// Gets a reference to inherit model.
-            /// </summary>
-            /// <value>
-            /// A inherit style.
-            /// </value>
-            [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-            private StyleModel InheritStyle
-            {
-                get
-                {
-                    return Owner == null 
-                        ? Empty 
-                        : Owner.GetBy(_inherits);
-                }
-            }
-            #endregion
+        #region [private] (StyleModel) InheritStyle: Gets a reference to inherit model
+        /// <summary>
+        /// Gets a reference to inherit model.
+        /// </summary>
+        /// <value>
+        /// A inherit style.
+        /// </value>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private StyleModel InheritStyle => Owner == null 
+            ? Empty 
+            : Owner.GetBy(_inherits);
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
-            /// <summary>
-            /// Gets a value indicating whether this instance is default.
-            /// </summary>
-            /// <value>
-            /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
-            /// </value>
-            public override bool IsDefault
-            {
-                get
-                {
-                    return Font.IsDefault &&
-                           Content.IsDefault &&
-                           Borders.IsDefault &&
-                           string.IsNullOrEmpty(Inherits);
-                }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating whether this instance is default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => Font.IsDefault &&
+                                          Content.IsDefault &&
+                                          Borders.IsDefault &&
+                                          string.IsNullOrEmpty(Inherits);
+        #endregion
 
         #endregion
 
         #region public methods
 
-            #region [public] (StyleModel) Clone(): Clones this instance.
-            /// <summary>
-            /// Clones this instance.
-            /// </summary>
-            /// <returns>A new object that is a copy of this instance.</returns>
-            public StyleModel Clone()
-            {
-                var styleCloned = (StyleModel)MemberwiseClone();
-                styleCloned.Font = Font.Clone();
-                styleCloned.Borders = Borders.Clone();
-                styleCloned.Content = Content.Clone();
-                styleCloned.Properties = Properties.Clone();
+        #region [public] (StyleModel) Clone(): Clones this instance
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public StyleModel Clone()
+        {
+            var styleCloned = (StyleModel)MemberwiseClone();
+            styleCloned.Font = Font.Clone();
+            styleCloned.Borders = Borders.Clone();
+            styleCloned.Content = Content.Clone();
+            styleCloned.Properties = Properties.Clone();
 
-                return styleCloned;
+            return styleCloned;
+        }
+        #endregion
+
+        #region [public] (void) Combine(StyleModel): Combines this instance with reference parameter
+        /// <summary>
+        /// Combines this instance with reference parameter.
+        /// </summary>
+        public void Combine(StyleModel reference)
+        {
+            Combine(reference, true);
+        }
+        #endregion
+
+        #region [public] (void) Combine(StyleModel, bool): Combines this instance with reference parameter
+        /// <summary>
+        /// Combines this instance with reference parameter.
+        /// </summary>
+        public void Combine(StyleModel reference, bool forceInherits)
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                throw new NullReferenceException("Primero asignar un nombre de estilo antes de combinar");
             }
-            #endregion
 
-            #region [public] (void) Combine(StyleModel): Combines this instance with reference parameter.
-            /// <summary>
-            /// Combines this instance with reference parameter.
-            /// </summary>
-            public void Combine(StyleModel reference)
+            if (forceInherits)
             {
-                Combine(reference, true);
-            }
-            #endregion
-
-            #region [public] (void) Combine(StyleModel, bool): Combines this instance with reference parameter.
-            /// <summary>
-            /// Combines this instance with reference parameter.
-            /// </summary>
-            public void Combine(StyleModel reference, bool forceInherits)
-            {
-                if (string.IsNullOrEmpty(Name))
+                var hasInheritStyle = !string.IsNullOrEmpty(reference.Inherits);
+                if (hasInheritStyle)
                 {
-                    throw new NullReferenceException("Primero asignar un nombre de estilo antes de combinar");
+                    var inheritStyle = reference.TryGetInheritStyle();
+                    reference.Combine(inheritStyle);
                 }
-
-                if (forceInherits)
-                {
-                    var hasInheritStyle = !string.IsNullOrEmpty(reference.Inherits);
-                    if (hasInheritStyle)
-                    {
-                        var inheritStyle = reference.TryGetInheritStyle();
-                        reference.Combine(inheritStyle);
-                    }
-                }
-
-                Borders.Combine(reference.Borders);
-                Content.Combine(reference.Content);
-                Font.Combine(reference.Font);
             }
-            #endregion
 
-            #region [public] (void) SetOwner(StylesModel): Sets the element that owns this.
-            /// <summary>
-            /// Sets the element that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
-            /// </summary>
-            /// <param name="reference">Reference to owner.</param>
-            internal void SetOwner(StylesModel reference)
-            {
-                _owner = reference;
-            }
-            #endregion
+            Borders.Combine(reference.Borders);
+            Content.Combine(reference.Content);
+            Font.Combine(reference.Font);
+        }
+        #endregion
 
-            #region [public] (StyleModel) TryGetInheritStyle(): Try gets a reference to inherit model.
-            /// <summary>
-            /// Try gets a reference to inherit model.
-            /// </summary>
-            /// <returns>A inherit style.</returns>
-            public StyleModel TryGetInheritStyle()
-            {
-                return InheritStyle;
-            }
-            #endregion
+        #region [public] (void) SetOwner(StylesModel): Sets the element that owns this
+        /// <summary>
+        /// Sets the element that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
+        /// </summary>
+        /// <param name="reference">Reference to owner.</param>
+        internal void SetOwner(StylesModel reference)
+        {
+            _owner = reference;
+        }
+        #endregion
+
+        #region [public] (StyleModel) TryGetInheritStyle(): Try gets a reference to inherit model
+        /// <summary>
+        /// Try gets a reference to inherit model.
+        /// </summary>
+        /// <returns>A inherit style.</returns>
+        public StyleModel TryGetInheritStyle()
+        {
+            return InheritStyle;
+        }
+        #endregion
 
         #endregion
 
         #region private methods
 
-            #region [private] (object) Clone(): Creates a new object that is a copy of the current instance.
-            /// <summary>
-            /// Creates a new object that is a copy of the current instance.
-            /// </summary>
-            /// <returns>
-            /// A new object that is a copy of this instance.
-            /// </returns>
-            object ICloneable.Clone()
-            {
-                return Clone();
-            }
-            #endregion
+        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+        #endregion
 
         #endregion
     }

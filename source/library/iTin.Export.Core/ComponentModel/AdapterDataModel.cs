@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.Composition;
-
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System.ComponentModel.Composition;
+
+    using Model;
+
     /// <summary>
     /// Target data model
     /// </summary>

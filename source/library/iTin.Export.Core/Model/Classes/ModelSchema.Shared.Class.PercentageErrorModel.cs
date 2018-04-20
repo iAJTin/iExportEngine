@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System;
+
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.NumericErrorModel" /> class.
     /// Represents the error structure for percentage data type. Allows us to set a default value and an additional comment.
@@ -86,37 +87,38 @@ namespace iTin.Export.Model
     {
         #region public methods
 
-            #region [public] {new} (PercentageErrorModel) Clone(): Clones this instance.
-            /// <summary>
-            /// Clones this instance.
-            /// </summary>
-            /// <returns>A new object that is a copy of this instance.</returns>
-            public new PercentageErrorModel Clone()
-            {
-                var percentageErrorCloned = (PercentageErrorModel) MemberwiseClone();
-                percentageErrorCloned.Comment = Comment.Clone();
-                percentageErrorCloned.Properties = Properties.Clone();
+        #region [public] {new} (PercentageErrorModel) Clone(): Clones this instance
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public new PercentageErrorModel Clone()
+        {
+            var percentageErrorCloned = (PercentageErrorModel) MemberwiseClone();
+            percentageErrorCloned.Comment = Comment.Clone();
+            percentageErrorCloned.Properties = Properties.Clone();
 
-                return percentageErrorCloned;
-            }         
-            #endregion
+            return percentageErrorCloned;
+        }         
+        #endregion
 
         #endregion
 
         #region private methods
 
-            #region [private] (object) Clone(): Creates a new object that is a copy of the current instance.
-            /// <summary>
-            /// Creates a new object that is a copy of the current instance.
-            /// </summary>
-            /// <returns>
-            /// A new object that is a copy of this instance.
-            /// </returns>
-            object ICloneable.Clone()
-            {
-                return Clone();
-            }
-            #endregion
+        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+        #endregion
 
         #endregion
     }

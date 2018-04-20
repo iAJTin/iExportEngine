@@ -1,10 +1,11 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.Xml.Serialization;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Xml.Serialization;
+
     /// <summary>
     /// Represents a logo.
     /// </summary>
@@ -97,159 +98,151 @@ namespace iTin.Export.Model
 
         #region public properties
 
-            #region [public] (string) Key: Gets or sets a reference to collection of effects to apply to logo.
-            /// <summary>
-            /// Gets or sets the key.
-            /// </summary>
-            /// <value>
-            /// The key.
-            /// </value>
-            [XmlAttribute]
-            public string Key { get; set; }
-            #endregion
+        #region [public] (string) Key: Gets or sets a reference to collection of effects to apply to logo
+        /// <summary>
+        /// Gets or sets the key.
+        /// </summary>
+        /// <value>
+        /// The key.
+        /// </value>
+        [XmlAttribute]
+        public string Key { get; set; }
+        #endregion
 
-            #region [public] (LogoModel) Parent: Gets the parent element of the element.
-            /// <summary>
-            /// Gets the parent element of the element.
-            /// </summary>
-            /// <value>
-            /// The element that represents the container element of the element.
-            /// </value>
-            [XmlIgnore]
-            [Browsable(false)]
-            public LogoModel Parent
-            {
-                get { return parent; }
-            }
-            #endregion
+        #region [public] (LogoModel) Parent: Gets the parent element of the element
+        /// <summary>
+        /// Gets the parent element of the element.
+        /// </summary>
+        /// <value>
+        /// The element that represents the container element of the element.
+        /// </value>
+        [XmlIgnore]
+        [Browsable(false)]
+        public LogoModel Parent => parent;
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
-            /// <summary>
-            /// Gets a value indicating whether this instance is default.
-            /// </summary>
-            /// <value>
-            /// <strong>true</strong> if this instance contains the default; otherwise <strong>false</strong>.
-            /// </value>
-            public override bool IsDefault
-            {
-                get { return string.IsNullOrEmpty(Key); }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <summary>
+        /// Gets a value indicating whether this instance is default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance contains the default; otherwise <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => string.IsNullOrEmpty(Key);
+        #endregion
 
         #endregion
 
         #region public methods
 
-            #region [public] (bool) TryGetImage(out Image): Gets a reference to the image object that contains modified image.
-            /// <summary>
-            /// Gets a reference to the <see cref="T:System.Drawing.Image" /> object that contains modified image.
-            /// </summary>
-            /// <param name="image">A <see cref="T:System.Drawing.Image" /> object that represents modified image.</param>
-            /// <returns>
-            /// <strong>true</strong> if returns the image from resource; otherwise, <strong>false</strong>.
-            /// </returns>
-            public bool TryGetImage(out Image image)
+        #region [public] (bool) TryGetImage(out Image): Gets a reference to the image object that contains modified image
+        /// <summary>
+        /// Gets a reference to the <see cref="T:System.Drawing.Image" /> object that contains modified image.
+        /// </summary>
+        /// <param name="image">A <see cref="T:System.Drawing.Image" /> object that represents modified image.</param>
+        /// <returns>
+        /// <strong>true</strong> if returns the image from resource; otherwise, <strong>false</strong>.
+        /// </returns>
+        public bool TryGetImage(out Image image)
+        {
+            image = null;
+
+            var foudResource = TryGetResourceInformation(out var resource);
+            if (!foudResource)
             {
-                image = null;
+                return true;
+            }
 
-                ImageModel resource;
-                var foudResource = TryGetResourceInformation(out resource);
-                if (!foudResource)
-                {
-                    return true;
-                }
+            var logo = parent;
+            var table = logo.Parent;
+            var export = table.Parent;
+            image = resource.GetImage(export);
 
+            return true;
+        }
+        #endregion
+
+        #region [public] (bool) TryGetOriginalImage(out Image): Gets a reference to the image object that contains original image
+        /// <summary>
+        /// Gets a reference to the <see cref="T:System.Drawing.Image" /> object that contains modified image.
+        /// </summary>
+        /// <param name="image">A <see cref="T:System.Drawing.Image" /> object that represents modified image.</param>
+        /// <returns>
+        /// <strong>true</strong> if returns the image from resource; otherwise, <strong>false</strong>.
+        /// </returns>
+        public bool TryGetOriginalImage(out Image image)
+        {
+            image = null;
+
+            var foudResource = TryGetResourceInformation(out var resource);
+            if (!foudResource)
+            {
+                return true;
+            }
+
+            var logo = parent;
+            var table = logo.Parent;
+            var export = table.Parent;
+            image = resource.GetOriginalImage(export);
+
+            return true;
+        }
+        #endregion
+
+        #region [public] (bool) TryGetResourceInformation(out ImageModel): Gets a reference to the image resource information
+        /// <summary>
+        /// Gets a reference to the image resource information.
+        /// </summary>
+        /// <param name="resource">Resource information.</param>
+        /// <returns>
+        /// <strong>true</strong> if exist available information about resource; otherwise, <strong>false</strong>.
+        /// </returns>
+        public bool TryGetResourceInformation(out ImageModel resource)
+        {
+            bool result;
+
+            resource = null;
+            if (string.IsNullOrEmpty(Key))
+            {
+                return false;
+            }
+
+            try
+            {
                 var logo = parent;
                 var table = logo.Parent;
                 var export = table.Parent;
-                image = resource.GetImage(export);
+                resource = export.Resources.GetImageResourceByKey(Key);
 
-                return true;
+                result = true;
             }
-            #endregion
-
-            #region [public] (bool) TryGetOriginalImage(out Image): Gets a reference to the image object that contains original image.
-            /// <summary>
-            /// Gets a reference to the <see cref="T:System.Drawing.Image" /> object that contains modified image.
-            /// </summary>
-            /// <param name="image">A <see cref="T:System.Drawing.Image" /> object that represents modified image.</param>
-            /// <returns>
-            /// <strong>true</strong> if returns the image from resource; otherwise, <strong>false</strong>.
-            /// </returns>
-            public bool TryGetOriginalImage(out Image image)
+            catch
             {
-                image = null;
-
-                ImageModel resource;
-                var foudResource = TryGetResourceInformation(out resource);
-                if (!foudResource)
-                {
-                    return true;
-                }
-
-                var logo = parent;
-                var table = logo.Parent;
-                var export = table.Parent;
-                image = resource.GetOriginalImage(export);
-
-                return true;
+                result = false;
             }
-            #endregion
 
-            #region [public] (bool) TryGetResourceInformation(out ImageModel): Gets a reference to the image resource information.
-            /// <summary>
-            /// Gets a reference to the image resource information.
-            /// </summary>
-            /// <param name="resource">Resource information.</param>
-            /// <returns>
-            /// <strong>true</strong> if exist available information about resource; otherwise, <strong>false</strong>.
-            /// </returns>
-            public bool TryGetResourceInformation(out ImageModel resource)
-            {
-                bool result;
-
-                resource = null;
-                if (string.IsNullOrEmpty(Key))
-                {
-                    return false;
-                }
-
-                try
-                {
-                    var logo = parent;
-                    var table = logo.Parent;
-                    var export = table.Parent;
-                    resource = export.Resources.GetImageResourceByKey(Key);
-
-                    result = true;
-                }
-                catch
-                {
-                    result = false;
-                }
-
-                return result;
-            }
-            #endregion
+            return result;
+        }
+        #endregion
 
         #endregion
 
         #region internal methods
 
-            #region [internal] (void) SetParent(LogoModel): Sets the parent element of the element.
-            /// <summary>
-            /// Sets the parent element of the element.
-            /// </summary>
-            /// <param name="reference">Reference to parent.</param>
-            internal void SetParent(LogoModel reference)
-            {
-                parent = reference;
-            }
-            #endregion
+        #region [internal] (void) SetParent(LogoModel): Sets the parent element of the element
+        /// <summary>
+        /// Sets the parent element of the element.
+        /// </summary>
+        /// <param name="reference">Reference to parent.</param>
+        internal void SetParent(LogoModel reference)
+        {
+            parent = reference;
+        }
+        #endregion
 
         #endregion
     }

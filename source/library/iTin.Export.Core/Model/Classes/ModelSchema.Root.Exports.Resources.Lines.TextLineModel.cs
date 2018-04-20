@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-namespace iTin.Export.Model
+﻿namespace iTin.Export.Model
 {
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
     public partial class TextLineModel
     {
         #region field members
@@ -13,47 +13,42 @@ namespace iTin.Export.Model
 
         #region public properties
 
-            #region [public] (List<TextModel>) Items: Gets or sets lines list.
-            [XmlElement("Text")]
-            public List<TextModel> Items
+        #region [public] (List<TextModel>) Items: Gets or sets lines list
+        [XmlElement("Text")]
+        public List<TextModel> Items
+        {
+            get
             {
-                get
+                if (_items == null)
                 {
-                    if (_items == null)
-                    {
-                        _items = new List<TextModel>();
-                    }
-
-                    foreach (var item in _items)
-                    {
-                        item.SetOwner(this);
-                    }
-
-                    return _items;
+                    _items = new List<TextModel>();
                 }
-                set
+
+                foreach (var item in _items)
                 {
-                    _items = value;
+                    item.SetOwner(this);
                 }
+
+                return _items;
             }
-            #endregion
+            set => _items = value;
+        }
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {override} (KnownLineType) LineType: Gets a value indicating line type.
-            /// <summary>
-            /// Gets a value indicating line type.
-            /// </summary>
-            /// <value>
-            /// One of the <see cref="T:iTin.Export.Model.KnownLineType" /> values.
-            /// </value>
-            public override KnownLineType LineType
-            {
-                get { return KnownLineType.TextLine; }
-            }
-            #endregion
+        #region [public] {override} (KnownLineType) LineType: Gets a value indicating line type
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating line type.
+        /// </summary>
+        /// <value>
+        /// One of the <see cref="T:iTin.Export.Model.KnownLineType" /> values.
+        /// </value>
+        public override KnownLineType LineType => KnownLineType.TextLine;
+        #endregion
 
         #endregion
     }

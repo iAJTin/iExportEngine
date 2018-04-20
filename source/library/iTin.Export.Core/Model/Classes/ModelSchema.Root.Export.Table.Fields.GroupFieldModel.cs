@@ -1,4 +1,5 @@
-﻿namespace iTin.Export.Model
+﻿
+namespace iTin.Export.Model
 {
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.DataFieldModel" /> class.<br/>
@@ -83,101 +84,98 @@
     {
         #region public override properties
         
-            #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type.
-            /// <summary>
-            /// Gets a value indicating data field type.
-            /// </summary>
-            /// <value>
-            /// Always returns <see cref="iTin.Export.Model.KnownFieldType.Group" />.
-            /// </value>
-            public override KnownFieldType FieldType
-            {
-                get { return KnownFieldType.Group; }
-            }
-            #endregion
+        #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type
+        /// <summary>
+        /// Gets a value indicating data field type.
+        /// </summary>
+        /// <value>
+        /// Always returns <see cref="iTin.Export.Model.KnownFieldType.Group" />.
+        /// </value>
+        public override KnownFieldType FieldType => KnownFieldType.Group;
+        #endregion
 
         #endregion
 
         #region public static methods
 
-            #region [private] {static} (string) GetSeparatorChar(string): Returns separator char.
-            /// <summary>
-            /// Returns separator char.
-            /// </summary>
-            /// <param name="separator">Separator text.</param>
-            /// <returns>
-            /// A value than represents separator char.
-            /// </returns>
-            public static string GetSeparatorChar(string separator)
+        #region [private] {static} (string) GetSeparatorChar(string): Returns separator char
+        /// <summary>
+        /// Returns separator char.
+        /// </summary>
+        /// <param name="separator">Separator text.</param>
+        /// <returns>
+        /// A value than represents separator char.
+        /// </returns>
+        public static string GetSeparatorChar(string separator)
+        {
+            var result = separator;
+
+            switch (separator)
             {
-                var result = separator;
+                case "None":
+                    result = KnownItemGroupSeparator.EmptySeparator;
+                    break;
 
-                switch (separator)
-                {
-                    case "None":
-                        result = KnownItemGroupSeparator.EmptySeparator;
-                        break;
+                case "Space":
+                    result = KnownItemGroupSeparator.SpaceSeparator;
+                    break;
 
-                    case "Space":
-                        result = KnownItemGroupSeparator.SpaceSeparator;
-                        break;
+                case "Backslash":
+                    result = KnownItemGroupSeparator.BackslashSeparator;
+                    break;
 
-                    case "Backslash":
-                        result = KnownItemGroupSeparator.BackslashSeparator;
-                        break;
+                case "Dash":
+                    result = KnownItemGroupSeparator.DashSeparator;
+                    break;
 
-                    case "Dash":
-                        result = KnownItemGroupSeparator.DashSeparator;
-                        break;
+                case "Dot":
+                    result = KnownItemGroupSeparator.DotSeparator;
+                    break;
 
-                    case "Dot":
-                        result = KnownItemGroupSeparator.DotSeparator;
-                        break;
+                case "Comma":
+                    result = KnownItemGroupSeparator.CommaSeparator;
+                    break;
 
-                    case "Comma":
-                        result = KnownItemGroupSeparator.CommaSeparator;
-                        break;
+                case "Colon":
+                    result = KnownItemGroupSeparator.ColonSeparator;
+                    break;
 
-                    case "Colon":
-                        result = KnownItemGroupSeparator.ColonSeparator;
-                        break;
+                case "Slash":
+                    result = KnownItemGroupSeparator.SlashSeparator;
+                    break;
 
-                    case "Slash":
-                        result = KnownItemGroupSeparator.SlashSeparator;
-                        break;
+                case "Semi Colon":
+                    result = KnownItemGroupSeparator.SemiColonSeparator;
+                    break;
 
-                    case "Semi Colon":
-                        result = KnownItemGroupSeparator.SemiColonSeparator;
-                        break;
-
-                    case "New Line":
-                        result = KnownItemGroupSeparator.NewLineSeparator;
-                        break;
-                }
-
-                return result;
+                case "New Line":
+                    result = KnownItemGroupSeparator.NewLineSeparator;
+                    break;
             }
-            #endregion
+
+            return result;
+        }
+        #endregion
 
         #endregion
 
         #region public override methods
 
-            #region [public] {override} (string) ToString(): Returns a string that represents the current object.
-            /// <summary>
-            /// Returns a string that represents the current object.
-            /// </summary>
-            /// <returns>
-            /// A <see cref="T:System.String" /> that represents the current object.
-            /// </returns>
-            /// <remarks>
-            /// This method <see cref="GroupFieldModel.ToString()"/> returns a string that includes name of group and alias of field.
-            /// </remarks>
-            public override string ToString()
-            {
-                return string.Format("Group=\"{0}\", {1}", Name, base.ToString());
-            }
-            #endregion
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that represents the current object.
+        /// </returns>
+        /// <remarks>
+        /// This method <see cref="GroupFieldModel.ToString()"/> returns a string that includes name of group and alias of field.
+        /// </remarks>
+        public override string ToString()
+        {
+            return $"Group=\"{Name}\", {base.ToString()}";
+        }
+        #endregion
 
         #endregion
     }

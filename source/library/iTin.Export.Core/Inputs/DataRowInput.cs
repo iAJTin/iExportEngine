@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Data;
-
-using iTin.Export.Adapters.Native;
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Inputs
 {
+    using System.Collections.Generic;
+    using System.Data;
+
+    using Adapters.Native;
+    using ComponentModel;
+    using Helper;
+
+    /// <inheritdoc />
     /// <summary>
     /// Class than allows you to export an object of type <see cref="T:System.Data.DataRow" />.
     /// </summary>
     [InputOptions(AdapterType = typeof(DataSetAdapter))]
     public class DataRowInput : DataSetInput
     {
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.DataRowInput" /> class.
         /// </summary>

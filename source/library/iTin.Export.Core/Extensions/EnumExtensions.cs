@@ -1,9 +1,10 @@
-﻿using System;
-
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Helper
 {
+    using System;
+
+    using Model;
+
     /// <summary> 
     /// Static class than contains extension methods for objects <see cref="T:System.Enum"/>.
     /// </summary>

@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-
-using iTin.Export.Helper;
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel.Composition;
+    using System.ComponentModel.Composition.Hosting;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+
+    using Helper;
+    using Model;
+
     /// <summary>
     /// Represents a cache of writers available for the specified routes.
     /// </summary>
     /// <remarks>
     /// Based in Managed Extensibility Framework <string>(MEF)</string> specification.
     /// </remarks>
-    sealed class WritersCache
+    internal sealed class WritersCache
     {
         #region static field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -263,7 +264,7 @@ namespace iTin.Export.ComponentModel
                 {
                     foreach (var path in settings.Items)
                     {
-                        var item = new DirectoryCatalog(path);
+                        var item = new SafeDirectoryCatalog(path);
                         catalog.Catalogs.Add(item);
                         using (var writerWatcher = GetWriterWatcher(path))
                         {

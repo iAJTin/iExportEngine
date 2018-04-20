@@ -1,12 +1,14 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Diagnostics;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Adapters.Native
 {
+    using System;
+    using System.ComponentModel.Composition;
+    using System.Diagnostics;
+
+    using ComponentModel;
+    using Helper;
+
+    /// <inheritdoc />
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.ComponentModel.BaseAdapter" /> than represents a source object based on the <c>XML</c>.
     /// </summary>
@@ -17,6 +19,7 @@ namespace iTin.Export.Adapters.Native
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly char[] _monarchSpecialChars = { '#', '*', '@' };
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Targets.XmlTarget" /> class.
         /// </summary>
@@ -27,6 +30,7 @@ namespace iTin.Export.Adapters.Native
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Targets.XmlTarget" /> class.
         /// </summary>

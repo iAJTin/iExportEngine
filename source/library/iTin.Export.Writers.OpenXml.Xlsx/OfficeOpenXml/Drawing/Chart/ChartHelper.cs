@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
-
-using iTin.Export.Helper;
-using iTin.Export.Model;
-
-using OfficeOpenXml.Drawing.Chart.Xml;
-using OfficeOpenXml.Utils.iTin;
-
+﻿
 namespace OfficeOpenXml.Drawing.Chart
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml;
+
+    using iTin.Export.Helper;
+    using iTin.Export.Model;
+
+    using Utils.iTin;
+    using Xml;
+
     /// <summary>
     /// Static class that contains methods for manipulating objects from <see cref="OfficeOpenXml.Drawing.Chart"/> namespace.
     /// </summary>
     static class ChartHelper
     {
-        #region [public] {static} (void) AddSerieColor(ChartSerieModel): Adds a color to the specified serie. Not supported in EPPlus library.
+        #region [public] {static} (void) AddSerieColor(ChartSerieModel): Adds a color to the specified serie. Not supported in EPPlus library
         /// <summary>
         /// Adds a color to the specified serie. Not supported in <c>EPPlus</c> library.
         /// </summary>
@@ -46,7 +47,7 @@ namespace OfficeOpenXml.Drawing.Chart
         }
         #endregion
 
-        #region [public] {static} (KnownChartElement) ToKnownChartElement(KnownAxisType): Converter for KnownAxisType enumeration type to KnownChartElement enumeration.
+        #region [public] {static} (KnownChartElement) ToKnownChartElement(KnownAxisType): Converter for KnownAxisType enumeration type to KnownChartElement enumeration
         /// <summary>
         /// Converter for <see cref="KnownAxisType"/> enumeration type to <see cref="KnownChartElement"/> enumeration.
         /// </summary>
@@ -76,7 +77,7 @@ namespace OfficeOpenXml.Drawing.Chart
         }
         #endregion
 
-        #region [public] {static} (IEnumerable<XmlNode>) ToAxisXmlFrom(IEnumerable<OfficeOpenXml.Drawing.Chart.ExcelChartAxis>): Converts a ExcelChartAxis objects to Array elements of type XmlNode.
+        #region [public] {static} (IEnumerable<XmlNode>) ToAxisXmlFrom(IEnumerable<OfficeOpenXml.Drawing.Chart.ExcelChartAxis>): Converts a ExcelChartAxis objects to Array elements of type XmlNode
         /// <summary>
         /// Converts a <see cref="OfficeOpenXml.Drawing.Chart.ExcelChartAxis"/> objects to <see cref="System.Array"/> elements of type <see cref="System.Xml.XmlNode"/>.
         /// </summary>

@@ -1,7 +1,8 @@
-﻿using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using Helper;
+
     /// <summary>
     /// Collection of user-defined pieces. Each element is a collection of smaller pieces result of splitting the reference field.
     /// </summary>
@@ -41,8 +42,8 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class FixedModel
     {
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="parent"></param>
         public FixedModel(GlobalResourcesModel parent)
@@ -50,8 +51,8 @@ namespace iTin.Export.Model
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="item"></param>
         protected override void SetOwner(FixedItemModel item)
@@ -61,8 +62,8 @@ namespace iTin.Export.Model
             item.SetOwner(this);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

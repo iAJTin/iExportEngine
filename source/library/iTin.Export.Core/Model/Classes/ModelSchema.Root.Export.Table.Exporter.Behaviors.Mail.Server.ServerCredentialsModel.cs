@@ -1,7 +1,8 @@
-﻿using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using Helper;
+
     /// <summary>
     /// 
     /// </summary>
@@ -9,16 +10,17 @@ namespace iTin.Export.Model
     {
         #region constructor/s
 
-            #region [public] ServerCredentialsModel(MailServerModel):
-            /// <summary>
-            /// Initializes a new instance of the <see cref="ServerCredentialsModel"/> class.
-            /// </summary>
-            /// <param name="parent">The parent.</param>
-            public ServerCredentialsModel(MailServerModel parent)
-                : base(parent)
-            {
-            }    
-            #endregion
+        #region [public] ServerCredentialsModel(MailServerModel):
+        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.ServerCredentialsModel" /> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        public ServerCredentialsModel(MailServerModel parent)
+            : base(parent)
+        {
+        }    
+        #endregion
 
         #endregion
 

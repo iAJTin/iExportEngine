@@ -1,12 +1,13 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Net;
-
-using iTin.Export.Web.Cloud.Apis;
-
+﻿
 namespace iTin.Export.Web.Cloud.Clients
 {
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Net;
+
+    using Apis;
+
     /// <summary>
     /// Represents a basic client for access to cloud service on Microsoft SkyDrive.
     /// </summary>

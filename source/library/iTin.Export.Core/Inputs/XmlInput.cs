@@ -1,16 +1,19 @@
-﻿using System;
-
-using iTin.Export.Adapters.Native;
-using iTin.Export.ComponentModel;
-
+﻿
 namespace iTin.Export.Inputs
 {
+    using System;
+
+    using Adapters.Native;
+    using ComponentModel;
+
+    /// <inheritdoc />
     /// <summary>
     /// Class than allows you to export an object of type <see cref="T:System.Uri" />.
     /// </summary>
     [InputOptions(AdapterType = typeof(XmlAdapter))]
     public class XmlInput : BaseInput
     {
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.XmlInput" /> class.
         /// </summary>

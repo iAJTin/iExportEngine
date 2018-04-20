@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helper;
+
     public partial class ReferenceModel
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -41,10 +42,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultPath)]
         public string Path
         {
-            get
-            {
-                return path.Replace(DefaultPath, "~");
-            }
+            get => path.Replace(DefaultPath, "~");
             set
             {
                 SentinelHelper.ArgumentNull(value);
@@ -56,21 +54,10 @@ namespace iTin.Export.Model
 
         [Browsable(false)]
         [XmlIgnore]
-        public ReferencesModel Owner
-        {
-            get { return owner; }
-        }
+        public ReferencesModel Owner => owner;
 
 
-        public override bool IsDefault
-        {
-            get
-            {
-                return 
-                    string.IsNullOrEmpty(Assembly) && 
-                    Path.Equals(DefaultPath);
-            }
-        }
+        public override bool IsDefault => string.IsNullOrEmpty(Assembly) && Path.Equals(DefaultPath);
 
         public void SetOwner(ReferencesModel reference)
         {

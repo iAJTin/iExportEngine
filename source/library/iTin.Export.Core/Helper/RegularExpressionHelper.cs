@@ -1,7 +1,8 @@
-﻿using System.Text.RegularExpressions;
-
+﻿
 namespace iTin.Export.Helper
 {
+    using System.Text.RegularExpressions;
+
     /// <summary> 
     /// Static class than contains methods for regular expressions. http://regexhero.net/tester/
     /// </summary>

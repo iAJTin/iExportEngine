@@ -1,8 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
-
+﻿
 namespace iTin.Export.Helper
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+
     /// <summary> 
     /// Static class than contains methods for manipulating objects of type <see cref="T:System.IO.Stream" />.
     /// </summary>

@@ -1,7 +1,8 @@
-using iTin.Export.Helper;
 
 namespace iTin.Export.Model
 {
+    using Helper;
+
     /// <summary>
     /// 
     /// </summary>

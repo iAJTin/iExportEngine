@@ -1,8 +1,9 @@
-﻿using System.Data;
-using System.Text;
-
+﻿
 namespace iTin.Export
 {
+    using System.Data;
+    using System.Text;
+
     /// <summary>
     /// Static class than contains extension methods for objects of type <see cref="System.Data" />.
     /// </summary>

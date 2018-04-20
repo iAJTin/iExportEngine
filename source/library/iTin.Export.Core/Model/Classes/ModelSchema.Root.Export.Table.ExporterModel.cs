@@ -1,10 +1,11 @@
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
     /// <summary>
     /// Defines the type of exporter to use and their behavior.
     /// </summary>
@@ -74,170 +75,158 @@ namespace iTin.Export.Model
 
         #region public properties
 
-            #region [public] (object) Current: Gets or sets a reference to the exporter to be used for export.
-            /// <summary>
-            /// Gets or sets a reference to the exporter to be used for export.
-            /// </summary>
-            /// <value>
-            /// Reference to the exporter to be used for export.
-            /// </value>
-            /// <remarks>
-            ///   <para>
-            ///   The following table shows the different exporters types.
-            ///   </para>
-            ///   <list type="table">
-            ///     <listheader>
-            ///       <term>Exporter</term>
-            ///       <description>Description</description>
-            ///     </listheader>
-            ///     <item>
-            ///       <term><see cref="T:iTin.Export.Model.TemplateModel" /></term>
-            ///       <description>Represents an exporter based on a template file.</description>
-            ///     </item>
-            ///     <item>
-            ///       <term><see cref="T:iTin.Export.Model.WriterModel" /></term>
-            ///       <description>Represents an exporter based on a custom writer.</description>
-            ///     </item>
-            ///     <item>
-            ///       <term><see cref="T:iTin.Export.Model.XsltModel" /></term>
-            ///       <description>Represents an exporter based on xslt transformation file.</description>
-            ///     </item>
-            ///   </list>
-            /// </remarks>
-            [XmlElement("Template", typeof(TemplateModel))]
-            [XmlElement("Writer", typeof(WriterModel))]
-            [XmlElement("Xslt", typeof(XsltModel))]
-            public object Current { get; set; }
-            #endregion
+        #region [public] (object) Current: Gets or sets a reference to the exporter to be used for export
+        /// <summary>
+        /// Gets or sets a reference to the exporter to be used for export.
+        /// </summary>
+        /// <value>
+        /// Reference to the exporter to be used for export.
+        /// </value>
+        /// <remarks>
+        ///   <para>
+        ///   The following table shows the different exporters types.
+        ///   </para>
+        ///   <list type="table">
+        ///     <listheader>
+        ///       <term>Exporter</term>
+        ///       <description>Description</description>
+        ///     </listheader>
+        ///     <item>
+        ///       <term><see cref="T:iTin.Export.Model.TemplateModel" /></term>
+        ///       <description>Represents an exporter based on a template file.</description>
+        ///     </item>
+        ///     <item>
+        ///       <term><see cref="T:iTin.Export.Model.WriterModel" /></term>
+        ///       <description>Represents an exporter based on a custom writer.</description>
+        ///     </item>
+        ///     <item>
+        ///       <term><see cref="T:iTin.Export.Model.XsltModel" /></term>
+        ///       <description>Represents an exporter based on xslt transformation file.</description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
+        [XmlElement("Template", typeof(TemplateModel))]
+        [XmlElement("Writer", typeof(WriterModel))]
+        [XmlElement("Xslt", typeof(XsltModel))]
+        public object Current { get; set; }
+        #endregion
 
-            #region [public] (BehaviorsModel) Behaviors: Gets or sets collection of writer behaviors
-            /// <summary>
-            /// Gets or sets collection of writer behaviors.
-            /// </summary>
-            /// <value>
-            /// Collection of writer behaviors. Each element is a writer behavior, it execute after export.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
-            /// &lt;Behaviors&gt;
-            ///   &lt;Download .../&gt; | &lt;TransformFile .../&gt; | &lt;Mail .../&gt; | &lt;ToDropbox .../&gt; | &lt;ToSkydrive .../&gt;
-            ///   ...
-            /// &lt;/Behaviors&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///       <td align="center">X</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            /// <example>
-            /// The following example creates collection of behaviors.
-            /// <code lang="xml">
-            /// &lt;Behaviors&gt;
-            ///   &lt;Downdload/&gt;
-            ///   &lt;TransformFile Save="No"/&gt;
-            /// &lt;/Behaviors&gt;
-            /// </code>
-            /// </example>
-            [XmlArrayItem("Mail", typeof(MailBehaviorModel))]
-            [XmlArrayItem("Download", typeof(DownloadBehaviorModel))]
-            [XmlArrayItem("ToDropbox", typeof(ToDropboxBehaviorModel))]
-            [XmlArrayItem("ToSkyDrive", typeof(ToSkyDriveBehaviorModel))]
-            [XmlArrayItem("TransformFile", typeof(TransformFileBehaviorModel))]
-            public BehaviorsModel Behaviors
+        #region [public] (BehaviorsModel) Behaviors: Gets or sets collection of writer behaviors
+        /// <summary>
+        /// Gets or sets collection of writer behaviors.
+        /// </summary>
+        /// <value>
+        /// Collection of writer behaviors. Each element is a writer behavior, it execute after export.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="AEE Object Element Usage">
+        /// &lt;Behaviors&gt;
+        ///   &lt;Download .../&gt; | &lt;TransformFile .../&gt; | &lt;Mail .../&gt; | &lt;ToDropbox .../&gt; | &lt;ToSkydrive .../&gt;
+        ///   ...
+        /// &lt;/Behaviors&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// The following example creates collection of behaviors.
+        /// <code lang="xml">
+        /// &lt;Behaviors&gt;
+        ///   &lt;Downdload/&gt;
+        ///   &lt;TransformFile Save="No"/&gt;
+        /// &lt;/Behaviors&gt;
+        /// </code>
+        /// </example>
+        [XmlArrayItem("Mail", typeof(MailBehaviorModel))]
+        [XmlArrayItem("Download", typeof(DownloadBehaviorModel))]
+        [XmlArrayItem("ToDropbox", typeof(ToDropboxBehaviorModel))]
+        [XmlArrayItem("ToSkyDrive", typeof(ToSkyDriveBehaviorModel))]
+        [XmlArrayItem("TransformFile", typeof(TransformFileBehaviorModel))]
+        public BehaviorsModel Behaviors
+        {
+            get => behavior ?? (behavior = new BehaviorsModel(this));
+            set => behavior = value;
+        }
+        #endregion
+
+        #region [public] (KnownExporter) ExporterType: Gets a value indicating data field type
+        /// <summary>
+        /// Gets a value indicating data field type.
+        /// </summary>
+        /// <value>
+        /// One of the <see cref="T:iTin.Export.Model.KnownExporter" /> values.
+        /// </value>
+        public KnownExporter ExporterType
+        {
+            get
             {
-                get
+                var exporterTypeValue = Current.GetType().Name;
+
+                switch (exporterTypeValue)
                 {
-                    return behavior ?? (behavior = new BehaviorsModel(this));
-                }
-                set
-                {
-                    behavior = value;
-                }
-            }
-            #endregion
+                    case "WriterModel":
+                        return KnownExporter.Writer;
 
-            #region [public] (KnownExporter) ExporterType: Gets a value indicating data field type.
-            /// <summary>
-            /// Gets a value indicating data field type.
-            /// </summary>
-            /// <value>
-            /// One of the <see cref="T:iTin.Export.Model.KnownExporter" /> values.
-            /// </value>
-            public KnownExporter ExporterType
-            {
-                get
-                {
-                    var exporterTypeValue = Current.GetType().Name;
+                    case "XsltModel":
+                        return KnownExporter.Xslt;
 
-                    switch (exporterTypeValue)
-                    {
-                        case "WriterModel":
-                            return KnownExporter.Writer;
+                    case "TemplateModel":
+                        return KnownExporter.Template;
 
-                        case "XsltModel":
-                            return KnownExporter.Xslt;
-
-                        case "TemplateModel":
-                            return KnownExporter.Template;
-
-                        default:
-                            throw new InvalidOperationException();
-                    }
+                    default:
+                        throw new InvalidOperationException();
                 }
             }
-            #endregion
+        }
+        #endregion
 
-            #region [public] (TableModel) Parent: Gets the parent container of the exporter.
-            /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Exporter/Public/Properties/Property[@name="Parent"]/*'/>
-            [XmlIgnore]
-            [Browsable(false)]
-            public TableModel Parent
-            {
-                get { return parent; }
-            }
-            #endregion
+        #region [public] (TableModel) Parent: Gets the parent container of the exporter
+        /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Exporter/Public/Properties/Property[@name="Parent"]/*'/>
+        [XmlIgnore]
+        [Browsable(false)]
+        public TableModel Parent => parent;
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default.
-            /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
-            public override bool IsDefault
-            {
-                get { return Behaviors.IsDefault; }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
+        public override bool IsDefault => Behaviors.IsDefault;
+        #endregion
 
         #endregion
 
         #region internal methods
 
-            #region [internal] (void) SetParent(TableModel): Sets the parent element of the element.
-            /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Internal/Methods/Method[@name="SetParent"]/*'/>
-            internal void SetParent(TableModel reference)
-            {
-                parent = reference;
-            }
-            #endregion
+        #region [internal] (void) SetParent(TableModel): Sets the parent element of the element
+        /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Internal/Methods/Method[@name="SetParent"]/*'/>
+        internal void SetParent(TableModel reference)
+        {
+            parent = reference;
+        }
+        #endregion
 
         #endregion
     }

@@ -1,10 +1,12 @@
-using System.ComponentModel;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Drawing.ComponentModel;
 
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+
+    using iTin.Export.Drawing.ComponentModel;
+
+    using ComponentModel;
+
     /// <summary>
     /// Specifies effects applicable to an image
     /// </summary>

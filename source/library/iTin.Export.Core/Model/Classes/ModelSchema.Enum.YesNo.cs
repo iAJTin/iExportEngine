@@ -1,8 +1,9 @@
-using System;
-using System.CodeDom.Compiler;
 
 namespace iTin.Export.Model
 {
+    using System;
+    using System.CodeDom.Compiler;
+
     /// <summary>
     /// Represents a boolean value.
     /// </summary>

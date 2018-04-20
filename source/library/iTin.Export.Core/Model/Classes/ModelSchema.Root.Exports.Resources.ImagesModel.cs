@@ -1,7 +1,8 @@
-using iTin.Export.Helper;
 
 namespace iTin.Export.Model
 {
+    using Helper;
+
     /// <summary>
     /// Contains a collection of user-defined styles. Each element includes definition for a font type, type of content, such as the background color, the alignment type and the data type.
     /// </summary>
@@ -143,8 +144,8 @@ namespace iTin.Export.Model
     /// </example>
     public partial class ImagesModel
     {
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="parent"></param>
         public ImagesModel(GlobalResourcesModel parent)
@@ -152,8 +153,8 @@ namespace iTin.Export.Model
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="item"></param>
         protected override void SetOwner(ImageModel item)
@@ -163,8 +164,8 @@ namespace iTin.Export.Model
             item.SetOwner(this);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

@@ -1,7 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
+﻿
 namespace iTin.Export.ComponentModel
 {
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
     /// Declares a direct writer.
     /// </summary>

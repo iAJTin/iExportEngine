@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Xml.Serialization;
-using iTin.Export.Helper;
-
+﻿
 namespace iTin.Export.Model
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+
+    using Helper;
+
     public partial class ReferencesModel
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -16,10 +16,7 @@ namespace iTin.Export.Model
         }
 
         [Browsable(false)]
-        public ExportsModel Parent
-        {
-            get { return _parent; }
-        }
+        public ExportsModel Parent => _parent;
 
         internal void SetParent(ExportsModel reference)
         {
