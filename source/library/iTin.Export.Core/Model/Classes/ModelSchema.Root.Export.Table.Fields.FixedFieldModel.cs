@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Fields</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.FieldsModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Fixed ...&gt;
     ///   &lt;Header/&gt;
     ///   &lt;Value/&gt;
@@ -111,7 +111,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Fixed Pieces="string" ...&gt;
         /// ...
         /// &lt;/Fixed&gt;
@@ -164,7 +164,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Fixed Piece="string" ...&gt;
         /// ...
         /// &lt;/Fixed&gt;

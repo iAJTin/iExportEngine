@@ -11,7 +11,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Exporter</c></strong>. For more information, please see <see cref="iTin.Export.Model.ExporterModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Xslt&gt;
     ///   &lt;File/&gt;
     /// &lt;/Group&gt;
@@ -46,7 +46,7 @@ namespace iTin.Export.Model
         /// The xslt file. To specify a relative path use the character (~).
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Xslt&gt;
         ///   &lt;File&gt;string&lt;/Path&gt;
         /// &lt;/Xslt&gt;

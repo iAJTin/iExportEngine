@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Category</c></strong>, or <strong><c>Values</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.AxisDefinitionModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Marks/&gt;
     /// </code>
     /// </para>
@@ -108,7 +108,7 @@ namespace iTin.Export.Model
         /// Position of major tick marks for an axis. The default is <see cref="iTin.Export.Model.KnownTickMarkStyle.Cross" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Marks Major="None|Cross|Inside|Outside" .../&gt;
         /// </code>
         /// <para>
@@ -157,7 +157,7 @@ namespace iTin.Export.Model
         /// Position of minor tick marks for an axis. The default is <see cref="iTin.Export.Model.KnownTickMarkStyle.Cross" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Marks Minor="None|Cross|Inside|Outside" .../&gt;
         /// </code>
         /// <para>

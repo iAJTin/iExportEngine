@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Comment&gt;
     ///   &lt;Text/&gt;
     ///   &lt;Font/&gt;
@@ -114,7 +114,7 @@ namespace iTin.Export.Model
         /// Reference that contains the definition of a font.            
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Comment&gt;
         ///   &lt;Font/&gt;
         /// &lt;/Comment&gt;
@@ -157,7 +157,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> displays a comment that contains the original value of the field; Otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Comment Show="Yes|No" ...&gt;
         /// ...
         /// &lt;/Comment&gt;
@@ -207,7 +207,7 @@ namespace iTin.Export.Model
         /// The comment text.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Comment .../&gt;
         ///   &lt;Text&gt;string&lt;/Text&gt;
         ///   ...

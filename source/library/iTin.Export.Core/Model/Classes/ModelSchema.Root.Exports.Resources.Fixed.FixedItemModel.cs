@@ -19,7 +19,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Fixed</c></strong>. For more information, please see <see cref="FixedModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Pieces ...&gt;
     ///   &lt;Piece/&gt;
     ///   &lt;Piece/&gt;
@@ -132,7 +132,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         ///   &lt;Pieces Name="string" ...&gt;
         ///     ...
         ///   &lt;/Pieces&gt;
@@ -184,7 +184,7 @@ namespace iTin.Export.Model
         /// Collection of smaller fields resulting from splitting a reference field. Each element is composed of a field name and initial position and final position into the reference field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Pieces&gt;
         ///   &lt;Piece .../&gt;
         ///   &lt;Piece .../&gt;
@@ -208,7 +208,7 @@ namespace iTin.Export.Model
         /// Name of the reference field. Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         ///   &lt;Pieces Reference="string" ...&gt;
         ///     ...
         ///   &lt;/Pieces&gt;

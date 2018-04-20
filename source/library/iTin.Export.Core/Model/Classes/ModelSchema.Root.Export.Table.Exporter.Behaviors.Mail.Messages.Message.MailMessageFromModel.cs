@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Message</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.MailMessageModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;From/&gt;
     /// </code>
     /// </para>
@@ -109,7 +109,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String"/> that contains a valid e-mail address.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;From Address="string"/&gt;
         /// </code>
         /// <para>

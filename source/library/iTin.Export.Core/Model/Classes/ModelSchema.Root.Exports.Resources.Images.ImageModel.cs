@@ -17,7 +17,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Images</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ImageModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Image ...&gt;
     ///   &lt;Path/&gt;
     ///   &lt;Effects/&gt;
@@ -109,7 +109,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Image Key="string"&gt;
         /// ...
         /// ...
@@ -162,7 +162,7 @@ namespace iTin.Export.Model
         /// The image file path.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Image ...&gt;
         ///   &lt;Path&gt;string&lt;/Path&gt;
         ///   ...
@@ -214,7 +214,7 @@ namespace iTin.Export.Model
         /// Collection of image effects. Each element is an image effect.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Effects&gt;
         ///   &lt;Disabled/&gt; | 
         ///   &lt;GrayScale/&gt; | 

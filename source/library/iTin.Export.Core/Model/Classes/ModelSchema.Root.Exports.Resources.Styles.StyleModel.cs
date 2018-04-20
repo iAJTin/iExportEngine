@@ -181,7 +181,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Style Name="string"&gt;
         /// ...
         /// ...
@@ -256,7 +256,7 @@ namespace iTin.Export.Model
         /// Collection of border properties. Each element defines a border.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Style&gt;
         ///   &lt;Borders&gt;
         /// &lt;/Style&gt;
@@ -300,7 +300,7 @@ namespace iTin.Export.Model
         /// Reference that contains the definition of as shown the content of a field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Style&gt;
         ///   &lt;Content&gt;
         /// &lt;/Style&gt;
@@ -353,7 +353,7 @@ namespace iTin.Export.Model
         /// Reference that contains the definition of a font.            
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Style&gt;
         ///   &lt;Font/&gt;
         /// &lt;/Style&gt;

@@ -7,18 +7,20 @@ namespace iTin.Export.Model
     using System.Globalization;
     using System.IO;
     using System.Text;
+    using System.Web;
     using System.Xml.Serialization;
 
     using ComponentModel;
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseBehaviorModel"/> class.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseBehaviorModel" /> class.<br />
     /// Which represents download behavior. Applies only in web mode.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br />
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Download .../&gt;
     /// </code>
     /// </para>
@@ -35,12 +37,12 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.BaseBehaviorModel.CanExecute" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether executes behavior. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether executes behavior. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.DownloadBehaviorModel.LocalCopy" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether saves local copy. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines whether saves local copy. The default is <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -49,10 +51,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -84,12 +86,13 @@ namespace iTin.Export.Model
         
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo localCopy;
+        private YesNo _localCopy;
         #endregion
 
         #region constructor/s
 
         #region [public] DownloadBehaviorModel(): Initializes a new instance of this class
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.DownloadBehaviorModel" /> class.
         /// </summary>
@@ -125,7 +128,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if saves local copy; otherwise <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Download LocalCopy="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -164,12 +167,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultLocalCopy)]
         public YesNo LocalCopy
         {
-            get => localCopy;
+            get => _localCopy;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                localCopy = value;
+                _localCopy = value;
             }
         }
         #endregion
@@ -179,7 +182,8 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-        /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
+        /// <inheritdoc />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
         public override bool IsDefault => base.IsDefault && LocalCopy.Equals(DefaultLocalCopy);
         #endregion
 
@@ -188,21 +192,26 @@ namespace iTin.Export.Model
         #region protected override methods
 
         #region [protected] {override} (void) ExecuteBehavior(IWriter, ExportSettings): Code for execute download behavior
+        /// <inheritdoc />
         /// <summary>
         /// Code for execute download behavior.
         /// </summary>
         /// <param name="writer">The writer.</param>
         /// <param name="settings">Exporter settings.</param>
         protected override void ExecuteBehavior(IWriter writer, ExportSettings settings)
-        {                         
-            var httpSettings = settings as HttpExportSettings;
-            if (httpSettings == null)
+        {
+            if (settings == null)
+            {
+                return;
+            }
+
+            var response = HttpContext.Current?.Response;
+            if (response == null)
             {
                 return;
             }
 
             var filename = writer.ResponseInfo.ExtractFileName();
-
             if (LocalCopy == YesNo.No)
             {
                 var root = writer.Adapter.DataModel.Data;
@@ -210,9 +219,7 @@ namespace iTin.Export.Model
                 var outputDirectory = Path.GetDirectoryName(outputFullPath);
 
                 var filenameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
-                var searchPattern = string.Format(CultureInfo.InvariantCulture, "{0}.*", filenameWithoutExtension);
-
-                var files = Directory.GetFiles(outputDirectory, searchPattern);
+                var files = Directory.GetFiles(outputDirectory, $"{filenameWithoutExtension}.*");
                 foreach (var file in files)
                 {
                     File.Delete(file);
@@ -231,7 +238,7 @@ namespace iTin.Export.Model
                 downloadFile = CreateZipFile(writer);
             }
 
-            DownloadFile(writer, httpSettings, StreamHelper.AsByteArrayFromFile(downloadFile));                
+            DownloadFile(writer, response, StreamHelper.AsByteArrayFromFile(downloadFile));                
         }
         #endregion
 
@@ -274,22 +281,22 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [private] {static} (void) DownloadFile(IWriter, HttpExportSettings, byte[]): Downloads the specified data
+        #region [private] {static} (void) DownloadFile(IWriter, HttpResponse, byte[]): Downloads the specified data
         /// <summary>
         /// Downloads the specified data.
         /// </summary>
         /// <param name="writer">Writer reference.</param>
-        /// <param name="settings">Export settings.</param>
+        /// <param name="response">Http response.</param>
         /// <param name="data">Data to download.</param>
-        private static void DownloadFile(IWriter writer, HttpExportSettings settings, byte[] data)
+        private static void DownloadFile(IWriter writer, HttpResponse response, byte[] data)
         {
             var info = writer.ResponseInfo;
-            settings.Response.Clear();
-            settings.Response.ContentType = info.ContentType;
-            settings.Response.AddHeader("content-disposition", info.Header);
-            settings.Response.BinaryWrite(data);
-            settings.Response.Flush();
-            settings.Response.End();
+            response.Clear();
+            response.ContentType = info.ContentType;
+            response.AddHeader("content-disposition", info.Header);
+            response.BinaryWrite(data);
+            response.Flush();
+            response.End();
         }
         #endregion
 

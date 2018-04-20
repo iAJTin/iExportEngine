@@ -9,7 +9,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Fixed</c></strong>. For more information, please see <see cref="FixedModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Pieces ...&gt;
     ///   &lt;Piece/&gt;
     ///   &lt;Piece/&gt;

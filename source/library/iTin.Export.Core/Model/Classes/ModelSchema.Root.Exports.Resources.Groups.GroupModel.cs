@@ -16,7 +16,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Groups</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.GroupsModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Group ...&gt;
     ///   &lt;Field/&gt;
     ///   &lt;Field/&gt;
@@ -98,7 +98,7 @@ namespace iTin.Export.Model
         /// Collection of fields contained within the group. Each element is composed of a field name and a field separator.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Group&gt;
         ///   &lt;Field .../&gt;
         ///   &lt;Field .../&gt;
@@ -194,7 +194,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         ///   &lt;Group Name="string"&gt;
         ///     ...
         ///   &lt;/Group&gt;

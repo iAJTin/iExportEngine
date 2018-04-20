@@ -1,11 +1,12 @@
-﻿using System.Globalization;
-using System.Xml;
-
-using iTin.Export.Drawing;
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Writers.Native
 {
+    using System.Globalization;
+    using System.Xml;
+
+    using Drawing;
+    using Model;
+
     /// <summary>
     /// Contains common functions for <c>Xml Spreadsheet 2003</c>.
     /// </summary>

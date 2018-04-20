@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Messages</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.MailMessagesModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Message/&gt;
     /// </code>
     /// </para>
@@ -176,7 +176,7 @@ namespace iTin.Export.Model
         /// A <see cref="MailMessageAttachmentsModel" /> that contains the attachment list. Each element represents an attachment to an e-mail.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message ...&gt;
         ///   &lt;Attachments/&gt;
         ///   ...
@@ -253,7 +253,7 @@ namespace iTin.Export.Model
         /// The message body.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message ...&gt;
         ///   &lt;Body&gt;string&lt;/&gt;
         ///   ...
@@ -326,7 +326,7 @@ namespace iTin.Export.Model
         /// The address collection that contains the carbon copy (CC) recipients for this e-mail message.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message ...&gt;
         ///   &lt;CC/&gt;
         ///   ...
@@ -413,7 +413,7 @@ namespace iTin.Export.Model
         /// The name of credential to use for this message.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message Credential="string" ...&gt;
         /// ...
         /// &lt;/Message&gt;
@@ -485,7 +485,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.MailMessageFromModel"/> that contains the from address information.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message ...&gt;
         ///   &lt;From/&gt;
         ///   ...
@@ -583,7 +583,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if sends the message; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message Send="Yes|No" ...&gt;
         /// ...
         /// &lt;/Message&gt;
@@ -666,7 +666,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String"/> that contains the subject content.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message ...&gt;
         ///   &lt;Subject&gt;string&lt;/&gt;
         ///   ...
@@ -739,7 +739,7 @@ namespace iTin.Export.Model
         /// A <see cref="MailMessageToModel" /> that contains the recipients of this e-mail message.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Message ...&gt;
         ///   &lt;To/&gt;
         ///   ...

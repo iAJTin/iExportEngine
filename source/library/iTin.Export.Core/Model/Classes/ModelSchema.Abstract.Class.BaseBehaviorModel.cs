@@ -102,7 +102,7 @@ namespace iTin.Export.Model
             /// <see cref="iTin.Export.Model.YesNo.Yes" /> if executes behavior; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
             /// </value>
             /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
+            /// <code lang="xml" title="ITEE Object Element Usage">
             /// &lt;Download Execute="Yes|No" .../&gt;
             /// </code>
             /// <para>
@@ -208,6 +208,7 @@ namespace iTin.Export.Model
             #endregion
 
             #region [public] (void) Execute(IWriter, ExportSettings): Execute behavior.
+            /// <inheritdoc />
             /// <summary>
             /// Execute behavior.
             /// </summary>

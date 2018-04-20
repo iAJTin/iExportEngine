@@ -18,7 +18,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Charts</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartsModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Chart&gt;
     ///   &lt;Border/&gt;
     ///   &lt;Title/&gt;
@@ -184,7 +184,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.ChartAxesModel" /> reference that contains the visual setting of the chart axes.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart ...&gt;
         ///   &lt;Axes/&gt;
         ///   ...
@@ -238,7 +238,7 @@ namespace iTin.Export.Model
         /// Preferred back color. The default is "<c>White</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart BackColor="string" ...&gt;
         ///   ...
         /// &lt;/Chart&gt;
@@ -279,7 +279,7 @@ namespace iTin.Export.Model
         /// Reference that contains the visual setting of chart border.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart ...&gt;
         ///   &lt;Border/&gt;
         ///   ...
@@ -333,7 +333,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.ChartLegendModel" /> reference that contains the visual setting of chart legend.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart ...&gt;
         ///   &lt;Legend/&gt;
         ///   ...
@@ -443,7 +443,7 @@ namespace iTin.Export.Model
         /// Collection of plots for a chart. Each element represents a chart plot.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart ...&gt;
         ///   &lt;Plots/&gt;
         ///   ...
@@ -488,7 +488,7 @@ namespace iTin.Export.Model
         /// An <see cref="T:System.Array"/> of <see cref="T:System.String" /> structure that contains graphical location. The default is <c>150 150</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart Size="int int" ...&gt;
         ///   ...
         /// &lt;/Chart&gt;
@@ -544,7 +544,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if display the chart; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Chart&gt;
@@ -595,7 +595,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.ChartTitleModel" /> reference that contains the visual setting of chart title.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Chart ...&gt;
         ///   &lt;Title/&gt;
         ///   ...

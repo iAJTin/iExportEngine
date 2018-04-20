@@ -7,6 +7,9 @@ namespace iTin.Export.Model
     using ComponentModel;
     using Helper;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class BehaviorsModel
     {
         #region constructor/s
@@ -36,10 +39,9 @@ namespace iTin.Export.Model
         public void Execute(IWriter writer, ExportSettings settings)
         {
             var behaviors =
-                this.Where(
-                    behavior =>
-                        behavior.GetType() != typeof(TransformFileBehaviorModel)
-                        && behavior.GetType() != typeof(DownloadBehaviorModel));
+                this.Where(behavior =>
+                    behavior.GetType() != typeof(TransformFileBehaviorModel)
+                    && behavior.GetType() != typeof(DownloadBehaviorModel));
 
             foreach (var behavior in behaviors)
             {
@@ -47,15 +49,13 @@ namespace iTin.Export.Model
             }
 
             var downloadBehavior = Get<DownloadBehaviorModel>();
-            if (downloadBehavior != null)
-            {
-                downloadBehavior.Execute(writer, settings);
-            }
+            downloadBehavior?.Execute(writer, settings);
         }
         #endregion
 
         #endregion
 
+        /// <inheritdoc />
         protected override void SetOwner(BaseBehaviorModel item)
         {
             SentinelHelper.ArgumentNull(item);
@@ -87,7 +87,6 @@ namespace iTin.Export.Model
         /// </returns>
         public List<T> GetRange<T>() where T : IBehavior
         {
-
             return this.Where(behavior => behavior.GetType() == typeof(T)).Cast<T>().ToList();
         }
         #endregion

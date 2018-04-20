@@ -12,7 +12,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Exports</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportsModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Export ...&gt;
     ///   &lt;Description/&gt;
     ///   &lt;BlockLines/&gt;
@@ -132,7 +132,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if this definition is used; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Export Current="Yes|No" ...&gt;
         /// ...
         /// &lt;/Export&gt;
@@ -183,7 +183,7 @@ namespace iTin.Export.Model
         /// The description of the export.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Export ...&gt;
         ///   &lt;Description&gt;string&lt;/Description&gt;
         ///   ...
@@ -224,7 +224,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Export Name="string" ...&gt;
         /// ...
         /// &lt;/Export&gt;

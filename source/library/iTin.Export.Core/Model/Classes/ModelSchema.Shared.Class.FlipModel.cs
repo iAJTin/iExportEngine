@@ -14,7 +14,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Image</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.GlobalResourceImageModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Flip .../&gt;
     /// </code>
     /// </para>
@@ -94,7 +94,7 @@ namespace iTin.Export.Model
         /// Preferred flip style to apply to an image. The default is <see cref="iTin.Export.Model.KnownFlipStyle.None" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Flip Mode="None|X|Y|XY"/&gt;
         /// </code>
         /// <para>

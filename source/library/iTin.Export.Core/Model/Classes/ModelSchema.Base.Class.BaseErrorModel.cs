@@ -44,7 +44,7 @@ namespace iTin.Export.Model
         /// The error comment.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Comment&gt;
         ///   &lt;Text/&gt;
         ///   &lt;Font/&gt;

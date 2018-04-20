@@ -361,7 +361,6 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Export.TableModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.ExportModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOutputTarget.cs" />
-    <Compile Include="HttpExportSettings.cs" />
     <Compile Include="Drawing\Extensions\ColorExtensions.cs" />
     <Compile Include="ComponentModel\Attributes\WriterOptionsAttribute.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />

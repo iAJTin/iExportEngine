@@ -15,7 +15,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Style</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StyleModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Content&gt;
     ///   &lt;Alignment/&gt;
     ///   &lt;Number/&gt; | &lt;Currency/&gt; | &lt;Percentage/&gt; | &lt;Scientific/&gt; | &lt;Datetime/&gt; | &lt;Special/&gt; | &lt;Text/&gt;
@@ -136,7 +136,7 @@ namespace iTin.Export.Model
         /// Preferred of content color. The default is "<c>Transparent</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Content Color="string"&gt;
         /// ...
         /// ...
@@ -195,7 +195,7 @@ namespace iTin.Export.Model
         /// Reference for content distribution.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Content ...&gt;
         ///   &lt;Alignment .../&gt;
         ///   ...
@@ -264,7 +264,7 @@ namespace iTin.Export.Model
         /// Reference for content data type.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Content ...&gt;
         ///   &lt;Number/&gt; | &lt;Currency/&gt; | &lt;Percentage/&gt; | &lt;Scientific/&gt; | &lt;Datetime/&gt; | &lt;Special/&gt; | &lt;Text/&gt;
         ///   ...

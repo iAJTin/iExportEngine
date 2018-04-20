@@ -47,14 +47,14 @@ namespace iTin.Export.Model
         /// Numeric data type error settings
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Number ...&gt;
         ///   &lt;Error/&gt;
         ///   ...
         /// &lt;/Number&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Currency ...&gt;
         ///   &lt;Error/&gt;
         ///   ...
@@ -133,14 +133,14 @@ namespace iTin.Export.Model
         /// Negative number format.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Number ...&gt;
         ///   &lt;Negative/&gt;
         ///   ...
         /// &lt;/Number&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Currency ...&gt;
         ///   &lt;Negative/&gt;
         ///   ...

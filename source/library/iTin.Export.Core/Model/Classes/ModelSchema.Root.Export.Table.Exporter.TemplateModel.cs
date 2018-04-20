@@ -11,7 +11,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Exporter</c></strong>. For more information, please see <see cref="iTin.Export.Model.ExporterModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Template&gt;
     ///   &lt;File/&gt;
     ///   &lt;Writer/&gt;
@@ -54,7 +54,7 @@ namespace iTin.Export.Model
         /// The template file name. To specify a relative path use the character (~).
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Template&gt;
         ///   &lt;File&gt;string&lt;/Path&gt;
         /// &lt;/Template&gt;
@@ -112,7 +112,7 @@ namespace iTin.Export.Model
         /// The template writer used by the exporter.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Template&gt;
         ///   &lt;Writer&gt;
         ///   ...

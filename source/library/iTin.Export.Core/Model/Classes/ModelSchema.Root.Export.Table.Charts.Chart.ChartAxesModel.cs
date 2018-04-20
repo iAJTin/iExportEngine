@@ -10,7 +10,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Chart</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Axes&gt;
     ///   &lt;Primary/&gt;
     ///   &lt;Secondary/&gt;
@@ -89,7 +89,7 @@ namespace iTin.Export.Model
         /// An <see cref="T:iTin.Export.Model.AxisModel" /> reference that contains information of primary axes. Includes information for the category and value axes.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Axes&gt;
         ///   &lt;Primary/&gt;
         ///   ...
@@ -143,7 +143,7 @@ namespace iTin.Export.Model
         /// An <see cref="T:iTin.Export.Model.AxisModel" /> reference that contains information of secondary axes. Includes information for the category and value axes.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Axes&gt;
         ///   &lt;Secondary/&gt;
         ///   ...

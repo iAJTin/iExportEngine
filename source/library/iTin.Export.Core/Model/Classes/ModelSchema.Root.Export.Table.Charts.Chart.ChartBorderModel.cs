@@ -16,7 +16,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Chart</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Border&gt;
     ///   &lt;Shadow/&gt;
     /// &lt;/Border&gt;
@@ -145,7 +145,7 @@ namespace iTin.Export.Model
         /// Preferred border color. The default is "<c>Black</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Color="string" ...&gt;
         ///   ...
         /// &lt;/Border&gt;
@@ -186,7 +186,7 @@ namespace iTin.Export.Model
         /// A <para><see cref="T:iTin.Export.Model.ShadowModel" /> reference that contains the visual setting of shadow-border.</para>
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border ...&gt;
         ///   &lt;Shadow/&gt;
         ///   ...
@@ -230,7 +230,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if display the border; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Border&gt;
@@ -281,7 +281,7 @@ namespace iTin.Export.Model
         /// Preferred border line style. The default is <see cref="iTin.Export.Model.KnownLineStyle.Continuous" />
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Style="Continuous|Dash|DashDot|DashDotDot|Dot" ...&gt;
         ///   ...
         /// &lt;/Border&gt;
@@ -331,7 +331,7 @@ namespace iTin.Export.Model
         /// Preferred style for width of the border line. The default is <see cref="iTin.Export.Model.KnownWidthLineStyle.Thin" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Width="Thin|Medium|Thick" ...&gt;
         ///   ...
         /// &lt;/Border&gt;

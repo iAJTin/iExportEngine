@@ -16,7 +16,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Series</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartSeriesModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Serie/&gt;
     /// </code>
     /// </para>
@@ -125,7 +125,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String"/> that contains data field which acts how axis data of plot. Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Serie Axis="string" .../&gt;
         /// </code>
         /// <para>
@@ -175,7 +175,7 @@ namespace iTin.Export.Model
         /// One of <see cref="T:iTin.Export.Model.KnownChartType" /> values.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Serie ChartType="string" .../&gt;
         /// </code>
         /// <para>
@@ -223,7 +223,7 @@ namespace iTin.Export.Model
         /// Preferred color for this data serie. The default is "<c>Black</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Serie Color="string" .../&gt;
         /// </code>
         /// <para>
@@ -262,7 +262,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String"/> that contains data. Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Serie Field="string" .../&gt;
         /// </code>
         /// <para>
@@ -312,7 +312,7 @@ namespace iTin.Export.Model
         /// Text of legend for this serie.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Serie Name="string" .../&gt;
         /// </code>
         /// <para>

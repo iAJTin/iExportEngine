@@ -15,7 +15,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Pieces</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.PiecesModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Piece .../&gt;
     /// </code>
     /// </para>
@@ -134,7 +134,7 @@ namespace iTin.Export.Model
         /// The zero-based initial character position of a piece.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Piece From="int" .../&gt;
         /// </code>
         /// <para>
@@ -217,7 +217,7 @@ namespace iTin.Export.Model
         /// Length in characters of the piece.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Piece Lenght="int" .../&gt;
         /// </code>
         /// <para>
@@ -301,7 +301,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Piece Name="string" .../&gt;
         /// </code>
         /// <para>
@@ -387,7 +387,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> to trim the blanks in this piece; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
          /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Piece Trim="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -460,7 +460,7 @@ namespace iTin.Export.Model
         /// One of the <see cref="T:iTin.Export.Model.KnownTrimMode" /> values. The default is <see cref="iTin.Export.Model.KnownTrimMode.All" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Piece TrimMode="All|Start|End" .../&gt;
         /// </code>
         /// <para>

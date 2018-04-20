@@ -71,7 +71,7 @@ namespace iTin.Export.Model
         /// Number of decimal places. The default is <c>2</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Percentage|NumericDataType|Scientific Decimals="int" ...&gt;
         /// ...
         /// &lt;/Percentage|NumericDataType|Scientific&gt;

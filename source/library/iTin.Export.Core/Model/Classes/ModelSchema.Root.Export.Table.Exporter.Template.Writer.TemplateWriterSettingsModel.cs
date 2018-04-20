@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Template</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.TemplateModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Settings/&gt; 
     /// </code>
     /// </para>
@@ -116,7 +116,7 @@ namespace iTin.Export.Model
         /// The preferred previous delimiter for field. The default is "<c>@@</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Settings FieldPrefix="string" .../&gt;
         /// </code>
         /// </remarks>
@@ -133,7 +133,7 @@ namespace iTin.Export.Model
         /// The preferred posterior delimiter for field. The default is an empty string ("").
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Settings FieldSufix="string" .../&gt;
         /// </code>
         /// </remarks>
@@ -161,7 +161,7 @@ namespace iTin.Export.Model
         /// Number of affected records. The default is <see cref="iTin.Export.Model.KnownRecordToShow.All"/>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Settings RecordsToShow="All|First|Last|Random" .../&gt;
         /// </code>
         /// </remarks>
@@ -188,7 +188,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> to trim the blanks; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
          /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Settings TrimFields="Yes|No" .../&gt;
         /// </code>
         /// </remarks>
@@ -215,7 +215,7 @@ namespace iTin.Export.Model
         /// One of the <see cref="T:iTin.Export.Model.KnownTrimMode" /> values. The default is <see cref="iTin.Export.Model.KnownTrimMode.All" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Settings TrimMode="All|Start|End" .../&gt;
         /// </code>
         /// </remarks>

@@ -10,7 +10,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Percentage</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.PercentageDataTypeModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Error ...&gt;
     ///   &lt;Comment/&gt;
     /// &lt;/Error&gt;

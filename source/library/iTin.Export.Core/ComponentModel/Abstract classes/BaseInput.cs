@@ -10,6 +10,7 @@ namespace iTin.Export.ComponentModel
     using Helper;
     using Model;
 
+    /// <inheritdoc />
     /// <summary>
     /// Base class for the different export types.
     /// Which acts as the base class for the different export types.
@@ -25,19 +26,19 @@ namespace iTin.Export.ComponentModel
     ///     </listheader>
     ///     <item>
     ///       <term><see cref="T:iTin.Export.DataRowInput" /></term>
-    ///       <description>Represents an exporter for array of <see cref="T:System.Data.DataRow"/> types. For more information please see <see cref="T:iTin.Export.DataRowInput" /></description>
+    ///       <description>Represents an exporter for array of <see cref="T:System.Data.DataRow" /> types. For more information please see <see cref="T:iTin.Export.DataRowInput" /></description>
     ///     </item>
     ///     <item>
     ///       <term><see cref="T:iTin.Export.DataSetInput" /></term>
-    ///       <description>Represents an exporter for <see cref="T:System.Data.DataSet"/> types. For more information please see <see cref="T:iTin.Export.DataSetInput" /></description>
+    ///       <description>Represents an exporter for <see cref="T:System.Data.DataSet" /> types. For more information please see <see cref="T:iTin.Export.DataSetInput" /></description>
     ///     </item>
     ///     <item>
     ///       <term><see cref="T:iTin.Export.DataTableInput" /></term>
-    ///       <description>Represents an exporter for <see cref="T:System.Data.DataTable"/> types. For more information please see <see cref="T:iTin.Export.DataTableInput" /></description>
+    ///       <description>Represents an exporter for <see cref="T:System.Data.DataTable" /> types. For more information please see <see cref="T:iTin.Export.DataTableInput" /></description>
     ///     </item>
     ///     <item>
     ///       <term><see cref="T:iTin.Export.XmlInput" /></term>
-    ///       <description>Represents an exporter for <see cref="T:System.Data.DataSet"/> types. For more information please see <see cref="T:iTin.Export.XmlInput" /></description>
+    ///       <description>Represents an exporter for <see cref="T:System.Data.DataSet" /> types. For more information please see <see cref="T:iTin.Export.XmlInput" /></description>
     ///     </item>
     ///   </list>
     /// </remarks>
@@ -45,7 +46,7 @@ namespace iTin.Export.ComponentModel
     {
         #region private field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly InputExtendedInformation extendedInformation;
+        private readonly InputExtendedInformation _extendedInformation;
         #endregion
 
         #region constructor/s
@@ -58,7 +59,7 @@ namespace iTin.Export.ComponentModel
         protected BaseInput(object data)
         {
             Data = data;
-            extendedInformation = new InputExtendedInformation(this);
+            _extendedInformation = new InputExtendedInformation(this);
         }
         #endregion
 
@@ -88,7 +89,7 @@ namespace iTin.Export.ComponentModel
         /// <value>
         /// A <see cref="T:iTin.Export.ComponentModel.TargetExtendedInformation" /> that contains the extended information about this input.
         /// </value>
-        public InputExtendedInformation ExtendedInformation => extendedInformation;
+        public InputExtendedInformation ExtendedInformation => _extendedInformation;
         #endregion
 
         #endregion
@@ -96,12 +97,13 @@ namespace iTin.Export.ComponentModel
         #region public methods
 
         #region [public] (void) Export(ExportSettings): Exports the input data using the specified configuration in xml configuration file
+        /// <inheritdoc />
         /// <summary>
         /// Exports the input data using the specified configuration in xml configuration file.
         /// </summary>
         /// <remarks>
-        /// If <see cref="P:iTin.Export.ExportSettings.From" /> is <c>null</c> or <see cref="System.String.Empty"/>, 
-        /// always use the first section with <see cref="P:iTin.Export.Model.ExportModel.Current" /> attribute sets to <see cref="iTin.Export.Model.YesNo.Yes"/>.
+        /// If <see cref="P:iTin.Export.ExportSettings.From" /> is <c>null</c> or <see cref="F:System.String.Empty" />, 
+        /// always use the first section with <see cref="P:iTin.Export.Model.ExportModel.Current" /> attribute sets to <see cref="F:iTin.Export.Model.YesNo.Yes" />.
         /// </remarks>
         /// <param name="settings">Export settings</param>
         public void Export(ExportSettings settings)
@@ -120,16 +122,7 @@ namespace iTin.Export.ComponentModel
                 return;
             }
 
-            ////exportModel = string.IsNullOrEmpty(settings.From)
-            ////             ? root.Exports.FirstOrDefault(e => e.Current == YesNo.Yes)
-            ////             : root.Exports[settings.From]; 
-
             var clausuleFrom = settings.From;
-            if (settings is HttpExportSettings httpExpSettings)
-            {
-                clausuleFrom = httpExpSettings.Settings.From;
-            }
-
             var exportModel = string.IsNullOrEmpty(clausuleFrom)
                 ? root.Items.FirstOrDefault(e => e.Current == YesNo.Yes)
                 : root.Items.SingleOrDefault(e => e.Name.Equals(clausuleFrom));
@@ -141,13 +134,6 @@ namespace iTin.Export.ComponentModel
 
             //exportModel.Table.Fields.Validate();
             //exportModel.Table.Charts.Validate();
-
-            //exportModel.CallingAssemblyPath = Assembly.GetCallingAssembly().CodeBase.ToUpperInvariant();
-            var httpSettings = settings as HttpExportSettings;
-            if (httpSettings != null)
-            {
-                //exportModel.CallingAssemblyPath = httpSettings.BasePath;
-            }
 
             var cache = AdaptersCache.Instance(this);
             var adapter = cache.GetAdapter(ExtendedInformation);

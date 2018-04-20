@@ -151,7 +151,7 @@ namespace iTin.Export.Model
         /// Preferred color for display a negative number. The default is <see cref="iTin.Export.Model.KnownBasicColor.Black" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Negative Color="Black|Blue|Cyan|Green|Magenta|Red|Yellow|White" .../&gt;
         /// </code>
         /// <para>
@@ -244,7 +244,7 @@ namespace iTin.Export.Model
         /// Visual format of negative value. The default is <see cref="iTin.Export.Model.KnownNegativeSign.Standard" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Negative Sign="Standard|None|Parenthesis|Brackets" .../&gt;
         /// </code>
         /// <para>

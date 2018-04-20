@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Primary</c></strong>, or <strong><c>Secondary</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.AxisModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Category&gt;
     ///   &lt;Labels/&gt;
     ///   &lt;Marks/&gt;
@@ -22,7 +22,7 @@ namespace iTin.Export.Model
     /// &lt;/Category&gt;
     /// </code>
     /// <para>- Or -</para>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Values&gt;
     ///   &lt;Labels/&gt;
     ///   &lt;Marks/&gt;
@@ -157,13 +157,13 @@ namespace iTin.Export.Model
         /// Preferred grid lines for axis. The default is <see cref="iTin.Export.Model.KnownPlotGridLine.None" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Category GridLines="None|Both|Major|Minor" ...&gt;
         /// ...
         /// &lt;/Category&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Values GridLines="None|Both|Major|Minor" ...&gt;
         /// ...
         /// &lt;/Values&gt;
@@ -214,14 +214,14 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.AxisDefinitionLabelsModel" /> reference that contains the visual setting of labels axis.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Category ...&gt;
         ///   &lt;Labels .../&gt;
         ///   ...
         /// &lt;/Category&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Values ...&gt;
         ///   &lt;Labels .../&gt;
         ///   ...
@@ -275,14 +275,14 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.AxisDefinitionMarksModel" /> reference that contains the visual setting of mark axis.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Category ...&gt;
         ///   &lt;Marks .../&gt;
         ///   ...
         /// &lt;/Category&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Values ...&gt;
         ///   &lt;Marks .../&gt;
         ///   ...
@@ -347,13 +347,13 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if displays the axis; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Category Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Category&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Values Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Values&gt;
@@ -404,14 +404,14 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.ChartTitleModel" /> reference that contains the visual setting of axis title.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Category ...&gt;
         ///   &lt;Title .../&gt;
         ///   ...
         /// &lt;/Category&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Values ...&gt;
         ///   &lt;Title .../&gt;
         ///   ...
@@ -455,14 +455,14 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.AxisDefinitionValuesModel" /> reference that contains the visual setting of values axis.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Category ...&gt;
         ///   &lt;Values .../&gt;
         ///   ...
         /// &lt;/Category&gt;
         /// </code>
         /// <para>- Or -</para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Values ...&gt;
         ///   &lt;Values .../&gt;
         ///   ...

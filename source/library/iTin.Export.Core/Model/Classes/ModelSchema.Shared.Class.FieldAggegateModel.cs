@@ -15,7 +15,7 @@ namespace iTin.Export.Model
     /// - Or - <strong><c>Fixed</c></strong>, please see <see cref="T:iTin.Export.Model.FixedFieldModel" /><br/>
     /// - Or - <strong><c>Gap</c></strong>, please see <see cref="T:iTin.Export.Model.GapFieldModel" /><br/> 
     /// - Or - <strong><c>Group</c></strong>, please see <see cref="T:iTin.Export.Model.GroupFieldModel" /><br/>.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Aggrgate .../&gt;
     /// </code>
     /// </para>
@@ -146,7 +146,7 @@ namespace iTin.Export.Model
         /// One <see cref="T:iTin.Export.Model.KnownAggregateType" /> value. Preferred type of aggregate that will generate. The default is <see cref="iTin.Export.Model.KnownAggregateType.None" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Aggregate Type="None|Average|Count|Max|Min|Sum|Text" ...&gt;
         /// ...
         /// &lt;/Aggregate&gt;
@@ -197,7 +197,7 @@ namespace iTin.Export.Model
         /// One <see cref="T:iTin.Export.Model.KnownAggregateLocation" /> value. Preferred location in which to add the aggregate. The default is <see cref="iTin.Export.Model.KnownAggregateLocation.Top" />
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Aggregate Location="Top|Bottom" ...&gt;
         /// ...
         /// &lt;/Aggregate&gt;
@@ -259,7 +259,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if the item is displayed; otherwise, <strong><see cref="iTin.Export.Model.YesNo.No"/></strong>. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Aggregate Show="Yes|No" ...&gt;
         /// ...
         /// &lt;/Aggregate&gt;
@@ -311,7 +311,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Aggregate Style="string" ...&gt;
         /// ...
         /// &lt;/Aggregate&gt;
@@ -369,7 +369,7 @@ namespace iTin.Export.Model
         /// Preferred text for this aggregate. If aggregate is of text type then this attribute specifies preferred text for this aggregate. The default is "<c>Total</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Aggregate Text="string" ...&gt;
         /// ...
         /// &lt;/Aggregate&gt;

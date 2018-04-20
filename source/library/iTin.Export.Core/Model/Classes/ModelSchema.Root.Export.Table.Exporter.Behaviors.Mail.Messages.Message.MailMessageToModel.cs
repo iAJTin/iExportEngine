@@ -12,7 +12,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Message</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.MailMessageModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;To/&gt;
     /// </code>
     /// </para>
@@ -105,7 +105,7 @@ namespace iTin.Export.Model
         /// Collection of e-mail addresses. Separate each e-mail with a blank.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;To Addresses="string string ..."/&gt;
         /// </code>
         /// <para>

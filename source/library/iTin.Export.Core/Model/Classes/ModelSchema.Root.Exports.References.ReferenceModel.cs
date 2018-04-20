@@ -32,7 +32,7 @@ namespace iTin.Export.Model
         /// Path where is located the assembly. To specify a relative path use the character (~). The default is "<c>Default</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Reference Path="Default|string" .../&gt;
         /// </code>
         /// </remarks>

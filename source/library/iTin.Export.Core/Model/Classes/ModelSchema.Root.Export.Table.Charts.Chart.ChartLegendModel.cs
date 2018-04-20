@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Chart</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Legend&gt;
     ///   &lt;Border/&gt;
     ///   &lt;Font/gt;
@@ -132,7 +132,7 @@ namespace iTin.Export.Model
         /// A <see cref="ChartBorderModel" /> reference that contains the visual setting of legend border.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Legend ...&gt;
         ///   &lt;Border/&gt;
         ///   ...
@@ -176,7 +176,7 @@ namespace iTin.Export.Model
         /// Reference for font model defined for this legend.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Legend ...&gt;
         ///   &lt;Font/&gt;
         ///   ...
@@ -220,7 +220,7 @@ namespace iTin.Export.Model
         /// Preferred location for chart legend. The default is <see cref="iTin.Export.Model.KnownLegendLocation.Right"/>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Legend Location="Top|Right|Bottom|Left" ...&gt;
         ///   ...
         /// &lt;/Legend&gt;
@@ -282,7 +282,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if display the chart legend; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Legend Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Legend&gt;

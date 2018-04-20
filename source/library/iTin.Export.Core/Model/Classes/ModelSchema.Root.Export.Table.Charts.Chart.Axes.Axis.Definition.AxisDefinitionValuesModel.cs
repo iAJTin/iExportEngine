@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Category</c></strong>, or <strong><c>Values</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.AxisDefinitionModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Values/&gt;
     /// </code>
     /// </para>
@@ -128,7 +128,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String" /> that contains the maximun value of axis. Accepts only numbers in floating point. The default is <c>Autodetect</c>. 
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Marks Maximun="Autodetect|float" .../&gt;
         /// </code>
         /// <para>
@@ -182,7 +182,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String" /> that contains the minimun value of axis. Accepts only numbers in floating point. The default is <c>Autodetect</c>. 
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Marks Minimun="Autodetect|float" .../&gt;
         /// </code>
         /// <para>

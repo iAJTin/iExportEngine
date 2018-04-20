@@ -8,19 +8,22 @@ namespace iTin.Export.Model
     using System.IO;
     using System.Linq;
     using System.Net.Mail;
+    using System.Web;
+    using System.Web.UI;
     using System.Xml.Serialization;
 
     using ComponentModel;
     using Helper;
     using Web;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseBehaviorModel"/> class.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseBehaviorModel" /> class.<br />
     /// Which Represents a email behavior.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br />
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Mail .../&gt;
     ///   &lt;Server/&gt;
     ///   &lt;Messages/&gt;
@@ -40,12 +43,12 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.BaseBehaviorModel.CanExecute" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether executes behavior. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether executes behavior. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.MailBehaviorModel.Async" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether to execute asynchronously the behavior. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether to execute asynchronously the behavior. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -69,10 +72,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -124,21 +127,21 @@ namespace iTin.Export.Model
         
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo async;
+        private YesNo _async;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private BehaviorsModel parent;
+        private BehaviorsModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailServerModel server;
+        private MailServerModel _server;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessagesModel messages;
+        private MailMessagesModel _messages;
         #endregion
 
         #region constructor/s
 
-        #region [public] MailBehaviorModel(): Initializes a new instance of this class.
+        #region [public] MailBehaviorModel(): Initializes a new instance of this class
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.MailBehaviorModel" /> class.
@@ -175,7 +178,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if for execute asynchronously the behavior; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Mail Async="Yes|No" ...&gt;
         /// ...
         /// &lt;/Mail&gt;
@@ -236,12 +239,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAsync)]
         public YesNo Async
         {
-            get => async;
+            get => _async;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                async = value;
+                _async = value;
             }
         }
         #endregion
@@ -254,7 +257,7 @@ namespace iTin.Export.Model
         /// Collection of e-mail messages. Each element represents an e-mail message
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Mail ...&gt;
         ///   &lt;Messages/&gt;
         /// &lt;/Mail&gt;
@@ -313,8 +316,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Message", typeof(MailMessageModel))]
         public MailMessagesModel Messages
         {
-            get => messages ?? (messages = new MailMessagesModel(this));
-            set => messages = value;
+            get => _messages ?? (_messages = new MailMessagesModel(this));
+            set => _messages = value;
         }
         #endregion
 
@@ -326,7 +329,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public BehaviorsModel Parent => parent;
+        public BehaviorsModel Parent => _parent;
         #endregion
 
         #region [public] (MailServerModel) Server: Gets or sets a reference to mail server configuration
@@ -337,7 +340,7 @@ namespace iTin.Export.Model
         /// Reference to mail server configuration, contains collection for mail server credentials.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Mail ...&gt;
         ///   &lt;Server/&gt;
         /// &lt;/Mail&gt;
@@ -397,16 +400,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (server == null)
+                if (_server == null)
                 {
-                    server = new MailServerModel();
+                    _server = new MailServerModel();
                 }
 
-                server.SetParent(this);
+                _server.SetParent(this);
 
-                return server;
+                return _server;
             }
-            set => server = value;
+            set => _server = value;
         }
         #endregion
 
@@ -438,7 +441,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(BehaviorsModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 
@@ -447,25 +450,27 @@ namespace iTin.Export.Model
         #region protected override methods
 
         #region [protected] {override} (void) ExecuteBehavior(IWriter, ExportSettings): Code for execute download behavior
+        /// <inheritdoc />
         /// <summary>
         /// Code for execute download behavior.
         /// </summary>
         /// <param name="writer">The writer.</param>
         /// <param name="settings">Exporter settings.</param>
-        /// <exception cref="MissingPageAsyncAttributeException">Throw if web page not is async.</exception>
+        /// <exception cref="T:iTin.Export.Web.MissingPageAsyncAttributeException">Throw if web page not is async.</exception>
         protected override void ExecuteBehavior(IWriter writer, ExportSettings settings)
         {
             var isBehaviorAsync = Async == YesNo.Yes;
 
-            var httpSettings = settings as HttpExportSettings;               
-            if (httpSettings != null)
+            var isWebContext = HttpContext.Current != null;
+            if (isWebContext)
             {
                 if (isBehaviorAsync)
                 {
-                    var isPageAsync = httpSettings.Page.IsAsync;
+                    var page = (Page) HttpContext.Current.CurrentHandler;
+                    var isPageAsync = page.IsAsync;
                     if (!isPageAsync)
                     {
-                        throw new MissingPageAsyncAttributeException(httpSettings.Page.AppRelativeVirtualPath);
+                        throw new MissingPageAsyncAttributeException(page.AppRelativeVirtualPath);
                     }
                 }
             }
@@ -478,11 +483,11 @@ namespace iTin.Export.Model
             foreach (var messageModel in messagesToSend)
             {
                 var message = new MailMessage
-                    {
-                        Body = messageModel.Body,
-                        Subject = messageModel.Subject,
-                        From = new MailAddress(messageModel.From.Address)
-                    };
+                {
+                    Body = messageModel.Body,
+                    Subject = messageModel.Subject,
+                    From = new MailAddress(messageModel.From.Address)
+                };
 
                 foreach (var to in messageModel.To.Addresses)
                 {
@@ -517,14 +522,14 @@ namespace iTin.Export.Model
                 mails.SendMail(messageModel.Credential, message, isBehaviorAsync);
             }
 
-            if (httpSettings == null)
-            {                    
+            if (!isWebContext)
+            {
                 return;
             }
 
-            httpSettings.Response.Clear();
-            httpSettings.Response.Flush();
-            httpSettings.Response.End();
+            HttpContext.Current.Response.Clear();
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
         }
         #endregion
 

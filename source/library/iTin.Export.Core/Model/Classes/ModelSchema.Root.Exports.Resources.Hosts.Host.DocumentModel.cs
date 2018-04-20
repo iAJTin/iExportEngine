@@ -12,7 +12,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Host</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.HostModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     ///   &lt;Document ...&gt;
     ///    &lt;Header/&gt;
     ///    &lt;Footer/&gt;
@@ -139,7 +139,7 @@ namespace iTin.Export.Model
         /// Reference to header document configuration, it allow define margin and data.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Document&gt;
         ///   &lt;Header .../&gt;
         ///   ...
@@ -193,7 +193,7 @@ namespace iTin.Export.Model
         /// Reference to footer document configuration, it allow define margin and data.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Document&gt;
         ///   &lt;Footer .../&gt;
         ///   ...
@@ -247,7 +247,7 @@ namespace iTin.Export.Model
         /// Reference to configuration of margins, it allow define top margin, right margin, bottom margin and left margin of a document.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Document&gt;
         ///   &lt;Margins .../&gt;
         ///   ...
@@ -291,7 +291,7 @@ namespace iTin.Export.Model
         /// A value of the enumeration <see cref="T:iTin.Export.Model.KnownDocumentOrientation" />. The default is <see cref="iTin.Export.Model.KnownDocumentOrientation.Portrait" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Document Orientation="Portrait|Landscape" ...&gt;
         /// ...
         /// &lt;/Document&gt;
@@ -369,7 +369,7 @@ namespace iTin.Export.Model
         /// A value of the enumeration <see cref="iTin.Export.Model.KnownDocumentSize" />. The default is <see cref="iTin.Export.Model.KnownDocumentSize.A4" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Document Size="A4|Letter" ...&gt;
         /// ...
         /// &lt;/Document&gt;

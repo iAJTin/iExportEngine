@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Group</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.GroupModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Field .../&gt;
     /// </code>
     /// </para>
@@ -102,7 +102,7 @@ namespace iTin.Export.Model
         /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # * @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Field Name="string" .../&gt;
         /// </code>
         /// <para>
@@ -164,7 +164,7 @@ namespace iTin.Export.Model
         /// The field separator. The default is "<c>None</c>".<br/>
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Field Separator="None|Space|Slash|Backslash|Dash|Dot|Comma|Colon|Semi Colon|New Line|string" .../&gt;
         /// </code>
         /// <para>

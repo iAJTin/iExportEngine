@@ -15,6 +15,7 @@ namespace iTin.Export.ComponentModel
     using Model;
     using Web;
 
+    /// <inheritdoc />
     /// <summary>
     /// Implements interface <see cref="T:iTin.Export.ComponentModel.IWriter" />.
     /// Which acts as the base class for future writers based and not based on markup languages​​.

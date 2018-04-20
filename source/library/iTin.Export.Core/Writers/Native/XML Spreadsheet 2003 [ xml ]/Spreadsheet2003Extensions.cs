@@ -1,20 +1,21 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Text;
-using System.Xml;
-
-using iTin.Export.Helper;
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Writers.Native
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Text;
+    using System.Xml;
+
+    using Helper;
+    using Model;
+
     /// <summary>
     /// Contains common extensions for <c>Xml Spreadsheet 2003</c>.
     /// </summary>
     static class Spreadsheet2003Extensions
     {
-        #region [public] {static} (string) ToSpreadsheet(this FieldAggregateModel, YesNo): Gets the appropriate formula for this aggregate.
+        #region [public] {static} (string) ToSpreadsheet(this FieldAggregateModel, YesNo): Gets the appropriate formula for this aggregate
         /// <summary>
         /// Gets the appropriate formula for this aggregate.
         /// </summary>
@@ -72,7 +73,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (string) ToSpreadsheetDataFormat(this string, BaseDataTypeModel): Gets data format from model.
+        #region [public] {static} (string) ToSpreadsheetDataFormat(this string, BaseDataTypeModel): Gets data format from model
         /// <summary>
         /// Gets data format from model.
         /// </summary>
@@ -88,7 +89,7 @@ namespace iTin.Export.Writers.Native
 
             var formatBuilder = new StringBuilder();
             var culture = CultureInfo.CurrentCulture;
-            var formatPatternsArray = format.Split(new[] { ';' });
+            var formatPatternsArray = format.Split(';');
 
             var dataFormat = modelDataType.Type;
             switch (dataFormat)
@@ -223,7 +224,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (string) ToSpreadsheetDataType(this KnownDataType): Converts generic data type to spreadsheet datatype.
+        #region [public] {static} (string) ToSpreadsheetDataType(this KnownDataType): Converts generic data type to spreadsheet datatype
         /// <summary>
         /// Converts generic data type to spreadsheet data type.
         /// </summary>
@@ -252,7 +253,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (int) ToSpreadsheetPaperSize(this KnownDocumentSize): Converter for KnownDocumentSize enumeration type to int value.
+        #region [public] {static} (int) ToSpreadsheetPaperSize(this KnownDocumentSize): Converter for KnownDocumentSize enumeration type to int value
         /// <summary>
         /// Converter for <see cref="T:iTin.Export.Model.KnownDocumentSize"/> enumeration type to <see cref="T:System.Int32"/>.
         /// </summary>
@@ -319,7 +320,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (void) WriteDataFieldErrorComment(this XmlWriter, string, Style): Writes a error comment for specified field.
+        #region [public] {static} (void) WriteDataFieldErrorComment(this XmlWriter, string, Style): Writes a error comment for specified field
         /// <summary>
         /// Writes a error comment for specified field.
         /// </summary>
@@ -328,8 +329,8 @@ namespace iTin.Export.Writers.Native
         /// <param name="style">Field style</param>
         public static void WriteDataFieldErrorComment(this XmlWriter writer, string fieldName, StyleModel style)
         {                                
-            var xmlFieldName = string.Format(CultureInfo.InvariantCulture, "@{0}", fieldName);
-            var autorComment = string.Format(CultureInfo.InvariantCulture, "{0}\\{1}", Environment.MachineName, Environment.UserName);
+            var xmlFieldName = $"@{fieldName}";
+            var autorComment = $"{Environment.MachineName}\\{Environment.UserName}";
 
             CommentModel commentModel = null;
             var conditionBuilder = new StringBuilder();
@@ -389,7 +390,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (void) WriteDataFieldErrorComment(this XmlWriter, FixedFieldModel, Style): Writes a error comment for specified field.
+        #region [public] {static} (void) WriteDataFieldErrorComment(this XmlWriter, FixedFieldModel, Style): Writes a error comment for specified field
         /// <summary>
         /// Writes a error comment for specified field.
         /// </summary>
@@ -459,7 +460,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, string, StyleModel, string): Writes a test for specified data field and returns the appropiate format for this data field.
+        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, string, StyleModel, string): Writes a test for specified data field and returns the appropiate format for this data field
         /// <summary>
         /// Writes a test for specified data field and returns the appropriate format for this data field.
         /// </summary>
@@ -680,7 +681,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, FixedFieldModel, FixedItemModel, StyleModel): Writes a test for specified data field and returns the appropiate format for this data field.
+        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, FixedFieldModel, FixedItemModel, StyleModel): Writes a test for specified data field and returns the appropiate format for this data field
         /// <summary>
         /// Writes a test for specified fixed data field and returns the appropriate format for this data field.
         /// </summary>
@@ -920,7 +921,7 @@ namespace iTin.Export.Writers.Native
         }
         #endregion
 
-        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, GroupFieldModel, GroupModel): Writes a test for specified group field and returns the appropiate format for this data field.
+        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, GroupFieldModel, GroupModel): Writes a test for specified group field and returns the appropiate format for this data field
         /// <summary>
         /// Writes a test for specified group field and returns the appropriate format for this data field.
         /// </summary>

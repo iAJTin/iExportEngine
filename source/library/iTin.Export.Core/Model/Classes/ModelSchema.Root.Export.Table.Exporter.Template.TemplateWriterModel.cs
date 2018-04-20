@@ -11,7 +11,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Template</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.TemplateModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Writer ...&gt;
     ///   &lt;Filter/&gt; 
     ///   &lt;Settings/&gt; 
@@ -82,7 +82,7 @@ namespace iTin.Export.Model
         /// Reference to the settings defined for this writer.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Writer&gt;
         ///   &lt;Settings/&gt;
         /// &lt;Writer/&gt;

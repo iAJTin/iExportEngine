@@ -14,7 +14,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Border</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartBorderModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Shadow/&gt;
     /// </code>
     /// </para>
@@ -106,7 +106,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if display shadow; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Shadow Show="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -155,7 +155,7 @@ namespace iTin.Export.Model
         /// Preferred degree of transparency as a value from 0.0 (opaque) through 1.0 (clear). The default is <c>0.0</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Shadow Transparency="float" .../&gt;
         /// </code>
         /// <para>

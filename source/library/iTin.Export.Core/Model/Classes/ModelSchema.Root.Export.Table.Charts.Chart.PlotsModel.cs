@@ -46,7 +46,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.ChartBorderModel" /> reference that contains the visual setting for border of plots.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Plots ...&gt;
         ///   &lt;Border/&gt;
         ///   ...

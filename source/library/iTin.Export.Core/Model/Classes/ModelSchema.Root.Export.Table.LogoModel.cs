@@ -16,7 +16,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Table</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.TableModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Logo&gt;
     ///   &lt;Image/&gt;
     ///   &lt;Location/&gt;
@@ -137,7 +137,7 @@ namespace iTin.Export.Model
         /////// A collection of effects to apply to logo. The default is <see cref="iTin.Export.Model.KnownEffectType.None"/>
         /////// </value>
         /////// <remarks>
-        /////// <code lang="xml" title="AEE Object Element Usage">
+        /////// <code lang="xml" title="ITEE Object Element Usage">
         /////// &lt;Logo Effects="None|Disabled|GrayScale|GrayScaleRed|GrayScaleGreen|GrayScaleBlue|Brightness|MoreBrightness|Dark|MoreDark|OpacityPercent05|OpacityPercent10|OpacityPercent20|OpacityPercent30|OpacityPercent40|OpacityPercent50|OpacityPercent60|OpacityPercent70|OpacityPercent80|OpacityPercent90" ...&gt;
         ///////   ...
         /////// &lt;/Logo&gt;
@@ -197,7 +197,7 @@ namespace iTin.Export.Model
         /////// Preferred flip style to apply to logo. The default is <see cref="iTin.Export.Model.KnownFlipStyle.None" />
         /////// </value>
         /////// <remarks>
-        /////// <code lang="xml" title="AEE Object Element Usage">
+        /////// <code lang="xml" title="ITEE Object Element Usage">
         /////// &lt;Logo Flip="None|X|Y|XY" ...&gt;
         ///////   ...
         /////// &lt;/Logo&gt;
@@ -250,7 +250,7 @@ namespace iTin.Export.Model
         /////// The logo image file path.
         /////// </value>
         /////// <remarks>
-        /////// <code lang="xml" title="AEE Object Element Usage">
+        /////// <code lang="xml" title="ITEE Object Element Usage">
         /////// &lt;Logo ...&gt;
         ///////   &lt;Image&gt;string&lt;/File&gt;
         ///////   ...
@@ -335,7 +335,7 @@ namespace iTin.Export.Model
         /// An <see cref="T:System.Array"/> of <see cref="T:System.String" /> structure that contains logo size. The default is <c>-1 -1</c> for original size.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Logo Size="int int" ...&gt;
         ///   ...
         /// &lt;/Logo&gt;
@@ -393,7 +393,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if display the logo; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Logo Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Logo&gt;
@@ -444,7 +444,7 @@ namespace iTin.Export.Model
         /// The logo image file path.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Logo ...&gt;
         ///   &lt;Image .../&gt;
         ///   ...
@@ -508,7 +508,7 @@ namespace iTin.Export.Model
         /// Reference to location of the logo in the host.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Logo&gt;
         ///   &lt;Location .../&gt;
         ///   ...

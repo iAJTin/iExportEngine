@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Chart</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Title&gt;
     ///   &lt;Text/&gt;
     ///   &lt;Border/&gt;
@@ -141,7 +141,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.ChartBorderModel" /> reference that contains the visual setting for border of title.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Title ...&gt;
         ///   &lt;Border/&gt;
         ///   ...
@@ -185,7 +185,7 @@ namespace iTin.Export.Model
         /// Reference to the font model defined for this title.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Title ...&gt;
         ///   &lt;Font/&gt;
         ///   ...
@@ -229,7 +229,7 @@ namespace iTin.Export.Model
         /// Preferred orientation for the title. The default is <see cref="iTin.Export.Model.KnownAxisOrientation.Horizontal" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Title Orientation="Downward|Horizontal|Upward|Vertical" ...&gt;
         ///   ...
         /// &lt;/Title&gt;
@@ -291,7 +291,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if displays the title; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Title Show="Yes|No" ...&gt;
         ///   ...
         /// &lt;/Title&gt;
@@ -342,7 +342,7 @@ namespace iTin.Export.Model
         /// The text of title.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Title ...&gt;
         ///   &lt;Text&gt;string&lt;/Text&gt;
         ///   ...

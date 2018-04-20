@@ -18,11 +18,11 @@ namespace iTin.Export.Model
     ///       <description>Description</description>
     ///     </listheader>
     ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.PercentageErrorModel"/></term>
+    ///       <term><see cref="T:iTin.Export.Model.PercentageErrorModel" /></term>
     ///       <description>Represents the error structure for percentage data type.</description>
     ///     </item>
     ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.ScientificErrorModel"/></term>
+    ///       <term><see cref="T:iTin.Export.Model.ScientificErrorModel" /></term>
     ///       <description>Represents the error structure for scientific data type.</description>
     ///     </item>
     ///   </list>
@@ -58,7 +58,7 @@ namespace iTin.Export.Model
         /// Preferred default value when occurs an error. The default is <c>0.0</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Error Value="float" ...&gt;
         ///   ...
         /// &lt;/Error&gt;

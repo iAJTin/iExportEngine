@@ -11,7 +11,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Exports</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportsModel"/>.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Global.Resources&gt;
     ///   &lt;Fixed/&gt;
     ///   &lt;Groups/&gt;
@@ -119,7 +119,7 @@ namespace iTin.Export.Model
         /// Collection of user-defined pieces. Each element is a collection of smaller pieces result of splitting the reference field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Global.Resources&gt;
         ///   &lt;Fixed .../&gt;
         ///   ...
@@ -164,7 +164,7 @@ namespace iTin.Export.Model
         /// Collection of user-defined groups. Each element is result from the union of several data field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Global.Resources&gt;
         ///   &lt;Groups .../&gt;
         ///   ...
@@ -209,7 +209,7 @@ namespace iTin.Export.Model
         /// Collection of user-defined groups. Each element is result from the union of several data field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Global.Resources&gt;
         ///   &lt;Groups .../&gt;
         ///   ...
@@ -254,7 +254,7 @@ namespace iTin.Export.Model
         /// Collection of user-defined styles. Each element defines type of content, such as the background color, the alignment type, the data type and the font type.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Global.Resources&gt;
         ///   &lt;Images .../&gt;
         ///   ...
@@ -310,7 +310,7 @@ namespace iTin.Export.Model
         /// Collection of user-defined styles. Each element defines type of content, such as the background color, the alignment type, the data type and the font type.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Global.Resources&gt;
         ///   &lt;Styles .../&gt;
         ///   ...

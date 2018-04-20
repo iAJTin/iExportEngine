@@ -10,7 +10,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Export</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     ///   &lt;Host&gt;
     ///    &lt;Document .../&gt;
     ///  &lt;/Host&gt;
@@ -76,7 +76,7 @@ namespace iTin.Export.Model
         /// Reference to document configuration, it allow define size, orientation and margins.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Host&gt;
         ///   &lt;Document .../&gt;
         ///   ...

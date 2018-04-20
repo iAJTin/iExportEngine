@@ -12,7 +12,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Filter .../&gt;
     /// </code>
     /// </para>
@@ -100,7 +100,7 @@ namespace iTin.Export.Model
         /// Author of writer. Select * for any author. The default is "<c>*</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Filter Author="*|string" .../&gt;
         /// </code>
         /// </remarks>
@@ -117,7 +117,7 @@ namespace iTin.Export.Model
         /// Company name of the writer. Select * for any author. The default is "<c>*</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Filter Company="*|string" .../&gt;
         /// </code>
         /// </remarks>
@@ -134,7 +134,7 @@ namespace iTin.Export.Model
         /// Version of the writer, value greater than 0. Select * for any author. The default is "<c>*</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Filter Version="*|string" .../&gt;
         /// </code>
         /// </remarks>
@@ -163,7 +163,7 @@ namespace iTin.Export.Model
         /// Path where is located the writer. To specify a relative path use the character (~). The default is "<c>Default</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Filter Path="Default|string" .../&gt;
         /// </code>
         /// </remarks>

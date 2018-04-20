@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Credentials</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ServerCredentialsModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Credential/&gt;
     /// </code>
     /// </para>
@@ -168,7 +168,7 @@ namespace iTin.Export.Model
         /// The name of the domain associated with the credential. The default is an empty string ("").
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential Domain="string" .../&gt;
         /// </code>
         /// <para>
@@ -212,7 +212,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String" /> that contains the name or IP address of the computer to use for SMTP transactions.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential Host="string" .../&gt;
         /// </code>
         /// <para>
@@ -284,7 +284,7 @@ namespace iTin.Export.Model
         /// The identifier name of credential.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential Name="string" .../&gt;
         /// </code>
         /// <para>
@@ -338,7 +338,7 @@ namespace iTin.Export.Model
         /// The password associated with the credential.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential Password="string" .../&gt;
         /// </code>
         /// <para>
@@ -381,7 +381,7 @@ namespace iTin.Export.Model
         /// An <see cref="T:System.Int32"/> that contains the port number on the SMTP host. The default value is 25.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential Port="int" .../&gt;
         /// </code>
         /// <para>
@@ -434,7 +434,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> uses Secure Sockets Layer (SSL) to encrypt the connection; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential SSL="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -488,7 +488,7 @@ namespace iTin.Export.Model
         /// The user name associated with the credential.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Credential UserName="string" .../&gt;
         /// </code>
         /// <para>

@@ -17,7 +17,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Font .../&gt;
     /// </code>
     /// </para>
@@ -168,7 +168,7 @@ namespace iTin.Export.Model
         /// Preferred font name. If specified a font name not existent be use the default font. The default is "<c>Segoe UI</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Font Name="string" .../&gt;
         /// </code>
         /// <para>
@@ -243,7 +243,7 @@ namespace iTin.Export.Model
         /// Preferred font size. The default is <c>10.0</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Font Size="int" .../&gt;
         /// </code>
         /// <para>
@@ -308,7 +308,7 @@ namespace iTin.Export.Model
         /// Preferred font color. The default is "<c>Black</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Font Color="string" .../&gt;
         /// </code>
         /// <para>
@@ -364,7 +364,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if bold style is applied for this font; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Font Bold="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -429,7 +429,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if italic style is applied for this font; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Font Italic="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -494,7 +494,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if the underline style is applied for this font; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Font Underline="Yes|No" .../&gt;
         /// </code>
         /// <para>

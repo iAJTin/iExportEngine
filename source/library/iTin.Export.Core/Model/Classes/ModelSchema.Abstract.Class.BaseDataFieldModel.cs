@@ -83,7 +83,7 @@ namespace iTin.Export.Model
         /// Visual setting of aggregate function of the data field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Field|Fixed|Gap|Group ...&gt;
         ///   &lt;Aggregate .../&gt;
         ///   ...
@@ -163,7 +163,7 @@ namespace iTin.Export.Model
         /// The alias of data field. This value is used as the column header.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Field|Fixed|Gap|Group Alias="string" ...&gt;
         ///   ...
         /// &lt;/Field|Fixed|Gap|Group&gt;
@@ -265,7 +265,7 @@ namespace iTin.Export.Model
         /// Visual setting of header the data field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Field|Fixed|Gap|Group ...&gt;
         ///    &lt;Header .../&gt;
         ///   ...
@@ -363,7 +363,7 @@ namespace iTin.Export.Model
         /// Visual setting of value the data field.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Field|Fixed|Gap|Group ...&gt;
         ///   &lt;Value .../&gt;
         ///   ...

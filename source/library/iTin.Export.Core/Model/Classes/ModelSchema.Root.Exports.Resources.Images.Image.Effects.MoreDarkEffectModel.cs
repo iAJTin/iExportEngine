@@ -11,7 +11,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Effects</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ImageEffectsModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;MoreDark/&gt;
     /// </code>
     /// </para>

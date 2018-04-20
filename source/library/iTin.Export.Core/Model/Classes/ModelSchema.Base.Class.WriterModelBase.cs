@@ -36,7 +36,7 @@ namespace iTin.Export.Model
         /// Reference to set of properties that allow you to specify a writer.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Writer&gt;
         ///   &lt;Filter/&gt;
         /// &lt;/Writer&gt;

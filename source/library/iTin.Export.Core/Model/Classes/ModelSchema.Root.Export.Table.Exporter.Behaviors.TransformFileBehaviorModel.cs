@@ -17,7 +17,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br/>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;TransformFile .../&gt;
     /// </code>
     /// </para>
@@ -152,7 +152,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if transform the file is saved indented; otherwise <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;TransformFile Indented="Yes|No" .../&gt;
         /// </code>
         /// <para>
@@ -209,7 +209,7 @@ namespace iTin.Export.Model
         /// Path of transformation file, if omitted used the same output element path. To specify a relative path use the character (~). The default is "<c>Default</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;TransformFile Path="Default|string" .../&gt;
         /// </code>
         /// <para>
@@ -269,7 +269,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if save the transform file; otherwise <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;TransformFile Indented="Yes|No" .../&gt;
         /// </code>
         /// <para>

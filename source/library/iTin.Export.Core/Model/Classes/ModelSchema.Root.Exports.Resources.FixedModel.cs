@@ -9,7 +9,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Table</c></strong>. For more information, please see <see cref="TableModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Fixed&gt;
     ///   &lt;Pieces/&gt;
     ///   &lt;Pieces/&gt;

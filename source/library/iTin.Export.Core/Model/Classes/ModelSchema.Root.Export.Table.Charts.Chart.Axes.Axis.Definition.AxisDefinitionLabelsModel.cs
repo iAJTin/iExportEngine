@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Category</c></strong>, or <strong><c>Values</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.AxisDefinitionModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Labels&gt;
     ///   &lt;Font/&gt;
     /// &lt;Labels&gt;
@@ -136,7 +136,7 @@ namespace iTin.Export.Model
         /// Preferred alignment for axis labels. The default is <see cref="iTin.Export.Model.KnownHorizontalAlignment.Center" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Labels Alignment="Left|Center|Right" .../&gt;
         /// </code>
         /// <para>
@@ -200,7 +200,7 @@ namespace iTin.Export.Model
         /// Preferred orientation for axis labels. The default is <see cref="iTin.Export.Model.KnownLabelOrientation.Automatic" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Labels Orientation="Automatic|Downward|Horizontal|Upward|Vertical" .../&gt;
         /// </code>
         /// <para>
@@ -260,7 +260,7 @@ namespace iTin.Export.Model
         /// Preferred position for axis labels. The default is <see cref="iTin.Export.Model.KnownLabelPosition.Low" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Labels Position="None|High|Low|NextToAxis" .../&gt;
         /// </code>
         /// <para>

@@ -220,7 +220,7 @@ namespace iTin.Export.Model
             /// The image file path.
             /// </value>
             /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
+            /// <code lang="xml" title="ITEE Object Element Usage">
             /// &lt;Global.Resources&gt;
             ///   &lt;Images/&gt;
             /// &lt;/Global.Resources&gt;
@@ -277,7 +277,7 @@ namespace iTin.Export.Model
             /// Collection of export configurations. Each element is composed of a description and a data table definition.
             /// </value>
             /// <remarks>
-            /// <code lang="xml" title="AEE Object Element Usage">
+            /// <code lang="xml" title="ITEE Object Element Usage">
             ///   &lt;Exports&gt;
             ///     &lt;Export .../&gt;
             ///     &lt;Export .../&gt;

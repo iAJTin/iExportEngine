@@ -15,7 +15,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Styles</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StylesModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Style&gt;
     ///   &lt;Content&gt;
     ///     &lt;Alignment/&gt;
@@ -148,7 +148,7 @@ namespace iTin.Export.Model
         /// Preferred border color. The default is "<c>Transparent</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Color="string" .../&gt;
         /// </code>
         /// <para>
@@ -210,7 +210,7 @@ namespace iTin.Export.Model
         /// Preferred border line style. The default is <see cref="P:iTin.Export.Model.KnownBorderLineStyle.None"/>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border LineStyle="None|Continuous|Dash|Dot|DashDot|DashDotDot|SlantDashDot|Double" .../&gt;
         /// </code>
         /// <para>
@@ -263,7 +263,7 @@ namespace iTin.Export.Model
         /// Preferred border position.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Position="Left|Top|Right|Bottom|DiagonalLeft|DiagonalRight" .../&gt;
         /// </code>
         /// <para>
@@ -326,7 +326,7 @@ namespace iTin.Export.Model
         /// Preferred border weight. The default is <see cref="P:iTin.Export.Model.KnownWidthLineStyle.Hairline"/>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Border Weight="Hairline|Thin|Medium|Thick" .../&gt;
         /// </code>
         /// <para>

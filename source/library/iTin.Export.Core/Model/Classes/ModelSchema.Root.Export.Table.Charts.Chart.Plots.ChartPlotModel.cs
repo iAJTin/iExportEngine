@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Plots</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartPlotsModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Plot&gt;
     ///   &lt;Series/&gt;
     /// &lt;/Plot&gt;
@@ -120,7 +120,7 @@ namespace iTin.Export.Model
         /// The name of plot. Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Plot Name="string" ...&gt;
         /// ...
         /// &lt;/Plot&gt;
@@ -172,7 +172,7 @@ namespace iTin.Export.Model
         /// Collection of data series for a plot. Each element represents a data serie of a plot.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Plot ...&gt;
         ///   &lt;Series/&gt;
         ///   ...
@@ -228,7 +228,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if plot uses secondary axis; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Plot UseSecondaryAxis="Yes|No" ...&gt;
         /// ...
         /// &lt;/Plot&gt;

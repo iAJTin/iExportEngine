@@ -27,7 +27,7 @@ namespace iTin.Export.Model
     /// </list>
     /// <para>
     /// Belongs to: <strong><c>Exporter</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExporterModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Writer&gt;
     ///   &lt;Filter/&gt;
     /// &lt;/Writer&gt;
@@ -79,7 +79,7 @@ namespace iTin.Export.Model
         /// Name of the writer. Select from the list or create your own and use it.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Writer Name="string"&gt;
         /// ...
         /// &lt;/Writer&gt;

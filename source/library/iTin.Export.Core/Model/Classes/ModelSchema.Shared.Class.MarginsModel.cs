@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Margins .../&gt;
     /// </code>
     /// </para>
@@ -155,7 +155,7 @@ namespace iTin.Export.Model
         /// Preferred bottom margin of document. The default is <c>20</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Margins Bottom="float".../&gt;
         /// </code>
         /// <para>
@@ -218,7 +218,7 @@ namespace iTin.Export.Model
         /// Preferred left margin of document. The default is <c>20</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Margins Left="float".../&gt;
         /// </code>
         /// <para>
@@ -281,7 +281,7 @@ namespace iTin.Export.Model
         /// Preferred right margin of document. The default is <c>20</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Margins Right="float".../&gt;
         /// </code>
         /// <para>
@@ -344,7 +344,7 @@ namespace iTin.Export.Model
         /// Preferred top margin of document. The default is <c>20</c>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Margins Top="float".../&gt;
         /// </code>
         /// <para>
@@ -407,7 +407,7 @@ namespace iTin.Export.Model
         /// A value of the enumeration <see cref="T:iTin.Export.Model.KnownUnit" />. The default is <see cref="iTin.Export.Model.KnownUnit.Inches" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Margins Units="inches|milimeters" ...&gt;
         /// ...
         /// &lt;/Margins&gt;

@@ -15,7 +15,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Content</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ContentModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Number ...&gt;
     ///   &lt;Negative/&gt;
     ///   &lt;Error/&gt;
@@ -138,7 +138,7 @@ namespace iTin.Export.Model
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if displays thousands separator; otherwise, <see cref="iTin.Export.Model.YesNo.No"/>. The default is <see cref="iTin.Export.Model.YesNo.No"/>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Number Separator="Yes|No" ...&gt;
         /// ...
         /// &lt;/Number&gt;

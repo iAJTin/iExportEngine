@@ -9,7 +9,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Global.Resources</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.GlobalResourcesModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Images&gt;
     ///   &lt;Image .../&gt;
     ///   &lt;Image .../&gt;

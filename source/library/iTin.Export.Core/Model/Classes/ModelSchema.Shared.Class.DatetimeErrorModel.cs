@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Datetime</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.DatetimeDataTypeModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Error ...&gt;
     ///   &lt;Comment/&gt;
     /// &lt;/Error&gt;
@@ -163,7 +163,7 @@ namespace iTin.Export.Model
         /// Preferred default value when occurs an error. The default is "<c>MinValue</c>".
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Error Value="string" ...&gt;
         ///   ...
         /// &lt;/Error&gt;

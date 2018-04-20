@@ -17,7 +17,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Content</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ContentModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Datetime ...&gt;
     ///   &lt;Error/&gt;
     /// &lt;Datetime/&gt;
@@ -142,7 +142,7 @@ namespace iTin.Export.Model
         /// Datetime data type error settings
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Datetime ...&gt;
         ///   &lt;Error/&gt;
         /// &lt;/Datetime&gt;
@@ -202,7 +202,7 @@ namespace iTin.Export.Model
         /// One of the <see cref="T:iTin.Export.Model.KnownDatetimeFormat" /> values. The default is <see cref="iTin.Export.Model.KnownDatetimeFormat.ShortDatePattern"/>.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Datetime Format="GeneralDatePattern|ShortDatePattern|MediumDatePattern|LongDatePattern|FullDatePattern|RFC1123Pattern|ShortTimePattern|LongTimePattern|MonthDayPattern|YearMonthPattern" ...&gt;
         /// ...
         /// &lt;/Datetime&gt;
@@ -269,7 +269,7 @@ namespace iTin.Export.Model
         /// One of the <see cref="T:iTin.Export.Model.KnownCulture" /> values. The default is <see cref="iTin.Export.Model.KnownCulture.Current" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Datetime Locale="string" ...&gt;
         /// ...
         /// &lt;/Datetime&gt;

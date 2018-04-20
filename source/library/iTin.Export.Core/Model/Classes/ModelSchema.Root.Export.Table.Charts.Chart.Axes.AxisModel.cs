@@ -10,14 +10,14 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Primary</c></strong><br/>, or <strong><c>Secondary</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ChartModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Primary&gt;
     ///   &lt;Category/&gt;
     ///   &lt;Values/&gt;
     /// &lt;/Primary&gt;
     /// </code>
     /// <para>- Or -</para>
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Secondary&gt;
     ///   &lt;Category/&gt;
     ///   &lt;Values/&gt;
@@ -85,7 +85,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.AxisDefinitionModel" /> reference that contains the visual setting of category axis. Allows you to configure the axis title, the axis labels, axis marks and axis values.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Primary&gt;
         ///   &lt;Category/&gt;
         ///   ...
@@ -93,7 +93,7 @@ namespace iTin.Export.Model
         /// </code>
         /// <para>- Or -</para>
         /// <para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Secondary&gt;
         ///   &lt;Category/&gt;
         ///   ...
@@ -157,7 +157,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:iTin.Export.Model.AxisDefinitionModel" /> reference that contains the visual setting of values axis. Allows you to configure the axis title, the axis labels, axis marks and axis values.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Primary&gt;
         ///   &lt;Values/&gt;
         ///   ...
@@ -165,7 +165,7 @@ namespace iTin.Export.Model
         /// </code>
         /// <para>- Or -</para>
         /// <para>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Secondary&gt;
         ///   &lt;Values/&gt;
         ///   ...

@@ -14,7 +14,7 @@ namespace iTin.Export.Model
     /// <remarks>
     /// <para>
     /// Belongs to: <strong><c>Content</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ContentModel" />.
-    /// <code lang="xml" title="AEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Alignment/&gt;
     /// </code>
     /// </para>
@@ -138,7 +138,7 @@ namespace iTin.Export.Model
         /// One of the <see cref="T:iTin.Export.Model.KnownHorizontalAlignment" /> values. The default is <see cref="iTin.Export.Model.KnownHorizontalAlignment.Left" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Alignment Horizontal="Left|Center|Right" .../&gt;
         /// </code>
         /// <para>
@@ -203,7 +203,7 @@ namespace iTin.Export.Model
         /// One of the <see cref="T:iTin.Export.Model.KnownVerticalAlignment" /> values. The default is <see cref="iTin.Export.Model.KnownVerticalAlignment.Center" />.
         /// </value>
         /// <remarks>
-        /// <code lang="xml" title="AEE Object Element Usage">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Alignment Vertical="Top|Center|Bottom" .../&gt;
         /// </code>
         /// <para>
