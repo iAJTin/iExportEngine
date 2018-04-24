@@ -1,17 +1,19 @@
-﻿using System.Drawing.Imaging;
-using System.IO;
-using System.Text;
-using iTin.Export.Helper;
-using iTin.Export.Model;
-
+﻿
 namespace iTextSharp.text
 {
+    using System.Drawing.Imaging;
+    using System.IO;
+    using System.Text;
+
+    using iTin.Export.Helper;
+    using iTin.Export.Model;
+
     /// <summary>
     /// Static class than contains common extension methods for objects of the namespace <see cref="N:iTextSharp.text"/>.
     /// </summary>
     static class TextExtension
     {
-        #region [public] {static} (Document) AddLogo(this Document, LogoModel): Adds logo from model to current pdf document.
+        #region [public] {static} (Document) AddLogo(this Document, LogoModel): Adds logo from model to current pdf document
         /// <summary>
         /// Adds logo from model to current pdf document.
         /// </summary>
@@ -102,7 +104,7 @@ namespace iTextSharp.text
         }
         #endregion
 
-        #region [public] {static} (Document) SetMarginsFromModel(this Document, MarginsModel): Sets the margins of document from model.
+        #region [public] {static} (Document) SetMarginsFromModel(this Document, MarginsModel): Sets the margins of document from model
         /// <summary>
         /// Sets the margins of document from model.
         /// </summary>
@@ -134,7 +136,7 @@ namespace iTextSharp.text
         }
         #endregion
 
-        #region [public] {static} (Document) SetVerticalLocationFrom(this Document, LocationModel): Sets initial vertical location of a table.
+        #region [public] {static} (Document) SetVerticalLocationFrom(this Document, LocationModel): Sets initial vertical location of a table
         /// <summary>
         /// Sets initial vertical location of a <see cref="T:iTextSharp.text.pdf.PdfPTable" />.
         /// </summary>

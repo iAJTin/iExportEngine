@@ -1,15 +1,16 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Writers.Adobe
 {
+    using iTextSharp.text;
+    using iTextSharp.text.pdf;
+
+    using ComponentModel;
+    using Model;
+
     /// <summary>
     /// Contains common helper methods for Portable Document Format (pdf format).
     /// </summary>
-    static class PdfHelper
+    internal static class PdfHelper
     {
         /// <summary>
         /// Creates a new cell with the visual style defined in the model.

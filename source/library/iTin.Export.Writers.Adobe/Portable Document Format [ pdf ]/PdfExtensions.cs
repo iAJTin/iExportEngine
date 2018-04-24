@@ -1,9 +1,10 @@
-﻿using iTextSharp.text;
-
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Writers.Adobe
 {
+    using iTextSharp.text;
+
+    using Model;
+
     /// <summary>
     /// Contains common extensions for data model objects.
     /// </summary>

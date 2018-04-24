@@ -1,17 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
-using System.IO;
-using System.Linq;
-
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-
-using iTin.Export.ComponentModel;
-using iTin.Export.Model;
-
+﻿
 namespace iTin.Export.Writers.Adobe
 {
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel.Composition;
+    using System.IO;
+    using System.Linq;
+
+    using iTextSharp.text;
+    using iTextSharp.text.pdf;
+
+    using ComponentModel;
+    using Model;
+
+    /// <inheritdoc />
     /// <summary>
     /// Represents custom writer for Portable Document Format (pdf format).
     /// </summary>
@@ -23,6 +25,7 @@ namespace iTin.Export.Writers.Adobe
     [WriterOptions(Name = "PdfTabularWriter", Author = "iTin", Company = "iTin", Version = 1, Extension = "pdf", Description = "Portable Document Format Writer")]
     public class PdfTabularWriter : BaseWriterDirect
     {
+        /// <inheritdoc />
         /// <summary>
         /// Generates output in Portable Document Format [ pdf ].
         /// </summary>
