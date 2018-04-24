@@ -50,7 +50,7 @@ namespace iTin.Export.Model
     {
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly List<TItem> list;
+        private readonly List<TItem> _list;
         #endregion
 
         #region constructor/s
@@ -62,7 +62,7 @@ namespace iTin.Export.Model
         /// <param name="parent">Parent type.</param>
         protected BaseSimpleModelCollection(TParent parent)
         {
-            list = new List<TItem>();
+            _list = new List<TItem>();
             Parent = parent;
         }
         #endregion
@@ -133,7 +133,7 @@ namespace iTin.Export.Model
         /// <value>
         /// The inner list.
         /// </value>
-        protected List<TItem> List => list;
+        protected List<TItem> List => _list;
         #endregion
 
         #endregion

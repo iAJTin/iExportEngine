@@ -5,12 +5,13 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Represents an exporter based on xslt transformation file.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Belongs to: <strong><c>Exporter</c></strong>. For more information, please see <see cref="iTin.Export.Model.ExporterModel" />.
+    /// Belongs to: <strong><c>Exporter</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExporterModel" />.
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Xslt&gt;
     ///   &lt;File/&gt;
@@ -33,7 +34,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string file;
+        private string _file;
         #endregion
 
         #region public properties
@@ -80,13 +81,13 @@ namespace iTin.Export.Model
         /// <exception cref="iTin.Export.Model.InvalidPathNameException">If <paramref name="value" /> is an invalid path name.</exception>
         public string File
         {
-            get => file;
+            get => _file;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("File", value)));
 
-                file = value;
+                _file = value;
             }
         }
         #endregion

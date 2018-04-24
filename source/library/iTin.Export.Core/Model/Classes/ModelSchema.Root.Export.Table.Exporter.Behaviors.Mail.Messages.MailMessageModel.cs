@@ -134,22 +134,22 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo send;
+        private YesNo _send;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessageToModel to;
+        private MailMessageToModel _to;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessageCcModel copy;
+        private MailMessageCcModel _copy;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessagesModel owner;
+        private MailMessagesModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessageFromModel from;
+        private MailMessageFromModel _from;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessageAttachmentsModel attachments;
+        private MailMessageAttachmentsModel _attachments;
         #endregion
 
         #region constructor/s
@@ -240,8 +240,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Attachment", typeof(MailMessageAttachmentModel))]
         public MailMessageAttachmentsModel Attachments
         {
-            get => attachments ?? (attachments = new MailMessageAttachmentsModel(this));
-            set => attachments = value;
+            get => _attachments ?? (_attachments = new MailMessageAttachmentsModel(this));
+            set => _attachments = value;
         }
         #endregion
 
@@ -392,16 +392,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (copy == null)
+                if (_copy == null)
                 {
-                    copy = new MailMessageCcModel();
+                    _copy = new MailMessageCcModel();
                 }
 
-                copy.SetParent(this);
+                _copy.SetParent(this);
 
-                return copy;
+                return _copy;
             }
-            set => copy = value;
+            set => _copy = value;
         }
         #endregion
 
@@ -551,16 +551,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (from == null)
+                if (_from == null)
                 {
-                    from = new MailMessageFromModel();
+                    _from = new MailMessageFromModel();
                 }
 
-                from.SetParent(this);
+                _from.SetParent(this);
 
-                return from;
+                return _from;
             }
-            set => from = value;
+            set => _from = value;
         }
         #endregion
 
@@ -572,7 +572,7 @@ namespace iTin.Export.Model
         /// The <see cref="T:iTin.Export.Model.MailMessagesModel" /> that owns this <see cref="T:iTin.Export.Model.MailMessageModel" />.
         /// </value>
         [Browsable(false)]
-        public MailMessagesModel Owner => owner;
+        public MailMessagesModel Owner => _owner;
         #endregion
 
         #region [public] (YesNo) Send: Gets or sets a value that determines whether to send the message
@@ -648,12 +648,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSend)]
         public YesNo Send
         {
-            get => send;
+            get => _send;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                send = value;
+                _send = value;
             }
         }
         #endregion
@@ -805,16 +805,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (to == null)
+                if (_to == null)
                 {
-                    to = new MailMessageToModel();
+                    _to = new MailMessageToModel();
                 }
 
-                to.SetParent(this);
+                _to.SetParent(this);
 
-                return to;
+                return _to;
             }
-            set => to = value;
+            set => _to = value;
         }
         #endregion
 
@@ -824,7 +824,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => To.IsDefault && 
                                           CC.IsDefault && 
                                           From.IsDefault && 
@@ -843,7 +843,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(MailMessagesModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

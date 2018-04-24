@@ -1,6 +1,4 @@
 ﻿
-using System.Linq;
-
 namespace iTin.Export.Model
 {
     using System.ComponentModel;
@@ -9,11 +7,12 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Includes the description and data table definition to export. 
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Exports</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportsModel" />.<br/>
+    /// <para>Belongs to: <strong><c>Exports</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportsModel" />.<br />
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Export ...&gt;
     ///   &lt;Description/&gt;
@@ -40,7 +39,7 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.ExportModel.Current" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines if is the current export. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines if is the current export. The default is <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -68,10 +67,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -95,19 +94,19 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo current;
+        private YesNo _current;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private BlockLinesModel lines;
+        private BlockLinesModel _lines;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableModel table;
+        private TableModel _table;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ExportsModel owner;
+        private ExportsModel _owner;
         #endregion
 
         #region constructor/s
@@ -167,7 +166,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultCurrent)]
         public YesNo Current
         {
-            get => current;
+            get => _current;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -183,7 +182,7 @@ namespace iTin.Export.Model
                 //    }
                 //}
 
-                current = value;  
+                _current = value;  
             }
         }
         #endregion
@@ -270,7 +269,7 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => GetValueByReflection(this, name);
+            get => GetValueByReflection(this, _name);
             set
             {
                 SentinelHelper.ArgumentNull(value);
@@ -281,7 +280,7 @@ namespace iTin.Export.Model
                     SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Export", "Name", value)));
                 }
 
-                name = value;
+                _name = value;
             }
         }
         #endregion
@@ -294,7 +293,7 @@ namespace iTin.Export.Model
         /// The <see cref="T:iTin.Export.Model.ExportsModel" /> that owns this <see cref="T:iTin.Export.Model.ExportModel" />.
         /// </value>
         [Browsable(false)]
-        public ExportsModel Owner => owner;
+        public ExportsModel Owner => _owner;
         #endregion
 
         #region [public] (GlobalResourcesModel) Resources: Gets a reference to the global resources
@@ -312,8 +311,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Block", typeof(BlockLineModel))]
         public BlockLinesModel BlockLines
         {
-            get => lines ?? (lines = new BlockLinesModel(this));
-            set => lines = value;
+            get => _lines ?? (_lines = new BlockLinesModel(this));
+            set => _lines = value;
         }
         #endregion
 
@@ -358,16 +357,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (table == null)
+                if (_table == null)
                 {
-                    table = new TableModel();
+                    _table = new TableModel();
                 }
 
-                table.SetParent(this);
+                _table.SetParent(this);
 
-                return table;                    
+                return _table;                    
             }
-            set => table = value;
+            set => _table = value;
         }
         #endregion
 
@@ -429,7 +428,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         internal void SetOwner(ExportsModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

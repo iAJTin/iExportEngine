@@ -107,20 +107,14 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public LinesModel Owner
-        {
-            get { return _owner; }
-        }
+        public LinesModel Owner => _owner;
         #endregion
 
         [XmlAttribute]
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get
-            {
-                return _show;
-            }
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);

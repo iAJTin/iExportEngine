@@ -5,11 +5,12 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
+    /// <inheritdoc />
     /// <summary>
     /// Includes the description of export table.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Export</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportModel" />.<br/>
+    /// <para>Belongs to: <strong><c>Export</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportModel" />.<br />
     /// <code lang="xml" title="ITEE Object Element Usage">
     ///   &lt;Host&gt;
     ///    &lt;Document .../&gt;
@@ -23,7 +24,7 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.HostModel.Document"/></term> 
+    ///     <term><see cref="P:iTin.Export.Model.HostModel.Document" /></term> 
     ///     <description>Represents a document configuration, it allow define size, orientation and margins.Represents margins of a document. Allow define top margin, right margin, bottom margin and left margin of a document.</description>
     ///   </item>
     /// </list>
@@ -32,10 +33,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -55,9 +56,6 @@ namespace iTin.Export.Model
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private HostsModel _owner;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ExportModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private DocumentModel _document;

@@ -75,10 +75,10 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private float transparency;
+        private float _transparency;
         #endregion
 
         #region constructor/s
@@ -137,12 +137,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -186,13 +186,13 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultTransparency)]
         public float Transparency
         {
-            get => transparency;
+            get => _transparency;
             set
             {
                 SentinelHelper.IsTrue(value > 1.0f, ErrorMessage.ShadowTransparencyPropertyValueOutOfRange);
                 SentinelHelper.IsTrue(value < 0.0f, ErrorMessage.ShadowTransparencyPropertyValueOutOfRange);
 
-                transparency = value;
+                _transparency = value;
             }
         }
         #endregion

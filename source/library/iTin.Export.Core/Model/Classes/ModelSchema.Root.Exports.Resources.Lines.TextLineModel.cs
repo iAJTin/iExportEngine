@@ -4,6 +4,9 @@
     using System.Diagnostics;
     using System.Xml.Serialization;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class TextLineModel
     {
         #region field members

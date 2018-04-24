@@ -3,13 +3,14 @@ namespace iTin.Export.Model
 {
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Userdefined groups.
     /// </summary>
     public partial class GroupsModel
     {
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="parent"></param>
         public GroupsModel(GlobalResourcesModel parent)
@@ -17,8 +18,8 @@ namespace iTin.Export.Model
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="item"></param>
         protected override void SetOwner(GroupModel item)
@@ -28,8 +29,8 @@ namespace iTin.Export.Model
             item.SetOwner(this);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

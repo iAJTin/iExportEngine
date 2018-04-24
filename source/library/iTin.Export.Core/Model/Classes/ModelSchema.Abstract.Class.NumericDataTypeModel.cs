@@ -31,10 +31,10 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private NegativeModel negative;
+        private NegativeModel _negative;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private NumericErrorModel error;
+        private NumericErrorModel _error;
         #endregion
 
         #region public properties
@@ -120,8 +120,8 @@ namespace iTin.Export.Model
         /// </example>
         public NumericErrorModel Error
         {
-            get => error ?? (error = new NumericErrorModel());
-            set => error = value;
+            get => _error ?? (_error = new NumericErrorModel());
+            set => _error = value;
         }
         #endregion
 
@@ -195,8 +195,8 @@ namespace iTin.Export.Model
         /// </example>
         public NegativeModel Negative
         {
-            get => negative ?? (negative = new NegativeModel());
-            set => negative = value;
+            get => _negative ?? (_negative = new NegativeModel());
+            set => _negative = value;
         }
         #endregion
 

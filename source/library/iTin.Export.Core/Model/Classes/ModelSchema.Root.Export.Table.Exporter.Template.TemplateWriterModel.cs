@@ -4,8 +4,9 @@ namespace iTin.Export.Model
     using System.ComponentModel;
     using System.Diagnostics;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.WriterModel" /> class.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.WriterModel" /> class.<br />
     /// Represents a template writer used by a exporter.
     /// </summary>
     /// <remarks>
@@ -55,10 +56,10 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TemplateModel parent;
+        private TemplateModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TemplateWriterSettingsModel settings;
+        private TemplateWriterSettingsModel _settings;
         #endregion
 
         #region public properties
@@ -71,7 +72,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public TemplateModel Parent => parent;
+        public TemplateModel Parent => _parent;
         #endregion
 
         #region [public] (TemplateWriterSettingsModel) Settings: Gets or sets a reference to the settings defined for this writer
@@ -121,16 +122,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (settings == null)
+                if (_settings == null)
                 {
-                    settings = new TemplateWriterSettingsModel();
+                    _settings = new TemplateWriterSettingsModel();
                 }
 
-                settings.SetParent(this);
+                _settings.SetParent(this);
 
-                return settings;
+                return _settings;
             }
-            set => settings = value;
+            set => _settings = value;
         }
         #endregion
 
@@ -160,7 +161,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(TemplateModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

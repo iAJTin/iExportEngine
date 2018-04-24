@@ -49,7 +49,7 @@ namespace iTin.Export.Model
             {
                 if (value != null)
                 {
-                    SentinelHelper.IsTrue(value.Count() > 2, "Máximo 2 valores");
+                    SentinelHelper.IsTrue(value.Length > 2, "Máximo 2 valores");
                     SentinelHelper.IsTrue(value[0] < 0, "La coordenada horizontal no puede ser menor que cero");
                     SentinelHelper.IsTrue(value[1] < 0, "La coordenada vertical no puede ser menor que cero");
 
@@ -70,7 +70,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         [Browsable(false)]
         public override bool IsDefault => Coordenates.SequenceEqual(DefaultCoordenates);
         #endregion

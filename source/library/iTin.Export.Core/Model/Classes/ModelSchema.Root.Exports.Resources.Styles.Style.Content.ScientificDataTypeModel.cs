@@ -89,7 +89,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ScientificErrorModel error;
+        private ScientificErrorModel _error;
         #endregion
 
         #region public properties
@@ -147,8 +147,8 @@ namespace iTin.Export.Model
         /// </example>
         public ScientificErrorModel Error
         {
-            get => error ?? (error = new ScientificErrorModel());
-            set => error = value;
+            get => _error ?? (_error = new ScientificErrorModel());
+            set => _error = value;
         }
         #endregion
 

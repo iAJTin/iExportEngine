@@ -7,6 +7,9 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class DocumentFooterModel
     {
         #region private constants
@@ -19,10 +22,10 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private float margin;
+        private float _margin;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DocumentModel parent;
+        private DocumentModel _parent;
         #endregion
 
         #region constructor/s
@@ -51,12 +54,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultMargin)]
         public float Margin
         {
-            get => margin;
+            get => _margin;
             set
             {
                 SentinelHelper.IsTrue(value < 0, "El margen no puede ser menor que cero");
 
-                margin = value;
+                _margin = value;
             }
         }
 
@@ -69,7 +72,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public DocumentModel Parent => parent;
+        public DocumentModel Parent => _parent;
         #endregion
 
         #endregion
@@ -111,7 +114,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(DocumentModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

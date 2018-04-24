@@ -6,8 +6,7 @@ namespace iTin.Export.Model
     using System.Drawing;
     using System.Xml.Serialization;
 
-    using iTin.Export.Drawing.Helper;
-
+    using Drawing.Helper;
     using Helper;
 
     /// <summary>
@@ -89,16 +88,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string axis;
+        private string _axis;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string field;
+        private string _field;
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownChartType chartType;
+        private KnownChartType _chartType;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartSeriesModel owner;
+        private ChartSeriesModel _owner;
         #endregion
 
         #region constructor/s
@@ -156,13 +155,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Axis
         {
-            get => axis;
+            get => _axis;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidFieldName(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.FieldIdentifierNameErrorMessage("Serie", "Axis", value)));
 
-                axis = value;
+                _axis = value;
             }
         }
         #endregion
@@ -205,12 +204,12 @@ namespace iTin.Export.Model
         [XmlAttribute("Type")]
         public KnownChartType ChartType
         {
-            get => chartType;
+            get => _chartType;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                chartType = value;
+                _chartType = value;
             }
         }
         #endregion
@@ -293,13 +292,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Field
         {
-            get => field;
+            get => _field;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidFieldName(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.FieldIdentifierNameErrorMessage("Serie", "Field", value)));
 
-                field = value;
+                _field = value;
             }
         }
         #endregion
@@ -350,7 +349,7 @@ namespace iTin.Export.Model
         /// The <see cref="T:iTin.Export.Model.ChartSeriesModel" /> that owns this <see cref="T:iTin.Export.Model.ChartSerieModel" />.
         /// </value>
         [Browsable(false)]
-        public ChartSeriesModel Owner => owner;
+        public ChartSeriesModel Owner => _owner;
         #endregion
 
         #endregion
@@ -359,7 +358,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default.
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Color.Equals(DefaultColor);
         #endregion
 
@@ -387,7 +386,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(ChartSeriesModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

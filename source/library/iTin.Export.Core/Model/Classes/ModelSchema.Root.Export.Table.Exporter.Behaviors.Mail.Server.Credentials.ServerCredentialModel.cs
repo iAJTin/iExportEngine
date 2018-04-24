@@ -130,16 +130,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private int port;
+        private int _port;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo ssl;
+        private YesNo _ssl;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string host;
+        private string _host;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ServerCredentialsModel owner;
+        private ServerCredentialsModel _owner;
         #endregion
 
         #region constructor/s
@@ -246,18 +246,18 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Host
         {
-            get => host;
+            get => _host;
             set
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    host = value;
+                    _host = value;
                 }
                 else
                 {
                     if (!char.IsDigit(value[0]))
                     {
-                        host = value;
+                        _host = value;
                     }
                     else
                     {                        
@@ -267,7 +267,7 @@ namespace iTin.Export.Model
                             isValidIpAddress = RegularExpressionHelper.IsValidIpAddress(value);
                         }
 
-                        host = isValidIpAddress 
+                        _host = isValidIpAddress 
                                         ? value 
                                         : string.Empty;
                     }                        
@@ -327,7 +327,7 @@ namespace iTin.Export.Model
         /// The <see cref="T:iTin.Export.Model.ServerCredentialsModel" /> that owns this <see cref="T:iTin.Export.Model.ServerCredentialModel" />.
         /// </value>
         [Browsable(false)]
-        public ServerCredentialsModel Owner => owner;
+        public ServerCredentialsModel Owner => _owner;
         #endregion
 
         #region [public] (string) Password: Gets or sets the password for the user name associated with the credential
@@ -416,12 +416,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultPort)]
         public int Port
         {
-            get => port;
+            get => _port;
             set
             {
                 SentinelHelper.IsTrue(value <= 0, "El valor no puede ser menor o igual a 0");
 
-                port = value;
+                _port = value;
             }
         }
         #endregion
@@ -470,12 +470,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSSL)]
         public YesNo SSL
         {
-            get => ssl;
+            get => _ssl;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                ssl = value;
+                _ssl = value;
             }
         }
         #endregion
@@ -551,7 +551,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(ServerCredentialsModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

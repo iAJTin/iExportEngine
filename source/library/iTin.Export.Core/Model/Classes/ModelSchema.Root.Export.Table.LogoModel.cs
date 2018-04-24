@@ -10,6 +10,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Represents a logo.
     /// </summary>
@@ -41,7 +42,7 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.LogoModel.Show" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether displays the logo. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether displays the logo. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -65,10 +66,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -97,19 +98,19 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private int[] size;
+        private int[] _size;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableModel parent;
+        private TableModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LogoImageModel image;
+        private LogoImageModel _image;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LocationModel location;
+        private LocationModel _location;
         #endregion
 
         #region constructor/s
@@ -369,7 +370,7 @@ namespace iTin.Export.Model
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         public int[] Size
         {
-            get => size ?? (size = DefaultSize);
+            get => _size ?? (_size = DefaultSize);
             set
             {
                 if (value == null)
@@ -380,7 +381,7 @@ namespace iTin.Export.Model
                 SentinelHelper.IsTrue(value[0] < -1, "El ancho no puede ser menor que -1");
                 SentinelHelper.IsTrue(value[1] < -1, "El alto no puede ser menor que -1");
 
-                size = value;
+                _size = value;
             }
         }
         #endregion
@@ -426,12 +427,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -478,14 +479,14 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (image == null)
+                if (_image == null)
                 {
-                    image = new LogoImageModel();
+                    _image = new LogoImageModel();
                 }
 
-                image.SetParent(this);
+                _image.SetParent(this);
 
-                return image;
+                return _image;
             }
             set
             {
@@ -494,7 +495,7 @@ namespace iTin.Export.Model
                     value.SetParent(this);
                 }
 
-                image = value;
+                _image = value;
             }
         }
         #endregion
@@ -539,8 +540,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public LocationModel Location
         {
-            get => location ?? (location = new LocationModel());
-            set => location = value;
+            get => _location ?? (_location = new LocationModel());
+            set => _location = value;
         }
         #endregion
 
@@ -557,7 +558,7 @@ namespace iTin.Export.Model
         #region [public] (TableModel) Parent: Gets the parent container of the logo
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Logo/Public/Properties/Property[@name="Parent"]/*'/>
         [Browsable(false)]
-        public TableModel Parent => parent;
+        public TableModel Parent => _parent;
         #endregion
 
         #endregion
@@ -566,7 +567,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Image.IsDefault &&
                                           Location.IsDefault &&
                                           Show.Equals(DefaultShow) &&
@@ -606,7 +607,7 @@ namespace iTin.Export.Model
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Internal/Methods/Method[@name="SetParent"]/*'/>
         internal void SetParent(TableModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

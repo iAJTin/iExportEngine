@@ -74,13 +74,13 @@ namespace iTin.Export.Model
         
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string maximun;
+        private string _maximun;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string minimun;
+        private string _minimun;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionModel parent;
+        private AxisDefinitionModel _parent;
         #endregion
 
         #region constructor/s
@@ -91,8 +91,8 @@ namespace iTin.Export.Model
         /// </summary>
         public AxisDefinitionValuesModel()
         {
-            maximun = DefaultMaximun;
-            minimun = DefaultMinimun;
+            _maximun = DefaultMaximun;
+            _minimun = DefaultMinimun;
         }
         #endregion
 
@@ -158,7 +158,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultMaximun)]
         public string Maximun
         {
-            get => maximun;
+            get => _maximun;
             set
             {
                 if (value.Equals(DefaultMaximun))
@@ -169,7 +169,7 @@ namespace iTin.Export.Model
                 var parseOk = float.TryParse(value, out var result);
                 SentinelHelper.IsFalse(parseOk, "Error value not valid");
 
-                maximun = value;
+                _maximun = value;
             }
         }
         #endregion
@@ -212,7 +212,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultMinimun)]
         public string Minimun
         {
-            get => minimun;
+            get => _minimun;
             set
             {
                 if (value.Equals(DefaultMinimun))
@@ -223,7 +223,7 @@ namespace iTin.Export.Model
                 var parseOk = float.TryParse(value, out var result);
                 SentinelHelper.IsFalse(parseOk, "Error value not valid");
 
-                minimun = value;
+                _minimun = value;
             }
         }
         #endregion
@@ -236,7 +236,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public AxisDefinitionModel Parent => parent;
+        public AxisDefinitionModel Parent => _parent;
         #endregion
 
         #endregion
@@ -245,7 +245,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Maximun.Equals(DefaultMaximun) &&
                                           Minimun.Equals(DefaultMinimun);
         #endregion
@@ -261,7 +261,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(AxisDefinitionModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

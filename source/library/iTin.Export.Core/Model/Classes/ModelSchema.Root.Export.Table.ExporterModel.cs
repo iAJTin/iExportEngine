@@ -67,10 +67,10 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableModel parent;
+        private TableModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private BehaviorsModel behavior;
+        private BehaviorsModel _behavior;
         #endregion
 
         #region public properties
@@ -164,8 +164,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("TransformFile", typeof(TransformFileBehaviorModel))]
         public BehaviorsModel Behaviors
         {
-            get => behavior ?? (behavior = new BehaviorsModel(this));
-            set => behavior = value;
+            get => _behavior ?? (_behavior = new BehaviorsModel(this));
+            set => _behavior = value;
         }
         #endregion
 
@@ -204,7 +204,7 @@ namespace iTin.Export.Model
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Exporter/Public/Properties/Property[@name="Parent"]/*'/>
         [XmlIgnore]
         [Browsable(false)]
-        public TableModel Parent => parent;
+        public TableModel Parent => _parent;
         #endregion
 
         #endregion
@@ -224,7 +224,7 @@ namespace iTin.Export.Model
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Internal/Methods/Method[@name="SetParent"]/*'/>
         internal void SetParent(TableModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

@@ -59,13 +59,13 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartModel parent;
+        private ChartModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisModel primary;
+        private AxisModel _primary;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisModel secondary;
+        private AxisModel _secondary;
         #endregion
 
         #region public properties
@@ -78,7 +78,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public ChartModel Parent => parent;
+        public ChartModel Parent => _parent;
         #endregion
 
         #region [public] (AxisModel) Primary: Gets or sets a reference to information of primary axes
@@ -122,16 +122,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (primary == null)
+                if (_primary == null)
                 {
-                    primary = new AxisModel();
+                    _primary = new AxisModel();
                 }
 
-                primary.SetParent(this);
+                _primary.SetParent(this);
 
-                return primary;
+                return _primary;
             }
-            set => primary = value;
+            set => _primary = value;
         }
         #endregion
 
@@ -176,16 +176,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (secondary == null)
+                if (_secondary == null)
                 {
-                    secondary = new AxisModel();
+                    _secondary = new AxisModel();
                 }
 
-                secondary.SetParent(this);
+                _secondary.SetParent(this);
 
-                return secondary;
+                return _secondary;
             }
-            set => secondary = value;
+            set => _secondary = value;
         }
         #endregion
 
@@ -210,7 +210,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(ChartModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

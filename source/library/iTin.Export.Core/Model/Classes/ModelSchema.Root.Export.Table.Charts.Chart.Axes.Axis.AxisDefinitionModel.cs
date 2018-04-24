@@ -111,25 +111,25 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisModel parent;
+        private AxisModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartTitleModel title;
+        private ChartTitleModel _title;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownPlotGridLine gridLines;
+        private KnownPlotGridLine _gridLines;
           
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionMarksModel marks;
+        private AxisDefinitionMarksModel _marks;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionLabelsModel labels;
+        private AxisDefinitionLabelsModel _labels;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionValuesModel values;
+        private AxisDefinitionValuesModel _values;
         #endregion
 
         #region constructor/s
@@ -196,12 +196,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultGridLines)]
         public KnownPlotGridLine GridLines
         {
-            get => gridLines;
+            get => _gridLines;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                gridLines = value;
+                _gridLines = value;
             }
         }
         #endregion
@@ -254,16 +254,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (labels == null)
+                if (_labels == null)
                 {
-                    labels = new AxisDefinitionLabelsModel();
+                    _labels = new AxisDefinitionLabelsModel();
                 }
 
-                labels.SetParent(this);
+                _labels.SetParent(this);
 
-                return labels;
+                return _labels;
             }
-            set => labels = value;
+            set => _labels = value;
         }
         #endregion
 
@@ -315,16 +315,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (marks == null)
+                if (_marks == null)
                 {
-                    marks = new AxisDefinitionMarksModel();
+                    _marks = new AxisDefinitionMarksModel();
                 }
 
-                marks.SetParent(this);
+                _marks.SetParent(this);
 
-                return marks;
+                return _marks;
             }
-            set => marks = value;
+            set => _marks = value;
         }
         #endregion
 
@@ -336,7 +336,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public AxisModel Parent => parent;
+        public AxisModel Parent => _parent;
         #endregion
 
         #region [public] (YesNo) Show: Gets or sets a value that determines whether displays the axis
@@ -386,12 +386,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -442,8 +442,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public ChartTitleModel Title
         {
-            get => title ?? (title = new ChartTitleModel());
-            set => title = value;
+            get => _title ?? (_title = new ChartTitleModel());
+            set => _title = value;
         }
         #endregion
 
@@ -495,16 +495,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (values == null)
+                if (_values == null)
                 {
-                    values = new AxisDefinitionValuesModel();
+                    _values = new AxisDefinitionValuesModel();
                 }
 
-                values.SetParent(this);
+                _values.SetParent(this);
 
-                return values;
+                return _values;
             }
-            set => values = value;
+            set => _values = value;
         }
         #endregion
 
@@ -533,7 +533,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(AxisModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

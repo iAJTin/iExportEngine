@@ -100,19 +100,19 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private FontModel font;
+        private FontModel _font;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartModel parent;
+        private ChartModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartBorderModel border;
+        private ChartBorderModel _border;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownAxisOrientation orientation;
+        private KnownAxisOrientation _orientation;
         #endregion
         
         #region constructor/s
@@ -172,8 +172,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public ChartBorderModel Border
         {
-            get => border ?? (border = new ChartBorderModel());
-            set => border = value;
+            get => _border ?? (_border = new ChartBorderModel());
+            set => _border = value;
         }
         #endregion
 
@@ -216,8 +216,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public FontModel Font
         {
-            get => font ?? (font = new FontModel());
-            set => font = value;
+            get => _font ?? (_font = new FontModel());
+            set => _font = value;
         }
         #endregion
 
@@ -262,12 +262,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultOrientation)]
         public KnownAxisOrientation Orientation
         {
-            get => orientation;
+            get => _orientation;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                orientation = value;
+                _orientation = value;
             }
         }
         #endregion
@@ -280,7 +280,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public ChartModel Parent => parent;
+        public ChartModel Parent => _parent;
         #endregion
 
         #region [public] (YesNo) Show: Gets or sets a value that determines whether displays the title
@@ -324,12 +324,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -380,7 +380,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Font.IsDefault &&
                                           Border.IsDefault &&
                                           Show.Equals(DefaultShow) &&
@@ -399,7 +399,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(ChartModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

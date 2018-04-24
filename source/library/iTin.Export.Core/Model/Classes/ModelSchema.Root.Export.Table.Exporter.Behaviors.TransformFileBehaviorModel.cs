@@ -10,13 +10,14 @@ namespace iTin.Export.Model
     using ComponentModel;
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseBehaviorModel"/> class.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseBehaviorModel" /> class.<br />
     /// Which represents a transform file behavior. If the writer that we are using generates a Xml transform file, 
     /// this element allows us to define their behavior. Allows indicate if you want save it, where and if Xml code generated will indented.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br/>
+    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br />
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;TransformFile .../&gt;
     /// </code>
@@ -34,23 +35,23 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.BaseBehaviorModel.CanExecute" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether executes behavior. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether executes behavior. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.TransformFileBehaviorModel.Indented" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether transform the file is saved indented. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether transform the file is saved indented. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.TransformFileBehaviorModel.Save" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>If the writer has been designed to generate transform files, set this attribute to <see cref="iTin.Export.Model.YesNo.Yes" /> for get a copy of the file. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>If the writer has been designed to generate transform files, set this attribute to <see cref="F:iTin.Export.Model.YesNo.Yes" /> for get a copy of the file. The default is <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.TransformFileBehaviorModel.Path" /></td>
     ///       <td align="center">Yes</td>
     ///       <td>
-    ///       Sets the file path of transformation, if omitted used the same output element path. To specify a relative path use the character (~). The default is "<c>Default</c>". />.<br/>
+    ///       Sets the file path of transformation, if omitted used the same output element path. To specify a relative path use the character (~). The default is "<c>Default</c>". /&gt;.<br />
     ///       Applies only in desktop mode. 
     ///       </td>
     ///     </tr>
@@ -61,10 +62,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -102,13 +103,13 @@ namespace iTin.Export.Model
         
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo save;
+        private YesNo _save;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string path;
+        private string _path;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo indented;
+        private YesNo _indented;
         #endregion
 
         #region constructor/s
@@ -191,12 +192,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultIndented)]
         public YesNo Indented
         {
-            get => indented;
+            get => _indented;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                indented = value;
+                _indented = value;
             }
         }
         #endregion
@@ -249,13 +250,13 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultPath)]
         public string Path
         {
-            get => path;
+            get => _path;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("Path", value)));
 
-                path = value;
+                _path = value;
             }
         }
         #endregion
@@ -308,12 +309,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSave)]
         public YesNo Save
         {
-            get => save;
+            get => _save;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                save = value;
+                _save = value;
             }
         }
         #endregion

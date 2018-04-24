@@ -7,6 +7,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     public partial class ColumnHeaderModel
     {
         #region private constants
@@ -22,22 +23,22 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string from;
+        private string _from;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string to;
+        private string _to;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string style;
+        private string _style;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string text;
+        private string _text;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ColumnHeadersModel owner;
+        private ColumnHeadersModel _owner;
         #endregion
 
         #region constructor/s
@@ -62,8 +63,8 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string From
         {
-            get => from;
-            set => from = value;
+            get => _from;
+            set => _from = value;
         }
         #endregion
 
@@ -71,8 +72,8 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string To
         {
-            get => to;
-            set => to = value;
+            get => _to;
+            set => _to = value;
         }
         #endregion
 
@@ -80,8 +81,8 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Style
         {
-            get => style;
-            set => style = value;
+            get => _style;
+            set => _style = value;
         }
         #endregion
 
@@ -90,12 +91,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -105,8 +106,8 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultText)]
         public string Text
         {
-            get => text;
-            set => text = value;
+            get => _text;
+            set => _text = value;
         }
         #endregion
 
@@ -119,7 +120,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public ColumnHeadersModel Owner => owner;
+        public ColumnHeadersModel Owner => _owner;
         #endregion
 
         #endregion
@@ -170,7 +171,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(ColumnHeadersModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

@@ -2,16 +2,12 @@
 namespace iTin.Export.Model
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     [Serializable]
     public class BindableProperty
     {
         public BindableProperty()
-        {
-            
+        {            
         }
 
         public BindableProperty(string @namespace, string functionName)
@@ -26,18 +22,13 @@ namespace iTin.Export.Model
         }
 
         public string Namespace { get; set; }
+
         public string FunctionName { get; set; }
 
-        public virtual string Value
-        {
-            get
-            {
-                return
-                    string.IsNullOrEmpty(Namespace)
-                        ? string.Concat("{Bind:", FunctionName, "}")
-                        : string.Concat("{Bind:", string.Join(".", Namespace, FunctionName), "}");
-            }
-        }
+
+        public virtual string Value => string.IsNullOrEmpty(Namespace)
+            ? string.Concat("{Bind:", FunctionName, "}")
+            : string.Concat("{Bind:", string.Join(".", Namespace, FunctionName), "}");
 
         public override string ToString()
         {

@@ -23,7 +23,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private FilterModel filter;
+        private FilterModel _filter;
         #endregion
 
         #region public properties
@@ -46,16 +46,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (filter == null)
+                if (_filter == null)
                 {
-                    filter = new FilterModel();
+                    _filter = new FilterModel();
                 }
 
-                filter.SetParent(this);
+                _filter.SetParent(this);
 
-                return filter;
+                return _filter;
             }
-            set => filter = value;
+            set => _filter = value;
         }
         #endregion
 

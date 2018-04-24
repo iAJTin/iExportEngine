@@ -12,7 +12,7 @@ namespace iTin.Export.Model
     using ComponentModel;
 
     /// <summary>
-    /// Base class for different data types supported by <strong><c>iTin Export Engine</c></strong>.<br/>
+    /// Base class for different data types supported by <strong><c>iTin Export Engine</c></strong>.<br />
     /// Which acts as the base class for different data types.
     /// </summary>
     /// <remarks>
@@ -56,7 +56,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ContentModel parent;
+        private ContentModel _parent;
         #endregion
 
         #region public properties
@@ -70,7 +70,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public ContentModel Parent => parent;
+        public ContentModel Parent => _parent;
         #endregion
 
         #region [public] (KnownDataType) Type: Gets a value indicating data type
@@ -146,7 +146,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (void) Combine(BaseDataTypeModel): Combines this instance with reference parameter.
+        #region [public] (void) Combine(BaseDataTypeModel): Combines this instance with reference parameter
         /// <summary>
         /// Combines this instance with reference parameter.
         /// </summary>
@@ -434,7 +434,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (FieldValueInformation) GetFormattedDataValue(string): Returns data value for a data type.
+        #region [public] (FieldValueInformation) GetFormattedDataValue(string): Returns data value for a data type
         /// <summary>
         /// Returns data format for a data type.
         /// </summary>
@@ -462,7 +462,6 @@ namespace iTin.Export.Model
             {
                 #region Type: Currency
                 case KnownDataType.Currency:
-                    decimal currencyValue;
                     var currency = (CurrencyDataTypeModel)this;
 
                     if (currency.Locale != KnownCulture.Current)
@@ -470,7 +469,7 @@ namespace iTin.Export.Model
                         culture = CultureInfo.GetCultureInfo(ExportsModel.GetXmlEnumAttributeFromItem(currency.Locale));
                     }
 
-                    var isValidNumberValue = decimal.TryParse(value.Replace('.', ','), NumberStyles.Any, culture, out currencyValue);
+                    var isValidNumberValue = decimal.TryParse(value.Replace('.', ','), NumberStyles.Any, culture, out var currencyValue);
                     if (isValidNumberValue)
                     {
                         result.Value = currencyValue;
@@ -500,7 +499,6 @@ namespace iTin.Export.Model
 
                 #region Type: DateTime
                 case KnownDataType.Datetime:
-                    DateTime datetimeValue;
                     var datetime = (DatetimeDataTypeModel)this;
 
                     if (datetime.Locale != KnownCulture.Current)
@@ -509,7 +507,7 @@ namespace iTin.Export.Model
                     }
 
                     result.IsNumeric = false;
-                    var isValidDateTimeValue = DateTime.TryParse(value, out datetimeValue);
+                    var isValidDateTimeValue = DateTime.TryParse(value, out var datetimeValue);
                     if (isValidDateTimeValue)
                     {
                         result.Value = datetimeValue;
@@ -528,10 +526,9 @@ namespace iTin.Export.Model
 
                 #region Type: Numeric
                 case KnownDataType.Numeric:
-                    float numericValue;
                     var numeric = (NumericDataTypeModel)this;
 
-                    var isValidNumericValue = float.TryParse(value.Replace('.', ','), NumberStyles.Any, culture, out numericValue);
+                    var isValidNumericValue = float.TryParse(value.Replace('.', ','), NumberStyles.Any, culture, out var numericValue);
                     if (isValidNumericValue)
                     {
                         result.Value = numericValue;
@@ -561,10 +558,9 @@ namespace iTin.Export.Model
 
                 #region Type: Percentage
                 case KnownDataType.Percentage:
-                    float percentageValue;
                     var percentage = (PercentageDataTypeModel)this;
 
-                    var isValidPercentageValue = float.TryParse(value, NumberStyles.Any, culture, out percentageValue);
+                    var isValidPercentageValue = float.TryParse(value, NumberStyles.Any, culture, out var percentageValue);
                     if (isValidPercentageValue)
                     {
                         result.IsNegative = percentageValue < 0;
@@ -589,10 +585,9 @@ namespace iTin.Export.Model
 
                 #region Type: Scientific
                 case KnownDataType.Scientific:
-                    float scientificValue;
                     var scientific = (ScientificDataTypeModel)this;
 
-                    var isValidScientificValue = float.TryParse(value.Replace('.', ','), NumberStyles.Any, culture, out scientificValue);
+                    var isValidScientificValue = float.TryParse(value.Replace('.', ','), NumberStyles.Any, culture, out var scientificValue);
                     if (isValidScientificValue)
                     {
                         result.IsNegative = scientificValue < 0;
@@ -615,7 +610,7 @@ namespace iTin.Export.Model
                     break;
                 #endregion
 
-                ////#region Type: Special
+                #region Type: Special
                 ////case KnownDataType.Special:
                 ////    var special = (SpecialDataTypeModel)this;
 
@@ -715,7 +710,7 @@ namespace iTin.Export.Model
                 ////    #endregion
 
                 ////    break;
-                ////#endregion
+                #endregion
 
                 #region Type: Text
                 case KnownDataType.Text:
@@ -726,7 +721,7 @@ namespace iTin.Export.Model
 
             return result;
         }
-    #endregion
+        #endregion
 
         #endregion
 
@@ -739,7 +734,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(ContentModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 
@@ -748,6 +743,7 @@ namespace iTin.Export.Model
         #region private methods
 
         #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
         /// <summary>
         /// Creates a new object that is a copy of the current instance.
         /// </summary>

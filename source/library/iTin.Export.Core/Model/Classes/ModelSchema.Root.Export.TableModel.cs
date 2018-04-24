@@ -12,7 +12,8 @@ namespace iTin.Export.Model
     using ComponentModel;
     using Helper;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Class[@name="info"]/*'/>
+    /// <inheritdoc />
+    /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Table/Class[@name='info']/*" />
     public partial class TableModel
     {
         #region private constants
@@ -37,43 +38,43 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo autoFilter;
+        private YesNo _autoFilter;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LocationModel location;
+        private LocationModel _location;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ColumnHeadersModel headers;
+        private ColumnHeadersModel _headers;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo showGridLines;
+        private YesNo _showGridLines;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo showColumnHeaders;
+        private YesNo _showColumnHeaders;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LogoModel logo;
+        private LogoModel _logo;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ExportModel parent;
+        private ExportModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo autoFitColumns;
+        private YesNo _autoFitColumns;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartsModel charts;
+        private ChartsModel _charts;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private FieldsModel fields;
+        private FieldsModel _fields;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OutputModel output;
+        private OutputModel _output;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ExporterModel exporter;
+        private ExporterModel _exporter;
         #endregion
 
         #region constructor/s
@@ -108,12 +109,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAutoFilter)]
         public YesNo AutoFilter
         {
-            get => autoFilter;
+            get => _autoFilter;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                autoFilter = value;
+                _autoFilter = value;
             }
         }
         #endregion
@@ -124,12 +125,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAutoFitColumns)]
         public YesNo AutoFitColumns
         {
-            get => autoFitColumns;
+            get => _autoFitColumns;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                autoFitColumns = value;
+                _autoFitColumns = value;
             }
         }
         #endregion
@@ -146,13 +147,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Table", "Name", value)));
 
-                name = value;
+                _name = value;
             }
         }
         #endregion
@@ -163,12 +164,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShowGridLines)]
         public YesNo ShowGridLines
         {
-            get => showGridLines;
+            get => _showGridLines;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                showGridLines = value;
+                _showGridLines = value;
             }
         }
         #endregion
@@ -184,12 +185,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShowColumnHeaders)]
         public YesNo ShowColumnHeaders
         {
-            get => showColumnHeaders;
+            get => _showColumnHeaders;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                showColumnHeaders = value;
+                _showColumnHeaders = value;
             }
         }
         #endregion
@@ -205,16 +206,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (output == null)
+                if (_output == null)
                 {
-                    output = new OutputModel();
+                    _output = new OutputModel();
                 }
 
-                output.SetParent(this);
+                _output.SetParent(this);
 
-                return output;
+                return _output;
             }
-            set => output = value;
+            set => _output = value;
         }
         #endregion
 
@@ -222,8 +223,8 @@ namespace iTin.Export.Model
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Properties/Property[@name="Location"]/*'/>
         public LocationModel Location
         {
-            get => location ?? (location = new LocationModel());
-            set => location = value;
+            get => _location ?? (_location = new LocationModel());
+            set => _location = value;
         }
         #endregion
 
@@ -233,16 +234,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (logo == null)
+                if (_logo == null)
                 {
-                    logo = new LogoModel();
+                    _logo = new LogoModel();
                 }
 
-                logo.SetParent(this);
+                _logo.SetParent(this);
 
-                return logo;
+                return _logo;
             }
-            set => logo = value;
+            set => _logo = value;
         }
         #endregion
 
@@ -252,16 +253,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (exporter == null)
+                if (_exporter == null)
                 {
-                    exporter = new ExporterModel();
+                    _exporter = new ExporterModel();
                 }
 
-                exporter.SetParent(this);
+                _exporter.SetParent(this);
 
-                return exporter;
+                return _exporter;
             }
-            set => exporter = value;
+            set => _exporter = value;
         }
         #endregion
 
@@ -275,8 +276,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Header", typeof(ColumnHeaderModel))]
         public ColumnHeadersModel Headers
         {
-            get => headers ?? (headers = new ColumnHeadersModel(this));
-            set => headers = value;
+            get => _headers ?? (_headers = new ColumnHeadersModel(this));
+            set => _headers = value;
         }
         #endregion
 
@@ -289,8 +290,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Packet", typeof(PacketFieldModel))]
         public FieldsModel Fields
         {
-            get => fields ?? (fields = new FieldsModel(this));
-            set => fields = value;
+            get => _fields ?? (_fields = new FieldsModel(this));
+            set => _fields = value;
         }
         #endregion
 
@@ -299,15 +300,15 @@ namespace iTin.Export.Model
         [XmlArrayItem("Chart", typeof(ChartModel))]
         public ChartsModel Charts
         {
-            get => charts ?? (charts = new ChartsModel(this));
-            set => charts = value;
+            get => _charts ?? (_charts = new ChartsModel(this));
+            set => _charts = value;
         }
         #endregion
 
         #region [public] (ExportModel) Parent: Gets the parent container of the table
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Properties/Property[@name="Parent"]/*'/>
         [Browsable(false)]
-        public ExportModel Parent => parent;
+        public ExportModel Parent => _parent;
         #endregion
 
         #endregion
@@ -316,7 +317,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         [Browsable(false)]
         public override bool IsDefault => Fields.IsDefault &&
                                           Output.IsDefault &&
@@ -384,7 +385,8 @@ namespace iTin.Export.Model
         #region public override methods
 
         #region [public] {override} (string) ToString(): Returns a string that represents the current object
-        /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Overrides/Methods/Method[@name="ToString"]/*'/>
+        /// <inheritdoc />
+        /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Table/Public/Overrides/Methods/Method[@name='ToString']/*" />
         public override string ToString()
         {
             return $"Name=\"{Name}\", Type={Exporter.ExporterType}";
@@ -399,7 +401,7 @@ namespace iTin.Export.Model
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Internal/Methods/Method[@name="SetParent"]/*'/>
         internal void SetParent(ExportModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

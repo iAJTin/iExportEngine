@@ -3,14 +3,15 @@ namespace iTin.Export.Model
 {
     using System.Drawing.Imaging;
 
-    using iTin.Export.Drawing.Helper;
+    using Drawing.Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseEffectModel"/> class.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseEffectModel" /> class.<br />
     /// Which represents more dark effect.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Effects</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ImageEffectsModel" />.<br/>
+    /// <para>Belongs to: <strong><c>Effects</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ImageEffectsModel" />.<br />
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;MoreDark/&gt;
     /// </code>
@@ -20,10 +21,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>

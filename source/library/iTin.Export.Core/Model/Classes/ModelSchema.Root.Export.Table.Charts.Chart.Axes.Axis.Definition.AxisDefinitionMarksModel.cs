@@ -74,13 +74,13 @@ namespace iTin.Export.Model
         
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownTickMarkStyle major;
+        private KnownTickMarkStyle _major;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownTickMarkStyle minor;
+        private KnownTickMarkStyle _minor;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionModel parent;
+        private AxisDefinitionModel _parent;
         #endregion
 
         #region constructor/s
@@ -139,12 +139,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultMajor)]
         public KnownTickMarkStyle Major
         {
-            get => major;
+            get => _major;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                major = value;
+                _major = value;
             }
         }
         #endregion
@@ -188,12 +188,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultMinor)]
         public KnownTickMarkStyle Minor
         {
-            get => minor;
+            get => _minor;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                minor = value;
+                _minor = value;
             }
         }
         #endregion
@@ -206,7 +206,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public AxisDefinitionModel Parent => parent;
+        public AxisDefinitionModel Parent => _parent;
         #endregion
 
         #endregion
@@ -215,7 +215,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Major.Equals(DefaultMajor) &&
                                           Minor.Equals(DefaultMinor);
         #endregion
@@ -231,7 +231,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(AxisDefinitionModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

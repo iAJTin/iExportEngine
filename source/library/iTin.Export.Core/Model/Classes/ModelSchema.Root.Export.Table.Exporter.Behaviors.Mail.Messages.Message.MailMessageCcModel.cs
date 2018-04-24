@@ -93,7 +93,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessageModel parent;
+        private MailMessageModel _parent;
         #endregion
 
         #region public properties
@@ -176,7 +176,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public MailMessageModel Parent => parent;
+        public MailMessageModel Parent => _parent;
         #endregion
 
         #endregion
@@ -205,7 +205,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(MailMessageModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

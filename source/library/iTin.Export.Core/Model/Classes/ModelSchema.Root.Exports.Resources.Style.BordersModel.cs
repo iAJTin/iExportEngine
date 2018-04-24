@@ -6,6 +6,9 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class BordersModel : ICloneable
     {
         public BordersModel(StyleModel parent) : base(parent)

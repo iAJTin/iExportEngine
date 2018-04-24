@@ -6,6 +6,7 @@ namespace iTin.Export.Model
     using System.Drawing;
     using System.Xml.Serialization;
 
+    /// <inheritdoc />
     /// <summary>
     /// Represents a logo.
     /// </summary>
@@ -32,12 +33,12 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.LogoModel.Effects" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Reference to effects collection to apply to logo. The default is <see cref="iTin.Export.Model.KnownEffectType.None"/>.</td>
+    ///       <td>Reference to effects collection to apply to logo. The default is <see cref="F:iTin.Export.Model.KnownEffectType.None" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.LogoModel.Flip" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred flip style to apply to logo. The default is <c><see cref="iTin.Export.Model.KnownFlipStyle.None" /></c>.</td>
+    ///       <td>Preferred flip style to apply to logo. The default is <c><see cref="F:iTin.Export.Model.KnownFlipStyle.None" /></c>.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.LogoModel.Size" /></td>
@@ -47,7 +48,7 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.LogoModel.Show" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether displays the logo. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether displays the logo. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -71,10 +72,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -93,7 +94,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LogoModel parent;
+        private LogoModel _parent;
         #endregion
 
         #region public properties
@@ -118,7 +119,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public LogoModel Parent => parent;
+        public LogoModel Parent => _parent;
         #endregion
 
         #endregion
@@ -157,7 +158,7 @@ namespace iTin.Export.Model
                 return true;
             }
 
-            var logo = parent;
+            var logo = _parent;
             var table = logo.Parent;
             var export = table.Parent;
             image = resource.GetImage(export);
@@ -184,7 +185,7 @@ namespace iTin.Export.Model
                 return true;
             }
 
-            var logo = parent;
+            var logo = _parent;
             var table = logo.Parent;
             var export = table.Parent;
             image = resource.GetOriginalImage(export);
@@ -213,7 +214,7 @@ namespace iTin.Export.Model
 
             try
             {
-                var logo = parent;
+                var logo = _parent;
                 var table = logo.Parent;
                 var export = table.Parent;
                 resource = export.Resources.GetImageResourceByKey(Key);
@@ -240,7 +241,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(LogoModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

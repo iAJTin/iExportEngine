@@ -7,14 +7,15 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Reference to visual setting of header of the data field.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Field</c></strong>, please see <see cref="T:iTin.Export.Model.DataFieldModel" /><br/>
-    /// - Or - <strong><c>Fixed</c></strong>, please see <see cref="T:iTin.Export.Model.FixedFieldModel" /><br/>
-    /// - Or - <strong><c>Gap</c></strong>, please see <see cref="T:iTin.Export.Model.GapFieldModel" /><br/> 
-    /// - Or - <strong><c>Group</c></strong>, please see <see cref="T:iTin.Export.Model.GroupFieldModel" /><br/>.
+    /// <para>Belongs to: <strong><c>Field</c></strong>, please see <see cref="T:iTin.Export.Model.DataFieldModel" /><br />
+    /// - Or - <strong><c>Fixed</c></strong>, please see <see cref="T:iTin.Export.Model.FixedFieldModel" /><br />
+    /// - Or - <strong><c>Gap</c></strong>, please see <see cref="T:iTin.Export.Model.GapFieldModel" /><br /> 
+    /// - Or - <strong><c>Group</c></strong>, please see <see cref="T:iTin.Export.Model.GroupFieldModel" /><br />.
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Header .../&gt;
     /// </code>
@@ -37,7 +38,7 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.FieldAggregateModel.Show" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines visibility of the element. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines visibility of the element. The default is <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -46,10 +47,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>

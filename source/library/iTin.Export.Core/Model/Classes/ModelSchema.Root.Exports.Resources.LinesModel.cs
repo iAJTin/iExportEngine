@@ -5,6 +5,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// A set of lines. Before and after lines.
     /// </summary>
@@ -14,7 +15,7 @@ namespace iTin.Export.Model
 
         #region [public] LinesModel(GlobalResourcesModel): Initializes a new instance of this class
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Fields/Public/Constructors/Constructor[@name=&quot;ctor1&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Fields/Public/Constructors/Constructor[@name='ctor1']/*" />
         public LinesModel(GlobalResourcesModel parent)
             : base(parent)
         {

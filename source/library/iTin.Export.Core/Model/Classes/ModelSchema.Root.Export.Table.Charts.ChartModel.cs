@@ -8,8 +8,7 @@ namespace iTin.Export.Model
     using System.Linq;
     using System.Xml.Serialization;
 
-    using iTin.Export.Drawing.Helper;
-
+    using Drawing.Helper;
     using Helper;
 
     /// <summary>
@@ -131,31 +130,31 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private int[] size;
+        private int[] _size;
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LocationModel location;
+        private LocationModel _location;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartsModel owner;
+        private ChartsModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartAxesModel axes;
+        private ChartAxesModel _axes;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartTitleModel title;
+        private ChartTitleModel _title;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartPlotsModel plots;
+        private ChartPlotsModel _plots;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartBorderModel border;
+        private ChartBorderModel _border;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartLegendModel legend;
+        private ChartLegendModel _legend;
         #endregion
 
         #region constructor/s
@@ -217,16 +216,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (axes == null)
+                if (_axes == null)
                 {
-                    axes = new ChartAxesModel();
+                    _axes = new ChartAxesModel();
                 }
 
-                axes.SetParent(this);
+                _axes.SetParent(this);
 
-                return axes;
+                return _axes;
             }
-            set => axes = value;
+            set => _axes = value;
         }
         #endregion
 
@@ -310,8 +309,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public ChartBorderModel Border
         {
-            get => border ?? (border = new ChartBorderModel());
-            set => border = value;
+            get => _border ?? (_border = new ChartBorderModel());
+            set => _border = value;
         }
         #endregion
 
@@ -366,16 +365,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (legend == null)
+                if (_legend == null)
                 {
-                    legend = new ChartLegendModel();
+                    _legend = new ChartLegendModel();
                 }
 
-                legend.SetParent(this);
+                _legend.SetParent(this);
 
-                return legend;
+                return _legend;
             }
-            set => legend = value;
+            set => _legend = value;
         }
         #endregion
 
@@ -419,8 +418,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public LocationModel Location
         {
-            get => location ?? (location = new LocationModel());
-            set => location = value;
+            get => _location ?? (_location = new LocationModel());
+            set => _location = value;
         }
         #endregion
 
@@ -432,7 +431,7 @@ namespace iTin.Export.Model
         /// The <see cref="T:iTin.Export.Model.ChartsModel" /> that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
         /// </value>
         [Browsable(false)]
-        public ChartsModel Owner => owner;
+        public ChartsModel Owner => _owner;
         #endregion
 
         #region [public] (ChartPlotsModel) Plots:  Gets or sets collection of plots for a chart
@@ -475,8 +474,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Plot", typeof(ChartPlotModel))]
         public ChartPlotsModel Plots
         {
-            get => plots ?? (plots = new ChartPlotsModel(this));
-            set => plots = value;
+            get => _plots ?? (_plots = new ChartPlotsModel(this));
+            set => _plots = value;
         }
         #endregion
 
@@ -522,7 +521,7 @@ namespace iTin.Export.Model
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         public int[] Size
         {
-            get => size ?? (size = DefaultSize);
+            get => _size ?? (_size = DefaultSize);
             set
             {
                 if (value != null)
@@ -530,7 +529,7 @@ namespace iTin.Export.Model
                     SentinelHelper.IsTrue(value[0] < 0, "El ancho no puede ser menor que cero");
                     SentinelHelper.IsTrue(value[1] < 0, "El alto no puede ser menor que cero");
 
-                    size = value;
+                    _size = value;
                 }
             }
         }
@@ -577,12 +576,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -628,16 +627,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (title == null)
+                if (_title == null)
                 {
-                    title = new ChartTitleModel();
+                    _title = new ChartTitleModel();
                 }
 
-                title.SetParent(this);
+                _title.SetParent(this);
 
-                return title;
+                return _title;
             }
-            set => title = value;
+            set => _title = value;
         }
         #endregion
 
@@ -647,7 +646,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Axes.IsDefault &&
                                           Title.IsDefault &&
                                           Border.IsDefault &&
@@ -682,7 +681,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(ChartsModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

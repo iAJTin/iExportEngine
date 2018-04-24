@@ -5,8 +5,9 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseComplexModelCollection{TItem, TParent, TSearch}" /> class.<br/>.
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseComplexModelCollection{TItem, TParent, TSearch}" /> class.<br />.
     /// Which acts as the base class for nodes of model which are of collection type
     /// </summary>
     public partial class HostsModel

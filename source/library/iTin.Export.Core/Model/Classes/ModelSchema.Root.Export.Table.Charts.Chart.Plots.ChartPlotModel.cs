@@ -84,16 +84,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartPlotsModel owner;
+        private ChartPlotsModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo useSecondaryAxis;
+        private YesNo _useSecondaryAxis;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartSeriesModel series;
+        private ChartSeriesModel _series;
         #endregion
 
         #region constructor/s
@@ -153,13 +153,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Plot", "Name", value)));
 
-                name = value;
+                _name = value;
             }
         }
         #endregion
@@ -204,8 +204,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Serie", typeof(ChartSerieModel))]
         public ChartSeriesModel Series
         {
-            get => series ?? (series = new ChartSeriesModel(this));
-            set => series = value;
+            get => _series ?? (_series = new ChartSeriesModel(this));
+            set => _series = value;
         }
         #endregion
 
@@ -217,7 +217,7 @@ namespace iTin.Export.Model
         /// The <see cref="T:iTin.Export.Model.ChartPlotsModel" /> that owns this <see cref="T:iTin.Export.Model.ChartPlotModel" />.
         /// </value>
         [Browsable(false)]
-        public ChartPlotsModel Owner => owner;
+        public ChartPlotsModel Owner => _owner;
         #endregion
         
         #region [public] (YesNo) UseSecondaryAxis: Gets or sets a value that determines whether the plot uses secondary axis
@@ -261,12 +261,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultUseSecondaryAxis)]
         public YesNo UseSecondaryAxis
         {
-            get => useSecondaryAxis;
+            get => _useSecondaryAxis;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                useSecondaryAxis = value;
+                _useSecondaryAxis = value;
             }
         }
         #endregion
@@ -277,7 +277,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Series.Count.Equals(0) && UseSecondaryAxis.Equals(DefaultUseSecondaryAxis);
         #endregion
 
@@ -292,7 +292,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(ChartPlotsModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

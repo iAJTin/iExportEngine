@@ -6,8 +6,9 @@ namespace iTin.Export.Model
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
+    /// <inheritdoc />
     /// <summary>
-    /// Base class for the different types of data fields supported by <strong><c>iTin Export Engine</c></strong>.<br/>
+    /// Base class for the different types of data fields supported by <strong><c>iTin Export Engine</c></strong>.<br />
     /// Which acts as the base class for different data fields.
     /// </summary>
     /// <remarks>
@@ -20,19 +21,19 @@ namespace iTin.Export.Model
     ///       <description>Description</description>
     ///     </listheader>
     ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.DataFieldModel"/></term>
+    ///       <term><see cref="T:iTin.Export.Model.DataFieldModel" /></term>
     ///       <description>Represents a data field.</description>
     ///     </item>
     ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.FixedFieldModel"/></term>
+    ///       <term><see cref="T:iTin.Export.Model.FixedFieldModel" /></term>
     ///       <description>Represents a piece of a field fixed-width data.</description>
     ///     </item>
     ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.GapFieldModel"/></term>
+    ///       <term><see cref="T:iTin.Export.Model.GapFieldModel" /></term>
     ///       <description>Represents an empty data field.</description>
     ///     </item>
     ///   <item>
-    ///     <term><see cref="T:iTin.Export.Model.GroupFieldModel"/> (inherits of <see cref="T:iTin.Export.Model.DataFieldModel"/>)</term>
+    ///     <term><see cref="T:iTin.Export.Model.GroupFieldModel" /> (inherits of <see cref="T:iTin.Export.Model.DataFieldModel" />)</term>
     ///     <description>Represents a field as union of several data field.</description>
     ///   </item>
     ///   </list>
@@ -155,7 +156,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (string) Alias: Gets or sets the alias of data field.
+        #region [public] (string) Alias: Gets or sets the alias of data field
         /// <summary>
         /// Gets or sets the alias of data field.
         /// </summary>
@@ -217,19 +218,12 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Alias
         {
-            get
-            {
-                return GetValueByReflection(Owner.Parent.Parent, _alias);
-            }
-            set
-            {
-                _alias = value;
-            }
+            get => GetValueByReflection(Owner.Parent.Parent, _alias);
+            set => _alias = value;
         }
-
         #endregion
 
-        #region [public] (XElement) DataSource: Gets or sets a reference for pieces data.
+        #region [public] (XElement) DataSource: Gets or sets a reference for pieces data
         /// <summary>
         /// Gets or sets a reference for pieces data.
         /// </summary>
@@ -239,10 +233,7 @@ namespace iTin.Export.Model
         /// <exception cref="T:System.InvalidOperationException">If not supported for this data field.</exception>
         public XElement DataSource
         {
-            get
-            {
-                return _dataSource;
-            }
+            get => _dataSource;
             set
             {
                 if (CanSetData)
@@ -257,7 +248,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (FieldHeaderModel) Header: Gets or sets a reference that contains the visual setting of header the data field.
+        #region [public] (FieldHeaderModel) Header: Gets or sets a reference that contains the visual setting of header the data field
         /// <summary>
         /// Gets or sets a reference that contains the visual setting of header the data field.
         /// </summary>
@@ -333,14 +324,11 @@ namespace iTin.Export.Model
 
                 return _header;
             }
-            set
-            {
-                _header = value;
-            }
+            set => _header = value;
         }
         #endregion
 
-        #region [public] (FieldsModel) Owner: Gets the element that owns this.
+        #region [public] (FieldsModel) Owner: Gets the element that owns this
         /// <summary>
         /// Gets the element that owns this data field.
         /// </summary>
@@ -349,13 +337,10 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public FieldsModel Owner
-        {
-            get { return _owner; }
-        }
+        public FieldsModel Owner => _owner;
         #endregion
 
-        #region [public] (FieldValueModel) Value: Gets or sets a reference that contains the visual setting of value the data field.
+        #region [public] (FieldValueModel) Value: Gets or sets a reference that contains the visual setting of value the data field
         /// <summary>
         /// Gets or sets a reference that contains the visual setting of value the data field.
         /// </summary>
@@ -431,10 +416,7 @@ namespace iTin.Export.Model
 
                 return _value;
             }
-            set
-            {
-                _value = value;
-            }
+            set => _value = value;
         }
         #endregion
 
@@ -517,6 +499,7 @@ namespace iTin.Export.Model
         #region public override methods
 
         #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <inheritdoc />
         /// <summary>
         /// Returns a string that represents the current object.
         /// </summary>
@@ -524,7 +507,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String" /> that represents the current object.
         /// </returns>
         /// <remarks>
-        /// This method <see cref="DataFieldModel.ToString()"/> returns a string that includes field alias.
+        /// This method <see cref="M:iTin.Export.Model.DataFieldModel.ToString" /> returns a string that includes field alias.
         /// </remarks>
         public override string ToString()
         {

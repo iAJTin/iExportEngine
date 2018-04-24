@@ -95,19 +95,19 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private FontModel font;
+        private FontModel _font;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionModel parent;
+        private AxisDefinitionModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownLabelPosition position;
+        private KnownLabelPosition _position;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownLabelOrientation orientation;
+        private KnownLabelOrientation _orientation;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownHorizontalAlignment alignment;
+        private KnownHorizontalAlignment _alignment;
         #endregion
         
         #region constructor/s
@@ -167,12 +167,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAlignment)]
         public KnownHorizontalAlignment Alignment
         {
-            get => alignment;
+            get => _alignment;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                alignment = value;
+                _alignment = value;
             }
         }
         #endregion
@@ -187,8 +187,8 @@ namespace iTin.Export.Model
         /// </value>
         public FontModel Font
         {
-            get => font ?? (font = new FontModel());
-            set => font = value;
+            get => _font ?? (_font = new FontModel());
+            set => _font = value;
         }
         #endregion
 
@@ -231,12 +231,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultOrientation)]
         public KnownLabelOrientation Orientation
         {
-            get => orientation;
+            get => _orientation;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                orientation = value;
+                _orientation = value;
             }
         }
         #endregion
@@ -249,7 +249,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public AxisDefinitionModel Parent => parent;
+        public AxisDefinitionModel Parent => _parent;
         #endregion
 
         #region [public] (KnownLabelPosition) Position: Gets or sets preferred position for axis labels
@@ -291,12 +291,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultPosition)]
         public KnownLabelPosition Position
         {
-            get => position;
+            get => _position;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                position = value;
+                _position = value;
             }
         }
         #endregion
@@ -324,7 +324,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(AxisDefinitionModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

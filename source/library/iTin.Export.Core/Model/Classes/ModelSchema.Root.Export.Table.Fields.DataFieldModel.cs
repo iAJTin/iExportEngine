@@ -6,9 +6,10 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseDataFieldModel" /> class.<br/>
-    /// Which acts as the base class for different data fields.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseDataFieldModel" /> class.<br />
+    /// Which acts as the base class for different data fields.<br />
     /// Represents a data field.
     /// </summary>
     /// <remarks>
@@ -21,7 +22,7 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="T:iTin.Export.Model.GroupFieldModel"/></term>
+    ///     <term><see cref="T:iTin.Export.Model.GroupFieldModel" /></term>
     ///     <description>Represents a field as union of several data field.</description>
     ///   </item>
     /// </list>
@@ -81,10 +82,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>

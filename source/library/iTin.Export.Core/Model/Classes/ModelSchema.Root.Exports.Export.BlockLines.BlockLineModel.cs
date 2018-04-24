@@ -7,7 +7,8 @@ namespace iTin.Export.Model
 
     using Helper;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Class[@name="info"]/*'/>
+    /// <inheritdoc />
+    /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Table/Class[@name='info']/*" />
     public partial class BlockLineModel
     {
         #region private constants
@@ -17,10 +18,10 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private LocationModel location;
+        private LocationModel _location;
         #endregion
 
         public BlockLineModel()
@@ -34,20 +35,20 @@ namespace iTin.Export.Model
 
         public LocationModel Location
         {
-            get => location ?? (location = new LocationModel());
-            set => location = value;
+            get => _location ?? (_location = new LocationModel());
+            set => _location = value;
         }
 
         [XmlAttribute]
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
 
@@ -58,7 +59,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Items.IsDefault &&
                                           Location.IsDefault &&
                                           Show.Equals(DefaultShow);

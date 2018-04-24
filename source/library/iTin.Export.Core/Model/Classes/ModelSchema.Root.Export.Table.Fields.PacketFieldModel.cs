@@ -6,6 +6,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     public partial class PacketFieldModel
     {
         #region field members

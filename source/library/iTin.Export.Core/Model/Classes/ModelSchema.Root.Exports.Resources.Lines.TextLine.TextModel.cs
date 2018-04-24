@@ -7,6 +7,9 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class TextModel
     {
         #region private constants

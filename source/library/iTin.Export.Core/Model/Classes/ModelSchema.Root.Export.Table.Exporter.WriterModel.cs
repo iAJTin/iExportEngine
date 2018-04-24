@@ -6,9 +6,10 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.WriterModelBase" /> class.<br/>
-    /// Which acts as the base class for different writers.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.WriterModelBase" /> class.<br />
+    /// Which acts as the base class for different writers.<br />
     /// Represents an exporter based on a custom writer.
     /// </summary>
     /// <remarks>
@@ -21,7 +22,7 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="T:iTin.Export.Model.TemplateWriterModel"/></term>
+    ///     <term><see cref="T:iTin.Export.Model.TemplateWriterModel" /></term>
     ///     <description>Represents a template writer used by a exporter.</description>
     ///   </item>
     /// </list>
@@ -66,7 +67,7 @@ namespace iTin.Export.Model
     {
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
         #endregion
 
         #region public properties
@@ -136,13 +137,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Writer", "Name", value)));
 
-                name = value;
+                _name = value;
             }
         }
         #endregion

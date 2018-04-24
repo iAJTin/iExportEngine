@@ -4,7 +4,8 @@ namespace iTin.Export.Model
     using System;
     using System.Xml.Serialization;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Location/Class[@name="Location"]/*' />
+    /// <inheritdoc />
+    /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Location/Class[@name='Location']/*" />
     public partial class LocationModel
     {
         #region constructor/s

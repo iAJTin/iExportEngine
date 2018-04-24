@@ -7,11 +7,12 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Includes the description of export table.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Host</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.HostModel" />.<br/>
+    /// <para>Belongs to: <strong><c>Host</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.HostModel" />.<br />
     /// <code lang="xml" title="ITEE Object Element Usage">
     ///   &lt;Document ...&gt;
     ///    &lt;Header/&gt;
@@ -33,12 +34,12 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.DocumentModel.Size" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred size of document. The default is <see cref="iTin.Export.Model.KnownDocumentSize.A4" />.</td>
+    ///       <td>Preferred size of document. The default is <see cref="F:iTin.Export.Model.KnownDocumentSize.A4" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.DocumentModel.Orientation" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred orientation of document. The default is <see cref="iTin.Export.Model.KnownDocumentOrientation.Portrait" />.</td>
+    ///       <td>Preferred orientation of document. The default is <see cref="F:iTin.Export.Model.KnownDocumentOrientation.Portrait" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -49,15 +50,15 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Header"/></term> 
+    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Header" /></term> 
     ///     <description>Represents header properties of a document. Allow define margin and data.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Footer"/></term> 
+    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Footer" /></term> 
     ///     <description>Represents footer properties of a document. Allow define margin and data.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Margins"/></term> 
+    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Margins" /></term> 
     ///     <description>Represents margins of a document. Allow define top margin, right margin, bottom margin and left margin of a document.</description>
     ///   </item>
     /// </list>
@@ -66,10 +67,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -434,7 +435,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Margins.IsDefault &&
                                           Size.Equals(DefaultSize) &&
                                           Orientation.Equals(DefaultOrientation);

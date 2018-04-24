@@ -10,6 +10,8 @@ namespace iTin.Export.Model
     using Drawing.Helper;
     using Helper;
 
+    /// <summary>
+    /// </summary>
     public partial class PatternModel : ICloneable
     {
         #region private constants
@@ -22,7 +24,7 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownPatternType type;
+        private KnownPatternType _type;
         #endregion
 
         #region constructor/s
@@ -53,11 +55,11 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultPatternType)]
         public KnownPatternType PatternType
         {
-            get => type;
+            get => _type;
             set
             {
                 SentinelHelper.IsEnumValid(value);
-                type = value;
+                _type = value;
             }
         }
         #endregion

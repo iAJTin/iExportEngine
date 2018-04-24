@@ -6,8 +6,7 @@ namespace iTin.Export.Model
     using System.Drawing;
     using System.Xml.Serialization;
 
-    using iTin.Export.Drawing.Helper;
-
+    using Drawing.Helper;
     using Helper;
     
     /// <summary>
@@ -106,16 +105,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo show;
+        private YesNo _show;
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ShadowModel shadow;
+        private ShadowModel _shadow;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownLineStyle style;
+        private KnownLineStyle _style;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownWidthLineStyle lineWidth;
+        private KnownWidthLineStyle _lineWidth;
         #endregion
         
         #region constructor/s
@@ -217,8 +216,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public ShadowModel Shadow
         {
-            get => shadow ?? (shadow = new ShadowModel());
-            set => shadow = value;
+            get => _shadow ?? (_shadow = new ShadowModel());
+            set => _shadow = value;
         }
         #endregion
 
@@ -263,12 +262,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShow)]
         public YesNo Show
         {
-            get => show;
+            get => _show;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                show = value;
+                _show = value;
             }
         }
         #endregion
@@ -313,12 +312,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultLineStyle)]
         public KnownLineStyle Style
         {
-            get => style;
+            get => _style;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                style = value;
+                _style = value;
             }
         }
         #endregion
@@ -373,12 +372,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultWidth)]
         public KnownWidthLineStyle Width
         {
-            get => lineWidth;
+            get => _lineWidth;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                lineWidth = value;
+                _lineWidth = value;
             }
         }
         #endregion
@@ -389,7 +388,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => Shadow.IsDefault &&
                                           Show.Equals(DefaultShow) &&
                                           Color.Equals(DefaultColor) &&

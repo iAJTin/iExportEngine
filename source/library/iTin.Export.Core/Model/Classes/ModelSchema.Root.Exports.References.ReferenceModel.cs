@@ -7,16 +7,19 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class ReferenceModel
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DefaultPath = "Default";
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ReferencesModel owner;
+        private ReferencesModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string path;
+        private string _path;
 
         public ReferenceModel()
         {
@@ -42,26 +45,26 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultPath)]
         public string Path
         {
-            get => path.Replace(DefaultPath, "~");
+            get => _path.Replace(DefaultPath, "~");
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("Path", value)));
 
-                path = value;
+                _path = value;
             }
         }
 
         [Browsable(false)]
         [XmlIgnore]
-        public ReferencesModel Owner => owner;
+        public ReferencesModel Owner => _owner;
 
 
         public override bool IsDefault => string.IsNullOrEmpty(Assembly) && Path.Equals(DefaultPath);
 
         public void SetOwner(ReferencesModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
     }
 }

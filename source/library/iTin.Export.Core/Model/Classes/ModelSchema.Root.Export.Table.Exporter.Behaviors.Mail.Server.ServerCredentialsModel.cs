@@ -3,8 +3,8 @@ namespace iTin.Export.Model
 {
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     public partial class ServerCredentialsModel
     {
@@ -24,8 +24,8 @@ namespace iTin.Export.Model
 
         #endregion
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="item"></param>
         protected override void SetOwner(ServerCredentialModel item)
@@ -35,8 +35,8 @@ namespace iTin.Export.Model
             item.SetOwner(this);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

@@ -10,12 +10,13 @@ namespace iTin.Export.Model
     using ComponentModel;
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.ToSkyDriveBehaviorModel" /> class.<br/>
+    /// A Specialization of <see cref="T:iTin.Export.Model.ToSkyDriveBehaviorModel" /> class.<br />
     /// Which represents a upload file behavior to SkyDrive cloud service. Upload the result of export to microsoft SkyDrive.
     /// </summary>
     /// <remarks>
-    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br/>
+    /// <para>Belongs to: <strong><c>Behaviors</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.BehaviorsModel" />.<br />
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;ToSkyDrive/&gt;
     /// </code>
@@ -33,7 +34,7 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.BaseBehaviorModel.CanExecute" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether executes behavior. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.</td>
+    ///       <td>Determines whether executes behavior. The default is <see cref="F:iTin.Export.Model.YesNo.Yes" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -42,10 +43,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>

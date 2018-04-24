@@ -4,6 +4,9 @@ namespace iTin.Export.Model
     using System.Collections.Generic;
     using System.Xml.Serialization;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class BlockLineItemModel
     {
         public BlockLineItemModel()

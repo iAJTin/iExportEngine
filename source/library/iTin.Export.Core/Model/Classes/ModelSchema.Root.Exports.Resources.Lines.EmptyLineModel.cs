@@ -5,6 +5,9 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public partial class EmptyLineModel
     {
         #region private constants

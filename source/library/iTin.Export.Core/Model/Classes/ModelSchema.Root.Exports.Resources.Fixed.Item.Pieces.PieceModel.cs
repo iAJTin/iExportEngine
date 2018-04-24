@@ -9,6 +9,7 @@ namespace iTin.Export.Model
     using Helper;
     using Resources;
 
+    /// <inheritdoc />
     /// <summary>
     /// Represents a new field composed of a field name and initial position and final position into the reference field.
     /// </summary>
@@ -47,12 +48,12 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.PieceModel.Trim" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether to apply string trim mode. The default <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines whether to apply string trim mode. The default <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.PieceModel.TrimMode" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Use this attribute to specify trim mode for strings. The default is <see cref="iTin.Export.Model.KnownTrimMode.All" />.</td>
+    ///       <td>Use this attribute to specify trim mode for strings. The default is <see cref="F:iTin.Export.Model.KnownTrimMode.All" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -61,10 +62,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -530,6 +531,7 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this instance is default.
         /// </summary>
@@ -572,7 +574,8 @@ namespace iTin.Export.Model
 
         #region public override methods
 
-        #region [public] {override} (string) ToString(): Returns a string that represents the current object.
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <inheritdoc />
         /// <summary>
         /// Returns a string that represents the current object.
         /// </summary>
@@ -580,7 +583,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String" /> that represents the current object.
         /// </returns>
         /// <remarks>
-        /// This method <see cref="M:iTin.Export.Model.PieceModel.ToString"/> returns a string that includes name, initial position and lenght.
+        /// This method <see cref="M:iTin.Export.Model.PieceModel.ToString" /> returns a string that includes name, initial position and lenght.
         /// </remarks>
         public override string ToString()
         {

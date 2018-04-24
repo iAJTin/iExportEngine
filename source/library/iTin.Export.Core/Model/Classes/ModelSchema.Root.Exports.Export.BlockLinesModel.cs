@@ -3,7 +3,8 @@ namespace iTin.Export.Model
 {
     using Helper;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Class[@name="info"]/*'/>
+    /// <inheritdoc />
+    /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Table/Class[@name='info']/*" />
     public partial class BlockLinesModel
     {
         /// <inheritdoc />

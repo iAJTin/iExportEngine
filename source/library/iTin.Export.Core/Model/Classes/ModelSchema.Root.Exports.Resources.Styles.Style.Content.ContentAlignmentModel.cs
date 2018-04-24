@@ -92,10 +92,10 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownVerticalAlignment vertical;
+        private KnownVerticalAlignment _vertical;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownHorizontalAlignment horizontal;
+        private KnownHorizontalAlignment _horizontal;
         #endregion
 
         #region constructor/s
@@ -186,11 +186,11 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultHorizontalAlignment)]
         public KnownHorizontalAlignment Horizontal
         {
-            get => horizontal;
+            get => _horizontal;
             set
             {
                 SentinelHelper.IsEnumValid(value);
-                horizontal = value;
+                _horizontal = value;
             }
         }
         #endregion
@@ -251,11 +251,11 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultVerticalAlignment)]
         public KnownVerticalAlignment Vertical
         {
-            get => vertical;
+            get => _vertical;
             set
             {
                 SentinelHelper.IsEnumValid(value);
-                vertical = value;
+                _vertical = value;
             }
         }
         #endregion
@@ -299,14 +299,14 @@ namespace iTin.Export.Model
         /// </summary>
         public void Combine(ContentAlignmentModel reference)
         {
-            if (vertical.Equals(DefaultVerticalAlignment))
+            if (_vertical.Equals(DefaultVerticalAlignment))
             {
-                vertical = reference.Vertical;
+                _vertical = reference.Vertical;
             }
 
-            if (horizontal.Equals(DefaultHorizontalAlignment))
+            if (_horizontal.Equals(DefaultHorizontalAlignment))
             {
-                horizontal = reference.Horizontal;
+                _horizontal = reference.Horizontal;
             }
         }
         #endregion

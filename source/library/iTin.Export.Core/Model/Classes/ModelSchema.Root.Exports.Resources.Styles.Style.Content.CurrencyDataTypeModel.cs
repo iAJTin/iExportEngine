@@ -105,7 +105,7 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownCulture locale;
+        private KnownCulture _locale;
         #endregion
 
         #region constructor/s
@@ -116,7 +116,7 @@ namespace iTin.Export.Model
         /// </summary>
         public CurrencyDataTypeModel()
         {
-            locale = DefaultLocale;
+            _locale = DefaultLocale;
         }
         #endregion
 
@@ -177,7 +177,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultLocale)]
         public KnownCulture Locale
         {
-            get => locale;
+            get => _locale;
             set
             {
                 var isValidLocale = true;
@@ -190,7 +190,7 @@ namespace iTin.Export.Model
                     }
                 }
 
-                locale = isValidLocale 
+                _locale = isValidLocale 
                     ? value 
                     : DefaultLocale;
             }

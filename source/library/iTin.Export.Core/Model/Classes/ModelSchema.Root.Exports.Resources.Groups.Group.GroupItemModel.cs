@@ -7,6 +7,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Defines field name and a field separator of a group item.
     /// </summary>
@@ -44,10 +45,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -71,10 +72,10 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private GroupModel owner;
+        private GroupModel _owner;
         #endregion
 
         #region constructor/s
@@ -133,13 +134,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidFieldName(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.FieldIdentifierNameErrorMessage("Field", "Name", value)));
 
-                name = value;
+                _name = value;
             }
         }
         #endregion
@@ -153,7 +154,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public GroupModel Owner => owner;
+        public GroupModel Owner => _owner;
         #endregion
 
         #region [public] (string) Separator: Gets or sets the field separator
@@ -309,6 +310,7 @@ namespace iTin.Export.Model
         #region public override methods
 
         #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <inheritdoc />
         /// <summary>
         /// Returns a string that represents the current object.
         /// </summary>
@@ -316,7 +318,7 @@ namespace iTin.Export.Model
         /// A <see cref="T:System.String" /> that represents the current object.
         /// </returns>
         /// <remarks>
-        /// This method <see cref="M:iTin.Export.Model.GroupItemModel.ToString"/> returns a string that includes name and separator for this field.
+        /// This method <see cref="M:iTin.Export.Model.GroupItemModel.ToString" /> returns a string that includes name and separator for this field.
         /// </remarks>
         public override string ToString()
         {
@@ -335,7 +337,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(GroupModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

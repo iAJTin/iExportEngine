@@ -3,12 +3,13 @@ namespace iTin.Export.Model
 {
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Contains a collection of pieces. Each element is a new collection of smaller fields resulting from splitting a reference field.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Belongs to: <strong><c>Fixed</c></strong>. For more information, please see <see cref="FixedModel" />.
+    /// Belongs to: <strong><c>Fixed</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.FixedModel" />.
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Pieces ...&gt;
     ///   &lt;Piece/&gt;
@@ -55,10 +56,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter"/></th>
-    ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter"/></th>
-    ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>

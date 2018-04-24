@@ -80,10 +80,10 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailBehaviorModel parent;
+        private MailBehaviorModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ServerCredentialsModel credentials;
+        private ServerCredentialsModel _credentials;
         #endregion
 
         #region public static properties
@@ -169,8 +169,8 @@ namespace iTin.Export.Model
         [XmlArrayItem("Credential", typeof(ServerCredentialModel))]
         public ServerCredentialsModel Credentials
         {
-            get => credentials ?? (credentials = new ServerCredentialsModel(this));
-            set => credentials = value;
+            get => _credentials ?? (_credentials = new ServerCredentialsModel(this));
+            set => _credentials = value;
         }
         #endregion
 
@@ -182,7 +182,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public MailBehaviorModel Parent => parent;
+        public MailBehaviorModel Parent => _parent;
         #endregion
 
         #endregion
@@ -205,7 +205,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(MailBehaviorModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

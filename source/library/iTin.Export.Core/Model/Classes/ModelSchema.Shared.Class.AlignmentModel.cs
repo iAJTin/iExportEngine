@@ -7,7 +7,8 @@ namespace iTin.Export.Model
 
     using Helper;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Alignment/Class[@name="info"]/*'/>
+    /// <inheritdoc />
+    /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Alignment/Class[@name='info']/*" />
     public partial class AlignmentModel
     {
         #region private constants
@@ -77,7 +78,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         [Browsable(false)]
         public override bool IsDefault => SkipLines.Equals(DefaultSkipLines) && Horizontal.Equals(DefaultHorizontal);
         #endregion

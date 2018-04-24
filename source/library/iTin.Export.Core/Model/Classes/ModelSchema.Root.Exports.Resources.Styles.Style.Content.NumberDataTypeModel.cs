@@ -111,7 +111,7 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo separator;
+        private YesNo _separator;
         #endregion
 
         #region constructor/s
@@ -191,11 +191,11 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSeparator)]
         public YesNo Separator
         {
-            get => separator;
+            get => _separator;
             set
             {
                 SentinelHelper.IsEnumValid(value);
-                separator = value;
+                _separator = value;
             }
         }
         #endregion

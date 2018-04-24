@@ -66,13 +66,13 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartAxesModel parent;
+        private ChartAxesModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionModel values;
+        private AxisDefinitionModel _values;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AxisDefinitionModel category;
+        private AxisDefinitionModel _category;
         #endregion
 
         #region public properties
@@ -125,16 +125,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (category == null)
+                if (_category == null)
                 {
-                    category = new AxisDefinitionModel();
+                    _category = new AxisDefinitionModel();
                 }
 
-                category.SetParent(this);
+                _category.SetParent(this);
 
-                return category;
+                return _category;
             }
-            set => category = value;
+            set => _category = value;
         }
         #endregion
 
@@ -146,7 +146,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public ChartAxesModel Parent => parent;
+        public ChartAxesModel Parent => _parent;
         #endregion
 
         #region [public] (AxisDefinitionModel) Values: Gets or sets a reference that contains the visual setting of values axis
@@ -197,16 +197,16 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (values == null)
+                if (_values == null)
                 {
-                    values = new AxisDefinitionModel();
+                    _values = new AxisDefinitionModel();
                 }
 
-                values.SetParent(this);
+                _values.SetParent(this);
 
-                return values;
+                return _values;
             }
-            set => values = value;
+            set => _values = value;
         }
         #endregion
 
@@ -216,9 +216,8 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
-        public override bool IsDefault => Values.IsDefault && 
-                                          Category.IsDefault;
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
+        public override bool IsDefault => Values.IsDefault && Category.IsDefault;
         #endregion
 
         #endregion
@@ -232,7 +231,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(ChartAxesModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

@@ -5,11 +5,11 @@ namespace iTin.Export.Model
 
     using Helper;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Styles/Class[@name="info"]/*'/>
+    /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Styles/Class[@name='info']/*" />
     public partial class StylesModel : ICloneable
     {
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Styles/Public/Constructors/Constructor[@name=&quot;ctor1&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Styles/Public/Constructors/Constructor[@name='ctor1']/*" />
         public StylesModel(GlobalResourcesModel parent) : base(parent)
         {
         }

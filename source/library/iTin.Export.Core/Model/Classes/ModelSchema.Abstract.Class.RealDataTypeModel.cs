@@ -44,7 +44,7 @@ namespace iTin.Export.Model
 
         #region field member
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private int decimals;
+        private int _decimals;
         #endregion
 
         #region constructor/s
@@ -127,12 +127,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultDecimals)]
         public int Decimals
         {
-            get => decimals;
+            get => _decimals;
             set
             {
                 SentinelHelper.ArgumentLessThan("value", value, 0);
 
-                decimals = value;
+                _decimals = value;
             }
         }
         #endregion

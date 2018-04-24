@@ -7,6 +7,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Reference to set of properties that allow you to specify a writer.
     /// </summary>

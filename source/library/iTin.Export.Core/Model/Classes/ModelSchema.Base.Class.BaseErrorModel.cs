@@ -31,7 +31,7 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private CommentModel comment;
+        private CommentModel _comment;
         #endregion
 
         #region public properties
@@ -110,8 +110,8 @@ namespace iTin.Export.Model
         /// </example>
         public CommentModel Comment
         {
-            get => comment ?? (comment = new CommentModel());
-            set => comment = value;
+            get => _comment ?? (_comment = new CommentModel());
+            set => _comment = value;
         }
         #endregion
 

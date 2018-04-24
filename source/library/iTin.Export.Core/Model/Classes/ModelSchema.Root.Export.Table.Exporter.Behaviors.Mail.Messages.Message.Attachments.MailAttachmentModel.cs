@@ -12,10 +12,10 @@ namespace iTin.Export.Model
     {
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string path;
+        private string _path;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MailMessageAttachmentsModel owner;
+        private MailMessageAttachmentsModel _owner;
         #endregion
 
         #region public properties
@@ -23,7 +23,7 @@ namespace iTin.Export.Model
         #region [public] (MailMessageAttachmentsModel) Owner: Gets the MailMessageAttachmentsModel that owns this MailMessageAttachmentModel
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/MailMessageAttachment/Public/Properties/Property[@name="Owner"]/*'/>
         [Browsable(false)]
-        public MailMessageAttachmentsModel Owner => owner;
+        public MailMessageAttachmentsModel Owner => _owner;
         #endregion
 
         #region [public] (string) Path: Gets or sets path to filename to attach
@@ -31,13 +31,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Path
         {
-            get => path;
+            get => _path;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("Path", value)));
 
-                path = value;
+                _path = value;
             }
         }
         #endregion
@@ -48,7 +48,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => string.IsNullOrEmpty(Path);
         #endregion
 
@@ -60,7 +60,7 @@ namespace iTin.Export.Model
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/MailMessageAttachment/Public/Methods/Method[@name="SetOwner"]/*'/>
         public void SetOwner(MailMessageAttachmentsModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

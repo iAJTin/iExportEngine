@@ -7,6 +7,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Reference to the settings defined for this writer.
     /// </summary>
@@ -40,17 +41,17 @@ namespace iTin.Export.Model
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.TemplateWriterSettingsModel.RecordsToShow" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Number of affected records. The default is <see cref="KnownRecordToShow.All"/>.</td>
+    ///       <td>Number of affected records. The default is <see cref="F:iTin.Export.Model.KnownRecordToShow.All" />.</td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.TemplateWriterSettingsModel.TrimFields" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether to apply string trim mode. The default is <see cref="iTin.Export.Model.YesNo.No"/></td>
+    ///       <td>Determines whether to apply string trim mode. The default is <see cref="F:iTin.Export.Model.YesNo.No" /></td>
     ///     </tr>
     ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.TemplateWriterSettingsModel.TrimMode" /></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Use this attribute to specify trim mode for strings. The default is <see cref="iTin.Export.Model.KnownTrimMode.All"/>.</td>
+    ///       <td>Use this attribute to specify trim mode for strings. The default is <see cref="F:iTin.Export.Model.KnownTrimMode.All" />.</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -76,16 +77,16 @@ namespace iTin.Export.Model
         
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo trim;
+        private YesNo _trim;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownTrimMode trimMode;
+        private KnownTrimMode _trimMode;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private WriterModelBase parent;
+        private WriterModelBase _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownRecordToShow recordsToShow;
+        private KnownRecordToShow _recordsToShow;
         #endregion
 
         #region constructor/s
@@ -150,7 +151,7 @@ namespace iTin.Export.Model
         /// The element that represents the container element of the element.
         /// </value>
         [Browsable(false)]
-        public WriterModelBase Parent => parent;
+        public WriterModelBase Parent => _parent;
         #endregion
 
         #region [public] (KnownRecordToShow) RecordsToShow: Gets or sets number of affected records
@@ -170,12 +171,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultRecordsToShow)]
         public KnownRecordToShow RecordsToShow
         {
-            get => recordsToShow;
+            get => _recordsToShow;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                recordsToShow = value;
+                _recordsToShow = value;
             }
         }
         #endregion
@@ -197,12 +198,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultTrimFields)]
         public YesNo TrimFields
         {
-            get => trim;
+            get => _trim;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                trim = value;
+                _trim = value;
             }
         }
         #endregion
@@ -224,12 +225,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultTrimMode)]
         public KnownTrimMode TrimMode
         {
-            get => trimMode;
+            get => _trimMode;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                trimMode = value;
+                _trimMode = value;
             }
         }
         #endregion
@@ -264,7 +265,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to parent.</param>
         internal void SetParent(WriterModelBase reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

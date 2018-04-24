@@ -24,12 +24,12 @@ namespace iTin.Export.Model
     {
         #region private static field memebrs
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private static XmlSerializer serializer;
+        private static XmlSerializer _serializer;
         #endregion
 
         #region private field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PropertiesModel properties;
+        private PropertiesModel _properties;
         #endregion
 
         #region public properties
@@ -47,19 +47,19 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (properties == null)
+                if (_properties == null)
                 {
-                    properties = new PropertiesModel();
+                    _properties = new PropertiesModel();
                 }
 
-                foreach (var property in properties)
+                foreach (var property in _properties)
                 {
-                    property.SetOwner(properties);
+                    property.SetOwner(_properties);
                 }
 
-                return properties;
+                return _properties;
             }
-            set => properties = value;
+            set => _properties = value;
         }
         #endregion
 
@@ -90,7 +90,7 @@ namespace iTin.Export.Model
         /// Serializer reference.
         /// </value>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private static XmlSerializer Serializer => serializer ?? (serializer = new XmlSerializer(typeof(T)));
+        private static XmlSerializer Serializer => _serializer ?? (_serializer = new XmlSerializer(typeof(T)));
         #endregion
 
         #endregion
@@ -154,9 +154,8 @@ namespace iTin.Export.Model
         public static bool Deserialize(string xml, out T obj)
         {
             SentinelHelper.ArgumentNull(xml);
-            
-            Exception exception;
-            return Deserialize(xml, out obj, out exception);
+
+            return Deserialize(xml, out obj, out var exception);
         }
         #endregion
 
@@ -254,8 +253,7 @@ namespace iTin.Export.Model
         {
             SentinelHelper.IsTrue(string.IsNullOrEmpty(fileName));
 
-            Exception exception;
-            return LoadFromFile(fileName, out obj, out exception);
+            return LoadFromFile(fileName, out obj, out var exception);
         }
         #endregion
 
@@ -342,6 +340,7 @@ namespace iTin.Export.Model
             }
             catch (Exception ex)
             {
+                // re-throw
                 throw;
             }
         }
@@ -404,10 +403,7 @@ namespace iTin.Export.Model
             }
             finally
             {
-                if (stream != null)
-                {
-                    stream.Dispose();
-                }
+                stream?.Dispose();
             }
         }
         #endregion
@@ -457,7 +453,7 @@ namespace iTin.Export.Model
             }
 
 
-            var assemblies = new List<Assembly>(); // { this.GetType().Assembly };
+            var assemblies = new List<Assembly> { GetType().Assembly };
             var references =  model.Owner.References;
             foreach (var reference in references)
             {
@@ -481,7 +477,7 @@ namespace iTin.Export.Model
             var qualifiedFunctionName = bindParts[1].Trim();
 
             string functionName;
-            var classType = this.GetType();
+            var classType =  this.GetType();
             var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
             if (qualifiedFunctionParts.Count() == 1)
             {

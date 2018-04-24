@@ -10,6 +10,7 @@ namespace iTin.Export.Model
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
     /// Contains a collection of field names. Each element is result of the union of a field list.
     /// </summary>
@@ -57,10 +58,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -79,13 +80,13 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private GroupsModel owner;
+        private GroupsModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<GroupItemModel> groupItems;
+        private List<GroupItemModel> _groupItems;
         #endregion
 
         #region public properties
@@ -156,19 +157,19 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (groupItems == null)
+                if (_groupItems == null)
                 {
-                    groupItems = new List<GroupItemModel>();
+                    _groupItems = new List<GroupItemModel>();
                 }
 
-                foreach (var item in groupItems)
+                foreach (var item in _groupItems)
                 {
                     item.SetOwner(this);
                 }
 
-                return groupItems;
+                return _groupItems;
             }
-            set => groupItems = value;
+            set => _groupItems = value;
         }
         #endregion
 
@@ -272,13 +273,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidFieldName(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.FieldIdentifierNameErrorMessage("Group", "Name", value)));
 
-                name = value;
+                _name = value;
             }
         }
         #endregion
@@ -292,7 +293,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public GroupsModel Owner => owner;
+        public GroupsModel Owner => _owner;
         #endregion
 
         #endregion
@@ -306,7 +307,7 @@ namespace iTin.Export.Model
         /// <param name="reference">Reference to owner.</param>
         public void SetOwner(GroupsModel reference)
         {
-            owner = reference;
+            _owner = reference;
         }
         #endregion
 

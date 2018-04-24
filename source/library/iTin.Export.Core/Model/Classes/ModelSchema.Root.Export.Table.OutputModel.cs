@@ -169,10 +169,10 @@ namespace iTin.Export.Model
             {
                 return new Uri(Parent.Parent.ParseRelativeFilePath(KnownRelativeFilePath.Output));
             }
-            catch(Exception ex)
+            catch
             {
                 // err - Mostrar error
-                throw ex;
+                throw;
             }
         }
         #endregion

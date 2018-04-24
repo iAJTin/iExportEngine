@@ -13,12 +13,13 @@ namespace iTin.Export.Model
     using Helper;
     using Resources;
 
+    /// <inheritdoc />
     /// <summary>
     /// Contains a collection of pieces. Each element is a new collection of smaller fields resulting from splitting a reference field.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Belongs to: <strong><c>Fixed</c></strong>. For more information, please see <see cref="FixedModel" />.
+    /// Belongs to: <strong><c>Fixed</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.FixedModel" />.
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Pieces ...&gt;
     ///   &lt;Piece/&gt;
@@ -65,10 +66,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter"/></th>
-    ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter"/></th>
-    ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -87,16 +88,16 @@ namespace iTin.Export.Model
     {
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string name;
+        private string _name;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string reference;
+        private string _reference;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private FixedModel owner;
+        private FixedModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PiecesModel pieces;
+        private PiecesModel _pieces;
         #endregion
 
         #region public properties
@@ -120,7 +121,7 @@ namespace iTin.Export.Model
         /// </value>
         [XmlIgnore]
         [Browsable(false)]
-        public FixedModel Owner => owner;
+        public FixedModel Owner => _owner;
         #endregion
 
         #region [public] (string) Name: Gets or sets the name of the pieces
@@ -165,13 +166,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Pieces", "Name", value)));
 
-                name = value;
+                _name = value;
             }
         }
         #endregion
@@ -195,8 +196,8 @@ namespace iTin.Export.Model
         [XmlElement("Piece")]
         public PiecesModel Pieces
         {
-            get => pieces ?? (pieces = new PiecesModel(this));
-            set => pieces = value;
+            get => _pieces ?? (_pieces = new PiecesModel(this));
+            set => _pieces = value;
         }
         #endregion
 
@@ -241,13 +242,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Reference
         {
-            get => reference;
+            get => _reference;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidFieldName(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.FieldIdentifierNameErrorMessage("Pieces", "Reference", value)));
 
-                reference = value;
+                _reference = value;
             }
         }
         #endregion
@@ -304,7 +305,7 @@ namespace iTin.Export.Model
         /// <param name="own">Reference to owner.</param>
         public void SetOwner(FixedModel own)
         {
-            owner = own;
+            _owner = own;
         }
         #endregion
 

@@ -2,22 +2,18 @@
 namespace iTin.Export.Model
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
 
     using Helper;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     public partial class ChartPlotsModel
     {
         #region private fields
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly List<ChartPlotModel> list;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartBorderModel border;
+        private ChartBorderModel _border;
         #endregion
 
         #region constructor/s
@@ -77,8 +73,8 @@ namespace iTin.Export.Model
         /// </remarks>
         public ChartBorderModel Border
         {
-            get => border ?? (border = new ChartBorderModel());
-            set => border = value;
+            get => _border ?? (_border = new ChartBorderModel());
+            set => _border = value;
         }
         #endregion
 
@@ -88,7 +84,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault.Collection&quot;]/*" />
+        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
         public override bool IsDefault => base.IsDefault && Border.IsDefault;
         #endregion
 
