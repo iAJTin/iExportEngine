@@ -22,6 +22,10 @@ namespace iTin.Export.Model
     [Serializable]
     public class BaseModel<T>
     {
+        #region private constants
+        private const string DefaultClassName = "BaseWriter";
+        #endregion
+
         #region private static field memebrs
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static XmlSerializer _serializer;
@@ -452,9 +456,9 @@ namespace iTin.Export.Model
                 return value;
             }
 
-
             var assemblies = new List<Assembly> { GetType().Assembly };
             var references =  model.Owner.References;
+
             foreach (var reference in references)
             {
                 var assemblyName = reference.Assembly.ToUpperInvariant();
@@ -476,21 +480,23 @@ namespace iTin.Export.Model
             var bindParts = targetValue.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
             var qualifiedFunctionName = bindParts[1].Trim();
 
+            string className;
             string functionName;
-            var classType =  this.GetType();
             var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            if (qualifiedFunctionParts.Count() == 1)
+            if (qualifiedFunctionParts.Length == 1)
             {
+                className = DefaultClassName;
                 functionName = qualifiedFunctionParts[0].Trim();
             }
             else
             {
-                var className = qualifiedFunctionParts[0].Trim();
+                className = qualifiedFunctionParts[0].Trim();
                 functionName = qualifiedFunctionParts[1].Trim();
-                var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
-                var assemblyTypes = casm.GetExportedTypes();
-                classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
             }
+
+            var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
+            var assemblyTypes = casm.GetExportedTypes();
+            var classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
 
             var instanceMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Instance);
             if (instanceMethodInfo != null)
