@@ -218,11 +218,24 @@ namespace iTin.Export.Model
             }
             finally
             {
-                if (file != null)
-                {
-                    file.Dispose();
-                }
+                file?.Dispose();
             }
+        }
+        #endregion
+
+        #region [public] {static} (T) LoadFromUri(Uri): Loads from file
+        /// <summary>
+        /// Loads from file.
+        /// </summary>
+        /// <param name="pathUri">Name of the file.</param>
+        /// <returns>
+        /// T object
+        /// </returns>
+        public static T LoadFromUri(Uri pathUri)
+        {
+            SentinelHelper.ArgumentNull(pathUri);
+
+            return LoadFromFile(pathUri.LocalPath);
         }
         #endregion
 

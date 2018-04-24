@@ -5,7 +5,6 @@ namespace iTin.Export
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
-    using System.Linq;
     using System.Text;
     using System.Xml.Schema;
 
@@ -44,7 +43,7 @@ namespace iTin.Export
         /// <value>
         /// <strong>true</strong> if empty; otherwise, <strong>false</strong>.
         /// </value>        
-        public bool IsEmpty => (OutputFile == null) && (TransformFile == null);
+        public bool IsEmpty => OutputFile == null && TransformFile == null;
         #endregion
        
         #region [public] (Uri) OutputFile: Gets or set a value that represents the path of the output file
@@ -94,6 +93,7 @@ namespace iTin.Export
         /// <value>
         /// A <see cref="T:System.Uri" /> object that represents the path of the configuration file.
         /// </value>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Uri ConfigurationFile { get; set; }
         #endregion
 
@@ -210,7 +210,7 @@ namespace iTin.Export
         }
         #endregion
 
-        #region [public] {static} (ExportSettings) CreateFromModel(ExportsModel): Returns a export settings object reference from a data model
+        #region [public] {static} (ExportSettings) CreateFromModels(ExportsModel): Returns a export settings object reference from a data model
         /// <summary>
         /// Returns a export settings object reference from a data model.
         /// </summary>
@@ -219,13 +219,13 @@ namespace iTin.Export
         /// A <see cref="T:iTin.Export.ExportSettings" /> object that represents export settings.
         /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
-        public static ExportSettings CreateFromModel(ExportsModel model)
+        public static ExportSettings CreateFromModels(ExportsModel model)
         {
-            return CreateFromModel(model, string.Empty);
+            return CreateFromModels(model, string.Empty);
         }
         #endregion
 
-        #region [public] {static} (ExportSettings) CreateFromModel(ExportsModel, string): Returns a reference which contains specified export data model from the specified data model
+        #region [public] {static} (ExportSettings) CreateFromModels(ExportsModel, string): Returns a reference which contains specified export data model from the specified data model
         /// <summary>
         /// Returns a reference which contains specified export data model from the specified data model.
         /// </summary>
@@ -236,7 +236,7 @@ namespace iTin.Export
         /// </returns>
         /// <exception cref="System.IO.FileNotFoundException">File exception</exception>
         [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
-        public static ExportSettings CreateFromModel(ExportsModel model, string from)
+        public static ExportSettings CreateFromModels(ExportsModel model, string from)
         {
             SentinelHelper.ArgumentNull(from);
             SentinelHelper.ArgumentNull(model);
@@ -284,23 +284,6 @@ namespace iTin.Export
 
             configuration = null;
             return false;
-        }
-        #endregion
-
-        #endregion
-
-        #region public methods
-
-        #region [public] {static} (ExportModel) ExtractModel(): Extract model from configuration file
-        /// <summary>
-        /// Extract model from configuration file
-        /// </summary>
-        /// <returns>
-        /// A <see cref="T:iTin.Export.Model.ExportModel"/> for current configuration file.
-        /// </returns>
-        public ExportModel ExtractModel()
-        {
-            return LoadModelFrom(ConfigurationFile).Items.FirstOrDefault(i=> i.Name == From);
         }
         #endregion
 

@@ -4,7 +4,7 @@ namespace iTin.Export.Model
     using System;
     using System.Xml.Serialization;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Location/Class[@name="info"]/*'/>
+    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Location/Class[@name="Location"]/*' />
     public partial class LocationModel
     {
         #region constructor/s
@@ -57,7 +57,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name=&quot;IsDefault&quot;]/*" />
+        /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*' />
         public override bool IsDefault => LocationType.Equals(KnownElementLocation.ByCoordenates);
         #endregion
 

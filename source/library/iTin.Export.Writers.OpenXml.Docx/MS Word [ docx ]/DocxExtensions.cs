@@ -1,10 +1,11 @@
-﻿using iTin.Export.Helper;
-using iTin.Export.Model;
-
-using Novacode;
-
+﻿
 namespace iTin.Export.Writers.OpenXml.Office
 {
+    using Helper;
+    using Model;
+
+    using Novacode;
+
     /// <summary>
     /// Contains common extensions for data model objects.
     /// </summary>

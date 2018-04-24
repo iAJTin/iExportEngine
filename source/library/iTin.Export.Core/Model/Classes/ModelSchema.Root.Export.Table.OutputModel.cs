@@ -8,7 +8,8 @@ namespace iTin.Export.Model
 
     using Helper;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Output/Class[@name="info"]/*'/>
+    /// <inheritdoc />
+    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Output/Class[@name="info"]/*' />
     public partial class OutputModel
     {
         #region private constants
@@ -18,16 +19,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string file;
+        private string _file;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string path;
+        private string _path;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableModel parent;
+        private TableModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownOutputTarget target;
+        private KnownOutputTarget _target;
         #endregion
 
         #region constructor/s
@@ -70,12 +71,12 @@ namespace iTin.Export.Model
         [XmlElement]
         public string File
         {
-            get => file;
+            get => _file;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(FileHelper.IsValidFileName(value), new InvalidFileNameException(ErrorMessageHelper.ModelFileNameErrorMessage("File", value)));
-                file = value;
+                _file = value;
             }
         }
         #endregion
@@ -105,7 +106,7 @@ namespace iTin.Export.Model
         #region [public] (TableModel) Parent: Parent: Gets the parent container of the output
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Output/Public/Properties/Property[@name="Parent"]/*'/>
         [Browsable(false)]
-        public TableModel Parent => parent;
+        public TableModel Parent => _parent;
         #endregion
 
         #region [public] (string) Path: Gets or sets the output file path. To specify a relative path use the character (~)
@@ -115,13 +116,13 @@ namespace iTin.Export.Model
         [Description("The output file path. To specify a relative path use the character (~).")]
         public string Path
         {
-            get => path;
+            get => _path;
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("Path", value)));
 
-                path = value;
+                _path = value;
             }
         }
         #endregion
@@ -134,12 +135,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultTarget)]
         public KnownOutputTarget Target
         {
-            get => target;
+            get => _target;
             set
             {
                 SentinelHelper.IsEnumValid(value);
 
-                target = value;
+                _target = value;
             }
         }
         #endregion
@@ -155,13 +156,36 @@ namespace iTin.Export.Model
 
         #endregion
 
+        #region public methods
+
+        #region [public] (Uri) ToUri(): 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Uri ToUri()
+        {
+            try
+            {
+                return new Uri(Parent.Parent.ParseRelativeFilePath(KnownRelativeFilePath.Output));
+            }
+            catch(Exception ex)
+            {
+                // err - Mostrar error
+                throw ex;
+            }
+        }
+        #endregion
+
+        #endregion
+
         #region internal methods
 
         #region [internal] (void) SetParent(TableModel): Sets the parent element of the element
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Internal/Methods/Method[@name="SetParent"]/*'/>
         internal void SetParent(TableModel reference)
         {
-            parent = reference;
+            _parent = reference;
         }
         #endregion
 

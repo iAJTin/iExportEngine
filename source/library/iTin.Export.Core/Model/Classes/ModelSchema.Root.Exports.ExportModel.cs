@@ -1,4 +1,6 @@
 ﻿
+using System.Linq;
+
 namespace iTin.Export.Model
 {
     using System.ComponentModel;
@@ -170,7 +172,18 @@ namespace iTin.Export.Model
             {
                 SentinelHelper.IsEnumValid(value);
 
-                current = value;
+                //if (Owner != null && owner.Items.Any())
+                //{
+                //    foreach (var model in Owner.Items)
+                //    {
+                //        if (model.current == YesNo.Yes)
+                //        {
+                //            model.Current = YesNo.No;
+                //        }
+                //    }
+                //}
+
+                current = value;  
             }
         }
         #endregion

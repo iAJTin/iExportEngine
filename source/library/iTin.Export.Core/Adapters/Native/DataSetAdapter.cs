@@ -21,7 +21,7 @@ namespace iTin.Export.Adapters.Native
     {
         #region private field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly DataSet dataSet;
+        private readonly DataSet _dataSet;
         #endregion
 
         #region constructor/s
@@ -45,7 +45,7 @@ namespace iTin.Export.Adapters.Native
         /// <param name="dataSet">A <see cref="T:System.Data.DataSet" /> object than contains the information.</param>            
         public DataSetAdapter(DataSet dataSet) 
         {
-            this.dataSet = dataSet;
+            _dataSet = dataSet;
         }
         #endregion
 
@@ -85,14 +85,14 @@ namespace iTin.Export.Adapters.Native
         /// </summary>
         protected override void OnCreateInputXml()
         {
-            if (dataSet == null)
+            if (_dataSet == null)
             {
                 return;
             }
 
-            if (!dataSet.GetType().Name.Equals("GenericDataLinkDataSet", StringComparison.OrdinalIgnoreCase))
+            if (!_dataSet.GetType().Name.Equals("GenericDataLinkDataSet", StringComparison.OrdinalIgnoreCase))
             {
-                using (var ds = dataSet.Copy())
+                using (var ds = _dataSet.Copy())
                 {
                     var tables = ds.Tables;
                     foreach (DataTable table in tables)
@@ -114,7 +114,7 @@ namespace iTin.Export.Adapters.Native
             }
             else
             {
-                var tables = dataSet.Tables;
+                var tables = _dataSet.Tables;
                 foreach (DataTable table in tables)
                 {
                     var columns = table.Columns;
@@ -126,7 +126,7 @@ namespace iTin.Export.Adapters.Native
 
                 using (var stream = new MemoryStream())
                 {
-                    dataSet.WriteXml(stream);
+                    _dataSet.WriteXml(stream);
                     stream.SaveToFile(InputUri.AbsolutePath);
                 }
             }
@@ -142,20 +142,20 @@ namespace iTin.Export.Adapters.Native
         /// </returns>
         protected override DataTable OnGetDataTable()
         {
-            if (dataSet == null)
+            if (_dataSet == null)
             {
                 return null;
             }
 
             DataTable dt;
-            if (!dataSet.GetType().Name.Equals("GenericDataLinkDataSet", StringComparison.OrdinalIgnoreCase))
+            if (!_dataSet.GetType().Name.Equals("GenericDataLinkDataSet", StringComparison.OrdinalIgnoreCase))
             {
-                var ds = dataSet.Copy();
+                var ds = _dataSet.Copy();
                 dt = ds.Tables[DataModel.Data.Table.Name];
             }
             else
             {
-                dt = dataSet.Tables[DataModel.Data.Table.Name];                
+                dt = _dataSet.Tables[DataModel.Data.Table.Name];                
             }
 
             return dt;
