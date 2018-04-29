@@ -8,7 +8,7 @@ namespace iTin.Export.Model
     using System.Linq;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Coordenates/Class[@name="info"]/*'/>
     public partial class CoordenatesModel : ICloneable

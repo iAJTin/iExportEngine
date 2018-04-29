@@ -3,7 +3,7 @@ namespace iTin.Export.Model
 {
     using System;
 
-    using Helper;
+    using Helpers;
 
     /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Styles/Class[@name='info']/*" />
     public partial class StylesModel : ICloneable

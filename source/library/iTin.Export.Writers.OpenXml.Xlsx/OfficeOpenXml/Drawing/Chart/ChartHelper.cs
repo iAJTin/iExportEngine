@@ -5,7 +5,7 @@ namespace OfficeOpenXml.Drawing.Chart
     using System.Linq;
     using System.Xml;
 
-    using iTin.Export.Helper;
+    using iTin.Export.Helpers;
     using iTin.Export.Model;
 
     using Utils.iTin;

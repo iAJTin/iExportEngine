@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/MailMessageAttachment/Class[@name="info"]/*'/>
     public partial class MailMessageAttachmentModel

@@ -7,7 +7,7 @@ namespace iTin.Export.Writers.Native
     using System.Text;
     using System.Xml;
 
-    using Helper;
+    using Helpers;
     using Model;
 
     /// <summary>

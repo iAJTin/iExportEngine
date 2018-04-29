@@ -6,7 +6,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Defines a single style, includes definition for a font type, type of content, such as the background color, the alignment type and the data type.
@@ -152,7 +152,7 @@ namespace iTin.Export.Model
             {
                 var @default = Empty;
                 @default.Name = NameOfDefaultStyle;
-
+               
                 return @default;
             }
         }

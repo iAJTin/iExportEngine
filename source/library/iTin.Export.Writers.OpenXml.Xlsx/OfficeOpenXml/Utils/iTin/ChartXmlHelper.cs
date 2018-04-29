@@ -1,4 +1,5 @@
-﻿using iTin.Export.Helper;
+﻿
+using iTin.Export.Helpers;
 
 namespace OfficeOpenXml.Utils.iTin
 {

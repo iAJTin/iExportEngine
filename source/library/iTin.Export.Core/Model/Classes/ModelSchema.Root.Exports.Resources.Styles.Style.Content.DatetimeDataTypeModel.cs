@@ -8,7 +8,7 @@ namespace iTin.Export.Model
     using System.Linq;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// A Specialization of <see cref="T:iTin.Export.Model.BaseDataTypeModel" /> class.<br/>

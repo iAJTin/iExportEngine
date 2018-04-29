@@ -6,7 +6,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Represents a comment. Includes comment text, format, including font face, size, and style attributes.

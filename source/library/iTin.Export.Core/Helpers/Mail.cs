@@ -1,5 +1,5 @@
 ﻿
-namespace iTin.Export.Helper
+namespace iTin.Export.Helpers
 {
     using System.ComponentModel;
     using System.Diagnostics;

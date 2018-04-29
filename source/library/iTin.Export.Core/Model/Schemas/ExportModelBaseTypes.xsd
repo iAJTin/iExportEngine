@@ -65,6 +65,15 @@
     <xs:list itemType="intMinValueIsMinusOneType"/>
   </xs:simpleType>
 
+  <!-- Bindable data type: Defines a bindable property, represents a call to external assembly. -->
+  <xs:simpleType id="bindableType" name="bindableType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*\{\s*[B|b]indable\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]indable\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
   
   <!-- =============================== -->
   <!-- Definition of string data types -->
@@ -100,11 +109,6 @@
     <xs:restriction base="xs:string">
       <xs:pattern value ="sc#\W\d+.\d+\W\d+.\d+\W\d+.\d+"/>
     </xs:restriction>
-  </xs:simpleType>
-  
-  <!-- RGB color. Defined by name or by its RGB components. -->
-  <xs:simpleType name="rgbColorType" id ="rgbColorType">
-    <xs:union memberTypes="rgbHexColorType rgbNameColorType scColorType"/>
   </xs:simpleType>
   
   <!-- System colors. Represents a list of known system colors. -->
@@ -819,6 +823,11 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- RGB color. Defined by name or by its RGB components. -->
+  <xs:simpleType name="rgbColorType" id ="rgbColorType">
+    <xs:union memberTypes="bindableType rgbHexColorType rgbNameColorType scColorType"/>
+  </xs:simpleType>
+  
   <!-- Horizontal alignment. List of possible types of horizontal alignment. -->
   <xs:simpleType name="HorizontalAlignmentListType">
     <xs:restriction base ="xs:string">
@@ -3705,14 +3714,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Bindable type: Represents a call to external assembly. -->
-  <xs:simpleType id="bindableType" name="bindableType">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:whiteSpace value="collapse" />
-    </xs:restriction>
-  </xs:simpleType>
 
   <!-- identifier Type: Represents a valid name for an identifier. -->
   <xs:simpleType id="identifierType" name="identifierType">

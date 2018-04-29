@@ -6,7 +6,7 @@ namespace iTin.Export.Model
     using System.Runtime.Serialization;
     using System.Text;
 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

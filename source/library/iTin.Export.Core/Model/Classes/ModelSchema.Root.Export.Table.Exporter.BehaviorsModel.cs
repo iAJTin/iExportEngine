@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Linq;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

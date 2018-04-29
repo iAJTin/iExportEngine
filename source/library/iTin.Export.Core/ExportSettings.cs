@@ -8,7 +8,7 @@ namespace iTin.Export
     using System.Text;
     using System.Xml.Schema;
 
-    using Helper;
+    using Helpers;
     using Model;
 
     /// <summary>

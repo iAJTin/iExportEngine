@@ -6,7 +6,7 @@ namespace iTin.Export.ComponentModel
     using System.Globalization;
     using System.Linq;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Defines a value that contains the detailed information of a <see cref="T:iTin.Export.ComponentModel.BaseInput" />.

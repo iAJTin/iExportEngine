@@ -7,7 +7,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using Drawing.Helper;
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Represents a data serie of a plot.

@@ -8,7 +8,7 @@ namespace iTin.Export.Adapters.Native
     using System.IO;
 
     using ComponentModel; 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

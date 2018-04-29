@@ -8,7 +8,7 @@ namespace Novacode
     using System.Text;
 
     using iTin.Export.ComponentModel;
-    using iTin.Export.Helper;
+    using iTin.Export.Helpers;
     using iTin.Export.Model;
 
     /// <summary>

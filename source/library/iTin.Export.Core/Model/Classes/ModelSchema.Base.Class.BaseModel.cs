@@ -12,7 +12,7 @@ namespace iTin.Export.Model
     using System.Xml;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Base class for model elements. 
@@ -342,7 +342,7 @@ namespace iTin.Export.Model
                     stream.Flush();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 // re-throw
                 throw;
@@ -435,6 +435,110 @@ namespace iTin.Export.Model
         #endregion
 
         #region [protected] {virtual} (string) GetValueByReflection(ExportsModel, string): Gets the value by reflection
+        /// <summary>
+        /// Gets the value by reflection.
+        /// </summary>
+        /// <param name="root">Root model.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that contains property, method or raw value.
+        /// </returns>
+        protected virtual string GetValueByReflection(ExportsModel root, string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            var isValidStaticResource = RegularExpressionHelper.IsValidStaticResource(value);
+            if (!isValidStaticResource)
+            {
+                return value;
+            }
+
+            var assemblies = new List<Assembly> { GetType().Assembly };
+
+            if (typeof(T) == typeof(ContentModel))
+            {
+                var qwq = this as ContentModel;
+                //var references1 = T as ContentModel;
+                //.Parent.Owner.Parent.Parent;
+            }
+            var references = root.References;
+
+            foreach (var reference in references)
+            {
+                var assemblyName = reference.Assembly.ToUpperInvariant();
+                var hasExtension = assemblyName.EndsWith(".DLL");
+                if (!hasExtension)
+                {
+                    assemblyName = string.Concat(assemblyName, ".DLL");
+                }
+
+                var assemblyRelativePath = reference.Path;
+                var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
+                var qualifiedAssemblyPathParsed = PathHelper.GetRelativeFilePathParsed(qualifiedAssemblyPath, root);
+                var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
+                assemblies.Add(assembly);
+            }
+
+            object returnValue;
+            var targetValue = value.Replace("{", string.Empty).Replace("}", string.Empty).Trim();
+            var bindParts = targetValue.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+            var qualifiedFunctionName = bindParts[1].Trim();
+
+            string className;
+            string functionName;
+            var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            if (qualifiedFunctionParts.Length == 1)
+            {
+                className = DefaultClassName;
+                functionName = qualifiedFunctionParts[0].Trim();
+            }
+            else
+            {
+                className = qualifiedFunctionParts[0].Trim();
+                functionName = qualifiedFunctionParts[1].Trim();
+            }
+
+            var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
+            var assemblyTypes = casm.GetExportedTypes();
+            var classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
+
+            var instanceMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Instance);
+            if (instanceMethodInfo != null)
+            {
+                returnValue = instanceMethodInfo.Invoke(this, null);
+            }
+            else
+            {
+                var staticMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Static);
+                if (staticMethodInfo != null)
+                {
+                    returnValue = staticMethodInfo.Invoke(null, null);
+                }
+                else
+                {
+                    var instancePropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Instance);
+                    if (instancePropertyInfo != null)
+                    {
+                        var instancePropertyGetMethod = instancePropertyInfo.GetGetMethod(true);
+                        returnValue = instancePropertyGetMethod.Invoke(this, null);
+                    }
+                    else
+                    {
+                        var staticPropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                        var staticPropertyGetMethod = staticPropertyInfo.GetGetMethod(true);
+                        returnValue = staticPropertyGetMethod.Invoke(null, null);
+                    }
+                }
+            }
+
+            return returnValue.ToString();
+        }
+        #endregion
+
+        #region [protected] {virtual} (string) GetValueByReflection(ExportModel, string): Gets the value by reflection
         /// <summary>
         /// Gets the value by reflection.
         /// </summary>

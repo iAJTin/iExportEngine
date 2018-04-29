@@ -4,7 +4,7 @@ namespace iTin.Export.Model
     using System.Diagnostics.CodeAnalysis;
     using System.Xml;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Static class that contains helper extension methods for objects <see cref="System.Xml.XmlWriter" /> that allows create <strong>Xslt</strong> sentences easily.

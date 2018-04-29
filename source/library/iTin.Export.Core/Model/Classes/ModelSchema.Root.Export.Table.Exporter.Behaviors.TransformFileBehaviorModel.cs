@@ -8,7 +8,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

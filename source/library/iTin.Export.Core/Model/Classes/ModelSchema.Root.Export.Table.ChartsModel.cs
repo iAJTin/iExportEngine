@@ -1,7 +1,7 @@
 ﻿
 namespace iTin.Export.Model
 {
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Collection of user-defined charts. Each element represents a user-defined chart.

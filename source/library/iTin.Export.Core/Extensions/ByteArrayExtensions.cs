@@ -9,7 +9,7 @@ namespace iTin.Export
     using Ionic.Zip;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Static class than contains extension methods for objects <see cref="T:System.Array" /> of type <see cref="T:System.Byte" />.

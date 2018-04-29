@@ -11,7 +11,6 @@ namespace iTin.Export.Writers.Native
 
     using ComponentModel;
     using Drawing.Helper;
-    using Helper;
     using Model;
     using Web;
 

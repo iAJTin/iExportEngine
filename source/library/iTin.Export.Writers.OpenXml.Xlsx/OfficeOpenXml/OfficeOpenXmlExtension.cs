@@ -9,7 +9,7 @@ namespace OfficeOpenXml
     using System.Text;
 
     using iTin.Export.ComponentModel;
-    using iTin.Export.Helper;
+    using iTin.Export.Helpers;
     using iTin.Export.Model;
 
     using Style;
@@ -184,7 +184,11 @@ namespace OfficeOpenXml
             foreach (var style in modelStyles)
             {
                 xlsxStyle = styles.CreateNamedStyle(style.Name);
-                xlsxStyle.Style.FormatFromModel(style);                
+                xlsxStyle.Style.FormatFromModel(style);
+
+                var alternateStyleName = $"{style.Name}_Alternate";
+                xlsxStyle = styles.CreateNamedStyle(alternateStyleName);
+                xlsxStyle.Style.FormatFromModel(style, true);
             }
         }
         #endregion

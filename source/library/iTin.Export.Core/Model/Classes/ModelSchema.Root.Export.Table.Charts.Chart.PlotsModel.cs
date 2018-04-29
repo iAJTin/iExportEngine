@@ -4,7 +4,7 @@ namespace iTin.Export.Model
     using System;
     using System.Diagnostics;
 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

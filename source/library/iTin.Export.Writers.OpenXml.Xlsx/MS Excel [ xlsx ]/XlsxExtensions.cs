@@ -9,7 +9,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using OfficeOpenXml.Drawing;
     using OfficeOpenXml.Drawing.Chart;
 
-    using Helper;
+    using Helpers;
     using Model;
 
     /// <summary>

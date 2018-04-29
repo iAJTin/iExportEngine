@@ -6,7 +6,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Implements interface <see cref="T:iTin.Export.Model.IBehavior" />.

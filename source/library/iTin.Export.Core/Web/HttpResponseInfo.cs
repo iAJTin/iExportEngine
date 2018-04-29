@@ -4,7 +4,7 @@ namespace iTin.Export.Web
     using System;
     using System.IO;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Represents a <see cref="T:System.Web.HttpResponse" /> settings.

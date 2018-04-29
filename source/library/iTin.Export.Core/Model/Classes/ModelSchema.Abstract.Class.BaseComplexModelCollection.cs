@@ -3,8 +3,9 @@ namespace iTin.Export.Model
 {
     using System;
 
+    /// <inheritdoc />
     /// <summary>
-    /// A Specialization of <see cref="T:iTin.Export.Model.BaseSimpleModelCollection{TItem, TParent}" /> class.<br/>.
+    /// A Specialization of <see cref="T:iTin.Export.Model.BaseSimpleModelCollection{TItem, TParent}" /> class.<br />.
     /// Which acts as the base class for nodes of model which are of collection type
     /// </summary>
     /// <typeparam name="TItem">The type of elements in the list.</typeparam>
@@ -79,8 +80,9 @@ namespace iTin.Export.Model
         #region constructor/s
 
         #region [protected] BaseComplexModelCollection(TParent): Initializes a new instance of the class
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseComplexModelCollection{TItem, TParent, TSearch}"/> class.
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.BaseComplexModelCollection`3" /> class.
         /// </summary>
         /// <param name="parent">c.</param>
         protected BaseComplexModelCollection(TParent parent) : base(parent)

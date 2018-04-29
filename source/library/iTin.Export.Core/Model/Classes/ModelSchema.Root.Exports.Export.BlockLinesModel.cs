@@ -1,7 +1,7 @@
 ﻿
 namespace iTin.Export.Model
 {
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Table/Class[@name='info']/*" />

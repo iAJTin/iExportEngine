@@ -3,7 +3,7 @@ namespace iTin.Export.Model
 {
     using System.Collections.Generic;
 
-    using Helper;
+    using Helpers;
 
     public partial class ChartSeriesModel
     {

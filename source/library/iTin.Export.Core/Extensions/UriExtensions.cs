@@ -5,7 +5,7 @@ namespace iTin.Export
     using System.IO;
     using System.Xml.Xsl;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Static class than contains extension methods for objects of type <see cref="System.Uri" />.

@@ -2,7 +2,7 @@
 using System.Linq;
 
 using iTin.Export.Drawing.Helper;
-using iTin.Export.Helper;
+using iTin.Export.Helpers;
 using iTin.Export.Model;
 
 namespace iTin.Export.Drawing

@@ -141,6 +141,7 @@ namespace iTin.Export.Model
         #region public indexer
 
         #region [public] (TItem) this[int]: Gets or sets the element at the specified index
+        /// <inheritdoc />
         /// <summary>
         /// Gets or sets the element at the specified index.
         /// </summary>
@@ -151,8 +152,8 @@ namespace iTin.Export.Model
         /// <returns>
         /// the value
         /// </returns>
-        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index" /> is not a valid index for <see cref="BaseSimpleModelCollection{TItem, TParent}" />.</exception>
-        /// <exception cref="T:System.NotSupportedException">The property is set and <see cref="BaseSimpleModelCollection{TItem, TParent}" /> is readonly.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index" /> is not a valid index for <see cref="T:iTin.Export.Model.BaseSimpleModelCollection`2" />.</exception>
+        /// <exception cref="T:System.NotSupportedException">The property is set and <see cref="T:iTin.Export.Model.BaseSimpleModelCollection`2" /> is readonly.</exception>
         public TItem this[int index]
         {
             get => List[index];

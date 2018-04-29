@@ -5,7 +5,7 @@ namespace iTin.Export.Inputs
 
     using Adapters.Native;
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

@@ -5,7 +5,7 @@ namespace iTextSharp.text
     using System.IO;
     using System.Text;
 
-    using iTin.Export.Helper;
+    using iTin.Export.Helpers;
     using iTin.Export.Model;
 
     /// <summary>

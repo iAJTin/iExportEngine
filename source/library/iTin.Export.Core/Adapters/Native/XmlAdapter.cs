@@ -6,7 +6,7 @@ namespace iTin.Export.Adapters.Native
     using System.Diagnostics;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

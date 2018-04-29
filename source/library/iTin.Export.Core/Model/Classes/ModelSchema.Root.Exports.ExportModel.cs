@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>
@@ -95,6 +95,9 @@ namespace iTin.Export.Model
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _name;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _description;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _current;
@@ -224,7 +227,12 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        public string Description { get; set; }
+        public string Description
+        {
+            get => GetValueByReflection(this, _description);
+            set => _description = value;
+        }
+
         #endregion
 
         #region [public] (string) Name: Gets or sets name of the export
@@ -417,7 +425,7 @@ namespace iTin.Export.Model
         /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
         public string ParseRelativeFilePath(string relativePath)
         {
-            return ExportsModel.GetRelativeFilePathParsed(this, relativePath);
+            return PathHelper.GetRelativeFilePathParsed(relativePath, this);
         }
         #endregion
 
@@ -435,14 +443,3 @@ namespace iTin.Export.Model
         #endregion
     }
 }
-
-//#region [public] (string) CallingAssemblyPath: Gets or sets the calling assembly path.
-///// <summary>
-///// Gets or sets the calling assembly path.
-///// </summary>
-///// <value>
-///// The calling assembly path.
-///// </value>
-//[XmlIgnore]
-//public string CallingAssemblyPath { get; set; }
-//#endregion

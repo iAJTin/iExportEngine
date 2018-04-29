@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Base class for the different types of lines supported by <strong><c>iTin Export Engine</c></strong>.<br/>

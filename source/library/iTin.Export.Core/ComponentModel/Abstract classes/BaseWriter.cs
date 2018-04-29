@@ -11,7 +11,7 @@ namespace iTin.Export.ComponentModel
     using System.Reflection;
     using System.Text;
 
-    using Helper;
+    using Helpers;
     using Model;
     using Web;
 
@@ -203,6 +203,13 @@ namespace iTin.Export.ComponentModel
 
         #endregion
 
+        #region protected constants
+        /// <summary>
+        /// Preferred alternate style name sufix.
+        /// </summary>
+        protected const string AlternateStyleNameSufix = "_Alternate";
+        #endregion
+
         #region protected properties
 
         #region [protected] (Collection<byte[]>) Result: Gets enumerable of byte array containing data info
@@ -219,6 +226,8 @@ namespace iTin.Export.ComponentModel
 
         #region public static properties
 
+        public static string GetAlternateColorSample => "red";
+
         /// <summary>
         /// Gets the get current date time.
         /// </summary>
@@ -234,7 +243,6 @@ namespace iTin.Export.ComponentModel
         /// The get timespan.
         /// </value>
         public static TimeSpan GetCurrentTimeSpan => DateTime.Now.TimeOfDay;
-
         #endregion
 
         #region public methods
@@ -255,7 +263,7 @@ namespace iTin.Export.ComponentModel
         }
         #endregion
 
-        #region [public] (void) Generate(ExportSettings): Generates writer output
+        #region [public] (void) (ExportSettings): Generates writer output
         /// <inheritdoc />
         /// <summary>
         /// Generates writer output.
@@ -305,7 +313,7 @@ namespace iTin.Export.ComponentModel
         /// Generates output in the format supported by each specialized class.
         /// </summary>
         protected abstract void Execute();
-    #endregion
+        #endregion
 
         #endregion
 
@@ -410,10 +418,7 @@ namespace iTin.Export.ComponentModel
         /// </summary>
         protected virtual void ReleaseManagedResources()
         {
-            if (Stream != null)
-            {
-                Stream.Dispose();
-            }
+            Stream?.Dispose();
 
             DeleteTemporaryOutputFiles();
         }    

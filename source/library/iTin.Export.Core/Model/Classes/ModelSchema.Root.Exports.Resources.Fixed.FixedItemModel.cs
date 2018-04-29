@@ -10,7 +10,7 @@ namespace iTin.Export.Model
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
     using Resources;
 
     /// <inheritdoc />

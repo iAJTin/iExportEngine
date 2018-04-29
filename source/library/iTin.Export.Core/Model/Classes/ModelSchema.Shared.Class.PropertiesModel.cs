@@ -7,7 +7,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Linq;
 
-    using Helper;
+    using Helpers;
 
     /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Properties/Class[@name="info"]/*'/>
     public partial class PropertiesModel : IList<PropertyModel>, ICloneable

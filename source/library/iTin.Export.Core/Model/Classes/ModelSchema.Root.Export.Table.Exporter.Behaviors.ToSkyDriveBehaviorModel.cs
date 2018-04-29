@@ -8,7 +8,7 @@ namespace iTin.Export.Model
     using Web.Cloud.Apis;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

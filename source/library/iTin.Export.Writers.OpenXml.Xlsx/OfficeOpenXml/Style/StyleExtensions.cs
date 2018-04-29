@@ -1,7 +1,7 @@
 ﻿
 namespace OfficeOpenXml.Style
 {
-    using iTin.Export.Helper;
+    using iTin.Export.Helpers;
     using iTin.Export.Model;
     using iTin.Export.Writers.OpenXml.Office;
 
@@ -68,9 +68,10 @@ namespace OfficeOpenXml.Style
         /// </summary>
         /// <param name="style"><see cref="OfficeOpenXml.Style.ExcelStyle" /> object.</param>
         /// <param name="model">Style model definition.</param>
+        /// <param name="useAlternate"><b>true</b> for use alternate color; Otherwise <b></b>.</param>
         /// <exception cref="System.ArgumentNullException">If <paramref name="style" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">If <paramref name="model" /> is <c>null</c>.</exception>
-        public static void FormatFromModel(this ExcelStyle style, StyleModel model)
+        public static void FormatFromModel(this ExcelStyle style, StyleModel model, bool useAlternate=false)
         {
             SentinelHelper.ArgumentNull(style);
             SentinelHelper.ArgumentNull(model);
@@ -92,7 +93,7 @@ namespace OfficeOpenXml.Style
             style.Fill.PatternType = content.Pattern.PatternType.ToEppPatternFillStyle();
             if (style.Fill.PatternType != ExcelFillStyle.None)
             {
-                style.Fill.BackgroundColor.SetColor(content.GetColor());
+                style.Fill.BackgroundColor.SetColor(useAlternate ? content.GetAlternateColor() : content.GetColor());
                 style.Fill.PatternColor.SetColor(content.Pattern.GetColor());
             }
 

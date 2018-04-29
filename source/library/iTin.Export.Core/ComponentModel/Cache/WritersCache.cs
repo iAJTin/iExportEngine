@@ -13,7 +13,7 @@ namespace iTin.Export.ComponentModel
     using System.Linq;
     using System.Reflection;
 
-    using Helper;
+    using Helpers;
     using Model;
 
     /// <summary>

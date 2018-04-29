@@ -7,7 +7,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using Drawing.Helper;
-    using Helper;
+    using Helpers;
     
     /// <summary>
     /// Represents the visual setting of chart border. Includes visibility, shadow definition, line style, width and color.

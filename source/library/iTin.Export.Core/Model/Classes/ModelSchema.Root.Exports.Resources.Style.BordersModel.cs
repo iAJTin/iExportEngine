@@ -4,7 +4,7 @@ namespace iTin.Export.Model
     using System;
     using System.Linq;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// 

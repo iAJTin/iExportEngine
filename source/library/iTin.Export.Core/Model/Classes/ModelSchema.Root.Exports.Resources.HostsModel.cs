@@ -3,7 +3,7 @@ namespace iTin.Export.Model
 {
     using System;
 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>

@@ -11,7 +11,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using System.Xml.Linq;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
     using Model;
 
     using Novacode;

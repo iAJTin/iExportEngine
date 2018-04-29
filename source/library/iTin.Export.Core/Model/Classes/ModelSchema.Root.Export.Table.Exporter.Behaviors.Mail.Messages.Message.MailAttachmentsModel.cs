@@ -1,7 +1,7 @@
 ﻿
 namespace iTin.Export.Model
 {
-    using Helper;
+    using Helpers;
 
     public partial class MailMessageAttachmentsModel
     {

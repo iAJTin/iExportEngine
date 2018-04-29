@@ -4,7 +4,7 @@ namespace iTin.Export
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Static class than contains extension methods for objects of type <see cref="T:System.IO.Stream" />.

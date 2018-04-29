@@ -86,10 +86,16 @@ namespace iTin.Export.Model
 
         #region field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _color;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private StyleModel _parent;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private PatternModel _pattern;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _alternateColor;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private BaseDataTypeModel _dataType;
@@ -107,6 +113,7 @@ namespace iTin.Export.Model
         public ContentModel()
         {
             Color = DefaultColor;
+            AlternateColor = DefaultColor;
         }
         #endregion
 
@@ -128,9 +135,73 @@ namespace iTin.Export.Model
 
         #region public properties
 
-        #region [public] (string) Color: Gets or sets preferred of content color
+        #region [public] (string) AlternateColor: Gets or sets the alternate preferred for content color
         /// <summary>
-        /// Gets or sets preferred of content color.
+        /// Gets or sets the alternate preferred for content color.
+        /// </summary>
+        /// <value>
+        /// Alternate preferred color. The default is "<c>Transparent</c>".
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Content AlternateColor="string"&gt;
+        /// ...
+        /// ...
+        /// &lt;/Content&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// In the following example shows how create a new content.
+        /// <code lang="xml">
+        /// &lt;Content Color="DarkBlue"&gt;
+        ///   &lt;Alignment Horizontal="Left"/&gt;
+        ///   &lt;Text/&gt;
+        /// &lt;/Content&gt;
+        /// </code>
+        /// <code lang="cs">
+        /// ContentModel content = new ContentModel
+        ///                            {
+        ///                                Color = "DarkBlue",
+        ///                                AlternateColor = "Red", 
+        ///                                DataType = new TextDataTypeModel(),
+        ///                                Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        ///                            };
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        [DefaultValue(DefaultColor)]
+        public string AlternateColor
+        {
+            get => Parent.Owner == null ? _alternateColor : GetValueByReflection(Parent.Owner.Parent.Parent, _alternateColor);
+            set => _alternateColor = value;
+        }
+        #endregion
+
+        #region [public] (string) Color: Gets or sets the preferred for content color
+        /// <summary>
+        /// Gets or sets the preferred for content color.
         /// </summary>
         /// <value>
         /// Preferred of content color. The default is "<c>Transparent</c>".
@@ -184,7 +255,11 @@ namespace iTin.Export.Model
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string Color { get; set; }
+        public string Color
+        {
+            get => Parent.Owner == null ? _color : GetValueByReflection(Parent.Owner.Parent.Parent, _color);
+            set => _color = value;
+        }
         #endregion
 
         #region [public] (ContentAlignmentModel) Alignment: Gets or sets content distribution
@@ -249,6 +324,9 @@ namespace iTin.Export.Model
         #endregion
 
         #region [public] (PatternModel) Pattern: Gets or sets pattern content
+        /// <summary>
+        /// Pattern content
+        /// </summary>
         public PatternModel Pattern
         {
             get => _pattern ?? (_pattern = new PatternModel());
@@ -401,6 +479,7 @@ namespace iTin.Export.Model
         /// </value>
         public override bool IsDefault => Pattern.IsDefault &&
                                           Alignment.IsDefault &&
+                                          AlternateColor.Equals(DefaultColor) &&
                                           Color.Equals(DefaultColor) &&
                                           DataType.GetType() == typeof(TextDataTypeModel);
         #endregion
@@ -432,6 +511,11 @@ namespace iTin.Export.Model
         /// </summary>
         public void Combine(ContentModel reference)
         {
+            if (AlternateColor.Equals(DefaultColor))
+            {
+                AlternateColor = reference.Color;
+            }
+
             if (Color.Equals(DefaultColor))
             {
                 Color = reference.Color;
@@ -488,6 +572,19 @@ namespace iTin.Export.Model
         public Color GetColor()
         {
             return ColorHelper.GetColorFromString(Color);
+        }
+        #endregion
+
+        #region [public] (Color) GetAlternateColor(): Gets a reference to the alternate color structure preferred for this content
+        /// <summary>
+        /// Gets a reference to the alternate <see cref="T:System.Drawing.Color" /> structure preferred for this content.
+        /// </summary>
+        /// <returns>
+        /// <see cref="T:System.Drawing.Color"/> structure that represents a .NET color.
+        /// </returns> 
+        public Color GetAlternateColor()
+        {
+            return ColorHelper.GetColorFromString(AlternateColor);
         }
         #endregion
 

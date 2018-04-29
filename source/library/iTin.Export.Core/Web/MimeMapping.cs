@@ -6,7 +6,7 @@ namespace iTin.Export.Web
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
 
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Maps document extensions to content <strong>MIME</strong> types.

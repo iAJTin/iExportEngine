@@ -8,7 +8,7 @@ namespace iTextSharp.text.pdf
     using System.Xml.Linq;
 
     using iTin.Export.ComponentModel;
-    using iTin.Export.Helper;
+    using iTin.Export.Helpers;
     using iTin.Export.Model;
     using iTin.Export.Writers.Adobe;
 

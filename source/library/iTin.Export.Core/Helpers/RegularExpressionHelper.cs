@@ -1,5 +1,5 @@
 ﻿
-namespace iTin.Export.Helper
+namespace iTin.Export.Helpers
 {
     using System.Text.RegularExpressions;
 
@@ -99,7 +99,7 @@ namespace iTin.Export.Helper
         {
             SentinelHelper.ArgumentNull(value);
 
-            var val = new Regex(@"^(\s)*\{(\s)*bind(\s)*:[\s|\w]*[.]*(\w)*}$", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            var val = new Regex(@"^(\s)*\{(\s)*bindable(\s)*:[\s|\w]*[.]*(\w)*}$", RegexOptions.IgnoreCase | RegexOptions.Singleline);
             //var val = new Regex(@"^(\s)*\{(\s)*bind(\s)*:(\s)*\w+(\s)*}$", RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
             return val.IsMatch(value);

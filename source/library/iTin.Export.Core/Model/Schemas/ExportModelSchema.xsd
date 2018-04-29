@@ -3516,6 +3516,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="AlternateColor" type="rgbColorType" use="optional" default="Transparent">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Alternate preferred of content color. The default is 'Transparent'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- Content: Alignment -->

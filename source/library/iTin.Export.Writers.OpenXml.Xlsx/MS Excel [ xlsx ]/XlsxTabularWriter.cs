@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -215,7 +217,9 @@ namespace iTin.Export.Writers.OpenXml.Office
                             var cell = worksheet.Cells[y + row, x + col];
                             cell.Value = value.Value;                        
                             cell.AddErrorComment(value);
-                            cell.StyleName = value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                            cell.StyleName = row.IsOdd()
+                                ? $"{value.Style.Name}{AlternateStyleNameSufix}" ?? StyleModel.NameOfDefaultStyle
+                                : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
                             cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
 
                             if (!fieldDictionary.ContainsKey(field))

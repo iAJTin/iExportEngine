@@ -5,11 +5,10 @@ namespace iTin.Export.Model
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics;
-    using System.Globalization;
     using System.IO;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     ///  <summary>
@@ -175,167 +174,155 @@ namespace iTin.Export.Model
         private List<ExportModel> _export;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private GlobalResourcesModel _resources;
+        private ReferencesModel _references;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ReferencesModel _references;
+        private GlobalResourcesModel _resources;
         #endregion
 
         #region public properties
 
-            #region [public] (ReferencesModel) References: Gets a reference to the assembly references.
-            /// <summary>
-            /// Gets a reference to the assembly references.
-            /// </summary>
-            /// <value>
-            /// A <see cref="T:iTin.Export.Model.ReferencesModel"/> reference which contains the assembly references.
-            /// </value>
-            [XmlArrayItem("Reference", typeof(ReferenceModel), IsNullable = false)]
-            public ReferencesModel References
+        #region [public] (List<ExportModel>) Items: Gets or sets collection of export configurations
+        /// <summary>
+        ///  Gets or sets collection of export configurations.
+        /// </summary>
+        /// <value>
+        /// Collection of export configurations. Each element is composed of a description and a data table definition.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        ///   &lt;Exports&gt;
+        ///     &lt;Export .../&gt;
+        ///     &lt;Export .../&gt;
+        ///     ...
+        ///   &lt;/Exports&gt;
+        /// </code>
+        /// </remarks>
+        [XmlElement("Export")]
+        public List<ExportModel> Items
+        {
+            get
             {
-                get
+                var items = _export ?? (_export = new List<ExportModel>());
+                foreach (var item in items)
                 {
-                    if (_references == null)
-                    {
-                        _references = new ReferencesModel(this);
-                    }
-
-                    _references.SetParent(this);
-
-                    return _references;
+                    item.SetOwner(this);
                 }
-                set
-                {
-                    _references = value;
-                }
+
+                return items;
             }
-            #endregion
-
-            #region [public] (GlobalResourcesModel) Resources: Gets or sets global resources.
-            /// <summary>
-            ///  Gets or sets global resources.
-            /// </summary>
-            /// <value>
-            /// The image file path.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="ITEE Object Element Usage">
-            /// &lt;Global.Resources&gt;
-            ///   &lt;Images/&gt;
-            /// &lt;/Global.Resources&gt;
-            /// </code>
-            /// <para>
-            /// <para><strong>Compatibility table with native writers.</strong></para>
-            /// <table>
-            ///   <thead>
-            ///     <tr>
-            ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-            ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-            ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-            ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-            ///     </tr>
-            ///   </thead>
-            ///   <tbody>
-            ///     <tr>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///       <td align="center">No has effect</td>
-            ///     </tr>
-            ///   </tbody>
-            /// </table>
-            /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-            /// </para>
-            /// </remarks>
-            [XmlElement("Global.Resources")]
-            public GlobalResourcesModel Resources
+            set
             {
-                get
+                foreach (var item in _export)
                 {
-                    if (_resources == null)
-                    {
-                        _resources = new GlobalResourcesModel();
-                    }
-
-                    _resources.SetParent(this);
-
-                    return _resources;
+                    item.SetOwner(this);
                 }
-                set
-                {
-                    _resources = value;
-                }
+
+                _export = value;
             }
+        }
         #endregion
 
-            #region [public] (List<ExportModel>) Items: Gets or sets collection of export configurations.
-            /// <summary>
-            ///  Gets or sets collection of export configurations.
-            /// </summary>
-            /// <value>
-            /// Collection of export configurations. Each element is composed of a description and a data table definition.
-            /// </value>
-            /// <remarks>
-            /// <code lang="xml" title="ITEE Object Element Usage">
-            ///   &lt;Exports&gt;
-            ///     &lt;Export .../&gt;
-            ///     &lt;Export .../&gt;
-            ///     ...
-            ///   &lt;/Exports&gt;
-            /// </code>
-            /// </remarks>
-            [XmlElement("Export")]
-            public List<ExportModel> Items
+        #region [public] (ReferencesModel) References: Gets a reference to the assembly references
+        /// <summary>
+        /// Gets a reference to the assembly references.
+        /// </summary>
+        /// <value>
+        /// A <see cref="T:iTin.Export.Model.ReferencesModel"/> reference which contains the assembly references.
+        /// </value>
+        [XmlArrayItem("Reference", typeof(ReferenceModel), IsNullable = false)]
+        public ReferencesModel References
+        {
+            get
             {
-                get
+                if (_references == null)
                 {
-                    var items = _export ?? (_export = new List<ExportModel>());
-                    foreach (var item in items)
-                    {
-                        item.SetOwner(this);
-                    }
-
-                    return items;
+                    _references = new ReferencesModel(this);
                 }
-                set
-                {
-                    foreach (var item in _export)
-                    {
-                        item.SetOwner(this);
-                    }
 
-                    _export = value;
-                }
+                _references.SetParent(this);
+
+                return _references;
             }
-            #endregion
+            set => _references = value;
+        }
+        #endregion
+
+        #region [public] (GlobalResourcesModel) Resources: Gets or sets global resources
+        /// <summary>
+        ///  Gets or sets global resources.
+        /// </summary>
+        /// <value>
+        /// The image file path.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Global.Resources&gt;
+        ///   &lt;Images/&gt;
+        /// &lt;/Global.Resources&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        [XmlElement("Global.Resources")]
+        public GlobalResourcesModel Resources
+        {
+            get
+            {
+                if (_resources == null)
+                {
+                    _resources = new GlobalResourcesModel();
+                }
+
+                _resources.SetParent(this);
+
+                return _resources;
+            }
+            set => _resources = value;
+        }
+        #endregion
 
         #endregion
 
         #region public override properties
 
-            #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
-            /// <summary>
-            /// Gets a value indicating whether this instance contains the default.
-            /// </summary>
-            /// <value>
-            /// <strong>true</strong> if this instance is default; otherwise, <strong>false</strong>.
-            /// </value>
-            /// <remarks>
-            /// If it contains elements returns <strong>false</strong>.
-            /// </remarks>
-            [Browsable(false)]
-            [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-            public override bool IsDefault
-            {
-                get
-                {
-                    return 
-                        Items.Count.Equals(0) &&
-                        Resources.IsDefault &&
-                        References.IsDefault;
-                }
-            }
-            #endregion
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating whether this instance contains the default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance is default; otherwise, <strong>false</strong>.
+        /// </value>
+        /// <remarks>
+        /// If it contains elements returns <strong>false</strong>.
+        /// </remarks>
+        [Browsable(false)]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        public override bool IsDefault => Items.Count.Equals(0) &&
+                                          Resources.IsDefault &&
+                                          References.IsDefault;
+        #endregion
 
         #endregion     
 
@@ -416,59 +403,7 @@ namespace iTin.Export.Model
                     break;
             }
 
-            return GetRelativeFilePathParsed(model, relativePathIsRooted ? $"~{relativePath}" : relativePath);
-        }
-        #endregion
-
-        #region [public] {static} (string) GetRelativeFilePathParsed(ExportModel, string): Gets a valid full path from a relative path.
-        /// <summary>
-        /// Gets a valid full path from a relative path.
-        /// </summary>
-        /// <param name="model">Model in which search.</param>
-        /// <param name="targetPath">Relative path to parsed.</param>
-        /// <returns>
-        /// Valid full path.
-        /// </returns>
-        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-        //[DebuggerStepThrough]
-        public static string GetRelativeFilePathParsed(ExportModel model, string targetPath)
-        {
-            SentinelHelper.ArgumentNull(targetPath);
-
-            var relativePathNormalized = targetPath.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-            var isRelativePath = relativePathNormalized.Trim().StartsWith("~", StringComparison.Ordinal);
-            if (!isRelativePath)
-            {
-                return targetPath;
-            }
-
-            if (relativePathNormalized.Length.Equals(1))
-            {
-                relativePathNormalized = relativePathNormalized.Insert(1, Path.DirectorySeparatorChar.ToString());
-            }
-            else if (!relativePathNormalized[1].Equals(Path.DirectorySeparatorChar))
-            {
-                relativePathNormalized = relativePathNormalized.Insert(1, Path.DirectorySeparatorChar.ToString());
-            }
-
-            var callingPath = model.GetType().Assembly.CodeBase;
-            var callingUri = new Uri(callingPath);
-            var candidateUri = new UriBuilder(callingUri);
-            var unscapedCandidateUri = Uri.UnescapeDataString(candidateUri.Path);
-            var candidateRootPath = Path.GetDirectoryName(unscapedCandidateUri);
-
-            var outputPartialPath = string.Empty;
-            var rootPattern = $"~{Path.DirectorySeparatorChar}";
-            if (!relativePathNormalized.Equals(rootPattern))
-            {
-                outputPartialPath = relativePathNormalized.Split(new[] { rootPattern }, StringSplitOptions.RemoveEmptyEntries)[0];
-            }
-
-            var rootPath = candidateRootPath.ToUpperInvariant()
-                .Replace("BIN", string.Empty)
-                .Replace($"{Path.DirectorySeparatorChar}DEBUG", string.Empty);
-            return Path.Combine(rootPath, outputPartialPath);
-
+            return PathHelper.GetRelativeFilePathParsed(relativePathIsRooted ? $"~{relativePath}" : relativePath, model);
         }
         #endregion
 
@@ -499,21 +434,22 @@ namespace iTin.Export.Model
 
         #region public override methods
 
-            #region [public] {override} (string) ToString(): Returns a string that represents the current object.
-            /// <summary>
-            /// Returns a string that represents the current data type.
-            /// </summary>
-            /// <returns>
-            /// A <see cref="T:System.String" /> that represents the current object.
-            /// </returns>
-            /// <remarks>
-            /// This method <see cref="M:iTin.Export.Model.ExportsModel.ToString"/> returns a string that includes the number of exports defined.
-            /// </remarks>
-            public override string ToString()
-            {
-                return string.Format(CultureInfo.InvariantCulture, "Count={0}", Items.Count);
-            }
-            #endregion
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <inheritdoc />
+        /// <summary>
+        /// Returns a string that represents the current data type.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that represents the current object.
+        /// </returns>
+        /// <remarks>
+        /// This method <see cref="M:iTin.Export.Model.ExportsModel.ToString" /> returns a string that includes the number of exports defined.
+        /// </remarks>
+        public override string ToString()
+        {
+            return $"Count={Items.Count}";
+        }
+        #endregion
 
         #endregion
     }

@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helper;
+    using Helpers;
 
     /// <inheritdoc />
     /// <include file="..\..\iTin.Export.Documentation.xml" path="Model/Table/Class[@name='info']/*" />

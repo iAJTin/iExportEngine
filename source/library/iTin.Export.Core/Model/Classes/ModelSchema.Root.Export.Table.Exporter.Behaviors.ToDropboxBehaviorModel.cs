@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Text;
 
     using ComponentModel;
-    using Helper;
+    using Helpers;
     using Web.Cloud;
     using Web.Cloud.Apis;
 

@@ -1,7 +1,7 @@
 ﻿
 namespace iTin.Export.Writers.OpenXml.Office
 {
-    using Helper;
+    using Helpers;
     using Model;
 
     using Novacode;

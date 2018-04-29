@@ -8,7 +8,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using Drawing.Helper;
-    using Helper;
+    using Helpers;
 
     /// <summary>
     /// Represents a negative number format. Contains the definition of negative number in a numeric data type.
