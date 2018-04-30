@@ -36,6 +36,20 @@ namespace iTin.Export.Model
         private PropertiesModel _properties;
         #endregion
 
+        #region constructor/s
+
+        #region [protected] BaseModel(): Initializes a new instance of the class.
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.BaseModel{T}"/> class.
+        /// </summary>
+        public BaseModel()
+        {
+            ModelService.Instance.Add(this);
+        }
+        #endregion
+
+        #endregion
+
         #region public properties
 
         #region [public] (PropertiesModel) Properties: Gets or sets a reference to user-defined property list for this element
@@ -450,22 +464,14 @@ namespace iTin.Export.Model
                 return string.Empty;
             }
 
-            var isValidStaticResource = RegularExpressionHelper.IsValidStaticResource(value);
-            if (!isValidStaticResource)
+            var linked = RegularExpressionHelper.IsBindableResource(value);
+            if (!linked)
             {
                 return value;
             }
 
             var assemblies = new List<Assembly> { GetType().Assembly };
-
-            if (typeof(T) == typeof(ContentModel))
-            {
-                var qwq = this as ContentModel;
-                //var references1 = T as ContentModel;
-                //.Parent.Owner.Parent.Parent;
-            }
-            var references = root.References;
-
+            var references = ModelService.Instance.References;
             foreach (var reference in references)
             {
                 var assemblyName = reference.Assembly.ToUpperInvariant();
@@ -554,8 +560,8 @@ namespace iTin.Export.Model
                 return string.Empty;
             }
 
-            var isValidStaticResource = RegularExpressionHelper.IsValidStaticResource(value);
-            if (!isValidStaticResource)
+            var linked = RegularExpressionHelper.IsBindableResource(value);
+            if (!linked)
             {
                 return value;
             }

@@ -334,8 +334,8 @@ namespace iTin.Export.ComponentModel
                 return string.Empty;
             }
 
-            var isValidStaticResource = RegularExpressionHelper.IsValidStaticResource(value);
-            if (!isValidStaticResource)
+            var linked = RegularExpressionHelper.IsBindableResource(value);
+            if (!linked)
             {
                 return value;
             }

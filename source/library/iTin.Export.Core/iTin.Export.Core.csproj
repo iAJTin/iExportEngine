@@ -112,6 +112,7 @@
     <Compile Include="ComponentModel\Attributes\EnumDescriptionAttribute.cs" />
     <Compile Include="ComponentModel\Cache\SafeDirectoryCatalog.cs" />
     <Compile Include="ComponentModel\Cache\AdaptersCache.cs" />
+    <Compile Include="ComponentModel\ModelService.cs" />
     <Compile Include="ComponentModel\Resolver\NonTabularFormulaResolver.cs" />
     <Compile Include="ComponentModel\Resolver\ExcelFormulaResolver.cs" />
     <Compile Include="ComponentModel\AdapterDataModel.cs" />

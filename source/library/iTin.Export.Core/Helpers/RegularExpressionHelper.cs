@@ -95,7 +95,7 @@ namespace iTin.Export.Helpers
         /// <returns>
         /// <strong>true</strong> if string is a valid static resource; otherwise, <strong>false</strong>.
         /// </returns>
-        public static bool IsValidStaticResource(string value)
+        public static bool IsBindableResource(string value)
         {
             SentinelHelper.ArgumentNull(value);
 

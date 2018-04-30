@@ -351,8 +351,8 @@ namespace iTin.Export.Model
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var isBindField = RegularExpressionHelper.IsValidStaticResource(value);
-                if (!isBindField)
+                var linked = RegularExpressionHelper.IsBindableResource(value);
+                if (!linked)
                 {
                     SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Aggregate", "Style", value)));
                 }

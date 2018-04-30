@@ -3512,14 +3512,18 @@
     <xs:attribute name="Color" type="rgbColorType" use="optional" default="Transparent">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Preferred of content color. The default is 'Transparent'.
-        </xs:documentation>
-      </xs:annotation>
+          [Optional] Alternate preferred of content color. The default is 'Transparent'.
+          You can use {Bindable: class.method} syntax to get a custom value from your own code.
+          Remember add assembly reference into references section.
+          </xs:documentation>
+        </xs:annotation>        
     </xs:attribute>
     <xs:attribute name="AlternateColor" type="rgbColorType" use="optional" default="Transparent">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] Alternate preferred of content color. The default is 'Transparent'.
+          You can use {Bindable: class.method} syntax to get a custom value from your own code.
+          Remember add assembly reference into references section.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
