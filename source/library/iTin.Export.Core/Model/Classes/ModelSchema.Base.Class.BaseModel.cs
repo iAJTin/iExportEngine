@@ -44,7 +44,7 @@ namespace iTin.Export.Model
         /// </summary>
         public BaseModel()
         {
-            ModelService.Instance.Add(this);
+            //ModelService.Instance.Add(this);
         }
         #endregion
 

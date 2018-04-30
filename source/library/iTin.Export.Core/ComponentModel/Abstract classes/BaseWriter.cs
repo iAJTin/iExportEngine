@@ -276,6 +276,8 @@ namespace iTin.Export.ComponentModel
                 return;
             }
 
+            ModelService.Instance.SetWriter(this);
+
             Result.Clear();
             Execute();
             CleanOrCreateTemporaryDirectory();

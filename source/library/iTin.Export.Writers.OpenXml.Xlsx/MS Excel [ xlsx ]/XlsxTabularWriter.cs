@@ -207,13 +207,17 @@ namespace iTin.Export.Writers.OpenXml.Office
                     for (var row = 0; row < rowsCount; row++)
                     {
                         var rowData = rows[row];
+                        ModelService.Instance.SetCurrentRow(row);
                         for (var col = 0; col < items.Count; col++)
                         {
+                            ModelService.Instance.SetCurrentCol(col);
+
                             var field = items[col];
                             field.DataSource = rowData;
+                            ModelService.Instance.SetCurrentField(field);
+
                             var value = field.Value.GetValue(Adapter.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;
-
                             var cell = worksheet.Cells[y + row, x + col];
                             cell.Value = value.Value;                        
                             cell.AddErrorComment(value);

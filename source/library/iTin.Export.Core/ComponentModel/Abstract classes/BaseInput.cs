@@ -141,6 +141,7 @@ namespace iTin.Export.ComponentModel
             adapter.SetDataModel(targetDataModel);
             adapter.Export(settings);
 
+
             //// Proceso de validación.
             ////var aaa = root.Items[0].BlockLines[0];
             ////ValidationContext validationContext = new ValidationContext(aaa, null, null);
