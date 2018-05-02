@@ -216,11 +216,11 @@ namespace iTin.Export.Model
         /// </code>
         /// </example>
         [XmlAttribute]
-        public string Alias
-        {
-            get => GetValueByReflection(Owner.Parent.Parent, _alias);
-            set => _alias = value;
-        }
+        public string Alias { get; set; }
+        //{
+        //    get => GetValueByReflection(Owner.Parent.Parent, _alias);
+        //    set => _alias = value;
+        //}
         #endregion
 
         #region [public] (XElement) DataSource: Gets or sets a reference for pieces data

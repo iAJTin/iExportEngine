@@ -4,10 +4,9 @@ namespace iTin.Export.Model
     using System.IO;
     using System.Text;
 
-    using Web.Cloud;
-    using Web.Cloud.Apis;
-
-    using ComponentModel;
+    using AspNet.Cloud;
+    using AspNet.Cloud.Apis;
+    using ComponentModel.Writers;
     using Helpers;
 
     /// <inheritdoc />
@@ -84,7 +83,7 @@ namespace iTin.Export.Model
             var filenameBuilder1 = new StringBuilder();
             filenameBuilder1.Append(FileHelper.TinExportTempDirectory);
             filenameBuilder1.Append(Path.DirectorySeparatorChar);
-            filenameBuilder1.Append(writer.ResponseInfo.ExtractFileName());
+            filenameBuilder1.Append(writer.ResponseEx.ExtractFileName());
 
             var skyDrive = SkyDriveRestApi.ClientFrom(AuthenticateMode.Desktop);
             skyDrive.UploadFile("me/skydrive", filenameBuilder1.ToString());

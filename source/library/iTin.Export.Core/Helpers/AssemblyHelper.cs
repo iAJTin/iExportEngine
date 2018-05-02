@@ -2,6 +2,7 @@
 namespace iTin.Export.Helpers
 {
     using System;
+    using System.IO;
     using System.Reflection;
 
     /// <summary> 
@@ -18,6 +19,15 @@ namespace iTin.Export.Helpers
         public static Uri GetFullAssemblyUri()
         {
             return new Uri(Assembly.GetCallingAssembly().CodeBase);
+        }
+
+        public static string GetExecutingAssemblyDirectory()
+        {
+            var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            var codeBaseUri = new Uri(codeBase);
+            var uri = new UriBuilder(codeBaseUri);
+            var path = Uri.UnescapeDataString(uri.Path);
+            return  Path.GetDirectoryName(path);
         }
     }
 }

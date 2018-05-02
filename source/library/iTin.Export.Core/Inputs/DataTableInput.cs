@@ -4,8 +4,8 @@ namespace iTin.Export.Inputs
     using System.Data;
     using System.Linq;
 
-    using Adapters.Native;
-    using ComponentModel;
+    using Adapters;
+    using ComponentModel.Inputs;
     using Helpers;
 
     /// <inheritdoc />

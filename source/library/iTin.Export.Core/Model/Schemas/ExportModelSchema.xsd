@@ -4479,6 +4479,8 @@
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Alias of data field. This value is used as the column header.
+          You can use {Bindable: class.method} syntax to get a custom value from your own code.
+          Remember add assembly reference into references section.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

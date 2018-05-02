@@ -346,7 +346,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultStyle)]
         public string Style
         {
-            get => GetValueByReflection(Parent.Owner.Parent.Parent, _style);
+            get => _style; //GetValueByReflection(Parent.Owner.Parent.Parent, _style);
             set
             {
                 SentinelHelper.ArgumentNull(value);
@@ -400,11 +400,11 @@ namespace iTin.Export.Model
         /// </remarks>           
         [XmlAttribute]
         [DefaultValue(DefaultText)]
-        public string Text
-        {
-            get => GetValueByReflection(Parent.Owner.Parent.Parent, _text);
-            set => _text = value;
-        }
+        public string Text { get; set; }
+        //{
+        //    get => GetValueByReflection(Parent.Owner.Parent.Parent, _text);
+        //    set => _text = value;
+        //}
         #endregion
 
         #endregion

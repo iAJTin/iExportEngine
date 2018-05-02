@@ -100,30 +100,31 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\Native\DataSetAdapter.cs" />
-    <Compile Include="Adapters\Native\XmlAdapter.cs" />
-    <Compile Include="ComponentModel\Abstract classes\BaseWriterStream.cs" />
-    <Compile Include="ComponentModel\Abstract classes\BaseWriter.cs" />
-    <Compile Include="ComponentModel\Abstract classes\BaseWriterXml.cs" />
-    <Compile Include="ComponentModel\Abstract classes\BaseWriterDirect.cs" />
-    <Compile Include="ComponentModel\Abstract classes\BaseInput.cs" />
-    <Compile Include="ComponentModel\Attributes\InputOptionsAttribute.cs" />
-    <Compile Include="ComponentModel\Attributes\AdapterOptionsAttribute.cs" />
-    <Compile Include="ComponentModel\Attributes\EnumDescriptionAttribute.cs" />
-    <Compile Include="ComponentModel\Cache\SafeDirectoryCatalog.cs" />
-    <Compile Include="ComponentModel\Cache\AdaptersCache.cs" />
+    <Compile Include="Adapters\DataSetAdapter.cs" />
+    <Compile Include="Adapters\XmlAdapter.cs" />
+    <Compile Include="AspNet\Extensions\StreamExtensions.cs" />
+    <Compile Include="ComponentModel\Writers\Base\BaseWriterStream.cs" />
+    <Compile Include="ComponentModel\Writers\Base\BaseWriter.cs" />
+    <Compile Include="ComponentModel\Writers\Base\BaseWriterXml.cs" />
+    <Compile Include="ComponentModel\Writers\Base\BaseWriterDirect.cs" />
+    <Compile Include="ComponentModel\Inputs\Base\BaseInput.cs" />
+    <Compile Include="ComponentModel\Inputs\Metadata\InputOptionsAttribute.cs" />
+    <Compile Include="ComponentModel\Adapters\Metadata\AdapterOptionsAttribute.cs" />
+    <Compile Include="ComponentModel\EnumDescriptionAttribute.cs" />
+    <Compile Include="ComponentModel\SafeDirectoryCatalog.cs" />
+    <Compile Include="ComponentModel\Adapters\Cache\AdaptersCache.cs" />
     <Compile Include="ComponentModel\ModelService.cs" />
     <Compile Include="ComponentModel\Resolver\NonTabularFormulaResolver.cs" />
     <Compile Include="ComponentModel\Resolver\ExcelFormulaResolver.cs" />
-    <Compile Include="ComponentModel\AdapterDataModel.cs" />
-    <Compile Include="ComponentModel\InputExtendedInformation.cs" />
-    <Compile Include="ComponentModel\Interfaces\IInput.cs" />
-    <Compile Include="ComponentModel\Interfaces\ISettings.cs" />
-    <Compile Include="ComponentModel\Interfaces\IAdapterOptions.cs" />
-    <Compile Include="ComponentModel\AdapterExtendedInformation.cs">
+    <Compile Include="ComponentModel\Inputs\DataModel\InputDataModel.cs" />
+    <Compile Include="ComponentModel\Inputs\Metadata\InputOptionsMetadata.cs" />
+    <Compile Include="ComponentModel\Inputs\Base\IInput.cs" />
+    <Compile Include="ComponentModel\ISettings.cs" />
+    <Compile Include="ComponentModel\Adapters\Metadata\Base\IAdapterOptions.cs" />
+    <Compile Include="ComponentModel\Adapters\Metadata\AdapterMetadata.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ComponentModel\WriterExtendedInformation.cs" />
+    <Compile Include="ComponentModel\Writers\Metadata\WriterExtendedInformation.cs" />
     <Compile Include="Drawing\ComponentModel\EffectTypeConverter.cs" />
     <Compile Include="Drawing\ComponentModel\EnumDescriptionConverter.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />
@@ -141,8 +142,9 @@
     <Compile Include="Inputs\DataSetInput.cs" />
     <Compile Include="Inputs\DataTableInput.cs" />
     <Compile Include="Inputs\EnumerableInput.cs" />
+    <Compile Include="Inputs\JsonInput.cs" />
     <Compile Include="Inputs\XmlInput.cs" />
-    <Compile Include="Model\BindableProperty.cs" />
+    <Compile Include="ComponentModel\BindableProperty.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseComplexModelCollection.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseLineModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Const.KnownInputPacketFormat.cs" />
@@ -219,25 +221,25 @@
     <Compile Include="Helpers\ErrorMessageHelper.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.ToDropboxBehaviorModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Shared.Class.CoordenatesModel.cs" />
-    <Compile Include="ComponentModel\AdapterParameters.cs" />
+    <Compile Include="ComponentModel\Adapters\Export\AdapterParameters.cs" />
     <Compile Include="ComponentModel\FieldValueInformation.cs" />
-    <Compile Include="Web\Cloud\OAuth.cs" />
-    <Compile Include="Web\Cloud\Apis\SkyDriveRestApi.cs" />
-    <Compile Include="Web\Cloud\Apis\DropboxRestApi.cs" />
-    <Compile Include="Web\Cloud\OAuthToken.cs" />
-    <Compile Include="Web\Cloud\Clients\DropboxClient.cs" />
-    <Compile Include="Web\Cloud\OAuthBase.cs" />
-    <Compile Include="Web\Cloud\Clients\DropboxSignInDialog.cs">
+    <Compile Include="AspNet\Cloud\OAuth.cs" />
+    <Compile Include="AspNet\Cloud\Apis\SkyDriveRestApi.cs" />
+    <Compile Include="AspNet\Cloud\Apis\DropboxRestApi.cs" />
+    <Compile Include="AspNet\Cloud\OAuthToken.cs" />
+    <Compile Include="AspNet\Cloud\Clients\DropboxClient.cs" />
+    <Compile Include="AspNet\Cloud\OAuthBase.cs" />
+    <Compile Include="AspNet\Cloud\Clients\DropboxSignInDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Web\Cloud\Clients\DropboxSignInDialog.Designer.cs">
+    <Compile Include="AspNet\Cloud\Clients\DropboxSignInDialog.Designer.cs">
       <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web\Cloud\AuthenticateMode.cs" />
-    <Compile Include="Web\Cloud\Clients\SkyDriveSignInDialog.cs">
+    <Compile Include="AspNet\Cloud\AuthenticateMode.cs" />
+    <Compile Include="AspNet\Cloud\Clients\SkyDriveSignInDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Web\Cloud\Clients\SkyDriveSignInDialog.Designer.cs">
+    <Compile Include="AspNet\Cloud\Clients\SkyDriveSignInDialog.Designer.cs">
       <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.ToSkyDriveBehaviorModel.cs" />
@@ -248,8 +250,9 @@
     <Compile Include="Model\Exceptions\InvalidPathNameException.cs" />
     <Compile Include="Model\Exceptions\InvalidFileNameException.cs" />
     <Compile Include="Model\Exceptions\InvalidIdentifierNameException.cs" />
-    <Compile Include="Web\Exceptions\MissingPageAsyncAttributeException.cs" />
-    <Compile Include="Web\MimeMapping.cs" />
+    <Compile Include="AspNet\ComponentModel\HttpResponseEx.cs" />
+    <Compile Include="AspNet\Exceptions\MissingPageAsyncAttributeException.cs" />
+    <Compile Include="AspNet\MimeMapping.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownLabelPosition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownLabelOrientation.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionLabelsModel.cs" />
@@ -270,7 +273,7 @@
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Helpers\RegularExpressionHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
-    <Compile Include="Helpers\Mail.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.DownloadBehaviorModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.MailServerModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.MailMessageModel.cs" />
@@ -280,17 +283,16 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailMessageToModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Server.Credentials.ServerCredentialModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.MailBehaviorModel.cs" />
-    <Compile Include="Web\HttpResponseInfo.cs" />
-    <Compile Include="ComponentModel\KnownWriterIdentifier.cs" />
-    <Compile Include="ComponentModel\Abstract classes\BaseAdapter.cs" />
-    <Compile Include="ComponentModel\Interfaces\IAdapter.cs" />
-    <Compile Include="ComponentModel\Cache\WritersCache.cs" />
-    <Compile Include="ComponentModel\Interfaces\IWriterDirect.cs" />
-    <Compile Include="ComponentModel\Cache\WritersCacheSettings.cs" />
-    <Compile Include="ComponentModel\Interfaces\IWriterStream.cs" />
-    <Compile Include="ComponentModel\Interfaces\IWriter.cs" />
-    <Compile Include="ComponentModel\Interfaces\IWriterOptions.cs" />
-    <Compile Include="ComponentModel\Interfaces\IWriterXml.cs" />
+    <Compile Include="ComponentModel\Writers\KnownWriterIdentifier.cs" />
+    <Compile Include="ComponentModel\Adapters\Base\BaseAdapter.cs" />
+    <Compile Include="ComponentModel\Adapters\Base\IAdapter.cs" />
+    <Compile Include="ComponentModel\Writers\Cache\WritersCache.cs" />
+    <Compile Include="ComponentModel\Writers\Base\IWriterDirect.cs" />
+    <Compile Include="ComponentModel\Writers\Cache\WritersCacheSettings.cs" />
+    <Compile Include="ComponentModel\Writers\Base\IWriterStream.cs" />
+    <Compile Include="ComponentModel\Writers\Base\IWriter.cs" />
+    <Compile Include="ComponentModel\Writers\Options\Base\IWriterOptions.cs" />
+    <Compile Include="ComponentModel\Writers\Base\IWriterXml.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Helpers\StreamHelper.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseBehaviorModel.cs" />
@@ -366,7 +368,7 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.ExportModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOutputTarget.cs" />
     <Compile Include="Drawing\Extensions\ColorExtensions.cs" />
-    <Compile Include="ComponentModel\Attributes\WriterOptionsAttribute.cs" />
+    <Compile Include="ComponentModel\Writers\Options\WriterOptionsAttribute.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Drawing\Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\SentinelHelper.cs" />
@@ -382,16 +384,16 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ExportSettings.cs" />
-    <Compile Include="Web\Cloud\Clients\SkyDriveClient.cs" />
+    <Compile Include="AspNet\Cloud\Clients\SkyDriveClient.cs" />
     <Compile Include="Model\XsltExtensions.cs" />
-    <Compile Include="Writers\Native\Comma-Separated Values [ csv ]\CsvWriter.cs" />
-    <Compile Include="Writers\Native\Report Definition [ rdlc ]\ReportDefinitionWriter.cs" />
-    <Compile Include="Writers\Native\SQL Script [ sql ]\SqlScriptWriter.cs" />
-    <Compile Include="Writers\Native\Tab-Separated Values [ txt ]\TsvWriter.cs" />
-    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\KnownlSpreadsheet2003Expression.cs" />
-    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003Extensions.cs" />
-    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003Helper.cs" />
-    <Compile Include="Writers\Native\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003TabularWriter.cs" />
+    <Compile Include="Writers\Comma-Separated Values [ csv ]\CsvWriter.cs" />
+    <Compile Include="Writers\Report Definition [ rdlc ]\ReportDefinitionWriter.cs" />
+    <Compile Include="Writers\SQL Script [ sql ]\SqlScriptWriter.cs" />
+    <Compile Include="Writers\Tab-Separated Values [ txt ]\TsvWriter.cs" />
+    <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\KnownlSpreadsheet2003Expression.cs" />
+    <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003Extensions.cs" />
+    <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003Helper.cs" />
+    <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003TabularWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Model\Schemas\ExportModelSchema.xsd">
@@ -405,22 +407,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Web\Cloud\Clients\DropboxSignInDialog.ca.resx">
+    <EmbeddedResource Include="AspNet\Cloud\Clients\DropboxSignInDialog.ca.resx">
       <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Web\Cloud\Clients\DropboxSignInDialog.es.resx">
+    <EmbeddedResource Include="AspNet\Cloud\Clients\DropboxSignInDialog.es.resx">
       <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Web\Cloud\Clients\DropboxSignInDialog.resx">
+    <EmbeddedResource Include="AspNet\Cloud\Clients\DropboxSignInDialog.resx">
       <DependentUpon>DropboxSignInDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Web\Cloud\Clients\SkyDriveSignInDialog.ca.resx">
+    <EmbeddedResource Include="AspNet\Cloud\Clients\SkyDriveSignInDialog.ca.resx">
       <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Web\Cloud\Clients\SkyDriveSignInDialog.es.resx">
+    <EmbeddedResource Include="AspNet\Cloud\Clients\SkyDriveSignInDialog.es.resx">
       <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Web\Cloud\Clients\SkyDriveSignInDialog.resx">
+    <EmbeddedResource Include="AspNet\Cloud\Clients\SkyDriveSignInDialog.resx">
       <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ErrorMessage.es.resx">

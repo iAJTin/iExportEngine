@@ -5,7 +5,7 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using ComponentModel;
+    using ComponentModel.Writers;
     using Helpers;
 
     /// <summary>

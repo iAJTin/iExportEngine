@@ -1,6 +1,4 @@
 ﻿
-using System.Diagnostics;
-
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -14,6 +12,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using OfficeOpenXml.Drawing.Chart;
 
     using ComponentModel;
+    using ComponentModel.Writers;
     using Model;
 
     /// <inheritdoc />
@@ -275,7 +274,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region add blocklines
-                    var blocklines = DataModel.Data.BlockLines;
+                    var blocklines = Adapter.Input.Model.BlockLines;
                     var hasBlockLines = blocklines.Any();
                     if (hasBlockLines)
                     {
@@ -296,7 +295,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                             var keyLines = blockline.Items.Keys;
                             foreach (var keyLine in keyLines)
                             {
-                                var line = DataModel.Resources.Lines.GetBy(keyLine);
+                                var line = Adapter.Input.Resources.Lines.GetBy(keyLine);
                                 if (line.Show == YesNo.No)
                                 {
                                     continue;

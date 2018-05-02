@@ -10,7 +10,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using System.Text.RegularExpressions;
     using System.Xml.Linq;
 
-    using ComponentModel;
+    using ComponentModel.Writers;
     using Helpers;
     using Model;
 
@@ -37,7 +37,7 @@ namespace iTin.Export.Writers.OpenXml.Office
         /// <value>
         /// Reference to the current model template.
         /// </value>
-        private TemplateModel Template => (TemplateModel)Adapter.DataModel.Data.Table.Exporter.Current;
+        private TemplateModel Template => (TemplateModel)Adapter.Input.Model.Table.Exporter.Current;
         #endregion
 
         #endregion
@@ -52,7 +52,7 @@ namespace iTin.Export.Writers.OpenXml.Office
         protected override void Execute()
         {
             var tempTemplate = FileHelper.GetUniqueTempRandomFile();
-            var originalTemplate = Adapter.DataModel.Data.ParseRelativeFilePath(KnownRelativeFilePath.Template);
+            var originalTemplate = Adapter.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.Template);
 
             File.Copy(originalTemplate, tempTemplate.OriginalString);
 

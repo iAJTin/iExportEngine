@@ -151,7 +151,7 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => GetValueByReflection(Owner.Parent.Parent, _name);
+            get => _name; // GetValueByReflection(Owner.Parent.Parent, _name);
             set
             {
                 SentinelHelper.ArgumentNull(value);

@@ -8,6 +8,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using System.Xml.Linq;
 
     using ComponentModel;
+    using ComponentModel.Writers;
     using Model;
 
     using Novacode;

@@ -11,9 +11,9 @@ namespace iTin.Export.ComponentModel
     /// </summary>
     public class ExcelFormulaResolver
     {
-        #region private field members
+        #region private readonly members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly FieldAggregateModel model;
+        private readonly FieldAggregateModel _model;
         #endregion
 
         #region constructor/s
@@ -25,7 +25,7 @@ namespace iTin.Export.ComponentModel
         /// <param name="aggregate">Aggregate's data.</param>
         public ExcelFormulaResolver(FieldAggregateModel aggregate)
         {
-            model = aggregate;
+            _model = aggregate;
         }
         #endregion
 
@@ -80,11 +80,11 @@ namespace iTin.Export.ComponentModel
 
             var type = int.MaxValue;
             var result = string.Empty;
-            if (model.AggregateType != KnownAggregateType.None)
+            if (_model.AggregateType != KnownAggregateType.None)
             {
-                if (model.AggregateType != KnownAggregateType.Text)
+                if (_model.AggregateType != KnownAggregateType.Text)
                 {
-                    switch (model.AggregateType)
+                    switch (_model.AggregateType)
                     {
                         case KnownAggregateType.Average:
                             type = HasAutoFilter == YesNo.Yes ? 101 : 1;
@@ -111,7 +111,7 @@ namespace iTin.Export.ComponentModel
                 }
                 else
                 {
-                    result = model.Text;
+                    result = _model.Text;
                 }
             }
 

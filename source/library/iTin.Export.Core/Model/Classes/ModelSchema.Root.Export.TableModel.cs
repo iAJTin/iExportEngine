@@ -9,7 +9,7 @@ namespace iTin.Export.Model
     using System.Windows.Forms;
     using System.Xml.Serialization;
 
-    using ComponentModel;
+    using ComponentModel.Adapters;
     using Helpers;
 
     /// <inheritdoc />

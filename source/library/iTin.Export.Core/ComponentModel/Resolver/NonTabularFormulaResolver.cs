@@ -14,9 +14,9 @@ namespace iTin.Export.ComponentModel
     /// </summary>
     public class NonTabularFormulaResolver
     {
-        #region private field members
+        #region private readonly members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly FieldAggregateModel model;
+        private readonly FieldAggregateModel _model;
         #endregion
 
         #region constructor/s
@@ -28,7 +28,7 @@ namespace iTin.Export.ComponentModel
         /// <param name="aggregate">Aggregate's data.</param>
         public NonTabularFormulaResolver(FieldAggregateModel aggregate)
         {
-            model = aggregate;
+            _model = aggregate;
         }
         #endregion
 
@@ -61,7 +61,7 @@ namespace iTin.Export.ComponentModel
         {
             var result = string.Empty;
 
-            var type = model.AggregateType;
+            var type = _model.AggregateType;
             if (type == KnownAggregateType.None)
             {
                 return result;
@@ -78,18 +78,11 @@ namespace iTin.Export.ComponentModel
                 {
                     try
                     {
-                        var data = Data.Where(
-                            n =>
-                            {
-                                decimal retNum;
-                                return decimal.TryParse(n.Replace(",", "."), NumberStyles.Any, NumberFormatInfo.InvariantInfo, out retNum);
-                            });
-
                         var arrayData = new Collection<decimal>();
+                        var data = Data.Where(n => decimal.TryParse(n.Replace(",", "."), NumberStyles.Any, NumberFormatInfo.InvariantInfo, out decimal retNum));
                         foreach (var item in data)
                         {
-                            decimal ret;
-                            decimal.TryParse(item.Replace(",", "."), NumberStyles.Any, NumberFormatInfo.InvariantInfo, out ret);
+                            decimal.TryParse(item.Replace(",", "."), NumberStyles.Any, NumberFormatInfo.InvariantInfo, out decimal ret);
                             arrayData.Add(ret);
                         }
 
@@ -134,7 +127,7 @@ namespace iTin.Export.ComponentModel
             }
             else
             {
-                result = model.Text;
+                result = _model.Text;
             }
 
             return result;

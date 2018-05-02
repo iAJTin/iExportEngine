@@ -227,11 +227,11 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        public string Description
-        {
-            get => GetValueByReflection(this, _description);
-            set => _description = value;
-        }
+        public string Description { get; set; }
+        //{
+        //    get => GetValueByReflection(this, _description);
+        //    set => _description = value;
+        //}
 
         #endregion
 
@@ -277,7 +277,7 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => GetValueByReflection(this, _name);
+            get => _name; //GetValueByReflection(this, _name);
             set
             {
                 SentinelHelper.ArgumentNull(value);

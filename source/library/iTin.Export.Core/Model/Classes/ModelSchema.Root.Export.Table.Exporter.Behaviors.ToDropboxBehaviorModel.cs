@@ -4,10 +4,10 @@ namespace iTin.Export.Model
     using System.IO;
     using System.Text;
 
-    using ComponentModel;
+    using AspNet.Cloud;
+    using AspNet.Cloud.Apis;
+    using ComponentModel.Writers;
     using Helpers;
-    using Web.Cloud;
-    using Web.Cloud.Apis;
 
     /// <inheritdoc />
     /// <summary>
@@ -82,10 +82,10 @@ namespace iTin.Export.Model
             var filenameBuilder1 = new StringBuilder();
             filenameBuilder1.Append(FileHelper.TinExportTempDirectory);
             filenameBuilder1.Append(Path.DirectorySeparatorChar);
-            filenameBuilder1.Append(writer.ResponseInfo.ExtractFileName());
+            filenameBuilder1.Append(writer.ResponseEx.ExtractFileName());
 
             var dropbox = DropboxRestApi.ClientFrom(AuthenticateMode.Desktop);
-            dropbox.UploadFile("dropbox", writer.ResponseInfo.ExtractFileName(), filenameBuilder1.ToString());
+            dropbox.UploadFile("dropbox", writer.ResponseEx.ExtractFileName(), filenameBuilder1.ToString());
         }
         #endregion
 

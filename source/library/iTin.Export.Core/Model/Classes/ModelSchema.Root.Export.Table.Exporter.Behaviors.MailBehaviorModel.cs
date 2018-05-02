@@ -12,9 +12,9 @@ namespace iTin.Export.Model
     using System.Web.UI;
     using System.Xml.Serialization;
 
-    using ComponentModel;
+    using AspNet;
+    using ComponentModel.Writers;
     using Helpers;
-    using Web;
 
     /// <inheritdoc />
     /// <summary>
@@ -499,7 +499,7 @@ namespace iTin.Export.Model
                     message.CC.Add(new MailAddress(cc));
                 }
 
-                var filename = writer.ResponseInfo.ExtractFileName();
+                var filename = writer.ResponseEx.ExtractFileName();
                 var filenameFullPath = Path.Combine(FileHelper.TinExportTempDirectory, filename);
                 var exporterAttach = filenameFullPath;
                 var existFilename = File.Exists(filenameFullPath);
@@ -518,7 +518,7 @@ namespace iTin.Export.Model
                     message.Attachments.Add(new Attachment(attachment.Path));
                 }
 
-                var mails = new Mail(Server);
+                var mails = new MailHelper(Server);
                 mails.SendMail(messageModel.Credential, message, isBehaviorAsync);
             }
 
@@ -547,7 +547,7 @@ namespace iTin.Export.Model
         /// </returns>
         private static string CreateZipFile(IWriter writer)
         {
-            var exporterType = writer.Adapter.DataModel.Data.Table.Exporter.ExporterType;
+            var exporterType = writer.Adapter.Input.Model.Table.Exporter.ExporterType;
             if (exporterType != KnownExporter.Template)
             {
                 if (!writer.IsTransformationFile)

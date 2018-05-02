@@ -10,7 +10,7 @@ namespace iTin.Export.Model
     using System.Web;
     using System.Xml.Serialization;
 
-    using ComponentModel;
+    using ComponentModel.Writers;
     using Helpers;
 
     /// <inheritdoc />
@@ -211,10 +211,10 @@ namespace iTin.Export.Model
                 return;
             }
 
-            var filename = writer.ResponseInfo.ExtractFileName();
+            var filename = writer.ResponseEx.ExtractFileName();
             if (LocalCopy == YesNo.No)
             {
-                var root = writer.Adapter.DataModel.Data;
+                var root = writer.Adapter.Input.Model;
                 var outputFullPath = root.ParseRelativeFilePath(KnownRelativeFilePath.Output);
                 var outputDirectory = Path.GetDirectoryName(outputFullPath);
 
@@ -256,7 +256,7 @@ namespace iTin.Export.Model
         /// </returns>
         private static string CreateZipFile(IWriter writer)
         {
-            var exporterType = writer.Adapter.DataModel.Data.Table.Exporter.ExporterType;
+            var exporterType = writer.Adapter.Input.Model.Table.Exporter.ExporterType;
             if (exporterType != KnownExporter.Template)
             {
                 if (!writer.IsTransformationFile)
@@ -290,10 +290,10 @@ namespace iTin.Export.Model
         /// <param name="data">Data to download.</param>
         private static void DownloadFile(IWriter writer, HttpResponse response, byte[] data)
         {
-            var info = writer.ResponseInfo;
+            var info = writer.ResponseEx;
             response.Clear();
             response.ContentType = info.ContentType;
-            response.AddHeader("content-disposition", info.Header);
+            response.AddHeader("content-disposition", info.ContentDisposition);
             response.BinaryWrite(data);
             response.Flush();
             response.End();

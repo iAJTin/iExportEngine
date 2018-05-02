@@ -10,7 +10,7 @@ namespace iTin.Export.Writers.Adobe
     using iTextSharp.text;
     using iTextSharp.text.pdf;
 
-    using ComponentModel;
+    using ComponentModel.Writers;
     using Model;
 
     /// <inheritdoc />

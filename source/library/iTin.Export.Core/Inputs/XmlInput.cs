@@ -3,8 +3,8 @@ namespace iTin.Export.Inputs
 {
     using System;
 
-    using Adapters.Native;
-    using ComponentModel;
+    using Adapters;
+    using ComponentModel.Inputs;
 
     /// <inheritdoc />
     /// <summary>

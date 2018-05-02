@@ -192,11 +192,11 @@ namespace iTin.Export.Model
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string AlternateColor
-        {
-            get => Parent.Owner == null ? _alternateColor : GetValueByReflection(Parent.Owner.Parent.Parent, _alternateColor);
-            set => _alternateColor = value;
-        }
+        public string AlternateColor { get; set; }
+        //{
+        //    get => Parent.Owner == null ? _alternateColor : GetValueByReflection(Parent.Owner.Parent.Parent, _alternateColor);
+        //    set => _alternateColor = value;
+        //}
         #endregion
 
         #region [public] (string) Color: Gets or sets the preferred for content color
@@ -255,11 +255,11 @@ namespace iTin.Export.Model
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string Color
-        {
-            get => Parent.Owner == null ? _color : GetValueByReflection(Parent.Owner.Parent.Parent, _color);
-            set => _color = value;
-        }
+        public string Color { get; set; }
+        //{
+        //    get => Parent.Owner == null ? _color : GetValueByReflection(Parent.Owner.Parent.Parent, _color);
+        //    set => _color = value;
+        //}
         #endregion
 
         #region [public] (ContentAlignmentModel) Alignment: Gets or sets content distribution

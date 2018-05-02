@@ -9,6 +9,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using ComponentModel;
+    using ComponentModel.Adapters;
     using Helpers;
 
     /// <inheritdoc />
@@ -213,7 +214,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultStyle)]
         public string Style
         {
-            get => GetValueByReflection(Parent.Owner.Parent.Parent, _style);
+            get => _style; //GetValueByReflection(Parent.Owner.Parent.Parent, _style);
             set
             {
                 SentinelHelper.ArgumentNull(value);

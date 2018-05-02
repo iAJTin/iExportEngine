@@ -4,7 +4,7 @@ namespace iTin.Export.Model
     using System.Collections.Generic;
     using System.Linq;
 
-    using ComponentModel;
+    using ComponentModel.Writers;
     using Helpers;
 
     /// <inheritdoc />

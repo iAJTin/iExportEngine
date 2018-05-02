@@ -8,7 +8,7 @@ namespace iTin.Export
 
     using Ionic.Zip;
 
-    using ComponentModel;
+    using ComponentModel.Writers;
     using Helpers;
 
     /// <summary>
@@ -43,13 +43,13 @@ namespace iTin.Export
         public static string ToZip(this IEnumerable<byte[]> elements, IWriter writer)
         {
             SentinelHelper.ArgumentNull(writer);
-            SentinelHelper.ArgumentNull(writer.ResponseInfo);
-            SentinelHelper.ArgumentNull(writer.ResponseInfo.Header);
+            SentinelHelper.ArgumentNull(writer.ResponseEx);
+            SentinelHelper.ArgumentNull(writer.ResponseEx.ContentDisposition);
            
             var elementList = elements as IList<byte[]> ?? elements.ToList();
             SentinelHelper.ArgumentNull(elementList);
             
-            var header = writer.ResponseInfo;
+            var header = writer.ResponseEx;
             var zipName = header.ExtractFileName();
             var tempDirectory = FileHelper.TinExportTempDirectory;
             var zipPath = Path.Combine(tempDirectory, zipName);
@@ -120,10 +120,10 @@ namespace iTin.Export
         {
             SentinelHelper.ArgumentNull(writer);
             SentinelHelper.ArgumentNull(elements);
-            SentinelHelper.ArgumentNull(writer.ResponseInfo);
-            SentinelHelper.ArgumentNull(writer.ResponseInfo.Header);
+            SentinelHelper.ArgumentNull(writer.ResponseEx);
+            SentinelHelper.ArgumentNull(writer.ResponseEx.ContentDisposition);
 
-            var response = writer.ResponseInfo;
+            var response = writer.ResponseEx;
             var zipName = response.ExtractFileName();
 
             var tempDirectory = FileHelper.TinExportTempDirectory;

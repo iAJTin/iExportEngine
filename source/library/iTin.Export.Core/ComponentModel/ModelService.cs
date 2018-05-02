@@ -1,13 +1,13 @@
 ﻿
-namespace iTin.Export
+namespace iTin.Export.ComponentModel
 {
     using System.Collections.Generic;
     using System.Data;
     using System.Diagnostics;
     using System.Xml.Linq;
 
-    using ComponentModel;
     using Model;
+    using Writers;
 
     /// <summary>
     /// 
@@ -24,7 +24,6 @@ namespace iTin.Export
         #region private members
         //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IWriter _writer;
-
         #endregion
 
         #region public static properties
@@ -66,21 +65,21 @@ namespace iTin.Export
         /// <summary>
         /// 
         /// </summary>
-        public ExportModel CurrentModel => _writer.DataModel.Data;
+        public ExportModel CurrentModel => _writer.Input.Model;
         #endregion
 
         #region [public] (ExportsModel) Root:
         /// <summary>
         /// 
         /// </summary>
-        public ExportsModel Root => _writer.DataModel.GetRoot();
+        public ExportsModel Root => _writer.Input.GetRoot();
         #endregion
 
         #region [public] (ReferencesModel) References:
         /// <summary>
         /// 
         /// </summary>
-        public ReferencesModel References => _writer.DataModel.References;
+        public ReferencesModel References => _writer.Adapter.Input.References;
         #endregion
 
         #region [public] (GlobalResourcesModel) Resources:

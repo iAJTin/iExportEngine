@@ -8,6 +8,7 @@ namespace iTextSharp.text.pdf
     using System.Xml.Linq;
 
     using iTin.Export.ComponentModel;
+    using iTin.Export.ComponentModel.Writers;
     using iTin.Export.Helpers;
     using iTin.Export.Model;
     using iTin.Export.Writers.Adobe;
@@ -244,7 +245,7 @@ namespace iTextSharp.text.pdf
             foreach (var entry in dictionary)
             {
                 var index = writer.Table.Fields.IndexOf(entry.Key);
-                var style = writer.DataModel.Resources.Styles[entry.Key.Value.Style];
+                var style = writer.Adapter.Input.Resources.Styles[entry.Key.Value.Style];
 
                 var maxColumnLenght = entry.Key.Alias.Length > entry.Value
                                             ? entry.Key.Alias.Length
