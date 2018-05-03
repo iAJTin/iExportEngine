@@ -294,7 +294,7 @@ namespace iTin.Export.ComponentModel.Writer
                 return string.Empty;
             }
 
-            var linked = RegularExpressionHelper.IsBindableResource(value);
+            var linked = RegularExpressionHelper.IsStaticBindingResource(value);
             if (!linked)
             {
                 return value;

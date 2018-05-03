@@ -277,12 +277,12 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => _name; //GetValueByReflection(this, _name);
+            get => GetValueByReflection(_name);
             set
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var linked = RegularExpressionHelper.IsBindableResource(value);
+                var linked = RegularExpressionHelper.IsStaticBindingResource(value);
                 if (!linked)
                 {
                     SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Export", "Name", value)));

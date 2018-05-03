@@ -463,7 +463,7 @@ namespace iTin.Export.Model
                 return string.Empty;
             }
 
-            var linked = RegularExpressionHelper.IsBindableResource(value);
+            var linked = RegularExpressionHelper.IsStaticBindingResource(value);
             if (!linked)
             {
                 return value;

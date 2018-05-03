@@ -65,16 +65,25 @@
     <xs:list itemType="intMinValueIsMinusOneType"/>
   </xs:simpleType>
 
-  <!-- Bindable data type: Defines a bindable property, represents a call to external assembly. -->
-  <xs:simpleType id="bindableType" name="bindableType">
+  <!-- Bind data type: Defines a binding property, represents a call to external assembly. -->
+  <xs:simpleType id="bindingType" name="bindingType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*\{\s*[B|b]indable\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:pattern value="\s*\{\s*[B|b]indable\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]inding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]inding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
       <xs:whiteSpace value="collapse" />
     </xs:restriction>
   </xs:simpleType>
 
-  
+  <!-- Static binding data type: Defines a static resource property, represents a call to external assembly. -->
+  <xs:simpleType id="staticBindType" name="staticBindType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*\{\s*[S|s]taticBinding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[S|s]taticBinding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
   <!-- =============================== -->
   <!-- Definition of string data types -->
   <!-- =============================== -->
@@ -825,7 +834,7 @@
 
   <!-- RGB color. Defined by name or by its RGB components. -->
   <xs:simpleType name="rgbColorType" id ="rgbColorType">
-    <xs:union memberTypes="bindableType rgbHexColorType rgbNameColorType scColorType"/>
+    <xs:union memberTypes="bindingType staticBindType rgbHexColorType rgbNameColorType scColorType"/>
   </xs:simpleType>
   
   <!-- Horizontal alignment. List of possible types of horizontal alignment. -->

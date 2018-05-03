@@ -43,15 +43,15 @@
 
   <!-- YesNo: Boolean type. -->
   <xs:simpleType id="YesNo" name="YesNo">
-    <xs:union memberTypes="yesNoType bindableType"/>
+    <xs:union memberTypes="yesNoType bindingType staticBindType"/>
   </xs:simpleType>
 
   <!-- FieldNameString: Represents a valid field name. -->
   <xs:simpleType id="FieldNameString" name="FieldNameString">
     <xs:restriction base="xs:string">
       <xs:pattern value="([\w%@\*#-_]+)" />
-      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:pattern value="\s*\{\s*[B|b]ind\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]inding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[B|b]inding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
       <xs:whiteSpace value="collapse" />
     </xs:restriction>
     
@@ -71,7 +71,7 @@
   to a single space and finally removes the leading and trailing spaces.
   -->
   <xs:simpleType id="ElementNameString" name="ElementNameString">
-    <xs:union memberTypes="identifierType bindableType"/>
+    <xs:union memberTypes="identifierType bindingType staticBindType"/>
   </xs:simpleType>
 
   <!-- ElementNameStringOrEmpty. ElementNameString or empty string. -->

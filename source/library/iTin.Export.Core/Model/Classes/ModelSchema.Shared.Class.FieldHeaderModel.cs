@@ -208,12 +208,12 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultStyle)]
         public string Style
         {
-            get => _style; //GetValueByReflection(Parent.Owner.Parent.Parent, _style);
+            get => GetValueByReflection(_style);
             set
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var linked = RegularExpressionHelper.IsBindableResource(value);
+                var linked = RegularExpressionHelper.IsStaticBindingResource(value);
                 if (!linked)
                 {
                     SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Header", "Style", value)));

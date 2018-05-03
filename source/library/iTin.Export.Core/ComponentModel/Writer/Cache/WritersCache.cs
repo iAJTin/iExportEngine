@@ -142,7 +142,7 @@ namespace iTin.Export.ComponentModel.Writer
             var defaultWriterPath = AssemblyHelper.GetExecutingAssemblyDirectory();
             var itemsPath = new Collection<string> { defaultWriterPath, };
 
-            var writersDirectory = Path.Combine(defaultWriterPath, "Writers", Path.DirectorySeparatorChar.ToString());
+            var writersDirectory = Path.Combine(defaultWriterPath, $"Writers{Path.DirectorySeparatorChar}");
             if (Directory.Exists(writersDirectory))
             {
                 itemsPath.Add(writersDirectory);

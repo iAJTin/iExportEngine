@@ -33,6 +33,11 @@ namespace iTin.Export.Model
     ///   </thead>
     ///   <tbody>
     ///     <tr>
+    ///       <td><see cref="P:iTin.Export.Model.ContentModel.AlternateColor" /></td>
+    ///       <td align="center">Yes</td>
+    ///       <td>Preferred of alternate content color. The default is "<c>Transparent</c>".</td>
+    ///     </tr>
+    ///     <tr>
     ///       <td><see cref="P:iTin.Export.Model.ContentModel.Color" /></td>
     ///       <td align="center">Yes</td>
     ///       <td>Preferred of content color. The default is "<c>Transparent</c>".</td>
@@ -192,11 +197,11 @@ namespace iTin.Export.Model
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string AlternateColor { get; set; }
-        //{
-        //    get => Parent.Owner == null ? _alternateColor : GetValueByReflection(Parent.Owner.Parent.Parent, _alternateColor);
-        //    set => _alternateColor = value;
-        //}
+        public string AlternateColor //{ get; set; }
+        {
+            get => Parent.Owner == null ? _alternateColor : GetValueByReflection(_alternateColor);
+            set => _alternateColor = value;
+        }
         #endregion
 
         #region [public] (string) Color: Gets or sets the preferred for content color
@@ -255,11 +260,11 @@ namespace iTin.Export.Model
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string Color { get; set; }
-        //{
-        //    get => Parent.Owner == null ? _color : GetValueByReflection(Parent.Owner.Parent.Parent, _color);
-        //    set => _color = value;
-        //}
+        public string Color //{ get; set; }
+        {
+            get => Parent.Owner == null ? _color : GetValueByReflection(_color);
+            set => _color = value;
+        }
         #endregion
 
         #region [public] (ContentAlignmentModel) Alignment: Gets or sets content distribution

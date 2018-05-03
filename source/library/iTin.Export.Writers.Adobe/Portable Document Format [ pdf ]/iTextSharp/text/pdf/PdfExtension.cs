@@ -50,6 +50,12 @@ namespace iTextSharp.text.pdf
             var attributes = rows.Attributes().ToList();
             foreach (var field in fields)
             {
+                var aggregate = field.Aggregate;
+                if (aggregate.AggregateType == KnownAggregateType.None)
+                {
+                    continue;
+                }
+
                 var style = field.Aggregate.GetStyle();
 
                 if (field.Aggregate.Show == YesNo.Yes &&
@@ -121,6 +127,7 @@ namespace iTextSharp.text.pdf
                 else
                 {
                     var emptyStyle = StyleModel.Empty;
+
                     emptyStyle.Content = style.Content;
                     emptyStyle.Content.DataType = new TextDataTypeModel();
                     ////emptyStyle.SetOwner(model.Styles);
