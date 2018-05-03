@@ -8,7 +8,7 @@ namespace iTextSharp.text.pdf
     using System.Xml.Linq;
 
     using iTin.Export.ComponentModel;
-    using iTin.Export.ComponentModel.Writers;
+    using iTin.Export.ComponentModel.Writer;
     using iTin.Export.Helpers;
     using iTin.Export.Model;
     using iTin.Export.Writers.Adobe;
@@ -239,17 +239,19 @@ namespace iTextSharp.text.pdf
             SentinelHelper.ArgumentNull(dictionary);
             SentinelHelper.ArgumentNull(writer);
 
-            var widthOfColumns = DefaultColumnWidths(writer.Table.Fields);
+            var tbl = writer.Provider.Input.Model.Table;
+            var resources = writer.Provider.Input.Resources;
+            var widthOfColumns = DefaultColumnWidths(tbl.Fields);
 
             table.LockedWidth = true;
             foreach (var entry in dictionary)
             {
-                var index = writer.Table.Fields.IndexOf(entry.Key);
-                var style = writer.Adapter.Input.Resources.Styles[entry.Key.Value.Style];
+                var index = tbl.Fields.IndexOf(entry.Key);
+                var style = resources.Styles[entry.Key.Value.Style];
 
                 var maxColumnLenght = entry.Key.Alias.Length > entry.Value
-                                            ? entry.Key.Alias.Length
-                                            : entry.Value;
+                    ? entry.Key.Alias.Length
+                    : entry.Value;
                 using (var bitmap = new Bitmap(1, 1))
                 {
                     using (var graphics = Graphics.FromImage(bitmap))

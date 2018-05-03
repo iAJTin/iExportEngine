@@ -104,8 +104,8 @@ namespace iTin.Export.Writers.Adobe
             base.OnStartPage(writer, document);
 
             #region initialize
-            var table = TabularWriter.Table;
-            var target = TabularWriter.Adapter;
+            var table = TabularWriter.Provider.Input.Model.Table;
+            var provider = TabularWriter.Provider;
             #endregion
 
             #region add logo
@@ -127,7 +127,7 @@ namespace iTin.Export.Writers.Adobe
                 tempTable.AddAggregateByLocation(
                     table,
                     RawData,
-                    target.SpecialChars.ToArray(),
+                    provider.SpecialChars.ToArray(),
                     KnownAggregateLocation.Top);
             }
             #endregion

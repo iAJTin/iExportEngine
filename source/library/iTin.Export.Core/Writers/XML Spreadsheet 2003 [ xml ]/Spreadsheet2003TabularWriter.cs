@@ -99,6 +99,16 @@ namespace iTin.Export.Writers
         private GroupsModel Groups => Resources.Groups;
         #endregion
 
+        #region [public] (HostModel) Host: Gets a reference to the current host model
+        /// <summary>
+        /// Gets a reference to the current host model.
+        /// </summary>
+        /// <value>
+        /// Reference to the current host model.
+        /// </value>
+        public HostModel Host => Resources.Hosts[Table.Host];
+        #endregion
+
         #region [private] (Point) Location: Gets a reference to the location table
         /// <summary>
         /// Gets a reference to the location table.

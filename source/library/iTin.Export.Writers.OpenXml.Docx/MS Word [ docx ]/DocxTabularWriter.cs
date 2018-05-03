@@ -8,7 +8,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using System.Xml.Linq;
 
     using ComponentModel;
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Model;
 
     using Novacode;
@@ -34,7 +34,37 @@ namespace iTin.Export.Writers.OpenXml.Office
         /// <value>
         /// Reference to the current fixed model.
         /// </value>
-        private FixedModel Fixed => ModelResources.Fixed;
+        private FixedModel Fixed => Resources.Fixed;
+        #endregion
+
+        #region [public] (HostModel) Host: Gets a reference to the current host model
+        /// <summary>
+        /// Gets a reference to the current host model.
+        /// </summary>
+        /// <value>
+        /// Reference to the current host model.
+        /// </value>
+        public HostModel Host => Resources.Hosts[Table.Host];
+        #endregion
+
+        #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
+        /// <summary>
+        /// Gets a reference to the model global resources.
+        /// </summary>
+        /// <value>
+        /// Reference to the model global resources.
+        /// </value>
+        private GlobalResourcesModel Resources => Provider.Input.Resources;
+        #endregion
+
+        #region [private] (TableModel) Table: Gets a reference to the table
+        /// <summary>
+        /// Gets a reference to the table.
+        /// </summary>
+        /// <value>
+        /// Reference to the location table.
+        /// </value>
+        private TableModel Table => Provider.Input.Model.Table;
         #endregion
 
         #endregion
@@ -60,7 +90,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows = Adapter.ToXml().ToArray();
+                    var rows = Provider.ToXml().ToArray();
                     var rowsCount = rows.Count();
                     #endregion
                         
@@ -227,7 +257,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                             field.DataSource = rowData;
 
                             var cell = table.Rows[y + row].Cells[col];
-                            var value = field.Value.GetValue(Adapter.SpecialChars);
+                            var value = field.Value.GetValue(Provider.SpecialChars);
                             cell.AppendText(value);
                         }
                     }
@@ -292,7 +322,7 @@ namespace iTin.Export.Writers.OpenXml.Office
         /// </returns>
         private NonTabularFormulaResolver GetFormula(BaseDataFieldModel field, XElement[] rows)
         {
-            var rowsCount = rows.Count();
+            var rowsCount = rows.Length;
             var attributes = rows.ToList().Attributes();
 
             var aggregate = field.Aggregate;
@@ -341,7 +371,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     foreach (var row in rows)
                     {
                         group.DataSource = row;
-                        var value = group.Value.GetValue(Adapter.SpecialChars);
+                        var value = group.Value.GetValue(Provider.SpecialChars);
                         values.Add(value.FormattedValue);
                     }
 

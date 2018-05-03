@@ -29,6 +29,16 @@ namespace iTin.Export.Writers.OpenXml.Office
     {
         #region private properties
 
+        #region [public] (HostModel) Host: Gets a reference to the current host model
+        /// <summary>
+        /// Gets a reference to the current host model.
+        /// </summary>
+        /// <value>
+        /// Reference to the current host model.
+        /// </value>
+        public HostModel Host => Resources.Hosts[Table.Host];
+        #endregion
+
         #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
         /// <summary>
         /// Gets a reference to the model global resources.

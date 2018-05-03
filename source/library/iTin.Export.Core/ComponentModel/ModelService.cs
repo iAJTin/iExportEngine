@@ -65,14 +65,14 @@ namespace iTin.Export.ComponentModel
         /// <summary>
         /// 
         /// </summary>
-        public ExportModel CurrentModel => _writer.Input.Model;
+        public ExportModel CurrentModel => _writer.Provider.Input.Model;
         #endregion
 
         #region [public] (ExportsModel) Root:
         /// <summary>
         /// 
         /// </summary>
-        public ExportsModel Root => _writer.Input.GetRoot();
+        public ExportsModel Root => _writer.Provider.Input.GetRoot();
         #endregion
 
         #region [public] (ReferencesModel) References:
@@ -83,10 +83,11 @@ namespace iTin.Export.ComponentModel
         #endregion
 
         #region [public] (GlobalResourcesModel) Resources:
+
         /// <summary>
         /// 
         /// </summary>
-        public GlobalResourcesModel Resources => _writer.ModelResources;
+        public GlobalResourcesModel Resources => _writer.Provider.Input.Resources;
         #endregion
 
         #endregion

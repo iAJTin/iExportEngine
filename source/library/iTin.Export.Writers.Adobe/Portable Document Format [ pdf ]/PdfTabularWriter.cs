@@ -10,7 +10,7 @@ namespace iTin.Export.Writers.Adobe
     using iTextSharp.text;
     using iTextSharp.text.pdf;
 
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Model;
 
     /// <inheritdoc />
@@ -25,6 +25,43 @@ namespace iTin.Export.Writers.Adobe
     [WriterOptions(Name = "PdfTabularWriter", Author = "iTin", Company = "iTin", Version = 1, Extension = "pdf", Description = "Portable Document Format Writer")]
     public class PdfTabularWriter : BaseWriterDirect
     {
+        #region private properties
+
+        #region [public] (HostModel) Host: Gets a reference to the current host model
+        /// <summary>
+        /// Gets a reference to the current host model.
+        /// </summary>
+        /// <value>
+        /// Reference to the current host model.
+        /// </value>
+        public HostModel Host => Resources.Hosts[Table.Host];
+        #endregion
+
+        #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
+        /// <summary>
+        /// Gets a reference to the model global resources.
+        /// </summary>
+        /// <value>
+        /// Reference to the model global resources.
+        /// </value>
+        private GlobalResourcesModel Resources => Provider.Input.Resources;
+        #endregion
+
+        #region [private] (TableModel) Table: Gets a reference to the table
+        /// <summary>
+        /// Gets a reference to the table.
+        /// </summary>
+        /// <value>
+        /// Reference to the location table.
+        /// </value>
+        private TableModel Table => Provider.Input.Model.Table;
+        #endregion
+
+        #endregion
+
+        #region protecetd override methods
+
+        #region [protected] {override} (void) Execute(): Generates output in Portable Document Format [ pdf ]
         /// <inheritdoc />
         /// <summary>
         /// Generates output in Portable Document Format [ pdf ].
@@ -39,8 +76,8 @@ namespace iTin.Export.Writers.Adobe
                     var fields = Table.Fields;
                     #endregion
 
-                    #region get target data
-                    var rows = Adapter.ToXml().ToArray();
+                    #region get input data
+                    var rows = Provider.ToXml().ToArray();
                     #endregion
 
                     #region add data
@@ -51,7 +88,7 @@ namespace iTin.Export.Writers.Adobe
                         foreach (var field in fields)
                         {
                             field.DataSource = row;
-                            var value = field.Value.GetValue(Adapter.SpecialChars);
+                            var value = field.Value.GetValue(Provider.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;
 
                             if (!fieldsTable.ContainsKey(field))
@@ -106,7 +143,7 @@ namespace iTin.Export.Writers.Adobe
                     #endregion
 
                     #region add bottom aggregate
-                    table.AddAggregateByLocation(Table, rows, Adapter.SpecialChars.ToArray(), KnownAggregateLocation.Bottom);
+                    table.AddAggregateByLocation(Table, rows, Provider.SpecialChars.ToArray(), KnownAggregateLocation.Bottom);
                     #endregion
 
                     #region add table to document
@@ -119,5 +156,8 @@ namespace iTin.Export.Writers.Adobe
                 #endregion
             }
         }
+        #endregion
+
+        #endregion
     }
 }
