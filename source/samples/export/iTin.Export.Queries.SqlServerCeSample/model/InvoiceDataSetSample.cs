@@ -32,7 +32,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
                 Console.WriteLine(FourStepText);
 
                 var model = CreateModel();
-                export.Export(ExportSettings.CreateFromModel(model, "dataset-xlsx"));
+                export.Export(ExportSettings.CreateFromModels(model, "dataset-xlsx"));
 
                 Console.WriteLine(FiveStepText);
                 var configuration = new Uri(Properties.Settings.Default.InvoiceExportConfigurationFile, UriKind.Relative);

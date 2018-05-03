@@ -57,7 +57,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
                 Console.WriteLine(FourStepText);
 
                 var model = CreateModel();
-                export.Export(ExportSettings.CreateFromModel(model, "arraylist-xlsx"));
+                export.Export(ExportSettings.CreateFromModels(model, "arraylist-xlsx"));
 
                 Console.WriteLine(FiveStepText);
                 var configuration = new Uri(Properties.Settings.Default.InvoiceExportConfigurationFile, UriKind.Relative);

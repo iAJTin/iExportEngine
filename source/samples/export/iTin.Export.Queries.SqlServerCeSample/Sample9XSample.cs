@@ -44,19 +44,19 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
 
             Console.WriteLine(ThirdSampleStepText);
             var sample90BannerModelConfiguration = CreateBannerSample90Model();
-            export.Export(ExportSettings.CreateFromModel(sample90BannerModelConfiguration, "sample90-banner"));
+            export.Export(ExportSettings.CreateFromModels(sample90BannerModelConfiguration, "sample90-banner"));
 
             Console.WriteLine(FourthSampleStepText);
             var sample90HeaderInfoModelConfiguration = CreateHeaderInfoSample90Model();
-            export.Export(ExportSettings.CreateFromModel(sample90HeaderInfoModelConfiguration, "sample90-headerinfo"));
+            export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoModelConfiguration, "sample90-headerinfo"));
 
             Console.WriteLine(FifthSampleStepText);
             var sample90HeaderInfoBuiltInFunctionsModelConfiguration = CreateHeaderInfoBuiltInFunctionsSample90Model();
-            export.Export(ExportSettings.CreateFromModel(sample90HeaderInfoBuiltInFunctionsModelConfiguration, "sample90-headerinfo-built-in-functions"));
+            export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoBuiltInFunctionsModelConfiguration, "sample90-headerinfo-built-in-functions"));
 
             Console.WriteLine(SixthSampleStepText);
             var sample90HeaderInfoCustomFunctionsModelConfiguration = CreateHeaderInfoCustomFunctionsSample90Model();
-            export.Export(ExportSettings.CreateFromModel(sample90HeaderInfoCustomFunctionsModelConfiguration, "sample90-headerinfo-custom-functions"));
+            export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoCustomFunctionsModelConfiguration, "sample90-headerinfo-custom-functions"));
 
 
             Console.WriteLine(FiveStepText);

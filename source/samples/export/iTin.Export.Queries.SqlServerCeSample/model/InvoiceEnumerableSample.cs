@@ -53,7 +53,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
                 Console.WriteLine(FourStepText);
 
                 var model = CreateModel();
-                export.Export(ExportSettings.CreateFromModel(model, "enumerable-xlsx"));
+                export.Export(ExportSettings.CreateFromModels(model, "enumerable-xlsx"));
 
                 Console.WriteLine(FiveStepText);
                 var configuration = new Uri(Properties.Settings.Default.InvoiceExportConfigurationFile, UriKind.Relative);

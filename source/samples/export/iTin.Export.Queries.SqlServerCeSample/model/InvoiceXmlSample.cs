@@ -29,7 +29,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             Console.WriteLine(FourStepText);
 
             var model = CreateModel();
-            export.Export(ExportSettings.CreateFromModel(model, "xmlinput-xlsx"));
+            export.Export(ExportSettings.CreateFromModels(model, "xmlinput-xlsx"));
 
             Console.WriteLine(FiveStepText);
             var configuration = new Uri(Properties.Settings.Default.InvoiceExportConfigurationFile, UriKind.Relative);
