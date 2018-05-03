@@ -1,5 +1,5 @@
 ﻿
-namespace iTin.Export.ComponentModel.Writers
+namespace iTin.Export.Writers
 {
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
@@ -10,6 +10,7 @@ namespace iTin.Export.ComponentModel.Writers
     using System.Text;
 
     using AspNet.ComponentModel;
+    using ComponentModel.Writer;
     using Drawing.Helper;
     using Model;
 
@@ -23,26 +24,26 @@ namespace iTin.Export.ComponentModel.Writers
     {
         #region public override properties
 
-        #region [public] {override} (HttpResponseEx) ResponseEx: Gets a reference to an object HttpResponseInfo containing the MIME type of the output stream and response header for a ASP.NET operation
+        #region [public] {override} (HttpResponseEx) ResponseEx: Gets a reference to an object HttpResponseEx containing the MIME type of the output stream and response header for a ASP.NET operation
         /// <inheritdoc />
         /// <summary>
-        /// Gets a reference to an object <see cref="T:iTin.Export.Web.HttpResponseInfo" /> than contains the <strong>MIME</strong> type of the output stream and response header for a <strong>ASP.NET</strong> operation.
+        /// Gets a reference to an object <see cref="T:iTin.Export.AspNet.ComponentModel.HttpResponseEx" /> than contains the <strong>MIME</strong> type of the output stream and response header for a <strong>ASP.NET</strong> operation.
         /// </summary>
         /// <value>
-        /// A <see cref="T:iTin.Export.Web.HttpResponseInfo" /> than contains the <strong>MIME</strong> type of the output stream and response header for a <strong>ASP.NET</strong> operation.
+        /// A <see cref="T:iTin.Export.AspNet.ComponentModel.HttpResponseEx" /> than contains the <strong>MIME</strong> type of the output stream and response header for a <strong>ASP.NET</strong> operation.
         /// </value>
         public override HttpResponseEx ResponseEx
         {          
             get
             {
-                var parsedFilePath = Adapter.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.Output);
+                var parsedFilePath = Provider.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.Output);
                 var filename = Path.GetFileName(parsedFilePath);
                 var outputFileDir = parsedFilePath.Replace(filename, string.Empty);
 
-                var behavior = Table.Exporter.Behaviors.Get<TransformFileBehaviorModel>() ?? TransformFileBehaviorModel.Default;
+                var behavior = Provider.Input.Model.Table.Exporter.Behaviors.Get<TransformFileBehaviorModel>() ?? TransformFileBehaviorModel.Default;
                 var outputTransformDir = behavior.IsDefault
                     ? outputFileDir
-                    : Adapter.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.TransformFileBehaviorDir);
+                    : Provider.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.TransformFileBehaviorDir);
 
                 var headerBuilder = new StringBuilder();
                 headerBuilder.Append("attachment; filename=");
@@ -52,11 +53,11 @@ namespace iTin.Export.ComponentModel.Writers
                         behavior.Save.Equals(YesNo.Yes) && 
                         outputTransformDir.Equals(outputFileDir)
                             ? Path.ChangeExtension(filename, "zip") 
-                            : Path.ChangeExtension(filename, ExtendedInformation.Extension));
+                            : Path.ChangeExtension(filename, WriterMetadata.Extension));
 
                 return new HttpResponseEx
                 {
-                    ContentType = HttpResponseEx.GetMimeMapping(ExtendedInformation.Extension), 
+                    ContentType = HttpResponseEx.GetMimeMapping(WriterMetadata.Extension), 
                     ContentDisposition = headerBuilder.ToString()
                 };
             }
@@ -78,6 +79,26 @@ namespace iTin.Export.ComponentModel.Writers
 
         #region private properties
 
+        #region [private] (FixedModel) Fixed: Gets a reference to the resource fixed
+        /// <summary>
+        /// Gets a reference to the resource fixed.
+        /// </summary>
+        /// <value>
+        /// Reference to the resource fixed.
+        /// </value>
+        private FixedModel Fixed => Resources.Fixed;
+        #endregion
+
+        #region [private] (GroupsModel) Groups: Gets a reference to the resource groups
+        /// <summary>
+        /// Gets a reference to the resource groups.
+        /// </summary>
+        /// <value>
+        /// Reference to the resource groups.
+        /// </value>
+        private GroupsModel Groups => Resources.Groups;
+        #endregion
+
         #region [private] (Point) Location: Gets a reference to the location table
         /// <summary>
         /// Gets a reference to the location table.
@@ -97,24 +118,14 @@ namespace iTin.Export.ComponentModel.Writers
         }
         #endregion
 
-        #region [private] (FixedModel) Fixed: Gets a reference to the resource fixed
+        #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
         /// <summary>
-        /// Gets a reference to the resource fixed.
+        /// Gets a reference to the model global resources.
         /// </summary>
         /// <value>
-        /// Reference to the resource fixed.
+        /// Reference to the model global resources.
         /// </value>
-        private FixedModel Fixed => ModelResources.Fixed;
-        #endregion
-
-        #region [private] (GroupsModel) Groups: Gets a reference to the resource groups
-        /// <summary>
-        /// Gets a reference to the resource groups.
-        /// </summary>
-        /// <value>
-        /// Reference to the resource groups.
-        /// </value>
-        private GroupsModel Groups => ModelResources.Groups;
+        private GlobalResourcesModel Resources => Provider.Input.Resources;
         #endregion
 
         #region [private] (StylesModel) Styles: Gets a reference to the resource styles
@@ -124,7 +135,17 @@ namespace iTin.Export.ComponentModel.Writers
         /// <value>
         /// Reference to the resource styles.
         /// </value>
-        private StylesModel Styles => ModelResources.Styles;
+        private StylesModel Styles => Resources.Styles;
+        #endregion
+
+        #region [private] (TableModel) Table: Gets a reference to the table
+        /// <summary>
+        /// Gets a reference to the table.
+        /// </summary>
+        /// <value>
+        /// Reference to the location table.
+        /// </value>
+        private TableModel Table => Provider.Input.Model.Table;
         #endregion
 
         #region [private] (string) QualifiedWorkSheetName: Gets the name of the sheet we are creating qualified
@@ -657,7 +678,7 @@ namespace iTin.Export.ComponentModel.Writers
         /// </summary>
         private void WriteColumnWidths()
         {
-            var columnDictionary = Table.GetHeaderColumnsSize(Adapter);
+            var columnDictionary = Table.GetHeaderColumnsSize(Provider);
             foreach (var entry in columnDictionary)
             {
                 var x = Location.X;
@@ -804,7 +825,7 @@ namespace iTin.Export.ComponentModel.Writers
                         #region FieldType: Field
                         case KnownFieldType.Field:
                             var dataField = (DataFieldModel)field;
-                            value = Writer.WriteTestSpreadsheet2003Field(Adapter.Parse(dataField.Name), style);
+                            value = Writer.WriteTestSpreadsheet2003Field(Provider.Parse(dataField.Name), style);
                             break;
                         #endregion
 
@@ -858,7 +879,7 @@ namespace iTin.Export.ComponentModel.Writers
                             #region FieldType: Field
                             case KnownFieldType.Field:
                                 var dataField = (DataFieldModel)field;
-                                Writer.WriteDataFieldErrorComment(Adapter.Parse(dataField.Name), style);
+                                Writer.WriteDataFieldErrorComment(Provider.Parse(dataField.Name), style);
                                 break;
                             #endregion
 

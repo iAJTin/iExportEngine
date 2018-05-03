@@ -9,7 +9,7 @@ namespace OfficeOpenXml
     using System.Text;
 
     using iTin.Export.ComponentModel;
-    using iTin.Export.ComponentModel.Writers;
+    using iTin.Export.ComponentModel.Writer;
     using iTin.Export.Helpers;
     using iTin.Export.Model;
 
@@ -134,8 +134,8 @@ namespace OfficeOpenXml
             {
                 if (entry.Key.FieldType == KnownFieldType.Group)
                 {
-                    var index = writer.Table.Fields.IndexOf(entry.Key);
-                    var style = writer.Adapter.Input.Model.Resources.Styles[entry.Key.Value.Style];
+                    var index = writer.Provider.Input.Model.Table.Fields.IndexOf(entry.Key);
+                    var style = writer.Provider.Input.Model.Resources.Styles[entry.Key.Value.Style];
 
                     var maxColumnLenght = entry.Key.Alias.Length > entry.Value
                                                 ? entry.Key.Alias.Length

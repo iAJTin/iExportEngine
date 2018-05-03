@@ -12,7 +12,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using OfficeOpenXml.Drawing.Chart;
 
     using ComponentModel;
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Model;
 
     /// <inheritdoc />
@@ -28,6 +28,26 @@ namespace iTin.Export.Writers.OpenXml.Office
     public class XlsxTabularWriter : BaseWriterDirect
     {
         #region private properties
+
+        #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
+        /// <summary>
+        /// Gets a reference to the model global resources.
+        /// </summary>
+        /// <value>
+        /// Reference to the model global resources.
+        /// </value>
+        private GlobalResourcesModel Resources => Provider.Input.Resources;
+        #endregion
+
+        #region [private] (TableModel) Table: Gets a reference to the model table
+        /// <summary>
+        /// Gets a reference to the model table.
+        /// </summary>
+        /// <value>
+        /// Reference to the model table.
+        /// </value>
+        private TableModel Table => Provider.Input.Model.Table;
+        #endregion
 
         #region [private] (Point) TableLocation: Gets a reference to the location table
         /// <summary>
@@ -106,7 +126,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows = Adapter.ToXml().ToArray();
+                    var rows = Provider.ToXml().ToArray();
                     #endregion
 
                     #region add worksheet
@@ -115,7 +135,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region add styles
-                    excel.Workbook.Styles.CreateFromModel(ModelResources.Styles);
+                    excel.Workbook.Styles.CreateFromModel(Resources.Styles);
                     #endregion
 
                     #region has logo?
@@ -215,7 +235,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                             field.DataSource = rowData;
                             ModelService.Instance.SetCurrentField(field);
 
-                            var value = field.Value.GetValue(Adapter.SpecialChars);
+                            var value = field.Value.GetValue(Provider.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;
                             var cell = worksheet.Cells[y + row, x + col];
                             cell.Value = value.Value;                        
@@ -274,7 +294,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region add blocklines
-                    var blocklines = Adapter.Input.Model.BlockLines;
+                    var blocklines = Provider.Input.Model.BlockLines;
                     var hasBlockLines = blocklines.Any();
                     if (hasBlockLines)
                     {
@@ -295,7 +315,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                             var keyLines = blockline.Items.Keys;
                             foreach (var keyLine in keyLines)
                             {
-                                var line = Adapter.Input.Resources.Lines.GetBy(keyLine);
+                                var line = Resources.Lines.GetBy(keyLine);
                                 if (line.Show == YesNo.No)
                                 {
                                     continue;

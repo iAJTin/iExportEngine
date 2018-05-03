@@ -1,5 +1,5 @@
 ﻿
-namespace iTin.Export.ComponentModel.Writers
+namespace iTin.Export.Writers
 {
     using System;
     using System.Diagnostics.CodeAnalysis;

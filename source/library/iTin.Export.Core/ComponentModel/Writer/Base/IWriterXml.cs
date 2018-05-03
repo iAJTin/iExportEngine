@@ -1,0 +1,24 @@
+﻿
+namespace iTin.Export.ComponentModel.Writer
+{
+    using System.Xml;
+
+    /// <summary>
+    /// Declares a writer which is based in an markup language.
+    /// </summary>
+    public interface IWriterXml
+    {        
+        /// <summary>
+        /// Gets a writer, based in an markup language.
+        /// </summary>
+        /// <value>
+        /// Reference to writer.
+        /// </value>
+        XmlWriter Writer { get; }
+
+        /// <summary>
+        /// Creates a new writer for markup languages.
+        /// </summary>
+        void CreateWriter();
+    }
+}

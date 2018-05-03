@@ -6,7 +6,7 @@ namespace iTin.Export.ComponentModel
     using System.Data;
     using System.Xml.Linq;
 
-    using Adapters;
+    using Provider;
     using Model;
 
     /// <summary>
@@ -15,12 +15,12 @@ namespace iTin.Export.ComponentModel
     public interface ISettings
     {
         /// <summary>
-        /// Gets a reference that contains metadata information of this adapter.
+        /// Gets a reference that contains metadata information of this provider.
         /// </summary>
         /// <value>
-        /// A <see cref="T:iTin.Export.ComponentModel.AdapterMetadata"/> that contains the metadata information about this adapter.
+        /// A <see cref="T:iTin.Export.ComponentModel.Provider.ProviderOptionsMetadata"/> that contains the metadata information about this provider.
         /// </value>
-        AdapterMetadata AdapterMetadata { get; }
+        ProviderOptionsMetadata AdapterMetadata { get; }
         
         /// <summary>
         /// Gets a value indicating whether you can create an <strong>XML</strong> file from the current instance of the object.

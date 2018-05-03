@@ -8,7 +8,7 @@ namespace iTin.Export.Writers
     using System.Linq;
     using System.Text;
 
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Model;
 
     /// <inheritdoc />
@@ -47,15 +47,16 @@ namespace iTin.Export.Writers
             _documentBuilder = new StringBuilder();
 
             // initialize
-            var fields = Table.Fields;
+            var table = Provider.Input.Model.Table;
+            var fields = table.Fields;
                 
             // get target data
-            var rows = Adapter.ToXml().ToArray();
+            var rows = Provider.ToXml().ToArray();
 
             // add field headers
             var fieldHeaderValues = fields.Select(field => field.Header.Show == YesNo.No ? string.Empty : ParseField(field.Alias)).ToList();
             _documentBuilder.Append(string.Join(DelimiterChar.ToString(CultureInfo.InvariantCulture), fieldHeaderValues.ToArray()));
-            _documentBuilder.Append(Table.Output.NewLineDelimiter);
+            _documentBuilder.Append(table.Output.NewLineDelimiter);
                 
             // data values
             foreach (var row in rows)
@@ -64,7 +65,7 @@ namespace iTin.Export.Writers
                 foreach (var field in fields)
                 {
                     field.DataSource = row;
-                    var value = field.Value.GetValue(Adapter.SpecialChars);
+                    var value = field.Value.GetValue(Provider.SpecialChars);
                     var parsedValue = ParseField(value.FormattedValue);
                     values.Add(parsedValue);
                 }
@@ -73,11 +74,11 @@ namespace iTin.Export.Writers
                 _documentBuilder.Append(string.Join(DelimiterChar, values.ToArray()));
 
                 // new line defined in output tag.
-                _documentBuilder.Append(Table.Output.NewLineDelimiter);
+                _documentBuilder.Append(table.Output.NewLineDelimiter);
             }
 
             // end of file
-            _documentBuilder.Append(Table.Output.EndOfFile);
+            _documentBuilder.Append(table.Output.EndOfFile);
 
             // add document to result list.
             Result.Add(Encoding.UTF8.GetBytes(_documentBuilder.ToString()));

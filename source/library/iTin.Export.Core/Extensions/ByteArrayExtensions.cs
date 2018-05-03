@@ -8,7 +8,7 @@ namespace iTin.Export
 
     using Ionic.Zip;
 
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Helpers;
 
     /// <summary>
@@ -67,7 +67,7 @@ namespace iTin.Export
                     filenameBuilder.Append(zipNameWithoutExtension);
                     filenameBuilder.Append(currentFile);
                     filenameBuilder.Append(".");
-                    filenameBuilder.Append(writer.ExtendedInformation.Extension);
+                    filenameBuilder.Append(writer.WriterMetadata.Extension);
                     zip.AddEntry(filenameBuilder.ToString(), element);
                     currentFile++;
                 }

@@ -1,5 +1,5 @@
 
-namespace iTin.Export.ComponentModel.Writers
+namespace iTin.Export.Writers
 {
     /// <summary>
     /// Contains <stong>Xml Spreadsheet 2003</stong> patterns expressions.

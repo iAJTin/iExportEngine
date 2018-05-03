@@ -1,5 +1,5 @@
 ﻿
-namespace iTin.Export.ComponentModel.Writers
+namespace iTin.Export.Writers
 {
     using System.Collections.ObjectModel;
     using System.ComponentModel.Composition;
@@ -8,6 +8,7 @@ namespace iTin.Export.ComponentModel.Writers
     using System.Linq;
     using System.Text;
 
+    using ComponentModel.Writer;
     using Model;
 
     /// <inheritdoc />
@@ -18,19 +19,33 @@ namespace iTin.Export.ComponentModel.Writers
     [WriterOptions(Name = "TsvWriter", Author = "iTin", Company = "iTin", Version = 1, Extension = "txt", Description = "Tab-Separated Values Writer")]
     public class TsvWriter : BaseWriterDirect
     {
-        #region private field constant members
+        #region private constant members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DelimiterChar = "\t";
         #endregion
 
-        #region private field static members
+        #region private static readonly members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly char[] IllegalChars = { '"', ';', DelimiterChar.ToCharArray()[0] };
         #endregion
 
-        #region private field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private StringBuilder _documentBuilder;
+        #endregion
+
+        #region private properties
+
+        #region [private] (TableModel) Table: Gets a reference to the table
+        /// <summary>
+        /// Gets a reference to the table.
+        /// </summary>
+        /// <value>
+        /// Reference to the model table.
+        /// </value>
+        private TableModel Table => Provider.Input.Model.Table;
+        #endregion
+
         #endregion
 
         #region protected override methods
@@ -49,7 +64,7 @@ namespace iTin.Export.ComponentModel.Writers
             var fields = Table.Fields;
                 
             // get target data
-            var rows = Adapter.ToXml().ToArray();
+            var rows = Provider.ToXml().ToArray();
 
             // headers
             var headerValues = fields.Select(field => field.Header.Show == YesNo.No ? string.Empty : ParseField(field.Alias)).ToList();
@@ -63,7 +78,7 @@ namespace iTin.Export.ComponentModel.Writers
                 foreach (var field in fields)
                 {
                     field.DataSource = row;
-                    var value = field.Value.GetValue(Adapter.SpecialChars);
+                    var value = field.Value.GetValue(Provider.SpecialChars);
                     var parsedValue = ParseField(value.FormattedValue);
                     values.Add(parsedValue);
                 }

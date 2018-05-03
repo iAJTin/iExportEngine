@@ -1,5 +1,5 @@
 ﻿
-namespace iTin.Export.ComponentModel.Writers
+namespace iTin.Export.Writers
 {
     using System.Globalization;
     using System.Xml;

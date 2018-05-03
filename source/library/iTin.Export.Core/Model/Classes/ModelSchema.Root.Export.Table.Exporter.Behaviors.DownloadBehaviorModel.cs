@@ -10,7 +10,7 @@ namespace iTin.Export.Model
     using System.Web;
     using System.Xml.Serialization;
 
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Helpers;
 
     /// <inheritdoc />
@@ -214,7 +214,7 @@ namespace iTin.Export.Model
             var filename = writer.ResponseEx.ExtractFileName();
             if (LocalCopy == YesNo.No)
             {
-                var root = writer.Adapter.Input.Model;
+                var root = writer.Provider.Input.Model;
                 var outputFullPath = root.ParseRelativeFilePath(KnownRelativeFilePath.Output);
                 var outputDirectory = Path.GetDirectoryName(outputFullPath);
 
@@ -256,7 +256,7 @@ namespace iTin.Export.Model
         /// </returns>
         private static string CreateZipFile(IWriter writer)
         {
-            var exporterType = writer.Adapter.Input.Model.Table.Exporter.ExporterType;
+            var exporterType = writer.Provider.Input.Model.Table.Exporter.ExporterType;
             if (exporterType != KnownExporter.Template)
             {
                 if (!writer.IsTransformationFile)
@@ -268,7 +268,7 @@ namespace iTin.Export.Model
             var files = new Dictionary<string, byte[]>();
             var tempDirectory = FileHelper.TinExportTempDirectory;
 
-            var extension = writer.IsTransformationFile ? "*" : writer.ExtendedInformation.Extension;
+            var extension = writer.IsTransformationFile ? "*" : writer.WriterMetadata.Extension;
             var pattern = string.Format(CultureInfo.InvariantCulture, "*.{0}", extension);
             var items = Directory.GetFiles(tempDirectory, pattern, SearchOption.TopDirectoryOnly);
             foreach (var item in items)

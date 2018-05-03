@@ -6,7 +6,7 @@ namespace iTin.Export.Model
 
     using AspNet.Cloud;
     using AspNet.Cloud.Apis;
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Helpers;
 
     /// <inheritdoc />

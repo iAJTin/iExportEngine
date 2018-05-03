@@ -7,7 +7,7 @@ namespace iTin.Export.ComponentModel
     using System.Xml.Linq;
 
     using Model;
-    using Writers;
+    using Writer;
 
     /// <summary>
     /// 
@@ -79,7 +79,7 @@ namespace iTin.Export.ComponentModel
         /// <summary>
         /// 
         /// </summary>
-        public ReferencesModel References => _writer.Adapter.Input.References;
+        public ReferencesModel References => _writer.Provider.Input.References;
         #endregion
 
         #region [public] (GlobalResourcesModel) Resources:
@@ -136,12 +136,12 @@ namespace iTin.Export.ComponentModel
         {
             
             data = null;
-            if (!_writer.Adapter.CanGetDataTable)
+            if (!_writer.Provider.CanGetDataTable)
             {
                 return false;
             }
 
-            data = _writer.Adapter.ToDataTable();
+            data = _writer.Provider.ToDataTable();
             return true;
         }
         #endregion
@@ -155,12 +155,12 @@ namespace iTin.Export.ComponentModel
         public bool TryGetUnderlyingDataAsXml(out IEnumerable<XElement> data)
         {
             data = null;
-            if (!_writer.Adapter.CanCreateInputXml)
+            if (!_writer.Provider.CanCreateInputXml)
             {
                 return false;
             }
 
-            data = _writer.Adapter.ToXml();
+            data = _writer.Provider.ToXml();
             return true;
         }
         #endregion

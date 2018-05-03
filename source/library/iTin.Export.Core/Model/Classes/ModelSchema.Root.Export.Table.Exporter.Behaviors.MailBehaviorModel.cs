@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using AspNet;
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Helpers;
 
     /// <inheritdoc />
@@ -547,7 +547,7 @@ namespace iTin.Export.Model
         /// </returns>
         private static string CreateZipFile(IWriter writer)
         {
-            var exporterType = writer.Adapter.Input.Model.Table.Exporter.ExporterType;
+            var exporterType = writer.Provider.Input.Model.Table.Exporter.ExporterType;
             if (exporterType != KnownExporter.Template)
             {
                 if (!writer.IsTransformationFile)
@@ -559,7 +559,7 @@ namespace iTin.Export.Model
             var files = new Dictionary<string, byte[]>();
             var tempDirectory = FileHelper.TinExportTempDirectory;
 
-            var extension = writer.IsTransformationFile ? "*" : writer.ExtendedInformation.Extension;
+            var extension = writer.IsTransformationFile ? "*" : writer.WriterMetadata.Extension;
             var pattern = string.Format(CultureInfo.InvariantCulture, "*.{0}", extension);
             var items = Directory.GetFiles(tempDirectory, pattern, SearchOption.TopDirectoryOnly);
             foreach (var item in items)

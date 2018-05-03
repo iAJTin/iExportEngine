@@ -7,7 +7,7 @@ namespace iTin.Export.Model
     using System.IO;
     using System.Xml.Serialization;
 
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
     using Helpers;
 
     /// <inheritdoc />
@@ -375,7 +375,7 @@ namespace iTin.Export.Model
         /// <param name="writer">The writer.</param>
         private static void CopyToTransformOutputDirectory(IWriter writer)
         {
-            var root = writer.Adapter.Input.Model;
+            var root = writer.Provider.Input.Model;
             var outputDirectory = root.ParseRelativeFilePath(KnownRelativeFilePath.TransformFileBehaviorDir);
             
             var existOutputDirectory = Directory.Exists(outputDirectory);

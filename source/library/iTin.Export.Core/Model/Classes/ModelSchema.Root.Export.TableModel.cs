@@ -9,7 +9,7 @@ namespace iTin.Export.Model
     using System.Windows.Forms;
     using System.Xml.Serialization;
 
-    using ComponentModel.Adapters;
+    using ComponentModel.Provider;
     using Helpers;
 
     /// <inheritdoc />
@@ -340,7 +340,7 @@ namespace iTin.Export.Model
 
         #region [public] (IEnumerable<KeyValuePair<BaseDataFieldModel, Size>>) GetHeaderColumnsSize(IAdapter): Gets a dictionary containing the pair of header column number / size in pixels of the same
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Methods/Method[@name="GetHeaderColumnsSize"]/*'/>
-        public IEnumerable<KeyValuePair<BaseDataFieldModel, Size>> GetHeaderColumnsSize(IAdapter adapter)
+        public IEnumerable<KeyValuePair<BaseDataFieldModel, Size>> GetHeaderColumnsSize(IProvider adapter)
         {
             SentinelHelper.ArgumentNull(adapter);
 

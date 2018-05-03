@@ -1,7 +1,7 @@
 ﻿
 namespace iTin.Export.Model
 {
-    using ComponentModel.Writers;
+    using ComponentModel.Writer;
 
     /// <summary>
     /// Declares a generic behavior to use to with an exporter.

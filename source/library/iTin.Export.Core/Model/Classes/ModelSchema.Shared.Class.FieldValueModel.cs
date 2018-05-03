@@ -9,7 +9,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using ComponentModel;
-    using ComponentModel.Adapters;
+    using ComponentModel.Provider;
     using Helpers;
 
     /// <inheritdoc />
@@ -322,7 +322,7 @@ namespace iTin.Export.Model
                 case KnownFieldType.Field:
                     {
                         var current = (DataFieldModel)Parent;
-                        var parsedName = BaseAdapter.Parse(current.Name, specialCharsList);
+                        var parsedName = BaseProvider.Parse(current.Name, specialCharsList);
 
                         var fieldAsAttribute = Parent.DataSource.Attribute(parsedName);
                         if (fieldAsAttribute == null)
@@ -352,7 +352,7 @@ namespace iTin.Export.Model
                         var fixedItem = @fixed[current.Pieces];
                         fixedItem.DataSource = Parent.DataSource;
 
-                        var parsedName = BaseAdapter.Parse(current.Piece, specialCharsList);
+                        var parsedName = BaseProvider.Parse(current.Piece, specialCharsList);
                         var piece = fixedItem.Pieces[parsedName];
                         unformattedValue = piece.GetValue();
                     }
@@ -375,7 +375,7 @@ namespace iTin.Export.Model
                         var groupFields = group.Fields;
                         foreach (var groupField in groupFields)
                         {
-                            var parsedName = BaseAdapter.Parse(groupField.Name, specialCharsList);
+                            var parsedName = BaseProvider.Parse(groupField.Name, specialCharsList);
                             var asAttribute = Parent.DataSource.Attribute(parsedName);
                             if (asAttribute == null)
                             {
@@ -411,7 +411,7 @@ namespace iTin.Export.Model
                 case KnownFieldType.Packet:
                     {
                         var current = (PacketFieldModel)Parent;
-                        var parsedName = BaseAdapter.Parse(current.Name, specialCharsList);
+                        var parsedName = BaseProvider.Parse(current.Name, specialCharsList);
 
                         var fieldAsAttribute = Parent.DataSource.Attribute(parsedName);
                         if (fieldAsAttribute != null)
