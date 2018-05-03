@@ -92,7 +92,7 @@ namespace iTin.Export.Model
         private const YesNo DefaultCurrent = YesNo.No;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _name;
 
@@ -169,23 +169,27 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultCurrent)]
         public YesNo Current
         {
-            get => _current;
+            get => GetStaticBindingValue(_current.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                SentinelHelper.IsEnumValid(value);
-
-                //if (Owner != null && owner.Items.Any())
-                //{
-                //    foreach (var model in Owner.Items)
-                //    {
-                //        if (model.current == YesNo.Yes)
-                //        {
-                //            model.Current = YesNo.No;
-                //        }
-                //    }
-                //}
-
-                _current = value;  
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
+                if (!isBinded)
+                {
+                    _current = value;
+                }
+                else
+                {
+                    if (value.ToString() != "no" || value.ToString() != "yes")
+                    {
+                        _current = DefaultCurrent;
+                    }
+                    else
+                    {
+                        _current = value.ToString() == "no"
+                            ? YesNo.No
+                            : YesNo.Yes;
+                    }
+                }
             }
         }
         #endregion
@@ -227,12 +231,16 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        public string Description { get; set; }
-        //{
-        //    get => GetValueByReflection(this, _description);
-        //    set => _description = value;
-        //}
+        public string Description
+        {
+            get => GetStaticBindingValue(_description);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
 
+                _description = value;
+            }
+        }
         #endregion
 
         #region [public] (string) Name: Gets or sets name of the export
@@ -277,7 +285,7 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => GetValueByReflection(_name);
+            get => GetStaticBindingValue(_name);
             set
             {
                 SentinelHelper.ArgumentNull(value);
@@ -285,7 +293,9 @@ namespace iTin.Export.Model
                 var linked = RegularExpressionHelper.IsStaticBindingResource(value);
                 if (!linked)
                 {
-                    SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Export", "Name", value)));
+                    SentinelHelper.IsFalse(
+                        RegularExpressionHelper.IsValidIdentifier(value), 
+                        new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Export", "Name", value)));
                 }
 
                 _name = value;
@@ -429,7 +439,11 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (void) SetOwner(ExportsModel): Sets the element that owns this
+        #endregion
+
+        #region internal methods
+
+        #region [internal] (void) SetOwner(ExportsModel): Sets the element that owns this
         /// <summary>
         /// Sets the element that owns this <see cref="T:iTin.Export.Model.ExportModel" />.
         /// </summary>

@@ -390,7 +390,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                                                         ? (item.Owner.Style ?? StyleModel.Default.Name)
                                                         : item.Style;
 
-                                                var text = GetValueByReflection(item.Value);
+                                                var text = item.Value;
                                                 cell.Value = text;
 
                                                 dx++;

@@ -8,17 +8,21 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using Drawing.Helper;
+    using Helpers;
+
+    using NativeDrawing = System.Drawing;
 
     /// <summary>
     /// Defines as shown the content of a field.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Belongs to: <strong><c>Style</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StyleModel" />.
+    /// Belongs to: <strong><c>Style</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StyleModel"/>.
     /// <code lang="xml" title="ITEE Object Element Usage">
     /// &lt;Content&gt;
     ///   &lt;Alignment/&gt;
     ///   &lt;Number/&gt; | &lt;Currency/&gt; | &lt;Percentage/&gt; | &lt;Scientific/&gt; | &lt;Datetime/&gt; | &lt;Special/&gt; | &lt;Text/&gt;
+    ///   &lt;Properties/&gt;
     /// &lt;/Content&gt;
     /// </code>
     /// </para>
@@ -33,14 +37,14 @@ namespace iTin.Export.Model
     ///   </thead>
     ///   <tbody>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ContentModel.AlternateColor" /></td>
+    ///       <td><see cref="P:iTin.Export.Model.ContentModel.AlternateColor"/></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred of alternate content color. The default is "<c>Transparent</c>".</td>
+    ///       <td>Alternative color preferred of content. The default is "<c>Transparent</c>".</td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ContentModel.Color" /></td>
+    ///       <td><see cref="P:iTin.Export.Model.ContentModel.Color"/></td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred of content color. The default is "<c>Transparent</c>".</td>
+    ///       <td>Preferred content color. The default is "<c>Transparent</c>".</td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -51,12 +55,20 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Alignment" /></term> 
-    ///     <description>Reference for content distribution.</description>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Alignment"/></term> 
+    ///     <description>Reference to content distribution.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ContentModel.DataType" /></term> 
-    ///     <description>Reference for content data type.</description>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.DataType"/></term> 
+    ///     <description>Reference to content data type.</description>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Pattern"/></term> 
+    ///     <description>Reference to fill pattern</description>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Properties"/></term> 
+    ///     <description>Reference to custom properties dictionary</description>
     ///   </item>
     /// </list>
     /// <para>
@@ -64,10 +76,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Native.Spreadsheet2003TabularWriter"/></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -89,7 +101,7 @@ namespace iTin.Export.Model
         private const string DefaultColor = "Transparent";
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _color;
 
@@ -126,12 +138,12 @@ namespace iTin.Export.Model
 
         #region public static properties
 
-        #region [public] {static} (ContentModel) Default: Gets default content
+        #region [public] {static} (ContentModel) Default: Gets default content definition
         /// <summary>
-        /// Gets default content.
+        /// Gets default content definition
         /// </summary>
         /// <value>
-        /// Default content
+        /// A <see cref="T:iTin.Export.Model.ContentModel"/> that contains default content definition.
         /// </value>
         public static ContentModel Default => new ContentModel();
         #endregion
@@ -140,12 +152,12 @@ namespace iTin.Export.Model
 
         #region public properties
 
-        #region [public] (string) AlternateColor: Gets or sets the alternate preferred for content color
+        #region [public] (string) AlternateColor: Gets or sets alternative color preferred of content
         /// <summary>
-        /// Gets or sets the alternate preferred for content color.
+        /// Gets or sets alternative color preferred of content.
         /// </summary>
         /// <value>
-        /// Alternate preferred color. The default is "<c>Transparent</c>".
+        /// Alternate color preferred. The default is "<c>Transparent</c>".
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
@@ -159,10 +171,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -180,36 +192,59 @@ namespace iTin.Export.Model
         /// <example>
         /// In the following example shows how create a new content.
         /// <code lang="xml">
-        /// &lt;Content Color="DarkBlue"&gt;
+        /// &lt;Content Color="Red" Color="DarkBlue"&gt;
         ///   &lt;Alignment Horizontal="Left"/&gt;
         ///   &lt;Text/&gt;
         /// &lt;/Content&gt;
         /// </code>
         /// <code lang="cs">
         /// ContentModel content = new ContentModel
-        ///                            {
-        ///                                Color = "DarkBlue",
-        ///                                AlternateColor = "Red", 
-        ///                                DataType = new TextDataTypeModel(),
-        ///                                Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        ///                            };
+        ///     {
+        ///         AlternateColor = "Red", 
+        ///         Color = "DarkBlue",
+        ///         DataType = new TextDataTypeModel(),
+        ///         Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        ///     };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string AlternateColor //{ get; set; }
+        public string AlternateColor
         {
-            get => Parent.Owner == null ? _alternateColor : GetValueByReflection(_alternateColor);
-            set => _alternateColor = value;
+            get => Parent.Owner == null ? _alternateColor : GetStaticBindingValue(_alternateColor);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
+                if (!isBinded)
+                {
+                    _alternateColor = value;
+                }
+                else
+                {
+                    try
+                    {
+                        var test = ColorHelper.GetColorFromString(value);
+                        _alternateColor = test == NativeDrawing.Color.Empty
+                            ? DefaultColor
+                            : value;
+                    }
+                    catch
+                    {
+                        _alternateColor = DefaultColor;
+                    }
+                }
+            }
         }
         #endregion
 
-        #region [public] (string) Color: Gets or sets the preferred for content color
+        #region [public] (string) Color: Gets or sets color preferred of content
         /// <summary>
-        /// Gets or sets the preferred for content color.
+        /// Gets or sets color preferred of content.
         /// </summary>
         /// <value>
-        /// Preferred of content color. The default is "<c>Transparent</c>".
+        /// Preferred content color. The default is "<c>Transparent</c>".
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
@@ -223,10 +258,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -251,19 +286,42 @@ namespace iTin.Export.Model
         /// </code>
         /// <code lang="cs">
         /// ContentModel content = new ContentModel
-        ///                            {
-        ///                                Color = "DarkBlue",
-        ///                                DataType = new TextDataTypeModel(),
-        ///                                Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        ///                            };
+        ///     {
+        ///         Color = "DarkBlue",
+        ///         DataType = new TextDataTypeModel(),
+        ///         Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        ///     };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
-        public string Color //{ get; set; }
+        public string Color
         {
-            get => Parent.Owner == null ? _color : GetValueByReflection(_color);
-            set => _color = value;
+            get => Parent.Owner == null ? _color : GetStaticBindingValue(_color);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
+                if (!isBinded)
+                {
+                    _color = value;
+                }
+                else
+                {
+                    try
+                    {
+                        var test = ColorHelper.GetColorFromString(value);
+                        _color = test == NativeDrawing.Color.Empty
+                            ? DefaultColor
+                            : value;
+                    }
+                    catch
+                    {
+                        _color = DefaultColor;
+                    }
+                }
+            }
         }
         #endregion
 
@@ -595,6 +653,21 @@ namespace iTin.Export.Model
 
         #endregion
 
+        #region internal methods
+
+        #region [internal] (void) SetParent(StyleModel): Sets the parent element of this element
+        /// <summary>
+        /// Sets the parent element of this element.
+        /// </summary>
+        /// <param name="reference">Reference to parent.</param>
+        internal void SetParent(StyleModel reference)
+        {
+            _parent = reference;
+        }
+        #endregion
+
+        #endregion
+
         #region private methods
 
         #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
@@ -608,21 +681,6 @@ namespace iTin.Export.Model
         object ICloneable.Clone()
         {
             return Clone();
-        }
-        #endregion
-
-        #endregion
-
-        #region internal methods
-
-        #region [internal] (void) SetParent(StyleModel): Sets the parent element of the element
-        /// <summary>
-        /// Sets the parent element of the element.
-        /// </summary>
-        /// <param name="reference">Reference to parent.</param>
-        internal void SetParent(StyleModel reference)
-        {
-            _parent = reference;
         }
         #endregion
 

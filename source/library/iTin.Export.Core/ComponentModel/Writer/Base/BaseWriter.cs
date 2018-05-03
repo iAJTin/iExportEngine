@@ -7,7 +7,6 @@ namespace iTin.Export.ComponentModel.Writer
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
-    using System.Reflection;
     using System.Text;
 
     using AspNet.ComponentModel;
@@ -22,6 +21,13 @@ namespace iTin.Export.ComponentModel.Writer
     /// </summary>
     public abstract class BaseWriter : IWriter
     {
+        #region protected constants
+        /// <summary>
+        /// Preferred alternate style name sufix.
+        /// </summary>
+        protected const string AlternateStyleNameSufix = "_Alternate";
+        #endregion
+
         #region private constants
         private const string TransformFileExtensionConst = "xslt";
         #endregion
@@ -160,13 +166,6 @@ namespace iTin.Export.ComponentModel.Writer
 
         #endregion
 
-        #region protected constants
-        /// <summary>
-        /// Preferred alternate style name sufix.
-        /// </summary>
-        protected const string AlternateStyleNameSufix = "_Alternate";
-        #endregion
-
         #region protected properties
 
         #region [protected] (Collection<byte[]>) Result: Gets enumerable of byte array containing data info
@@ -179,27 +178,6 @@ namespace iTin.Export.ComponentModel.Writer
         protected Collection<byte[]> Result => _result;
         #endregion
 
-        #endregion
-
-        #region public static properties
-
-        public static string GetAlternateColorSample => "red";
-
-        /// <summary>
-        /// Gets the get current date time.
-        /// </summary>
-        /// <value>
-        /// The get current date time.
-        /// </value>
-        public static DateTime GetCurrentDatetime => DateTime.Now;
-
-        /// <summary>
-        /// Gets the get timespan.
-        /// </summary>
-        /// <value>
-        /// The get timespan.
-        /// </value>
-        public static TimeSpan GetCurrentTimeSpan => DateTime.Now.TimeOfDay;
         #endregion
 
         #region public methods
@@ -220,7 +198,7 @@ namespace iTin.Export.ComponentModel.Writer
         }
         #endregion
 
-        #region [public] (void) (ExportSettings): Generates writer output
+        #region [public] (void) Generate(ExportSettings): Generates writer output
         /// <inheritdoc />
         /// <summary>
         /// Generates writer output.
@@ -277,100 +255,7 @@ namespace iTin.Export.ComponentModel.Writer
 
         #endregion
 
-        #region Protected Virtual Methods
-
-        #region [protected] {virtual} (object) GetValueByReflection(string):
-        /// <summary>
-        /// Gets the value by reflection.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        /// A <see cref="T:System.String"/> that contains property, method or raw value.
-        /// </returns>
-        protected virtual object GetValueByReflection(string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return string.Empty;
-            }
-
-            var linked = RegularExpressionHelper.IsStaticBindingResource(value);
-            if (!linked)
-            {
-                return value;
-            }
-
-            var assemblies = new List<Assembly> { GetType().Assembly };
-            var references = Provider.Input.References;
-            foreach (var reference in references)
-            {
-                var assemblyName = reference.Assembly.ToUpperInvariant();
-                var hasExtension = assemblyName.EndsWith(".DLL");
-                if (!hasExtension)
-                {
-                    assemblyName = string.Concat(assemblyName, ".DLL");
-                }
-
-                var assemblyRelativePath = reference.Path;
-                var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
-                var qualifiedAssemblyPathParsed = Provider.Input.Model.ParseRelativeFilePath(qualifiedAssemblyPath);
-                var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
-                assemblies.Add(assembly);
-            }
-
-            object returnValue;
-            var targetValue = value.Replace("{", string.Empty).Replace("}", string.Empty).Trim();
-            var bindParts = targetValue.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-            var qualifiedFunctionName = bindParts[1].Trim();
-
-            string functionName;
-            var classType = GetType();
-            var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            if (qualifiedFunctionParts.Count() == 1)
-            {
-                functionName = qualifiedFunctionParts[0].Trim();
-            }
-            else
-            {
-                var className = qualifiedFunctionParts[0].Trim();
-                functionName = qualifiedFunctionParts[1].Trim();
-                var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
-                var assemblyTypes = casm.GetExportedTypes();
-                classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
-            }
-
-            var instanceMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Instance);
-            if (instanceMethodInfo != null)
-            {
-                returnValue = instanceMethodInfo.Invoke(this, null);
-            }
-            else
-            {
-                var staticMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Static);
-                if (staticMethodInfo != null)
-                {
-                    returnValue = staticMethodInfo.Invoke(null, null);
-                }
-                else
-                {
-                    var instancePropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Instance);
-                    if (instancePropertyInfo != null)
-                    {
-                        var instancePropertyGetMethod = instancePropertyInfo.GetGetMethod(true);
-                        returnValue = instancePropertyGetMethod.Invoke(this, null);
-                    }
-                    else
-                    {
-                        var staticPropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-                        var staticPropertyGetMethod = staticPropertyInfo.GetGetMethod(true);
-                        returnValue = staticPropertyGetMethod.Invoke(null, null);
-                    }
-                }
-            }
-
-            return returnValue; //.ToString();
-        }
-        #endregion
+        #region protected virtual methods
 
         #region [protected] {virtual} (void) ReleaseManagedResources(): Releasing managed resources
         /// <summary>
@@ -594,3 +479,96 @@ namespace iTin.Export.ComponentModel.Writer
         #endregion
     }
 }
+
+//#region [protected] {virtual} (object) GetStaticValue(string):
+///// <summary>
+///// Gets the static value by reflection.
+///// </summary>
+///// <param name="value">The value.</param>
+///// <returns>
+///// A <see cref="T:System.String"/> that contains property, method or raw value.
+///// </returns>
+//protected virtual object GetStaticValue(string value)
+//{
+//    if (string.IsNullOrEmpty(value))
+//    {
+//        return string.Empty;
+//    }
+
+//    var linked = RegularExpressionHelper.IsStaticBindingResource(value);
+//    if (!linked)
+//    {
+//        return value;
+//    }
+
+//    var assemblies = new List<Assembly> { GetType().Assembly };
+//    var references = Provider.Input.References;
+//    foreach (var reference in references)
+//    {
+//        var assemblyName = reference.Assembly.ToUpperInvariant();
+//        var hasExtension = assemblyName.EndsWith(".DLL");
+//        if (!hasExtension)
+//        {
+//            assemblyName = string.Concat(assemblyName, ".DLL");
+//        }
+
+//        var assemblyRelativePath = reference.Path;
+//        var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
+//        var qualifiedAssemblyPathParsed = Provider.Input.Model.ParseRelativeFilePath(qualifiedAssemblyPath);
+//        var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
+//        assemblies.Add(assembly);
+//    }
+
+//    object returnValue;
+//    var targetValue = value.Replace("{", string.Empty).Replace("}", string.Empty).Trim();
+//    var bindParts = targetValue.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+//    var qualifiedFunctionName = bindParts[1].Trim();
+
+//    string functionName;
+//    var classType = GetType();
+//    var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+//    if (qualifiedFunctionParts.Count() == 1)
+//    {
+//        functionName = qualifiedFunctionParts[0].Trim();
+//    }
+//    else
+//    {
+//        var className = qualifiedFunctionParts[0].Trim();
+//        functionName = qualifiedFunctionParts[1].Trim();
+//        var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
+//        var assemblyTypes = casm.GetExportedTypes();
+//        classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
+//    }
+
+//    var instanceMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Instance);
+//    if (instanceMethodInfo != null)
+//    {
+//        returnValue = instanceMethodInfo.Invoke(this, null);
+//    }
+//    else
+//    {
+//        var staticMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Static);
+//        if (staticMethodInfo != null)
+//        {
+//            returnValue = staticMethodInfo.Invoke(null, null);
+//        }
+//        else
+//        {
+//            var instancePropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Instance);
+//            if (instancePropertyInfo != null)
+//            {
+//                var instancePropertyGetMethod = instancePropertyInfo.GetGetMethod(true);
+//                returnValue = instancePropertyGetMethod.Invoke(this, null);
+//            }
+//            else
+//            {
+//                var staticPropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+//                var staticPropertyGetMethod = staticPropertyInfo.GetGetMethod(true);
+//                returnValue = staticPropertyGetMethod.Invoke(null, null);
+//            }
+//        }
+//    }
+
+//    return returnValue; //.ToString();
+//}
+//#endregion

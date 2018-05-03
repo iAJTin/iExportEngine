@@ -151,13 +151,13 @@ namespace iTin.Export.Model
         [XmlAttribute]
         public string Name
         {
-            get => GetValueByReflection(_name);
+            get => GetStaticBindingValue(_name);
             set
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var linked = RegularExpressionHelper.IsStaticBindingResource(value);
-                if (!linked)
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
+                if (!isBinded)
                 {
                     SentinelHelper.IsFalse(RegularExpressionHelper.IsValidFieldName(value), new InvalidFieldIdentifierNameException(ErrorMessageHelper.FieldIdentifierNameErrorMessage("Field", "Name", value)));                        
                 }

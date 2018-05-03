@@ -23,31 +23,17 @@ namespace iTin.Export.Model
     public class BaseModel<T>
     {
         #region private constants
-        private const string DefaultClassName = "BaseWriter";
+        private const string DefaultClassName = "BuiltInFunctions";
         #endregion
 
-        #region private static field memebrs
+        #region private static memebrs
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static XmlSerializer _serializer;
         #endregion
 
-        #region private field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private PropertiesModel _properties;
-        #endregion
-
-        #region constructor/s
-
-        #region [protected] BaseModel(): Initializes a new instance of the class.
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.BaseModel{T}"/> class.
-        /// </summary>
-        public BaseModel()
-        {
-            //ModelService.Instance.Add(this);
-        }
-        #endregion
-
         #endregion
 
         #region public properties
@@ -98,17 +84,240 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region private static properties
+        #region public virtual methods
 
-        #region [private] {static} (XmlSerializer) Serializer: Gets the serializer reference
+        #region [public] {virtual} (void) SaveToFile(string): Serializes current BaseModel object into an Xml document
         /// <summary>
-        /// Gets the serializer reference.
+        /// Saves to file.
         /// </summary>
-        /// <value>
-        /// Serializer reference.
-        /// </value>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private static XmlSerializer Serializer => _serializer ?? (_serializer = new XmlSerializer(typeof(T)));
+        /// <param name="fileName">Name of the file.</param>
+        public virtual void SaveToFile(string fileName)
+        {
+            SentinelHelper.ArgumentNull(fileName);
+            
+            try
+            {
+                var xmlString = Serialize();
+                xmlString =
+                    xmlString
+                        .Replace("<References />", string.Empty)
+                        .Replace("<Properties />", string.Empty)
+                        .Replace("<Font />", string.Empty)
+                        .Replace("<Text />", string.Empty)
+                        .Replace("<Lines />", string.Empty)
+                        .Replace("<Images />", string.Empty)
+                        .Replace("<Margins />", string.Empty)
+                        .Replace("<Alignment />", string.Empty)
+                        .Replace("<Fixed />", string.Empty)
+                        .Replace("<Styles />", string.Empty)
+                        .Replace("<Groups />", string.Empty)
+                        .Replace("<Negative />", string.Empty)
+                        .Replace("<Pattern />", string.Empty)
+                        .Replace("<Borders />", string.Empty)
+                        .Replace("<Filter />", string.Empty)
+                        .Replace("<BlockLines />", string.Empty)
+                        .Replace("<Header />", string.Empty)
+                        .Replace("<Headers />", string.Empty)
+                        .Replace("<Footer />", string.Empty)
+                        .Replace("<Charts />", string.Empty)
+                        .Replace("<Plots />", string.Empty)
+                        .Replace("<Series />", string.Empty)
+                        .Replace("<Behaviors />", string.Empty)
+                        .Replace("<Aggregate />", string.Empty);
+                var xmlFile = new FileInfo(fileName);
+                using (var stream = xmlFile.CreateText())
+                {
+                    stream.Write(xmlString);
+                    stream.Flush();
+                }
+            }
+            catch
+            {
+                // re-throw
+                throw;
+            }
+        }
+        #endregion
+
+        #region [public] {virtual} (bool) SaveToFile(string, out Exception): Serializes current BaseModel object into file
+        /// <summary>
+        /// Serializes current BaseModel object into file
+        /// </summary>
+        /// <param name="fileName">Full path of output Xml file</param>
+        /// <param name="exception">Output Exception value if failed</param>
+        /// <returns>
+        /// <strong>true</strong> if can serialize and save into file; otherwise, <strong>false</strong>.
+        /// </returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "1#")]
+        public virtual bool SaveToFile(string fileName, out Exception exception)
+        {
+            SentinelHelper.ArgumentNull(fileName);
+            
+            exception = null;
+
+            try
+            {
+                SaveToFile(fileName);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+                return false;
+            }
+        }
+        #endregion
+
+        #region [public] {virtual} (string) Serialize(): Serializes current BaseModel object into an Xml document
+        /// <summary>
+        /// Serializes current BaseModel object into an Xml document.
+        /// </summary>
+        /// <returns>
+        /// string Xml value.
+        /// </returns>
+        public virtual string Serialize()
+        {
+            MemoryStream stream = null;
+            try
+            {
+                string xml;
+                stream = new MemoryStream();
+
+                Serializer.Serialize(stream, this);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                using (var streamReader = new StreamReader(stream))
+                {
+                    stream = null;
+                    xml = streamReader.ReadToEnd();
+                }
+
+                return xml;
+            }
+            finally
+            {
+                stream?.Dispose();
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region public overrides methods
+
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that represents the current object.
+        /// </returns>
+        public override string ToString()
+        {
+            return !IsDefault 
+                ? "Modified" 
+                : "Default";
+        }
+
+        #endregion
+
+        #endregion
+
+        #region protected virtual methods
+
+        #region [protected] {virtual} (string) GetStaticBindingValue(string): Gets the static binding value by reflection
+        /// <summary>
+        /// Gets the static binding value by reflection.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that contains property, method or raw value.
+        /// </returns>
+        protected virtual string GetStaticBindingValue(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
+            if (!isBinded)
+            {
+                return value;
+            }
+
+            var assemblies = new List<Assembly> { GetType().Assembly };
+            //var references = ModelService.Instance.References;
+            //foreach (var reference in references)
+            //{
+            //    var assemblyName = reference.Assembly.ToUpperInvariant();
+            //    var hasExtension = assemblyName.EndsWith(".DLL");
+            //    if (!hasExtension)
+            //    {
+            //        assemblyName = string.Concat(assemblyName, ".DLL");
+            //    }
+
+            //    var assemblyRelativePath = reference.Path;
+            //    var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
+            //    var qualifiedAssemblyPathParsed = PathHelper.GetRelativeFilePathParsed(qualifiedAssemblyPath, root);
+            //    var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
+            //    assemblies.Add(assembly);
+            //}
+
+            object returnValue;
+            var targetValue = value.Replace("{", string.Empty).Replace("}", string.Empty).Trim();
+            var bindParts = targetValue.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+            var qualifiedFunctionName = bindParts[1].Trim();
+
+            string className;
+            string functionName;
+            var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            if (qualifiedFunctionParts.Length == 1)
+            {
+                className = DefaultClassName;
+                functionName = qualifiedFunctionParts[0].Trim();
+            }
+            else
+            {
+                className = qualifiedFunctionParts[0].Trim();
+                functionName = qualifiedFunctionParts[1].Trim();
+            }
+
+            var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
+            var assemblyTypes = casm.GetExportedTypes();
+            var classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
+
+            var instanceMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Instance);
+            if (instanceMethodInfo != null)
+            {
+                returnValue = instanceMethodInfo.Invoke(this, null);
+            }
+            else
+            {
+                var staticMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Static);
+                if (staticMethodInfo != null)
+                {
+                    returnValue = staticMethodInfo.Invoke(null, null);
+                }
+                else
+                {
+                    var instancePropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Instance);
+                    if (instancePropertyInfo != null)
+                    {
+                        var instancePropertyGetMethod = instancePropertyInfo.GetGetMethod(true);
+                        returnValue = instancePropertyGetMethod.Invoke(this, null);
+                    }
+                    else
+                    {
+                        var staticPropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                        var staticPropertyGetMethod = staticPropertyInfo.GetGetMethod(true);
+                        returnValue = staticPropertyGetMethod.Invoke(null, null);
+                    }
+                }
+            }
+
+            return returnValue.ToString();
+        }
         #endregion
 
         #endregion
@@ -309,238 +518,19 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region public virtual methods
+        #region private static properties
 
-        #region [public] {virtual} (void) SaveToFile(string): Serializes current BaseModel object into an Xml document
+        #region [private] {static} (XmlSerializer) Serializer: Gets the serializer reference
         /// <summary>
-        /// Saves to file.
+        /// Gets the serializer reference.
         /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        public virtual void SaveToFile(string fileName)
-        {
-            SentinelHelper.ArgumentNull(fileName);
-            
-            try
-            {
-                var xmlString = Serialize();
-                xmlString =
-                    xmlString
-                        .Replace("<References />", string.Empty)
-                        .Replace("<Properties />", string.Empty)
-                        .Replace("<Font />", string.Empty)
-                        .Replace("<Text />", string.Empty)
-                        .Replace("<Lines />", string.Empty)
-                        .Replace("<Images />", string.Empty)
-                        .Replace("<Margins />", string.Empty)
-                        .Replace("<Alignment />", string.Empty)
-                        .Replace("<Fixed />", string.Empty)
-                        .Replace("<Styles />", string.Empty)
-                        .Replace("<Groups />", string.Empty)
-                        .Replace("<Negative />", string.Empty)
-                        .Replace("<Pattern />", string.Empty)
-                        .Replace("<Borders />", string.Empty)
-                        .Replace("<Filter />", string.Empty)
-                        .Replace("<BlockLines />", string.Empty)
-                        .Replace("<Header />", string.Empty)
-                        .Replace("<Headers />", string.Empty)
-                        .Replace("<Footer />", string.Empty)
-                        .Replace("<Charts />", string.Empty)
-                        .Replace("<Plots />", string.Empty)
-                        .Replace("<Series />", string.Empty)
-                        .Replace("<Behaviors />", string.Empty)
-                        .Replace("<Aggregate />", string.Empty);
-                var xmlFile = new FileInfo(fileName);
-                using (var stream = xmlFile.CreateText())
-                {
-                    stream.Write(xmlString);
-                    stream.Flush();
-                }
-            }
-            catch
-            {
-                // re-throw
-                throw;
-            }
-        }
+        /// <value>
+        /// Serializer reference.
+        /// </value>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private static XmlSerializer Serializer => _serializer ?? (_serializer = new XmlSerializer(typeof(T)));
         #endregion
 
-        #region [public] {virtual} (bool) SaveToFile(string, out Exception): Serializes current BaseModel object into file
-        /// <summary>
-        /// Serializes current BaseModel object into file
-        /// </summary>
-        /// <param name="fileName">Full path of output Xml file</param>
-        /// <param name="exception">Output Exception value if failed</param>
-        /// <returns>
-        /// <strong>true</strong> if can serialize and save into file; otherwise, <strong>false</strong>.
-        /// </returns>
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "1#")]
-        public virtual bool SaveToFile(string fileName, out Exception exception)
-        {
-            SentinelHelper.ArgumentNull(fileName);
-            
-            exception = null;
-
-            try
-            {
-                SaveToFile(fileName);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                exception = ex;
-                return false;
-            }
-        }
-        #endregion
-
-        #region [public] {virtual} (string) Serialize(): Serializes current BaseModel object into an Xml document
-        /// <summary>
-        /// Serializes current BaseModel object into an Xml document.
-        /// </summary>
-        /// <returns>
-        /// string Xml value.
-        /// </returns>
-        public virtual string Serialize()
-        {
-            MemoryStream stream = null;
-            try
-            {
-                string xml;
-                stream = new MemoryStream();
-
-                Serializer.Serialize(stream, this);
-                stream.Seek(0, SeekOrigin.Begin);
-
-                using (var streamReader = new StreamReader(stream))
-                {
-                    stream = null;
-                    xml = streamReader.ReadToEnd();
-                }
-
-                return xml;
-            }
-            finally
-            {
-                stream?.Dispose();
-            }
-        }
-        #endregion
-
-        #endregion
-
-        #region public overrides methods
-
-        #region [public] {override} (string) ToString(): Returns a string that represents the current object
-        /// <summary>
-        /// Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="T:System.String" /> that represents the current object.
-        /// </returns>
-        public override string ToString()
-        {
-            return !IsDefault 
-                ? "Modified" 
-                : "Default";
-        }
-
-        #endregion
-
-        #endregion
-
-        #region [protected] {virtual} (string) GetValueByReflection(string): Gets the value by reflection
-        /// <summary>
-        /// Gets the value by reflection.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        /// A <see cref="T:System.String" /> that contains property, method or raw value.
-        /// </returns>
-        protected virtual string GetValueByReflection(string value) //(ExportsModel root, string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return string.Empty;
-            }
-
-            var linked = RegularExpressionHelper.IsStaticBindingResource(value);
-            if (!linked)
-            {
-                return value;
-            }
-
-            var assemblies = new List<Assembly> { GetType().Assembly };
-            //var references = ModelService.Instance.References;
-            //foreach (var reference in references)
-            //{
-            //    var assemblyName = reference.Assembly.ToUpperInvariant();
-            //    var hasExtension = assemblyName.EndsWith(".DLL");
-            //    if (!hasExtension)
-            //    {
-            //        assemblyName = string.Concat(assemblyName, ".DLL");
-            //    }
-
-            //    var assemblyRelativePath = reference.Path;
-            //    var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
-            //    var qualifiedAssemblyPathParsed = PathHelper.GetRelativeFilePathParsed(qualifiedAssemblyPath, root);
-            //    var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
-            //    assemblies.Add(assembly);
-            //}
-
-            object returnValue;
-            var targetValue = value.Replace("{", string.Empty).Replace("}", string.Empty).Trim();
-            var bindParts = targetValue.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-            var qualifiedFunctionName = bindParts[1].Trim();
-
-            string className;
-            string functionName;
-            var qualifiedFunctionParts = qualifiedFunctionName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            if (qualifiedFunctionParts.Length == 1)
-            {
-                className = DefaultClassName;
-                functionName = qualifiedFunctionParts[0].Trim();
-            }
-            else
-            {
-                className = qualifiedFunctionParts[0].Trim();
-                functionName = qualifiedFunctionParts[1].Trim();
-            }
-
-            var casm = assemblies.Count == 1 ? assemblies.First() : assemblies.Last();
-            var assemblyTypes = casm.GetExportedTypes();
-            var classType = assemblyTypes.FirstOrDefault(cls => cls.Name == className);
-
-            var instanceMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Instance);
-            if (instanceMethodInfo != null)
-            {
-                returnValue = instanceMethodInfo.Invoke(this, null);
-            }
-            else
-            {
-                var staticMethodInfo = classType.GetMethod(functionName, BindingFlags.Public | BindingFlags.Static);
-                if (staticMethodInfo != null)
-                {
-                    returnValue = staticMethodInfo.Invoke(null, null);
-                }
-                else
-                {
-                    var instancePropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Instance);
-                    if (instancePropertyInfo != null)
-                    {
-                        var instancePropertyGetMethod = instancePropertyInfo.GetGetMethod(true);
-                        returnValue = instancePropertyGetMethod.Invoke(this, null);
-                    }
-                    else
-                    {
-                        var staticPropertyInfo = classType.GetProperty(functionName, BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-                        var staticPropertyGetMethod = staticPropertyInfo.GetGetMethod(true);
-                        returnValue = staticPropertyGetMethod.Invoke(null, null);
-                    }
-                }
-            }
-
-            return returnValue.ToString();
-        }
         #endregion
     }
 }
