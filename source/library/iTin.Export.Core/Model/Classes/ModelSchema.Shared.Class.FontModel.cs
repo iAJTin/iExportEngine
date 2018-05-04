@@ -1,4 +1,6 @@
 
+using System.Globalization;
+
 namespace iTin.Export.Model
 {
     using System;
@@ -11,6 +13,8 @@ namespace iTin.Export.Model
 
     using Drawing.Helper;
     using Helpers;
+
+    using NativeDrawing = System.Drawing;
 
     /// <summary>
     /// Represents a font. Defines a particular format for text, including font face, size, and style attributes.
@@ -28,38 +32,45 @@ namespace iTin.Export.Model
     ///       <th>Attribute</th>
     ///       <th>Optional</th>
     ///       <th>Description</th>
+    ///       <th>Default</th>
     ///       </tr>
     ///   </thead>
     ///   <tbody>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FontModel.Name" /></td>
+    ///       <td>Name</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred font name. The default is "<c>Segoe UI</c>".</td>
+    ///       <td>Preferred font name.</td>
+    ///       <td>The default is <c>Segoe UI</c></td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FontModel.Size" /></td>
+    ///       <td>Size</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred font size. The default is <c>10.0</c>.</td>
+    ///       <td>Preferred font size.</td>
+    ///       <td>The default is <c>10.0</c></td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FontModel.Color" /></td>
+    ///       <td>Color</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred font color. The default is "<c>Black</c>".</td>
+    ///       <td>Preferred font color.</td>
+    ///       <td>The default is <c>Black</c></td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FontModel.Bold" /></td>
+    ///       <td>Bold</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether bold style is applied for this font. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines whether bold style is applied for this font.</td>
+    ///       <td>The default is <c>No</c></td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FontModel.Italic" /></td>
+    ///       <td>Italic</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether italic style is applied for this font. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines whether italic style is applied for this font.</td>
+    ///       <td>The default is <c>No</c></td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FontModel.Underline" /></td>
+    ///       <td>Underline</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines whether the underline style is applied for this font. The default is <see cref="iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines whether the underline style is applied for this font.</td>
+    ///       <td>The default is <c>No</c></td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -68,10 +79,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -83,7 +94,7 @@ namespace iTin.Export.Model
     ///     </tr>
     ///   </tbody>
     /// </table>
-    /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+    /// A <c><b>X</b></c> value indicates that the writer supports this element.
     /// </para>
     /// </remarks>
     public partial class FontModel : ICloneable
@@ -108,7 +119,10 @@ namespace iTin.Export.Model
         private const YesNo DefaultFontUnderline = YesNo.No;
         #endregion
 
-        #region field members
+        #region private members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _color;
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private float _size;
 
@@ -165,33 +179,33 @@ namespace iTin.Export.Model
         /// Gets or sets preferred font name.
         /// </summary>
         /// <value>
-        /// Preferred font name. If specified a font name not existent be use the default font. The default is "<c>Segoe UI</c>".
+        /// Preferred font name. If specified a font name not existent be use the default font. The default is <c>Segoe UI</c>.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Name="string" .../&gt;
+        /// &lt;Font Name="[string] | [{StaticResource:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
         ///     <tr>
-        ///       <td align="center">X</td>
-        ///       <td align="center">X</td>
-        ///       <td align="center">X</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
         ///       <td align="center">X</td>
         ///     </tr>
         ///   </tbody>
         /// </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// A <c><b>X</b></c> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
         /// <example>
@@ -200,22 +214,22 @@ namespace iTin.Export.Model
         /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
         /// </code>
         /// <code lang="cs">
-        /// FontModel font = new FontModel
-        ///                      {
-        ///                          Name = "Tahoma",
-        ///                          Color = "Navy",
-        ///                          Size = 8,
-        ///                          Bold = YesNo.Yes,
-        ///                          Italic = YesNo.Yes,
-        ///                          Underline = YesNo.No
-        ///                      };
+        /// var font = new FontModel
+        /// {
+        ///     Name = "Tahoma",
+        ///     Color = "Navy",
+        ///     Size = 8,
+        ///     Bold = YesNo.Yes,
+        ///     Italic = YesNo.Yes,
+        ///     Underline = YesNo.No
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultFontName)]
         public string Name
         {
-            get => _name;
+            get => GetStaticBindingValue(_name);
             set
             {
                 var isValidName = false;
@@ -244,17 +258,17 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Size="int" .../&gt;
+        /// &lt;Font Size="[float] | [{StaticResource:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -275,22 +289,22 @@ namespace iTin.Export.Model
         /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
         /// </code>
         /// <code lang="cs">
-        /// FontModel font = new FontModel
-        ///                      {
-        ///                          Name = "Tahoma",
-        ///                          Color = "Navy",
-        ///                          Size = 8,
-        ///                          Bold = YesNo.Yes,
-        ///                          Italic = YesNo.Yes,
-        ///                          Underline = YesNo.No
-        ///                      };
+        /// var font = new FontModel
+        /// {
+        ///     Name = "Tahoma",
+        ///     Color = "Navy",
+        ///     Size = 8,
+        ///     Bold = YesNo.Yes,
+        ///     Italic = YesNo.Yes,
+        ///     Underline = YesNo.No
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultFontSize)]
         public float Size
         {
-            get => _size;
+            get => float.Parse(GetStaticBindingValue($"{_size}"));
             set
             {
                 SentinelHelper.ArgumentLessThan("value", value, 0.0f);
@@ -305,21 +319,21 @@ namespace iTin.Export.Model
         /// Gets or sets preferred font color.
         /// </summary>
         /// <value>
-        /// Preferred font color. The default is "<c>Black</c>".
+        /// Preferred font color. The default is <c>Black</c>.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Color="string" .../&gt;
+        /// &lt;Font Color="string] | [{StaticResource:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -340,20 +354,47 @@ namespace iTin.Export.Model
         /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
         /// </code>
         /// <code lang="cs">
-        /// FontModel font = new FontModel
-        ///                      {
-        ///                          Name = "Tahoma",
-        ///                          Color = "Navy",
-        ///                          Size = 8,
-        ///                          Bold = YesNo.Yes,
-        ///                          Italic = YesNo.Yes,
-        ///                          Underline = YesNo.No
-        ///                      };
+        /// var font = new FontModel
+        /// {
+        ///     Name = "Tahoma",
+        ///     Color = "Navy",
+        ///     Size = 8,
+        ///     Bold = YesNo.Yes,
+        ///     Italic = YesNo.Yes,
+        ///     Underline = YesNo.No
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultFontColor)]
-        public string Color { get; set; }
+        public string Color
+        {
+            get => GetStaticBindingValue(_color);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
+                if (!isBinded)
+                {
+                    _color = value;
+                }
+                else
+                {
+                    try
+                    {
+                        var test = ColorHelper.GetColorFromString(value);
+                        _color = test == NativeDrawing.Color.Empty
+                            ? DefaultFontColor
+                            : value;
+                    }
+                    catch
+                    {
+                        _color = DefaultFontColor;
+                    }
+                }
+            }
+        }
         #endregion
 
         #region [public] (YesNo) Bold: Gets or sets a value indicating whether bold style is applied for this font
@@ -361,21 +402,21 @@ namespace iTin.Export.Model
         /// Gets or sets a value indicating whether bold style is applied for this font.
         /// </summary>
         /// <value>
-        /// <see cref="iTin.Export.Model.YesNo.Yes" /> if bold style is applied for this font; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
+        /// <see cref="T:iTin.Export.Model.YesNo.Yes" /> if bold style is applied for this font; otherwise, <see cref="T:iTin.Export.Model.YesNo.No" />. The default is <c>No</c>.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Bold="Yes|No" .../&gt;
+        /// &lt;Font Bold="[Yes|No] | [{StaticResource:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -396,27 +437,44 @@ namespace iTin.Export.Model
         /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
         /// </code>
         /// <code lang="cs">
-        /// FontModel font = new FontModel
-        ///                      {
-        ///                          Name = "Tahoma",
-        ///                          Color = "Navy",
-        ///                          Size = 8,
-        ///                          Bold = YesNo.Yes,
-        ///                          Italic = YesNo.Yes,
-        ///                          Underline = YesNo.No
-        ///                      };
+        /// var font = new FontModel
+        /// {
+        ///     Name = "Tahoma",
+        ///     Color = "Navy",
+        ///     Size = 8,
+        ///     Bold = YesNo.Yes,
+        ///     Italic = YesNo.Yes,
+        ///     Underline = YesNo.No
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultFontBold)]
         public YesNo Bold
         {
-            get => _bold;
+            get => GetStaticBindingValue(_bold.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                SentinelHelper.IsEnumValid(value);
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
+                if (!isBinded)
+                {
+                    SentinelHelper.IsEnumValid(value);
 
-                _bold = value;
+                    _bold = value;
+                }
+                else
+                {
+                    if (value.ToString() != "no" || value.ToString() != "yes")
+                    {
+                        _bold = DefaultFontBold;
+                    }
+                    else
+                    {
+                        _bold = value.ToString() == "no"
+                            ? YesNo.No
+                            : YesNo.Yes;
+                    }
+                }
             }
         }
         #endregion
@@ -426,21 +484,21 @@ namespace iTin.Export.Model
         /// Gets or sets a value indicating whether italic style is applied for this font.
         /// </summary>
         /// <value>
-        /// <see cref="iTin.Export.Model.YesNo.Yes" /> if italic style is applied for this font; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.No" />.
+        /// <see cref="T:iTin.Export.Model.YesNo.Yes" /> if italic style is applied for this font; otherwise, <see cref="T:iTin.Export.Model.YesNo.No" />. The default is <c>No</c>.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Italic="Yes|No" .../&gt;
+        /// &lt;Font Italic="[Yes|No] | [{StaticResource:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -461,27 +519,44 @@ namespace iTin.Export.Model
         /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
         /// </code>
         /// <code lang="cs">
-        /// FontModel font = new FontModel
-        ///                      {
-        ///                          Name = "Tahoma",
-        ///                          Color = "Navy",
-        ///                          Size = 8,
-        ///                          Bold = YesNo.Yes,
-        ///                          Italic = YesNo.Yes,
-        ///                          Underline = YesNo.No
-        ///                      };
+        /// var font = new FontModel
+        /// {
+        ///     Name = "Tahoma",
+        ///     Color = "Navy",
+        ///     Size = 8,
+        ///     Bold = YesNo.Yes,
+        ///     Italic = YesNo.Yes,
+        ///     Underline = YesNo.No
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultFontItalic)]
         public YesNo Italic
         {
-            get => _italic;
+            get => GetStaticBindingValue(_italic.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                SentinelHelper.IsEnumValid(value);
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
+                if (!isBinded)
+                {
+                    SentinelHelper.IsEnumValid(value);
 
-                _italic = value;
+                    _italic = value;
+                }
+                else
+                {
+                    if (value.ToString() != "no" || value.ToString() != "yes")
+                    {
+                        _italic = DefaultFontItalic;
+                    }
+                    else
+                    {
+                        _italic = value.ToString() == "no"
+                            ? YesNo.No
+                            : YesNo.Yes;
+                    }
+                }
             }
         }
         #endregion
@@ -495,7 +570,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Underline="Yes|No" .../&gt;
+        /// &lt;Font Underline="[Yes|No] | [{StaticResource:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -541,15 +616,32 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultFontUnderline)]
         public YesNo Underline
         {
-            get => _underline;
+            get => GetStaticBindingValue(_underline.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                SentinelHelper.IsEnumValid(value);
+                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
+                if (!isBinded)
+                {
+                    SentinelHelper.IsEnumValid(value);
 
-                _underline = value;
+                    _underline = value;
+                }
+                else
+                {
+                    if (value.ToString() != "no" || value.ToString() != "yes")
+                    {
+                        _underline = DefaultFontUnderline;
+                    }
+                    else
+                    {
+                        _underline = value.ToString() == "no"
+                            ? YesNo.No
+                            : YesNo.Yes;
+                    }
+                }
             }
         }
-        #endregion 
+        #endregion
 
         #region [public] (FontStyle) FontStyle: Gets a value that represents the different styles defined for this font
         /// <summary>
@@ -577,6 +669,7 @@ namespace iTin.Export.Model
                 {
                     fontStyles = fontStyles | FontStyle.Underline;
                 }
+
                 return fontStyles;
             }
         }

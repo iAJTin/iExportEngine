@@ -22,7 +22,7 @@
         <Content Color="Navy">
           <Text/>
         </Content>
-        <Font Color="White" Bold="Yes"/>
+        <Font Color="White" Bold="Yes"/>        
       </Style>
       <Style Name="ValueTextStyle">
         <Content>

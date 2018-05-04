@@ -33,18 +33,21 @@ namespace iTin.Export.Model
     ///       <th>Attribute</th>
     ///       <th>Optional</th>
     ///       <th>Description</th>
+    ///       <th>Default</th>
     ///       </tr>
     ///   </thead>
     ///   <tbody>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ContentModel.AlternateColor"/></td>
+    ///       <td>AlternateColor</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Alternative color preferred of content. The default is "<c>Transparent</c>".</td>
+    ///       <td>Alternative color preferred of content.</td>
+    ///       <td>The default is <c>Transparent</c></td>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ContentModel.Color"/></td>
+    ///       <td>Color</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Preferred content color. The default is "<c>Transparent</c>".</td>
+    ///       <td>Preferred content color.</td>
+    ///       <td>The default is <c>Transparent</c></td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -55,19 +58,19 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Alignment"/></term> 
+    ///     <term>Alignment</term> 
     ///     <description>Reference to content distribution.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ContentModel.DataType"/></term> 
+    ///     <term>DataType</term> 
     ///     <description>Reference to content data type.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Pattern"/></term> 
+    ///     <term>Pattern</term> 
     ///     <description>Reference to fill pattern</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Properties"/></term> 
+    ///     <term>Properties</term> 
     ///     <description>Reference to custom properties dictionary</description>
     ///   </item>
     /// </list>
@@ -76,10 +79,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
-    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
-    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
-    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Native.Spreadsheet2003TabularWriter"/></th>
+    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Native.Spreadsheet2003TabularWriter"/></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -91,7 +94,7 @@ namespace iTin.Export.Model
     ///     </tr>
     ///   </tbody>
     /// </table>
-    /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+    /// A <c><b>X</b></c> value indicates that the writer supports this element.
     /// </para>
     /// </remarks>
     public partial class ContentModel : ICloneable
@@ -157,13 +160,13 @@ namespace iTin.Export.Model
         /// Gets or sets alternative color preferred of content.
         /// </summary>
         /// <value>
-        /// Alternate color preferred. The default is "<c>Transparent</c>".
+        /// Alternate color preferred. The default is <c>Transparent</c>.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Content AlternateColor="string"&gt;
-        /// ...
-        /// ...
+        ///   ...
+        ///   ...
         /// &lt;/Content&gt;
         /// </code>
         /// <para>
@@ -192,19 +195,19 @@ namespace iTin.Export.Model
         /// <example>
         /// In the following example shows how create a new content.
         /// <code lang="xml">
-        /// &lt;Content Color="Red" Color="DarkBlue"&gt;
+        /// &lt;Content AlternateColor="Red" Color="DarkBlue"&gt;
         ///   &lt;Alignment Horizontal="Left"/&gt;
         ///   &lt;Text/&gt;
         /// &lt;/Content&gt;
         /// </code>
         /// <code lang="cs">
-        /// ContentModel content = new ContentModel
-        ///     {
-        ///         AlternateColor = "Red", 
-        ///         Color = "DarkBlue",
-        ///         DataType = new TextDataTypeModel(),
-        ///         Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        ///     };
+        /// var content = new ContentModel
+        /// {
+        ///     AlternateColor = "Red", 
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -216,25 +219,27 @@ namespace iTin.Export.Model
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
-                if (!isBinded)
-                {
-                    _alternateColor = value;
-                }
-                else
-                {
-                    try
-                    {
-                        var test = ColorHelper.GetColorFromString(value);
-                        _alternateColor = test == NativeDrawing.Color.Empty
-                            ? DefaultColor
-                            : value;
-                    }
-                    catch
-                    {
-                        _alternateColor = DefaultColor;
-                    }
-                }
+                _alternateColor = value;
+
+                //var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
+                //if (!isBinded)
+                //{
+                //    _alternateColor = value;
+                //}
+                //else
+                //{
+                //    try
+                //    {
+                //        var test = ColorHelper.GetColorFromString(value);
+                //        _alternateColor = test == NativeDrawing.Color.Empty
+                //            ? DefaultColor
+                //            : value;
+                //    }
+                //    catch
+                //    {
+                //        _alternateColor = DefaultColor;
+                //    }
+                //}
             }
         }
         #endregion
@@ -244,13 +249,13 @@ namespace iTin.Export.Model
         /// Gets or sets color preferred of content.
         /// </summary>
         /// <value>
-        /// Preferred content color. The default is "<c>Transparent</c>".
+        /// Preferred content color. The default is <c>Transparent</c>.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
         /// &lt;Content Color="string"&gt;
-        /// ...
-        /// ...
+        ///   ...
+        ///   ...
         /// &lt;/Content&gt;
         /// </code>
         /// <para>
@@ -285,12 +290,12 @@ namespace iTin.Export.Model
         /// &lt;/Content&gt;
         /// </code>
         /// <code lang="cs">
-        /// ContentModel content = new ContentModel
-        ///     {
-        ///         Color = "DarkBlue",
-        ///         DataType = new TextDataTypeModel(),
-        ///         Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        ///     };
+        /// var content = new ContentModel
+        /// {
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        /// };
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -371,12 +376,12 @@ namespace iTin.Export.Model
         /// &lt;/Content&gt;
         /// </code>
         /// <code lang="cs">
-        /// ContentModel content = new ContentModel
-        ///                            {
-        ///                                Color = "DarkBlue",
-        ///                                DataType = new TextDataTypeModel(),
-        ///                                Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        ///                            };
+        /// var content = new ContentModel
+        /// {
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        /// };
         /// </code>
         /// </example>
         public ContentAlignmentModel Alignment
@@ -443,12 +448,12 @@ namespace iTin.Export.Model
         /// &lt;/Content&gt;
         /// </code>
         /// <code lang="cs">
-        /// ContentModel content = new ContentModel
-        ///                            {
-        ///                                Color = "DarkBlue",
-        ///                                DataType = new TextDataTypeModel(),
-        ///                                Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        ///                            };
+        /// var content = new ContentModel
+        /// {
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        /// };
         /// </code>
         /// <para>In the following example shows how create a new currency content.</para>
         /// <code lang="xml">
@@ -460,25 +465,25 @@ namespace iTin.Export.Model
         /// &lt;/Content&gt;
         /// </code>
         /// <code lang="cs">
-        /// ContentModel content = new ContentModel
-        ///                            {
-        ///                                Color = "Beige",
-        ///                                Alignment = new ContentAlignmentModel
-        ///                                                { 
-        ///                                                    Horizontal = KnownHorizontalAlignment.Right,
-        ///                                                    Vertical = KnownVerticalAlignment.Bottom
-        ///                                                },
-        ///                                DataType = new CurrencyDataTypeModel
-        ///                                               {
-        ///                                                   Decimals = 1,
-        ///                                                   Locale = KnownCulture.mk,
-        ///                                                   Negative = new NegativeModel
-        ///                                                                  {
-        ///                                                                      Color = KnownBasicColor.Red, 
-        ///                                                                      Sign = KnownNegativeSign.Parenthesis
-        ///                                                                  }
-        ///                                               }
-        ///                            };
+        /// var content = new ContentModel
+        /// {
+        ///     Color = "Beige",
+        ///     Alignment = new ContentAlignmentModel
+        ///     { 
+        ///         Horizontal = KnownHorizontalAlignment.Right,
+        ///         Vertical = KnownVerticalAlignment.Bottom
+        ///     },
+        ///     DataType = new CurrencyDataTypeModel
+        ///     {
+        ///         Decimals = 1,
+        ///         Locale = KnownCulture.mk,
+        ///         Negative = new NegativeModel
+        ///         {
+        ///             Color = KnownBasicColor.Red, 
+        ///             Sign = KnownNegativeSign.Parenthesis
+        ///         }
+        ///     }
+        /// };
         /// </code>
         /// </example>
         [XmlElement("Currency", typeof(CurrencyDataTypeModel))]

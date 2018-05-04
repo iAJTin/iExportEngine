@@ -9,7 +9,7 @@ namespace iTin.Export.Model
 
     /// <inheritdoc />
     /// <summary>
-    /// Includes the description and data table definition to export. 
+    /// Defines an export, includes the description and data table definition to export. 
     /// </summary>
     /// <remarks>
     /// <para>Belongs to: <strong><c>Exports</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.ExportsModel" />.<br />
@@ -18,6 +18,7 @@ namespace iTin.Export.Model
     ///   &lt;Description/&gt;
     ///   &lt;BlockLines/&gt;
     ///   &lt;Table/&gt;
+    ///   &lt;Properties/&gt;
     /// &lt;/Export&gt;
     /// </code>
     /// </para>
@@ -28,18 +29,21 @@ namespace iTin.Export.Model
     ///       <th>Attribute</th>
     ///       <th>Optional</th>
     ///       <th>Description</th>
+    ///       <th>Default</th>
     ///       </tr>
     ///   </thead>
     ///   <tbody>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ExportModel.Name" /></td>
+    ///       <td>Name</td>
     ///       <td align="center">No</td>
     ///       <td>Name of the export.</td>
+    ///       <td/>
     ///     </tr>
     ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.ExportModel.Current" /></td>
+    ///       <td>Current</td>
     ///       <td align="center">Yes</td>
-    ///       <td>Determines if is the current export. The default is <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
+    ///       <td>Determines if is the current export.</td>
+    ///       <td>The default is <c>No</c></td>
     ///     </tr>
     ///   </tbody>
     /// </table>
@@ -50,16 +54,20 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ExportModel.Description" /></term> 
-    ///     <description>Description of the export.</description>
+    ///     <term>Description</term> 
+    ///     <description>Description of this export.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ExportModel.Host" /></term> 
-    ///     <description>Represents a destination host of export, Allow define document properties.</description>
+    ///     <term>Host</term> 
+    ///     <description>Represents a destination host of export, allow define document properties.</description>
     ///   </item>
     ///   <item>
-    ///     <term><see cref="P:iTin.Export.Model.ExportModel.Table" /></term> 
-    ///     <description>Includes the description of export data table.</description>
+    ///     <term>Table</term> 
+    ///     <description>Represents a data to export.</description>
+    ///   </item>
+    ///   <item>
+    ///     <term>Properties</term> 
+    ///     <description>Reference to custom properties dictionary</description>
     ///   </item>
     /// </list>
     /// <para>
@@ -67,10 +75,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
+    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
+    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
+    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -175,6 +183,7 @@ namespace iTin.Export.Model
                 var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
                 if (!isBinded)
                 {
+                    SentinelHelper.IsEnumValid(value);
                     _current = value;
                 }
                 else
