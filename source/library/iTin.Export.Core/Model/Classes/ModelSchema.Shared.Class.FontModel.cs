@@ -1,6 +1,4 @@
 
-using System.Globalization;
-
 namespace iTin.Export.Model
 {
     using System;
@@ -13,8 +11,6 @@ namespace iTin.Export.Model
 
     using Drawing.Helper;
     using Helpers;
-
-    using NativeDrawing = System.Drawing;
 
     /// <summary>
     /// Represents a font. Defines a particular format for text, including font face, size, and style attributes.
@@ -183,7 +179,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Name="[string] | [{StaticResource:...}]" .../&gt;
+        /// &lt;Font Name="[string] | [{StaticBinding:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -258,7 +254,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Size="[float] | [{StaticResource:...}]" .../&gt;
+        /// &lt;Font Size="[float] | [{StaticBinding:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -323,7 +319,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Color="string] | [{StaticResource:...}]" .../&gt;
+        /// &lt;Font Color="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]" ...&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -374,25 +370,7 @@ namespace iTin.Export.Model
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
-                if (!isBinded)
-                {
-                    _color = value;
-                }
-                else
-                {
-                    try
-                    {
-                        var test = ColorHelper.GetColorFromString(value);
-                        _color = test == NativeDrawing.Color.Empty
-                            ? DefaultFontColor
-                            : value;
-                    }
-                    catch
-                    {
-                        _color = DefaultFontColor;
-                    }
-                }
+                _color = value;
             }
         }
         #endregion
@@ -406,7 +384,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Bold="[Yes|No] | [{StaticResource:...}]" .../&gt;
+        /// &lt;Font Bold="[Yes|No] | [{StaticBinding:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -455,26 +433,9 @@ namespace iTin.Export.Model
             get => GetStaticBindingValue(_bold.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
-                if (!isBinded)
-                {
-                    SentinelHelper.IsEnumValid(value);
+                SentinelHelper.IsEnumValid(value);
 
-                    _bold = value;
-                }
-                else
-                {
-                    if (value.ToString() != "no" || value.ToString() != "yes")
-                    {
-                        _bold = DefaultFontBold;
-                    }
-                    else
-                    {
-                        _bold = value.ToString() == "no"
-                            ? YesNo.No
-                            : YesNo.Yes;
-                    }
-                }
+                _bold = value;
             }
         }
         #endregion
@@ -488,7 +449,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Italic="[Yes|No] | [{StaticResource:...}]" .../&gt;
+        /// &lt;Font Italic="[Yes|No] | [{StaticBinding:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -537,26 +498,9 @@ namespace iTin.Export.Model
             get => GetStaticBindingValue(_italic.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
-                if (!isBinded)
-                {
-                    SentinelHelper.IsEnumValid(value);
+                SentinelHelper.IsEnumValid(value);
 
-                    _italic = value;
-                }
-                else
-                {
-                    if (value.ToString() != "no" || value.ToString() != "yes")
-                    {
-                        _italic = DefaultFontItalic;
-                    }
-                    else
-                    {
-                        _italic = value.ToString() == "no"
-                            ? YesNo.No
-                            : YesNo.Yes;
-                    }
-                }
+                _italic = value;
             }
         }
         #endregion
@@ -570,7 +514,7 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Underline="[Yes|No] | [{StaticResource:...}]" .../&gt;
+        /// &lt;Font Underline="[Yes|No] | [{StaticBinding:...}]" .../&gt;
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -619,26 +563,9 @@ namespace iTin.Export.Model
             get => GetStaticBindingValue(_underline.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
-                if (!isBinded)
-                {
-                    SentinelHelper.IsEnumValid(value);
+                SentinelHelper.IsEnumValid(value);
 
-                    _underline = value;
-                }
-                else
-                {
-                    if (value.ToString() != "no" || value.ToString() != "yes")
-                    {
-                        _underline = DefaultFontUnderline;
-                    }
-                    else
-                    {
-                        _underline = value.ToString() == "no"
-                            ? YesNo.No
-                            : YesNo.Yes;
-                    }
-                }
+                _underline = value;
             }
         }
         #endregion

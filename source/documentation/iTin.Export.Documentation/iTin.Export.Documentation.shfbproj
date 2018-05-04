@@ -19,20 +19,64 @@
     <HtmlHelpName>iTin Export Engine</HtmlHelpName>
     <Language>en-US</Language>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="ASNA.Export.Model" isExposed="True">
-        <Filter entryType="Class" fullName="ASNA.Export.Model.CustomDataTypeModel" filterName="CustomDataTypeModel" isExposed="False" />
-      </Filter>
-    </ApiFilter>
+      <Filter entryType="Namespace" fullName="iTin.Export" isExposed="False">
+  <Filter entryType="Class" fullName="iTin.Export.BuiltInFunctions" filterName="BuiltInFunctions" isExposed="True" />
+  <Filter entryType="Class" fullName="iTin.Export.ExportSettings" filterName="ExportSettings" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="iTin.Export.AspNet" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.AspNet.Cloud" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.AspNet.Cloud.Clients" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.AspNet.ComponentModel" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.Drawing" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.Drawing.ComponentModel" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.Drawing.Helper" isExposed="False" />
+<Filter entryType="Namespace" fullName="iTin.Export.Helpers" isExposed="False" /></ApiFilter>
     <ComponentConfigurations>
-    </ComponentConfigurations>
+      <ComponentConfig id="IntelliSense Component" enabled="True">
+        <component id="IntelliSense Component">
+  <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" boundedCapacity="100" />
+</component>
+      </ComponentConfig>
+<ComponentConfig id="Code Block Component" enabled="True"><component id="Code Block Component">
+  <basePath value="{@HtmlEncProjectFolder}" />
+  <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
+  <allowMissingSource value="false" />
+  <removeRegionMarkers value="false" />
+  <colorizer syntaxFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xml" styleFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}PresentationStyles\Colorizer\highlight.css" scriptFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" tabSize="0" numberLines="true" outlining="true" keepSeeTags="true" defaultTitle="true" />
+</component></ComponentConfig>
+<ComponentConfig id="Reflection Index Data (ESENT Cache)" enabled="True"><component id="Reflection Index Data (ESENT Cache)"><index name="reflection" value="/reflection/apis/api" key="@id" cache="15" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\ReflectionIndexCache" projectCachePath="">
+	<data base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" duplicateWarning="false" groupId="ReflectionIndexCache">
+		{@ReferenceLinkNamespaceFiles}
+	</data>
+	<data files="reflection.xml" groupId="Project_Ref_{@UniqueID}" />
+</index>
+<copy name="reflection" source="*" target="/document/reference" /></component></ComponentConfig>
+<ComponentConfig id="Syntax Component" enabled="True"><component id="Syntax Component"><syntax input="/document/reference" output="/document/syntax" renderReferenceLinks="false" />
+<generators>
+    {@SyntaxFilters}
+</generators>
+<containerElement name="codeSnippetGroup" addNoExampleTabs="true" includeOnSingleSnippets="false" groupingEnabled="{@CodeSnippetGrouping}" /></component></ComponentConfig>
+<ComponentConfig id="Resolve Reference Links (ESENT Cache)" enabled="True"><component id="Resolve Reference Links (ESENT Cache)">{@HRefFormat}
+<locale value="{@Locale}" /><linkTarget value="{@SdkLinkTarget}" /><helpOutput format="HtmlHelp1"><msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" /><targets base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" type="{@HtmlSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+		{@ReferenceLinkNamespaceFiles}
+	</targets><targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" /></helpOutput><helpOutput format="MSHelpViewer"><msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" /><targets base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" type="{@MSHelpViewerSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+		{@ReferenceLinkNamespaceFiles}
+	</targets><targets files="reflection.xml" type="Id" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" /></helpOutput><helpOutput format="Website"><msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" /><targets base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" type="{@WebsiteSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+		{@ReferenceLinkNamespaceFiles}
+	</targets><targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" /></helpOutput><helpOutput format="OpenXml"><msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" /><targets base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" type="{@WebsiteSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+		{@ReferenceLinkNamespaceFiles}
+	</targets><targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" /></helpOutput><helpOutput format="Markdown"><msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" /><targets base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" type="{@WebsiteSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+		{@ReferenceLinkNamespaceFiles}
+	</targets><targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" /></helpOutput></component></ComponentConfig>
+<ComponentConfig id="Comments Index Data (ESENT Cache)" enabled="True"><component id="Comments Index Data (ESENT Cache)">
+  <index name="comments" value="/doc/members/member" key="@name" cache="30" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\CommentsIndexCache" projectCachePath="">
+	{@FrameworkCommentList}
+	{@CommentFileList}
+</index>
+  <copy name="comments" source="*" target="/document/comments" />
+</component></ComponentConfig></ComponentConfigurations>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\library\iTin.Export.Core\iTin.Export.Core.csproj" />
-      <DocumentationSource sourceFile="..\..\library\iTin.Export.Queries.iSeries\iTin.Export.Queries.iSeries.csproj" />
-      <DocumentationSource sourceFile="..\..\library\iTin.Export.Queries.SqlServer\iTin.Export.Queries.SqlServer.csproj" />
-      <DocumentationSource sourceFile="..\..\library\iTin.Export.Queries.SqlServerCe\iTin.Export.Queries.SqlServerCe.csproj" />
-      <DocumentationSource sourceFile="..\..\library\iTin.Export.Writers.Adobe\iTin.Export.Writers.Adobe.csproj" />
-      <DocumentationSource sourceFile="..\..\library\iTin.Export.Writers.OpenXml.Docx\iTin.Export.Writers.OpenXml.Docx.csproj" />
-      <DocumentationSource sourceFile="..\..\library\iTin.Export.Writers.OpenXml.Xlsx\iTin.Export.Writers.OpenXml.Xlsx.csproj" />
     </DocumentationSources>
     <HelpAttributes />
     <NamespaceSummaries>
@@ -54,7 +98,7 @@ Export types classes. See the
              &lt;description&gt;Settings classes. See the &lt;see cref="T:iTin.Export.ExportSettings" /&gt;,  &lt;see cref="T:iTin.Export.HttpExportSettings" /&gt; classes.&lt;/description&gt;
        &lt;/item&gt;
    &lt;/list&gt;</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="iTin.Export.ComponentModel" isDocumented="True">The &lt;c&gt;iTin.Export.ComponentModel&lt;/c&gt; namespace provides classes that are used to implement targets and writers.This namespace includes the base classes and interfaces for implementing writers and targets.
+<NamespaceSummaryItem name="iTin.Export.ComponentModel" isDocumented="True">The &lt;c&gt;iTin.Export.ComponentModel&lt;/c&gt; namespace provides classes that are used to implement targets and writers.This namespace includes the base classes and interfaces for implementing writers and targets.
 &lt;br /&gt;
 &lt;br /&gt;
 The classes in this namespace divide into the following categories:
@@ -83,8 +127,8 @@ classes.
              &lt;description&gt;&lt;c&gt;MEF&lt;/c&gt; Attributes classes. See the &lt;see cref="T:iTin.Export.ComponentModel.ExportOptionsAttribute" /&gt; class.&lt;/description&gt;
        &lt;/item&gt;
    &lt;/list&gt;</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="iTin.Export.Helper" isDocumented="True">The &lt;c&gt;iTin.Export.Helper&lt;/c&gt; namespace provides helper static classes.</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="iTin.Export.Model" isDocumented="True">The &lt;c&gt;iTin.Export.Model&lt;/c&gt; namespace represents &lt;c&gt;XML&lt;/c&gt; model. This namespace provides classes for manipulating the &lt;c&gt;XML&lt;/c&gt; data model.
+<NamespaceSummaryItem name="iTin.Export.Helper" isDocumented="True">The &lt;c&gt;iTin.Export.Helper&lt;/c&gt; namespace provides helper static classes.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="iTin.Export.Model" isDocumented="True">The &lt;c&gt;iTin.Export.Model&lt;/c&gt; namespace represents &lt;c&gt;XML&lt;/c&gt; model. This namespace provides classes for manipulating the &lt;c&gt;XML&lt;/c&gt; data model.
 &lt;br /&gt;
 &lt;br /&gt;
 The classes in this namespace divide into the following categories:
@@ -119,26 +163,29 @@ The classes in this namespace divide into the following categories:
     &lt;description&gt;Model Exception types classes. See the &lt;see cref="T:iTin.Export.Model.InvalidFieldIdentifierNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidFieldsDefinitionException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidFileNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidIdentifierNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidPathNameException" /&gt;, &lt;see cref="T:iTin.Export.Model.InvalidSeriesDefinitionException" /&gt;, &lt;see ref="T:iTin.Export.Model.InvalidStylesDefinitionException"/&gt; classes.&lt;/description&gt; 
   &lt;/item&gt;
 &lt;/list&gt;</NamespaceSummaryItem>
-    </NamespaceSummaries>
+<NamespaceSummaryItem name="iTin.Export.Inputs" isDocumented="True" /></NamespaceSummaries>
     <PlugInConfigurations>
-    </PlugInConfigurations>
+      <PlugInConfig id="Completion Notification" enabled="False">
+        <configuration />
+      </PlugInConfig>
+<PlugInConfig id="Manual Visibility/API Filter" enabled="True"><configuration /></PlugInConfig></PlugInConfigurations>
     <BuildLogFile />
     <HtmlHelp1xCompilerPath />
     <HtmlHelp2xCompilerPath />
     <SandcastlePath />
     <WorkingPath />
     <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
-    <HelpFileFormat>HtmlHelp1, MSHelpViewer</HelpFileFormat>
+    <HelpFileFormat>Markdown</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
     <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
     <KeepLogFile>False</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CppCommentsFixup>True</CppCommentsFixup>
     <CleanIntermediates>True</CleanIntermediates>
-    <SyntaxFilters>Standard</SyntaxFilters>
+    <SyntaxFilters>C#, Visual Basic, ASP.NET</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceContainer>False</RootNamespaceContainer>
-    <PresentationStyle>VS2010</PresentationStyle>
+    <PresentationStyle>Markdown</PresentationStyle>
     <Preliminary>True</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>iTin Export Engine</HelpTitle>
@@ -168,7 +215,7 @@ The classes in this namespace divide into the following categories:
     </TransformComponentArguments>
     <ProjectSummary>
     </ProjectSummary>
-    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected, EditorBrowsableNever, NonBrowsable</VisibleItems>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
     <CatalogName>VisualStudio11</CatalogName>
     <HelpFileVersion>1.0.0</HelpFileVersion>
     <PlugInNamespaces>ms.vsipcc+, ms.vsexpresscc+</PlugInNamespaces>
@@ -178,6 +225,9 @@ The classes in this namespace divide into the following categories:
     <ComponentPath />
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
+    <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
+    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <HeaderText>Additional header content</HeaderText>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

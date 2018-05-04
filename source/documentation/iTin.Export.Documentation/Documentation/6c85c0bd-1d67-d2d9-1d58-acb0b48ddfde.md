@@ -1,0 +1,15 @@
+# ScientificErrorModel Methods
+Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+
+The <a href="408145bd-3b48-82c8-680a-b04be2fa62d5">ScientificErrorModel</a> type exposes the following members.
+
+
+## Methods
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="b9340764-47e6-0003-0acd-9260422b54d4">Clone</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="4d3df92c-b969-d096-07d8-65382cb953a1">Combine(BaseErrorModel)</a></td><td> (Inherited from <a href="2b5dfb29-f0cf-8f2a-2a61-fada3b7b3896">BaseErrorModel</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="fa70356a-d009-b671-2ec6-771938f33857">Combine(NumericErrorModel)</a></td><td> (Inherited from <a href="32697ca1-e04a-108a-ee69-a7013086b555">NumericErrorModel</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td>Equals</td><td> (Inherited from Object.)</td></tr><tr><td>![Protected method](media/protmethod.gif "Protected method")</td><td>Finalize</td><td> (Inherited from Object.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td>GetHashCode</td><td> (Inherited from Object.)</td></tr><tr><td>![Protected method](media/protmethod.gif "Protected method")</td><td><a href="4253f171-71af-35d6-e1b1-47af647eb205">GetStaticBindingValue</a></td><td> (Inherited from <a href="6632f561-4175-f1f2-939c-ac8b10159529">BaseModel(T)</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td>GetType</td><td> (Inherited from Object.)</td></tr><tr><td>![Protected method](media/protmethod.gif "Protected method")</td><td>MemberwiseClone</td><td> (Inherited from Object.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="60537b6c-f261-e08e-2eee-1007e9760316">SaveToFile(String)</a></td><td> (Inherited from <a href="6632f561-4175-f1f2-939c-ac8b10159529">BaseModel(T)</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="81bbc161-83e1-ff91-7904-4b6a5260f76c">SaveToFile(String, Exception)</a></td><td> (Inherited from <a href="6632f561-4175-f1f2-939c-ac8b10159529">BaseModel(T)</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="d84fa1d2-692a-9e10-e839-60da45d50f19">Serialize</a></td><td> (Inherited from <a href="6632f561-4175-f1f2-939c-ac8b10159529">BaseModel(T)</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="79c32584-b2b0-b6ca-0ade-5f0708e1a9b7">ToString</a></td><td> (Inherited from <a href="6632f561-4175-f1f2-939c-ac8b10159529">BaseModel(T)</a>.)</td></tr></table>&nbsp;
+<a href="#scientificerrormodel-methods">Back to Top</a>
+
+## See Also
+
+
+#### Reference
+<a href="408145bd-3b48-82c8-680a-b04be2fa62d5">ScientificErrorModel Class</a><br /><a href="ef57ffcc-e95e-b212-5a46-9aa6f5a3511f">iTin.Export.Model Namespace</a><br />

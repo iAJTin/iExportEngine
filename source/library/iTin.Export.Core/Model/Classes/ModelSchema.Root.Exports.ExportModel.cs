@@ -34,7 +34,7 @@ namespace iTin.Export.Model
     ///   </thead>
     ///   <tbody>
     ///     <tr>
-    ///       <td>Name</td>
+    ///       <td><see cref="F:iTin.Export.Model.ExportsModel.Name"/></td>
     ///       <td align="center">No</td>
     ///       <td>Name of the export.</td>
     ///       <td/>
@@ -180,25 +180,8 @@ namespace iTin.Export.Model
             get => GetStaticBindingValue(_current.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value.ToString());
-                if (!isBinded)
-                {
-                    SentinelHelper.IsEnumValid(value);
-                    _current = value;
-                }
-                else
-                {
-                    if (value.ToString() != "no" || value.ToString() != "yes")
-                    {
-                        _current = DefaultCurrent;
-                    }
-                    else
-                    {
-                        _current = value.ToString() == "no"
-                            ? YesNo.No
-                            : YesNo.Yes;
-                    }
-                }
+                SentinelHelper.IsEnumValid(value);
+                _current = value;
             }
         }
         #endregion
@@ -289,7 +272,7 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <strong>null</strong>.</exception>
+        /// <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <b>null</b>.</exception>
         /// <exception cref="T:iTin.Export.Model.InvalidIdentifierNameException">If <paramref name="value" /> not is a valid field identifier name.</exception>
         [XmlAttribute]
         public string Name
@@ -298,15 +281,9 @@ namespace iTin.Export.Model
             set
             {
                 SentinelHelper.ArgumentNull(value);
-
-                var linked = RegularExpressionHelper.IsStaticBindingResource(value);
-                if (!linked)
-                {
-                    SentinelHelper.IsFalse(
-                        RegularExpressionHelper.IsValidIdentifier(value), 
-                        new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Export", "Name", value)));
-                }
-
+                SentinelHelper.IsFalse(
+                    RegularExpressionHelper.IsValidIdentifier(value), 
+                    new InvalidFieldIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage("Export", "Name", value)));
                 _name = value;
             }
         }

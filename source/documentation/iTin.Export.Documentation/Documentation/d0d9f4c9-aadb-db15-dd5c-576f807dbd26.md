@@ -1,0 +1,15 @@
+# SqlScriptWriter Properties
+Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+
+The <a href="74ded544-3bc4-c8f9-da81-6a3532539ba8">SqlScriptWriter</a> type exposes the following members.
+
+
+## Properties
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="b7fa887f-6c86-ed9e-6ce3-95bd082f335b">IsTransformationFile</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="a02e14e5-00bb-0dea-119d-6a84389b4ea1">Provider</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="3716c8ee-9eeb-60f0-5bc1-91f9a38e2c54">ResponseEx</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr><tr><td>![Protected property](media/protproperty.gif "Protected property")</td><td><a href="0fc53e92-16d0-f0e7-0ee7-e95afd420851">Result</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="3736b914-d749-889f-924d-b3af1d5f3c2b">Stream</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="2fccbd7f-29b6-35c7-f159-6393c905776e">TransformFileExtension</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="97b950d8-e117-34e2-0f61-edbcd4438735">WriterIdentifier</a></td><td> (Inherited from <a href="719e7011-f7c4-1416-d878-ef7a603e3033">BaseWriterDirect</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="004959be-3214-7da2-0201-047af5effaa4">WriterMetadata</a></td><td> (Inherited from <a href="622c2a74-37fd-6371-50a4-4fb71f92c4b0">BaseWriter</a>.)</td></tr></table>&nbsp;
+<a href="#sqlscriptwriter-properties">Back to Top</a>
+
+## See Also
+
+
+#### Reference
+<a href="74ded544-3bc4-c8f9-da81-6a3532539ba8">SqlScriptWriter Class</a><br /><a href="e20f9067-68c3-b137-ea41-2fb08bbbee45">iTin.Export.Writers Namespace</a><br />
