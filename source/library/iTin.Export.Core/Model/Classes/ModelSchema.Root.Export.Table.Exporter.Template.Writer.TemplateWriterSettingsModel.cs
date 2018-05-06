@@ -198,7 +198,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultTrimFields)]
         public YesNo TrimFields
         {
-            get => _trim;
+            get => GetStaticBindingValue(_trim.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

@@ -1,5 +1,5 @@
 # ServerCredentialsModel Constructor 
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 Initializes a new instance of the <a href="7094ae9b-d15d-e552-ce39-6aee1ddbb317">ServerCredentialsModel</a> class
 

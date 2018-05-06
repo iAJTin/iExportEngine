@@ -1,5 +1,5 @@
 # ChartLegendModel Properties
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="aa3359ad-1fd0-a260-135d-8fb33c5ab491">ChartLegendModel</a> type exposes the following members.
 

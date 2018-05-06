@@ -239,7 +239,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAsync)]
         public YesNo Async
         {
-            get => _async;
+            get => GetStaticBindingValue(_async.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

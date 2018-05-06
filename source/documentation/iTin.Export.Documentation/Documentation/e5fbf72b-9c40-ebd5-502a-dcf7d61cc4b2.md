@@ -1,5 +1,5 @@
 # PatternModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="386dc076-597b-2c64-ea17-b26e453932e5">PatternModel</a> type exposes the following members.
 

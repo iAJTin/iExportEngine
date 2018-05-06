@@ -1,5 +1,5 @@
 # InvalidStylesDefinitionException Events
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="cc6ac913-200c-9856-d7e6-447c7434c764">InvalidStylesDefinitionException</a> type exposes the following members.
 

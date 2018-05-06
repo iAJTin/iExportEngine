@@ -109,7 +109,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAutoFilter)]
         public YesNo AutoFilter
         {
-            get => _autoFilter;
+            get => GetStaticBindingValue(_autoFilter.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -125,7 +125,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAutoFitColumns)]
         public YesNo AutoFitColumns
         {
-            get => _autoFitColumns;
+            get => GetStaticBindingValue(_autoFitColumns.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -164,7 +164,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShowGridLines)]
         public YesNo ShowGridLines
         {
-            get => _showGridLines;
+            get => GetStaticBindingValue(_showGridLines.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -185,7 +185,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultShowColumnHeaders)]
         public YesNo ShowColumnHeaders
         {
-            get => _showColumnHeaders;
+            get => GetStaticBindingValue(_showColumnHeaders.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

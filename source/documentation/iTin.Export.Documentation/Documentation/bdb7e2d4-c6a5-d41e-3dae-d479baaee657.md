@@ -1,5 +1,5 @@
 # MoreBrightnessEffectModel Properties
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="60fd20f6-f6b4-427b-d3da-68909ef96121">MoreBrightnessEffectModel</a> type exposes the following members.
 

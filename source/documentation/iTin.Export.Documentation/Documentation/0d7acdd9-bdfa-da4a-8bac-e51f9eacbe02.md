@@ -1,5 +1,5 @@
 # ExportSettings.CreateFromModels Method (ExportsModel, String)
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 \[Missing <summary> documentation for "M:iTin.Export.ExportSettings.CreateFromModels(iTin.Export.Model.ExportsModel,System.String)"\]
 

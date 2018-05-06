@@ -77,8 +77,8 @@
   <!-- Static binding data type: Defines a static resource property, represents a call to external assembly. -->
   <xs:simpleType id="staticBindType" name="staticBindType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*\{\s*[S|s]taticBinding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:pattern value="\s*\{\s*[S|s]taticBinding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[S|s]tatic[B|b]inding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[S|s]tatic[B|b]inding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
       <xs:whiteSpace value="collapse" />
     </xs:restriction>
   </xs:simpleType>

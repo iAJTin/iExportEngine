@@ -1,5 +1,5 @@
 # DownloadBehaviorModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="9c61d0e9-dfab-fdcf-eff7-2e3921ad427c">DownloadBehaviorModel</a> type exposes the following members.
 

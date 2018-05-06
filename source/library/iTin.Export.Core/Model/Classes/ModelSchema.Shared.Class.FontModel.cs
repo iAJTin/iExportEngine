@@ -17,79 +17,86 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <code lang="xml" title="ITEE Object Element Usage">
-    /// &lt;Font .../&gt;
+    /// <code lang="xml" title="IEE Object Element Usage">
+    /// <![CDATA[
+    /// <Font...>
+    ///   <Properties/>
+    /// </Font>
+    /// ]]>
     /// </code>
     /// </para>
     /// <para><strong>Attributes</strong></para>
-    /// <table>
-    ///   <thead>
-    ///     <tr>
-    ///       <th>Attribute</th>
-    ///       <th>Optional</th>
-    ///       <th>Description</th>
-    ///       <th>Default</th>
-    ///       </tr>
-    ///   </thead>
-    ///   <tbody>
-    ///     <tr>
-    ///       <td>Name</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Preferred font name.</td>
-    ///       <td>The default is <c>Segoe UI</c></td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td>Size</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Preferred font size.</td>
-    ///       <td>The default is <c>10.0</c></td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td>Color</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Preferred font color.</td>
-    ///       <td>The default is <c>Black</c></td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td>Bold</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Determines whether bold style is applied for this font.</td>
-    ///       <td>The default is <c>No</c></td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td>Italic</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Determines whether italic style is applied for this font.</td>
-    ///       <td>The default is <c>No</c></td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td>Underline</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Determines whether the underline style is applied for this font.</td>
-    ///       <td>The default is <c>No</c></td>
-    ///     </tr>
-    ///   </tbody>
-    /// </table>
+    /// <list type="table">
+    ///   <listheader>
+    ///     <term>Attribute</term>
+    ///     <term>Optional</term>
+    ///     <term>Description</term>
+    ///     <term>Default</term>
+    ///   </listheader>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Name"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Preferred font name.</term>
+    ///     <term>The default is <c>Segoe UI</c></term>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Size"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Preferred font size.</term>
+    ///     <term>The default is <c>10.0</c></term>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Color"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Preferred font color.</term>
+    ///     <term>The default is <c>Black</c></term>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Bold"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Determines whether bold style is applied for this font.</term>
+    ///     <term>The default is <c>No</c></term>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Italic"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Determines whether italic style is applied for this font.</term>
+    ///     <term>The default is <c>No</c></term>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Underline"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Determines whether the underline style is applied for this font.</term>
+    ///     <term>The default is <c>No</c></term>
+    ///   </item>
+    /// </list>
+    /// <para><strong>Elements</strong></para>
+    /// <list type="table">
+    ///   <listheader>
+    ///     <term>Element</term>
+    ///     <description>Description</description>
+    ///   </listheader>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.FontModel.Properties"/></term>
+    ///     <description>Reference to custom properties dictionary</description>
+    ///   </item>
+    /// </list>
     /// <para>
     /// <para><strong>Compatibility table with native writers.</strong></para>
-    /// <table>
-    ///   <thead>
-    ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
-    ///     </tr>
-    ///   </thead>
-    ///   <tbody>
-    ///     <tr>
-    ///       <td align="center">X</td>
-    ///       <td align="center">X</td>
-    ///       <td align="center">X</td>
-    ///       <td align="center">X</td>
-    ///     </tr>
-    ///   </tbody>
-    /// </table>
+    /// <list type="table">
+    ///   <listheader>
+    ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+    ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+    ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+    ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+    ///   </listheader>
+    ///   <item>
+    ///     <term>X</term>
+    ///     <term>X</term>
+    ///     <term>X</term>
+    ///     <term>X</term>
+    ///   </item>
+    /// </list>
     /// A <c><b>X</b></c> value indicates that the writer supports this element.
     /// </para>
     /// </remarks>
@@ -179,46 +186,57 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Name="[string] | [{StaticBinding:...}]" .../&gt;
+        /// <![CDATA[
+        /// <Font Name="[string] | [{StaticBinding:...}]".../>
+        /// ]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">X</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
         /// A <c><b>X</b></c> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
         /// <example>
         /// In the following example shows how create a new font.
         /// <code lang="xml">
-        /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
+        /// <![CDATA[
+        /// <Font Name="{StaticBinding:UseThisFontNameFromCode}" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/>
+        /// ]]>
         /// </code>
-        /// <code lang="cs">
+        /// <code lang="C#">
         /// var font = new FontModel
         /// {
-        ///     Name = "Tahoma",
+        ///     Name = "{StaticBinding:UseThisFontNameFromCode}", // Call UseThisFontNameFromCode user-defined property when trying to get the value of font.Name
         ///     Color = "Navy",
-        ///     Size = 8,
+        ///     Size = 8.0,
         ///     Bold = YesNo.Yes,
         ///     Italic = YesNo.Yes,
         ///     Underline = YesNo.No
         /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim font = New FontModel With
+        /// {
+        ///     .Name = "{StaticBinding:UseThisFontNameFromCode}", ' Call UseThisFontNameFromCode user-defined property when trying to get the value of font.Name
+        ///     .Color = "Navy",
+        ///     .Size = 8.0,
+        ///     .Bold = YesNo.Yes,
+        ///     .Italic = YesNo.Yes,
+        ///     .Underline = YesNo.No
+        /// }
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -254,46 +272,57 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Size="[float] | [{StaticBinding:...}]" .../&gt;
+        /// <![CDATA[
+        /// <Font Name="[float] | [{StaticBinding:...}]".../>
+        /// ]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">X</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
+        /// A <strong><c>X</c></strong> value indicates that the writer this element.
         /// </para>
         /// </remarks>
         /// <example>
         /// In the following example shows how create a new font.
         /// <code lang="xml">
-        /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
+        /// <![CDATA[
+        /// <Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/>
+        /// ]]>
         /// </code>
-        /// <code lang="cs">
+        /// <code lang="C#">
         /// var font = new FontModel
         /// {
         ///     Name = "Tahoma",
         ///     Color = "Navy",
-        ///     Size = 8,
+        ///     Size = 8.0,
         ///     Bold = YesNo.Yes,
         ///     Italic = YesNo.Yes,
         ///     Underline = YesNo.No
         /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim font = New FontModel With
+        /// {
+        ///     .Name = "Tahoma",
+        ///     .Color = "Navy",
+        ///     .Size = 8.0,
+        ///     .Bold = YesNo.Yes,
+        ///     .Italic = YesNo.Yes,
+        ///     .Underline = YesNo.No
+        /// }
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -319,46 +348,57 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Color="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]" ...&gt;
+        /// <![CDATA[
+        /// <Font Color="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]".../>
+        /// ]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">X</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
         /// <example>
         /// In the following example shows how create a new font.
         /// <code lang="xml">
-        /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
+        /// <![CDATA[
+        /// <Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/>
+        /// ]]>
         /// </code>
-        /// <code lang="cs">
+        /// <code lang="C#">
         /// var font = new FontModel
         /// {
         ///     Name = "Tahoma",
         ///     Color = "Navy",
-        ///     Size = 8,
+        ///     Size = 8.0,
         ///     Bold = YesNo.Yes,
         ///     Italic = YesNo.Yes,
         ///     Underline = YesNo.No
         /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim font = New FontModel With
+        /// {
+        ///     .Name = "Tahoma",
+        ///     .Color = "Navy",
+        ///     .Size = 8.0,
+        ///     .Bold = YesNo.Yes,
+        ///     .Italic = YesNo.Yes,
+        ///     .Underline = YesNo.No
+        /// }
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -384,46 +424,57 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Bold="[Yes|No] | [{StaticBinding:...}]" .../&gt;
+        /// <![CDATA[
+        /// <Font Bold="[Yes|No] | [{StaticBinding:...}]".../>
+        /// ]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">X</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
         /// <example>
         /// In the following example shows how create a new font.
         /// <code lang="xml">
-        /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
+        /// <![CDATA[
+        /// <Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/>
+        /// ]]>
         /// </code>
-        /// <code lang="cs">
+        /// <code lang="C#">
         /// var font = new FontModel
         /// {
         ///     Name = "Tahoma",
         ///     Color = "Navy",
-        ///     Size = 8,
+        ///     Size = 8.0,
         ///     Bold = YesNo.Yes,
         ///     Italic = YesNo.Yes,
         ///     Underline = YesNo.No
         /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim font = New FontModel With
+        /// {
+        ///     .Name = "Tahoma",
+        ///     .Color = "Navy",
+        ///     .Size = 8.0,
+        ///     .Bold = YesNo.Yes,
+        ///     .Italic = YesNo.Yes,
+        ///     .Underline = YesNo.No
+        /// }
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -449,46 +500,57 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Italic="[Yes|No] | [{StaticBinding:...}]" .../&gt;
+        /// <![CDATA[
+        /// <Font Italic="[Yes|No] | [{StaticBinding:...}]".../>
+        /// ]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">X</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
         /// <example>
         /// In the following example shows how create a new font.
         /// <code lang="xml">
-        /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
+        /// <![CDATA[
+        /// <Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/>
+        /// ]]>
         /// </code>
-        /// <code lang="cs">
+        /// <code lang="C#">
         /// var font = new FontModel
         /// {
         ///     Name = "Tahoma",
         ///     Color = "Navy",
-        ///     Size = 8,
+        ///     Size = 8.0,
         ///     Bold = YesNo.Yes,
         ///     Italic = YesNo.Yes,
         ///     Underline = YesNo.No
         /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim font = New FontModel With
+        /// {
+        ///     .Name = "Tahoma",
+        ///     .Color = "Navy",
+        ///     .Size = 8.0,
+        ///     .Bold = YesNo.Yes,
+        ///     .Italic = YesNo.Yes,
+        ///     .Underline = YesNo.No
+        /// }
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -514,46 +576,57 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Font Underline="[Yes|No] | [{StaticBinding:...}]" .../&gt;
+        /// <![CDATA[
+        /// <Font Underline="[Yes|No] | [{StaticBinding:...}]".../>
+        /// ]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">X</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
         /// <example>
         /// In the following example shows how create a new font.
         /// <code lang="xml">
-        /// &lt;Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/&gt;
+        /// <![CDATA[
+        /// <Font Name="Tahoma" Size="8" Color="Navy" Bold="Yes" Italic="Yes" Underline="No"/>
+        /// ]]>
         /// </code>
-        /// <code lang="cs">
-        /// FontModel font = new FontModel
-        ///                      {
-        ///                          Name = "Tahoma",
-        ///                          Color = "Navy",
-        ///                          Size = 8,
-        ///                          Bold = YesNo.Yes,
-        ///                          Italic = YesNo.Yes,
-        ///                          Underline = YesNo.No
-        ///                      };
+        /// <code lang="C#">
+        /// var font = new FontModel
+        /// {
+        ///     Name = "Tahoma",
+        ///     Color = "Navy",
+        ///     Size = 8.0,
+        ///     Bold = YesNo.Yes,
+        ///     Italic = YesNo.Yes,
+        ///     Underline = YesNo.No
+        /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim font = New FontModel With
+        /// {
+        ///     .Name = "Tahoma",
+        ///     .Color = "Navy",
+        ///     .Size = 8.0,
+        ///     .Bold = YesNo.Yes,
+        ///     .Italic = YesNo.Yes,
+        ///     .Underline = YesNo.No
+        /// }
         /// </code>
         /// </example>
         [XmlAttribute]

@@ -1,5 +1,5 @@
 # WriterOptionsMetadata.Inequality Operator 
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 \[Missing <summary> documentation for "M:iTin.Export.ComponentModel.Writer.WriterOptionsMetadata.op_Inequality(iTin.Export.ComponentModel.Writer.WriterOptionsMetadata,iTin.Export.ComponentModel.Writer.WriterOptionsMetadata)"\]
 

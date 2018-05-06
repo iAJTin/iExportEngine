@@ -192,7 +192,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultIndented)]
         public YesNo Indented
         {
-            get => _indented;
+            get => GetStaticBindingValue(_indented.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -309,7 +309,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSave)]
         public YesNo Save
         {
-            get => _save;
+            get => GetStaticBindingValue(_save.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

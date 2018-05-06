@@ -1,5 +1,5 @@
 # MarginsModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="9169ba51-2f2d-0b19-403d-e4673fa0563e">MarginsModel</a> type exposes the following members.
 

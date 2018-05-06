@@ -20,6 +20,9 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
         private const string FifthSampleStepText   = "         -> ... and built-in functions ... -> [sample90-headerinfo-built-in-functions.xlsx] <-";
         private const string SixthSampleStepText   = "         -> ... and custom functions       -> [sample90-headerinfo-custom-functions.xlsx] <-";
 
+        /// <summary>
+        /// Runs the sample.
+        /// </summary>
         public static void RunSample()
         {
             Console.WriteLine(EpplusHeader);

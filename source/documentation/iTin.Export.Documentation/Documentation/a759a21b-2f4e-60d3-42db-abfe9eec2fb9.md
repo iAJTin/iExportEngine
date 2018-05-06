@@ -1,5 +1,5 @@
 # ExportModel.ParseRelativeFilePath Method (KnownRelativeFilePath)
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 \[Missing <summary> documentation for "M:iTin.Export.Model.ExportModel.ParseRelativeFilePath(iTin.Export.Model.KnownRelativeFilePath)"\]
 

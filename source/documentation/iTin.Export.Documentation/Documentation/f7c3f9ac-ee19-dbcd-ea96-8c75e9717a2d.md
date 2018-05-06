@@ -1,5 +1,5 @@
 # DarkEffectModel Constructor 
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 Initializes a new instance of the <a href="14892ee7-bedb-15af-9c88-4f5ae17fd389">DarkEffectModel</a> class
 

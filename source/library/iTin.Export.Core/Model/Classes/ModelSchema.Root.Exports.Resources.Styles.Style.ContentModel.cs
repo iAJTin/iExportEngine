@@ -1,16 +1,3 @@
-// ***********************************************************************
-// Assembly         : iTin.Export.Core
-// Author           : fernandogarciavega
-// Created          : 04-20-2018
-//
-// Last Modified By : fernandogarciavega
-// Last Modified On : 05-04-2018
-// ***********************************************************************
-// <copyright file="ModelSchema.Root.Exports.Resources.Styles.Style.ContentModel.cs" company="iTin">
-//     Copyright © 2016 iAJTin
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace iTin.Export.Model
 {
@@ -23,96 +10,84 @@ namespace iTin.Export.Model
     using Drawing.Helper;
     using Helpers;
 
-    using NativeDrawing = System.Drawing;
-
     /// <summary>
     /// Defines as shown the content of a field.
     /// </summary>
     /// <seealso cref="T:iTin.Export.Model.BaseModel{T:iTin.Export.Model.ContentModel}"/>
     /// <seealso cref="T:System.ICloneable" />
-    /// <remarks><para>
+    /// <remarks>
+    /// <para>
     /// Belongs to: <strong><c>Style</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StyleModel" />.
-    /// <code lang="xml" title="ITEE Object Element Usage">
-    /// &lt;Content&gt;
-    /// &lt;Alignment/&gt;
-    /// &lt;Number/&gt; | &lt;Currency/&gt; | &lt;Percentage/&gt; | &lt;Scientific/&gt; | &lt;Datetime/&gt; | &lt;Special/&gt; | &lt;Text/&gt;
-    /// &lt;Properties/&gt;
-    /// &lt;/Content&gt;
-    /// </code></para>
-    /// <para>
-    ///   <strong>Attributes</strong>
+    /// <code lang="xml" title="IEE Object Element Usage">
+    /// <![CDATA[
+    /// <Content>
+    ///   <Alignment/>
+    ///   <Number/> | <Currency/> | <Percentage/> | <Scientific/> | <Datetime/> | <Special/> | <Text/>
+    ///   <Properties/>
+    /// </Content>
+    /// ]]>
+    /// </code>
     /// </para>
-    /// <table>
-    ///   <thead>
-    ///     <tr>
-    ///       <th>Attribute</th>
-    ///       <th>Optional</th>
-    ///       <th>Description</th>
-    ///       <th>Default</th>
-    ///     </tr>
-    ///   </thead>
-    ///   <tbody>
-    ///     <tr>
-    ///       <td>AlternateColor</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Alternative color preferred of content.</td>
-    ///       <td>The default is <c>Transparent</c></td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td>Color</td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Preferred content color.</td>
-    ///       <td>The default is <c>Transparent</c></td>
-    ///     </tr>
-    ///   </tbody>
-    /// </table>
-    /// <para>
-    ///   <strong>Elements</strong>
-    /// </para>
+    /// <para><strong>Attributes</strong></para>
+    /// <list type="table">
+    ///   <listheader>
+    ///     <term>Attribute</term>
+    ///     <term>Optional</term>
+    ///     <term>Description</term>
+    ///     <term>Default</term>
+    ///   </listheader>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.AlternateColor"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Alternative color preferred of content.</term>
+    ///     <term>The default is <c>Transparent</c></term>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Color"/></term>
+    ///     <term>Yes</term>
+    ///     <term>Preferred content color.</term>
+    ///     <term>The default is <c>Transparent</c></term>
+    ///   </item>
+    /// </list>
+    /// <para><strong>Elements</strong></para>
     /// <list type="table">
     ///   <listheader>
     ///     <term>Element</term>
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
-    ///     <term>Alignment</term>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Alignment"/></term>
     ///     <description>Reference to content distribution.</description>
     ///   </item>
     ///   <item>
-    ///     <term>DataType</term>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.DataType"/></term>
     ///     <description>Reference to content data type.</description>
     ///   </item>
     ///   <item>
-    ///     <term>Pattern</term>
-    ///     <description>Reference to fill pattern</description>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Pattern"/></term>
+    ///     <description>Reference to fill pattern.</description>
     ///   </item>
     ///   <item>
-    ///     <term>Properties</term>
+    ///     <term><see cref="P:iTin.Export.Model.ContentModel.Properties"/></term>
     ///     <description>Reference to custom properties dictionary</description>
     ///   </item>
     /// </list>
     /// <para>
-    ///   <para>
-    ///     <strong>Compatibility table with native writers.</strong>
-    ///   </para>
-    ///   <table>
-    ///     <thead>
-    ///       <tr>
-    ///         <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.CsvWriter" /></th>
-    ///         <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.TsvWriter" /></th>
-    ///         <th>SQL Script<br /><see cref="T:iTin.Export.Writers.SqlScriptWriter" /></th>
-    ///         <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Native.Spreadsheet2003TabularWriter" /></th>
-    ///       </tr>
-    ///     </thead>
-    ///     <tbody>
-    ///       <tr>
-    ///         <td align="center">X</td>
-    ///         <td align="center">X</td>
-    ///         <td align="center">X</td>
-    ///         <td align="center">X</td>
-    ///       </tr>
-    ///     </tbody>
-    ///   </table>
+    /// <para><strong>Compatibility table with native writers.</strong></para>
+    /// <list type="table">
+    ///   <listheader>
+    ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+    ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+    ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+    ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+    ///   </listheader>
+    ///   <item>
+    ///     <term>X</term>
+    ///     <term>X</term>
+    ///     <term>X</term>
+    ///     <term>X</term>
+    ///   </item>
+    /// </list>
     /// A <c><b>X</b></c> value indicates that the writer supports this element.
     /// </para></remarks>
     public partial class ContentModel : ICloneable
@@ -123,6 +98,12 @@ namespace iTin.Export.Model
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DefaultColor = "Transparent";
+
+        /// <summary>
+        /// The default alternate color
+        /// </summary>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string DefaultAlternateColor = "Transparent";
         #endregion
 
         #region private members
@@ -172,7 +153,7 @@ namespace iTin.Export.Model
         public ContentModel()
         {
             Color = DefaultColor;
-            AlternateColor = DefaultColor;
+            AlternateColor = DefaultAlternateColor;
         }
         #endregion
 
@@ -196,55 +177,65 @@ namespace iTin.Export.Model
         /// <summary>
         /// Gets or sets alternative color preferred of content.
         /// </summary>
-        /// <value>Alternate color preferred. The default is <c>Transparent</c>.</value>
+        /// <value>
+        /// Alternate color preferred. The default is <c>Transparent</c>.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// <![CDATA[
+        /// <Font AlternateColor="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]".../>
+        /// ]]>
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
         /// <example>
         /// In the following example shows how create a new content.
         /// <code lang="xml">
-        /// &lt;Content AlternateColor="Red" Color="DarkBlue"&gt;
-        /// &lt;Alignment Horizontal="Left"/&gt;
-        /// &lt;Text/&gt;
-        /// &lt;/Content&gt;
-        /// </code><code lang="cs">
+        /// <![CDATA[
+        /// <Content AlternateColor="Red" Color="DarkBlue">
+        ///   <Alignment Horizontal="Left"/>
+        ///   <Text/>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <code lang="C#">
         /// var content = new ContentModel
         /// {
-        /// AlternateColor = "Red",
-        /// Color = "DarkBlue",
-        /// DataType = new TextDataTypeModel(),
-        /// Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        ///     AlternateColor = "Red",
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
         /// };
-        /// </code></example>
-        /// <remarks><code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Content AlternateColor="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]" ...&gt;
-        /// ...
-        /// ...
-        /// &lt;/Content&gt;
         /// </code>
-        /// <para>
-        ///   <para>
-        ///     <strong>Compatibility table with native writers.</strong>
-        ///   </para>
-        ///   <table>
-        ///     <thead>
-        ///       <tr>
-        ///         <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///         <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///         <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///         <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-        ///       </tr>
-        ///     </thead>
-        ///     <tbody>
-        ///       <tr>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">X</td>
-        ///       </tr>
-        ///     </tbody>
-        ///   </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-        /// </para></remarks>
+        /// <code lang="VB#">
+        /// Dim content = New ContentModel With
+        /// {
+        ///     .AlternateColor = "Red",
+        ///     .Color = "DarkBlue",
+        ///     .DataType = New TextDataTypeModel(),
+        ///     .Alignment = New ContentAlignmentModel With { .Horizontal = KnownHorizontalAlignment.Left }
+        /// }
+        /// </code>
+        /// </example>
         [XmlAttribute]
-        [DefaultValue(DefaultColor)]
+        [DefaultValue(DefaultAlternateColor)]
         public string AlternateColor
         {
             get => Parent.Owner == null ? _alternateColor : GetStaticBindingValue(_alternateColor);
@@ -252,25 +243,7 @@ namespace iTin.Export.Model
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
-                if (!isBinded)
-                {
-                    _alternateColor = value;
-                }
-                else
-                {
-                    try
-                    {
-                        var test = ColorHelper.GetColorFromString(value);
-                        _alternateColor = test == NativeDrawing.Color.Empty
-                            ? DefaultColor
-                            : value;
-                    }
-                    catch
-                    {
-                        _alternateColor = DefaultColor;
-                    }
-                }
+                _alternateColor = value;
             }
         }
         #endregion
@@ -280,51 +253,60 @@ namespace iTin.Export.Model
         /// Gets or sets color preferred of content.
         /// </summary>
         /// <value>Preferred content color. The default is <c>Transparent</c>.</value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// <![CDATA[
+        /// <Font Color="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]".../>
+        /// ]]>
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
         /// <example>
         /// In the following example shows how create a new content.
         /// <code lang="xml">
-        /// &lt;Content Color="DarkBlue"&gt;
-        /// &lt;Alignment Horizontal="Left"/&gt;
-        /// &lt;Text/&gt;
-        /// &lt;/Content&gt;
-        /// </code><code lang="cs">
+        /// <![CDATA[
+        /// <Content AlternateColor="Red" Color="DarkBlue">
+        ///   <Alignment Horizontal="Left"/>
+        ///   <Text/>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <code lang="C#">
         /// var content = new ContentModel
         /// {
-        /// Color = "DarkBlue",
-        /// DataType = new TextDataTypeModel(),
-        /// Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        ///     AlternateColor = "Red",
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
         /// };
-        /// </code></example>
-        /// <remarks><code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Content Color="[colorName] | [#rrggbb] | [#rgb] | [sc#rrggbb] | [{StaticBinding:...}]" ...&gt;
-        /// ...
-        /// ...
-        /// &lt;/Content&gt;
         /// </code>
-        /// <para>
-        ///   <para>
-        ///     <strong>Compatibility table with native writers.</strong>
-        ///   </para>
-        ///   <table>
-        ///     <thead>
-        ///       <tr>
-        ///         <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///         <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///         <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///         <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-        ///       </tr>
-        ///     </thead>
-        ///     <tbody>
-        ///       <tr>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">X</td>
-        ///       </tr>
-        ///     </tbody>
-        ///   </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-        /// </para></remarks>
+        /// <code lang="VB#">
+        /// Dim content = New ContentModel With
+        /// {
+        ///     .AlternateColor = "Red",
+        ///     .Color = "DarkBlue",
+        ///     .DataType = New TextDataTypeModel(),
+        ///     .Alignment = New ContentAlignmentModel With { .Horizontal = KnownHorizontalAlignment.Left }
+        /// }
+        /// </code>
+        /// </example>
         [XmlAttribute]
         [DefaultValue(DefaultColor)]
         public string Color
@@ -334,25 +316,7 @@ namespace iTin.Export.Model
             {
                 SentinelHelper.ArgumentNull(value);
 
-                var isBinded = RegularExpressionHelper.IsStaticBindingResource(value);
-                if (!isBinded)
-                {
-                    _color = value;
-                }
-                else
-                {
-                    try
-                    {
-                        var test = ColorHelper.GetColorFromString(value);
-                        _color = test == NativeDrawing.Color.Empty
-                            ? DefaultColor
-                            : value;
-                    }
-                    catch
-                    {
-                        _color = DefaultColor;
-                    }
-                }
+                _color = value;
             }
         }
         #endregion
@@ -362,51 +326,62 @@ namespace iTin.Export.Model
         /// Gets or sets content distribution.
         /// </summary>
         /// <value>Reference for content distribution.</value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// <![CDATA[
+        /// <Content>
+        ///   <Alignment.../>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
         /// <example>
         /// In the following example shows how create a new content.
         /// <code lang="xml">
-        /// &lt;Content Color="DarkBlue"&gt;
-        /// &lt;Alignment Horizontal="Left"/&gt;
-        /// &lt;Text/&gt;
-        /// &lt;/Content&gt;
-        /// </code><code lang="cs">
+        /// <![CDATA[
+        /// <Content AlternateColor="Red" Color="DarkBlue">
+        ///   <Alignment Horizontal="Left"/>
+        ///   <Text/>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <code lang="C#">
         /// var content = new ContentModel
         /// {
-        /// Color = "DarkBlue",
-        /// DataType = new TextDataTypeModel(),
-        /// Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        ///     AlternateColor = "Red",
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
         /// };
-        /// </code></example>
-        /// <remarks><code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Content ...&gt;
-        /// &lt;Alignment .../&gt;
-        /// ...
-        /// &lt;/Content&gt;
         /// </code>
-        /// <para>
-        ///   <para>
-        ///     <strong>Compatibility table with native writers.</strong>
-        ///   </para>
-        ///   <table>
-        ///     <thead>
-        ///       <tr>
-        ///         <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///         <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///         <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///         <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-        ///       </tr>
-        ///     </thead>
-        ///     <tbody>
-        ///       <tr>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">No has effect</td>
-        ///         <td align="center">X</td>
-        ///       </tr>
-        ///     </tbody>
-        ///   </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-        /// </para></remarks>
+        /// <code lang="VB#">
+        /// Dim content = New ContentModel With
+        /// {
+        ///     .AlternateColor = "Red",
+        ///     .Color = "DarkBlue",
+        ///     .DataType = New TextDataTypeModel(),
+        ///     .Alignment = New ContentAlignmentModel With { .Horizontal = KnownHorizontalAlignment.Left }
+        /// }
+        /// </code>
+        /// </example>
         public ContentAlignmentModel Alignment
         {
             get => _alignment ?? (_alignment = ContentAlignmentModel.Default);
@@ -414,11 +389,65 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (PatternModel) Pattern: Gets or sets pattern content
+        #region [public] (PatternModel) Pattern: Gets or sets the fill pattern content
         /// <summary>
-        /// Pattern content
+        /// Gets or sets the fill pattern content.
         /// </summary>
-        /// <value>The pattern.</value>
+        /// <value>Fill pattern.</value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// <![CDATA[
+        /// <Content>
+        ///   <Pattern.../>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>No has effect</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// In the following example shows how create a new content.
+        /// <code lang="xml">
+        /// <![CDATA[
+        /// <Content AlternateColor="Red" Color="DarkBlue">
+        ///   <Alignment Horizontal="Left"/>
+        ///   <Text/>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <code lang="C#">
+        /// var content = new ContentModel
+        /// {
+        ///     DataType = new TextDataTypeModel(),
+        ///     Pattern = new PatternModel { Color = "AliceBlue", PatternType = KnownPatternType.Gray75 },
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim content = New ContentModel With
+        /// {
+        ///     .DataType = New TextDataTypeModel(),
+        ///     .Pattern = New PatternModel With { .Color = "AliceBlue", .PatternType = KnownPatternType.Gray75 },
+        ///     .Alignment = New ContentAlignmentModel With { .Horizontal = KnownHorizontalAlignment.Left }
+        /// }
+        /// </code>
+        /// </example>
         public PatternModel Pattern
         {
             get => _pattern ?? (_pattern = new PatternModel());
@@ -430,79 +459,117 @@ namespace iTin.Export.Model
         /// <summary>
         /// Gets or sets content data type.
         /// </summary>
-        /// <value>Reference for content data type.</value>
+        /// <value>
+        /// Reference to content data type.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// <![CDATA[
+        /// <Content>
+        ///   <Number/> | <Currency/> | <Percentage/> | <Scientific/> | <Datetime/> | <Special/> | <Text/>
+        ///   ...
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <list type="table">
+        ///   <listheader>
+        ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
+        ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
+        ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
+        ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+        ///   </listheader>
+        ///   <item>
+        ///     <term>X</term>
+        ///     <term>X</term>
+        ///     <term>X</term>
+        ///     <term>X</term>
+        ///   </item>
+        /// </list>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
         /// <example>
         /// In the following example shows how create a new text content.
         /// <code lang="xml">
-        /// &lt;Content Color="DarkBlue"&gt;
-        /// &lt;Alignment Horizontal="Left"/&gt;
-        /// &lt;Text/&gt;
-        /// &lt;/Content&gt;
-        /// </code><code lang="cs">
-        /// var content = new ContentModel
-        /// {
-        /// Color = "DarkBlue",
-        /// DataType = new TextDataTypeModel(),
-        /// Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
-        /// };
-        /// </code><para>In the following example shows how create a new currency content.</para><code lang="xml">
-        /// &lt;Content Color="Beige"&gt;
-        /// &lt;Alignment Vertical="Bottom" Horizontal="Right"/&gt;
-        /// &lt;Currency Decimals="1" Locale="mk"&gt;
-        /// &lt;Negative Color="Red" Sign="Parenthesis"/&gt;
-        /// &lt;/Currency&gt;
-        /// &lt;/Content&gt;
-        /// </code><code lang="cs">
-        /// var content = new ContentModel
-        /// {
-        /// Color = "Beige",
-        /// Alignment = new ContentAlignmentModel
-        /// {
-        /// Horizontal = KnownHorizontalAlignment.Right,
-        /// Vertical = KnownVerticalAlignment.Bottom
-        /// },
-        /// DataType = new CurrencyDataTypeModel
-        /// {
-        /// Decimals = 1,
-        /// Locale = KnownCulture.mk,
-        /// Negative = new NegativeModel
-        /// {
-        /// Color = KnownBasicColor.Red,
-        /// Sign = KnownNegativeSign.Parenthesis
-        /// }
-        /// }
-        /// };
-        /// </code></example>
-        /// <remarks><code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Content ...&gt;
-        /// &lt;Number/&gt; | &lt;Currency/&gt; | &lt;Percentage/&gt; | &lt;Scientific/&gt; | &lt;Datetime/&gt; | &lt;Special/&gt; | &lt;Text/&gt;
-        /// ...
-        /// &lt;/Content&gt;
+        /// <![CDATA[
+        /// <Content Color="DarkBlue">
+        ///   <Alignment Horizontal="Left"/>
+        ///   <Text/>
+        /// </Content>
+        /// ]]>
         /// </code>
-        /// <para>
-        ///   <para>
-        ///     <strong>Compatibility table with native writers.</strong>
-        ///   </para>
-        ///   <table>
-        ///     <thead>
-        ///       <tr>
-        ///         <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///         <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///         <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///         <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-        ///       </tr>
-        ///     </thead>
-        ///     <tbody>
-        ///       <tr>
-        ///         <td align="center">X</td>
-        ///         <td align="center">X</td>
-        ///         <td align="center">X</td>
-        ///         <td align="center">X</td>
-        ///       </tr>
-        ///     </tbody>
-        ///   </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-        /// </para></remarks>
+        /// <code lang="C#">
+        /// var content = new ContentModel
+        /// {
+        ///     Color = "DarkBlue",
+        ///     DataType = new TextDataTypeModel(),
+        ///     Alignment = new ContentAlignmentModel { Horizontal = KnownHorizontalAlignment.Left }
+        /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim content = New ContentModel With
+        /// {
+        ///     .Color = "DarkBlue",
+        ///     .DataType = New TextDataTypeModel(),
+        ///     .Alignment = New ContentAlignmentModel With { .Horizontal = KnownHorizontalAlignment.Left }
+        /// }
+        /// </code>
+        /// <para>In the following example shows how create a new currency content.</para>
+        /// <code lang="xml">
+        /// <![CDATA[
+        /// <Content Color="Beige">
+        ///   <Alignment Vertical="Bottom" Horizontal="Right"/>
+        ///   <Currency Decimals="1" Locale="mk">
+        ///     <Negative Color="Red" Sign="Parenthesis"/>
+        ///   </Currency>
+        /// </Content>
+        /// ]]>
+        /// </code>
+        /// <code lang="C#">
+        /// var content = new ContentModel
+        /// {
+        ///     Color = "Beige",
+        ///     Alignment = new ContentAlignmentModel 
+        ///     { 
+        ///         Horizontal = KnownHorizontalAlignment.Left, 
+        ///         Vertical = KnownVerticalAlignment.Bottom 
+        ///     },
+        ///     DataType = new CurrencyDataTypeModel
+        ///     { 
+        ///         Decimals = 1,
+        ///         Locale = KnownCulture.mk,
+        ///         Negative = new NegativeModel
+        ///         {
+        ///             Color = KnownBasicColor.Red,
+        ///             Sign = KnownNegativeSign.Parenthesis
+        ///         }
+        ///     }
+        /// };
+        /// </code>
+        /// <code lang="VB#">
+        /// Dim content = New ContentModel With
+        /// {
+        ///     .Color = "Beige",
+        ///     .Alignment = New ContentAlignmentModel With
+        ///      { 
+        ///          .Horizontal = KnownHorizontalAlignment.Left, 
+        ///          .Vertical = KnownVerticalAlignment.Bottom 
+        ///      },
+        ///     .DataType = New CurrencyDataTypeModel With
+        ///      { 
+        ///          .Decimals = 1,
+        ///          .Locale = KnownCulture.mk,
+        ///          .Negative = New NegativeModel With
+        ///           {
+        ///               .Color = KnownBasicColor.Red,
+        ///               .Sign = KnownNegativeSign.Parenthesis
+        ///           }
+        ///      }
+        /// }
+        /// </code>
+        /// </example>
         [XmlElement("Currency", typeof(CurrencyDataTypeModel))]
         [XmlElement("DateTime", typeof(DatetimeDataTypeModel))]
         [XmlElement("Number", typeof(NumberDataTypeModel))]

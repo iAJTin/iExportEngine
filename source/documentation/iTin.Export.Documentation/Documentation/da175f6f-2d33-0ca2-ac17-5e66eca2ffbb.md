@@ -1,5 +1,5 @@
 # DocumentModel Properties
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="71e106d1-8d5a-0acb-64b2-8f455c2396da">DocumentModel</a> type exposes the following members.
 

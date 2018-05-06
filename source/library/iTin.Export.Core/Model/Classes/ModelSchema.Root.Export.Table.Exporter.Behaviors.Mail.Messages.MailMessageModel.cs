@@ -648,7 +648,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSend)]
         public YesNo Send
         {
-            get => _send;
+            get => GetStaticBindingValue(_send.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

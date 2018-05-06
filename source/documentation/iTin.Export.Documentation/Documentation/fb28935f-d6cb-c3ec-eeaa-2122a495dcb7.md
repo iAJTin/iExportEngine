@@ -1,5 +1,5 @@
 # BaseDataTypeModel Constructor 
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 Initializes a new instance of the <a href="e5706c13-2625-47d7-a064-2a906557b68e">BaseDataTypeModel</a> class
 

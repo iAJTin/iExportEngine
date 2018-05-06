@@ -101,6 +101,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions\BuiltInFunctions.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ConditionsModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.ChangeConditionModel.cs" />
     <Compile Include="Providers\DataSetProvider.cs" />
     <Compile Include="Providers\XmlProvider.cs" />
     <Compile Include="AspNet\Extensions\StreamExtensions.cs" />

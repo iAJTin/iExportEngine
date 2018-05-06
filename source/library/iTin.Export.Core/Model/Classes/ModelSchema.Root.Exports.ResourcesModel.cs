@@ -20,6 +20,7 @@ namespace iTin.Export.Model
     ///   &lt;Images/&gt;
     ///   &lt;Lines/&gt;
     ///   &lt;Styles/&gt;
+    ///   &lt;Conditions/&gt;
     /// &lt;/Global.Resources&gt;
     /// </code>
     /// </para>
@@ -49,6 +50,10 @@ namespace iTin.Export.Model
     ///     <term><see cref="P:iTin.Export.Model.GlobalResourcesModel.Styles" /></term>
     ///     <description>Collection of user-defined styles. Each element defines type of content, such as the background color, the alignment type, the data type and the font type.</description>
     ///   </item>
+    ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.GlobalResourcesModel.Conditions" /></term>
+    ///     <description>Collection of user-defined conditions. Each element defines a condition.</description>
+    ///   </item>
     /// </list>
     /// <para>
     /// <para><strong>Compatibility table with native writers.</strong></para>
@@ -75,7 +80,7 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class GlobalResourcesModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ExportsModel _parent;
 
@@ -96,6 +101,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ImagesModel _images;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private ConditionsModel _conditions;
         #endregion
 
         #region public properties
@@ -345,6 +353,51 @@ namespace iTin.Export.Model
         {
             get => _styles ?? (_styles = new StylesModel(this));
             set => _styles = value;
+        }
+        #endregion
+
+        #region [public] (ConditionsModel) Conditions: Gets or sets the collection of user-defined conditions
+        /// <summary>
+        /// Gets or sets the collection of user-defined conditions.
+        /// </summary>
+        /// <value>
+        /// Collection of user-defined conditions.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Global.Resources&gt;
+        ///   &lt;Conditions .../&gt;
+        ///   ...
+        /// &lt;/Global.Resources&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        [XmlArrayItem("ChangeCondition", typeof(ChangeConditionModel), IsNullable = false)]
+        public ConditionsModel Conditions
+        {
+            get => _conditions ?? (_conditions = new ConditionsModel(this));
+            set => _conditions = value;
         }
         #endregion
 

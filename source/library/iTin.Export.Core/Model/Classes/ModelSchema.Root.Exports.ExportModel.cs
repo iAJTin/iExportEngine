@@ -329,10 +329,10 @@ namespace iTin.Export.Model
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="IEE Object Element Usage">
-        /// &lt;Export ...&gt;
-        ///   &lt;Table .../&gt;
-        ///   ...
-        /// &lt;/Export&gt;
+        /// <![CDATA[
+        /// <Export ...>
+        ///   <Table/>
+        /// </Export >]]>
         /// </code>
         /// <para>
         /// <para><strong>Compatibility table with native writers.</strong></para>

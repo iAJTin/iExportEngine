@@ -1,5 +1,5 @@
 # HostsModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="790c2cbf-8fc4-51cb-7dba-7cdc6b711b41">HostsModel</a> type exposes the following members.
 

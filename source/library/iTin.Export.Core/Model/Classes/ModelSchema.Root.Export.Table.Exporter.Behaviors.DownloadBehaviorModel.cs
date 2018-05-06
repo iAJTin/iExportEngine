@@ -167,7 +167,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultLocalCopy)]
         public YesNo LocalCopy
         {
-            get => _localCopy;
+            get => GetStaticBindingValue(_localCopy.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

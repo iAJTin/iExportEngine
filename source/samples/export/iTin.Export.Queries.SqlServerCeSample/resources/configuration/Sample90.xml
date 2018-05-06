@@ -22,7 +22,7 @@
         <Content Color="Navy">
           <Text/>
         </Content>
-        <Font Color="White" Bold="Yes"/>        
+        <Font Color="White" Bold="Yes"/>
       </Style>
       <Style Name="ValueTextStyle">
         <Content>
@@ -93,6 +93,11 @@
         <Text Merge="6">{Bind:Common.GetCurrentDatetime}</Text>
       </TextLine>
     </Lines>
+    
+    <Conditions>
+      <ChangeCondition Name="ChangeIDValue" Field="ID" Style="NumericWithoutDecimalsStyle"/>
+    </Conditions>
+    
   </Global.Resources>
 
   <Export Name="sample90" Current="Yes">
@@ -105,7 +110,7 @@
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>          
       </Exporter>
-      <Fields>
+      <Fields Conditions ="ChangeIDValue">
         <Field Name="ID" Alias="Id">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueTextStyle"/>
@@ -148,7 +153,7 @@
            Alias="EPPlus - Some data and a pie chart">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>          
-      </Exporter>plot1
+      </Exporter>
       <Fields>
         <Field Name="ID" Alias="Id">
           <Header Style="HeaderStyle"/>

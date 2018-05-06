@@ -1,5 +1,5 @@
 # DataFieldModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="9f37dd0a-7e2c-88cf-5100-829f93301c35">DataFieldModel</a> type exposes the following members.
 

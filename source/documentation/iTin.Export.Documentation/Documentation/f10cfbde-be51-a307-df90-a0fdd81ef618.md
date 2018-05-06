@@ -1,5 +1,5 @@
 # ISettings Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="94ca8fa3-4ba6-d3f7-614b-913fad195fff">ISettings</a> type exposes the following members.
 

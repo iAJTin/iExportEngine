@@ -1,5 +1,5 @@
 # BaseLineModel Constructor 
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 Initializes a new instance of the <a href="fecd9f8c-aa83-94f7-06af-60e921729e85">BaseLineModel</a> class
 

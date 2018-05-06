@@ -1,5 +1,5 @@
 # ChartSerieModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="2d59a018-86fd-e2a2-ce65-d001fb8d7888">ChartSerieModel</a> type exposes the following members.
 

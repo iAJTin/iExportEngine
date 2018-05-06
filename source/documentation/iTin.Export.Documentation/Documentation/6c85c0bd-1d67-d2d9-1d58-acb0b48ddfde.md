@@ -1,5 +1,5 @@
 # ScientificErrorModel Methods
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 The <a href="408145bd-3b48-82c8-680a-b04be2fa62d5">ScientificErrorModel</a> type exposes the following members.
 

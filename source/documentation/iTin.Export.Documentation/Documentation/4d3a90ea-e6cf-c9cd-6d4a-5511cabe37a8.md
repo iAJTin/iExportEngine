@@ -1,5 +1,5 @@
 # FilterModel Constructor 
-Additional header content _**\[This is preliminary documentation and is subject to change.\]**_
+Additional header content 
 
 Initializes a new instance of the <a href="460f2fbb-d726-7f59-f472-fead753fa197">FilterModel</a> class
 
