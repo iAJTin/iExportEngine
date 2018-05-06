@@ -85,7 +85,6 @@
         <xs:union memberTypes="KnownDefaultPathValue pathType" />
       </xs:simpleType>
     </xs:attribute>
-
   </xs:complexType>
 
   <!-- Exports: Resources -->
@@ -1220,6 +1219,14 @@
   <!-- Table: Fields -->
   <xs:complexType name="FieldsModel" id="FieldsModel">
     <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded" />
+    <xs:attribute name="Conditions" type="xs:string" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] The condition. The default is an empty string ("").
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
   </xs:complexType>
 
   <!-- Table: Fixed -->
@@ -4507,60 +4514,60 @@
     </xs:attribute>
   </xs:complexType>
 
-    <!-- Defines a base class for the different effects of an inmage.                                              -->
-    <!-- The following table shows the different effects.                                                          -->
-    <!--                                                                                                           -->
-    <!-- Remember that you can create your own effects by inheriting from this class.                              -->
-    <!-- Class                 Description                                                                         -->
-    <!-- ========================================================================================================= -->
-    <!-- DisabledEffect        Represents a disabled effect.                                                       -->
-    <!-- GrayScaleEffect       Represents a gray scale effect.                                                     -->
-    <!-- GrayScaleRedEffect    Represents a gray scale red effect.                                                 -->
-    <!-- GrayScaleGreenEffect  Represents a gray scale green effect.                                               -->
-    <!-- GrayScaleBlueEffect   Represents a gray scale blue effect.                                                -->
-    <!-- BrightnessEffect      Represents a brightness effect.                                                     -->
-    <!-- MoreBrightnessEffect  Represents a more brightness effect.                                                -->
-    <!-- DarkEffect            Represents a dark effect.                                                           -->
-    <!-- MoreDarkEffect        Represents a more dark effect.                                                      -->
-    <!-- OpacityEffect         Represents a opacity effect.                                                        -->
-    <xs:complexType name="BaseEffectModel" abstract="true" />
+  <!-- Defines a base class for the different effects of an inmage.                                              -->
+  <!-- The following table shows the different effects.                                                          -->
+  <!--                                                                                                           -->
+  <!-- Remember that you can create your own effects by inheriting from this class.                              -->
+  <!-- Class                 Description                                                                         -->
+  <!-- ========================================================================================================= -->
+  <!-- DisabledEffect        Represents a disabled effect.                                                       -->
+  <!-- GrayScaleEffect       Represents a gray scale effect.                                                     -->
+  <!-- GrayScaleRedEffect    Represents a gray scale red effect.                                                 -->
+  <!-- GrayScaleGreenEffect  Represents a gray scale green effect.                                               -->
+  <!-- GrayScaleBlueEffect   Represents a gray scale blue effect.                                                -->
+  <!-- BrightnessEffect      Represents a brightness effect.                                                     -->
+  <!-- MoreBrightnessEffect  Represents a more brightness effect.                                                -->
+  <!-- DarkEffect            Represents a dark effect.                                                           -->
+  <!-- MoreDarkEffect        Represents a more dark effect.                                                      -->
+  <!-- OpacityEffect         Represents a opacity effect.                                                        -->
+  <xs:complexType name="BaseEffectModel" abstract="true" />
 
-    <!-- Defines a base class for the different types of lines.                                                    -->
-    <!-- The following table shows the different lines.                                                            -->
-    <!--                                                                                                           -->
-    <!-- Remember that you can create your own types of line by inheriting from this class.                        -->
-    <!-- Class                 Description                                                                         -->
-    <!-- ========================================================================================================= -->
-    <!-- EmptyLineModel        Represents an empty text line.                                                      -->
-    <!-- TextLineModel         Represents a text line.                                                             -->
-    <xs:complexType name="BaseLineModel" abstract="true">
-      <xs:attribute name="Key" type="ElementNameString" use="required">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <documentation xml:lang="en">
-            Name of a style defined in the list of styles.
-          </documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Repeat" type="xs:nonNegativeInteger" default="0" use="optional">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <documentation xml:lang="en">
-            [Optional] Name of a style defined in the list of styles. The default is '0'.
-          </documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Show" type="YesNo" default="Yes" use="optional">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <documentation xml:lang="en">
-            [Optional] Determines visibility of the element. The default is 'Yes'.
-          </documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Style" type="ElementNameString" default="Default" use="optional">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <documentation xml:lang="en">
-            [Optional] Name of a style defined in the list of styles. The default is 'Default'.
-          </documentation>
-        </xs:annotation>
-      </xs:attribute>
-    </xs:complexType>
-  </xs:schema>
+  <!-- Defines a base class for the different types of lines.                                                    -->
+  <!-- The following table shows the different lines.                                                            -->
+  <!--                                                                                                           -->
+  <!-- Remember that you can create your own types of line by inheriting from this class.                        -->
+  <!-- Class                 Description                                                                         -->
+  <!-- ========================================================================================================= -->
+  <!-- EmptyLineModel        Represents an empty text line.                                                      -->
+  <!-- TextLineModel         Represents a text line.                                                             -->
+  <xs:complexType name="BaseLineModel" abstract="true">
+    <xs:attribute name="Key" type="ElementNameString" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <documentation xml:lang="en">
+          Name of a style defined in the list of styles.
+        </documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Repeat" type="xs:nonNegativeInteger" default="0" use="optional">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <documentation xml:lang="en">
+          [Optional] Name of a style defined in the list of styles. The default is '0'.
+        </documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Show" type="YesNo" default="Yes" use="optional">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <documentation xml:lang="en">
+          [Optional] Determines visibility of the element. The default is 'Yes'.
+        </documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Style" type="ElementNameString" default="Default" use="optional">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <documentation xml:lang="en">
+          [Optional] Name of a style defined in the list of styles. The default is 'Default'.
+        </documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

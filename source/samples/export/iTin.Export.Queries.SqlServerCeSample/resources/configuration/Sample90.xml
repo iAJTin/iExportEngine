@@ -110,7 +110,7 @@
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>          
       </Exporter>
-      <Fields Conditions ="ChangeIDValue">
+      <Fields Conditions="ChangeIDValue">
         <Field Name="ID" Alias="Id">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueTextStyle"/>

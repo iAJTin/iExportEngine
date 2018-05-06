@@ -226,6 +226,13 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
+                    Dictionary<string, Dictionary<ChangeConditionModel, int>> conditionsByField = null;
+                    var hasConditions = !string.IsNullOrEmpty(items.Conditions);
+                    if (hasConditions)
+                    {
+                        conditionsByField = Resources.Conditions.Pivot(ex => ex.Field, ex => ex, ex => ex.Count());
+                    }
+
                     #region add data
                     if (hasFieldHeaders)
                     {
@@ -243,7 +250,10 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                             var field = items[col];
                             field.DataSource = rowData;
+
                             ModelService.Instance.SetCurrentField(field);
+
+                            //var s = conditionsByField[((DataFieldModel) field).Name];
 
                             var value = field.Value.GetValue(Provider.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;

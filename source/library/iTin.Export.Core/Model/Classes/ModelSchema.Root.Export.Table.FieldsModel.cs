@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace iTin.Export.Model
@@ -62,6 +63,7 @@ namespace iTin.Export.Model
         #endregion
 
         [XmlAttribute]
+        [DefaultValue("")]
         public string Conditions { get; set; }
 
         #region public methods
