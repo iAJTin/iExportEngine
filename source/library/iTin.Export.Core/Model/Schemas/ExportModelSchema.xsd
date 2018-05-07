@@ -132,9 +132,17 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="Conditions" type="ConditionsModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Contains a collection of user-defined conditions. Each element defines type of condition to apply
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:all>
   </xs:complexType>
 
+    
   <!-- Resources: Headers -->
   <xs:complexType name="ColumnHeadersModel" id="ColumnHeadersModel">
     <xs:sequence>
@@ -187,6 +195,7 @@
     </xs:attribute>
   </xs:complexType>
 
+    
   <!-- Resources: Hosts -->
   <xs:complexType name="HostsModel" id="HostsModel">
     <xs:sequence>
@@ -526,6 +535,7 @@
     </xs:attribute>
   </xs:complexType>
 
+    
   <!-- Resources: Images -->
   <xs:complexType name="ImagesModel" id="ImagesModel">
     <xs:sequence>
@@ -789,6 +799,7 @@
     </xs:complexContent>
   </xs:complexType>
 
+    
   <!-- Resources: Lines -->
   <xs:complexType name="LinesModel" id="LinesModel">
     <xs:sequence>
@@ -873,6 +884,33 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+
+    
+  <!-- Resources: Conditions -->
+  <xs:complexType name="ConditionsModel" id="ConditionsModel">
+    <xs:group ref="ConditionsType" minOccurs="1" maxOccurs="unbounded" />
+  </xs:complexType>
+
+  <!-- Conditions: Types -->
+  <xs:group id="ConditionsType" name="ConditionsType">
+    <xs:choice>
+      <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a data field.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+
+  <!-- Conditions: WhenChangeCondition -->
+  <xs:complexType name="WhenChangeCondition" id="WhenChangeCondition">
+    <xs:complexContent>
+      <xs:extension base="BaseConditionModel"/>
+    </xs:complexContent>
+  </xs:complexType>
+
 
   <!-- Exports: Export -->
   <xs:complexType name="ExportModel" id="ExportModel">
@@ -984,6 +1022,13 @@
   <!-- Export: Table -->
   <xs:complexType name="TableModel" id="TableModel">
     <xs:all>
+      <xs:element name="Conditions" type="ConditionItemsModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Exporter" type="ExporterModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
@@ -1180,7 +1225,18 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Table: Exporter -->
+  <!-- Table: Conditions -->
+  <xs:complexType name="ConditionItemsModel" id="ConditionItemsModel">
+    <xs:attribute name="Names" type="stringArrayType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] The condition. The default is an empty string ("").
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+    <!-- Table: Exporter -->
   <xs:complexType name="ExporterModel" id="ExporterModel">
     <xs:sequence>
       <xs:choice>
@@ -1218,15 +1274,30 @@
 
   <!-- Table: Fields -->
   <xs:complexType name="FieldsModel" id="FieldsModel">
-    <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded" />
-    <xs:attribute name="Conditions" type="xs:string" use="optional" default="">
+    <xs:sequence>
+      <xs:element name="Condition" type="HostModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Collection of data fields. Each element is a data field.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Condition" type="xs:string" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The condition. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-
+    <xs:attribute name="Filter" type="xs:string" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] The filter. The default is an empty string ("").
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- Table: Fixed -->
@@ -3094,7 +3165,7 @@
   </xs:complexType>
 
   <!-- Fields: Types -->
-  <xs:group id="FieldType" name="FieldType">
+  <xs:group id="FieldType" name="FieldType">        
     <xs:choice>
       <xs:element name="Field" type="DataFieldModel"  minOccurs="1" maxOccurs="unbounded">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
@@ -3131,7 +3202,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-    </xs:choice>
+    </xs:choice>    
   </xs:group>
 
   <!-- Fields: Field -->
@@ -4491,6 +4562,14 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="Condition" type="xs:string" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          User-defined condition.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
   </xs:complexType>
 
   <!-- Defines a base class for the different behaviors of an exporter.                                          -->
@@ -4570,4 +4649,36 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-</xs:schema>
+
+  <!-- Defines a base class for the different types of fields conditions available.                              -->
+  <!-- Which acts as the base class for the different conditions fields.                                         -->
+  <!-- The following table shows the different data field types.                                                 -->
+  <!--                                                                                                           -->
+  <!-- Class                  Description                                                                        -->
+  <!-- ========================================================================================================= -->
+  <!-- WhenChangeCondition    Occurs when the value of the specified field changes.                              -->
+  <xs:complexType name="BaseConditionModel" abstract="true">
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Name of field condition.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Field" type="FieldNameString" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Name of the field.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Style" type="ElementNameString" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          The name of the style. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  </xs:schema>

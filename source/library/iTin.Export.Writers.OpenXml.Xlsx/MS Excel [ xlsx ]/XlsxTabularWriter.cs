@@ -226,12 +226,12 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    Dictionary<string, Dictionary<ChangeConditionModel, int>> conditionsByField = null;
-                    var hasConditions = !string.IsNullOrEmpty(items.Conditions);
-                    if (hasConditions)
-                    {
-                        conditionsByField = Resources.Conditions.Pivot(ex => ex.Field, ex => ex, ex => ex.Count());
-                    }
+                    Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsByField = null;
+                    //var hasConditions = !string.IsNullOrEmpty(items.Condition.Key);
+                    //if (hasConditions)
+                    //{
+                    //    conditionsByField = Resources.Conditions.Pivot(ex => ex.Field, ex => ex, ex => ex.Count());
+                    //}
 
                     #region add data
                     if (hasFieldHeaders)

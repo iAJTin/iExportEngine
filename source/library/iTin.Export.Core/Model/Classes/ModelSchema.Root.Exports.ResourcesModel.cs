@@ -393,7 +393,7 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        [XmlArrayItem("ChangeCondition", typeof(ChangeConditionModel), IsNullable = false)]
+        [XmlArrayItem("WhenChangeCondition", typeof(WhenChangeConditionModel), IsNullable = false)]
         public ConditionsModel Conditions
         {
             get => _conditions ?? (_conditions = new ConditionsModel(this));

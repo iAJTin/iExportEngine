@@ -1,5 +1,4 @@
 ﻿
-using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace iTin.Export.Model
@@ -61,10 +60,6 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
-
-        [XmlAttribute]
-        [DefaultValue("")]
-        public string Conditions { get; set; }
 
         #region public methods
 
@@ -291,6 +286,10 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
+
+
+        [XmlAnyAttribute]
+        public string Condition { get; set; }
 
         /// <inheritdoc />
         /// <summary>

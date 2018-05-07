@@ -12,31 +12,29 @@ namespace iTin.Export.Model
     /// Which acts as the base class for different data fields.
     /// </summary>
     /// <remarks>
-    ///   <para>
-    ///   The following table shows different data fields.
-    ///   </para>
-    ///   <list type="table">
-    ///     <listheader>
-    ///       <term>Class</term>
-    ///       <description>Description</description>
-    ///     </listheader>
-    ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.DataFieldModel" /></term>
-    ///       <description>Represents a data field.</description>
-    ///     </item>
-    ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.FixedFieldModel" /></term>
-    ///       <description>Represents a piece of a field fixed-width data.</description>
-    ///     </item>
-    ///     <item>
-    ///       <term><see cref="T:iTin.Export.Model.GapFieldModel" /></term>
-    ///       <description>Represents an empty data field.</description>
-    ///     </item>
+    /// <para>The following table shows different data fields.</para>
+    /// <list type="table">
+    ///   <listheader>
+    ///     <term>Class</term>
+    ///     <description>Description</description>
+    ///   </listheader>
+    ///   <item>
+    ///     <term><see cref="T:iTin.Export.Model.DataFieldModel" /></term>
+    ///     <description>Represents a data field.</description>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="T:iTin.Export.Model.FixedFieldModel" /></term>
+    ///     <description>Represents a piece of a field fixed-width data.</description>
+    ///   </item>
+    ///   <item>
+    ///     <term><see cref="T:iTin.Export.Model.GapFieldModel" /></term>
+    ///     <description>Represents an empty data field.</description>
+    ///   </item>
     ///   <item>
     ///     <term><see cref="T:iTin.Export.Model.GroupFieldModel" /> (inherits of <see cref="T:iTin.Export.Model.DataFieldModel" />)</term>
     ///     <description>Represents a field as union of several data field.</description>
     ///   </item>
-    ///   </list>
+    /// </list>
     /// </remarks>
     public partial class BaseDataFieldModel
     {
@@ -221,6 +219,11 @@ namespace iTin.Export.Model
         //    get => GetValueByReflection(Owner.Parent.Parent, _alias);
         //    set => _alias = value;
         //}
+        #endregion
+
+        #region [public] (string) Condition: Gets or sets the alias of data field
+        [XmlAttribute]
+        public string Condition { get; set; }
         #endregion
 
         #region [public] (XElement) DataSource: Gets or sets a reference for pieces data

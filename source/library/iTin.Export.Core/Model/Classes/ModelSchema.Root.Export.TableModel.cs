@@ -75,6 +75,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ExporterModel _exporter;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private ConditionsItemModel _conditions;
         #endregion
 
         #region constructor/s
@@ -244,6 +247,24 @@ namespace iTin.Export.Model
                 return _logo;
             }
             set => _logo = value;
+        }
+        #endregion
+
+        #region [public] (ConditionsItemModel) Conditions: Gets or sets 
+        public ConditionsItemModel Conditions
+        {
+            get
+            {
+                if (_conditions == null)
+                {
+                    _conditions = new ConditionsItemModel();
+                }
+
+                _conditions.SetParent(this);
+
+                return _conditions;
+            }
+            set => _conditions = value;
         }
         #endregion
 

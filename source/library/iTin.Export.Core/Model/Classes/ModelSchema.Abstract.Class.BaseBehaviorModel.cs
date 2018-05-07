@@ -70,7 +70,7 @@ namespace iTin.Export.Model
         
         #endregion
         
-        #region field members
+        #region private fields
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _canExecute;
 

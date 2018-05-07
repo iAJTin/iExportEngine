@@ -102,7 +102,7 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class DataFieldModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _name;
         #endregion

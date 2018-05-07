@@ -69,14 +69,20 @@
       </Style>
       <Style Name="FirstLineStyle">
         <Content Color="#BD4F46">
-         <Alignment Horizontal="Left"/>
-         <DateTime Format="Short Date" Locale="en-US"/>
+          <Alignment Horizontal="Left"/>
+          <DateTime Format="Short Date" Locale="en-US"/>
         </Content>
         <Font Name="Segoe UI" Color="White"/>
       </Style>
+      <Style Name="WhenChangeIdStyle">
+        <Content Color="Green">
+          <Text/>
+        </Content>
+      </Style>
     </Styles>
     <Lines>
-      <EmptyLine Key="ReportEmptyLine" Style="EmptyLineStyle" Merge="7"/>
+      <EmptyLine Key="ReportEmptyLine" Style="EmptyLineStyle" Merge="7">        
+      </EmptyLine>
       <TextLine Key="ReportTitleLine" Style="TitleLineStyle">
         <Text Merge="7">EPPlus demo samples </Text>
       </TextLine>
@@ -92,12 +98,15 @@
         <Text>Date:</Text>
         <Text Merge="6">{Bind:Common.GetCurrentDatetime}</Text>
       </TextLine>
-    </Lines>
-    
-    <Conditions>
-      <ChangeCondition Name="ChangeIDValue" Field="ID" Style="NumericWithoutDecimalsStyle"/>
+    </Lines>   
+    <Conditions>      
+      <WhenChangeCondition Name="ChangeIDValue" Field="ID" Style="WhenChangeIdStyle"/>
     </Conditions>
-    
+    <!--
+    <Filters>
+      <Filter Name="dfd" Field="Id" Operator=">" Value ="0"  Criteria="[ID] > 0 && [b] >90"/>
+    </Filters>
+    -->
   </Global.Resources>
 
   <Export Name="sample90" Current="Yes">
@@ -107,16 +116,17 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data">
+      <Conditions Names="ChangeIDValue hgjghjhg" />
       <Exporter>
-        <Writer Name="XlsxTabularWriter"/>          
+        <Writer Name="XlsxTabularWriter"/>
       </Exporter>
-      <Fields Conditions="ChangeIDValue">
-        <Field Name="ID" Alias="Id">
+      <Fields >
+        <Field Name="ID" Alias="Id" Condition="dfgdfg">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueTextStyle"/>
           <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
         </Field>
-        <Field Name="PRODUCT" Alias="Product">
+        <Field Name="PRODUCT" Alias="Product" Conditions="ChangeIDValue">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueTextStyle"/>
           <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
