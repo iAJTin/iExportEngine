@@ -135,7 +135,7 @@
       <xs:element name="Conditions" type="ConditionsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains a collection of user-defined conditions. Each element defines type of condition to apply
+            Contains a collection of field conditions defined by the user. Each element defines a field condition
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -897,7 +897,7 @@
       <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="1" maxOccurs="unbounded">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a data field.
+            Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -1227,10 +1227,10 @@
 
   <!-- Table: Conditions -->
   <xs:complexType name="ConditionItemsModel" id="ConditionItemsModel">
-    <xs:attribute name="Names" type="stringArrayType" use="required">
+    <xs:attribute name="Keys" type="stringArrayType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] The condition. The default is an empty string ("").
+          [Optional] Array of key conditions.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1275,29 +1275,22 @@
   <!-- Table: Fields -->
   <xs:complexType name="FieldsModel" id="FieldsModel">
     <xs:sequence>
-      <xs:element name="Condition" type="HostModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Collection of data fields. Each element is a data field.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute name="Condition" type="xs:string" use="optional" default="">
+    <!--<xs:attribute name="Condition" type="xs:string" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The condition. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Filter" type="xs:string" use="optional" default="">
+    <xs:attribute name="Filter" type="xs:string" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The filter. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
-    </xs:attribute>
+    </xs:attribute>-->
   </xs:complexType>
 
   <!-- Table: Fixed -->
@@ -4658,10 +4651,10 @@
   <!-- ========================================================================================================= -->
   <!-- WhenChangeCondition    Occurs when the value of the specified field changes.                              -->
   <xs:complexType name="BaseConditionModel" abstract="true">
-    <xs:attribute name="Name" type="xs:string" use="required">
+    <xs:attribute name="Key" type="xs:string" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Name of field condition.
+          Name of key condition.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -4675,10 +4668,9 @@
     <xs:attribute name="Style" type="ElementNameString" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          The name of the style. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+          The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-
-  </xs:schema>
+</xs:schema>

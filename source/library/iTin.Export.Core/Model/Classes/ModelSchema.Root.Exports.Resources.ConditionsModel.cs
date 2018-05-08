@@ -68,7 +68,7 @@ namespace iTin.Export.Model
         /// </returns>
         public override BaseConditionModel GetBy(string name)
         {
-            return this.FirstOrDefault(condition => condition.Name == name);
+            return this.FirstOrDefault(condition => condition.Key == name);
         }
         #endregion
 

@@ -36,30 +36,30 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             Console.WriteLine();
             Console.WriteLine(ThreeStepText);
 
-            Console.WriteLine(FourStepText);
-            Console.WriteLine(FirstSampleStepText);
-            //var sample90ModelConfiguration = CreateSample90Model();
-            //export.Export(ExportSettings.CreateFromModel(sample90ModelConfiguration, "sample90"));
+            //Console.WriteLine(FourStepText);
+            //Console.WriteLine(FirstSampleStepText);
+            ////var sample90ModelConfiguration = CreateSample90Model();
+            ////export.Export(ExportSettings.CreateFromModel(sample90ModelConfiguration, "sample90"));
 
-            Console.WriteLine(SecondSampleStepText);
-            var sample90ChartModelConfiguration = CreateChartSample90Model();
-            //export.Export(ExportSettings.CreateFromModel(sample90ChartModelConfiguration, "sample90-chart"));
+            //Console.WriteLine(SecondSampleStepText);
+            //var sample90ChartModelConfiguration = CreateChartSample90Model();
+            ////export.Export(ExportSettings.CreateFromModel(sample90ChartModelConfiguration, "sample90-chart"));
 
-            Console.WriteLine(ThirdSampleStepText);
-            var sample90BannerModelConfiguration = CreateBannerSample90Model();
-            export.Export(ExportSettings.CreateFromModels(sample90BannerModelConfiguration, "sample90-banner"));
+            //Console.WriteLine(ThirdSampleStepText);
+            //var sample90BannerModelConfiguration = CreateBannerSample90Model();
+            //export.Export(ExportSettings.CreateFromModels(sample90BannerModelConfiguration, "sample90-banner"));
 
-            Console.WriteLine(FourthSampleStepText);
-            var sample90HeaderInfoModelConfiguration = CreateHeaderInfoSample90Model();
-            export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoModelConfiguration, "sample90-headerinfo"));
+            //Console.WriteLine(FourthSampleStepText);
+            //var sample90HeaderInfoModelConfiguration = CreateHeaderInfoSample90Model();
+            //export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoModelConfiguration, "sample90-headerinfo"));
 
-            Console.WriteLine(FifthSampleStepText);
-            var sample90HeaderInfoBuiltInFunctionsModelConfiguration = CreateHeaderInfoBuiltInFunctionsSample90Model();
-            export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoBuiltInFunctionsModelConfiguration, "sample90-headerinfo-built-in-functions"));
+            //Console.WriteLine(FifthSampleStepText);
+            //var sample90HeaderInfoBuiltInFunctionsModelConfiguration = CreateHeaderInfoBuiltInFunctionsSample90Model();
+            //export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoBuiltInFunctionsModelConfiguration, "sample90-headerinfo-built-in-functions"));
 
-            Console.WriteLine(SixthSampleStepText);
-            var sample90HeaderInfoCustomFunctionsModelConfiguration = CreateHeaderInfoCustomFunctionsSample90Model();
-            export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoCustomFunctionsModelConfiguration, "sample90-headerinfo-custom-functions"));
+            //Console.WriteLine(SixthSampleStepText);
+            //var sample90HeaderInfoCustomFunctionsModelConfiguration = CreateHeaderInfoCustomFunctionsSample90Model();
+            //export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoCustomFunctionsModelConfiguration, "sample90-headerinfo-custom-functions"));
 
 
             Console.WriteLine(FiveStepText);

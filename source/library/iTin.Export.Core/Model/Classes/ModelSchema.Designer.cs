@@ -399,7 +399,6 @@ namespace iTin.Export.Model
     //[DebuggerStepThrough()]
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
     public partial class FieldsModel : BaseComplexModelCollection<BaseDataFieldModel, TableModel, string>
     {
     }

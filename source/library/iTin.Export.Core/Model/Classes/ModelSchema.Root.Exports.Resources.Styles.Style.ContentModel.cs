@@ -17,7 +17,7 @@ namespace iTin.Export.Model
     /// <seealso cref="T:System.ICloneable" />
     /// <remarks>
     /// <para>
-    /// Belongs to: <strong><c>Style</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StyleModel" />.
+    /// Belongs to: <strong><c>Style</c></strong>. For more information, please see <see cref="T:iTin.Export.Model.StyleModel"/>.
     /// <code lang="xml" title="IEE Object Element Usage">
     /// <![CDATA[
     /// <Content>
@@ -89,7 +89,8 @@ namespace iTin.Export.Model
     ///   </item>
     /// </list>
     /// A <c><b>X</b></c> value indicates that the writer supports this element.
-    /// </para></remarks>
+    /// </para>
+    /// </remarks>
     public partial class ContentModel : ICloneable
     {
         #region private constants

@@ -55,7 +55,7 @@ namespace iTin.Export.Model
         /// <value>
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
-        public override bool IsDefault => string.IsNullOrEmpty(Name) &&
+        public override bool IsDefault => string.IsNullOrEmpty(Key) &&
                                           string.IsNullOrEmpty(Field) &&
                                           string.IsNullOrEmpty(Style);
         #endregion

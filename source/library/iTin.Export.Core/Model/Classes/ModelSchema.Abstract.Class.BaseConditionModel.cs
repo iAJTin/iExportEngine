@@ -19,7 +19,7 @@ namespace iTin.Export.Model
         private string _field;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _name;
+        private string _key;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ConditionsModel _owner;
@@ -58,17 +58,17 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (string) Name: Gets or sets
+        #region [public] (string) Key: Gets or sets
         [XmlAttribute]
-        public string Name
+        public string Key
         {
-            get => GetStaticBindingValue(_name);
+            get => GetStaticBindingValue(_key);
             set
             {
                 SentinelHelper.ArgumentNull(value);
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "Name", value)));
 
-                _name = value;
+                _key = value;
             }
         }
         #endregion
@@ -133,7 +133,7 @@ namespace iTin.Export.Model
         /// </remarks>
         public override string ToString()
         {
-            return $"Name=\"{Name}\", Field=\"{Field}\"";
+            return $"Key=\"{Key}\", Field=\"{Field}\"";
         }
         #endregion
 

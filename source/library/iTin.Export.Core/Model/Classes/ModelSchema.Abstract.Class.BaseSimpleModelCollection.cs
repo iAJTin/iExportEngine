@@ -329,11 +329,11 @@ namespace iTin.Export.Model
 
         #region protected abstract methods
 
-        #region [protected] {abstract} (void) SetOwner(TItem): Sets the owner of this collection
+        #region [protected] {abstract} (void) SetOwner(TItem): Sets this collection as the owner of the specified item
         /// <summary>
-        /// Sets the owner of this collection.
+        /// Sets this collection as the owner of the specified item.
         /// </summary>
-        /// <param name="item">The item.</param>
+        /// <param name="item">Target item to set owner.</param>
         protected abstract void SetOwner(TItem item);
         #endregion
 

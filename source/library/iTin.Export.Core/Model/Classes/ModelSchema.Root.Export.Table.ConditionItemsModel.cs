@@ -8,16 +8,16 @@ namespace iTin.Export.Model
 
     public partial class ConditionsItemModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private TableModel _parent;
         #endregion
 
         #region public properties
 
-        #region [public] (string[]) Names: Gets or sets
+        #region [public] (string[]) Keys: Gets or sets
         [XmlAttribute]
-        public List<string> Names { get; set; }
+        public List<string> Keys { get; set; }
         #endregion
 
         #region [public] (TableModel) Parent: Gets the parent container of the exporter
@@ -33,7 +33,7 @@ namespace iTin.Export.Model
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
 
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
-        public override bool IsDefault => Names.Count == 0;
+        public override bool IsDefault => Keys.Count == 0;
         #endregion
 
         #endregion

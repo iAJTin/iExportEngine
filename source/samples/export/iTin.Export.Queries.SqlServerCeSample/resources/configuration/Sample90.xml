@@ -81,8 +81,7 @@
       </Style>
     </Styles>
     <Lines>
-      <EmptyLine Key="ReportEmptyLine" Style="EmptyLineStyle" Merge="7">        
-      </EmptyLine>
+      <EmptyLine Key="ReportEmptyLine" Style="EmptyLineStyle" Merge="7"/>
       <TextLine Key="ReportTitleLine" Style="TitleLineStyle">
         <Text Merge="7">EPPlus demo samples </Text>
       </TextLine>
@@ -99,15 +98,15 @@
         <Text Merge="6">{Bind:Common.GetCurrentDatetime}</Text>
       </TextLine>
     </Lines>   
-    <Conditions>      
-      <WhenChangeCondition Name="ChangeIDValue" Field="ID" Style="WhenChangeIdStyle"/>
+    <Conditions>
+      <WhenChangeCondition Key="ChangeIdValue" Field="ID" Style="WhenChangeIdStyle"/>
     </Conditions>
+  </Global.Resources>
     <!--
     <Filters>
       <Filter Name="dfd" Field="Id" Operator=">" Value ="0"  Criteria="[ID] > 0 && [b] >90"/>
     </Filters>
     -->
-  </Global.Resources>
 
   <Export Name="sample90" Current="Yes">
     <Description>EPPlus - Some data</Description>
@@ -116,12 +115,12 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data">
-      <Conditions Names="ChangeIDValue hgjghjhg" />
+      <Conditions Keys="ChangeIdValue" />
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
-      <Fields >
-        <Field Name="ID" Alias="Id" Condition="dfgdfg">
+      <Fields>
+        <Field Name="ID" Alias="Id">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueTextStyle"/>
           <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
