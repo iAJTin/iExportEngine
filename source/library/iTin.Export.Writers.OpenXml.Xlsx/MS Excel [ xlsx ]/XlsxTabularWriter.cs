@@ -229,7 +229,13 @@ namespace iTin.Export.Writers.OpenXml.Office
                     List<BaseConditionModel> conditionsToApply = new List<BaseConditionModel>();
                     Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsToApplyByField = null;
 
-                    bool hasConditions = Table.Conditions.Keys.Any();
+                    bool hasConditions = false;
+                    var keys = Table.Conditions.Keys;
+                    if (keys != null)
+                    {
+                        hasConditions = Table.Conditions.Keys.Any();                        
+                    }
+
                     if (hasConditions)
                     {
                         conditionsToApply.AddRange(
@@ -249,9 +255,9 @@ namespace iTin.Export.Writers.OpenXml.Office
                         y++;
                     }
 
-                    var fieldCondition = conditionsToApply.FirstOrDefault().Field;
-                    var firstSwapStyleToApply = ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).FirstSwapStyle;
-                    var secondSwapStyleToApply = ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).SecondSwapStyle;
+                    var fieldCondition = conditionsToApply.Any() ? conditionsToApply.FirstOrDefault().Field : "";
+                    var firstSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).FirstSwapStyle : "";
+                    var secondSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).SecondSwapStyle: "";
                     var fieldDictionary = new Dictionary<BaseDataFieldModel, int>();
                     var styleToApply = firstSwapStyleToApply;
                     for (var row = 0; row < rowsCount; row++)
@@ -261,10 +267,15 @@ namespace iTin.Export.Writers.OpenXml.Office
                         var rowNextData = row < rowsCount - 1 ? rows[row + 1] : null;
 
                         string conditionFieldValue = null;
-                        var fieldValue = rowData.Attribute(fieldCondition).Value;
-                        if (row > 0)
+                        var fieldValue = "";
+                        if (fieldCondition != "")
                         {
-                            conditionFieldValue = rowPreviousData.Attribute(fieldCondition).Value;
+                            fieldValue = rowData.Attribute(fieldCondition).Value;
+
+                            if (row > 0)
+                            {
+                                conditionFieldValue = rowPreviousData.Attribute(fieldCondition).Value;
+                            }
                         }
 
                         ModelService.Instance.SetCurrentRow(row);
@@ -285,11 +296,18 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                             if (fieldValue != conditionFieldValue && conditionFieldValue!=null)
                             {
-                                if (col == 0)
+                                if (col == 0 && !string.IsNullOrEmpty(secondSwapStyleToApply))
                                 {
                                     styleToApply = styleToApply == firstSwapStyleToApply
                                         ? secondSwapStyleToApply
                                         : firstSwapStyleToApply;
+                                }
+                                else
+                                {
+                                    if (string.IsNullOrEmpty(secondSwapStyleToApply))
+                                    {
+                                        styleToApply = firstSwapStyleToApply;
+                                    }
                                 }
 
                                 cell.StyleName = styleToApply;
@@ -298,7 +316,24 @@ namespace iTin.Export.Writers.OpenXml.Office
                             {
                                 if (hasConditions)
                                 {
-                                    cell.StyleName = styleToApply;
+                                    if (!string.IsNullOrEmpty(secondSwapStyleToApply))
+                                    {
+                                        cell.StyleName = styleToApply;
+                                    }
+                                    else
+                                    {
+                                        if (conditionFieldValue == null)
+                                        {
+                                            cell.StyleName = firstSwapStyleToApply;
+                                        }
+                                        else
+                                        {
+                                            cell.StyleName = row.IsOdd()
+                                                ? $"{value.Style.Name}{AlternateStyleNameSufix}" ??
+                                                  StyleModel.NameOfDefaultStyle
+                                                : value.Style.Name ?? StyleModel.NameOfDefaultStyle;                                            
+                                        }
+                                    }
                                 }
                                 else
                                 {

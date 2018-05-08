@@ -25,7 +25,7 @@
         <Font Color="White" Bold="Yes"/>
       </Style>
       <Style Name="ValueTextStyle">
-        <Content>
+        <Content Color="Red" AlternateColor="Yellow">
           <Text/>
         </Content>
       </Style>   
@@ -74,8 +74,13 @@
         </Content>
         <Font Name="Segoe UI" Color="White"/>
       </Style>
-      <Style Name="WhenChangeIdStyle">
+      <Style Name="WhenChangeIdFirstStyle">
         <Content Color="Beige">
+          <Text/>
+        </Content>
+      </Style>
+      <Style Name="WhenChangeIdSecondStyle">
+        <Content Color="Bisque">
           <Text/>
         </Content>
       </Style>
@@ -99,7 +104,8 @@
       </TextLine>
     </Lines>   
     <Conditions>
-      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle"/>
+      <!--SecondSwapStyle="WhenChangeIdSecondStyle"/> -->
+      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" />
     </Conditions>
     <!--
     <Filters>
