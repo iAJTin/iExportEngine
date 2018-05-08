@@ -84,6 +84,11 @@
           <Text/>
         </Content>
       </Style>
+      <Style Name="QuantityEqualsZeroStyle">
+        <Content Color="Aquamarine">
+          <Text/>
+        </Content>
+      </Style>
     </Styles>
     <Lines>
       <EmptyLine Key="ReportEmptyLine" Style="EmptyLineStyle" Merge="7"/>
@@ -105,7 +110,8 @@
     </Lines>   
     <Conditions>
       <!--SecondSwapStyle="WhenChangeIdSecondStyle"/> -->
-      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" />
+      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle"/>
+      <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Operator="GreatherThan" Value="0" Style="QuantityEqualsZeroStyle" />
     </Conditions>
     <!--
     <Filters>

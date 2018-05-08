@@ -83,6 +83,17 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- ShortCut: StaticBinding. -->
+  <xs:simpleType name="shortCutStaticBindingType" id="shortCutStaticBindingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="{StaticBinding: }">
+        <xs:annotation>
+          <xs:documentation>Defines a custom color, represents a external method or property call.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
 
   <!-- =============================== -->
   <!-- Definition of string data types -->
@@ -105,7 +116,7 @@
   <!-- ================================ -->
   <!-- Definition of drawing data types -->
   <!-- ================================ -->
-  
+
   <!-- RGB color. Expressed in hexadecimal notation (#RRGGBB). -->
   <xs:simpleType name="rgbHexColorType" id ="rgbHexColorType">
     <xs:restriction base="xs:string">
@@ -834,7 +845,24 @@
 
   <!-- RGB color. Defined by name or by its RGB components. -->
   <xs:simpleType name="rgbColorType" id ="rgbColorType">
-    <xs:union memberTypes="bindingType staticBindType rgbHexColorType rgbNameColorType scColorType"/>
+    <xs:union memberTypes="shortCutColorType shortCutStaticBindingType rgbNameColorType rgbHexColorType scColorType bindingType staticBindType"/>
+  </xs:simpleType>
+  
+  <!-- ShortCut: Hexadecimal and Space Color. -->
+  <xs:simpleType name="shortCutColorType" id="shortCutColorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="#">
+        <xs:annotation>
+          <xs:documentation>Custom color as hexadecimal notation (#RRGGBB, #RGB).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sc#">
+        <xs:annotation>
+          <xs:documentation>Defines a custom color by color space as % for each RGB component.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
   </xs:simpleType>
   
   <!-- Horizontal alignment. List of possible types of horizontal alignment. -->
@@ -3730,6 +3758,85 @@
       <xs:pattern value="[\w%@#-_]+" />
       <xs:whiteSpace value="collapse" />
     </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ====================================== -->
+  <!-- Definition of condition operators       -->
+  <!-- ====================================== -->
+
+  <!-- Mail address. Represents a operator. -->
+  <xs:simpleType name="operatorType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        List of available operators
+      </xs:documentation>
+    </xs:annotation>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="EqualTo">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value is equals to.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="NotEqualTo">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value is not equals to.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="LessThan">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value is less than.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="LessOrEqualThan">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value is less or equal than.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="GreatherThan">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value is greather than.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="GreatherOrEqualsThan">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value is greather or equal than.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="In">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value into value-list.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="Like">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value select into match pattern.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="Beetween">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Value into two values
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
   </xs:simpleType>
 
 </xs:schema>

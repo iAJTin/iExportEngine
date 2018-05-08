@@ -901,6 +901,13 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="LogicalCondition" type="LogicalCondition"  minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:choice>
   </xs:group>
 
@@ -924,9 +931,36 @@
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
-
   </xs:complexType>
 
+  <!-- Conditions: LogicalCondition -->
+  <xs:complexType name="LogicalCondition" id="LogicalCondition">
+    <xs:complexContent>
+      <xs:extension base="BaseConditionModel">
+        <xs:attribute name="Operator" type="operatorType" use="required">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The value to evaluate
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Value" type="xs:string" use="required">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The value to evaluate
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Style" type="xs:string" use="optional" default="">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
   <!-- Exports: Export -->
   <xs:complexType name="ExportModel" id="ExportModel">
