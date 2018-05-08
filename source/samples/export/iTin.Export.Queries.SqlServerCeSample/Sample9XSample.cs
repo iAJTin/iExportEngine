@@ -67,25 +67,25 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             var sample90FileConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
             export.Export(ExportSettings.ImportFrom(sample90FileConfiguration, "sample90"));
 
-            Console.WriteLine(SecondSampleStepText);
-            var sample90ChartConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(sample90ChartConfiguration, "sample90-chart"));
+            //Console.WriteLine(SecondSampleStepText);
+            //var sample90ChartConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //export.Export(ExportSettings.ImportFrom(sample90ChartConfiguration, "sample90-chart"));
 
-            Console.WriteLine(ThirdSampleStepText);
-            var sample90BannerConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(sample90BannerConfiguration, "sample90-banner"));
+            //Console.WriteLine(ThirdSampleStepText);
+            //var sample90BannerConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //export.Export(ExportSettings.ImportFrom(sample90BannerConfiguration, "sample90-banner"));
 
-            Console.WriteLine(FourthSampleStepText);
-            var sample90HeaderInfoConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(sample90HeaderInfoConfiguration, "sample90-headerinfo"));
+            //Console.WriteLine(FourthSampleStepText);
+            //var sample90HeaderInfoConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //export.Export(ExportSettings.ImportFrom(sample90HeaderInfoConfiguration, "sample90-headerinfo"));
 
-            Console.WriteLine(FifthSampleStepText);
-            var sample90HeaderBuiltInFunctionsInfoConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(sample90HeaderBuiltInFunctionsInfoConfiguration, "sample90-headerinfo-built-in-functions"));
+            //Console.WriteLine(FifthSampleStepText);
+            //var sample90HeaderBuiltInFunctionsInfoConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //export.Export(ExportSettings.ImportFrom(sample90HeaderBuiltInFunctionsInfoConfiguration, "sample90-headerinfo-built-in-functions"));
 
-            Console.WriteLine(SixthSampleStepText);
-            var sample90HeaderCustomFunctionsInfoConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(sample90HeaderCustomFunctionsInfoConfiguration, "sample90-headerinfo-custom-functions"));
+            //Console.WriteLine(SixthSampleStepText);
+            //var sample90HeaderCustomFunctionsInfoConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //export.Export(ExportSettings.ImportFrom(sample90HeaderCustomFunctionsInfoConfiguration, "sample90-headerinfo-custom-functions"));
         }
 
         private static ExportsModel CreateSample90Model()

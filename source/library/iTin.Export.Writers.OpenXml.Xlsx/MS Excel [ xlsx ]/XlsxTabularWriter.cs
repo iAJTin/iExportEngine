@@ -226,12 +226,22 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsByField = null;
-                    //var hasConditions = !string.IsNullOrEmpty(items.Condition.Key);
-                    //if (hasConditions)
-                    //{
-                    //    conditionsByField = Resources.Conditions.Pivot(ex => ex.Field, ex => ex, ex => ex.Count());
-                    //}
+                    List<BaseConditionModel> conditionsToApply = new List<BaseConditionModel>();
+                    Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsToApplyByField = null;
+
+                    bool hasConditions = Table.Conditions.Keys.Any();
+                    if (hasConditions)
+                    {
+                        conditionsToApply.AddRange(
+                            from key in Table.Conditions.Keys
+                            select Resources.Conditions.FirstOrDefault(i => i.Key == key)
+                            into candidateCondition
+                            let existCandidateCondition = candidateCondition != null
+                            where existCandidateCondition
+                            select candidateCondition);
+
+                        conditionsToApplyByField = conditionsToApply.Pivot(i => i.Field, i => i, i => i.Count());
+                    }
 
                     #region add data
                     if (hasFieldHeaders)
@@ -239,10 +249,24 @@ namespace iTin.Export.Writers.OpenXml.Office
                         y++;
                     }
 
+                    var fieldCondition = conditionsToApply.FirstOrDefault().Field;
+                    var firstSwapStyleToApply = ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).FirstSwapStyle;
+                    var secondSwapStyleToApply = ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).SecondSwapStyle;
                     var fieldDictionary = new Dictionary<BaseDataFieldModel, int>();
+                    var styleToApply = firstSwapStyleToApply;
                     for (var row = 0; row < rowsCount; row++)
-                    {
+                    {                        
                         var rowData = rows[row];
+                        var rowPreviousData = row > 0 ? rows[row - 1] : null;
+                        var rowNextData = row < rowsCount - 1 ? rows[row + 1] : null;
+
+                        string conditionFieldValue = null;
+                        var fieldValue = rowData.Attribute(fieldCondition).Value;
+                        if (row > 0)
+                        {
+                            conditionFieldValue = rowPreviousData.Attribute(fieldCondition).Value;
+                        }
+
                         ModelService.Instance.SetCurrentRow(row);
                         for (var col = 0; col < items.Count; col++)
                         {
@@ -253,16 +277,38 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                             ModelService.Instance.SetCurrentField(field);
 
-                            //var s = conditionsByField[((DataFieldModel) field).Name];
-
                             var value = field.Value.GetValue(Provider.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;
                             var cell = worksheet.Cells[y + row, x + col];
                             cell.Value = value.Value;                        
                             cell.AddErrorComment(value);
-                            cell.StyleName = row.IsOdd()
-                                ? $"{value.Style.Name}{AlternateStyleNameSufix}" ?? StyleModel.NameOfDefaultStyle
-                                : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+
+                            if (fieldValue != conditionFieldValue && conditionFieldValue!=null)
+                            {
+                                if (col == 0)
+                                {
+                                    styleToApply = styleToApply == firstSwapStyleToApply
+                                        ? secondSwapStyleToApply
+                                        : firstSwapStyleToApply;
+                                }
+
+                                cell.StyleName = styleToApply;
+                            }
+                            else
+                            {
+                                if (hasConditions)
+                                {
+                                    cell.StyleName = styleToApply;
+                                }
+                                else
+                                {
+                                    cell.StyleName = row.IsOdd()
+                                        ? $"{value.Style.Name}{AlternateStyleNameSufix}" ??
+                                          StyleModel.NameOfDefaultStyle
+                                        : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                                }
+                            }
+
                             cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
 
                             if (!fieldDictionary.ContainsKey(field))

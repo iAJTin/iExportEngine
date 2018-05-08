@@ -75,7 +75,7 @@
         <Font Name="Segoe UI" Color="White"/>
       </Style>
       <Style Name="WhenChangeIdStyle">
-        <Content Color="Green">
+        <Content Color="Beige">
           <Text/>
         </Content>
       </Style>
@@ -99,14 +99,14 @@
       </TextLine>
     </Lines>   
     <Conditions>
-      <WhenChangeCondition Key="ChangeIdValue" Field="ID" Style="WhenChangeIdStyle"/>
+      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle"/>
     </Conditions>
-  </Global.Resources>
     <!--
     <Filters>
       <Filter Name="dfd" Field="Id" Operator=">" Value ="0"  Criteria="[ID] > 0 && [b] >90"/>
     </Filters>
     -->
+  </Global.Resources>
 
   <Export Name="sample90" Current="Yes">
     <Description>EPPlus - Some data</Description>
@@ -125,7 +125,7 @@
           <Value Style="ValueTextStyle"/>
           <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
         </Field>
-        <Field Name="PRODUCT" Alias="Product" Conditions="ChangeIDValue">
+        <Field Name="PRODUCT" Alias="Product">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueTextStyle"/>
           <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>

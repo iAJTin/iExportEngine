@@ -2,6 +2,10 @@
 namespace iTin.Export.Model
 {
     using System;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
+    using Helpers;
 
     public partial class WhenChangeConditionModel : ICloneable
     {
@@ -17,6 +21,14 @@ namespace iTin.Export.Model
         public static WhenChangeConditionModel Empty => new WhenChangeConditionModel();
         #endregion
 
+        #endregion
+
+        #region private fields
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _fisrtSwapStyle;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _secondSwapStyle;
         #endregion
 
         #region public properties
@@ -43,11 +55,42 @@ namespace iTin.Export.Model
         //public ConditionsModel Owner => _owner;
         //#endregion
 
+        #region [public] (string) FirstSwapStyle: Gets or sets
+        [XmlAttribute]
+        public string FirstSwapStyle
+        {
+            get => GetStaticBindingValue(_fisrtSwapStyle);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "FirstSwapStyle", value)));
+
+                _fisrtSwapStyle = value;
+            }
+        }
+        #endregion
+
+        #region [public] (string) SecondSwapStyle: Gets or sets
+        [XmlAttribute]
+        public string SecondSwapStyle
+        {
+            get => GetStaticBindingValue(_secondSwapStyle);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "SecondSwapStyle", value)));
+
+                _secondSwapStyle = value;
+            }
+        }
+        #endregion
+
         #endregion
 
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this instance is default.
@@ -55,9 +98,9 @@ namespace iTin.Export.Model
         /// <value>
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
-        public override bool IsDefault => string.IsNullOrEmpty(Key) &&
-                                          string.IsNullOrEmpty(Field) &&
-                                          string.IsNullOrEmpty(Style);
+        public override bool IsDefault => base.IsDefault &&
+                                          string.IsNullOrEmpty(FirstSwapStyle) &&
+                                          string.IsNullOrEmpty(SecondSwapStyle);
         #endregion
 
         #endregion

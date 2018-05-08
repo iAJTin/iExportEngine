@@ -16,14 +16,16 @@ namespace iTin.Export.Model
     ///  </summary>
     ///  <remarks>
     ///  <para>Represents <strong>ITEE root</strong> element of a configuration file.
-    ///  <code lang="xml" title="ITEE Object Element Usage">
-    ///   &lt;?xml version="1.0" encoding="utf-8"?&gt;
-    ///   &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
-    ///     &lt;Export/&gt;
-    ///     &lt;Export/&gt;
-    ///     ...
-    ///   &lt;/Exports&gt;
-    ///  </code>
+    /// <code lang="xml" title="IEE Object Element Usage">
+    /// <![CDATA[
+    /// <?xml version="1.0" encoding="utf-8">
+    /// <Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration">
+    ///   <Export/>
+    ///   <Export/>
+    ///   ...
+    /// </Exports>
+    /// ]]>
+    /// </code>
     ///  </para>
     ///  <para><strong>Attributes</strong></para>
     ///  <list type="table">
@@ -33,12 +35,12 @@ namespace iTin.Export.Model
     ///    </listheader>
     ///    <item>
     ///      <term>xmlns</term> 
-    ///      <description>Namespace for the <c>iTin Export Engine (AEE)</c> configuration file.<br /></description>
+    ///      <description>Namespace for the <c>iTin Export Engine (ITEE)</c> configuration file.<br /></description>
     ///    </item>
     ///  </list>
     ///  <note>
     ///  The xsd schema file that will be used to validate the document are located in the location 
-    ///  <c>VisualStudioInstallationFolder\Xml\Schemas</c>, also gives us the intellisense to write quickly the document.    
+    ///  <strong>VisualStudioInstallationFolder\Xml\Schemas</strong>, also gives us the intellisense to write quickly the document.    
     ///  </note>
     ///  <para><strong>Elements</strong></para>
     ///  <list type="table">
@@ -55,118 +57,120 @@ namespace iTin.Export.Model
     ///  <example>
     ///  The following example shows a full configuration file.
     ///  <code lang="xml">
-    ///  &lt;?xml version="1.0" encoding="utf-8"?&gt;
-    ///  &lt;Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration"&gt;
-    ///    &lt;Export Name="iTin" Current="Yes"&gt;
-    ///      &lt;Description&gt;Sample 1&lt;/Description&gt;
-    ///      &lt;Table Name="SCR3SFL"
+    ///  <![CDATA[
+    ///  <?xml version="1.0" encoding="utf-8"?>
+    ///  <Exports xmlns="http://schemas.iTin.com/export/engine/2013/configuration">
+    ///    <Export Name="iTin" Current="Yes">
+    ///      <Description>Sample 1</Description>
+    ///      <Table Name = "SCR3SFL"
     ///             AutoFilter="Yes"
     ///             AutoFitColumns="Yes"
-    ///             Alias="iTin Sample 1"&gt;
-    ///        &lt;Exporter&gt;   
-    ///          &lt;Writer Name="Spreadsheet2003TabularWriter"/&gt;
-    ///          &lt;Behaviors&gt;
-    ///            &lt;Download/&gt;
-    ///            &lt;TransformFile Save="Yes"/&gt;
-    ///          &lt;/Behaviors&gt;
-    ///        &lt;/Exporter&gt;
-    ///        &lt;Output&gt;
-    ///          &lt;File&gt;ExampleI&lt;/File&gt;
-    ///          &lt;Path&gt;~\Samples\Output\Writers\Demo\XML Spreadsheet&lt;/Path&gt;
-    ///        &lt;/Output&gt;
-    ///        &lt;Styles&gt;
-    ///          &lt;Style Name="Header"&gt;
-    ///            &lt;Content Color="#D9E1F2"&gt;
-    ///              &lt;Alignment Horizontal="Left"/&gt;
-    ///              &lt;Text/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11" Bold="Yes"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="PeriodValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;DateTime Format="Year-Month"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="EuropeValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;Number Decimals="1" Separator="Yes"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="AfricaValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;Number Decimals="1" Separator="Yes"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="AsiaValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;Number Decimals="1" Separator="Yes"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="NorthAmericaValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;Number Decimals="1" Separator="Yes"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="SouthAmericaValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;Number Decimals="1" Separator="Yes"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///          &lt;Style Name="AustraliaValue"&gt;
-    ///            &lt;Content Color="#B4C6E7"&gt;
-    ///              &lt;Alignment Horizontal="Right"/&gt;
-    ///              &lt;Number Decimals="1" Separator="Yes"/&gt;
-    ///            &lt;/Content&gt;
-    ///            &lt;Font Name="Calibri" Size="11"/&gt;
-    ///          &lt;/Style&gt;
-    ///        &lt;/Styles&gt;
-    ///        &lt;Fields&gt;
-    ///          &lt;Field Name="PERIOD" Alias="Period"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="PeriodValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///          &lt;Field Name="EUROPE" Alias="Europe"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="EuropeValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///          &lt;Field Name="AFRICA" Alias="Africa"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="AfricaValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///          &lt;Field Name="ASIA" Alias="Asia"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="AsiaValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///          &lt;Field Name="NORTHAMERICA" Alias="North America"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="NorthAmericaValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///          &lt;Field Name="SOUTHAMERICA" Alias="South America"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="SouthAmericaValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///          &lt;Field Name="AUSTRALIA" Alias="Australia"&gt;
-    ///            &lt;Header Style="Header"/&gt;
-    ///            &lt;Value Style="AustraliaValue"/&gt;
-    ///          &lt;/Field&gt;
-    ///        &lt;/Fields&gt;
-    ///      &lt;/Table&gt;
-    ///    &lt;/Export&gt;
-    ///  &lt;/Exports&gt;
-    ///  </code>
-    ///  </example>
+    ///             Alias="iTin Sample 1">
+    ///        <Exporter>   
+    ///          <Writer Name="Spreadsheet2003TabularWriter"/>
+    ///          <Behaviors>
+    ///            <Download/>
+    ///            <TransformFile Save="Yes"/>
+    ///          </Behaviors>
+    ///        </Exporter>
+    ///        <Output>
+    ///          <File>ExampleI</File>
+    ///          <Path>~\Samples\Output\Writers\Demo\XML Spreadsheet</Path>
+    ///        </Output>
+    ///        <Styles>
+    ///          <Style Name="Header">
+    ///            <Content Color="#D9E1F2">
+    ///              <Alignment Horizontal="Left"/>
+    ///              <Text/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11" Bold="Yes"/>
+    ///          </Style>
+    ///          <Style Name= "PeriodValue">
+    ///            <Content Color="#B4C6E7">
+    ///              <Alignment Horizontal="Right"/>
+    ///              <DateTime Format= "Year-Month"/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style>
+    ///          <Style Name="EuropeValue">
+    ///            <Content Color="#B4C6E7">
+    ///              <Alignment Horizontal="Right"/>
+    ///              <Number Decimals="1" Separator="Yes"/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style >
+    ///          <Style Name="AfricaValue">
+    ///            <Content Color="#B4C6E7">
+    ///              <Alignment Horizontal= "Right"/>
+    ///              <Number Decimals="1" Separator="Yes"/>
+    ///            </Content >
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style>
+    ///          <Style Name= "AsiaValue">
+    ///            <Content Color= "#B4C6E7">
+    ///              <Alignment Horizontal="Right"/>
+    ///              <Number Decimals="1" Separator="Yes"/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style >
+    ///          <Style Name="NorthAmericaValue">
+    ///            <Content Color="#B4C6E7">
+    ///              <Alignment Horizontal="Right"/>
+    ///              <Number Decimals="1" Separator="Yes"/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style>
+    ///          <Style Name="SouthAmericaValue">
+    ///            <Content Color="#B4C6E7">
+    ///              <Alignment Horizontal="Right"/>
+    ///              <Number Decimals="1" Separator="Yes"/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style>
+    ///          <Style Name="AustraliaValue">
+    ///            <Content Color="#B4C6E7">
+    ///              <Alignment Horizontal="Right"/>
+    ///              <Number Decimals="1" Separator="Yes"/>
+    ///            </Content>
+    ///            <Font Name="Calibri" Size="11"/>
+    ///          </Style>
+    ///        </Styles>
+    ///        <Fields>
+    ///          <Field Name="PERIOD" Alias="Period">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="PeriodValue"/>
+    ///          </Field>
+    ///          <Field Name= "EUROPE" Alias="Europe">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="EuropeValue"/>
+    ///          </Field>
+    ///          <Field Name="AFRICA" Alias="Africa">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="AfricaValue"/>
+    ///          </Field>
+    ///          <Field Name="ASIA" Alias="Asia">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="AsiaValue"/>
+    ///          </Field>
+    ///          <Field Name="NORTHAMERICA" Alias="North America">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="NorthAmericaValue"/>
+    ///          </Field>
+    ///          <Field Name="SOUTHAMERICA" Alias="South America">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="SouthAmericaValue"/>
+    ///          </Field>
+    ///          <Field Name="AUSTRALIA" Alias="Australia">
+    ///            <Header Style="Header"/>
+    ///            <Value Style="AustraliaValue"/>
+    ///          </Field>
+    ///        </Fields>
+    ///      </Table>
+    ///    </Export>
+    ///  </Exports>
+    /// ]]>
+    /// </code>
+    /// </example>
     public partial class ExportsModel
     {
         #region field members

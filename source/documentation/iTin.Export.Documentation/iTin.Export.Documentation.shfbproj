@@ -35,10 +35,16 @@
     <ComponentConfigurations>
       <ComponentConfig id="IntelliSense Component" enabled="True">
         <component id="IntelliSense Component">
-          <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" boundedCapacity="100" />
-        </component>
+  <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" boundedCapacity="100" />
+</component>
       </ComponentConfig>
-<ComponentConfig id="Code Block Component" enabled="True"><component id="Code Block Component"><basePath value="{@HtmlEncProjectFolder}" /><outputPaths>{@HelpFormatOutputPaths}</outputPaths><allowMissingSource value="false" /><removeRegionMarkers value="false" /><colorizer syntaxFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xml" styleFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}PresentationStyles\Colorizer\highlight.css" scriptFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" tabSize="0" numberLines="true" outlining="true" keepSeeTags="true" defaultTitle="true" /></component></ComponentConfig>
+<ComponentConfig id="Code Block Component" enabled="True"><component id="Code Block Component">
+  <basePath value="{@HtmlEncProjectFolder}" />
+  <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
+  <allowMissingSource value="false" />
+  <removeRegionMarkers value="false" />
+  <colorizer syntaxFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xml" styleFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}PresentationStyles\Colorizer\highlight.css" scriptFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" tabSize="0" numberLines="true" outlining="true" keepSeeTags="true" defaultTitle="true" />
+</component></ComponentConfig>
 <ComponentConfig id="Reflection Index Data (ESENT Cache)" enabled="False"><component id="Reflection Index Data (ESENT Cache)"><index name="reflection" value="/reflection/apis/api" key="@id" cache="15" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\ReflectionIndexCache" projectCachePath=""><data base="{@FrameworkReflectionDataFolder}" recurse="true" files="*.xml" duplicateWarning="false" groupId="ReflectionIndexCache">
 		{@ReferenceLinkNamespaceFiles}
 	</data><data files="reflection.xml" groupId="Project_Ref_{@UniqueID}" /></index><copy name="reflection" source="*" target="/document/reference" /></component></ComponentConfig>
@@ -151,9 +157,16 @@ The classes in this namespace divide into the following categories:
       <PlugInConfig id="Output Deployment" enabled="False">
         <configuration />
       </PlugInConfig>
-<PlugInConfig id="Manual Visibility/API Filter" enabled="True"><configuration /></PlugInConfig>
-<PlugInConfig id="Script# Reflection File Fixer" enabled="False"><configuration /></PlugInConfig>
-<PlugInConfig id="Table of Contents Exclusion" enabled="False"><configuration /></PlugInConfig></PlugInConfigurations>
+      <PlugInConfig id="Manual Visibility/API Filter" enabled="True">
+        <configuration />
+      </PlugInConfig>
+      <PlugInConfig id="Script# Reflection File Fixer" enabled="False">
+        <configuration />
+      </PlugInConfig>
+      <PlugInConfig id="Table of Contents Exclusion" enabled="False">
+        <configuration />
+      </PlugInConfig>
+    </PlugInConfigurations>
     <BuildLogFile />
     <HtmlHelp1xCompilerPath />
     <HtmlHelp2xCompilerPath />
@@ -172,7 +185,7 @@ The classes in this namespace divide into the following categories:
     <RootNamespaceContainer>False</RootNamespaceContainer>
     <PresentationStyle>Markdown</PresentationStyle>
     <Preliminary>False</Preliminary>
-    <NamingMethod>Guid</NamingMethod>
+    <NamingMethod>MemberName</NamingMethod>
     <HelpTitle>iTin Export Engine</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <CatalogProductId>VS</CatalogProductId>
@@ -193,7 +206,7 @@ The classes in this namespace divide into the following categories:
     <TransformComponentArguments>
       <Argument Key="maxVersionParts" Value="" />
       <Argument Key="includeEnumValues" Value="true" />
-      <Argument Key="baseSourceCodeUrl" Value="https://github.com/iAJTin/iExportEngine.wiki.git" />
+      <Argument Key="baseSourceCodeUrl" Value="https://github.com/iAJTin/iExportEngine/" />
     </TransformComponentArguments>
     <ProjectSummary>
     </ProjectSummary>
@@ -210,7 +223,7 @@ The classes in this namespace divide into the following categories:
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <HeaderText>Additional header content</HeaderText>
-    <SourceCodeBasePath>Documentation\</SourceCodeBasePath>
+    <SourceCodeBasePath>..\..\library\iTin.Export.Core\bin\Debug\</SourceCodeBasePath>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in

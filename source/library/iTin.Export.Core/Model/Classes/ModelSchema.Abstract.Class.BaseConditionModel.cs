@@ -24,8 +24,8 @@ namespace iTin.Export.Model
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ConditionsModel _owner;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _style;
+        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        //private string _style;
         #endregion
 
         #region protected members
@@ -85,19 +85,36 @@ namespace iTin.Export.Model
         public ConditionsModel Owner => _owner;
         #endregion
 
-        #region [public] (string) Style: Gets or sets
-        [XmlAttribute]
-        public string Style
-        {
-            get => GetStaticBindingValue(_style);
-            set
-            {
-                SentinelHelper.ArgumentNull(value);
-                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "Style", value)));
+        //#region [public] (string) Style: Gets or sets
+        //[XmlAttribute]
+        //public string Style
+        //{
+        //    get => GetStaticBindingValue(_style);
+        //    set
+        //    {
+        //        SentinelHelper.ArgumentNull(value);
+        //        SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "Style", value)));
 
-                _style = value;
-            }
-        }
+        //        _style = value;
+        //    }
+        //}
+        //#endregion
+
+        #endregion
+
+        #region public override properties
+
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating whether this instance is default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => string.IsNullOrEmpty(Key) &&
+                                          string.IsNullOrEmpty(Field);
         #endregion
 
         #endregion
