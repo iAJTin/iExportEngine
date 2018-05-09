@@ -1,4 +1,10 @@
 ﻿
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using iTin.Export.ComponentModel;
+using iTin.Export.ComponentModel.Writer;
+
 namespace iTin.Export.Model
 {
     using System;
@@ -29,7 +35,15 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _secondSwapStyle;
+
+        private string _lastStyle;
         #endregion
+
+
+        public WhenChangeConditionModel()
+        {
+            _lastStyle = FirstSwapStyle;
+        }
 
         #region public properties
 
@@ -42,18 +56,6 @@ namespace iTin.Export.Model
         /// </value>        
         public bool IsEmpty => IsDefault;
         #endregion
-
-        //#region [public] (ConditionsModel) Owner: Gets the element that owns this
-        ///// <summary>
-        ///// Gets the element that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
-        ///// </summary>
-        ///// <value>
-        ///// The <see cref="T:iTin.Export.Model.StylesModel" /> that owns this <see cref="T:iTin.Export.Model.StyleModel" />.
-        ///// </value>
-        //[XmlIgnore]
-        //[Browsable(false)]
-        //public ConditionsModel Owner => _owner;
-        //#endregion
 
         #region [public] (string) FirstSwapStyle: Gets or sets
         [XmlAttribute]
@@ -137,5 +139,59 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
+
+        public override string Evaluate(int row, int col, FieldValueInformation target, string lastStyle)
+        {
+            var styleToApply = lastStyle == "" ? FirstSwapStyle : lastStyle;
+            bool ok = ModelService.Instance.TryGetUnderlyingDataAsXml(out IEnumerable<XElement> data);
+            if (!ok)
+            {
+                return null;
+            }
+
+            var rows = data.ToList();
+            var rowData = rows[row];
+            var rowPreviousData = row > 0 ? rows[row - 1] : null;
+
+            string conditionFieldValue = null;
+            string fieldValue = rowData.Attribute(Field).Value;
+            if (row > 0)
+            {
+                conditionFieldValue = rowPreviousData.Attribute(Field).Value;
+            }
+
+            if (fieldValue != conditionFieldValue && conditionFieldValue != null)
+            {
+                if (col == 0 && !string.IsNullOrEmpty(SecondSwapStyle))
+                {
+                    styleToApply = styleToApply == FirstSwapStyle
+                        ? SecondSwapStyle
+                        : FirstSwapStyle;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(SecondSwapStyle))
+                    {
+                        styleToApply = FirstSwapStyle;
+                    }
+                }
+
+                return styleToApply;
+            }
+
+            if (!string.IsNullOrEmpty(SecondSwapStyle))
+            {
+                return styleToApply;
+            }
+
+            if (conditionFieldValue == null)
+            {
+                return FirstSwapStyle;
+            }
+
+            return row.IsOdd()
+                ? $"{target.Style.Name}_Alternate"
+                : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+        }
     }
 }

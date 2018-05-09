@@ -203,6 +203,10 @@ namespace iTin.Export.Model
         public bool HasFields => Fields.Any();
         #endregion
 
+        #region [public] (bool) HasConditions: Gets a value indicating whether there are conditions defined
+        public bool HasConditions => Conditions.Keys.Any();
+        #endregion
+
         #region [public] (OutputModel) Output: Gets or sets a reference to output configuration model, it includes path and file name
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Properties/Property[@name="Output"]/*'/>
         public OutputModel Output

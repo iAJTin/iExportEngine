@@ -156,10 +156,10 @@ namespace iTin.Export.ComponentModel
         public bool TryGetUnderlyingDataAsXml(out IEnumerable<XElement> data)
         {
             data = null;
-            if (!_writer.Provider.CanCreateInputXml)
-            {
-                return false;
-            }
+            //if (!_writer.Provider.CanCreateInputXml)
+            //{
+            //    return false;
+            //}
 
             data = _writer.Provider.ToXml();
             return true;

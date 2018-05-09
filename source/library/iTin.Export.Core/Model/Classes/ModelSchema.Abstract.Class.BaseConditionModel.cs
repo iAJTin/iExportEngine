@@ -1,4 +1,8 @@
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using iTin.Export.ComponentModel;
 using iTin.Export.Helpers;
 
 namespace iTin.Export.Model
@@ -23,9 +27,6 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ConditionsModel _owner;
-
-        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        //private string _style;
         #endregion
 
         #region protected members
@@ -155,5 +156,7 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
+
+        public abstract string Evaluate(int row, int col, FieldValueInformation target, string lastStyle);
     }
 }

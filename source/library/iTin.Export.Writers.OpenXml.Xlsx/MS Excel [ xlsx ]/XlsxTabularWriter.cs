@@ -226,28 +226,29 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    List<BaseConditionModel> conditionsToApply = new List<BaseConditionModel>();
-                    Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsToApplyByField = null;
+                    //List<BaseConditionModel> conditionsToApply = new List<BaseConditionModel>();
+                    //Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsToApplyByField = null;
 
-                    bool hasConditions = false;
-                    var keys = Table.Conditions.Keys;
-                    if (keys != null)
-                    {
-                        hasConditions = Table.Conditions.Keys.Any();                        
-                    }
+                    //bool hasConditions = false;
+                    //var keys = Table.Conditions.Keys;
+                    //if (keys != null)
+                    //{
+                    //    hasConditions = Table.Conditions.Keys.Any();                        
+                    //}
 
-                    if (hasConditions)
-                    {
-                        conditionsToApply.AddRange(
-                            from key in Table.Conditions.Keys
-                            select Resources.Conditions.FirstOrDefault(i => i.Key == key)
-                            into candidateCondition
-                            let existCandidateCondition = candidateCondition != null
-                            where existCandidateCondition
-                            select candidateCondition);
+                    //bool hasConditions = Table.HasConditions;
+                    //if (hasConditions)
+                    //{
+                    //    //conditionsToApply.AddRange(
+                    //    //    from key in Table.Conditions.Keys
+                    //    //    select Resources.Conditions.FirstOrDefault(i => i.Key == key)
+                    //    //    into candidateCondition
+                    //    //    let existCandidateCondition = candidateCondition != null
+                    //    //    where existCandidateCondition
+                    //    //    select candidateCondition);
 
-                        conditionsToApplyByField = conditionsToApply.Pivot(i => i.Field, i => i, i => i.Count());
-                    }
+                    //    conditionsToApplyByField = conditionsToApply.Pivot(i => i.Field, i => i, i => i.Count());
+                    //}
 
                     #region add data
                     if (hasFieldHeaders)
@@ -255,28 +256,31 @@ namespace iTin.Export.Writers.OpenXml.Office
                         y++;
                     }
 
-                    var fieldCondition = conditionsToApply.Any() ? conditionsToApply.FirstOrDefault().Field : "";
-                    var firstSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).FirstSwapStyle : "";
-                    var secondSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).SecondSwapStyle: "";
-                    var fieldDictionary = new Dictionary<BaseDataFieldModel, int>();
-                    var styleToApply = firstSwapStyleToApply;
+                    //var fieldCondition = conditionsToApply.Any() ? conditionsToApply.FirstOrDefault().Field : "";
+                    //var firstSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).FirstSwapStyle : "";
+                    //var secondSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).SecondSwapStyle: "";
+                    //var styleToApply = firstSwapStyleToApply;
+
+                    var styleToApply = string.Empty;
+                    var fieldDictionary = new Dictionary<BaseDataFieldModel, int>(); 
+                    List<BaseConditionModel> conditions = Table.Conditions.Items.ToList();
                     for (var row = 0; row < rowsCount; row++)
                     {                        
                         var rowData = rows[row];
-                        var rowPreviousData = row > 0 ? rows[row - 1] : null;
-                        var rowNextData = row < rowsCount - 1 ? rows[row + 1] : null;
+                        //var rowPreviousData = row > 0 ? rows[row - 1] : null;
+                        //var rowNextData = row < rowsCount - 1 ? rows[row + 1] : null;
 
-                        string conditionFieldValue = null;
-                        var fieldValue = "";
-                        if (fieldCondition != "")
-                        {
-                            fieldValue = rowData.Attribute(fieldCondition).Value;
+                        //string conditionFieldValue = null;
+                        //var fieldValue = "";
+                        //if (fieldCondition != "")
+                        //{
+                        //    fieldValue = rowData.Attribute(fieldCondition).Value;
 
-                            if (row > 0)
-                            {
-                                conditionFieldValue = rowPreviousData.Attribute(fieldCondition).Value;
-                            }
-                        }
+                        //    if (row > 0)
+                        //    {
+                        //        conditionFieldValue = rowPreviousData.Attribute(fieldCondition).Value;
+                        //    }
+                        //}
 
                         ModelService.Instance.SetCurrentRow(row);
                         for (var col = 0; col < items.Count; col++)
@@ -294,55 +298,62 @@ namespace iTin.Export.Writers.OpenXml.Office
                             cell.Value = value.Value;                        
                             cell.AddErrorComment(value);
 
-                            if (fieldValue != conditionFieldValue && conditionFieldValue!=null)
+                            foreach (var condition in conditions)
                             {
-                                if (col == 0 && !string.IsNullOrEmpty(secondSwapStyleToApply))
-                                {
-                                    styleToApply = styleToApply == firstSwapStyleToApply
-                                        ? secondSwapStyleToApply
-                                        : firstSwapStyleToApply;
-                                }
-                                else
-                                {
-                                    if (string.IsNullOrEmpty(secondSwapStyleToApply))
-                                    {
-                                        styleToApply = firstSwapStyleToApply;
-                                    }
-                                }
-
+                                styleToApply = condition.Evaluate(row, col, value, styleToApply == "" ? "" : styleToApply);
                                 cell.StyleName = styleToApply;
                             }
-                            else
-                            {
-                                if (hasConditions)
-                                {
-                                    if (!string.IsNullOrEmpty(secondSwapStyleToApply))
-                                    {
-                                        cell.StyleName = styleToApply;
-                                    }
-                                    else
-                                    {
-                                        if (conditionFieldValue == null)
-                                        {
-                                            cell.StyleName = firstSwapStyleToApply;
-                                        }
-                                        else
-                                        {
-                                            cell.StyleName = row.IsOdd()
-                                                ? $"{value.Style.Name}{AlternateStyleNameSufix}" ??
-                                                  StyleModel.NameOfDefaultStyle
-                                                : value.Style.Name ?? StyleModel.NameOfDefaultStyle;                                            
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    cell.StyleName = row.IsOdd()
-                                        ? $"{value.Style.Name}{AlternateStyleNameSufix}" ??
-                                          StyleModel.NameOfDefaultStyle
-                                        : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
-                                }
-                            }
+
+
+
+                            //if (fieldValue != conditionFieldValue && conditionFieldValue!=null)
+                            //{
+                            //    if (col == 0 && !string.IsNullOrEmpty(secondSwapStyleToApply))
+                            //    {
+                            //        styleToApply = styleToApply == firstSwapStyleToApply
+                            //            ? secondSwapStyleToApply
+                            //            : firstSwapStyleToApply;
+                            //    }
+                            //    else
+                            //    {
+                            //        if (string.IsNullOrEmpty(secondSwapStyleToApply))
+                            //        {
+                            //            styleToApply = firstSwapStyleToApply;
+                            //        }
+                            //    }
+
+                            //    cell.StyleName = styleToApply;
+                            //}
+                            //else
+                            //{
+                            //    if (hasConditions)
+                            //    {
+                            //        if (!string.IsNullOrEmpty(secondSwapStyleToApply))
+                            //        {
+                            //            cell.StyleName = styleToApply;
+                            //        }
+                            //        else
+                            //        {
+                            //            if (conditionFieldValue == null)
+                            //            {
+                            //                cell.StyleName = firstSwapStyleToApply;
+                            //            }
+                            //            else
+                            //            {
+                            //                cell.StyleName = row.IsOdd()
+                            //                    ? $"{value.Style.Name}{AlternateStyleNameSufix}" ?? StyleModel.NameOfDefaultStyle
+                            //                    : value.Style.Name ?? StyleModel.NameOfDefaultStyle;                                            
+                            //            }
+                            //        }
+                            //    }
+                            //    else
+                            //    {
+                            //        cell.StyleName = row.IsOdd()
+                            //            ? $"{value.Style.Name}{AlternateStyleNameSufix}" ??
+                            //              StyleModel.NameOfDefaultStyle
+                            //            : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                            //    }
+                            //}
 
                             cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
 

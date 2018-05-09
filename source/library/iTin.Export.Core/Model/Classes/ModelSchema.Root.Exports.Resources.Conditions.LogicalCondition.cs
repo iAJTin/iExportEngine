@@ -1,4 +1,6 @@
 ﻿
+using iTin.Export.ComponentModel;
+
 namespace iTin.Export.Model
 {
     using System;
@@ -140,5 +142,11 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
+
+        public override string Evaluate(int row, int col, FieldValueInformation target, string lastStyle)
+        {
+            return string.Empty;
+        }
+
     }
 }

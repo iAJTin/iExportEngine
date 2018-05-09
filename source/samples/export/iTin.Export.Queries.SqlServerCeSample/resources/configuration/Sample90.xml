@@ -25,7 +25,7 @@
         <Font Color="White" Bold="Yes"/>
       </Style>
       <Style Name="ValueTextStyle">
-        <Content Color="Red" AlternateColor="Yellow">
+        <Content>
           <Text/>
         </Content>
       </Style>   
@@ -108,8 +108,8 @@
         <Text Merge="6">{Bind:Common.GetCurrentDatetime}</Text>
       </TextLine>
     </Lines>   
-    <Conditions>
-      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle"/>
+    <Conditions><!-- SecondSwapStyle="WhenChangeIdSecondStyle" -->
+      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" />
       <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Operator="GreatherThan" Value="0" Style="QuantityEqualsZeroStyle"/>
     </Conditions>
     <!--
