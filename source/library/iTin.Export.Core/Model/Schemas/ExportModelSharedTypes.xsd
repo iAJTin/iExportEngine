@@ -43,7 +43,7 @@
 
   <!-- YesNo: Boolean type. -->
   <xs:simpleType id="YesNo" name="YesNo">
-    <xs:union memberTypes="yesNoType bindingType staticBindType"/>
+    <xs:union memberTypes="shortCutStaticBindingType yesNoType bindingType staticBindType"/>
   </xs:simpleType>
 
   <!-- FieldNameString: Represents a valid field name. -->
@@ -53,9 +53,19 @@
       <xs:pattern value="\s*\{\s*[B|b]inding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
       <xs:pattern value="\s*\{\s*[B|b]inding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
       <xs:whiteSpace value="collapse" />
-    </xs:restriction>
-    
+    </xs:restriction>   
   </xs:simpleType>
+
+  <!-- FieldNameType: . -->
+  <xs:simpleType id="FieldNameType" name="FieldNameType">
+    <xs:union memberTypes="shortCutStaticBindingType FieldNameString bindingType staticBindType"/>
+  </xs:simpleType>
+
+  <!-- freeStringType: free text. -->
+  <xs:simpleType id="freeStringType" name="freeStringType">
+    <xs:union memberTypes="shortCutStaticBindingType xs:string bindingType staticBindType"/>
+  </xs:simpleType>
+
 
   <!-- EmptyString. Empty string. -->
   <xs:simpleType name="EmptyString" id ="EmptyString">
@@ -71,7 +81,7 @@
   to a single space and finally removes the leading and trailing spaces.
   -->
   <xs:simpleType id="ElementNameString" name="ElementNameString">
-    <xs:union memberTypes="identifierType bindingType staticBindType"/>
+    <xs:union memberTypes="shortCutStaticBindingType identifierType staticBindType bindingType"/>
   </xs:simpleType>
 
   <!-- ElementNameStringOrEmpty. ElementNameString or empty string. -->
@@ -398,7 +408,7 @@
   </xs:simpleType>
 
   <!-- KnownTrimMode: Known trim mode. -->
-  <xs:simpleType id="KnownTrimMode" name="KnownTrimMode">
+  <xs:simpleType id="trimMode" name="trimMode">
     <xs:restriction base="xs:string">
       <xs:enumeration value="All">
         <xs:annotation>
@@ -424,6 +434,11 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- Short cut: Operators. -->
+  <xs:simpleType name="KnownTrimMode" id ="KnownTrimMode">
+    <xs:union memberTypes="shortCutStaticBindingType trimMode"/>
+  </xs:simpleType>
+
   <!-- KnownWriterName: Known writer's name. -->
   <xs:simpleType id="KnownWriterName" name="KnownWriterName">
     <xs:restriction base="xs:string">
@@ -435,6 +450,11 @@
       <xs:enumeration value="TsvWriter">
         <xs:annotation>
           <xs:documentation>TSV (Tab-Seperated Values) (*.txt)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MarkdownWriter">
+        <xs:annotation>
+          <xs:documentation>Markdown (*.md)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Spreadsheet2003TabularWriter">

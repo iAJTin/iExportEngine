@@ -940,7 +940,7 @@
         <xs:attribute name="Operator" type="operatorType" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              The value to evaluate
+              Criteria operator.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -951,7 +951,7 @@
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="Style" type="xs:string" use="optional" default="">
+        <xs:attribute name="Style" type="ElementNameString" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
               The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
@@ -1158,7 +1158,7 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
-    <xs:attribute name="Alias" type="xs:string" use="optional" default="">
+    <xs:attribute name="Alias" type="freeStringType" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The alias of the table. The default is an empty string ("").
@@ -1179,14 +1179,14 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Host" type="FieldNameString" use="required">
+    <xs:attribute name="Host" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Name of the table. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # * @ % $'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Name" type="FieldNameString" use="required">
+    <xs:attribute name="Name" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Name of the table. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # * @ % $'.
@@ -1253,7 +1253,7 @@
 
   <!-- Logo: Image -->
   <xs:complexType name="LogoImageModel" id="LogoImageModel">
-    <xs:attribute name="Key" type="xs:string" use="required">
+    <xs:attribute name="Key" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The key of image resource
@@ -1327,14 +1327,14 @@
     <xs:sequence>
       <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
-    <!--<xs:attribute name="Condition" type="xs:string" use="required">
+    <!--<xs:attribute name="Condition" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The condition. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Filter" type="xs:string" use="required">
+    <xs:attribute name="Filter" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The filter. The default is an empty string ("").
@@ -1392,7 +1392,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="File" type="xs:string" minOccurs="0" maxOccurs="1">
+      <xs:element name="File" type="freeStringType" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             The output file name without extension. The following chars are not allowed '&lt; &gt; | " : * \ ? /'
@@ -1770,7 +1770,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1">
+      <xs:element name="Text" type="freeStringType" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             The text of title.
@@ -2144,7 +2144,7 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
-    <xs:attribute name="Axis" type="FieldNameString" use="required">
+    <xs:attribute name="Axis" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The data field which acts how axis data of plot.
@@ -2158,14 +2158,14 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Field" type="FieldNameString" use="required">
+    <xs:attribute name="Field" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Name of field that contains data.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Name" type="xs:string" use="required">
+    <xs:attribute name="Name" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Defines the name of this serie.
@@ -2785,14 +2785,14 @@
 
   <!-- Template: Writer: Settings -->
   <xs:complexType name="TemplateWriterSettingsModel" id="TemplateWriterSettingsModel">
-    <xs:attribute name="FieldPrefix" type="xs:string" use="optional" default="@@">
+    <xs:attribute name="FieldPrefix" type="freeStringType" use="optional" default="@@">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The preferred previous delimiter for field. The default is '@@'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="FieldSufix" type="xs:string" use="optional" default="">
+    <xs:attribute name="FieldSufix" type="freeStringType" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] The preferred posterior delimiter for field. The default is an empty string ("").
@@ -3030,28 +3030,28 @@
 
   <!-- Credentials: Credential -->
   <xs:complexType name ="ServerCredentialModel" id="ServerCredentialModel">
-    <xs:attribute name="Domain" type="xs:string" use="optional" default="">
+    <xs:attribute name="Domain" type="freeStringType" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional]  The name of the domain associated with the credential. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Host" type="xs:string" use="required">
+    <xs:attribute name="Host" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The name or IP address of the host used for SMTP transactions.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Name" type="xs:string" use="required">
+    <xs:attribute name="Name" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The identifier name of credential.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Password" type="xs:string" use="required">
+    <xs:attribute name="Password" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Password for the user name associated with the credential.
@@ -3072,7 +3072,7 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="UserName" type="xs:string" use="required">
+    <xs:attribute name="UserName" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The user name associated with the credential.
@@ -3091,7 +3091,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Body" type="xs:string" minOccurs="1" maxOccurs="1">
+      <xs:element name="Body" type="freeStringType" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             The message body.
@@ -3119,7 +3119,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Subject" type="xs:string" minOccurs="1" maxOccurs="1">
+      <xs:element name="Subject" type="freeStringType" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             The subject line for this e-mail message.
@@ -3141,7 +3141,7 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Credential" type="xs:string" use="required">
+    <xs:attribute name="Credential" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The name of credential to use for this message.
@@ -3252,7 +3252,7 @@
   <xs:complexType name="DataFieldModel" id="DataFieldModel">
     <xs:complexContent>
       <xs:extension base="BaseDataFieldModel">
-        <xs:attribute name="Name" type="FieldNameString" use="required">
+        <xs:attribute name="Name" type="FieldNameType" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
               Name of the field.
@@ -3281,7 +3281,7 @@
   <xs:complexType name="PacketFieldModel" id="PacketFieldModel">
     <xs:complexContent>
       <xs:extension base="BaseDataFieldModel">
-        <xs:attribute name="Name" type="FieldNameString" use="required">
+        <xs:attribute name="Name" type="FieldNameType" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
               Name of the field.
@@ -3364,7 +3364,7 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Reference" type="FieldNameString" use="required">
+    <xs:attribute name="Reference" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The name of the reference field. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # * @ % $'
@@ -3423,7 +3423,7 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="Name" type="FieldNameString" use="required">
+    <xs:attribute name="Name" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The name of the field. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # * @ % $'
@@ -3443,7 +3443,7 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
-    <xs:attribute name="Name" type="FieldNameString" use="required">
+    <xs:attribute name="Name" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           The name of the field.
@@ -3885,7 +3885,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1">
+      <xs:element name="Text" type="freeStringType" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             Represents comment text.
@@ -3935,7 +3935,7 @@
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="Text" type="xs:string" use="optional" default="Total">
+    <xs:attribute name="Text" type="freeStringType" use="optional" default="Total">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] If aggregate is of text type then this attribute specifies preferred text to show for this aggregate. The default is 'Total'.
@@ -4346,14 +4346,14 @@
         Representing an item property. Contains item definition with name / value.
       </xs:documentation>
     </xs:annotation>
-    <xs:attribute name="Name" type="xs:string" use="required">
+    <xs:attribute name="Name" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Custom property name.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Value" type="xs:string" use="required">
+    <xs:attribute name="Value" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Custom property value.
@@ -4596,7 +4596,7 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
-    <xs:attribute name="Alias" type="xs:string" use="required">
+    <xs:attribute name="Alias" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Alias of data field. This value is used as the column header.
@@ -4605,14 +4605,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Condition" type="xs:string" use="optional" default="">
+    <xs:attribute name="Condition" type="freeStringType" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           User-defined condition.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-
   </xs:complexType>
 
   <!-- Defines a base class for the different behaviors of an exporter.                                          -->
@@ -4701,20 +4700,35 @@
   <!-- ========================================================================================================= -->
   <!-- WhenChangeCondition    Occurs when the value of the specified field changes.                              -->
   <xs:complexType name="BaseConditionModel" abstract="true">
-    <xs:attribute name="Key" type="xs:string" use="required">
+    <xs:attribute name="Key" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Name of key condition.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Field" type="FieldNameString" use="required">
+    <xs:attribute name="Field" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           Name of the field.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="TrimValue" type="YesNo" use="optional" default="Yes">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether to apply the value trim mode. The default is 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="TrimMode" type="KnownTrimMode" use="optional" default="All">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Use this attribute to specify the value trim mode. The default is 'All'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
     <!--<xs:attribute name="Style" type="ElementNameString" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">

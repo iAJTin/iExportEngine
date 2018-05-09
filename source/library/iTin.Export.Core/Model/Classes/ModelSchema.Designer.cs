@@ -430,6 +430,7 @@ namespace iTin.Export.Model
     {
     }
 
+    [XmlInclude(typeof(LogicalConditionModel))]
     [XmlInclude(typeof(WhenChangeConditionModel))]
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable]

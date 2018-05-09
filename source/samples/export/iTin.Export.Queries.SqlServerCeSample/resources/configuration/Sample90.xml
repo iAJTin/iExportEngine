@@ -109,9 +109,8 @@
       </TextLine>
     </Lines>   
     <Conditions>
-      <!--SecondSwapStyle="WhenChangeIdSecondStyle"/> -->
       <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle"/>
-      <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Operator="GreatherThan" Value="0" Style="QuantityEqualsZeroStyle" />
+      <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Operator="GreatherThan" Value="0" Style="QuantityEqualsZeroStyle"/>
     </Conditions>
     <!--
     <Filters>
@@ -128,14 +127,17 @@
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data">
       <Conditions Keys="ChangeIdValue" />
+      <Location>
+        <ByCoordenates Coordenates="2 2"/>
+      </Location>
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
       <Fields>
         <Field Name="ID" Alias="Id">
-          <Header Style="HeaderStyle"/>
-          <Value Style="ValueTextStyle"/>
-          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>
+          <Header Style="HeaderStyle"/>            
+          <Value Style="ValueTextStyle"/>            
+          <Aggregate Location="Bottom" Style="NumericWithoutDecimalsWithBorderStyle" Show="Yes"/>            
         </Field>
         <Field Name="PRODUCT" Alias="Product">
           <Header Style="HeaderStyle"/>
@@ -156,7 +158,7 @@
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="NumericStandardWithBorderStyle" Show="Yes"/>
-        </Field>
+        </Field>      
       </Fields>
       <Output>
         <Path>~\output\sample9x\fromconfigfile</Path>

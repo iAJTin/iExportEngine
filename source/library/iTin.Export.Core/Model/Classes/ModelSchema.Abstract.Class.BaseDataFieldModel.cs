@@ -38,9 +38,12 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class BaseDataFieldModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _alias;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private FieldsModel _owner;
@@ -436,7 +439,7 @@ namespace iTin.Export.Model
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
         public override bool IsDefault => Value.IsDefault &&
-                                          Header.IsDefault && 
+                                          Header.IsDefault &&
                                           Aggregate.IsDefault;
         #endregion
 

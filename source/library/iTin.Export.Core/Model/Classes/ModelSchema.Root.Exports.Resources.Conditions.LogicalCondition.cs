@@ -25,7 +25,13 @@ namespace iTin.Export.Model
 
         #region private memebrs
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _operator;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _style;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _value;
         #endregion
 
         #region public properties
@@ -51,6 +57,34 @@ namespace iTin.Export.Model
                 SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "Style", value)));
 
                 _style = value;
+            }
+        }
+        #endregion
+
+        #region [public] (string) Value: Gets or sets
+        [XmlAttribute]
+        public string Value
+        {
+            get => GetStaticBindingValue(_value);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+
+                _value = value;
+            }
+        }
+        #endregion
+
+        #region [public] (string) Operator: Gets or sets
+        [XmlAttribute]
+        public string Operator
+        {
+            get => GetStaticBindingValue(_operator);
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+
+                _operator = value;
             }
         }
         #endregion

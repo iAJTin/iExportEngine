@@ -109,7 +109,7 @@ namespace iTin.Export.Model
         private const KnownPlotGridLine DefaultGridLines = KnownPlotGridLine.None;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 

@@ -88,7 +88,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="{StaticBinding: }">
         <xs:annotation>
-          <xs:documentation>Defines a custom color, represents a external method or property call.</xs:documentation>
+          <xs:documentation>Represents a external method or property call.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:whiteSpace value="collapse"/>
@@ -3765,8 +3765,8 @@
   <!-- Definition of condition operators       -->
   <!-- ====================================== -->
 
-  <!-- Mail address. Represents a operator. -->
-  <xs:simpleType name="operatorType">
+  <!-- Operator. Operator names. -->
+  <xs:simpleType name="operatorNameType">
     <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
       <xs:documentation xml:lang="en">
         List of available operators
@@ -3837,6 +3837,11 @@
           </xs:annotation>
         </xs:enumeration>
       </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Short cut: Operators. -->
+  <xs:simpleType name="operatorType" id ="operatorType">
+    <xs:union memberTypes="shortCutStaticBindingType operatorNameType"/>
   </xs:simpleType>
 
 </xs:schema>

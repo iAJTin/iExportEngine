@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.LogicalCondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ConditionsModel.cs" />
@@ -393,6 +394,7 @@
     <Compile Include="AspNet\Cloud\Clients\SkyDriveClient.cs" />
     <Compile Include="Model\XsltExtensions.cs" />
     <Compile Include="Writers\Comma-Separated Values [ csv ]\CsvWriter.cs" />
+    <Compile Include="Writers\Markdown [ md ]\MarkdownWriter.cs" />
     <Compile Include="Writers\SQL Script [ sql ]\SqlScriptWriter.cs" />
     <Compile Include="Writers\Tab-Separated Values [ txt ]\TsvWriter.cs" />
     <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\KnownlSpreadsheet2003Expression.cs" />
