@@ -1,16 +1,11 @@
 ﻿
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using iTin.Export.ComponentModel;
-using iTin.Export.ComponentModel.Writer;
-
 namespace iTin.Export.Model
 {
     using System;
     using System.Diagnostics;
     using System.Xml.Serialization;
 
+    using ComponentModel;
     using Helpers;
 
     public partial class WhenChangeConditionModel : ICloneable
@@ -35,15 +30,7 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _secondSwapStyle;
-
-        private string _lastStyle;
         #endregion
-
-
-        public WhenChangeConditionModel()
-        {
-            _lastStyle = FirstSwapStyle;
-        }
 
         #region public properties
 
@@ -140,21 +127,19 @@ namespace iTin.Export.Model
 
         #endregion
 
-        public override string Evaluate(int row, int col, FieldValueInformation target, string lastStyle)
-        {
-            var styleToApply = lastStyle == "" ? FirstSwapStyle : lastStyle;
-            bool ok = ModelService.Instance.TryGetUnderlyingDataAsXml(out IEnumerable<XElement> data);
-            if (!ok)
-            {
-                return null;
-            }
+        #region public override methods
 
-            var rows = data.ToList();
+        #region [public] {override} (string) Apply(int, int, FieldValueInformation, string): 
+        public override string Apply(int row, int col, FieldValueInformation target, string referenceStyle)
+        {
+            var styleToApply = referenceStyle == "" ? FirstSwapStyle : referenceStyle;
+
+            var rows = Service.RawData;
             var rowData = rows[row];
             var rowPreviousData = row > 0 ? rows[row - 1] : null;
 
             string conditionFieldValue = null;
-            string fieldValue = rowData.Attribute(Field).Value;
+            var fieldValue = rowData.Attribute(Field).Value;
             if (row > 0)
             {
                 conditionFieldValue = rowPreviousData.Attribute(Field).Value;
@@ -193,5 +178,8 @@ namespace iTin.Export.Model
                 ? $"{target.Style.Name}_Alternate"
                 : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
         }
+        #endregion
+
+        #endregion
     }
 }

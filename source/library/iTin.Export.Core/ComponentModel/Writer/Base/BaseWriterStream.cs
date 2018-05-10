@@ -9,6 +9,18 @@ namespace iTin.Export.ComponentModel.Writer
     /// </summary>
     public abstract class BaseWriterStream : BaseWriter, IWriterStream
     {
+        #region protected properties
+
+        #region [protected] (ModelService) Service: Gets a reference to service render
+        /// <summary>
+        /// Gets a reference to service render.
+        /// </summary>
+        /// <value>The service.</value>
+        protected ModelService Service => ModelService.Instance;
+        #endregion
+
+        #endregion
+
         #region public override properties
 
         #region [public] {override} (KnownWriterIdentifier) WriterIdentifier: Gets a value than identifies the type of writer

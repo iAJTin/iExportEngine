@@ -29,14 +29,14 @@ namespace iTin.Export.Writers.OpenXml.Office
     {
         #region private properties
 
-        #region [private] (HostModel) Host: Gets a reference to the current host model
+        #region [public] (HostModel) Host: Gets a reference to the current host model
         /// <summary>
         /// Gets a reference to the current host model.
         /// </summary>
         /// <value>
         /// Reference to the current host model.
         /// </value>
-        private HostModel Host => Resources.Hosts[Table.Host];
+        public HostModel Host => Resources.Hosts[Table.Host];
         #endregion
 
         #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
@@ -48,16 +48,6 @@ namespace iTin.Export.Writers.OpenXml.Office
         /// </value>
         private GlobalResourcesModel Resources => Provider.Input.Resources;
         #endregion
-
-        //#region [private] (ModelService) Service: Gets service reference to render
-        ///// <summary>
-        ///// Gets service reference to render.
-        ///// </summary>
-        ///// <value>
-        ///// The service.
-        ///// </value>
-        //public ModelService Service => ModelService.Instance;
-        //#endregion
 
         #region [private] (TableModel) Table: Gets a reference to the model table
         /// <summary>
@@ -146,7 +136,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows = Service.RawData;
+                    var rows = Provider.ToXml().ToArray();
                     #endregion
 
                     #region add worksheet
@@ -163,7 +153,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region add top aggregates
-                    var rowsCount = rows.Length;
+                    var rowsCount = rows.Count();
                     var columnHeaders = Table.Headers;
                     var hasColumnheaders = columnHeaders.Any();
 
@@ -236,11 +226,40 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
+                    //List<BaseConditionModel> conditionsToApply = new List<BaseConditionModel>();
+                    //Dictionary<string, Dictionary<BaseConditionModel, int>> conditionsToApplyByField = null;
+
+                    //bool hasConditions = false;
+                    //var keys = Table.Conditions.Keys;
+                    //if (keys != null)
+                    //{
+                    //    hasConditions = Table.Conditions.Keys.Any();                        
+                    //}
+
+                    //bool hasConditions = Table.HasConditions;
+                    //if (hasConditions)
+                    //{
+                    //    //conditionsToApply.AddRange(
+                    //    //    from key in Table.Conditions.Keys
+                    //    //    select Resources.Conditions.FirstOrDefault(i => i.Key == key)
+                    //    //    into candidateCondition
+                    //    //    let existCandidateCondition = candidateCondition != null
+                    //    //    where existCandidateCondition
+                    //    //    select candidateCondition);
+
+                    //    conditionsToApplyByField = conditionsToApply.Pivot(i => i.Field, i => i, i => i.Count());
+                    //}
+
                     #region add data
                     if (hasFieldHeaders)
                     {
                         y++;
                     }
+
+                    //var fieldCondition = conditionsToApply.Any() ? conditionsToApply.FirstOrDefault().Field : "";
+                    //var firstSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).FirstSwapStyle : "";
+                    //var secondSwapStyleToApply = conditionsToApply.Any() ? ((WhenChangeConditionModel)conditionsToApplyByField[fieldCondition].FirstOrDefault(i => i.Key.Field == fieldCondition).Key).SecondSwapStyle: "";
+                    //var styleToApply = firstSwapStyleToApply;
 
                     var styleToApply = string.Empty;
                     var fieldDictionary = new Dictionary<BaseDataFieldModel, int>(); 
@@ -248,16 +267,30 @@ namespace iTin.Export.Writers.OpenXml.Office
                     for (var row = 0; row < rowsCount; row++)
                     {                        
                         var rowData = rows[row];
+                        //var rowPreviousData = row > 0 ? rows[row - 1] : null;
+                        //var rowNextData = row < rowsCount - 1 ? rows[row + 1] : null;
 
-                        Service.SetCurrentRow(row);
+                        //string conditionFieldValue = null;
+                        //var fieldValue = "";
+                        //if (fieldCondition != "")
+                        //{
+                        //    fieldValue = rowData.Attribute(fieldCondition).Value;
+
+                        //    if (row > 0)
+                        //    {
+                        //        conditionFieldValue = rowPreviousData.Attribute(fieldCondition).Value;
+                        //    }
+                        //}
+
+                        ModelService.Instance.SetCurrentRow(row);
                         for (var col = 0; col < items.Count; col++)
                         {
-                            Service.SetCurrentCol(col);
+                            ModelService.Instance.SetCurrentCol(col);
 
                             var field = items[col];
                             field.DataSource = rowData;
 
-                            Service.SetCurrentField(field);
+                            ModelService.Instance.SetCurrentField(field);
 
                             var value = field.Value.GetValue(Provider.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;
@@ -267,19 +300,60 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                             foreach (var condition in conditions)
                             {
-                                if (condition.Active == YesNo.No)
-                                {
-                                    continue;
-                                }
-
-                                styleToApply = condition.Apply(string.IsNullOrEmpty(styleToApply) ? string.Empty : styleToApply);
-                                if (styleToApply == null)
-                                {
-                                    continue;
-                                }
-
+                                styleToApply = condition.Evaluate(row, col, value, styleToApply == "" ? "" : styleToApply);
                                 cell.StyleName = styleToApply;
                             }
+
+
+
+                            //if (fieldValue != conditionFieldValue && conditionFieldValue!=null)
+                            //{
+                            //    if (col == 0 && !string.IsNullOrEmpty(secondSwapStyleToApply))
+                            //    {
+                            //        styleToApply = styleToApply == firstSwapStyleToApply
+                            //            ? secondSwapStyleToApply
+                            //            : firstSwapStyleToApply;
+                            //    }
+                            //    else
+                            //    {
+                            //        if (string.IsNullOrEmpty(secondSwapStyleToApply))
+                            //        {
+                            //            styleToApply = firstSwapStyleToApply;
+                            //        }
+                            //    }
+
+                            //    cell.StyleName = styleToApply;
+                            //}
+                            //else
+                            //{
+                            //    if (hasConditions)
+                            //    {
+                            //        if (!string.IsNullOrEmpty(secondSwapStyleToApply))
+                            //        {
+                            //            cell.StyleName = styleToApply;
+                            //        }
+                            //        else
+                            //        {
+                            //            if (conditionFieldValue == null)
+                            //            {
+                            //                cell.StyleName = firstSwapStyleToApply;
+                            //            }
+                            //            else
+                            //            {
+                            //                cell.StyleName = row.IsOdd()
+                            //                    ? $"{value.Style.Name}{AlternateStyleNameSufix}" ?? StyleModel.NameOfDefaultStyle
+                            //                    : value.Style.Name ?? StyleModel.NameOfDefaultStyle;                                            
+                            //            }
+                            //        }
+                            //    }
+                            //    else
+                            //    {
+                            //        cell.StyleName = row.IsOdd()
+                            //            ? $"{value.Style.Name}{AlternateStyleNameSufix}" ??
+                            //              StyleModel.NameOfDefaultStyle
+                            //            : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                            //    }
+                            //}
 
                             cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
 
@@ -427,8 +501,10 @@ namespace iTin.Export.Writers.OpenXml.Office
                                                     dx += merge - 1;
                                                 }
                                         }
+
                                         break;
-                                    }                                                                              
+                                    }  
+                                                                             
                                     dy++;
                                 }
                             }                                    

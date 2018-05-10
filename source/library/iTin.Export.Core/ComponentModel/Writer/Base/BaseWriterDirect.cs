@@ -7,6 +7,21 @@ namespace iTin.Export.ComponentModel.Writer
     /// </summary>
     public abstract class BaseWriterDirect : BaseWriter, IWriterDirect
     {
+        #region protected properties
+
+        #region [protected] (ModelService) Service: Gets a reference to service render
+        /// <summary>
+        /// Gets a reference to service render.
+        /// </summary>
+        /// <value>The service.</value>
+        protected ModelService Service => ModelService.Instance;
+        #endregion
+
+        #endregion
+
+        #region public override properties
+
+        #region [public] {override} (KnownWriterIdentifier) WriterIdentifier: Gets a value than identifies the type of writer
         /// <inheritdoc />
         /// <summary>
         /// Gets a value than identifies the type of writer.
@@ -15,5 +30,8 @@ namespace iTin.Export.ComponentModel.Writer
         /// Always returns ​the <see cref="F:iTin.Export.ComponentModel.Writer.KnownWriterIdentifier.WriterDirect" /> value.
         /// </value>
         public override KnownWriterIdentifier WriterIdentifier => KnownWriterIdentifier.WriterDirect;
+        #endregion
+
+        #endregion
     }
 }

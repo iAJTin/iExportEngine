@@ -80,6 +80,18 @@ namespace iTin.Export.ComponentModel.Writer
 
         #endregion
 
+        #region protected properties
+
+        #region [protected] (ModelService) Service: Gets a reference to service render
+        /// <summary>
+        /// Gets a reference to service render.
+        /// </summary>
+        /// <value>The service.</value>
+        protected ModelService Service => ModelService.Instance;
+        #endregion
+
+        #endregion
+
         #region protected override methods
 
         #region [protected] {override} (void) ReleaseManagedResources(): Releasing managed resources

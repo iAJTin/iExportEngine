@@ -1,24 +1,24 @@
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using iTin.Export.ComponentModel;
-using iTin.Export.Helpers;
-
 namespace iTin.Export.Model
 {
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    public partial class BaseConditionModel 
+    using ComponentModel;
+    using Helpers;
+
+    public partial class BaseConditionModel : ICondition
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const YesNo DefaultExecute = YesNo.Yes;
+        private const YesNo DefaultActive = YesNo.Yes;
         #endregion
 
         #region private fields
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private YesNo _active;
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _field;
 
@@ -29,20 +29,31 @@ namespace iTin.Export.Model
         private ConditionsModel _owner;
         #endregion
 
-        #region protected members
+        #region protected properties
 
-        #region [protected] BaseConditionModel(): Initializes a new instance of the class
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.BaseConditionModel"/> class.
-        /// </summary>
-        protected BaseConditionModel() 
-        {
-        }
+        #region [protected] (ModelService) Service: 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        protected ModelService Service => ModelService.Instance;
         #endregion
 
         #endregion
 
         #region public properties
+
+        #region [public] (YesNo) Active: Gets or sets
+        [XmlAttribute]
+        [DefaultValue(DefaultActive)]
+        public YesNo Active
+        {
+            get => GetStaticBindingValue(_active.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _active = value;
+            }
+        }
+        #endregion
 
         #region [public] (string) Field: Gets or sets
         [XmlAttribute]
@@ -86,27 +97,11 @@ namespace iTin.Export.Model
         public ConditionsModel Owner => _owner;
         #endregion
 
-        //#region [public] (string) Style: Gets or sets
-        //[XmlAttribute]
-        //public string Style
-        //{
-        //    get => GetStaticBindingValue(_style);
-        //    set
-        //    {
-        //        SentinelHelper.ArgumentNull(value);
-        //        SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "Style", value)));
-
-        //        _style = value;
-        //    }
-        //}
-        //#endregion
-
         #endregion
 
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this instance is default.
@@ -121,6 +116,43 @@ namespace iTin.Export.Model
         #endregion
 
         #region public methods
+
+        #region [public] (string) Apply(string): 
+        /// <summary>
+        /// Evaluates the specified row.
+        /// </summary>
+        /// <param name="referenceStyle">The reference style.</param>
+        /// <returns>System.String.</returns>
+        public string Apply(string referenceStyle)
+        {
+            var service = ModelService.Instance;
+
+            return Apply(
+                service.CurrentRow, 
+                service.CurrentCol, 
+                referenceStyle); 
+        }
+        #endregion
+
+        #region [public] (string) Apply(int, int, string): 
+        /// <summary>
+        /// Evaluates the specified row.
+        /// </summary>
+        /// <param name="row">The row.</param>
+        /// <param name="col">The col.</param>
+        /// <param name="referenceStyle">The reference style.</param>
+        /// <returns>System.String.</returns>
+        public string Apply(int row, int col, string referenceStyle)
+        {
+            var service = ModelService.Instance;
+
+            return Apply(
+                service.CurrentRow,
+                service.CurrentCol,
+                service.CurrentField.Value.GetValue(), 
+                referenceStyle);
+        }
+        #endregion
 
         #region [public] (void) SetOwner(ConditionsModel): Sets a reference to the owner object that contains this instance
         /// <inheritdoc />
@@ -157,6 +189,20 @@ namespace iTin.Export.Model
 
         #endregion
 
-        public abstract string Evaluate(int row, int col, FieldValueInformation target, string lastStyle);
+        #region public abstrtact methods
+
+        #region [public] {abstract} (string) Apply(int, int, FieldValueInformation, string): 
+        /// <summary>
+        /// Evaluates the specified row.
+        /// </summary>
+        /// <param name="row">The row.</param>
+        /// <param name="col">The col.</param>
+        /// <param name="target">The target.</param>
+        /// <param name="referenceStyle">The reference style.</param>
+        /// <returns>System.String.</returns>
+        public abstract string Apply(int row, int col, FieldValueInformation target, string referenceStyle);
+        #endregion
+
+        #endregion
     }
 }

@@ -4,9 +4,11 @@ namespace iTin.Export.ComponentModel
     using System.Collections.Generic;
     using System.Data;
     using System.Diagnostics;
+    using System.Linq;
     using System.Xml.Linq;
 
     using Model;
+    using Provider;
     using Writer;
 
     /// <summary>
@@ -22,7 +24,7 @@ namespace iTin.Export.ComponentModel
         #endregion
 
         #region private members
-        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IWriter _writer;
         #endregion
 
@@ -68,11 +70,25 @@ namespace iTin.Export.ComponentModel
         public ExportModel CurrentModel => _writer.Provider.Input.Model;
         #endregion
 
+        #region [public] (IProvider) Provider:
+        /// <summary>
+        /// 
+        /// </summary>
+        public IProvider Provider => _writer.Provider;
+        #endregion
+
         #region [public] (ExportsModel) Root:
         /// <summary>
         /// 
         /// </summary>
         public ExportsModel Root => _writer.Provider.Input.GetRoot();
+        #endregion
+
+        #region [public] (XElement[]) RawData:
+        /// <summary>
+        /// 
+        /// </summary>
+        public XElement[] RawData { get; private set ;}
         #endregion
 
         #region [public] (ReferencesModel) References:
@@ -83,7 +99,6 @@ namespace iTin.Export.ComponentModel
         #endregion
 
         #region [public] (GlobalResourcesModel) Resources:
-
         /// <summary>
         /// 
         /// </summary>
@@ -168,6 +183,21 @@ namespace iTin.Export.ComponentModel
 
         #endregion
 
+        #region public override methods
+
+        #region [public] {override} (string) ToString(): Returns a string that represents this instance
+        /// <summary>
+        /// Returns a <see cref="T:System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        public override string ToString()
+        {
+            return $"Model=\"{CurrentModel.Name}\", Writer=\"{_writer.WriterMetadata.Name}\", Provider=\"{Provider.ProviderMetadata.Name}\"";
+        }
+        #endregion
+
+        #endregion
+
         #region internal methods
 
         #region [internal] (void) SetWriter(IWriter):
@@ -177,7 +207,8 @@ namespace iTin.Export.ComponentModel
         /// <param name="writer"></param>
         internal void SetWriter(IWriter writer)
         {
-            _writer = writer;            
+            _writer = writer;
+            RawData = (XElement[])_writer.Provider.ToXml().ToArray().Clone();
         }
         #endregion
 

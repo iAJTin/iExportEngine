@@ -62,9 +62,9 @@ namespace iTin.Export.Writers
 
             // initialize
             var fields = Table.Fields;
-                
+
             // get target data
-            var rows = Provider.ToXml().ToArray();
+            var rows = Service.RawData;
 
             // headers
             var headerValues = fields.Select(field => field.Header.Show == YesNo.No ? string.Empty : ParseField(field.Alias)).ToList();

@@ -68,10 +68,10 @@ namespace iTin.Export.Writers
         {                
             // initialize
             var items = Table.Fields;
-                
+
             // get target data
-            var rows = Provider.ToXml().ToArray();
-                
+            var rows = Service.RawData;
+
             // sql document result
             _sqlBuilder = new StringBuilder();
 

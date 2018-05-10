@@ -1,12 +1,11 @@
 ﻿
-using iTin.Export.ComponentModel;
-
 namespace iTin.Export.Model
 {
     using System;
     using System.Diagnostics;
     using System.Xml.Serialization;
 
+    using ComponentModel;
     using Helpers;
 
     public partial class LogicalConditionModel : ICloneable
@@ -27,7 +26,7 @@ namespace iTin.Export.Model
 
         #region private memebrs
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _operator;
+        private KnownOperator _operator;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _style;
@@ -77,14 +76,14 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (string) Operator: Gets or sets
+        #region [public] (string) Criterial: Gets or sets
         [XmlAttribute]
-        public string Operator
+        public KnownOperator Criterial
         {
-            get => GetStaticBindingValue(_operator);
+            get => _operator; // GetStaticBindingValue(_operator);
             set
             {
-                SentinelHelper.ArgumentNull(value);
+                SentinelHelper.IsEnumValid(value);
 
                 _operator = value;
             }
@@ -143,10 +142,80 @@ namespace iTin.Export.Model
 
         #endregion
 
-        public override string Evaluate(int row, int col, FieldValueInformation target, string lastStyle)
-        {
-            return string.Empty;
-        }
+        #region public override methods
 
+        #region [public] {override} (string) Apply(int, int, FieldValueInformation, string): 
+        public override string Apply(int row, int col, FieldValueInformation target, string referenceStyle)
+        {
+            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
+            if (Field != fieldName)
+            {
+                return row.IsOdd()
+                    ? $"{target.Style.Name}_Alternate"
+                    : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+            }
+
+            string conditionStyle = null;
+            var rows = Service.RawData;
+            var rowData = rows[row];
+            var fieldValue = rowData.Attribute(Field).Value;
+
+            switch (Criterial)
+            {
+                case KnownOperator.Beetween:
+                    break;
+
+                case KnownOperator.EqualTo:
+                    if (Value.Equals(fieldValue))
+                    {
+                        conditionStyle = Style;
+                    }
+                    break;
+
+                case KnownOperator.GreatherOrEqualsThan:
+                    if (int.Parse(fieldValue) >= int.Parse(Value))
+                    {
+                        conditionStyle = Style;
+                    }
+                    break;
+
+                case KnownOperator.GreatherThan:
+                    if (int.Parse(fieldValue) > int.Parse(Value))
+                    {
+                        conditionStyle = Style;
+                    }
+                    break;
+
+                case KnownOperator.In:
+                    break;
+
+                case KnownOperator.LessOrEqualThan:
+                    break;
+
+                case KnownOperator.LessThan:
+                    if (int.Parse(fieldValue) < int.Parse(Value))
+                    {
+                        conditionStyle = Style;
+                    }
+                    break;
+
+                case KnownOperator.Like:
+                    break;
+
+                case KnownOperator.NotEqualTo:
+                    if (!fieldValue.Equals(Value))
+                    {
+                        conditionStyle = Style;
+                    }
+                    break;
+            }
+
+            return conditionStyle ?? (row.IsOdd()
+                       ? $"{target.Style.Name}_Alternate"
+                       : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
+        }
+        #endregion
+
+        #endregion
     }
 }

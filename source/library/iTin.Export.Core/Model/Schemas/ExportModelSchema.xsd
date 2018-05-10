@@ -918,14 +918,14 @@
         <xs:attribute name="FirstSwapStyle" type="ElementNameString" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+              The name of first style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="SecondSwapStyle" type="xs:string" use="optional" default="">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+              The name of second style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -937,17 +937,17 @@
   <xs:complexType name="LogicalCondition" id="LogicalCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
-        <xs:attribute name="Operator" type="operatorType" use="required">
+        <xs:attribute name="Criterial" type="operatorType" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Criteria operator.
+              Defines the condition to be checked for the specified field.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="Value" type="xs:string" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              The value to evaluate
+              Defines the field value to evaluate.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -1280,7 +1280,7 @@
     <xs:attribute name="Keys" type="stringArrayType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Array of key conditions.
+          Array of key conditions. Represents one of the conditions defined in the resource area.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -4698,43 +4698,36 @@
   <!--                                                                                                           -->
   <!-- Class                  Description                                                                        -->
   <!-- ========================================================================================================= -->
-  <!-- WhenChangeCondition    Occurs when the value of the specified field changes.                              -->
+    <!-- LogicalCondition     occurs when the result of the condition is true.                                   -->
+    <!-- WhenChangeCondition  Occurs when the value of the specified field changes.                              -->
   <xs:complexType name="BaseConditionModel" abstract="true">
     <xs:attribute name="Key" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Name of key condition.
+          Define the identifier that represents this condition
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Field" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Name of the field.
+          Represents the name of the field to be monitored.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="TrimValue" type="YesNo" use="optional" default="Yes">
+    <xs:attribute name="ApplyRow" type="YesNo" use="optional" default="Yes">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Determines whether to apply the value trim mode. The default is 'Yes'.
+          [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'Yes'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="TrimMode" type="KnownTrimMode" use="optional" default="All">
+    <xs:attribute name="Active" type="YesNo" use="optional" default="Yes">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Use this attribute to specify the value trim mode. The default is 'All'.
+          [Optional] Determines whether this condition will be evaluate. The default is 'Yes'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-
-    <!--<xs:attribute name="Style" type="ElementNameString" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>-->
   </xs:complexType>
 </xs:schema>

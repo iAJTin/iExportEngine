@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MS Excel [ xlsx ]\XlsxTabularWriter.cs" />
     <Compile Include="OfficeOpenXml\Drawing\Chart\ChartExtensions.cs" />
     <Compile Include="OfficeOpenXml\Drawing\Chart\ChartHelper.cs" />
     <Compile Include="OfficeOpenXml\Drawing\Chart\KnownAxisType.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="OfficeOpenXml\Style\StyleExtensions.cs" />
     <Compile Include="OfficeOpenXml\Utils\iTin\ChartXmlHelper.cs" />
     <Compile Include="MS Excel [ xlsx ]\XlsxExtensions.cs" />
-    <Compile Include="MS Excel [ xlsx ]\XlsxTabularWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

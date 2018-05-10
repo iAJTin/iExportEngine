@@ -25,7 +25,7 @@
         <Font Color="White" Bold="Yes"/>
       </Style>
       <Style Name="ValueTextStyle">
-        <Content>
+        <Content Color="LightGray">
           <Text/>
         </Content>
       </Style>   
@@ -45,7 +45,7 @@
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content>
+        <Content Color="LightGray">
           <Number Decimals="0"/>
         </Content>
       </Style>
@@ -108,9 +108,9 @@
         <Text Merge="6">{Bind:Common.GetCurrentDatetime}</Text>
       </TextLine>
     </Lines>   
-    <Conditions><!-- SecondSwapStyle="WhenChangeIdSecondStyle" -->
-      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" />
-      <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Operator="GreatherThan" Value="0" Style="QuantityEqualsZeroStyle"/>
+    <Conditions>
+      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle" Active="No"/>
+      <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Criterial="EqualTo" Value="37" Style="QuantityEqualsZeroStyle"/>
     </Conditions>
     <!--
     <Filters>
@@ -126,7 +126,7 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data">
-      <Conditions Keys="ChangeIdValue" />
+      <Conditions Keys="ChangeIdValue QuantityEqualsZero" />
       <Location>
         <ByCoordenates Coordenates="2 2"/>
       </Location>

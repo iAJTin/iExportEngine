@@ -90,7 +90,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows = Provider.ToXml().ToArray();
+                    var rows = Service.RawData;
                     var rowsCount = rows.Count();
                     #endregion
                         

@@ -77,7 +77,7 @@ namespace iTin.Export.Writers.Adobe
                     #endregion
 
                     #region get input data
-                    var rows = Provider.ToXml().ToArray();
+                    var rows = Service.RawData;
                     #endregion
 
                     #region add data
