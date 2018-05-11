@@ -30,7 +30,7 @@
         </Content>
       </Style>   
       <Style Name="NumericStandardStyle">
-        <Content>
+        <Content Color="LightGray">
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
@@ -39,7 +39,7 @@
         <Borders>
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
-        <Content>
+        <Content Color="LightGray">
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
@@ -50,7 +50,7 @@
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
-        <Content>
+        <Content Color="LightGray">
           <Number Decimals="0"/>
         </Content>
       </Style>

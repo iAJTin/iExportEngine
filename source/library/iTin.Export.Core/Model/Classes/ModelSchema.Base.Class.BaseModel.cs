@@ -345,10 +345,7 @@ namespace iTin.Export.Model
             }
             finally
             {
-                if (reader != null)
-                {
-                    reader.Dispose();
-                }
+                reader?.Dispose();
             }
         }
         #endregion

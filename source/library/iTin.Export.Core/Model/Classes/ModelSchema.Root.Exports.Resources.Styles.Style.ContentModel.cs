@@ -242,7 +242,7 @@ namespace iTin.Export.Model
             get => Parent.Owner == null ? _alternateColor : GetStaticBindingValue(_alternateColor);
             set
             {
-                SentinelHelper.ArgumentNull(value);
+                 SentinelHelper.ArgumentNull(value);
 
                 _alternateColor = value;
             }
