@@ -25,12 +25,12 @@
         <Font Color="White" Bold="Yes"/>
       </Style>
       <Style Name="ValueTextStyle">
-        <Content Color="LightGray">
+        <Content Color="LightGray" AlternateColor="Coral">
           <Text/>
         </Content>
       </Style>   
       <Style Name="NumericStandardStyle">
-        <Content Color="LightGray">
+        <Content Color="LightGray" AlternateColor="Coral">
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
@@ -39,18 +39,18 @@
         <Borders>
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
-        <Content Color="LightGray">
+        <Content>
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content Color="LightGray">
+        <Content Color="LightGray" AlternateColor="Coral">
           <Number Decimals="0"/>
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
-        <Content Color="LightGray">
+        <Content>
           <Number Decimals="0"/>
         </Content>
       </Style>
@@ -80,12 +80,17 @@
         </Content>
       </Style>
       <Style Name="WhenChangeIdSecondStyle">
-        <Content Color="Bisque">
+        <Content Color="AliceBlue">
           <Text/>
         </Content>
       </Style>
-      <Style Name="QuantityEqualsZeroStyle">
+      <Style Name="QuantityEqualsToConditionStyle">
         <Content Color="Aquamarine">
+          <Text/>
+        </Content>
+      </Style>
+      <Style Name="PriceyEqualsToConditionStyle">
+        <Content Color="Yellow">
           <Text/>
         </Content>
       </Style>
@@ -109,8 +114,9 @@
       </TextLine>
     </Lines>   
     <Conditions>
-      <WhenChangeCondition Key="ChangeIdValue" Field="ID" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle" Active="No"/>
-      <LogicalCondition Key="QuantityEqualsZero" Field="QUANTITY" Criterial="EqualTo" Value="37" Style="QuantityEqualsZeroStyle"/>
+      <!--<LogicalCondition Key="PriceyEqualsToCondition" Field="PRICE" Criterial="GreatherOrEqualsThan" Value="12.1" Style="PriceyEqualsToConditionStyle" Active="No"/>
+      <LogicalCondition Key="QuantityEqualsToCondition" Field="QUANTITY" Criterial="EqualTo" Value="37" Style="QuantityEqualsToConditionStyle" Active="No"/>-->
+      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle" EntireRow="No" Active="Yes"/>
     </Conditions>
     <!--
     <Filters>
@@ -126,7 +132,7 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data">
-      <Conditions Keys="ChangeIdValue QuantityEqualsZero" />
+      <Conditions Keys="ChangeIdValue QuantityEqualsToCondition PriceyEqualsToCondition" />
       <Location>
         <ByCoordenates Coordenates="2 2"/>
       </Location>

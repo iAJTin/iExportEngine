@@ -173,9 +173,16 @@ namespace iTin.Export.Model
                     break;
 
                 case KnownOperator.GreatherOrEqualsThan:
-                    if (int.Parse(fieldValue) >= int.Parse(Value))
+                    var okValueDecimal = decimal.TryParse(Value.Replace(".", ","), out decimal asValueDecimal);
+                    var okFieldValueDecimal = decimal.TryParse(fieldValue.Replace(".", ","), out decimal asFieldDecimal);
+                    if (!(okValueDecimal && okFieldValueDecimal))
                     {
-                        conditionStyle = Style;
+                        break;
+                    }
+
+                    if (asFieldDecimal >= asValueDecimal)
+                    {
+                        conditionStyle = Style;                        
                     }
                     break;
 

@@ -272,7 +272,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                                     continue;
                                 }
 
-                                styleToApply = condition.Apply(string.IsNullOrEmpty(styleToApply) ? string.Empty : styleToApply);
+                                styleToApply = condition.Apply(""); //string.IsNullOrEmpty(styleToApply) ? string.Empty : styleToApply);
                                 if (styleToApply == null)
                                 {
                                     continue;

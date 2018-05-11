@@ -13,11 +13,17 @@ namespace iTin.Export.Model
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const YesNo DefaultActive = YesNo.Yes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const YesNo DefaultEntireRow = YesNo.No;
         #endregion
 
         #region private fields
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _active;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private YesNo _entrireRow;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _field;
@@ -51,6 +57,21 @@ namespace iTin.Export.Model
                 SentinelHelper.IsEnumValid(value);
 
                 _active = value;
+            }
+        }
+        #endregion
+
+        #region [public] (YesNo) EntireRow: Gets or sets
+        [XmlAttribute]
+        [DefaultValue(DefaultEntireRow)]
+        public YesNo EntireRow
+        {
+            get => GetStaticBindingValue(_entrireRow.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _entrireRow = value;
             }
         }
         #endregion

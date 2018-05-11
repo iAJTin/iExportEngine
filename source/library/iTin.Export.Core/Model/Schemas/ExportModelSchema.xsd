@@ -4715,17 +4715,17 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="ApplyRow" type="YesNo" use="optional" default="Yes">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'Yes'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
     <xs:attribute name="Active" type="YesNo" use="optional" default="Yes">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] Determines whether this condition will be evaluate. The default is 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="EntireRow" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'No'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

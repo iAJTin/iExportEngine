@@ -129,35 +129,90 @@ namespace iTin.Export.Model
 
         #region public override methods
 
+        private string _lastStyle;
+        public WhenChangeConditionModel()
+        {
+            _lastStyle = FirstSwapStyle;
+        }
+
         #region [public] {override} (string) Apply(int, int, FieldValueInformation, string): 
         public override string Apply(int row, int col, FieldValueInformation target, string referenceStyle)
         {
-            var styleToApply = referenceStyle == "" ? FirstSwapStyle : referenceStyle;
+            //if (EntireRow == YesNo.No)
+            //{
+            //    styleToApply = string.IsNullOrEmpty(referenceStyle) || referenceStyle != FirstSwapStyle || referenceStyle != SecondSwapStyle ? FirstSwapStyle : referenceStyle;
+            //}
+            //else
+            //{
+            //    styleToApply = string.IsNullOrEmpty(referenceStyle) ? FirstSwapStyle : referenceStyle;
+            //}
+
+            string styleToApply = _lastStyle;
+            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
 
             var rows = Service.RawData;
             var rowData = rows[row];
             var rowPreviousData = row > 0 ? rows[row - 1] : null;
 
-            string conditionFieldValue = null;
-            var fieldValue = rowData.Attribute(Field).Value;
+            //var fieldColIndex = rowData.Attributes().IndexOfAttribute(Field);
+
+            string previousValue = null;
+            var currentValue = rowData.Attribute(Field).Value;
             if (row > 0)
             {
-                conditionFieldValue = rowPreviousData.Attribute(Field).Value;
+                previousValue = rowPreviousData.Attribute(Field).Value;
             }
 
-            if (fieldValue != conditionFieldValue && conditionFieldValue != null)
+            if (currentValue != previousValue && previousValue != null)
             {
-                if (col == 0 && !string.IsNullOrEmpty(SecondSwapStyle))
+                //if (EntireRow == YesNo.No)
+                //{
+                //    if (!string.IsNullOrEmpty(SecondSwapStyle))
+                //    {
+                //        styleToApply = styleToApply == FirstSwapStyle
+                //            ? SecondSwapStyle
+                //            : FirstSwapStyle;
+                //    }
+                //    //else
+                //    //{
+                //    //    styleToApply = FirstSwapStyle;
+                //    //}
+                //}
+
+                if (EntireRow == YesNo.No)
                 {
-                    styleToApply = styleToApply == FirstSwapStyle
-                        ? SecondSwapStyle
-                        : FirstSwapStyle;
+                    if (Field != fieldName)
+                    {
+                        styleToApply = row.IsOdd()
+                            ? $"{target.Style.Name}_Alternate"
+                            : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(SecondSwapStyle))
+                        {
+                            styleToApply = _lastStyle == FirstSwapStyle
+                                ? SecondSwapStyle
+                                : FirstSwapStyle;
+                        }
+                    }
+
+                    return styleToApply;
                 }
                 else
-                {
-                    if (string.IsNullOrEmpty(SecondSwapStyle))
+                {                   
+                    if (!string.IsNullOrEmpty(SecondSwapStyle)) //fieldName == Field &&
                     {
-                        styleToApply = FirstSwapStyle;
+                        styleToApply = styleToApply == FirstSwapStyle
+                            ? SecondSwapStyle
+                            : FirstSwapStyle;
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(SecondSwapStyle))
+                        {
+                            styleToApply = FirstSwapStyle;
+                        }
                     }
                 }
 
@@ -169,7 +224,7 @@ namespace iTin.Export.Model
                 return styleToApply;
             }
 
-            if (conditionFieldValue == null)
+            if (previousValue == null)
             {
                 return FirstSwapStyle;
             }

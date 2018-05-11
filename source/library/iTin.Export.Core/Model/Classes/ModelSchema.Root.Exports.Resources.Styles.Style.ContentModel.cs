@@ -99,12 +99,6 @@ namespace iTin.Export.Model
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DefaultColor = "Transparent";
-
-        /// <summary>
-        /// The default alternate color
-        /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const string DefaultAlternateColor = "Transparent";
         #endregion
 
         #region private members
@@ -154,7 +148,6 @@ namespace iTin.Export.Model
         public ContentModel()
         {
             Color = DefaultColor;
-            AlternateColor = DefaultAlternateColor;
         }
         #endregion
 
@@ -236,10 +229,15 @@ namespace iTin.Export.Model
         /// </code>
         /// </example>
         [XmlAttribute]
-        [DefaultValue(DefaultAlternateColor)]
         public string AlternateColor
         {
-            get => Parent.Owner == null ? _alternateColor : GetStaticBindingValue(_alternateColor);
+            get => Parent.Owner == null
+                ? string.IsNullOrEmpty(_alternateColor)
+                    ? _color
+                    : _alternateColor
+                : string.IsNullOrEmpty(GetStaticBindingValue(_alternateColor))
+                    ? _color
+                    : GetStaticBindingValue(_alternateColor);
             set
             {
                  SentinelHelper.ArgumentNull(value);
@@ -247,6 +245,7 @@ namespace iTin.Export.Model
                 _alternateColor = value;
             }
         }
+
         #endregion
 
         #region [public] (string) Color: Gets or sets color preferred of content
