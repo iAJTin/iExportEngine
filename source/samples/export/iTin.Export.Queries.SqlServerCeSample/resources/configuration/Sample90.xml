@@ -25,12 +25,12 @@
         <Font Color="White" Bold="Yes"/>
       </Style>
       <Style Name="ValueTextStyle">
-        <Content Color="LightGray" AlternateColor="Coral">
+        <Content Color="LightGray" AlternateColor="Red">
           <Text/>
         </Content>
       </Style>   
       <Style Name="NumericStandardStyle">
-        <Content Color="LightGray" AlternateColor="Coral">
+        <Content Color="LightGray" AlternateColor="Red">
           <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
@@ -45,7 +45,7 @@
         </Content>
       </Style>
       <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content Color="LightGray" AlternateColor="Coral">
+        <Content Color="LightGray" AlternateColor="Red">
           <Number Decimals="0"/>
         </Content>
       </Style>
@@ -74,12 +74,12 @@
         </Content>
         <Font Name="Segoe UI" Color="White"/>
       </Style>
-      <Style Name="WhenChangeIdFirstStyle">
+      <Style Name="WCFirstStyle">
         <Content Color="Beige">
           <Text/>
         </Content>
       </Style>
-      <Style Name="WhenChangeIdSecondStyle">
+      <Style Name="WCSecondStyle">
         <Content Color="AliceBlue">
           <Text/>
         </Content>
@@ -116,7 +116,7 @@
     <Conditions>
       <!--<LogicalCondition Key="PriceyEqualsToCondition" Field="PRICE" Criterial="GreatherOrEqualsThan" Value="12.1" Style="PriceyEqualsToConditionStyle" Active="No"/>
       <LogicalCondition Key="QuantityEqualsToCondition" Field="QUANTITY" Criterial="EqualTo" Value="37" Style="QuantityEqualsToConditionStyle" Active="No"/>-->
-      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WhenChangeIdFirstStyle" SecondSwapStyle="WhenChangeIdSecondStyle" EntireRow="No" Active="Yes"/>
+      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="Yes"/>
     </Conditions>
     <!--
     <Filters>

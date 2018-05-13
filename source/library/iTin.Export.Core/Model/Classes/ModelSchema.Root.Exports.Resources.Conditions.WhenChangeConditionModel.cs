@@ -1,4 +1,6 @@
 ﻿
+using System.Linq;
+
 namespace iTin.Export.Model
 {
     using System;
@@ -27,6 +29,9 @@ namespace iTin.Export.Model
         #region private fields
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _fisrtSwapStyle;
+
+        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _lastStyle;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _secondSwapStyle;
@@ -129,109 +134,103 @@ namespace iTin.Export.Model
 
         #region public override methods
 
-        private string _lastStyle;
-        public WhenChangeConditionModel()
-        {
-            _lastStyle = FirstSwapStyle;
-        }
-
         #region [public] {override} (string) Apply(int, int, FieldValueInformation, string): 
         public override string Apply(int row, int col, FieldValueInformation target, string referenceStyle)
         {
-            //if (EntireRow == YesNo.No)
-            //{
-            //    styleToApply = string.IsNullOrEmpty(referenceStyle) || referenceStyle != FirstSwapStyle || referenceStyle != SecondSwapStyle ? FirstSwapStyle : referenceStyle;
-            //}
-            //else
-            //{
-            //    styleToApply = string.IsNullOrEmpty(referenceStyle) ? FirstSwapStyle : referenceStyle;
-            //}
-
-            string styleToApply = _lastStyle;
-            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
-
             var rows = Service.RawData;
-            var rowData = rows[row];
-            var rowPreviousData = row > 0 ? rows[row - 1] : null;
-
-            //var fieldColIndex = rowData.Attributes().IndexOfAttribute(Field);
 
             string previousValue = null;
-            var currentValue = rowData.Attribute(Field).Value;
             if (row > 0)
             {
-                previousValue = rowPreviousData.Attribute(Field).Value;
+                var rowPreviousData = rows[row - 1];
+                previousValue = rowPreviousData.Attribute(Field)?.Value;
             }
 
-            if (currentValue != previousValue && previousValue != null)
+            var rowData = rows[row];
+            var currentValue = rowData.Attribute(Field)?.Value;
+            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
+            if (EntireRow == YesNo.No)
             {
-                //if (EntireRow == YesNo.No)
-                //{
-                //    if (!string.IsNullOrEmpty(SecondSwapStyle))
-                //    {
-                //        styleToApply = styleToApply == FirstSwapStyle
-                //            ? SecondSwapStyle
-                //            : FirstSwapStyle;
-                //    }
-                //    //else
-                //    //{
-                //    //    styleToApply = FirstSwapStyle;
-                //    //}
-                //}
-
-                if (EntireRow == YesNo.No)
+                if (previousValue == null)
                 {
                     if (Field != fieldName)
                     {
-                        styleToApply = row.IsOdd()
+                        return row.IsOdd()
                             ? $"{target.Style.Name}_Alternate"
                             : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
                     }
-                    else
-                    {
-                        if (!string.IsNullOrEmpty(SecondSwapStyle))
-                        {
-                            styleToApply = _lastStyle == FirstSwapStyle
-                                ? SecondSwapStyle
-                                : FirstSwapStyle;
-                        }
-                    }
 
-                    return styleToApply;
-                }
-                else
-                {                   
-                    if (!string.IsNullOrEmpty(SecondSwapStyle)) //fieldName == Field &&
-                    {
-                        styleToApply = styleToApply == FirstSwapStyle
-                            ? SecondSwapStyle
-                            : FirstSwapStyle;
-                    }
-                    else
-                    {
-                        if (string.IsNullOrEmpty(SecondSwapStyle))
-                        {
-                            styleToApply = FirstSwapStyle;
-                        }
-                    }
+                    _lastStyle = FirstSwapStyle;
+                    return _lastStyle;
                 }
 
-                return styleToApply;
-            }
+                if (Field != fieldName)
+                {
+                    return row.IsOdd()
+                        ? $"{target.Style.Name}_Alternate"
+                        : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                }
 
-            if (!string.IsNullOrEmpty(SecondSwapStyle))
-            {
-                return styleToApply;
+                if (currentValue == previousValue)
+                {
+                    return _lastStyle;
+                }
+
+                if (string.IsNullOrEmpty(SecondSwapStyle))
+                {
+                    return _lastStyle;
+                }
+
+                _lastStyle = _lastStyle == FirstSwapStyle
+                    ? SecondSwapStyle
+                    : FirstSwapStyle;
+
+                return _lastStyle;
             }
 
             if (previousValue == null)
             {
-                return FirstSwapStyle;
+                _lastStyle = FirstSwapStyle;
+                return _lastStyle;
             }
 
-            return row.IsOdd()
-                ? $"{target.Style.Name}_Alternate"
-                : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+            int fieldCol = rowData.Attributes().IndexOfAttribute(Field);
+            if (fieldCol == 0)
+            {
+                if (currentValue == previousValue)
+                {
+                    return _lastStyle;
+                }
+
+                if (Field == fieldName)
+                {
+                    _lastStyle = _lastStyle == FirstSwapStyle
+                        ? SecondSwapStyle
+                        : FirstSwapStyle;
+                }
+
+                return _lastStyle;
+            }
+
+            if (currentValue == previousValue)
+            {
+                return _lastStyle;
+            }
+
+            var fieldsCount = Service.CurrentModel.Table.Fields.Count - 1;
+            if (col != fieldsCount)
+            {
+                return _lastStyle == FirstSwapStyle
+                    ? SecondSwapStyle
+                    : FirstSwapStyle;
+                
+            }
+
+            _lastStyle = _lastStyle == FirstSwapStyle
+                ? SecondSwapStyle
+                : FirstSwapStyle;
+
+            return _lastStyle;
         }
         #endregion
 
