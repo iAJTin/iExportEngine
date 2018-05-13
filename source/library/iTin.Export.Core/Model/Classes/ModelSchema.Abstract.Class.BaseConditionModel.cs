@@ -138,40 +138,40 @@ namespace iTin.Export.Model
 
         #region public methods
 
-        #region [public] (string) Apply(string): 
+        #region [public] (string) Apply(): 
         /// <summary>
         /// Evaluates the specified row.
         /// </summary>
-        /// <param name="referenceStyle">The reference style.</param>
-        /// <returns>System.String.</returns>
-        public string Apply(string referenceStyle)
+        /// <returns>
+        /// System.String.
+        /// </returns>
+        public string Apply()
         {
             var service = ModelService.Instance;
 
             return Apply(
-                service.CurrentRow, 
-                service.CurrentCol, 
-                referenceStyle); 
+                service.CurrentRow,
+                service.CurrentCol);
         }
         #endregion
 
-        #region [public] (string) Apply(int, int, string): 
+        #region [public] (string) Apply(int, int): 
         /// <summary>
         /// Evaluates the specified row.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="col">The col.</param>
-        /// <param name="referenceStyle">The reference style.</param>
-        /// <returns>System.String.</returns>
-        public string Apply(int row, int col, string referenceStyle)
+        /// <returns>
+        /// System.String.
+        /// </returns>
+        public string Apply(int row, int col)
         {
             var service = ModelService.Instance;
 
             return Apply(
                 service.CurrentRow,
                 service.CurrentCol,
-                service.CurrentField.Value.GetValue(), 
-                referenceStyle);
+                service.CurrentField.Value.GetValue());
         }
         #endregion
 
@@ -212,16 +212,15 @@ namespace iTin.Export.Model
 
         #region public abstrtact methods
 
-        #region [public] {abstract} (string) Apply(int, int, FieldValueInformation, string): 
+        #region [public] {abstract} (string) Apply(int, int, FieldValueInformation): 
         /// <summary>
         /// Evaluates the specified row.
         /// </summary>
         /// <param name="row">The row.</param>
         /// <param name="col">The col.</param>
         /// <param name="target">The target.</param>
-        /// <param name="referenceStyle">The reference style.</param>
         /// <returns>System.String.</returns>
-        public abstract string Apply(int row, int col, FieldValueInformation target, string referenceStyle);
+        public abstract string Apply(int row, int col, FieldValueInformation target);
         #endregion
 
         #endregion

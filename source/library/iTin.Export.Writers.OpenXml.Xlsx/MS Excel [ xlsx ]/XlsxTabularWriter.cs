@@ -242,7 +242,6 @@ namespace iTin.Export.Writers.OpenXml.Office
                         y++;
                     }
 
-                    var styleToApply = string.Empty;
                     var fieldDictionary = new Dictionary<BaseDataFieldModel, int>(); 
                     List<BaseConditionModel> conditions = Table.Conditions.Items.ToList();
                     for (var row = 0; row < rowsCount; row++)
@@ -272,7 +271,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                                     continue;
                                 }
 
-                                styleToApply = condition.Apply(""); //string.IsNullOrEmpty(styleToApply) ? string.Empty : styleToApply);
+                                var styleToApply = condition.Apply();
                                 if (styleToApply == null)
                                 {
                                     continue;

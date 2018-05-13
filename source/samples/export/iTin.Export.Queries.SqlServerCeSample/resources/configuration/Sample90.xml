@@ -89,7 +89,7 @@
           <Text/>
         </Content>
       </Style>
-      <Style Name="PriceyEqualsToConditionStyle">
+      <Style Name="RemarksProductStyle">
         <Content Color="Yellow">
           <Text/>
         </Content>
@@ -114,9 +114,8 @@
       </TextLine>
     </Lines>   
     <Conditions>
-      <!--<LogicalCondition Key="PriceyEqualsToCondition" Field="PRICE" Criterial="GreatherOrEqualsThan" Value="12.1" Style="PriceyEqualsToConditionStyle" Active="No"/>
-      <LogicalCondition Key="QuantityEqualsToCondition" Field="QUANTITY" Criterial="EqualTo" Value="37" Style="QuantityEqualsToConditionStyle" Active="No"/>-->
-      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="Yes"/>
+      <RemarksCondition Key="RemarksProduct" Field="PRODUCT" Criterial="EqualTo" Value="Drill" Style="RemarksProductStyle" Active="Yes"/>
+      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="No"/>
     </Conditions>
     <!--
     <Filters>
@@ -132,7 +131,7 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data">
-      <Conditions Keys="ChangeIdValue QuantityEqualsToCondition PriceyEqualsToCondition" />
+      <Conditions Keys="ChangeIdValue RemarksProduct" />
       <Location>
         <ByCoordenates Coordenates="2 2"/>
       </Location>

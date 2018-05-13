@@ -430,7 +430,7 @@ namespace iTin.Export.Model
     {
     }
 
-    [XmlInclude(typeof(LogicalConditionModel))]
+    [XmlInclude(typeof(RemarksCondition))]
     [XmlInclude(typeof(WhenChangeConditionModel))]
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable]
@@ -448,7 +448,7 @@ namespace iTin.Export.Model
     //[DebuggerStepThrough()]
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class LogicalConditionModel : BaseConditionModel
+    public partial class RemarksCondition : BaseConditionModel
     {
     }
 

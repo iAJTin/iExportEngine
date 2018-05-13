@@ -8,10 +8,10 @@ namespace iTin.Export.Model
     /// </summary>
     public interface ICondition
     {
-        string Apply(string referenceStyle);
+        string Apply();
 
-        string Apply(int row, int col, string referenceStyle);
+        string Apply(int row, int col);
 
-        string Apply(int row, int col, FieldValueInformation target, string referenceStyle);
+        string Apply(int row, int col, FieldValueInformation target);
     }
 }

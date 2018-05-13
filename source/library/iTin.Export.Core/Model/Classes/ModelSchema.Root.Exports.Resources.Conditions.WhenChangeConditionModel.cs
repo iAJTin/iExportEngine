@@ -1,6 +1,4 @@
 ﻿
-using System.Linq;
-
 namespace iTin.Export.Model
 {
     using System;
@@ -26,28 +24,35 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region private fields
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _fisrtSwapStyle;
 
-        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _lastStyle;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _secondSwapStyle;
         #endregion
 
-        #region public properties
+        #region public override properties
 
-        #region [public] (bool) IsEmpty: Gets a value indicating whether this condition is an empty condition
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <inheritdoc />
         /// <summary>
-        /// Gets a value indicating whether this condition is an empty condition.
+        /// Gets a value indicating whether this instance is default.
         /// </summary>
         /// <value>
-        /// <strong>true</strong> if is an empty condition; otherwise, <strong>false</strong>.
-        /// </value>        
-        public bool IsEmpty => IsDefault;
+        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => base.IsDefault &&
+                                          string.IsNullOrEmpty(FirstSwapStyle) &&
+                                          string.IsNullOrEmpty(SecondSwapStyle);
         #endregion
+
+        #endregion
+
+        #region public properties
 
         #region [public] (string) FirstSwapStyle: Gets or sets
         [XmlAttribute]
@@ -62,6 +67,16 @@ namespace iTin.Export.Model
                 _fisrtSwapStyle = value;
             }
         }
+        #endregion
+
+        #region [public] (bool) IsEmpty: Gets a value indicating whether this condition is an empty condition
+        /// <summary>
+        /// Gets a value indicating whether this condition is an empty condition.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if is an empty condition; otherwise, <strong>false</strong>.
+        /// </value>        
+        public bool IsEmpty => IsDefault;
         #endregion
 
         #region [public] (string) SecondSwapStyle: Gets or sets
@@ -81,20 +96,15 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region public override properties
+        #region public override methods
 
-        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Gets a value indicating whether this instance is default.
-        /// </summary>
-        /// <value>
-        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
-        /// </value>
-        public override bool IsDefault => base.IsDefault &&
-                                          string.IsNullOrEmpty(FirstSwapStyle) &&
-                                          string.IsNullOrEmpty(SecondSwapStyle);
+        #region [public] {override} (string) Apply(int, int, FieldValueInformation): 
+        public override string Apply(int row, int col, FieldValueInformation target)
+        {
+            return EntireRow == YesNo.No 
+                ? NonEntireRowApplyImpl(row, target) 
+                : EntireRowApplyImpl(row, col);
+        }
         #endregion
 
         #endregion
@@ -130,12 +140,8 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #endregion
-
-        #region public override methods
-
-        #region [public] {override} (string) Apply(int, int, FieldValueInformation, string): 
-        public override string Apply(int row, int col, FieldValueInformation target, string referenceStyle)
+        #region [private] (string) EntireRowApplyImpl(int, int): 
+        private string EntireRowApplyImpl(int row, int col)
         {
             var rows = Service.RawData;
 
@@ -149,44 +155,6 @@ namespace iTin.Export.Model
             var rowData = rows[row];
             var currentValue = rowData.Attribute(Field)?.Value;
             var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
-            if (EntireRow == YesNo.No)
-            {
-                if (previousValue == null)
-                {
-                    if (Field != fieldName)
-                    {
-                        return row.IsOdd()
-                            ? $"{target.Style.Name}_Alternate"
-                            : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
-                    }
-
-                    _lastStyle = FirstSwapStyle;
-                    return _lastStyle;
-                }
-
-                if (Field != fieldName)
-                {
-                    return row.IsOdd()
-                        ? $"{target.Style.Name}_Alternate"
-                        : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
-                }
-
-                if (currentValue == previousValue)
-                {
-                    return _lastStyle;
-                }
-
-                if (string.IsNullOrEmpty(SecondSwapStyle))
-                {
-                    return _lastStyle;
-                }
-
-                _lastStyle = _lastStyle == FirstSwapStyle
-                    ? SecondSwapStyle
-                    : FirstSwapStyle;
-
-                return _lastStyle;
-            }
 
             if (previousValue == null)
             {
@@ -223,7 +191,61 @@ namespace iTin.Export.Model
                 return _lastStyle == FirstSwapStyle
                     ? SecondSwapStyle
                     : FirstSwapStyle;
-                
+
+            }
+
+            _lastStyle = _lastStyle == FirstSwapStyle
+                ? SecondSwapStyle
+                : FirstSwapStyle;
+
+            return _lastStyle;
+        }
+        #endregion
+
+        #region [private] (string) NonEntireRowApplyImpl(int, FieldValueInformation): 
+        private string NonEntireRowApplyImpl(int row, FieldValueInformation target)
+        {
+            var rows = Service.RawData;
+
+            string previousValue = null;
+            if (row > 0)
+            {
+                var rowPreviousData = rows[row - 1];
+                previousValue = rowPreviousData.Attribute(Field)?.Value;
+            }
+
+            var rowData = rows[row];
+            var currentValue = rowData.Attribute(Field)?.Value;
+            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
+
+            if (previousValue == null)
+            {
+                if (Field != fieldName)
+                {
+                    return row.IsOdd()
+                        ? $"{target.Style.Name}_Alternate"
+                        : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+                }
+
+                _lastStyle = FirstSwapStyle;
+                return _lastStyle;
+            }
+
+            if (Field != fieldName)
+            {
+                return row.IsOdd()
+                    ? $"{target.Style.Name}_Alternate"
+                    : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+            }
+
+            if (currentValue == previousValue)
+            {
+                return _lastStyle;
+            }
+
+            if (string.IsNullOrEmpty(SecondSwapStyle))
+            {
+                return _lastStyle;
             }
 
             _lastStyle = _lastStyle == FirstSwapStyle

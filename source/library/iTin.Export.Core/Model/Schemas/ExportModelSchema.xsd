@@ -894,14 +894,14 @@
   <!-- Conditions: Types -->
   <xs:group id="ConditionsType" name="ConditionsType">
     <xs:choice>
-      <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LogicalCondition" type="LogicalCondition"  minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="RemarksCondition" type="RemarksCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
@@ -933,8 +933,8 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- Conditions: LogicalCondition -->
-  <xs:complexType name="LogicalCondition" id="LogicalCondition">
+  <!-- Conditions: RemarksCondition -->
+  <xs:complexType name="RemarksCondition" id="RemarksCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="Criterial" type="operatorType" use="required">
@@ -4701,6 +4701,15 @@
     <!-- LogicalCondition     occurs when the result of the condition is true.                                   -->
     <!-- WhenChangeCondition  Occurs when the value of the specified field changes.                              -->
   <xs:complexType name="BaseConditionModel" abstract="true">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
     <xs:attribute name="Key" type="freeStringType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">

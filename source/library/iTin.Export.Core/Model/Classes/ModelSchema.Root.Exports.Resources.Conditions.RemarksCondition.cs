@@ -8,18 +8,18 @@ namespace iTin.Export.Model
     using ComponentModel;
     using Helpers;
 
-    public partial class LogicalConditionModel : ICloneable
+    public partial class RemarksCondition : ICloneable
     {
         #region public static properties
 
-        #region [public] {static} (ChangeConditionModel) Empty: Gets an empty condition
+        #region [public] {static} (LogicalConditionModel) Empty: Gets an empty condition
         /// <summary>
         /// Gets an empty condition.
         /// </summary>
         /// <value>
         /// An empty condition.
         /// </value>
-        public static LogicalConditionModel Empty => new LogicalConditionModel();
+        public static RemarksCondition Empty => new RemarksCondition();
         #endregion
 
         #endregion
@@ -35,7 +35,37 @@ namespace iTin.Export.Model
         private string _value;
         #endregion
 
+        #region public override properties
+
+        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating whether this instance is default.
+        /// </summary>
+        /// <value>
+        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
+        /// </value>
+        public override bool IsDefault => base.IsDefault &&
+                                          string.IsNullOrEmpty(Style);
+        #endregion
+
+        #endregion
+
         #region public properties
+
+        #region [public] (string) Criterial: Gets or sets
+        [XmlAttribute]
+        public KnownOperator Criterial
+        {
+            get => _operator; // GetStaticBindingValue(_operator);
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _operator = value;
+            }
+        }
+        #endregion
 
         #region [public] (bool) IsEmpty: Gets a value indicating whether this condition is an empty condition
         /// <summary>
@@ -76,76 +106,12 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (string) Criterial: Gets or sets
-        [XmlAttribute]
-        public KnownOperator Criterial
-        {
-            get => _operator; // GetStaticBindingValue(_operator);
-            set
-            {
-                SentinelHelper.IsEnumValid(value);
-
-                _operator = value;
-            }
-        }
-        #endregion
-
-        #endregion
-
-        #region public override properties
-
-        #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Gets a value indicating whether this instance is default.
-        /// </summary>
-        /// <value>
-        /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
-        /// </value>
-        public override bool IsDefault => base.IsDefault &&
-                                          string.IsNullOrEmpty(Style);
-        #endregion
-
-        #endregion
-
-        #region public methods
-
-        #region [public] (LogicalConditionModel) Clone(): Clones this instance
-        /// <summary>
-        /// Clones this instance.
-        /// </summary>
-        /// <returns>A new object that is a copy of this instance.</returns>
-        public LogicalConditionModel Clone()
-        {
-            return (LogicalConditionModel)MemberwiseClone();
-        }
-        #endregion
-
-        #endregion
-
-        #region private methods
-
-        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
-        /// <inheritdoc />
-        /// <summary>
-        /// Creates a new object that is a copy of the current instance.
-        /// </summary>
-        /// <returns>
-        /// A new object that is a copy of this instance.
-        /// </returns>
-        object ICloneable.Clone()
-        {
-            return Clone();
-        }
-        #endregion
-
         #endregion
 
         #region public override methods
 
-        #region [public] {override} (string) Apply(int, int, FieldValueInformation, string): 
-        public override string Apply(int row, int col, FieldValueInformation target, string referenceStyle)
+        #region [public] {override} (string) Apply(int, int, FieldValueInformation): 
+        public override string Apply(int row, int col, FieldValueInformation target)
         {
             var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
             if (Field != fieldName)
@@ -220,6 +186,39 @@ namespace iTin.Export.Model
             return conditionStyle ?? (row.IsOdd()
                        ? $"{target.Style.Name}_Alternate"
                        : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
+        }
+        #endregion
+
+        #endregion
+
+        #region public methods
+
+        #region [public] (LogicalConditionModel) Clone(): Clones this instance
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public RemarksCondition Clone()
+        {
+            return (RemarksCondition)MemberwiseClone();
+        }
+        #endregion
+
+        #endregion
+
+        #region private methods
+
+        #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
+        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new object that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new object that is a copy of this instance.
+        /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
         }
         #endregion
 
