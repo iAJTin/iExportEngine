@@ -1,4 +1,6 @@
 ﻿
+using System.Xml.Linq;
+
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -12,6 +14,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using OfficeOpenXml.Drawing.Chart;
 
     using ComponentModel;
+    using ComponentModel.Patterns;
     using ComponentModel.Writer;
     using Model;
 
@@ -146,7 +149,9 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows = Service.RawData;
+                    var rows1 = Service.RawData;
+                    var rows2 = new ExpressionSpecification<XElement>(o => o.Attribute("PRODUCT").Value.ToUpperInvariant() == "HAMMER");
+                    var rows = rows1.ToList().FindAll(o => rows2.IsSatisfiedBy(o)).ToArray();
                     #endregion
 
                     #region add worksheet

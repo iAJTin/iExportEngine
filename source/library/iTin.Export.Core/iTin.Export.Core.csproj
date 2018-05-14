@@ -100,8 +100,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComponentModel\Patterns\StrategyContext.cs" />
-    <Compile Include="ComponentModel\Patterns\IStrategy.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\AndNotSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\ExpressionSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\NotSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\OrNotSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\OrSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\AndSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\ISpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\SpecificationPattern\CompositeSpecification.cs" />
+    <Compile Include="ComponentModel\Patterns\StrategyPattern\StrategyContext.cs" />
+    <Compile Include="ComponentModel\Patterns\StrategyPattern\IStrategy.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />

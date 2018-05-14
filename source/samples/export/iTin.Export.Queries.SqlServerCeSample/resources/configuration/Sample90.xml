@@ -116,12 +116,11 @@
     <Conditions>
       <RemarksCondition Key="RemarksProduct" Field="PRODUCT" Criterial="EqualTo" Value="Drill" Style="RemarksProductStyle" Active="Yes"/>
       <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="No"/>
-    </Conditions>
-    <!--
+    </Conditions>    
     <Filters>
-      <Filter Name="dfd" Field="Id" Operator=">" Value ="0"  Criteria="[ID] > 0 && [b] >90"/>
+      <Filter Name="ProductFilter" Field="PRODUCT" Operator="EqualTo" Value="Hammer" Active="Yes"/>
     </Filters>
-    -->
+    
   </Global.Resources>
 
   <Export Name="sample90" Current="Yes">
@@ -130,7 +129,8 @@
            Name="Product"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
-           Alias="EPPlus - Some data">
+           Alias="EPPlus - Some data"
+           Filter="ProductFilter">
       <Conditions Keys="ChangeIdValue RemarksProduct" />
       <Location>
         <ByCoordenates Coordenates="2 2"/>
