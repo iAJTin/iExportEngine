@@ -144,17 +144,18 @@ namespace iTin.Export.Model
         private string EntireRowApplyImpl(int row, int col)
         {
             var rows = Service.RawData;
+            var normalizedField = Field.ToUpperInvariant();
 
             string previousValue = null;
             if (row > 0)
             {
                 var rowPreviousData = rows[row - 1];
-                previousValue = rowPreviousData.Attribute(Field)?.Value;
+                previousValue = rowPreviousData.Attribute(normalizedField)?.Value;
             }
 
             var rowData = rows[row];
-            var currentValue = rowData.Attribute(Field)?.Value;
-            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
+            var currentValue = rowData.Attribute(normalizedField)?.Value;
+            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField).ToUpperInvariant();
 
             if (previousValue == null)
             {
@@ -162,7 +163,7 @@ namespace iTin.Export.Model
                 return _lastStyle;
             }
 
-            int fieldCol = rowData.Attributes().IndexOfAttribute(Field);
+            int fieldCol = rowData.Attributes().IndexOfAttribute(normalizedField);
             if (fieldCol == 0)
             {
                 if (currentValue == previousValue)
@@ -170,7 +171,7 @@ namespace iTin.Export.Model
                     return _lastStyle;
                 }
 
-                if (Field == fieldName)
+                if (normalizedField == fieldName)
                 {
                     _lastStyle = _lastStyle == FirstSwapStyle
                         ? SecondSwapStyle
@@ -206,21 +207,23 @@ namespace iTin.Export.Model
         private string NonEntireRowApplyImpl(int row, FieldValueInformation target)
         {
             var rows = Service.RawData;
+            var normalizedField = Field.ToUpperInvariant();
 
             string previousValue = null;
             if (row > 0)
             {
                 var rowPreviousData = rows[row - 1];
-                previousValue = rowPreviousData.Attribute(Field)?.Value;
+                previousValue = rowPreviousData.Attribute(normalizedField)?.Value;
             }
 
             var rowData = rows[row];
-            var currentValue = rowData.Attribute(Field)?.Value;
-            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
+            var currentValue = rowData.Attribute(normalizedField)?.Value;
+
+            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField).ToUpperInvariant();
 
             if (previousValue == null)
             {
-                if (Field != fieldName)
+                if (normalizedField != fieldName)
                 {
                     return row.IsOdd()
                         ? $"{target.Style.Name}_Alternate"
@@ -231,7 +234,7 @@ namespace iTin.Export.Model
                 return _lastStyle;
             }
 
-            if (Field != fieldName)
+            if (normalizedField != fieldName)
             {
                 return row.IsOdd()
                     ? $"{target.Style.Name}_Alternate"
