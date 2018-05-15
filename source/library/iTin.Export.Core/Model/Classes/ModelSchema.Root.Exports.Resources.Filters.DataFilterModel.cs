@@ -1,13 +1,14 @@
 ﻿
-using System.Xml.Linq;
-using iTin.Export.ComponentModel.Patterns;
-
 namespace iTin.Export.Model
 {
+    using System;
+    using System.Linq;
+    using System.Xml.Linq;
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Xml.Serialization;
 
+    using ComponentModel.Patterns;
     using Helpers;
 
     public partial class DataFilterModel
@@ -15,6 +16,9 @@ namespace iTin.Export.Model
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const YesNo DefaultActive = YesNo.Yes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string DefaultValue = "";
         #endregion
 
         #region public static properties
@@ -125,6 +129,7 @@ namespace iTin.Export.Model
 
         #region [public] (string) Value: Gets or sets
         [XmlAttribute]
+        [DefaultValue(DefaultValue)]
         public string Value
         {
             get => GetStaticBindingValue(_value);
@@ -157,6 +162,84 @@ namespace iTin.Export.Model
 
         #region public methods
 
+        #region [public] (ISpecification<XElement>) BuildFilterExpression(): Builds filter expression to execute
+        /// <summary>
+        /// Builds filter expression to execute.
+        /// </summary>
+        /// <returns>
+        /// A expression to use for filter data
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public ISpecification<XElement> BuildFilterExpression()
+        {
+            var normalizedField = Field.ToUpperInvariant();
+            var normalizedValue = Value.ToUpperInvariant();
+
+            switch (Criterial)
+            {
+                case KnownOperator.Beetween:
+                {
+                    var values = normalizedValue.Split(' ').ToList();
+                    var totalValues = values.Count;
+                    if (totalValues != 2)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+
+                    var leftValue = decimal.Parse(values[0].Replace(".", ","));
+                    var left = new ExpressionSpecification<XElement>(element => decimal.Parse(element.Attribute(normalizedField).Value.ToUpperInvariant().Replace(".", ",")) >= leftValue);
+
+                    var rightValue = decimal.Parse(values[1].Replace(".", ","));
+                    var right = new ExpressionSpecification<XElement>(element => decimal.Parse(element.Attribute(normalizedField).Value.ToUpperInvariant().Replace(".", ",")) <= rightValue);
+
+                    return left.And(right);
+                }
+
+                case KnownOperator.EqualTo:
+                    return new ExpressionSpecification<XElement>(element => element.Attribute(normalizedField).Value.ToUpperInvariant().Equals(normalizedValue));
+
+                case KnownOperator.GreatherThan:
+                {
+                    var value = decimal.Parse(normalizedValue.Replace(".", ","));
+                    return new ExpressionSpecification<XElement>(element => decimal.Parse(element.Attribute(normalizedField).Value.ToUpperInvariant()) > value);
+                }
+
+                case KnownOperator.GreatherOrEqualsThan:
+                {
+                    var value = decimal.Parse(normalizedValue.Replace(".", ","));
+                    return new ExpressionSpecification<XElement>(element => decimal.Parse(element.Attribute(normalizedField).Value.ToUpperInvariant()) >= value);
+                }
+
+                case KnownOperator.In:
+                {
+                    var inValues = normalizedValue.Split(' ').ToList();
+                    return new ExpressionSpecification<XElement>(element => element.Attribute(normalizedField).Value.ToUpperInvariant().In(inValues));
+                }
+
+                case KnownOperator.LessThan:
+                {
+                    var value = decimal.Parse(normalizedValue.Replace(".", ","));
+                    return new ExpressionSpecification<XElement>(element => decimal.Parse(element.Attribute(normalizedField).Value.ToUpperInvariant()) < value);
+                }
+
+                case KnownOperator.LessOrEqualThan:
+                {
+                    var value = decimal.Parse(normalizedValue.Replace(".", ","));
+                    return new ExpressionSpecification<XElement>(element => decimal.Parse(element.Attribute(normalizedField).Value.ToUpperInvariant()) <= value);
+                }
+
+                case KnownOperator.Like:
+                    return new ExpressionSpecification<XElement>(element => element.Attribute(normalizedField).Value.ToUpperInvariant().Contains(normalizedValue));
+
+                case KnownOperator.NotEqualTo:
+                    return new ExpressionSpecification<XElement>(element => !element.Attribute(normalizedField).Value.ToUpperInvariant().Equals(normalizedValue));
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        #endregion
+
         #region [public] (void) SetOwner(DataFiltersModel): Sets the element that owns this
         /// <summary>
         /// Sets the element that owns this <see cref="T:iTin.Export.Model.DataFiltersModel" />.
@@ -169,16 +252,5 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
-
-        public ExpressionSpecification<XElement> BuildExpression()
-        {
-            switch (Criterial)
-            {
-                case KnownOperator.EqualTo:
-                    return new ExpressionSpecification<XElement>(o => o.Attribute(Field.ToUpperInvariant()).Value.ToUpperInvariant().Equals(Value.ToUpperInvariant()));
-            }
-
-            return null;
-        }
     }
 }

@@ -122,7 +122,7 @@ namespace iTin.Export.Model
             }
 
             string conditionStyle = null;
-            var rows = Service.RawData;
+            var rows = Service.RawDataFiltered;
             var rowData = rows[row];
             var fieldValue = rowData.Attribute(Field).Value;
 

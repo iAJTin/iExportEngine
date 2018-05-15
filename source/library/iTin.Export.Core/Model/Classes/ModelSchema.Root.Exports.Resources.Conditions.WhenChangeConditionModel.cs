@@ -143,7 +143,7 @@ namespace iTin.Export.Model
         #region [private] (string) EntireRowApplyImpl(int, int): 
         private string EntireRowApplyImpl(int row, int col)
         {
-            var rows = Service.RawData;
+            var rows = Service.RawDataFiltered;
             var normalizedField = Field.ToUpperInvariant();
 
             string previousValue = null;
@@ -206,7 +206,7 @@ namespace iTin.Export.Model
         #region [private] (string) NonEntireRowApplyImpl(int, FieldValueInformation): 
         private string NonEntireRowApplyImpl(int row, FieldValueInformation target)
         {
-            var rows = Service.RawData;
+            var rows = Service.RawDataFiltered;
             var normalizedField = Field.ToUpperInvariant();
 
             string previousValue = null;

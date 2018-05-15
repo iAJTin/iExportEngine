@@ -118,7 +118,10 @@
       <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="No"/>
     </Conditions>
     <Filters>
-      <Filter Key="ProductFilter" Field="PRODUCT" Criterial="EqualTo" Value="Hammer" Active="Yes"/>    
+      <Filter Key="IdFilter" Field="ID" Criterial="In" Value="12002 12010" Active="Yes"/>    
+      <Filter Key="IdRangeFilter" Field="ID" Criterial="Beetween" Value="12002 12010" Active="Yes"/>    
+      <Filter Key="ProductFilter" Field="PRODUCT" Criterial="EqualTo" Value="Ham" Active="Yes"/>    
+      <Filter Key="PriceRangeFilter" Field="PRICE" Criterial="Beetween" Value="2 15.0" Active="Yes"/>    
     </Filters>
   </Global.Resources>
     
@@ -129,8 +132,8 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="EPPlus - Some data"
-           Filter="ProductFilter">
-      <Conditions Keys="ChangeIdValue RemarksProduct" />
+           Filter="PriceRangeFilter">
+      <Conditions Keys="RemarksProduct" />
       <Location>
         <ByCoordenates Coordenates="2 2"/>
       </Location>

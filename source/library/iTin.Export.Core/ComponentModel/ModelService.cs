@@ -120,7 +120,7 @@ namespace iTin.Export.ComponentModel
                     return RawData;
                 }
 
-                var expression = filter.BuildExpression();
+                var expression = filter.BuildFilterExpression();
                 var rows = RawData.ToList().FindAll(item => expression.IsSatisfiedBy(item));
 
                 return (XElement[])rows.ToArray().Clone();

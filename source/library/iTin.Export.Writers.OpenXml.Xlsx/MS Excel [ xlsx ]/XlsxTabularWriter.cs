@@ -1,6 +1,4 @@
 ﻿
-using System.Xml.Linq;
-
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -14,7 +12,6 @@ namespace iTin.Export.Writers.OpenXml.Office
     using OfficeOpenXml.Drawing.Chart;
 
     using ComponentModel;
-    using ComponentModel.Patterns;
     using ComponentModel.Writer;
     using Model;
 
