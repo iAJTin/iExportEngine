@@ -1,4 +1,6 @@
 ﻿
+using iTin.Export.ComponentModel.Patterns;
+
 namespace iTin.Export.ComponentModel
 {
     using System.Collections.Generic;
@@ -90,6 +92,42 @@ namespace iTin.Export.ComponentModel
         /// </summary>
         public XElement[] RawData { get; private set ;}
         #endregion
+
+        #region [public] (XElement[]) RawData:
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public XElement[] RawDataFiltered
+        {
+            get
+            {
+                var hasDataFilter = !string.IsNullOrEmpty(CurrentModel.Table.Filter);
+                if (!hasDataFilter)
+                {
+                    return RawData;
+
+                }
+
+                DataFilterModel filter = Resources.Filters.GetBy(CurrentModel.Table.Filter);
+                if (filter == null)
+                {
+                    return RawData;
+                }
+
+                if (filter.Active == YesNo.No)
+                {
+                    return RawData;
+                }
+
+                var expression = filter.BuildExpression();
+                var rows = RawData.ToList().FindAll(item => expression.IsSatisfiedBy(item));
+
+                return (XElement[])rows.ToArray().Clone();
+            }
+        }
+        #endregion
+
 
         #region [public] (ReferencesModel) References:
         /// <summary>

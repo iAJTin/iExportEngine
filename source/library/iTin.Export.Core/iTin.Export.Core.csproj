@@ -117,8 +117,10 @@
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.RemarksCondition.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.DataFiltersModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ConditionsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.WhenChangeConditionModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Filters.DataFilterModel.cs" />
     <Compile Include="Providers\DataSetProvider.cs" />
     <Compile Include="Providers\XmlProvider.cs" />
     <Compile Include="AspNet\Extensions\StreamExtensions.cs" />

@@ -36,7 +36,7 @@ namespace iTin.Export.Model
         private const YesNo DefaultShowColumnHeaders = YesNo.Yes;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _autoFilter;
 
@@ -51,6 +51,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _showColumnHeaders;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _filter;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _name;
@@ -159,6 +162,11 @@ namespace iTin.Export.Model
                 _name = value;
             }
         }
+        #endregion
+
+        #region [public] (string) Filter: Gets or sets the data filter to apply.
+        [XmlAttribute]
+        public string Filter { get; set; }
         #endregion
 
         #region [public] (YesNo) ShowGridLines: Gets or sets a value indicating whether show grid lines

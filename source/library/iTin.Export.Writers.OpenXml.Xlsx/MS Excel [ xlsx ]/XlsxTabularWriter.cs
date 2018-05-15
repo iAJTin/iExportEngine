@@ -149,9 +149,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows1 = Service.RawData;
-                    var rows2 = new ExpressionSpecification<XElement>(o => o.Attribute("PRODUCT").Value.ToUpperInvariant() == "HAMMER");
-                    var rows = rows1.ToList().FindAll(o => rows2.IsSatisfiedBy(o)).ToArray();
+                    var rows = Service.RawDataFiltered;
                     #endregion
 
                     #region add worksheet

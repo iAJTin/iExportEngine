@@ -461,6 +461,24 @@ namespace iTin.Export.Model
     {
     }
 
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable()]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class DataFiltersModel : BaseComplexModelCollection<DataFilterModel, GlobalResourcesModel, string>
+    {
+    }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable()]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class DataFilterModel : BaseModel<DataFilterModel>
+    {
+    }
+
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable()]

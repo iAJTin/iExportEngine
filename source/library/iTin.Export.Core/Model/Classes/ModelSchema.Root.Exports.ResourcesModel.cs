@@ -104,6 +104,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ConditionsModel _conditions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private DataFiltersModel _filters;
         #endregion
 
         #region public properties
@@ -399,6 +402,51 @@ namespace iTin.Export.Model
         {
             get => _conditions ?? (_conditions = new ConditionsModel(this));
             set => _conditions = value;
+        }
+        #endregion
+
+        #region [public] (DataFiltersModel) Filters: Gets or sets the collection of user-defined filters
+        /// <summary>
+        /// Gets or sets the collection of user-defined filters.
+        /// </summary>
+        /// <value>
+        /// Collection of user-defined filters.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Global.Resources&gt;
+        ///   &lt;Filters .../&gt;
+        ///   ...
+        /// &lt;/Global.Resources&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        [XmlArrayItem("Filter", typeof(DataFilterModel), IsNullable = false)]
+        public DataFiltersModel Filters
+        {
+            get => _filters ?? (_filters = new DataFiltersModel(this));
+            set => _filters = value;
         }
         #endregion
 

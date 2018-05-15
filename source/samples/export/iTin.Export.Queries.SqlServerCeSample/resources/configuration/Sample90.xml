@@ -5,7 +5,7 @@
     <Reference Path="~\Resources\Functions\" Assembly="iTin.Export.Queries.SqlServerCe.Functions"/>
   </References>
 
-  <Global.Resources>
+  <Global.Resources>  
     <Hosts>
       <Host Key="xlsx"/>
     </Hosts>
@@ -116,13 +116,12 @@
     <Conditions>
       <RemarksCondition Key="RemarksProduct" Field="PRODUCT" Criterial="EqualTo" Value="Drill" Style="RemarksProductStyle" Active="Yes"/>
       <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="No"/>
-    </Conditions>    
+    </Conditions>
     <Filters>
-      <Filter Name="ProductFilter" Field="PRODUCT" Operator="EqualTo" Value="Hammer" Active="Yes"/>
+      <Filter Key="ProductFilter" Field="PRODUCT" Criterial="EqualTo" Value="Hammer" Active="Yes"/>    
     </Filters>
-    
   </Global.Resources>
-
+    
   <Export Name="sample90" Current="Yes">
     <Description>EPPlus - Some data</Description>
     <Table Host="xlsx"
