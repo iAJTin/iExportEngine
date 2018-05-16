@@ -77,7 +77,7 @@ namespace iTin.Export.Writers.Adobe
                     #endregion
 
                     #region get input data
-                    var rows = Service.RawData;
+                    var rows = Service.RawDataFiltered;
                     #endregion
 
                     #region add data

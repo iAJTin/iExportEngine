@@ -45,7 +45,7 @@ namespace iTextSharp.text.pdf
 
             var fix = model.Parent.Resources.Fixed;
 
-            var rowsCount = rows.Count();
+            var rowsCount = rows.Length;
             var fields = model.Fields;
             var attributes = rows.Attributes().ToList();
             foreach (var field in fields)

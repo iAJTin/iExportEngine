@@ -90,8 +90,8 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region get target data
-                    var rows = Service.RawData;
-                    var rowsCount = rows.Count();
+                    var rows = Service.RawDataFiltered;
+                    var rowsCount = rows.Length;
                     #endregion
                         
                     #region sets page orientation

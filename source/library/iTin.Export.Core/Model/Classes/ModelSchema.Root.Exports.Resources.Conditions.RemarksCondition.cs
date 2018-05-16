@@ -3,6 +3,7 @@ namespace iTin.Export.Model
 {
     using System;
     using System.Diagnostics;
+    using System.Linq;
     using System.Xml.Serialization;
 
     using ComponentModel;
@@ -113,79 +114,9 @@ namespace iTin.Export.Model
         #region [public] {override} (string) Apply(int, int, FieldValueInformation): 
         public override string Apply(int row, int col, FieldValueInformation target)
         {
-            var fieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField);
-            if (Field != fieldName)
-            {
-                return row.IsOdd()
-                    ? $"{target.Style.Name}_Alternate"
-                    : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
-            }
-
-            string conditionStyle = null;
-            var rows = Service.RawDataFiltered;
-            var rowData = rows[row];
-            var fieldValue = rowData.Attribute(Field).Value;
-
-            switch (Criterial)
-            {
-                case KnownOperator.Beetween:
-                    break;
-
-                case KnownOperator.EqualTo:
-                    if (Value.Equals(fieldValue))
-                    {
-                        conditionStyle = Style;
-                    }
-                    break;
-
-                case KnownOperator.GreatherOrEqualsThan:
-                    var okValueDecimal = decimal.TryParse(Value.Replace(".", ","), out decimal asValueDecimal);
-                    var okFieldValueDecimal = decimal.TryParse(fieldValue.Replace(".", ","), out decimal asFieldDecimal);
-                    if (!(okValueDecimal && okFieldValueDecimal))
-                    {
-                        break;
-                    }
-
-                    if (asFieldDecimal >= asValueDecimal)
-                    {
-                        conditionStyle = Style;                        
-                    }
-                    break;
-
-                case KnownOperator.GreatherThan:
-                    if (int.Parse(fieldValue) > int.Parse(Value))
-                    {
-                        conditionStyle = Style;
-                    }
-                    break;
-
-                case KnownOperator.In:
-                    break;
-
-                case KnownOperator.LessOrEqualThan:
-                    break;
-
-                case KnownOperator.LessThan:
-                    if (int.Parse(fieldValue) < int.Parse(Value))
-                    {
-                        conditionStyle = Style;
-                    }
-                    break;
-
-                case KnownOperator.Like:
-                    break;
-
-                case KnownOperator.NotEqualTo:
-                    if (!fieldValue.Equals(Value))
-                    {
-                        conditionStyle = Style;
-                    }
-                    break;
-            }
-
-            return conditionStyle ?? (row.IsOdd()
-                       ? $"{target.Style.Name}_Alternate"
-                       : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
+            return EntireRow == YesNo.No
+                ? NonEntireRowApplyImpl(row, target)
+                : EntireRowApplyImpl(row, target);
         }
         #endregion
 
@@ -206,6 +137,186 @@ namespace iTin.Export.Model
 
         #endregion
 
+        #region private static methods
+
+        #region [private] {static} (bool) EvaluateCriterial(KnownOperator, string, string): 
+        private static bool EvaluateCriterial(KnownOperator op, string dataValue, string testValue)
+        {
+            bool result = false;
+
+            switch (op)
+            {
+                #region Criterial: Beetween
+                case KnownOperator.Beetween:
+                {
+                    var values = testValue.Split(' ').ToList();
+                    var totalValues = values.Count;
+                    if (totalValues != 2)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+
+                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+
+                    var leftValueAsSpanishFormat = values[0].Replace(".", ",");
+                    var okLeftValueDecimal = decimal.TryParse(leftValueAsSpanishFormat, out decimal leftValueAsDecimal);
+
+                    var rightValueAsSpanishFormat = values[1].Replace(".", ",");
+                    var okRightValueDecimal = decimal.TryParse(rightValueAsSpanishFormat, out decimal rightValueAsDecimal);
+
+                    var canContinue = okValueDecimal && okLeftValueDecimal && okRightValueDecimal;
+                    if (!canContinue)
+                    {
+                        break;
+                    }
+
+                    if (dataValueAsDecimal >= leftValueAsDecimal && dataValueAsDecimal >= rightValueAsDecimal)
+                    {
+                        result = true;
+                    }
+                    break;
+                }
+                #endregion
+
+                #region Criterial: EqualTo
+                case KnownOperator.EqualTo:
+                    if (dataValue.Equals(testValue))
+                    {
+                        result = true;
+                    }
+                    break;
+                #endregion
+
+                #region Criterial: GreatherOrEqualsThan
+                case KnownOperator.GreatherOrEqualsThan:
+                {
+                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+
+                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+
+                    var canContinue = okValueDecimal && okTestValueDecimal;
+                    if (!canContinue)
+                    {
+                        break;
+                    }
+
+                    if (dataValueAsDecimal >= testValueAsDecimal)
+                    {
+                        result = true;
+                    }
+                    break;
+                }
+                #endregion
+
+                #region Criterial: GreatherThan
+                case KnownOperator.GreatherThan:
+                {
+                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+
+                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+
+                    var canContinue = okValueDecimal && okTestValueDecimal;
+                    if (!canContinue)
+                    {
+                        break;
+                    }
+
+                    if (dataValueAsDecimal > testValueAsDecimal)
+                    {
+                        result = true;
+                    }
+                    break;
+                }
+                #endregion
+
+                #region Criterial: In
+                case KnownOperator.In:
+                {
+                    var inValues = testValue.Split(' ').ToList();
+                    if (dataValue.In(inValues))
+                    {
+                        result = true;
+                    }
+                    break;
+                }
+                #endregion
+
+                #region Criterial: LessOrEqualThan
+                case KnownOperator.LessOrEqualThan:
+                {
+                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+
+                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+
+                    var canContinue = okValueDecimal && okTestValueDecimal;
+                    if (!canContinue)
+                    {
+                        break;
+                    }
+
+                    if (dataValueAsDecimal <= testValueAsDecimal)
+                    {
+                        result = true;
+                    }
+                    break;
+                }
+                #endregion
+
+                #region Criterial: LessThan
+                case KnownOperator.LessThan:
+                {
+                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+
+                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+
+                    var canContinue = okValueDecimal && okTestValueDecimal;
+                    if (!canContinue)
+                    {
+                        break;
+                    }
+
+                    if (dataValueAsDecimal < testValueAsDecimal)
+                    {
+                        result = true;
+                    }
+                    break;
+                }
+                #endregion
+
+                #region Criterial: Like
+                case KnownOperator.Like:
+                    if (dataValue.Contains(testValue))
+                    {
+                        result = true;
+                    }
+                    break;
+                #endregion
+
+                #region Criterial: NotEqualTo
+                case KnownOperator.NotEqualTo:
+                    if (!dataValue.Equals(testValue))
+                    {
+                        result = true;
+                    }
+                    break;
+                #endregion
+            }
+
+            return result;
+        }
+        #endregion
+
+        #endregion
+
         #region private methods
 
         #region [private] (object) Clone(): Creates a new object that is a copy of the current instance
@@ -219,6 +330,57 @@ namespace iTin.Export.Model
         object ICloneable.Clone()
         {
             return Clone();
+        }
+        #endregion
+
+        #region [private] (string) EntireRowApplyImpl(int, FieldValueInformation): 
+        private string EntireRowApplyImpl(int row, FieldValueInformation target)
+        {
+            var rows = Service.RawDataFiltered;
+            var rowData = rows[row];
+
+            var normalizedField = Field.ToUpperInvariant();
+            var fieldValue = rowData.Attribute(normalizedField).Value;
+
+            string conditionStyle = null;
+            var applyStyle = EvaluateCriterial(Criterial, fieldValue, Value);
+            if (applyStyle)
+            {
+                conditionStyle = Style;
+            }
+
+            return conditionStyle ?? (row.IsOdd()
+                       ? $"{target.Style.Name}_Alternate"
+                       : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
+        }
+        #endregion
+
+        #region [private] (string) NonEntireRowApplyImpl(int, FieldValueInformation): 
+        private string NonEntireRowApplyImpl(int row, FieldValueInformation target)
+        {
+            var normalizedField = Field.ToUpperInvariant();
+            var normalizedFieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField).ToUpperInvariant();
+            if (normalizedField != normalizedFieldName)
+            {
+                return row.IsOdd()
+                    ? $"{target.Style.Name}_Alternate"
+                    : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
+            }
+
+            var rows = Service.RawDataFiltered;
+            var rowData = rows[row];
+            var fieldValue = rowData.Attribute(normalizedField).Value;
+
+            string conditionStyle = null;
+            var applyStyle = EvaluateCriterial(Criterial, fieldValue, Value);
+            if (applyStyle)
+            {
+                conditionStyle = Style;
+            }
+
+            return conditionStyle ?? (row.IsOdd()
+                       ? $"{target.Style.Name}_Alternate"
+                       : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
         }
         #endregion
 

@@ -114,8 +114,8 @@
       </TextLine>
     </Lines>   
     <Conditions>
-      <RemarksCondition Key="RemarksProduct" Field="PRODUCT" Criterial="EqualTo" Value="Drill" Style="RemarksProductStyle" Active="Yes"/>
-      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="No"/>
+      <RemarksCondition Key="RemarksProduct" Field="ID" Criterial="In" Value="12002 12010" Style="RemarksProductStyle" EntireRow="Yes" Active="Yes"/>
+      <WhenChangeCondition Key="ChangeIdValue" Field="PRODUCT" FirstSwapStyle="WCFirstStyle" SecondSwapStyle="WCSecondStyle" EntireRow="Yes" Active="Yes"/>
     </Conditions>
     <Filters>
       <Filter Key="IdFilter" Field="ID" Criterial="In" Value="12002 12010" Active="Yes"/>    
@@ -131,8 +131,7 @@
            Name="Product"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
-           Alias="EPPlus - Some data"
-           Filter="PriceRangeFilter">
+           Alias="EPPlus - Some data">
       <Conditions Keys="RemarksProduct" />
       <Location>
         <ByCoordenates Coordenates="2 2"/>

@@ -130,7 +130,7 @@ namespace iTin.Export.Writers.OpenXml.Office
         /// </returns>
         private IEnumerable<XElement> GetRowData()
         {
-            var rows = Service.RawData;
+            var rows = Service.RawDataFiltered;
             var rowsCount = rows.Length;
 
             var data = rows;

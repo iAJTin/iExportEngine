@@ -70,7 +70,7 @@ namespace iTin.Export.Writers
             var items = Table.Fields;
 
             // get target data
-            var rows = Service.RawData;
+            var rows = Service.RawDataFiltered;
 
             // sql document result
             _sqlBuilder = new StringBuilder();

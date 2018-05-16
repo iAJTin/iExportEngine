@@ -51,7 +51,7 @@ namespace iTin.Export.Writers
             var fields = table.Fields;
                 
             // get target data
-            var rows = Service.RawData;
+            var rows = Service.RawDataFiltered;
 
             // add field headers
             var fieldHeaderValues = fields.Select(field => field.Header.Show == YesNo.No ? string.Empty : ParseField(field.Alias)).ToList();
