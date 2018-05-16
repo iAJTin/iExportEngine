@@ -30,5 +30,11 @@
     <Setting Name="Sample92" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\configuration\Sample92.xml</Value>
     </Setting>
+    <Setting Name="Sample5XmlInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\Sample5XmlInput.xml</Value>
+    </Setting>
+    <Setting Name="Sample05" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample05.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

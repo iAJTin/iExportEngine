@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Inventory ID="12001" PRODUCT="Nails" QUANTITY="37" PRICE="3,99" VALUE="147,63" />
+  <Inventory ID="12002" PRODUCT="Hammer" QUANTITY="5" PRICE="12,10" VALUE="60,50" />
+  <Inventory ID="12003" PRODUCT="Saw" QUANTITY="12" PRICE="15,37" VALUE="184,44" />
+</NewDataSet>

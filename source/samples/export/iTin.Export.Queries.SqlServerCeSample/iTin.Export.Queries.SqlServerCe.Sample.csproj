@@ -68,6 +68,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\configuration\Sample05.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\Sample92.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -85,8 +88,10 @@
     </Content>
     <Content Include="resources\functions\iTin.Export.Queries.SqlServerCe.Functions.dll" />
     <Content Include="resources\images\banner-careers.png" />
+    <Content Include="resources\input\InventoryXmlInput.xml" />
     <Content Include="resources\input\InvoiceXmlInput.xml" />
-    <Content Include="resources\input\ProductXmlInput.xml" />
+    <Content Include="resources\input\Sample5XmlInput.xml" />
+    <Content Include="resources\input\ProductWithDuplicatesXmlInput.xml" />
     <Content Include="resources\input\SalesXmlInput.xml" />
   </ItemGroup>
   <ItemGroup>

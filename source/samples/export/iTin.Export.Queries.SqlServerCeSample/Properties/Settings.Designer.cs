@@ -12,7 +12,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -114,6 +114,30 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
             }
             set {
                 this["Sample92"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Sample5XmlInput.xml")]
+        public string Sample5XmlInput {
+            get {
+                return ((string)(this["Sample5XmlInput"]));
+            }
+            set {
+                this["Sample5XmlInput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample05.xml")]
+        public string Sample05 {
+            get {
+                return ((string)(this["Sample05"]));
+            }
+            set {
+                this["Sample05"] = value;
             }
         }
     }
