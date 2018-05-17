@@ -1,4 +1,6 @@
 ﻿
+using OfficeOpenXml.Style;
+
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
