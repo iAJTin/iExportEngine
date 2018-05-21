@@ -1342,13 +1342,7 @@
   <!-- Table: Charts -->
   <xs:complexType name="ChartsModel" id="ChartsModel">
     <xs:sequence>
-      <xs:element name="Chart" type="ChartModel" minOccurs="1" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a user-defined chart.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
+      <xs:group ref="ChartType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
@@ -1517,6 +1511,540 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
+
+
+
+
+    <!-- Exporter: Template -->
+  <xs:complexType name="TemplateModel" id="TemplateModel">
+    <xs:all>
+      <xs:element name="File" type="pathType" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Sets template file name. To specify a relative path Use the character (~).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Writer" type="TemplateWriterModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Specifies the writer template for to use.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this template node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <!-- Exporter: Writer -->
+  <xs:complexType name="WriterModel" id="WriterModel">
+    <xs:complexContent>
+      <xs:extension base="WriterBaseModel">
+        <xs:attribute name="Name" use="required">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Name of the writer. Select from the list or create your own and use it.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType id="writerNameAttribute">
+            <xs:union memberTypes="KnownWriterName xs:string" />
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Exporter: Xslt -->
+  <xs:complexType name="XsltModel" id="XsltModel">
+    <xs:all>
+      <xs:element name="File" type="pathType" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The xslt file. To specify a relative path use the character (~).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this xslt node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <!-- Exporter: Behavior -->
+  <xs:complexType name="BehaviorsModel" id="BehaviorsModel">
+    <xs:group ref="BehaviorType" minOccurs="0" maxOccurs="1" />
+  </xs:complexType>
+
+  <!-- Template: Writer -->
+  <xs:complexType name="TemplateWriterModel" id="TemplateWriterModel">
+    <xs:complexContent>
+      <xs:extension base="WriterModel">
+        <xs:sequence>
+          <xs:element name="Settings" type="TemplateWriterSettingsModel" minOccurs="0" maxOccurs="1">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Settings defined for this writer.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Template: Writer: Settings -->
+  <xs:complexType name="TemplateWriterSettingsModel" id="TemplateWriterSettingsModel">
+    <xs:attribute name="FieldPrefix" type="freeStringType" use="optional" default="@@">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] The preferred previous delimiter for field. The default is '@@'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="FieldSufix" type="freeStringType" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] The preferred posterior delimiter for field. The default is an empty string ("").
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="RecordsToShow" use="optional" default="All">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Number of affected records. The default is 'All'.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType id="KnownRecordToShow">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="All">
+            <xs:annotation>
+              <xs:documentation>All records</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="First">
+            <xs:annotation>
+              <xs:documentation>First record</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Last">
+            <xs:annotation>
+              <xs:documentation>Last record</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Random">
+            <xs:annotation>
+              <xs:documentation>Random record</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="TrimFields" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether to apply string trim mode. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="TrimMode" type="KnownTrimMode" use="optional" default="All">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Use this attribute to specify trim mode for strings. The default is 'All'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Behaviors: Types -->
+  <xs:group id="BehaviorType" name="BehaviorType">
+    <xs:all>
+      <xs:element name="Download" type="DownloadBehaviorModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents download behavior. Applies only in web mode.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Mail" type="MailBehaviorModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a email list behavior.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TransformFile" type="TransformFileBehaviorModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a transform file behavior. If the writer that we are using generates a Xml transform file,
+            this element allows us to define their behavior. Allows indicate if you want save it,
+            where and if Xml code generated will indented.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ToDropbox" type="ToDropboxBehaviorModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a upload file behavior to Dropbox cloud service. Upload the result of export to Dropbox.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ToSkyDrive" type="ToSkyDriveBehaviorModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a upload file behavior to SkyDrive cloud service. Upload the result of export to Microsoft SkyDrive.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:group>
+
+  <!-- Behaviors: Download -->
+  <xs:complexType name="DownloadBehaviorModel" id="DownloadBehaviorModel">
+    <xs:complexContent>
+      <xs:extension base="BaseBehaviordModel">
+        <xs:attribute name="LocalCopy" type="YesNo" use="optional" default="No">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              [Optional] Determines whether saves local copy. The default is 'No'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Behaviors: Mail -->
+  <xs:complexType name="MailBehaviorModel" id="MailBehaviorModel">
+    <xs:complexContent>
+      <xs:extension base="BaseBehaviordModel">
+        <xs:sequence>
+          <xs:element name="Server" type="MailServerModel" minOccurs="1" maxOccurs="1">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Mail server configuration.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Messages" type="MailMessagesModel" minOccurs="1" maxOccurs="1">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Collection of e-mail messages. Each element represents an e-mail message.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Async" type="YesNo" use="optional" default="Yes">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Determines whether to execute asynchronously the behavior. The default is 'Yes'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Behaviors: ToDropbox -->
+  <xs:complexType name="ToDropboxBehaviorModel" id="ToDropboxBehaviorModel">
+    <xs:complexContent>
+      <xs:extension base="BaseBehaviordModel" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Behaviors: ToSkyDrive -->
+  <xs:complexType name="ToSkyDriveBehaviorModel" id="ToSkyDriveBehaviorModel">
+    <xs:complexContent>
+      <xs:extension base="BaseBehaviordModel" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Behaviors: TransformFile -->
+  <xs:complexType name="TransformFileBehaviorModel" id="TransformFileBehaviorModel">
+    <xs:complexContent>
+      <xs:extension base="BaseBehaviordModel">
+        <xs:attribute name="Indented" type="YesNo" use="optional" default="Yes">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              [Optional] Determines whether transform the file is saved indented. The default is 'Yes'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Path" use="optional" default="Default">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              [Optional] Sets the file path of transformation, if omitted used the same output element path.
+              The default is 'Default'. Applies only in desktop mode. To specify a relative path use the character (~).
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType id="transformFileBehaviorPathAttribute">
+            <xs:union memberTypes="KnownDefaultPathValue pathType" />
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="Save" type="YesNo" use="optional" default="No">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              [Optional] If the writer has been designed to generate transform files, set this attribute to Yes for get a copy of the file. The default is 'No'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Mail: Server -->
+  <xs:complexType name ="MailServerModel" id="MailServerModel">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this writer filter node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Credentials" type="ServerCredentialsModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Collection of mail server credentials authentication. Each element defines a credential authentication.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <!-- Mail: Messages -->
+  <xs:complexType name ="MailMessagesModel" id="MailMessagesModel">
+    <xs:sequence>
+      <xs:element name="Message" type="MailMessageModel" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+           Represents an e-mail message.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Server: Credentials -->
+  <xs:complexType name="ServerCredentialsModel" id="ServerCredentialsModel">
+    <xs:sequence>
+      <xs:element name="Credential" type="ServerCredentialModel" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines a credential authentication.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Credentials: Credential -->
+  <xs:complexType name ="ServerCredentialModel" id="ServerCredentialModel">
+    <xs:attribute name="Domain" type="freeStringType" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional]  The name of the domain associated with the credential. The default is an empty string ("").
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Host" type="freeStringType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          The name or IP address of the host used for SMTP transactions.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Name" type="freeStringType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          The identifier name of credential.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Password" type="freeStringType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Password for the user name associated with the credential.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Port" type="xs:nonNegativeInteger" use="optional" default="25">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Port used for SMTP transactions. The default value is 25.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SSL" type="YesNo" use="optional" default="Yes">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Determines whether uses Secure Sockets Layer (SSL) to encrypt the connection. The dafault is 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="UserName" type="freeStringType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          The user name associated with the credential.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Messages: Message -->
+  <xs:complexType name ="MailMessageModel" id="MailMessageModel">
+    <xs:all>
+      <xs:element name="Attachments" type="MailMessageAttachmentsModel" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The attachment collection used to store data attached to this e-mail message.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Body" type="freeStringType" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The message body.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CC" type="MailMessageCCModel" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The address collection that contains the carbon copy (CC) recipients for this e-mail message.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="From" type="MailMessageFromModel" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The from address for this e-mail message.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this writer filter node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Subject" type="freeStringType" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The subject line for this e-mail message.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="To" type="MailMessageToModel" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The address collection that contains the recipients of this e-mail message.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Send" type="YesNo" use="optional" default="Yes">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether to send the e-mail. The default is 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Credential" type="freeStringType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          The name of credential to use for this message.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Message: Attachments -->
+  <xs:complexType name ="MailMessageAttachmentsModel" id="MailMessageAttachmentsModel">
+    <xs:sequence>
+      <xs:element name="Attachment" type="MailMessageAttachmentModel" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents an attachment to an e-mail.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Message: CC -->
+  <xs:complexType name ="MailMessageCCModel" id="MailMessageCCModel">
+    <xs:attribute name="Addresses" type="mailAddressListType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Collection of e-mail addresses. Separate each e-mail with a blank.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Message: From -->
+  <xs:complexType name ="MailMessageFromModel" id="MailMessageFromModel">
+    <xs:attribute name="Address" type="mailAddressType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Represents an e-mail address.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Message: To -->
+  <xs:complexType name ="MailMessageToModel" id="MailMessageToModel">
+    <xs:attribute name="Addresses" type="mailAddressListType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Collection of e-mail addresses. Separate each e-mail with a blank.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Attachments: Attachment -->
+  <xs:complexType name ="MailMessageAttachmentModel" id="MailMessageAttachmentModel">
+    <xs:attribute name="Path" type="pathType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Attached file. Only full path is supported.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Charts: Types -->
+  <xs:group id="ChartType" name="ChartType">
+    <xs:choice>
+      <xs:element name="Chart" type="ChartModel"  minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a user-defined chart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MiniChart" type="MiniChartModel" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a user-defined minichart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
 
   <!-- Charts: Chart -->
   <xs:complexType name="ChartModel" id="ChartModel">
@@ -1704,29 +2232,29 @@
         </xs:documentation>
       </xs:annotation>
       <!--<xs:simpleType id="KnownWidthLineStyle">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="Thin">
-            <xs:annotation>
-              <xs:documentation>Thin line.</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="Medium">
-            <xs:annotation>
-              <xs:documentation>Medium line.</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="Thick">
-            <xs:annotation>
-              <xs:documentation>Thick line.</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="Hairline">
-            <xs:annotation>
-              <xs:documentation>Hairline.</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>-->
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Thin">
+          <xs:annotation>
+            <xs:documentation>Thin line.</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="Medium">
+          <xs:annotation>
+            <xs:documentation>Medium line.</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="Thick">
+          <xs:annotation>
+            <xs:documentation>Thick line.</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="Hairline">
+          <xs:annotation>
+            <xs:documentation>Hairline.</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleType>-->
     </xs:attribute>
   </xs:complexType>
 
@@ -2072,63 +2600,63 @@
 
   <!-- AxisDefinition: Marks -->
   <xs:complexType name="AxisDefinitionMarksModel" id="AxisDefinitionMarksModel">
-  <xs:all>
-    <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this legend node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Major" type="KnownTickMarkStyle" use="optional" default="Cross">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Defines custom properties for this legend node. Contains a list of keys item with name / value.
+          Preferred position of major tick marks for an axis. The default is 'Cross'.
         </xs:documentation>
       </xs:annotation>
-    </xs:element>
-  </xs:all>
-  <xs:attribute name="Major" type="KnownTickMarkStyle" use="optional" default="Cross">
-    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-      <xs:documentation xml:lang="en">
-        Preferred position of major tick marks for an axis. The default is 'Cross'.
-      </xs:documentation>
-    </xs:annotation>
-  </xs:attribute>
-  <xs:attribute name="Minor" type="KnownTickMarkStyle" use="optional" default="Cross">
-    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-      <xs:documentation xml:lang="en">
-        Preferred position of minor tick marks for an axis. The default is 'Cross'.
-      </xs:documentation>
-    </xs:annotation>
-  </xs:attribute>
-</xs:complexType>
+    </xs:attribute>
+    <xs:attribute name="Minor" type="KnownTickMarkStyle" use="optional" default="Cross">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Preferred position of minor tick marks for an axis. The default is 'Cross'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
 
   <!-- AxisDefinition: Values -->
   <xs:complexType name="AxisDefinitionValuesModel" id="AxisDefinitionValuesModel">
-  <xs:all>
-    <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this legend node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Maximun" use="optional" default="Autodetect">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Defines custom properties for this legend node. Contains a list of keys item with name / value.
+          The maximun value of axis. Accepts only numbers in floating point. The default is 'Autodetect'.
         </xs:documentation>
       </xs:annotation>
-    </xs:element>
-  </xs:all>
-  <xs:attribute name="Maximun" use="optional" default="Autodetect">
-    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-      <xs:documentation xml:lang="en">
-        The maximun value of axis. Accepts only numbers in floating point. The default is 'Autodetect'.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:simpleType id="axisValuesMaximunAttribute">
-      <xs:union memberTypes="KnownAutodetectValue xs:float" />
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="Minimun" use="optional" default="Autodetect">
-    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-      <xs:documentation xml:lang="en">
-        The minimun value of axis. Accepts only numbers in floating point. The default is 'Autodetect'.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:simpleType id="axisValuesMinimunAttribute">
-      <xs:union memberTypes="KnownAutodetectValue xs:float" />
-    </xs:simpleType>
-  </xs:attribute>
-</xs:complexType>
+      <xs:simpleType id="axisValuesMaximunAttribute">
+        <xs:union memberTypes="KnownAutodetectValue xs:float" />
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Minimun" use="optional" default="Autodetect">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          The minimun value of axis. Accepts only numbers in floating point. The default is 'Autodetect'.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType id="axisValuesMinimunAttribute">
+        <xs:union memberTypes="KnownAutodetectValue xs:float" />
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
 
   <!-- Border: Shadow -->
   <xs:complexType name="ShadowModel" id="ShadowModel">
@@ -2773,518 +3301,199 @@
     </xs:attribute>
   </xs:complexType>
 
-  <!-- Exporter: Template -->
-  <xs:complexType name="TemplateModel" id="TemplateModel">
+    
+
+  <!-- Charts: MiniChart -->
+  <xs:complexType name="MiniChartModel" id="MiniChartModel">
     <xs:all>
-      <xs:element name="File" type="pathType" minOccurs="0" maxOccurs="1">
+      <xs:element name="Location" type="LocationModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Sets template file name. To specify a relative path Use the character (~).
+            Defines the chart location on the host, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format.
+            You can only choose one of the modes. If this tag does not define the defaults is by coordinates
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Writer" type="TemplateWriterModel" minOccurs="0" maxOccurs="1">
+      <xs:element name="Axes" type="MiniChartAxesModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Specifies the writer template for to use.
+            Defines the chart location on the host, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format.
+            You can only choose one of the modes. If this tag does not define the defaults is by coordinates
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Type" type="MiniChartTypeModel" minOccurs="1" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines the minichart type, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format.
+            You can only choose one of the modes. If this tag does not define the defaults is by coordinates
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Defines custom properties for this template node. Contains a list of keys item with name / value.
+            Defines custom properties for this node. Contains a list of keys item with name / value.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:all>
+    <xs:attribute name="Field" type="FieldNameType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Name of field that contains data.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="EmptyValuesAs" type="rgbColorType" use="optional" default="White">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Preferred back color. The default is 'White'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Show" type="YesNo" use="optional" default="Yes">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether displays the minichart. The default 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
-  <!-- Exporter: Writer -->
-  <xs:complexType name="WriterModel" id="WriterModel">
-    <xs:complexContent>
-      <xs:extension base="WriterBaseModel">
-        <xs:attribute name="Name" use="required">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Name of the writer. Select from the list or create your own and use it.
-            </xs:documentation>
-          </xs:annotation>
-          <xs:simpleType id="writerNameAttribute">
-            <xs:union memberTypes="KnownWriterName xs:string" />
-          </xs:simpleType>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Exporter: Xslt -->
-  <xs:complexType name="XsltModel" id="XsltModel">
+  <!-- MiniChart: Axes -->
+  <xs:complexType name="MiniChartAxesModel" id="MiniChartAxesModel">
     <xs:all>
-      <xs:element name="File" type="pathType" minOccurs="0" maxOccurs="1">
+      <xs:element name="Horizontal" type="MiniChartHorizontalAxesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            The xslt file. To specify a relative path use the character (~).
+            Information of horizontal axis.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Vertical" type="MiniChartVerticalAxesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Information of vertical axis.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Defines custom properties for this xslt node. Contains a list of keys item with name / value.
+            Defines custom properties for this node. Contains a list of keys item with name / value.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:all>
   </xs:complexType>
 
-  <!-- Exporter: Behavior -->
-  <xs:complexType name="BehaviorsModel" id="BehaviorsModel">
-    <xs:group ref="BehaviorType" minOccurs="0" maxOccurs="1" />
-  </xs:complexType>
-
-  <!-- Template: Writer -->
-  <xs:complexType name="TemplateWriterModel" id="TemplateWriterModel">
-    <xs:complexContent>
-      <xs:extension base="WriterModel">
-        <xs:sequence>
-          <xs:element name="Settings" type="TemplateWriterSettingsModel" minOccurs="0" maxOccurs="1">
-            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-              <xs:documentation xml:lang="en">
-                Settings defined for this writer.
-              </xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Template: Writer: Settings -->
-  <xs:complexType name="TemplateWriterSettingsModel" id="TemplateWriterSettingsModel">
-    <xs:attribute name="FieldPrefix" type="freeStringType" use="optional" default="@@">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] The preferred previous delimiter for field. The default is '@@'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="FieldSufix" type="freeStringType" use="optional" default="">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] The preferred posterior delimiter for field. The default is an empty string ("").
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="RecordsToShow" use="optional" default="All">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Number of affected records. The default is 'All'.
-        </xs:documentation>
-      </xs:annotation>
-      <xs:simpleType id="KnownRecordToShow">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="All">
-            <xs:annotation>
-              <xs:documentation>All records</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="First">
-            <xs:annotation>
-              <xs:documentation>First record</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="Last">
-            <xs:annotation>
-              <xs:documentation>Last record</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="Random">
-            <xs:annotation>
-              <xs:documentation>Random record</xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-    <xs:attribute name="TrimFields" type="YesNo" use="optional" default="No">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Determines whether to apply string trim mode. The default is 'No'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="TrimMode" type="KnownTrimMode" use="optional" default="All">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Use this attribute to specify trim mode for strings. The default is 'All'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Behaviors: Types -->
-  <xs:group id="BehaviorType" name="BehaviorType">
-    <xs:all>
-      <xs:element name="Download" type="DownloadBehaviorModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents download behavior. Applies only in web mode.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Mail" type="MailBehaviorModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a email list behavior.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="TransformFile" type="TransformFileBehaviorModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a transform file behavior. If the writer that we are using generates a Xml transform file,
-            this element allows us to define their behavior. Allows indicate if you want save it,
-            where and if Xml code generated will indented.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ToDropbox" type="ToDropboxBehaviorModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a upload file behavior to Dropbox cloud service. Upload the result of export to Dropbox.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ToSkyDrive" type="ToSkyDriveBehaviorModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a upload file behavior to SkyDrive cloud service. Upload the result of export to Microsoft SkyDrive.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:all>
-  </xs:group>
-
-  <!-- Behaviors: Download -->
-  <xs:complexType name="DownloadBehaviorModel" id="DownloadBehaviorModel">
-    <xs:complexContent>
-      <xs:extension base="BaseBehaviordModel">
-        <xs:attribute name="LocalCopy" type="YesNo" use="optional" default="No">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              [Optional] Determines whether saves local copy. The default is 'No'.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Behaviors: Mail -->
-  <xs:complexType name="MailBehaviorModel" id="MailBehaviorModel">
-    <xs:complexContent>
-      <xs:extension base="BaseBehaviordModel">
-        <xs:sequence>
-          <xs:element name="Server" type="MailServerModel" minOccurs="1" maxOccurs="1">
-            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-              <xs:documentation xml:lang="en">
-                Mail server configuration.
-              </xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Messages" type="MailMessagesModel" minOccurs="1" maxOccurs="1">
-            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-              <xs:documentation xml:lang="en">
-                Collection of e-mail messages. Each element represents an e-mail message.
-              </xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-        <xs:attribute name="Async" type="YesNo" use="optional" default="Yes">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Determines whether to execute asynchronously the behavior. The default is 'Yes'.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Behaviors: ToDropbox -->
-  <xs:complexType name="ToDropboxBehaviorModel" id="ToDropboxBehaviorModel">
-    <xs:complexContent>
-      <xs:extension base="BaseBehaviordModel" />
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Behaviors: ToSkyDrive -->
-  <xs:complexType name="ToSkyDriveBehaviorModel" id="ToSkyDriveBehaviorModel">
-    <xs:complexContent>
-      <xs:extension base="BaseBehaviordModel" />
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Behaviors: TransformFile -->
-  <xs:complexType name="TransformFileBehaviorModel" id="TransformFileBehaviorModel">
-    <xs:complexContent>
-      <xs:extension base="BaseBehaviordModel">
-        <xs:attribute name="Indented" type="YesNo" use="optional" default="Yes">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              [Optional] Determines whether transform the file is saved indented. The default is 'Yes'.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="Path" use="optional" default="Default">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              [Optional] Sets the file path of transformation, if omitted used the same output element path.
-              The default is 'Default'. Applies only in desktop mode. To specify a relative path use the character (~).
-            </xs:documentation>
-          </xs:annotation>
-          <xs:simpleType id="transformFileBehaviorPathAttribute">
-            <xs:union memberTypes="KnownDefaultPathValue pathType" />
-          </xs:simpleType>
-        </xs:attribute>
-        <xs:attribute name="Save" type="YesNo" use="optional" default="No">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              [Optional] If the writer has been designed to generate transform files, set this attribute to Yes for get a copy of the file. The default is 'No'.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <!-- Mail: Server -->
-  <xs:complexType name ="MailServerModel" id="MailServerModel">
+  <!-- Axes: Horizontal -->
+  <xs:complexType name="MiniChartHorizontalAxesModel" id="MiniChartHorizontalAxesModel">
     <xs:all>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Defines custom properties for this writer filter node. Contains a list of keys item with name / value.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Credentials" type="ServerCredentialsModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Collection of mail server credentials authentication. Each element defines a credential authentication.
+            Defines custom properties for this node. Contains a list of keys item with name / value.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:all>
+    <xs:attribute name="Type" type="FieldNameType" use="required">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Name of field that contains data.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Color" type="rgbColorType" use="optional" default="White">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Preferred back color. The default is 'White'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="RightToLeft" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether displays axis. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Show" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether displays axis. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
-  <!-- Mail: Messages -->
-  <xs:complexType name ="MailMessagesModel" id="MailMessagesModel">
+  <!-- Axes: Vertical -->
+  <xs:complexType name="MiniChartVerticalAxesModel" id="MiniChartVerticalAxesModel">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Min" type="freeStringType" use="optional" default="Automatic">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Min.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Max" type="freeStringType" use="optional" default="Automatic">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          Max
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- MiniChart: Type -->
+  <xs:complexType name="MiniChartTypeModel" id="MiniChartTypeModel">
     <xs:sequence>
-      <xs:element name="Message" type="MailMessageModel" minOccurs="1" maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element name="Column" type="MiniChartHorizontalAxesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Information of horizontal axis.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Line" type="MiniChartVerticalAxesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Information of vertical axis.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Win-Loss" type="MiniChartVerticalAxesModel" minOccurs="1" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Information of vertical axis.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-           Represents an e-mail message.
+            Defines custom properties for this node. Contains a list of keys item with name / value.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Server: Credentials -->
-  <xs:complexType name="ServerCredentialsModel" id="ServerCredentialsModel">
-    <xs:sequence>
-      <xs:element name="Credential" type="ServerCredentialModel" minOccurs="1" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Defines a credential authentication.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
 
-  <!-- Credentials: Credential -->
-  <xs:complexType name ="ServerCredentialModel" id="ServerCredentialModel">
-    <xs:attribute name="Domain" type="freeStringType" use="optional" default="">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional]  The name of the domain associated with the credential. The default is an empty string ("").
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Host" type="freeStringType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          The name or IP address of the host used for SMTP transactions.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Name" type="freeStringType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          The identifier name of credential.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Password" type="freeStringType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          Password for the user name associated with the credential.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Port" type="xs:nonNegativeInteger" use="optional" default="25">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Port used for SMTP transactions. The default value is 25.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="SSL" type="YesNo" use="optional" default="Yes">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          Determines whether uses Secure Sockets Layer (SSL) to encrypt the connection. The dafault is 'Yes'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="UserName" type="freeStringType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          The user name associated with the credential.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Messages: Message -->
-  <xs:complexType name ="MailMessageModel" id="MailMessageModel">
-    <xs:all>
-      <xs:element name="Attachments" type="MailMessageAttachmentsModel" minOccurs="1" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            The attachment collection used to store data attached to this e-mail message.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Body" type="freeStringType" minOccurs="1" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            The message body.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="CC" type="MailMessageCCModel" minOccurs="1" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            The address collection that contains the carbon copy (CC) recipients for this e-mail message.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="From" type="MailMessageFromModel" minOccurs="1" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            The from address for this e-mail message.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Defines custom properties for this writer filter node. Contains a list of keys item with name / value.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Subject" type="freeStringType" minOccurs="1" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            The subject line for this e-mail message.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="To" type="MailMessageToModel" minOccurs="1" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            The address collection that contains the recipients of this e-mail message.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:all>
-    <xs:attribute name="Send" type="YesNo" use="optional" default="Yes">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Determines whether to send the e-mail. The default is 'Yes'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Credential" type="freeStringType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          The name of credential to use for this message.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Message: Attachments -->
-  <xs:complexType name ="MailMessageAttachmentsModel" id="MailMessageAttachmentsModel">
-    <xs:sequence>
-      <xs:element name="Attachment" type="MailMessageAttachmentModel" minOccurs="1" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents an attachment to an e-mail.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <!-- Message: CC -->
-  <xs:complexType name ="MailMessageCCModel" id="MailMessageCCModel">
-    <xs:attribute name="Addresses" type="mailAddressListType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          Collection of e-mail addresses. Separate each e-mail with a blank.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Message: From -->
-  <xs:complexType name ="MailMessageFromModel" id="MailMessageFromModel">
-    <xs:attribute name="Address" type="mailAddressType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          Represents an e-mail address.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Message: To -->
-  <xs:complexType name ="MailMessageToModel" id="MailMessageToModel">
-    <xs:attribute name="Addresses" type="mailAddressListType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          Collection of e-mail addresses. Separate each e-mail with a blank.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Attachments: Attachment -->
-  <xs:complexType name ="MailMessageAttachmentModel" id="MailMessageAttachmentModel">
-    <xs:attribute name="Path" type="pathType" use="required">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          Attached file. Only full path is supported.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Fields: Types -->
+    <!-- Fields: Types -->
   <xs:group id="FieldType" name="FieldType">        
     <xs:choice>
       <xs:element name="Field" type="DataFieldModel"  minOccurs="1" maxOccurs="unbounded">
@@ -3401,7 +3610,7 @@
     </xs:complexContent>
   </xs:complexType>
 
-    <!-- Fields: FixedField -->
+  <!-- Fields: FixedField -->
   <xs:complexType name="FixedFieldModel" id="FixedFieldModel">
     <xs:complexContent>
       <xs:extension base="BaseDataFieldModel">
@@ -4227,21 +4436,23 @@
 
   <!-- Location -->
   <xs:complexType name="LocationModel" id="LocationModel">
-    <xs:choice>
-      <xs:element name="ByCoordenates" type="CoordenatesModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Use this element when host has a tabular format such as for example Microsoft® Excel.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ByAlignment" type="AlignmentModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Use this element when host hasn't a tabular format such as for example Microsoft® Word, Adobe® PDF.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="ByCoordenates" type="CoordenatesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Use this element when host has a tabular format such as for example Microsoft® Excel.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ByAlignment" type="AlignmentModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Use this element when host hasn't a tabular format such as for example Microsoft® Word, Adobe® PDF.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
@@ -4249,7 +4460,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-    </xs:choice>
+    </xs:sequence>
   </xs:complexType>
 
   <!-- Location: ByAlignment -->

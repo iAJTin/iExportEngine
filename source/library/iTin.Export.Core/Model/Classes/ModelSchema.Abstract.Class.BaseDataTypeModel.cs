@@ -206,7 +206,7 @@ namespace iTin.Export.Model
                     var currentNumberNegativePattern = numberNegativePatternArray[culture.NumberFormat.NumberNegativePattern];
 
                     var numberPositivePatternBuilder = new StringBuilder();
-                    numberPositivePatternBuilder.Append(number.Separator == YesNo.Yes ? "#,##0" : "###0");
+                    numberPositivePatternBuilder.Append(number.Separator == YesNo.Yes ? "#,##0" : "##0");
                     if (numberDecimals > 0)
                     {
                         var digits = new string('0', numberDecimals);
@@ -416,7 +416,7 @@ namespace iTin.Export.Model
                     return formatBuilder.ToString();
                 #endregion
 
-                ////#region Type: Special
+                #region Type: Special
                 ////case KnownDataType.Special:
                 ////    var special = (SpecialDataTypeModel)this;
                 ////    var format = special.Format;
@@ -424,7 +424,7 @@ namespace iTin.Export.Model
                 ////    return string.IsNullOrEmpty(format) 
                 ////        ? "@" 
                 ////        : format;
-                ////#endregion
+                #endregion
 
                 #region Type: Text
                 default:

@@ -1,6 +1,4 @@
 ﻿
-using OfficeOpenXml.Style;
-
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -244,8 +242,9 @@ namespace iTin.Export.Writers.OpenXml.Office
                         y++;
                     }
 
+                    var conditions = Table.Conditions.Items.ToList();
+                    var hasConditions = conditions.Any();
                     var fieldDictionary = new Dictionary<BaseDataFieldModel, int>(); 
-                    List<BaseConditionModel> conditions = Table.Conditions.Items.ToList();
                     for (var row = 0; row < rowsCount; row++)
                     {                        
                         var rowData = rows[row];
@@ -266,20 +265,29 @@ namespace iTin.Export.Writers.OpenXml.Office
                             cell.Value = value.Value;                        
                             cell.AddErrorComment(value);
 
-                            foreach (var condition in conditions)
+                            if (hasConditions)
                             {
-                                if (condition.Active == YesNo.No)
+                                foreach (var condition in conditions)
                                 {
-                                    continue;
-                                }
+                                    if (condition.Active == YesNo.No)
+                                    {
+                                        continue;
+                                    }
 
-                                var styleToApply = condition.Apply();
-                                if (styleToApply == null)
-                                {
-                                    continue;
-                                }
+                                    var styleToApply = condition.Apply();
+                                    if (styleToApply == null)
+                                    {
+                                        continue;
+                                    }
 
-                                cell.StyleName = styleToApply;
+                                    cell.StyleName = styleToApply;
+                                }
+                            }
+                            else
+                            {
+                                cell.StyleName = row.IsOdd()
+                                    ? $"{value.Style.Name}_Alternate"
+                                    : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
                             }
 
                             cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
@@ -456,7 +464,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     {
                         try
                         {
-                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns(1);
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
                         }
                         catch (Exception)
                         {

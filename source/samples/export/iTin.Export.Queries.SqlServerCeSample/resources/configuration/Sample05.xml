@@ -18,7 +18,7 @@
           <Alignment Horizontal="Left"/>
           <Number Decimals="0"/>
         </Content>
-        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+        <Font Name="Calibri" Size="11"/>
       </Style>
       <Style Name="IdAggregateStyle">
         <Borders>
@@ -27,13 +27,13 @@
         <Content>
           <Text/>
         </Content>
-        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
       </Style>
       <Style Name="ProductValueStyle">
         <Content>
           <Text/>
         </Content>
-        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+        <Font Name="Calibri" Size="11"/>
       </Style>
       <Style Name="ProductAggregateStyle">
         <Borders>
@@ -46,36 +46,41 @@
       </Style>
       <Style Name="QuantityValueStyle">
         <Content>
-          <Number Decimals="0"/>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
         </Content>
-        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+        <Font Name="Calibri" Size="11"/>
       </Style>
       <Style Name="QuantityAggregateStyle">
         <Borders>
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
         <Content>
-          <Number Decimals="0"/>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
         </Content>
         <Font Name="Calibri" Size="11" Bold="Yes"/>
       </Style>
       <Style Name="PriceValueStyle">
         <Content>
+          <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
-        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+        <Font Name="Calibri" Size="11"/>
       </Style>
       <Style Name="PriceAggregateStyle">
         <Borders>
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
         <Content>
+          <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
         <Font Name="Calibri" Size="11" Bold="Yes"/>
       </Style>
       <Style Name="ValueValueStyle">
         <Content>
+          <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
       </Style>
@@ -84,13 +89,14 @@
           <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
         </Borders>
         <Content>
+          <Alignment Horizontal="Right"/>
           <Number/>
         </Content>
         <Font Name="Calibri" Size="11" Bold="Yes"/>
       </Style>
     </Styles>
   </Global.Resources>
-    
+
   <Export Name="sample05" Current="Yes">
     <Description>EPPlus - Sample 5</Description>
     <Table Host="xlsx"
@@ -103,9 +109,9 @@
       </Exporter>
       <Fields>
         <Field Name="ID" Alias="ID">
-          <Header Style="HeaderStyle"/>            
+          <Header Style="HeaderStyle"/>
           <Value Style="IdValueStyle"/>
-          <Aggregate Location="Bottom" Style="IdAggregateStyle" Show="Yes"/>            
+          <Aggregate Location="Bottom" Style="IdAggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="PRODUCT" Alias="Product">
           <Header Style="HeaderStyle"/>
@@ -126,12 +132,97 @@
           <Header Style="HeaderStyle"/>
           <Value Style="ValueValueStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="ValueAggregateStyle" Show="Yes"/>
-        </Field>      
+        </Field>
       </Fields>
       <Output>
         <Path>~\output\sample9x\fromconfigfile</Path>
         <File>sample05-file</File>
       </Output>
+      <Charts>
+        <MiniChart Field="ID" EmptyValuesAs="Gap|Zero|Connect" Show="Yes">
+          <Location>
+            <ByCoordenates Coordenates="1 1"/>
+          </Location>
+          <Axes>
+            <Horizontal Type="General|A_Field_Date_From_Fields" Color="DarkMagenta" Show="Yes" RightToLeft="No"/>
+            <Vertical Min="Automatic|Equals|Value" Max="Automatic|Equals|Value"/>
+          </Axes>
+          <Type>
+            <Column>
+              <Serie Color="DarkOrange">
+                <Properties/>
+              </Serie>
+              <Points>
+                <First Show="Yes" Color="Aquamarine">
+                  <Properties/>
+                </First>
+                <Last Show="Yes" Color="Beige">
+                  <Properties/>
+                </Last>
+                <High Show="Yes" Color="Red">
+                  <Properties/>
+                </High>
+                <Low Show="Yes" Color="Green">
+                  <Properties/>
+                </Low>
+                <Negative Show="Yes" Color="Red">
+                  <Properties/>
+                </Negative>
+                <Properties/>
+              </Points>
+            </Column>
+            <Line>
+              <Serie Color="DarkOrange" Width="2">
+                <Properties/>
+              </Serie>
+              <Points>
+                <First Show="Yes" Color="Aquamarine">
+                  <Properties/>
+                </First>
+                <Last Show="Yes" Color="Beige">
+                  <Properties/>
+                </Last>
+                <High Show="Yes" Color="Red">
+                  <Properties/>
+                </High>
+                <Low Show="Yes" Color="Green">
+                  <Properties/>
+                </Low>
+                <Negative Show="Yes" Color="Red">
+                  <Properties/>
+                </Negative>
+                <Markers Color="Gold" Show="Yes">
+                  <Properties/>
+                </Markers>
+                <Properties/>
+              </Points>
+            </Line>       
+            <Win-Loss>
+              <Serie Color="DarkOrange">
+                <Properties/>
+              </Serie>
+              <Points>
+                <First Show="Yes" Color="Aquamarine">
+                  <Properties/>
+                </First>
+                <Last Show="Yes" Color="Beige">
+                  <Properties/>
+                </Last>
+                <High Show="Yes" Color="Red">
+                  <Properties/>
+                </High>
+                <Low Show="Yes" Color="Green">
+                  <Properties/>
+                </Low>
+                <Negative Show="Yes" Color="Red">
+                  <Properties/>
+                </Negative>
+                <Properties/>
+              </Points>
+            </Win-Loss>
+          </Type>
+        </MiniChart>    
+      </Charts>        
     </Table>
   </Export>
   
