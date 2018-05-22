@@ -155,56 +155,28 @@
                 <Last Color="Beige" Show="Yes"/>
                 <High Color="Red" Show="Yes"/>
                 <Low Color="Green" Show="Yes"/>
-                <Negative Color="Pink" Show="Yes"/>              
+                <Negative Color="Pink" Show="Yes"/>         
               </Points>
             </Column>            
             <!--<Line>
-              <Serie Color="DarkOrange" Width="2">
-                <Properties/>
-              </Serie>
+              <Serie Color="DarkOrange" Width="2"/>                            
               <Points>
-                <First Show="Yes" Color="Aquamarine">
-                  <Properties/>
-                </First>
-                <Last Show="Yes" Color="Beige">
-                  <Properties/>
-                </Last>
-                <High Show="Yes" Color="Red">
-                  <Properties/>
-                </High>
-                <Low Show="Yes" Color="Green">
-                  <Properties/>
-                </Low>
-                <Negative Show="Yes" Color="Red">
-                  <Properties/>
-                </Negative>
-                <Markers Color="Gold" Show="Yes">
-                  <Properties/>
-                </Markers>
-                <Properties/>
+                <First Color="Aquamarine" Show="Yes"/>
+                <Last Color="Beige" Show="Yes"/>
+                <High Color="Red" Show="Yes"/>
+                <Low Color="Green" Show="Yes"/>
+                <Negative Color="Pink" Show="Yes"/>         
+                <Markers Color="Gold" Show="Yes"/>
               </Points>
             </Line>       
             <Win-Loss>
-              <Serie Color="DarkOrange">
-                <Properties/>
-              </Serie>
+              <Serie Color="AliceBlue"/>               
               <Points>
-                <First Show="Yes" Color="Aquamarine">
-                  <Properties/>
-                </First>
-                <Last Show="Yes" Color="Beige">
-                  <Properties/>
-                </Last>
-                <High Show="Yes" Color="Red">
-                  <Properties/>
-                </High>
-                <Low Show="Yes" Color="Green">
-                  <Properties/>
-                </Low>
-                <Negative Show="Yes" Color="Red">
-                  <Properties/>
-                </Negative>
-                <Properties/>
+                <First Color="Aquamarine" Show="Yes"/>
+                <Last Color="Beige" Show="Yes"/>
+                <High Color="Red" Show="Yes"/>
+                <Low Color="Green" Show="Yes"/>
+                <Negative Color="Pink" Show="Yes"/>         
               </Points>
             </Win-Loss>-->
           </Type>

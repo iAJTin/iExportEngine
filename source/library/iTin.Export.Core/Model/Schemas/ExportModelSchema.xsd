@@ -3299,7 +3299,6 @@
       </xs:attribute>
     </xs:complexType>
 
-    
 
     <!-- Charts: MiniChart -->
     <xs:complexType name="MiniChartModel" id="MiniChartModel">
@@ -3454,6 +3453,7 @@
       </xs:attribute>
     </xs:complexType>
 
+
     <!-- MiniChart: Type -->
     <xs:complexType name="MiniChartTypeModel" id="MiniChartTypeModel">
       <xs:sequence>
@@ -3461,21 +3461,21 @@
           <xs:element name="Column" type="MiniChartColumnTypeModel" minOccurs="0" maxOccurs="1">
             <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
               <xs:documentation xml:lang="en">
-                Information of horizontal axis.
+                Information of column mini-chart.
               </xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="Line" type="MiniChartVerticalAxesModel" minOccurs="0" maxOccurs="1">
+          <xs:element name="Line" type="MiniChartLineTypeModel" minOccurs="0" maxOccurs="1">
             <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
               <xs:documentation xml:lang="en">
-                Information of vertical axis.
+                Information of line mini-chart.
               </xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="Win-Loss" type="MiniChartVerticalAxesModel" minOccurs="1" maxOccurs="1">
+          <xs:element name="Win-Loss" type="MiniChartWinLossTypeModel" minOccurs="0" maxOccurs="1">
             <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
               <xs:documentation xml:lang="en">
-                Information of vertical axis.
+                Information of win-loss mini-chart.
               </xs:documentation>
             </xs:annotation>
           </xs:element>
@@ -3493,14 +3493,14 @@
     <!-- Type: Column -->
     <xs:complexType name="MiniChartColumnTypeModel" id="MiniChartColumnTypeModel">
       <xs:all>
-        <xs:element name="Serie" type="MiniChartTypeSerieModel" minOccurs="1" maxOccurs="1">
+        <xs:element name="Serie" type="MiniChartColumnSerieModel" minOccurs="1" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Points
+              Mini Chart serie configuration
             </xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element name="Points" type="MiniChartTypePointsModel" minOccurs="0" maxOccurs="1">
+        <xs:element name="Points" type="MiniChartColumnPointsModel" minOccurs="0" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
               Points
@@ -3517,9 +3517,23 @@
       </xs:all>
     </xs:complexType>
 
-    <!-- Type: Serie -->
-    <xs:complexType name="MiniChartTypeSerieModel" id="MiniChartTypeSerieModel">
+    <!-- Type: Line: -->
+    <xs:complexType name="MiniChartLineTypeModel" id="MiniChartLineTypeModel">
       <xs:all>
+        <xs:element name="Serie" type="MiniChartLineSerieModel" minOccurs="1" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Mini Chart serie configuration
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Points" type="MiniChartLinePointsModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Points
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
         <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
@@ -3528,17 +3542,45 @@
           </xs:annotation>
         </xs:element>
       </xs:all>
-      <xs:attribute name="Color" type="rgbColorType" use="required">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Serie color
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
     </xs:complexType>
 
-    <!-- Type: Points -->
-    <xs:complexType name="MiniChartTypePointsModel" id="MiniChartTypePointsModel">
+    <!-- Type: Win-Loss: -->
+    <xs:complexType name="MiniChartWinLossTypeModel" id="MiniChartWinLossTypeModel">
+      <xs:all>
+        <xs:element name="Serie" type="MiniChartWinLossSerieModel" minOccurs="1" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Mini Chart serie configuration
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Points" type="MiniChartWinLossPointsModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Points
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+
+
+    <!-- Type -> Column: Serie -->
+    <xs:complexType name="MiniChartColumnSerieModel" id="MiniChartColumnSerieModel">
+      <xs:complexContent>
+        <xs:extension base="BaseMiniChartSerieModel"/>
+      </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Type -> Column: Points -->
+    <xs:complexType name="MiniChartColumnPointsModel" id="BaseMiniChartPointsModel">
       <xs:all>
         <xs:element name="First" type="MiniChartFirstPointModel" minOccurs="0" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
@@ -3586,50 +3628,174 @@
     </xs:complexType>
 
 
+    <!-- Type -> Line: Serie -->
+    <xs:complexType name="MiniChartLineSerieModel" id="MiniChartLineSerieModel">
+      <xs:complexContent>
+        <xs:extension base="BaseMiniChartSerieModel">
+          <xs:attribute name="Width" type="xs:integer" use="required">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Width serie
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
 
-    <!-- Points: MiniChartFirstPoint -->
+    <!-- Type -> Line: Points -->
+    <xs:complexType name="MiniChartLinePointsModel" id="MiniChartLinePointsModel">
+      <xs:all>
+        <xs:element name="First" type="MiniChartFirstPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              First
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Last" type="MiniChartLastPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Last
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="High" type="MiniChartHighPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              High
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Low" type="MiniChartLowPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Low
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Negative" type="MiniChartNegativePointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Negative
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Markers" type="MiniChartMarkersPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Negative
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+
+
+    <!-- Type -> Win-Loss: Serie -->
+    <xs:complexType name="MiniChartWinLossSerieModel" id="MiniChartWinLossSerieModel">
+      <xs:complexContent>
+        <xs:extension base="BaseMiniChartSerieModel"/>
+      </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Type -> Win-Loss: Points -->
+    <xs:complexType name="MiniChartWinLossPointsModel" id="MiniChartWinLossPointsModel">
+      <xs:all>
+        <xs:element name="First" type="MiniChartFirstPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              First
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Last" type="MiniChartLastPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Last
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="High" type="MiniChartHighPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              High
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Low" type="MiniChartLowPointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Low
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Negative" type="MiniChartNegativePointModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Negative
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+
+
+    <!-- Type -> Any -> Points: MiniChartFirstPoint -->
     <xs:complexType name="MiniChartFirstPointModel" id="MiniChartFirstPointModel">
       <xs:complexContent>
         <xs:extension base="BaseMiniChartPointModel"/>
       </xs:complexContent>
     </xs:complexType>
 
-    <!-- Points: MiniChartLastPoint -->
+    <!-- Type -> Any -> Points: MiniChartLastPoint -->
     <xs:complexType name="MiniChartLastPointModel" id="MiniChartLastPointModel">
       <xs:complexContent>
         <xs:extension base="BaseMiniChartPointModel"/>
       </xs:complexContent>
     </xs:complexType>
 
-    <!-- Points: MiniChartHighPoint -->
+    <!-- Type -> Any -> Points: MiniChartHighPoint -->
     <xs:complexType name="MiniChartHighPointModel" id="MiniChartHighPointModel">
       <xs:complexContent>
         <xs:extension base="BaseMiniChartPointModel"/>
       </xs:complexContent>
     </xs:complexType>
 
-    <!-- Points: MiniChartLowPoint -->
+    <!-- Type -> Any -> Points: MiniChartLowPoint -->
     <xs:complexType name="MiniChartLowPointModel" id="MiniChartLowPointModel">
       <xs:complexContent>
         <xs:extension base="BaseMiniChartPointModel"/>
       </xs:complexContent>
     </xs:complexType>
 
-    <!-- Points: MiniChartNegativePoint -->
+    <!-- Type -> Any -> Points: MiniChartNegativePoint -->
     <xs:complexType name="MiniChartNegativePointModel" id="MiniChartNegativePointModel">
       <xs:complexContent>
         <xs:extension base="BaseMiniChartPointModel"/>
       </xs:complexContent>
     </xs:complexType>
-    
-    <!-- Points: MiniChartMarkersPoint -->
+
+    <!-- Type -> Any -> Points: MiniChartMarkersPoint -->
     <xs:complexType name="MiniChartMarkersPointModel" id="MiniChartMarkersPointModel">
       <xs:complexContent>
         <xs:extension base="BaseMiniChartPointModel"/>
       </xs:complexContent>
     </xs:complexType>
-
-
 
 
     <!-- Fields: Types -->
@@ -5180,7 +5346,7 @@
     <!-- MiniChartHighPointModel      Occurs when the value of the specified field changes.                        -->
     <!-- MiniChartLowPointModel       Occurs when the value of the specified field changes.                        -->
     <!-- MiniChartNegativePointModel  Occurs when the value of the specified field changes.                        -->
-    <!-- MiniChartMarkersPointModel  Occurs when the value of the specified field changes.                        -->
+    <!-- MiniChartMarkersPointModel  Occurs when the value of the specified field changes.                         -->
     <xs:complexType name="BaseMiniChartPointModel" abstract="true">
       <xs:all>
         <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
@@ -5207,4 +5373,33 @@
       </xs:attribute>
     </xs:complexType>
 
+
+    <!-- Defines a base class for the different types of fields conditions available.                              -->
+    <!-- Which acts as the base class for the different conditions fields.                                         -->
+    <!-- The following table shows the different field conditions types.                                           -->
+    <!--                                                                                                           -->
+    <!-- Class                        Description                                                                  -->
+    <!-- ========================================================================================================= -->
+    <!-- MiniChartColumnSerieModel                                                                                 -->
+    <!-- MiniChartLineSerieModel                                                                                   -->
+    <!-- MiniChartWinLossSerieModel                                                                                -->
+    <xs:complexType name="BaseMiniChartSerieModel" abstract="true">
+      <xs:all>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="Color" type="rgbColorType" use="required">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Serie color
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  
   </xs:schema>
