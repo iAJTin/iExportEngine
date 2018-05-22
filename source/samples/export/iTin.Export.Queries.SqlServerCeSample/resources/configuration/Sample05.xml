@@ -142,6 +142,8 @@
         <MiniChart Field="ID" EmptyValuesAs="Gap|Zero|Connect" Show="Yes">
           <Location>
             <ByCoordenates Coordenates="1 1"/>
+            <ByColumn Location="Top|Bottom" Column="SameField|FieldName"/>
+            <ByRow Location="Left|Right" RowSize="integer"/>
           </Location>
           <Axes>
             <Horizontal Type="General|A_Field_Date_From_Fields" Color="DarkMagenta" Show="Yes" RightToLeft="No"/>
@@ -180,7 +182,7 @@
               </Points>
             </Win-Loss>-->
           </Type>
-        </MiniChart>    
+        </MiniChart>
       </Charts>        
     </Table>
   </Export>
