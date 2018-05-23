@@ -3303,11 +3303,10 @@
     <!-- Charts: MiniChart -->
     <xs:complexType name="MiniChartModel" id="MiniChartModel">
       <xs:all>
-        <xs:element name="Location" type="LocationModel" minOccurs="1" maxOccurs="1">
+        <xs:element name="Location" type="MiniChartLocationModel" minOccurs="1" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Defines the chart location on the host, this can be by coordinates or by type of alignment, depending whether the host has or not a tabular format.
-              You can only choose one of the modes. If this tag does not define the defaults is by coordinates
+              Defines the mini-chart location on the host, this can be by coordinates or by column or by row. You can only choose one of them. If this tag does not define the defaults is by column
             </xs:documentation>
           </xs:annotation>
         </xs:element>
@@ -3353,6 +3352,96 @@
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             [Optional] Determines whether displays the minichart. The default 'Yes'.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+
+    <!-- MiniChart: Location -->
+    <xs:complexType name="MiniChartLocationModel" id="MiniChartLocationModel">
+      <xs:sequence>
+        <xs:choice>
+          <xs:element name="ByCoordenates" type="CoordenatesModel" minOccurs="0" maxOccurs="1">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Minichart location by row and column
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ByColumn" type="ByColumnLocationModel" minOccurs="0" maxOccurs="1">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Minichart location  by column
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ByRow" type="ByRowLocationModel" minOccurs="0" maxOccurs="1">
+            <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+              <xs:documentation xml:lang="en">
+                Minichart location  by row
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:choice>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>        
+    </xs:complexType>
+
+    <!-- Location: ByColumn -->
+    <xs:complexType name="ByColumnLocationModel" id="ByColumnLocationModel">
+      <xs:all>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="Location" type="freeStringType" use="optional" default="Bottom">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            [Optional] Location. The default is 'Bottom'.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Column" type="freeStringType" use="optional" default="SameField">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            [Optional] Preferred column name. The default is 'SameField'.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+
+    <!-- Location: ByRow -->
+    <xs:complexType name="ByRowLocationModel" id="ByRowLocationModel">
+      <xs:all>
+        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines custom properties for this node. Contains a list of keys item with name / value.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="Location" type="freeStringType" use="optional" default="Right">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            [Optional] Location. The default is 'Right'.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="RowSize" type="freeStringType" use="optional" default="-1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            [Optional] Preferred row size. The default is default's row.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
