@@ -36,5 +36,11 @@
     <Setting Name="Sample05" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\configuration\Sample05.xml</Value>
     </Setting>
+    <Setting Name="Sample16" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample16.xml</Value>
+    </Setting>
+    <Setting Name="SEKRatesXmlInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\SEKRatesXmlInput.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -5453,10 +5453,10 @@
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="Show" type="YesNo" use="optional" default="No">
+      <xs:attribute name="Show" type="YesNo" use="optional" default="Yes">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'No'.
+            [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'Yes'.
           </xs:documentation>
         </xs:annotation>
       </xs:attribute>

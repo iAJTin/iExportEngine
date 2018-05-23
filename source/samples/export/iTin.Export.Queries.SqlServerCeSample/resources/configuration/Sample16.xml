@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>  
+    <Hosts>
+      <Host Key="xlsx"/>
+    </Hosts>
+    <Conditions>
+      <RemarksCondition Key="RemarksMYR" Field="MYR" Criterial="EqualTo" Value="2,04500" Style="RemarksMYRStyle" EntireRow="No" Active="Yes"/>
+    </Conditions>
+    <Filters>
+      <Filter Key="AudFilter" Field="AUD" Criterial="GreatherThan" Value="6,2" Active="No"/>    
+    </Filters>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="#ED7D31">
+          <Alignment Horizontal="Left"/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="DateValueStyle">
+        <Borders>
+          <Border Position="Left" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+          <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <DateTime Format="Short Date"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="DecimalValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="5" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="SekValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="LastFiedlDecimalValueStyle">
+        <Borders>
+          <Border Position="Right" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+          <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="5" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="RemarksMYRStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="Yellow">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="5" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="sample16" Current="Yes">
+    <Description>EPPlus - Sample 16</Description>
+    <Table Host="xlsx"
+           Name="Rates"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="SEKRates" 
+           Filter="AudFilter">
+      <Conditions Keys="RemarksMYR"/>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="DATE" Alias="Date">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DateValueStyle"/>
+        </Field>
+        <Field Name="AUD" Alias="AUD">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="CAD" Alias="CAD">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="CHF" Alias="CHF">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="DKK" Alias="DKK">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="EUR" Alias="EUR">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="GBP" Alias="GBP">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="HKD" Alias="HKD">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="JPY" Alias="JPY">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="MYR" Alias="MYR">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="NOK" Alias="NOK">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="NZD" Alias="NZD">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="RUB" Alias="RUB">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="SEK" Alias="SEK">
+          <Header Style="HeaderStyle"/>
+          <Value Style="SekValueStyle"/>
+        </Field>
+        <Field Name="THB" Alias="THB">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="TRY" Alias="TRY">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+        </Field>
+        <Field Name="USD" Alias="USD">
+          <Header Style="HeaderStyle"/>
+          <Value Style="LastFiedlDecimalValueStyle"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\sample9x\fromconfigfile</Path>
+        <File>sample16-1</File>
+      </Output>
+      <Charts>
+        <MiniChart Field="AUD" EmptyValuesAs="Gap|Zero|Connect" Show="Yes">
+          <Location>     
+            <ByCoordenates Coordenates="2 15"/>
+          </Location>
+          <Axes>
+            <Horizontal Type="General|A_Field_Date_From_Fields" Color="DarkMagenta" Show="Yes" RightToLeft="No"/>
+            <Vertical Min="Automatic|Equals|Value" Max="Automatic|Equals|Value"/>
+          </Axes>
+          <Type>
+            <Column>
+              <Serie Color="#376092"/>               
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>            
+          </Type>
+        </MiniChart>
+      </Charts>        
+    </Table>
+  </Export>
+  
+</Exports>

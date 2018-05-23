@@ -29,7 +29,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             Console.WriteLine(new string('-', 52));
 
             Console.WriteLine(OneStepText);
-            var inputUri = new Uri(Properties.Settings.Default.Sample5XmlInput, UriKind.Relative);
+            var inputUri = new Uri(Properties.Settings.Default.SEKRatesXmlInput, UriKind.Relative);
             var export = new XmlInput(inputUri);
 
             Console.Write(TwoStepText);
@@ -64,8 +64,8 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
 
             Console.WriteLine(FiveStepText);
             Console.WriteLine(FirstSampleStepText);
-            var sample90FileConfiguration = new Uri(Properties.Settings.Default.Sample05, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(sample90FileConfiguration, "sample05"));
+            var sample90FileConfiguration = new Uri(Properties.Settings.Default.Sample16, UriKind.Relative);
+            export.Export(ExportSettings.ImportFrom(sample90FileConfiguration, "sample16"));
 
             //Console.WriteLine(SecondSampleStepText);
             //var sample90ChartConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);

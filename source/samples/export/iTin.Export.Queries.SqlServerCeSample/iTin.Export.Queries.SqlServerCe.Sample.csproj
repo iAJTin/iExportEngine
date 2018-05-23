@@ -72,6 +72,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\configuration\Sample16.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\Sample05.xml">
       <SubType>Designer</SubType>
     </Content>

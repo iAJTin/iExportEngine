@@ -138,29 +138,6 @@
         <Path>~\output\sample9x\fromconfigfile</Path>
         <File>sample05-file</File>
       </Output>
-      <Charts>
-        <MiniChart Field="ID" EmptyValuesAs="Gap|Zero|Connect" Show="Yes">
-          <Location>            
-            <ByRow Location="Left|Right" RowSize="integer"/>
-          </Location>
-          <Axes>
-            <Horizontal Type="General|A_Field_Date_From_Fields" Color="DarkMagenta" Show="Yes" RightToLeft="No"/>
-            <Vertical Min="Automatic|Equals|Value" Max="Automatic|Equals|Value"/>
-          </Axes>
-          <Type>
-            <Column>
-              <Serie Color="AliceBlue"/>               
-              <Points>
-                <First Color="Aquamarine" Show="Yes"/>
-                <Last Color="Beige" Show="Yes"/>
-                <High Color="Red" Show="Yes"/>
-                <Low Color="Green" Show="Yes"/>
-                <Negative Color="Pink" Show="Yes"/>         
-              </Points>
-            </Column>            
-          </Type>
-        </MiniChart>
-      </Charts>        
     </Table>
   </Export>
   

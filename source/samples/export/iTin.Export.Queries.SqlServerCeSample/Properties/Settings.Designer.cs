@@ -140,5 +140,29 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
                 this["Sample05"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample16.xml")]
+        public string Sample16 {
+            get {
+                return ((string)(this["Sample16"]));
+            }
+            set {
+                this["Sample16"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SEKRatesXmlInput.xml")]
+        public string SEKRatesXmlInput {
+            get {
+                return ((string)(this["SEKRatesXmlInput"]));
+            }
+            set {
+                this["SEKRatesXmlInput"] = value;
+            }
+        }
     }
 }
