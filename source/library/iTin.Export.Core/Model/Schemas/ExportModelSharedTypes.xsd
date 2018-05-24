@@ -638,5 +638,26 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  
+
+  <!-- miniChartEmptyValuesAs. Represents a list of known mini-chart empty values as enumeration include bindable option. -->
+  <xs:simpleType name="miniChartEmptyValuesAs" id ="miniChartEmptyValuesAs">
+    <xs:union memberTypes="shortCutStaticBindingType miniChartEmptyValuesAsEnumType bindingType staticBindType"/>
+  </xs:simpleType>
+
+  <!-- miniChartAxisColor. Represents a list of known mini-chart empty values as enumeration include bindable option. -->
+  <xs:simpleType name="miniChartHorizontalAxisColor" id ="miniChartHorizontalAxisColor">
+    <xs:union memberTypes="shortCutStaticBindingType shortCutColorType miniChartHorizontalAxisColorEnum rgbNameColorType rgbHexColorType scColorType bindingType staticBindType"/>
+  </xs:simpleType>
+
+  <!-- miniChartHorizontalAxisType. Represents a list of known mini-chart horizontal axis type. -->
+  <xs:simpleType name="miniChartHorizontalAxisType" id ="miniChartHorizontalAxisType">
+    <xs:union memberTypes="shortCutStaticBindingType miniChartHorizontalAxisTypeEnum bindingType staticBindType"/>
+  </xs:simpleType>
+
+  <!-- miniChartVerticalAxisValue. Represents a list of known mini-chart vertical axis min/max values. -->
+  <xs:simpleType name="miniChartVerticalAxisValue" id ="miniChartVerticalAxisValue">
+    <xs:union memberTypes="shortCutStaticBindingType miniChartVerticalAxisValueEnum xs:decimal bindingType staticBindType"/>
+  </xs:simpleType>
+
+
 </xs:schema>

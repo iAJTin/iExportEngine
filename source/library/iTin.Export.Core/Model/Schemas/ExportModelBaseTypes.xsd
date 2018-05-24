@@ -4,7 +4,94 @@
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
            version="1.0">
-  
+
+  <!-- ====================================== -->
+  <!-- Definition of mini-chart data types    -->
+  <!-- ====================================== -->
+
+  <!-- Static binding data type: Defines a static resource property, represents a call to external assembly. -->
+  <xs:simpleType id="staticBindType" name="staticBindType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*\{\s*[S|s]tatic[B|b]inding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:pattern value="\s*\{\s*[S|s]tatic[B|b]inding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ShortCut: StaticBinding. -->
+  <xs:simpleType name="shortCutStaticBindingType" id="shortCutStaticBindingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="{StaticBinding: }">
+        <xs:annotation>
+          <xs:documentation>Represents a external method or property call.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- miniChartEmptyValuesAsEnumType: Represents a list of known mini-chart empty values as enumeration -->
+  <xs:simpleType name="miniChartEmptyValuesAsEnumType" id="miniChartEmptyValuesAsEnumType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Gap">
+        <xs:annotation>
+          <xs:documentation>Custom </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Zero">
+        <xs:annotation>
+          <xs:documentation>Defines </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Connect">
+        <xs:annotation>
+          <xs:documentation>Defines </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- miniChartAxisColorEnumType: Represents a list of known mini-chart empty values as enumeration -->
+  <xs:simpleType name="miniChartHorizontalAxisColorEnum" id="miniChartHorizontalAxisColorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Automatic">
+        <xs:annotation>
+          <xs:documentation>Automatic color</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- miniChartHorizontalAxisTypeEnum: Represents a list of known mini-chart horizontal axis types -->
+  <xs:simpleType name="miniChartHorizontalAxisTypeEnum" id="miniChartHorizontalAxisTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="General">
+        <xs:annotation>
+          <xs:documentation>Generic axis</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- miniChartVerticalAxisValueEnum: Represents a list of known mini-chart vertical axis min/max values -->
+  <xs:simpleType name="miniChartVerticalAxisValueEnum" id="miniChartVerticalAxisValueEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Automatic">
+        <xs:annotation>
+          <xs:documentation>Automatic value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+
+
+
   <!-- ================================== -->
   <!-- Definition of new basic data types -->
   <!-- ================================== -->
@@ -74,26 +161,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Static binding data type: Defines a static resource property, represents a call to external assembly. -->
-  <xs:simpleType id="staticBindType" name="staticBindType">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="\s*\{\s*[S|s]tatic[B|b]inding\s*:\s*@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:pattern value="\s*\{\s*[S|s]tatic[B|b]inding\s*:\s*(@?_*[A-Za-z]{1}[A-Za-z0-9]*)\.?@?_*[A-Za-z]{1}[A-Za-z0-9]*\s*\}"/>
-      <xs:whiteSpace value="collapse" />
-    </xs:restriction>
-  </xs:simpleType>
-
-  <!-- ShortCut: StaticBinding. -->
-  <xs:simpleType name="shortCutStaticBindingType" id="shortCutStaticBindingType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="{StaticBinding: }">
-        <xs:annotation>
-          <xs:documentation>Represents a external method or property call.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:whiteSpace value="collapse"/>
-    </xs:restriction>
-  </xs:simpleType>
 
   <!-- =============================== -->
   <!-- Definition of string data types -->
@@ -1951,7 +2018,9 @@
     </xs:restriction>
   </xs:simpleType>
 
-  
+
+
+
   <!-- ====================================== -->
   <!-- Definition of miscellaneous data types -->
   <!-- ====================================== -->
