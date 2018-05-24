@@ -3584,14 +3584,14 @@
       <xs:element name="Serie" type="MiniChartColumnSerieModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the data series to draw
+            Contains the definition of the data series to draw.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Points" type="MiniChartColumnPointsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values
+            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3618,35 +3618,35 @@
       <xs:element name="First" type="MiniChartFirstPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            First
+            Defines how to show the serie first point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Last" type="MiniChartLastPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Last
+            Defines how to show the serie last point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="High" type="MiniChartHighPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            High
+            Defines how to show the serie high point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Low" type="MiniChartLowPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Low
+            Defines how to show the serie low point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Negative" type="MiniChartNegativePointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Negative
+            Defines how to show the serie negative points, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3667,14 +3667,14 @@
       <xs:element name="Serie" type="MiniChartLineSerieModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Mini Chart serie configuration
+            Contains the definition of the data series to draw.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Points" type="MiniChartLinePointsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Points
+            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, markers points, highest and lowest value as well as negative values.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3692,10 +3692,10 @@
   <xs:complexType name="MiniChartLineSerieModel" id="MiniChartLineSerieModel">
     <xs:complexContent>
       <xs:extension base="BaseMiniChartSerieModel">
-        <xs:attribute name="Width" type="xs:integer" use="required">
+        <xs:attribute name="Width" type="miniChartLineSerieWidth" use="optional" default="0.75">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Width serie
+              [Optional] Preferred line width. The default is '0.75'.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -3709,42 +3709,42 @@
       <xs:element name="First" type="MiniChartFirstPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            First
+            Defines how to show the serie first point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Last" type="MiniChartLastPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Last
+            Defines how to show the serie last point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="High" type="MiniChartHighPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            High
+            Defines how to show the serie high point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Low" type="MiniChartLowPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Low
+            Defines how to show the serie low point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Negative" type="MiniChartNegativePointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Negative
+            Defines how to show the serie negative points, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Markers" type="MiniChartMarkersPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Negative
+            Defines how to show the serie markers points, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3765,14 +3765,14 @@
       <xs:element name="Serie" type="MiniChartWinLossSerieModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Mini Chart serie configuration
+            Contains the definition of the data series to draw.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Points" type="MiniChartWinLossPointsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Points
+            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3799,35 +3799,35 @@
       <xs:element name="First" type="MiniChartFirstPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            First
+            Defines how to show the serie first point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Last" type="MiniChartLastPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Last
+            Defines how to show the serie last point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="High" type="MiniChartHighPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            High
+            Defines how to show the serie high point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Low" type="MiniChartLowPointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Low
+            Defines how to show the serie low point, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Negative" type="MiniChartNegativePointModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Negative
+            Defines how to show the serie negative points, includes color and its visibility.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -5445,17 +5445,17 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
-    <xs:attribute name="Color" type="xs:string" use="required">
+    <xs:attribute name="Color" type="rgbColorType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Determines whether this condition will be evaluate
+          Preferred point color.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Show" type="YesNo" use="optional" default="Yes">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'Yes'.
+          [Optional] Determines whether the point is displayed. The default value is 'Yes'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -5484,7 +5484,7 @@
     <xs:attribute name="Color" type="rgbColorType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Serie color
+          Preferred serie color.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

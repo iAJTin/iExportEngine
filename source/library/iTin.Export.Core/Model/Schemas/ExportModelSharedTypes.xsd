@@ -659,5 +659,9 @@
     <xs:union memberTypes="shortCutStaticBindingType miniChartVerticalAxisValueEnum xs:decimal bindingType staticBindType"/>
   </xs:simpleType>
 
+  <!-- miniChartLineSerieWidth. Represents a mini-chart line serie width. -->
+  <xs:simpleType name="miniChartLineSerieWidth" id ="miniChartLineSerieWidth">
+    <xs:union memberTypes="shortCutStaticBindingType xs:decimal bindingType staticBindType"/>
+  </xs:simpleType>
 
 </xs:schema>

@@ -161,25 +161,23 @@
         <File>sample16-1</File>
       </Output>
       <Charts>
-        <MiniChart Field="AUD" EmptyValuesAs="Gap" Show="Yes">
-          <Location>     
+        <MiniChart Field="AUD">
+          <Location>
             <ByCoordenates Coordenates="2 15"/>
           </Location>
           <Axes>
-            <Horizontal Type="General" Color="Automatic" Show="Yes" RightToLeft="No"/>
-            <Vertical Min="Automatic" Max="Automatic"/>
-           </Axes>
+            <Horizontal Show="Yes"/>
+          </Axes>
           <Type>
             <Column>
-              <Serie Color="#376092"/>               
+              <Serie Color="#376092"/>
               <Points>
                 <High Color="Red"/>
-                <
               </Points>
-            </Column>            
+            </Column>
           </Type>
         </MiniChart>
-      </Charts>        
+      </Charts>
     </Table>
   </Export>
   
