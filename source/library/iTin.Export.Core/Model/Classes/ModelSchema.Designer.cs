@@ -1288,4 +1288,23 @@ namespace iTin.Export.Model
     public abstract partial class BaseLineModel : BaseModel<BaseLineModel>
     {
     }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable()]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class MiniChartModel : BaseModel<MiniChartModel>
+    {
+    }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public abstract partial class BaseMiniChartSerieModel : BaseModel<BaseMiniChartSerieModel>
+    {
+    }
+
 }

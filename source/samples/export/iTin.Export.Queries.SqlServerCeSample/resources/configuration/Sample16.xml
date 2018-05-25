@@ -161,7 +161,7 @@
         <File>sample16-1</File>
       </Output>
       <Charts>
-        <MiniChart Field="AUD">
+        <MiniChart Field="AUD" EmptyValuesAs="Gap" Show="Yes">
           <Location>
             <ByCoordenates Coordenates="2 15"/>
           </Location>

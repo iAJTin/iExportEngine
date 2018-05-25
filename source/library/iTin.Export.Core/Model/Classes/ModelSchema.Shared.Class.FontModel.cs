@@ -17,7 +17,7 @@ namespace iTin.Export.Model
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <code lang="xml" title="IEE Object Element Usage">
+    /// <code lang="xml" title="ITEE Object Element Usage">
     /// <![CDATA[
     /// <Font...>
     ///   <Properties/>

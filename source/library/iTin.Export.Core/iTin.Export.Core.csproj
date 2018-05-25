@@ -113,8 +113,11 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseMiniChartSerieModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.ICondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownMiniChartEmptyValuesAs.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.MiniChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.RemarksCondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.DataFiltersModel.cs" />
