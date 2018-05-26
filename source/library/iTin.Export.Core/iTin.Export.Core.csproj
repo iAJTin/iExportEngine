@@ -113,11 +113,15 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseMiniChartSerieModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.ICondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownMiniChartEmptyValuesAs.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.MiniChartModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartAxesModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.RemarksCondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.DataFiltersModel.cs" />
@@ -466,7 +470,12 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\Base\" />
+    <Folder Include="Model\Export\Table\Charts\Chart\" />
+    <Folder Include="Model\Export\Table\Conditions\" />
+    <Folder Include="Model\Global\Resources\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

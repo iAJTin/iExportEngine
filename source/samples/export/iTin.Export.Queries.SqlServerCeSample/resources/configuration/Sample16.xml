@@ -167,6 +167,7 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type>
             <Column>

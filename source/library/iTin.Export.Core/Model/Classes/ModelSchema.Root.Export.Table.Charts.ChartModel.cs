@@ -114,7 +114,7 @@ namespace iTin.Export.Model
     /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
     /// </para>
     /// </remarks>
-    public partial class ChartModel
+    public partial class ChartModel 
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

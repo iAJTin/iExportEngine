@@ -331,6 +331,7 @@ namespace iTin.Export.Model
         #region [public] (ChartsModel) Charts: Gets or sets collection of user-defined charts
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Properties/Property[@name="Charts"]/*'/>
         [XmlArrayItem("Chart", typeof(ChartModel))]
+        [XmlArrayItem("MiniChart", typeof(MiniChartModel))]
         public ChartsModel Charts
         {
             get => _charts ?? (_charts = new ChartsModel(this));

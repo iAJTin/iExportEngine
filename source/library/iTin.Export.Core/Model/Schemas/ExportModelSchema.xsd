@@ -3314,7 +3314,7 @@
       <xs:element name="Axes" type="MiniChartAxesModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Defines the mini-chart axes configuration.
+            Contains the visual setting of the mini-chart axes.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3452,14 +3452,14 @@
       <xs:element name="Horizontal" type="MiniChartHorizontalAxesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the horizontal axis.
+            Contains the visual setting of horizontal axis.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Vertical" type="MiniChartVerticalAxesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the vertical axis.
+            Contains the visual setting of vertical axis.
           </xs:documentation>
         </xs:annotation>
       </xs:element>

@@ -556,7 +556,7 @@ namespace iTin.Export.Model
     //[DebuggerStepThrough()]
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class ChartsModel : BaseSimpleModelCollection<ChartModel, TableModel>
+    public partial class ChartsModel : BaseSimpleModelCollection<BaseChartModel, TableModel>
     {
     }
 
@@ -566,7 +566,7 @@ namespace iTin.Export.Model
     //[DebuggerStepThrough()]
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class ChartModel : BaseModel<ChartModel>
+    public partial class ChartModel : BaseChartModel
     {
     }
 
@@ -1289,14 +1289,43 @@ namespace iTin.Export.Model
     {
     }
 
+
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable()]
     //[DebuggerStepThrough()]
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class MiniChartModel : BaseModel<MiniChartModel>
+    public partial class MiniChartModel : BaseChartModel //BaseModel<MiniChartModel>
     {
     }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class MiniChartAxesModel : BaseModel<MiniChartAxesModel>
+    {
+    }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class MiniChartHorizontalAxisModel : BaseModel<MiniChartHorizontalAxisModel>
+    {
+    }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class MiniChartVerticalAxisModel : BaseModel<MiniChartVerticalAxisModel>
+    {
+    }
+
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable]
@@ -1307,4 +1336,12 @@ namespace iTin.Export.Model
     {
     }
 
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public abstract partial class BaseChartModel : BaseModel<BaseChartModel>
+    {
+    }
 }

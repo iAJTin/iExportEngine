@@ -477,83 +477,83 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                     #region add charts
                     var charts = Table.Charts;
-                    foreach (var chart in charts)
-                    {
-                        if (chart.Show == YesNo.No)
-                        {
-                            continue;
-                        }
+                    //foreach (var chart in charts)
+                    //{
+                    //    if (chart.Show == YesNo.No)
+                    //    {
+                    //        continue;
+                    //    }
 
-                        ExcelChart mainchart = null;
-                        var plots = chart.Plots;
-                        foreach (var plot in plots)
-                        {
-                            // Calculate y-coordenates
-                            var tableLocation = TableLocation;
-                            tableLocation.Offset(-1, -1);
+                    //    ExcelChart mainchart = null;
+                    //    var plots = chart.Plots;
+                    //    foreach (var plot in plots)
+                    //    {
+                    //        // Calculate y-coordenates
+                    //        var tableLocation = TableLocation;
+                    //        tableLocation.Offset(-1, -1);
 
-                            var dataSerieY = tableLocation.Y;
-                            if (hasTopAggregates)
-                            {
-                                dataSerieY++;
-                            }
+                    //        var dataSerieY = tableLocation.Y;
+                    //        if (hasTopAggregates)
+                    //        {
+                    //            dataSerieY++;
+                    //        }
 
-                            if (hasColumnheaders)
-                            {
-                                dataSerieY++;
-                            }
+                    //        if (hasColumnheaders)
+                    //        {
+                    //            dataSerieY++;
+                    //        }
 
-                            if (hasFieldHeaders)
-                            {
-                                dataSerieY++;
-                            }
+                    //        if (hasFieldHeaders)
+                    //        {
+                    //            dataSerieY++;
+                    //        }
 
-                            // Series data, name
-                            var series = plot.Series;
-                            foreach (var serie in series)
-                            {
-                                var item = items[serie.Field];
-                                if (item == null)
-                                {
-                                    continue;
-                                }
+                    //        // Series data, name
+                    //        var series = plot.Series;
+                    //        foreach (var serie in series)
+                    //        {
+                    //            var item = items[serie.Field];
+                    //            if (item == null)
+                    //            {
+                    //                continue;
+                    //            }
 
-                                var axis = items[serie.Axis];
-                                if (axis == null)
-                                {
-                                    continue;
-                                }
+                    //            var axis = items[serie.Axis];
+                    //            if (axis == null)
+                    //            {
+                    //                continue;
+                    //            }
 
-                                // Create chart
-                                ExcelChart workchart;
-                                if (plot.UseSecondaryAxis.Equals(YesNo.No))
-                                {
-                                    if (mainchart == null)
-                                    {
-                                        mainchart = worksheet.Drawings.AddChart(serie.Field, serie.ChartType.ToEppChartType());
-                                        mainchart.Name = plot.Name;
-                                    }
+                    //            // Create chart
+                    //            ExcelChart workchart;
+                    //            if (plot.UseSecondaryAxis.Equals(YesNo.No))
+                    //            {
+                    //                if (mainchart == null)
+                    //                {
+                    //                    mainchart = worksheet.Drawings.AddChart(serie.Field, serie.ChartType.ToEppChartType());
+                    //                    mainchart.Name = plot.Name;
+                    //                }
 
-                                    workchart = mainchart;
-                                }
-                                else
-                                {
-                                    workchart = mainchart.PlotArea.ChartTypes.Add(serie.ChartType.ToEppChartType());
-                                    workchart.UseSecondaryAxis = true;
-                                    workchart.XAxis.Deleted = false;
-                                }
+                    //                workchart = mainchart;
+                    //            }
+                    //            else
+                    //            {
+                    //                workchart = mainchart.PlotArea.ChartTypes.Add(serie.ChartType.ToEppChartType());
+                    //                workchart.UseSecondaryAxis = true;
+                    //                workchart.XAxis.Deleted = false;
+                    //            }
 
-                                var axisColumnIndex = tableLocation.X + items.IndexOf(axis) + 1;
-                                var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
-                                var sr = workchart.Series.Add(
-                                    ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex),
-                                    ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex, rowsCount + dataSerieY, axisColumnIndex));
-                                sr.Header = serie.Name;
-                            }
-                        }
+                    //            var axisColumnIndex = tableLocation.X + items.IndexOf(axis) + 1;
+                    //            var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
+                    //            var sr = workchart.Series.Add(
+                    //                ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex),
+                    //                ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex, rowsCount + dataSerieY, axisColumnIndex));
+                    //            sr.Header = serie.Name;
+                    //        }
+                    //    }
 
-                        mainchart.FormatFromModel(chart);
-                    }
+                    //    mainchart.FormatFromModel(chart);
+                    //}
                     #endregion
 
                     #region sets page orientation, margins and size

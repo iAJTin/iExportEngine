@@ -103,15 +103,15 @@ namespace iTin.Export.Model
         {
             foreach (var chart in this)
             {
-                chart.Plots.Validate();
+                //chart.Plots.Validate();
             }
         }
 
-        protected override void SetOwner(ChartModel item)
+        protected override void SetOwner(BaseChartModel item)
         {
             SentinelHelper.ArgumentNull(item);
 
-            item.SetOwner(this);
+            //item.SetOwner(this);
         }
     }
 }
