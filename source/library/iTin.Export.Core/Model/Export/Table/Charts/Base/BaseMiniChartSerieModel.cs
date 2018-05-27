@@ -81,27 +81,6 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region public override methods
-
-        #region [public] {override} (string) ToString(): Returns a string that represents the current object
-        /// <inheritdoc />
-        /// <summary>
-        /// Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="T:System.String" /> that represents the current object.
-        /// </returns>
-        /// <remarks>
-        /// This method <see cref="M:iTin.Export.Model.DataFieldModel.ToString" /> returns a string that includes field alias.
-        /// </remarks>
-        public override string ToString()
-        {
-            return $"Color=\"{Color}\"";
-        }
-        #endregion
-
-        #endregion
-
         #region public methods
 
         #region [public] (Color) GetColor(): Gets a reference to the color structure preferred for this mini-chart serie

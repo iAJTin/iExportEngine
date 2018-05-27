@@ -1,13 +1,10 @@
 ﻿
 namespace iTin.Export.Model
 {
-    using System;
     using System.ComponentModel;
     using System.Diagnostics;
-    using System.Drawing;
     using System.Xml.Serialization;
 
-    using Drawing.Helper;
     using Helpers;
 
     /// <summary>
@@ -100,9 +97,6 @@ namespace iTin.Export.Model
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const YesNo DefaultShow = YesNo.Yes;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const MiniChartEmptyValuesAs DefaultEmptyValueAs = MiniChartEmptyValuesAs.Gap;
         #endregion
 
@@ -120,26 +114,33 @@ namespace iTin.Export.Model
         //private LocationModel _location;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartsModel _owner;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo _show;
-
-        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        //private MiniChartTypeModel _type;
+        private MiniChartTypeModel _type;
         #endregion
 
         #region constructor/s
 
         #region [public] MiniChartModel(): Initializes a new instance of this class
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.MiniChartModel" /> class.
         /// </summary>
-        public MiniChartModel()
-        {
-            Show = DefaultShow;
-            EmptyValueAs = DefaultEmptyValueAs;
-        }
+        public MiniChartModel() => EmptyValueAs = DefaultEmptyValueAs;
+
+        #endregion
+
+        #endregion
+
+        #region public override properties
+
+        #region [public] {override} (KnownChartTypes) ChartType: Gets a value indicating chart type
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating chart type.
+        /// </summary>
+        /// <value>
+        /// One of the <see cref="T:iTin.Export.Model.KnownChartTypes" /> values.
+        /// </value>
+        public override KnownChartTypes ChartType => KnownChartTypes.MiniChartType;
         #endregion
 
         #endregion
@@ -201,48 +202,22 @@ namespace iTin.Export.Model
         //}
         #endregion
 
-        #region [public] (ChartsModel) Owner: Gets the element that owns this
-        /// <summary>
-        /// Gets the element that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
-        /// </summary>
-        /// <value>
-        /// The <see cref="T:iTin.Export.Model.ChartsModel" /> that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
-        /// </value>
-        [Browsable(false)]
-        public ChartsModel Owner => _owner;
-        #endregion
-
-        #region [public] (YesNo) Show: Gets or sets a value that determines whether displays the mini-chart
-        [XmlAttribute]
-        [DefaultValue(DefaultShow)]
-        public YesNo Show
+        #region [public] (MiniChartTypeModel) Type: Gets or sets a reference that contains the visual setting of chart types
+        public MiniChartTypeModel Type
         {
-            get => GetStaticBindingValue(_show.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
-            set
+            get
             {
-                SentinelHelper.IsEnumValid(value);
+                if (_type == null)
+                {
+                    _type = new MiniChartTypeModel();
+                }
 
-                _show = value;
+                _type.SetParent(this);
+
+                return _type;
             }
+            set => _type = value;
         }
-        #endregion
-
-        #region [public] (MiniChartTypeModel) Type: Gets or sets a reference that contains the visual setting of chart legend
-        //public MiniChartTypeModel Type
-        //{
-        //    get
-        //    {
-        //        if (_type == null)
-        //        {
-        //            _type = new MiniChartTypeModel();
-        //        }
-
-        //        _type.SetParent(this);
-
-        //        return _type;
-        //    }
-        //    set => _type = value;
-        //}
         #endregion
 
         #endregion
@@ -250,24 +225,29 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-        public override bool IsDefault => base.IsDefault && 
+        public override bool IsDefault => base.IsDefault &&
                                           Axes.IsDefault &&
-                                          EmptyValueAs.Equals(DefaultEmptyValueAs) &&
-                                          Show.Equals(DefaultShow);
+                                          EmptyValueAs.Equals(DefaultEmptyValueAs);
         #endregion
 
         #endregion
 
-        #region public methods
+        #region public override methods
 
-        #region [public] (void) SetOwner(ChartsModel): Sets the element that owns this
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <inheritdoc />
         /// <summary>
-        /// Sets the element that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
+        /// Returns a string that represents the current object.
         /// </summary>
-        /// <param name="reference">Reference to owner.</param>
-        public void SetOwner(ChartsModel reference)
+        /// <returns>
+        /// A <see cref="T:System.String" /> that represents the current object.
+        /// </returns>
+        /// <remarks>
+        /// This method <see cref="M:iTin.Export.Model.DataFieldModel.ToString" /> returns a string that includes field alias.
+        /// </remarks>
+        public override string ToString()
         {
-            _owner = reference;
+            return $"ChartType={ChartType}, {base.ToString()}";
         }
         #endregion
 

@@ -63,7 +63,7 @@ namespace iTin.Export.Model
 
         #region public abstract properties
 
-        #region [public] {override} (KnownFieldType) FieldType: Gets a value indicating data field type
+        #region [public] {abstract} (KnownFieldType) FieldType: Gets a value indicating data field type
         /// <summary>
         /// Gets a value indicating data field type.
         /// </summary>

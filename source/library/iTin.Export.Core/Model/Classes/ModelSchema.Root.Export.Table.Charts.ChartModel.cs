@@ -118,9 +118,6 @@ namespace iTin.Export.Model
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const YesNo DefaultShow = YesNo.Yes;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DefaultBackColor = "White";
         #endregion
 
@@ -128,18 +125,12 @@ namespace iTin.Export.Model
         private static readonly int[] DefaultSize = { 150, 150 };
         #endregion
 
-        #region field members
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo _show;
-
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private int[] _size;
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private LocationModel _location;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ChartsModel _owner;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ChartAxesModel _axes;
@@ -160,15 +151,30 @@ namespace iTin.Export.Model
         #region constructor/s
 
         #region [public] ChartModel(): Initializes a new instance of this class
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.ChartModel" /> class.
         /// </summary>
         public ChartModel()
         {
-            Show = DefaultShow;
             Size = DefaultSize;
             BackColor = DefaultBackColor;
         }
+        #endregion
+
+        #endregion
+
+        #region public override properties
+
+        #region [public] {override} (KnownChartTypes) ChartType: Gets a value indicating chart type
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets a value indicating chart type.
+        /// </summary>
+        /// <value>
+        /// One of the <see cref="T:iTin.Export.Model.KnownChartTypes" /> values.
+        /// </value>
+        public override KnownChartTypes ChartType => KnownChartTypes.ChartType;
         #endregion
 
         #endregion
@@ -423,17 +429,6 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (ChartsModel) Owner: Gets the element that owns this
-        /// <summary>
-        /// Gets the element that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
-        /// </summary>
-        /// <value>
-        /// The <see cref="T:iTin.Export.Model.ChartsModel" /> that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
-        /// </value>
-        [Browsable(false)]
-        public ChartsModel Owner => _owner;
-        #endregion
-
         #region [public] (ChartPlotsModel) Plots:  Gets or sets collection of plots for a chart
         /// <summary>
         /// Gets or sets collection of plots for a chart.
@@ -535,57 +530,6 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (YesNo) Show: Gets or sets a value that determines whether displays the chart
-        /// <summary>
-        /// Gets or sets a value that determines whether displays the chart.
-        /// </summary>
-        /// <value>
-        /// <see cref="iTin.Export.Model.YesNo.Yes" /> if display the chart; otherwise, <see cref="iTin.Export.Model.YesNo.No" />. The default is <see cref="iTin.Export.Model.YesNo.Yes" />.
-        /// </value>
-        /// <remarks>
-        /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Chart Show="Yes|No" ...&gt;
-        ///   ...
-        /// &lt;/Chart&gt;
-        /// </code>
-        /// <para>
-        /// <para><strong>Compatibility table with native writers.</strong></para>
-        /// <table>
-        ///   <thead>
-        ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-        ///     </tr>
-        ///   </thead>
-        ///   <tbody>
-        ///     <tr>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///       <td align="center">No has effect</td>
-        ///     </tr>
-        ///   </tbody>
-        /// </table>
-        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-        /// </para>
-        /// </remarks>
-        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-        [XmlAttribute]
-        [DefaultValue(DefaultShow)]
-        public YesNo Show
-        {
-            get => GetStaticBindingValue(_show.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
-            set
-            {
-                SentinelHelper.IsEnumValid(value);
-
-                _show = value;
-            }
-        }
-        #endregion
-
         #region [public] (ChartTitleModel) Title: Gets or sets a reference that contains the visual setting of chart title
         /// <summary>
         /// Gets or sets a reference that contains the visual setting of chart title.
@@ -647,13 +591,13 @@ namespace iTin.Export.Model
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
         /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
-        public override bool IsDefault => Axes.IsDefault &&
+        public override bool IsDefault => base.IsDefault &&
+                                          Axes.IsDefault &&
                                           Title.IsDefault &&
                                           Border.IsDefault &&
                                           Legend.IsDefault &&
                                           Location.IsDefault &&
                                           Plots.Count.Equals(0) &&
-                                          Show.Equals(DefaultShow) &&
                                           Size.SequenceEqual(DefaultSize);
         #endregion
 
@@ -671,17 +615,6 @@ namespace iTin.Export.Model
         public Color GetBackColor()
         {
             return ColorHelper.GetColorFromString(BackColor);
-        }
-        #endregion
-
-        #region [public] (void) SetOwner(ChartsModel): Sets the element that owns this
-        /// <summary>
-        /// Sets the element that owns this <see cref="T:iTin.Export.Model.ChartModel" />.
-        /// </summary>
-        /// <param name="reference">Reference to owner.</param>
-        public void SetOwner(ChartsModel reference)
-        {
-            _owner = reference;
         }
         #endregion
 
@@ -703,6 +636,27 @@ namespace iTin.Export.Model
             }
 
             return points;
+        }
+        #endregion
+
+        #endregion
+
+        #region public override methods
+
+        #region [public] {override} (string) ToString(): Returns a string that represents the current object
+        /// <inheritdoc />
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> that represents the current object.
+        /// </returns>
+        /// <remarks>
+        /// This method <see cref="M:iTin.Export.Model.DataFieldModel.ToString" /> returns a string that includes field alias.
+        /// </remarks>
+        public override string ToString()
+        {
+            return $"ChartType={ChartType}, {base.ToString()}";
         }
         #endregion
 

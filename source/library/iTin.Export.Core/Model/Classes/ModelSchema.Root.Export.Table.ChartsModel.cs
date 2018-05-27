@@ -103,7 +103,10 @@ namespace iTin.Export.Model
         {
             foreach (var chart in this)
             {
-                //chart.Plots.Validate();
+                if (chart.ChartType == KnownChartTypes.ChartType)
+                {
+                    ((ChartModel)chart).Plots.Validate();
+                }
             }
         }
 
@@ -111,7 +114,7 @@ namespace iTin.Export.Model
         {
             SentinelHelper.ArgumentNull(item);
 
-            //item.SetOwner(this);
+            item.SetOwner(this);
         }
     }
 }

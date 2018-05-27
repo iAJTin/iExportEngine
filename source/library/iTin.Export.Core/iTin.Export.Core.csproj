@@ -113,14 +113,27 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseChartModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseMiniChartSerieModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.designer.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.ICondition.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Enum.KnownChartTypes.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownMiniChartEmptyValuesAs.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MiniChartHorizontalAxisModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartAxesModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MiniChartVerticalAxisModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartAxesModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartAxesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MiniChartAxesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.RemarksCondition.cs" />
@@ -128,6 +141,42 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ConditionsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.WhenChangeConditionModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Filters.DataFilterModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MiniChartModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\BaseMiniChartSerieModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\BaseMiniChartSerieModel.designer.cs">
+      <DependentUpon>BaseMiniChartSerieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.designer.cs">
+      <DependentUpon>MiniChartColumnTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.designer.cs">
+      <DependentUpon>MiniChartColumnSerieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.designer.cs">
+      <DependentUpon>MiniChartLineTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineSerieModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineSerieModel.designer.cs">
+      <DependentUpon>MiniChartLineSerieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.designer.cs">
+      <DependentUpon>MiniChartTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.designer.cs">
+      <DependentUpon>MiniChartWinLossTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossSerieModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossSerieModel.designer.cs">
+      <DependentUpon>MiniChartWinLossSerieModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Providers\DataSetProvider.cs" />
     <Compile Include="Providers\XmlProvider.cs" />
     <Compile Include="AspNet\Extensions\StreamExtensions.cs" />
