@@ -113,12 +113,46 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.designer.cs" />
     <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.ICondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownChartTypes.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownMiniChartEmptyValuesAs.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.designer.cs">
+      <DependentUpon>BaseChartModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\Base\BaseMiniChartPointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\Base\BaseMiniChartPointModel.designer.cs">
+      <DependentUpon>BaseMiniChartPointModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Base\BaseMiniChartPointsModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Base\BaseMiniChartPointsModel.designer.cs">
+      <DependentUpon>BaseMiniChartPointsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartMarkersPointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartMarkersPointModel.designer.cs">
+      <DependentUpon>MiniChartMarkersPointModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartNegativePointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartNegativePointModel.designer.cs">
+      <DependentUpon>MiniChartNegativePointModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLowPointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLowPointModel.designer.cs">
+      <DependentUpon>MiniChartLowPointModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartHighPointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartHighPointModel.designer.cs">
+      <DependentUpon>MiniChartHighPointModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLastPointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLastPointModel.designer.cs">
+      <DependentUpon>MiniChartLastPointModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartFirstPointModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartFirstPointModel.designer.cs">
+      <DependentUpon>MiniChartFirstPointModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>MiniChartHorizontalAxisModel.cs</DependentUpon>
@@ -149,6 +183,10 @@
     <Compile Include="Model\Export\Table\Charts\Base\BaseMiniChartSerieModel.designer.cs">
       <DependentUpon>BaseMiniChartSerieModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnPointsModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnPointsModel.designer.cs">
+      <DependentUpon>MiniChartColumnPointsModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.designer.cs">
       <DependentUpon>MiniChartColumnTypeModel.cs</DependentUpon>
@@ -156,6 +194,10 @@
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.designer.cs">
       <DependentUpon>MiniChartColumnSerieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLinePointsModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLinePointsModel.designer.cs">
+      <DependentUpon>MiniChartLinePointsModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.designer.cs">
@@ -168,6 +210,10 @@
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.designer.cs">
       <DependentUpon>MiniChartTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.cs" />
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.designer.cs">
+      <DependentUpon>MiniChartWinLossPointsModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.designer.cs">

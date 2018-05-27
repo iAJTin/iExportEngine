@@ -58,7 +58,7 @@ namespace iTin.Export.Model
                     _points = new MiniChartLinePointsModel();
                 }
 
-                _points.SetParent(this);
+                //_points.SetParent(this);
 
                 return _points;
             }
