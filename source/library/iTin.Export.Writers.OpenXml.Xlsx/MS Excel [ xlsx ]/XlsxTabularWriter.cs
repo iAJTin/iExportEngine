@@ -1,4 +1,7 @@
 ﻿
+using iTin.Export.Drawing.Helper;
+using OfficeOpenXml.Sparkline;
+
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -476,84 +479,136 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #endregion
 
                     #region add charts
-                    var charts = Table.Charts;
-                    //foreach (var chart in charts)
-                    //{
-                    //    if (chart.Show == YesNo.No)
-                    //    {
-                    //        continue;
-                    //    }
+                    var genericCharts = Table.Charts;
+                    foreach (var genericChart in genericCharts)
+                    {
+                        if (genericChart.Show == YesNo.No)
+                        {
+                            continue;
+                        }
 
-                    //    ExcelChart mainchart = null;
-                    //    var plots = chart.Plots;
-                    //    foreach (var plot in plots)
-                    //    {
-                    //        // Calculate y-coordenates
-                    //        var tableLocation = TableLocation;
-                    //        tableLocation.Offset(-1, -1);
+                        if (genericChart.ChartType == KnownChartTypes.ChartType)
+                        {
+                            var chart = (ChartModel) genericChart;
+                            ExcelChart mainchart = null;
+                            var plots = chart.Plots;
+                            foreach (var plot in plots)
+                            {
+                                // Calculate y-coordenates
+                                var tableLocation = TableLocation;
+                                tableLocation.Offset(-1, -1);
 
-                    //        var dataSerieY = tableLocation.Y;
-                    //        if (hasTopAggregates)
-                    //        {
-                    //            dataSerieY++;
-                    //        }
+                                var dataSerieY = tableLocation.Y;
+                                if (hasTopAggregates)
+                                {
+                                    dataSerieY++;
+                                }
 
-                    //        if (hasColumnheaders)
-                    //        {
-                    //            dataSerieY++;
-                    //        }
+                                if (hasColumnheaders)
+                                {
+                                    dataSerieY++;
+                                }
 
-                    //        if (hasFieldHeaders)
-                    //        {
-                    //            dataSerieY++;
-                    //        }
+                                if (hasFieldHeaders)
+                                {
+                                    dataSerieY++;
+                                }
 
-                    //        // Series data, name
-                    //        var series = plot.Series;
-                    //        foreach (var serie in series)
-                    //        {
-                    //            var item = items[serie.Field];
-                    //            if (item == null)
-                    //            {
-                    //                continue;
-                    //            }
+                                // Series data, name
+                                var series = plot.Series;
+                                foreach (var serie in series)
+                                {
+                                    var item = items[serie.Field];
+                                    if (item == null)
+                                    {
+                                        continue;
+                                    }
 
-                    //            var axis = items[serie.Axis];
-                    //            if (axis == null)
-                    //            {
-                    //                continue;
-                    //            }
+                                    var axis = items[serie.Axis];
+                                    if (axis == null)
+                                    {
+                                        continue;
+                                    }
 
-                    //            // Create chart
-                    //            ExcelChart workchart;
-                    //            if (plot.UseSecondaryAxis.Equals(YesNo.No))
-                    //            {
-                    //                if (mainchart == null)
-                    //                {
-                    //                    mainchart = worksheet.Drawings.AddChart(serie.Field, serie.ChartType.ToEppChartType());
-                    //                    mainchart.Name = plot.Name;
-                    //                }
+                                    // Create chart
+                                    ExcelChart workchart;
+                                    if (plot.UseSecondaryAxis.Equals(YesNo.No))
+                                    {
+                                        if (mainchart == null)
+                                        {
+                                            mainchart = worksheet.Drawings.AddChart(serie.Field, serie.ChartType.ToEppChartType());
+                                            mainchart.Name = plot.Name;
+                                        }
 
-                    //                workchart = mainchart;
-                    //            }
-                    //            else
-                    //            {
-                    //                workchart = mainchart.PlotArea.ChartTypes.Add(serie.ChartType.ToEppChartType());
-                    //                workchart.UseSecondaryAxis = true;
-                    //                workchart.XAxis.Deleted = false;
-                    //            }
+                                        workchart = mainchart;
+                                    }
+                                    else
+                                    {
+                                        workchart = mainchart.PlotArea.ChartTypes.Add(serie.ChartType.ToEppChartType());
+                                        workchart.UseSecondaryAxis = true;
+                                        workchart.XAxis.Deleted = false;
+                                    }
 
-                    //            var axisColumnIndex = tableLocation.X + items.IndexOf(axis) + 1;
-                    //            var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
-                    //            var sr = workchart.Series.Add(
-                    //                ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex),
-                    //                ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex, rowsCount + dataSerieY, axisColumnIndex));
-                    //            sr.Header = serie.Name;
-                    //        }
-                    //    }
+                                    var axisColumnIndex = tableLocation.X + items.IndexOf(axis) + 1;
+                                    var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
+                                    var sr = workchart.Series.Add(
+                                        ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex),
+                                        ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex,rowsCount + dataSerieY, axisColumnIndex));
+                                    sr.Header = serie.Name;
+                                }
+                            }
 
-                    //    mainchart.FormatFromModel(chart);
-                    //}
+                            mainchart.FormatFromModel(chart);
+                        }
+                        else
+                        {
+                            var miniChart = (MiniChartModel) genericChart;
+
+                            // Add some more random values and add a stacked sparkline.
+                            var sparklineStacked = worksheet.SparklineGroups.Add(eSparklineType.Line, worksheet.Cells["B14"], worksheet.Cells["B2:B12"]);
+
+                            sparklineStacked.ColorSeries.SetColor(miniChart.Type.Column.Serie.GetColor());
+
+                            if (!miniChart.Type.Column.Points.Low.IsDefault)
+                            {
+                                sparklineStacked.Low = true;
+                                sparklineStacked.ColorLow.SetColor(miniChart.Type.Column.Points.Low.GetColor());
+                            }
+
+                            if (!miniChart.Type.Column.Points.First.IsDefault)
+                            {
+                                sparklineStacked.First = true;
+                                sparklineStacked.ColorFirst.SetColor(miniChart.Type.Column.Points.First.GetColor());
+                            }
+
+                            if (!miniChart.Type.Column.Points.High.IsDefault)
+                            {
+                                sparklineStacked.High = true;
+                                sparklineStacked.ColorHigh.SetColor(miniChart.Type.Column.Points.High.GetColor());
+                            }
+
+                            if (!miniChart.Type.Column.Points.Last.IsDefault)
+                            {
+                                sparklineStacked.Last = true;
+                                sparklineStacked.ColorLast.SetColor(miniChart.Type.Column.Points.Last.GetColor());
+                            }
+
+                            if (!miniChart.Type.Column.Points.Negative.IsDefault)
+                            {
+                                sparklineStacked.Negative = true;
+                                sparklineStacked.ColorNegative.SetColor(miniChart.Type.Column.Points.Negative.GetColor());
+                            }
+
+                            if (miniChart.Axes.Horizontal.Show == YesNo.Yes)
+                            {
+                                sparklineStacked.DisplayXAxis = true;
+                                var color = miniChart.Axes.Horizontal.Color == "Automatic"
+                                    ? Color.Blue
+                                    : ColorHelper.GetColorFromString(miniChart.Axes.Horizontal.Color);
+                                sparklineStacked.ColorAxis.SetColor(color);
+                            }
+                        }
+                    }
                     #endregion
 
                     #region sets page orientation, margins and size

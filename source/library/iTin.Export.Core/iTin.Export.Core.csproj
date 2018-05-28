@@ -211,6 +211,7 @@
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.designer.cs">
       <DependentUpon>MiniChartTypeModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\KnownMiniChartType.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.designer.cs">
       <DependentUpon>MiniChartWinLossPointsModel.cs</DependentUpon>

@@ -1,4 +1,7 @@
 ﻿
+using System.Xml.Serialization;
+using iTin.Export.Helpers;
+
 namespace iTin.Export.Model
 {
     using System.ComponentModel;
@@ -6,7 +9,15 @@ namespace iTin.Export.Model
 
     public partial class MiniChartTypeModel
     {
+        #region private constants
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const KnownMiniChartType DefaultMiniChartType = KnownMiniChartType.Column;
+        #endregion
+
         #region private members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private KnownMiniChartType _active;
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MiniChartColumnTypeModel _column;
 
@@ -21,6 +32,21 @@ namespace iTin.Export.Model
         #endregion
 
         #region public properties
+
+        #region [public] (MiniChartEmptyValuesAs) Active: Gets or sets a value that determines preferred active mini-chart type
+        [XmlAttribute]
+        [DefaultValue(DefaultMiniChartType)]
+        public KnownMiniChartType Active
+        {
+            get => _active; //.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _active = value;
+            }
+        }
+        #endregion
 
         #region [public] (MiniChartColumnTypeModel) Column: Gets or sets a reference that contains the visual setting of a column mini-chart
         public MiniChartColumnTypeModel Column
@@ -93,6 +119,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         public override bool IsDefault => base.IsDefault &&
+                                          Active.Equals(DefaultMiniChartType) &&
                                           Column.IsDefault &&
                                           Line.IsDefault &&
                                           WinLoss.IsDefault;

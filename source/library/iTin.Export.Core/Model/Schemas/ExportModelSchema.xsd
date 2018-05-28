@@ -3576,6 +3576,13 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
+    <xs:attribute name="Active" type="miniChartTypeActiveValue" use="optional" default="Column">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Preferred mini-chart type to draw. The default is 'Column'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- Type: Column -->

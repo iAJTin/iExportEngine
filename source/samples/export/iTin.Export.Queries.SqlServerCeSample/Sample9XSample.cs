@@ -32,6 +32,10 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             var inputUri = new Uri(Properties.Settings.Default.SEKRatesXmlInput, UriKind.Relative);
             var export = new XmlInput(inputUri);
 
+            //Console.WriteLine(OneStepText);
+            //var inputUri = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //var export = new XmlInput(inputUri);
+
             Console.Write(TwoStepText);
             Console.WriteLine();
             Console.WriteLine(ThreeStepText);
@@ -61,6 +65,11 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
             //var sample90HeaderInfoCustomFunctionsModelConfiguration = CreateHeaderInfoCustomFunctionsSample90Model();
             //export.Export(ExportSettings.CreateFromModels(sample90HeaderInfoCustomFunctionsModelConfiguration, "sample90-headerinfo-custom-functions"));
 
+
+            //Console.WriteLine(FiveStepText);
+            //Console.WriteLine(FirstSampleStepText);
+            //var sample90FileConfiguration = new Uri(Properties.Settings.Default.Sample90, UriKind.Relative);
+            //export.Export(ExportSettings.ImportFrom(sample90FileConfiguration, "sample90"));
 
             Console.WriteLine(FiveStepText);
             Console.WriteLine(FirstSampleStepText);

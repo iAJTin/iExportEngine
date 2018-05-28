@@ -664,4 +664,8 @@
     <xs:union memberTypes="shortCutStaticBindingType xs:decimal bindingType staticBindType"/>
   </xs:simpleType>
 
+  <!-- miniChartTypeActiveValue. Represents a list of known mini-chart types. -->
+  <xs:simpleType name="miniChartTypeActiveValue" id ="miniChartTypeActiveValue">
+    <xs:union memberTypes="shortCutStaticBindingType miniChartTypeActiveValueEnum bindingType staticBindType"/>
+  </xs:simpleType>
 </xs:schema>

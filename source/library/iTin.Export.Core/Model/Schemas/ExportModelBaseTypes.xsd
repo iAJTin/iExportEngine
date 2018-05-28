@@ -88,6 +88,32 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- miniChartTypeActiveValueEnum: Represents a list of known mini-chart type values -->
+  <xs:simpleType name="miniChartTypeActiveValueEnum" id="miniChartTypeActiveValueEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Column">
+        <xs:annotation>
+          <xs:documentation>Automatic value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Column">
+        <xs:annotation>
+          <xs:documentation>Automatic value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Line">
+        <xs:annotation>
+          <xs:documentation>Automatic value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Win-Loss">
+        <xs:annotation>
+          <xs:documentation>Automatic value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
 
 
 
