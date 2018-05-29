@@ -553,7 +553,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                                     var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
                                     var sr = workchart.Series.Add(
                                         ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex),
-                                        ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex,rowsCount + dataSerieY, axisColumnIndex));
+                                        ExcelCellBase.GetAddress(dataSerieY + 1, axisColumnIndex, rowsCount + dataSerieY, axisColumnIndex));
                                     sr.Header = serie.Name;
                                 }
                             }
@@ -564,48 +564,185 @@ namespace iTin.Export.Writers.OpenXml.Office
                         {
                             var miniChart = (MiniChartModel) genericChart;
 
-                            // Add some more random values and add a stacked sparkline.
-                            var sparklineStacked = worksheet.SparklineGroups.Add(eSparklineType.Line, worksheet.Cells["B14"], worksheet.Cells["B2:B12"]);
+                            // Calculate y-coordenates
+                            var tableLocation = TableLocation;
+                            tableLocation.Offset(-1, -1);
 
-                            sparklineStacked.ColorSeries.SetColor(miniChart.Type.Column.Serie.GetColor());
-
-                            if (!miniChart.Type.Column.Points.Low.IsDefault)
+                            var dataSerieY = tableLocation.Y;
+                            if (hasTopAggregates)
                             {
-                                sparklineStacked.Low = true;
-                                sparklineStacked.ColorLow.SetColor(miniChart.Type.Column.Points.Low.GetColor());
+                                dataSerieY++;
                             }
 
-                            if (!miniChart.Type.Column.Points.First.IsDefault)
+                            if (hasColumnheaders)
                             {
-                                sparklineStacked.First = true;
-                                sparklineStacked.ColorFirst.SetColor(miniChart.Type.Column.Points.First.GetColor());
+                                dataSerieY++;
                             }
 
-                            if (!miniChart.Type.Column.Points.High.IsDefault)
+                            if (hasFieldHeaders)
                             {
-                                sparklineStacked.High = true;
-                                sparklineStacked.ColorHigh.SetColor(miniChart.Type.Column.Points.High.GetColor());
+                                dataSerieY++;
                             }
 
-                            if (!miniChart.Type.Column.Points.Last.IsDefault)
+                            var item = items[miniChart.Field];
+                            if (item == null)
                             {
-                                sparklineStacked.Last = true;
-                                sparklineStacked.ColorLast.SetColor(miniChart.Type.Column.Points.Last.GetColor());
+                                continue;
                             }
 
-                            if (!miniChart.Type.Column.Points.Negative.IsDefault)
-                            {
-                                sparklineStacked.Negative = true;
-                                sparklineStacked.ColorNegative.SetColor(miniChart.Type.Column.Points.Negative.GetColor());
-                            }
+                            var locationRange = ExcelCellBase.GetAddress(14, 2);
+                            var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
+                            var dataRange = ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex);
 
+                            var sparkline = worksheet.SparklineGroups.Add(
+                                miniChart.Type.Active.ToEppeSparklineType(), 
+                                worksheet.Cells[locationRange], 
+                                worksheet.Cells[dataRange]);
+
+                            sparkline.DisplayHidden = miniChart.DisplayHidden == YesNo.Yes;
+                            sparkline.ColorSeries.SetColor(miniChart.Type.Column.Serie.GetColor());
+                            sparkline.DisplayEmptyCellsAs = miniChart.EmptyValueAs.ToEppeDisplayBlanksAs();
+
+                            // Axes
+                            // Horizontal axis
+                            sparkline.RightToLeft = miniChart.Axes.Horizontal.RightToLeft == YesNo.Yes;
                             if (miniChart.Axes.Horizontal.Show == YesNo.Yes)
                             {
-                                sparklineStacked.DisplayXAxis = true;
+                                sparkline.DisplayXAxis = true;
                                 var color = miniChart.Axes.Horizontal.Color == "Automatic"
-                                    ? Color.Blue
+                                    ? Color.Black
                                     : ColorHelper.GetColorFromString(miniChart.Axes.Horizontal.Color);
-                                sparklineStacked.ColorAxis.SetColor(color);
+                                sparkline.ColorAxis.SetColor(color);
+                            }
+
+                            // Vertical axis
+                            var maxVerticalAxisIsAuto = miniChart.Axes.Vertical.Max.Equals("Automatic");
+                            sparkline.MaxAxisType = maxVerticalAxisIsAuto
+                                ? eSparklineAxisMinMax.Individual
+                                : eSparklineAxisMinMax.Custom;
+
+                            var minVerticalAxisIsAuto = miniChart.Axes.Vertical.Min.Equals("Automatic");
+                            sparkline.MinAxisType = minVerticalAxisIsAuto
+                                ? eSparklineAxisMinMax.Individual
+                                : eSparklineAxisMinMax.Custom;
+
+                            if (!maxVerticalAxisIsAuto)
+                            {
+                                sparkline.ManualMax = double.Parse(miniChart.Axes.Vertical.Max);
+                            }
+
+                            if (!minVerticalAxisIsAuto)
+                            {
+                                sparkline.ManualMin = double.Parse(miniChart.Axes.Vertical.Min);
+                            }                            
+
+                            // Points
+                            switch (miniChart.Type.Active)
+                            {
+                                case KnownMiniChartType.Column:
+                                    if (!miniChart.Type.Column.Points.Low.IsDefault)
+                                    {
+                                        sparkline.Low = true;
+                                        sparkline.ColorLow.SetColor(miniChart.Type.Column.Points.Low.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Column.Points.First.IsDefault)
+                                    {
+                                        sparkline.First = true;
+                                        sparkline.ColorFirst.SetColor(miniChart.Type.Column.Points.First.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Column.Points.High.IsDefault)
+                                    {
+                                        sparkline.High = true;
+                                        sparkline.ColorHigh.SetColor(miniChart.Type.Column.Points.High.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Column.Points.Last.IsDefault)
+                                    {
+                                        sparkline.Last = true;
+                                        sparkline.ColorLast.SetColor(miniChart.Type.Column.Points.Last.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Column.Points.Negative.IsDefault)
+                                    {
+                                        sparkline.Negative = true;
+                                        sparkline.ColorNegative.SetColor(miniChart.Type.Column.Points.Negative.GetColor());
+                                    }
+                                    break;
+
+                                case KnownMiniChartType.Line:
+
+                                    sparkline.LineWidth = double.Parse(miniChart.Type.Line.Serie.Width);
+
+                                    if (!miniChart.Type.Line.Points.Low.IsDefault)
+                                    {
+                                        sparkline.Low = true;
+                                        sparkline.ColorLow.SetColor(miniChart.Type.Line.Points.Low.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Line.Points.First.IsDefault)
+                                    {
+                                        sparkline.First = true;
+                                        sparkline.ColorFirst.SetColor(miniChart.Type.Line.Points.First.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Line.Points.High.IsDefault)
+                                    {
+                                        sparkline.High = true;
+                                        sparkline.ColorHigh.SetColor(miniChart.Type.Line.Points.High.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Line.Points.Last.IsDefault)
+                                    {
+                                        sparkline.Last = true;
+                                        sparkline.ColorLast.SetColor(miniChart.Type.Line.Points.Last.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Line.Points.Negative.IsDefault)
+                                    {
+                                        sparkline.Negative = true;
+                                        sparkline.ColorNegative.SetColor(miniChart.Type.Line.Points.Negative.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.Line.Points.Markers.IsDefault)
+                                    {
+                                        sparkline.Markers = true;
+                                        sparkline.ColorNegative.SetColor(miniChart.Type.Line.Points.Markers.GetColor());
+                                    }
+                                    break;
+
+                                case KnownMiniChartType.WinLoss:
+                                    if (!miniChart.Type.WinLoss.Points.Low.IsDefault)
+                                    {
+                                        sparkline.Low = true;
+                                        sparkline.ColorLow.SetColor(miniChart.Type.WinLoss.Points.Low.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.WinLoss.Points.First.IsDefault)
+                                    {
+                                        sparkline.First = true;
+                                        sparkline.ColorFirst.SetColor(miniChart.Type.WinLoss.Points.First.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.WinLoss.Points.High.IsDefault)
+                                    {
+                                        sparkline.High = true;
+                                        sparkline.ColorHigh.SetColor(miniChart.Type.WinLoss.Points.High.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.WinLoss.Points.Last.IsDefault)
+                                    {
+                                        sparkline.Last = true;
+                                        sparkline.ColorLast.SetColor(miniChart.Type.WinLoss.Points.Last.GetColor());
+                                    }
+
+                                    if (!miniChart.Type.WinLoss.Points.Negative.IsDefault)
+                                    {
+                                        sparkline.Negative = true;
+                                        sparkline.ColorNegative.SetColor(miniChart.Type.WinLoss.Points.Negative.GetColor());
+                                    }
+                                    break;
                             }
                         }
                     }

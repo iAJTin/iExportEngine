@@ -1,4 +1,6 @@
 ﻿
+using OfficeOpenXml.Sparkline;
+
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System.Diagnostics.CodeAnalysis;
@@ -733,6 +735,61 @@ namespace iTin.Export.Writers.OpenXml.Office
             }
 
             return paperSize;
+        }
+        #endregion
+
+        #region [public] {static} (OfficeOpenXml.Sparkline.eSparklineType) ToEppeSparklineType(this KnownMiniChartType): Converter for KnownMiniChartType enumeration type to eSparklineType
+        /// <summary>
+        /// Converter for <see cref="T:iTin.Export.Model.KnownMiniChartType" /> enumeration type to <see cref="T:OfficeOpenXml.Sparkline.eSparklineType" />.
+        /// </summary>
+        /// <param name="type">Mini-chart type.</param>
+        /// <returns>
+        /// A <see cref="T:OfficeOpenXml.Sparkline.eSparklineType" /> value.
+        /// </returns>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        public static eSparklineType ToEppeSparklineType(this KnownMiniChartType type)
+        {
+            SentinelHelper.IsEnumValid(type);
+
+            switch (type)
+            {
+
+                case KnownMiniChartType.Line:
+                    return eSparklineType.Line;
+
+                case KnownMiniChartType.WinLoss:
+                    return eSparklineType.Stacked;
+
+                default:
+                    return eSparklineType.Column;
+            }
+        }
+        #endregion
+
+        #region [public] {static} (OfficeOpenXml.Sparkline.eDispBlanksAs) ToEppeDispBlanksAs(this MiniChartEmptyValuesAs): Converter for MiniChartEmptyValuesAs enumeration type to eDispBlanksAs
+        /// <summary>
+        /// Converter for <see cref="T:iTin.Export.Model.MiniChartEmptyValuesAs" /> enumeration type to <see cref="T:OfficeOpenXml.Sparkline.eDispBlanksAs" />.
+        /// </summary>
+        /// <param name="reference">How to draw an empty values.</param>
+        /// <returns>
+        /// A <see cref="T:OfficeOpenXml.Sparkline.eDispBlanksAs" /> value.
+        /// </returns>
+        /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+        public static eDispBlanksAs ToEppeDisplayBlanksAs(this MiniChartEmptyValuesAs reference)
+        {
+            SentinelHelper.IsEnumValid(reference);
+
+            switch (reference)
+            {
+                case MiniChartEmptyValuesAs.Connect:
+                    return eDispBlanksAs.Span;
+
+                case MiniChartEmptyValuesAs.Zero:
+                    return eDispBlanksAs.Zero;
+
+                default:
+                    return eDispBlanksAs.Gap;
+            }
         }
         #endregion
     }

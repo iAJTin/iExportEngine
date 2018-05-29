@@ -97,12 +97,18 @@ namespace iTin.Export.Model
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const MiniChartEmptyValuesAs DefaultEmptyValueAs = MiniChartEmptyValuesAs.Gap;
+        private const MiniChartEmptyValuesAs DefaultEmptyValueAs = MiniChartEmptyValuesAs.Zero;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const YesNo DefaultDisplayHidden = YesNo.No;
         #endregion
 
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MiniChartAxesModel _axes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private YesNo _displayHidden;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MiniChartEmptyValuesAs _emptyValuesAs;
@@ -124,8 +130,11 @@ namespace iTin.Export.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Model.MiniChartModel" /> class.
         /// </summary>
-        public MiniChartModel() => EmptyValueAs = DefaultEmptyValueAs;
-
+        public MiniChartModel()
+        {
+            DisplayHidden = DefaultDisplayHidden;
+            EmptyValueAs = DefaultEmptyValueAs;
+        } 
         #endregion
 
         #endregion
@@ -162,6 +171,21 @@ namespace iTin.Export.Model
                 return _axes;
             }
             set => _axes = value;
+        }
+        #endregion
+
+        #region [public] (YesNo) DisplayHidden: Gets or sets a value that determines preferred action for hidden values
+        [XmlAttribute]
+        [DefaultValue(DefaultDisplayHidden)]
+        public YesNo DisplayHidden
+        {
+            get => _displayHidden.ToString().ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _displayHidden = value;
+            }
         }
         #endregion
 
@@ -227,6 +251,7 @@ namespace iTin.Export.Model
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         public override bool IsDefault => base.IsDefault &&
                                           Axes.IsDefault &&
+                                          DisplayHidden.Equals(DefaultDisplayHidden) &&
                                           EmptyValueAs.Equals(DefaultEmptyValueAs);
         #endregion
 

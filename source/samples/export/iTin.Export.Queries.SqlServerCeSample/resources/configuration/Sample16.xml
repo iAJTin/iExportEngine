@@ -169,13 +169,13 @@
             <Horizontal Show="Yes"/>
             <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
-          <Type>
-            <Column>
+          <Type Active="Line">
+            <Line>              
               <Serie Color="#376092"/>
               <Points>
                 <High Color="Red"/>
               </Points>
-            </Column>
+            </Line>
           </Type>
         </MiniChart>
       </Charts>

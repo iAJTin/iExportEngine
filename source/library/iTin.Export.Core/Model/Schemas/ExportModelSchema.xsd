@@ -3340,10 +3340,17 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="EmptyValuesAs" type="miniChartEmptyValuesAs" use="optional" default="Gap">
+    <xs:attribute name="EmptyValuesAs" type="miniChartEmptyValuesAs" use="optional" default="Zero">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Preferred action when the field does not contain information. The default is 'Gap'.
+          [Optional] Preferred action when the field does not contain information. The default is 'Zero'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="DisplayHidden" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether displays hidden values. The default 'No'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
