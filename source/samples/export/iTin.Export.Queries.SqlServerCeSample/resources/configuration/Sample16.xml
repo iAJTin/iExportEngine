@@ -5,7 +5,7 @@
     <Hosts>
       <Host Key="xlsx"/>
     </Hosts>
-    <Conditions>
+    <Conditions>      
       <MaximumCondition Key="MaximumMYR" Field="MYR" Style="MaximumMYRStyle" EntireRow="No" Active="Yes"/>
       <MinimumCondition Key="MinimumMYR" Field="MYR" Style="MaximumMYRStyle" EntireRow="No" Active="No"/>
       <RemarksCondition Key="RemarksMYR" Field="MYR" Criterial="EqualTo" Value="2,04500" Style="RemarksMYRStyle" EntireRow="No" Active="No"/>
@@ -77,11 +77,11 @@
         <Borders>
           <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
         </Borders>
-        <Content Color="Green" AlternateColor="Red">
+        <Content Color="Blue" AlternateColor="Red">
           <Alignment Horizontal="Right"/>
           <Number Decimals="5" Separator="Yes"/>
         </Content>
-        <Font Name="Calibri" Size="11"/>
+        <Font Name="Calibri" Color="White" Size="11" Bold="Yes"/>
       </Style>
     </Styles>
   </Global.Resources>

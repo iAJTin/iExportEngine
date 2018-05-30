@@ -112,119 +112,233 @@
     <Compile Include="ComponentModel\Patterns\StrategyPattern\IStrategy.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.MaximumCondition.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.MinimumCondition.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.ICondition.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownChartTypes.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownOperator.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownMiniChartEmptyValuesAs.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.designer.cs">
+    <Compile Include="Model\Root\ComponentModel\Shared\AlignmentModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>AlignmentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\CommentModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>CommentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\CoordenatesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>CoordenatesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\Base\BaseErrorModel.designer.cs">
+      <DependentUpon>BaseErrorModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\DatetimeErrorModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>DatetimeErrorModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\NumericErrorModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>NumericErrorModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\PercentageErrorModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>PercentageErrorModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\ScientificErrorModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ScientificErrorModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\FieldAggregateModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FieldAggegateModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\FieldHeaderModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FieldHeaderModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\FieldValueModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FieldValueModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\FilterModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FilterModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\FlipModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FlipModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\FontModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FontModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\LocationModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>LocationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\MarginsModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MarginsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\NegativeModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>NegativeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\PropertiesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>PropertiesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ComponentModel\Shared\PropertyModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>PropertyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Export\Table\Output\OutputModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>OutputModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\Base\BaseConditionModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>BaseConditionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\ZeroCondition.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\ZeroCondition.designer.cs">
+      <DependentUpon>ZeroCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MaximumCondition.designer.cs">
+      <DependentUpon>MaximumCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MinimumCondition.designer.cs">
+      <DependentUpon>MinimumCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\RemarksCondition.designer.cs">
+      <DependentUpon>RemarksCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\Base\BaseConditionModel.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MaximumCondition.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MinimumCondition.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\WhenChangeConditionModel.designer.cs">
+      <DependentUpon>WhenChangeConditionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\Conditions\ConditionsModel.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\ConditionsModel.designer.cs">
+      <DependentUpon>ConditionsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Global\Resources\ResourcesModel.designar.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ResourcesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Export\Table\Charts\Base\BaseChartModel.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Base\ICondition.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownChartTypes.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownOperator.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownMiniChartEmptyValuesAs.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\BaseChartModel.designer.cs">
       <DependentUpon>BaseChartModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\Base\BaseMiniChartPointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\Base\BaseMiniChartPointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\Base\BaseMiniChartPointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\Base\BaseMiniChartPointModel.designer.cs">
       <DependentUpon>BaseMiniChartPointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Base\BaseMiniChartPointsModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Base\BaseMiniChartPointsModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Base\BaseMiniChartPointsModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Base\BaseMiniChartPointsModel.designer.cs">
       <DependentUpon>BaseMiniChartPointsModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartMarkersPointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartMarkersPointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartMarkersPointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartMarkersPointModel.designer.cs">
       <DependentUpon>MiniChartMarkersPointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartNegativePointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartNegativePointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartNegativePointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartNegativePointModel.designer.cs">
       <DependentUpon>MiniChartNegativePointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLowPointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLowPointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartLowPointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartLowPointModel.designer.cs">
       <DependentUpon>MiniChartLowPointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartHighPointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartHighPointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartHighPointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartHighPointModel.designer.cs">
       <DependentUpon>MiniChartHighPointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLastPointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartLastPointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartLastPointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartLastPointModel.designer.cs">
       <DependentUpon>MiniChartLastPointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartFirstPointModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\Points\MiniChartFirstPointModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartFirstPointModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\Points\MiniChartFirstPointModel.designer.cs">
       <DependentUpon>MiniChartFirstPointModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>MiniChartHorizontalAxisModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Axes\MiniChartHorizontalAxisModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Axes\MiniChartVerticalAxisModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>MiniChartVerticalAxisModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartAxesModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Axes\MiniChartAxesModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Axes\MiniChartAxesModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Axes\MiniChartAxesModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>MiniChartAxesModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\MiniChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.RemarksCondition.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\RemarksCondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.DataFiltersModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ConditionsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.WhenChangeConditionModel.cs" />
+    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\WhenChangeConditionModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Filters.DataFilterModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\MiniChartModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\MiniChartModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>MiniChartModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\Base\BaseMiniChartSerieModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\Base\BaseMiniChartSerieModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\Base\BaseMiniChartSerieModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Base\BaseMiniChartSerieModel.designer.cs">
       <DependentUpon>BaseMiniChartSerieModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnPointsModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnPointsModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnPointsModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnPointsModel.designer.cs">
       <DependentUpon>MiniChartColumnPointsModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnTypeModel.designer.cs">
       <DependentUpon>MiniChartColumnTypeModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Column\MiniChartColumnSerieModel.designer.cs">
       <DependentUpon>MiniChartColumnSerieModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLinePointsModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLinePointsModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Line\MiniChartLinePointsModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Line\MiniChartLinePointsModel.designer.cs">
       <DependentUpon>MiniChartLinePointsModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineTypeModel.designer.cs">
       <DependentUpon>MiniChartLineTypeModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineSerieModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineSerieModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineSerieModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\Line\MiniChartLineSerieModel.designer.cs">
       <DependentUpon>MiniChartLineSerieModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\MiniChartTypeModel.designer.cs">
       <DependentUpon>MiniChartTypeModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\KnownMiniChartType.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\KnownMiniChartType.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossPointsModel.designer.cs">
       <DependentUpon>MiniChartWinLossPointsModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossTypeModel.designer.cs">
       <DependentUpon>MiniChartWinLossTypeModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossSerieModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossSerieModel.designer.cs">
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossSerieModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\MiniChart\Type\WinLoss\MiniChartWinLossSerieModel.designer.cs">
       <DependentUpon>MiniChartWinLossSerieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Export\Table\TableModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>TableModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\ExportsModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ExportsModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Providers\DataSetProvider.cs" />
     <Compile Include="Providers\XmlProvider.cs" />
@@ -273,11 +387,11 @@
     <Compile Include="ComponentModel\BindableProperty.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseComplexModelCollection.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseLineModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Const.KnownInputPacketFormat.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownBorderPosition.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownBorderLineStyle.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownPatternType.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLineType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Const\KnownInputPacketFormat.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownBorderPosition.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownBorderLineStyle.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownPatternType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownLineType.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.References.ReferenceModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ColumnsHeadersModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.PacketFieldModel.cs" />
@@ -295,7 +409,7 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.BorderModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.PatternModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.StylesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownUnit.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownUnit.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailAttachmentsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.MailMessagesModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Server.ServerCredentialsModel.cs" />
@@ -312,10 +426,10 @@
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseSimpleModelCollection.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Logo.LogoImageModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.ReferencesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FlipModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\FlipModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.ImageModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ImagesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.ResourcesModel.cs" />
+    <Compile Include="Model\Root\Global\Resources\ResourcesModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.OpacityEffectModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.DarkEffectModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.MoreDarkEffectModel.cs" />
@@ -328,25 +442,25 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.DisabledEffectModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseEffectModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.HostModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDocumentOrientation.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDocumentSize.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownDocumentOrientation.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownDocumentSize.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.DocumentModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.RootModel.cs">
+    <Compile Include="Model\Root\ExportsModel.cs">
       <SubType>code</SubType>
     </Compile>
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.MarginsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.AlignmentModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownElementPosition.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.LocationModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownFlipStyle.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownEffectType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\MarginsModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\AlignmentModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownElementPosition.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\LocationModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownFlipStyle.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownEffectType.cs" />
     <Compile Include="Drawing\Extensions\ImageExtensions.cs" />
     <Compile Include="Drawing\Helpers\ImageHelper.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.LogoModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.IBehavior.cs" />
     <Compile Include="Helpers\ErrorMessageHelper.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.ToDropboxBehaviorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.CoordenatesModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\CoordenatesModel.cs" />
     <Compile Include="ComponentModel\Provider\Export\ProviderParameters.cs" />
     <Compile Include="ComponentModel\FieldValueInformation.cs" />
     <Compile Include="AspNet\Cloud\OAuth.cs" />
@@ -369,20 +483,20 @@
       <DependentUpon>SkyDriveSignInDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.ToSkyDriveBehaviorModel.cs" />
-    <Compile Include="Model\Exceptions\InvalidSeriesDefinitionException.cs" />
-    <Compile Include="Model\Exceptions\InvalidStylesDefinitionException.cs" />
-    <Compile Include="Model\Exceptions\InvalidFieldsDefinitionException.cs" />
-    <Compile Include="Model\Exceptions\InvalidFieldIdentifierNameException.cs" />
-    <Compile Include="Model\Exceptions\InvalidPathNameException.cs" />
-    <Compile Include="Model\Exceptions\InvalidFileNameException.cs" />
-    <Compile Include="Model\Exceptions\InvalidIdentifierNameException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidSeriesDefinitionException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidStylesDefinitionException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidFieldsDefinitionException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidFieldIdentifierNameException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidPathNameException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidFileNameException.cs" />
+    <Compile Include="Model\Root\ComponentModel\Exceptions\InvalidIdentifierNameException.cs" />
     <Compile Include="AspNet\ComponentModel\HttpResponseEx.cs" />
     <Compile Include="AspNet\Exceptions\MissingPageAsyncAttributeException.cs" />
     <Compile Include="AspNet\MimeMapping.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLabelPosition.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLabelOrientation.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownLabelPosition.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownLabelOrientation.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionLabelsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownAxisOrientation.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownAxisOrientation.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionMarksModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.Definition.AxisDefinitionValuesModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Axes.Axis.AxisDefinitionModel.cs" />
@@ -390,12 +504,12 @@
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartAxesModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartTitleModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Border.ShadowModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownWidthLineStyle.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLineStyle.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownTickMarkStyle.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownPlotGridLine.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownWidthLineStyle.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownLineStyle.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownTickMarkStyle.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownPlotGridLine.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.ChartPlotModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownSpecialFormat.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownSpecialFormat.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Helpers\RegularExpressionHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
@@ -423,76 +537,76 @@
     <Compile Include="Helpers\StreamHelper.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseBehaviorModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.TransformFileBehaviorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownTrimMode.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownWriterFilter.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownRelativeFilePath.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownTrimMode.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownWriterFilter.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownRelativeFilePath.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.FixedFieldModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.GroupFieldModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.GapFieldModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.DataFieldModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownFieldType.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FieldAggegateModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FieldHeaderModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FieldValueModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownFieldType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\FieldAggegateModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\FieldHeaderModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\FieldValueModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseDataFieldModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownAggregateLocation.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownAggregateType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownAggregateLocation.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownAggregateType.cs" />
     <Compile Include="Model\Classes\ModelSchema.Designer.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDataType.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.ScientificErrorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.PercentageErrorModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownDataType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\ScientificErrorModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\PercentageErrorModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.ScientificDataTypeModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.PercentageDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.DatetimeErrorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownDatetimeFormat.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\DatetimeErrorModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownDatetimeFormat.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.DatetimeDataTypeModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.CurrencyDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownCulture.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownCulture.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.TextDataTypeModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.NumberDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.NegativeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.NumericErrorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Base.Class.BaseErrorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.CommentModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownNegativeSign.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownBasicColor.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\NegativeModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\NumericErrorModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\Error\Base\BaseErrorModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\CommentModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownNegativeSign.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownBasicColor.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.NumericDataTypeModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.RealDataTypeModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseDataTypeModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.ContentModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownHorizontalAlignment.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownVerticalAlignment.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownHorizontalAlignment.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownVerticalAlignment.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.ContentAlignmentModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FontModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\FontModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.StyleModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.Item.Pieces.PieceModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Const.KnownItemGroupSeparator.cs" />
+    <Compile Include="Model\Root\ComponentModel\Const\KnownItemGroupSeparator.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Groups.Group.GroupItemModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Groups.GroupModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.ChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartLegendModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartBorderModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.Plot.Series.ChartSerieModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownChartType.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownLegendLocation.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownChartType.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownLegendLocation.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Template.Writer.TemplateWriterSettingsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Base.Class.WriterModelBase.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ExporterModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownRecordToShow.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownRecordToShow.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.WriterModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.FilterModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownExporter.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\FilterModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownExporter.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.TemplateModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Template.TemplateWriterModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.XsltModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.YesNo.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Base.Class.BaseModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.OutputModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.PropertiesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Shared.Class.PropertyModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Export.TableModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\YesNo.cs" />
+    <Compile Include="Model\Root\ComponentModel\Base\BaseModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Output\OutputModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\PropertiesModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Shared\PropertyModel.cs" />
+    <Compile Include="Model\Root\Export\Table\TableModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.ExportModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Enum.KnownOutputTarget.cs" />
+    <Compile Include="Model\Root\ComponentModel\Enums\KnownOutputTarget.cs" />
     <Compile Include="Drawing\Extensions\ColorExtensions.cs" />
     <Compile Include="ComponentModel\Writer\Metadata\WriterOptionsAttribute.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
@@ -569,10 +683,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\Base\" />
-    <Folder Include="Model\Export\Table\Charts\Chart\" />
-    <Folder Include="Model\Export\Table\Conditions\" />
-    <Folder Include="Model\Global\Resources\" />
+    <Folder Include="Model\Root\Export\Table\Charts\Chart\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

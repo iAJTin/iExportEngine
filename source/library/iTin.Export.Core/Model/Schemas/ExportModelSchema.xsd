@@ -930,24 +930,41 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="ZeroCondition" type="ZeroCondition"  minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a field condition. Defines the style that will be applied to the value of the field when its value is zero
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:choice>
   </xs:group>
 
-  <!-- Conditions: WhenChangeCondition -->
-  <xs:complexType name="WhenChangeCondition" id="WhenChangeCondition">
+
+
+  <!-- Conditions: MaximumCondition -->
+  <xs:complexType name="MaximumCondition" id="MaximumCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
-        <xs:attribute name="FirstSwapStyle" type="ElementNameString" use="required">
+        <xs:attribute name="Style" type="ElementNameString" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              The name of first style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="SecondSwapStyle" type="xs:string" use="optional" default="">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Conditions: MinimumCondition -->
+  <xs:complexType name="MinimumCondition" id="MinimumCondition">
+    <xs:complexContent>
+      <xs:extension base="BaseConditionModel">
+        <xs:attribute name="Style" type="ElementNameString" use="required">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              The name of second style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -983,9 +1000,31 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  
+  <!-- Conditions: WhenChangeCondition -->
+  <xs:complexType name="WhenChangeCondition" id="WhenChangeCondition">
+    <xs:complexContent>
+      <xs:extension base="BaseConditionModel">
+        <xs:attribute name="FirstSwapStyle" type="ElementNameString" use="required">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The name of first style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SecondSwapStyle" type="xs:string" use="optional" default="">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The name of second style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-  <!-- Conditions: MaximumCondition -->
-  <xs:complexType name="MaximumCondition" id="MaximumCondition">
+  <!-- Conditions: ZeroCondition -->
+  <xs:complexType name="ZeroCondition" id="ZeroCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="Style" type="ElementNameString" use="required">
@@ -999,20 +1038,7 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- Conditions: MinimumCondition -->
-  <xs:complexType name="MinimumCondition" id="MinimumCondition">
-    <xs:complexContent>
-      <xs:extension base="BaseConditionModel">
-        <xs:attribute name="Style" type="ElementNameString" use="required">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
+
 
   <!-- Resources: Filters -->
   <xs:complexType name="DataFiltersModel" id="DataFiltersModel">

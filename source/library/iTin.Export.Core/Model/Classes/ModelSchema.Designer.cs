@@ -18,16 +18,6 @@ namespace iTin.Export.Model
     //[DebuggerStepThrough()]
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot("Exports", Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = false)]
-    public partial class ExportsModel : BaseModel<ExportsModel>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
     public partial class ReferencesModel : BaseSimpleModelCollection<ReferenceModel, ExportsModel>
     {
     }
@@ -42,14 +32,6 @@ namespace iTin.Export.Model
     }
 
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class GlobalResourcesModel : BaseModel<GlobalResourcesModel>
-    {
-    }
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable()]
@@ -80,16 +62,6 @@ namespace iTin.Export.Model
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
     [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
     public partial class ImageModel : BaseModel<ImageModel>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class FlipModel : BaseModel<FlipModel>
     {
     }
 
@@ -258,23 +230,6 @@ namespace iTin.Export.Model
     }
 
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class MarginsModel : BaseModel<MarginsModel>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class TableModel : BaseModel<TableModel>
-    {
-    }
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable()]
@@ -297,35 +252,6 @@ namespace iTin.Export.Model
     }
 
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class LocationModel : BaseModel<LocationModel>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class CoordenatesModel : BaseModel<CoordenatesModel>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class AlignmentModel : BaseModel<AlignmentModel>
-    {
-    }
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable()]
@@ -365,14 +291,6 @@ namespace iTin.Export.Model
     {
     }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class OutputModel : BaseModel<OutputModel>
-    {
-    }
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable()]
@@ -418,66 +336,6 @@ namespace iTin.Export.Model
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
     public partial class StylesModel : BaseComplexModelCollection<StyleModel, GlobalResourcesModel,string>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class ConditionsModel : BaseComplexModelCollection<BaseConditionModel, GlobalResourcesModel, string>
-    {
-    }
-
-    [XmlInclude(typeof(MaximumCondition))]
-    [XmlInclude(typeof(MinimumCondition))]
-    [XmlInclude(typeof(RemarksCondition))]
-    [XmlInclude(typeof(WhenChangeConditionModel))]
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-
-    public abstract partial class BaseConditionModel : BaseModel<BaseConditionModel>
-    {
-    }
-
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class RemarksCondition : BaseConditionModel
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class MaximumCondition : BaseConditionModel
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class MinimumCondition : BaseConditionModel
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class WhenChangeConditionModel : BaseConditionModel
     {
     }
 
@@ -1101,134 +959,14 @@ namespace iTin.Export.Model
     {
     }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class CommentModel : BaseModel<CommentModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class FieldAggregateModel : BaseModel<FieldAggregateModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class FieldHeaderModel : BaseModel<FieldHeaderModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class FieldValueModel : BaseModel<FieldValueModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class FilterModel : BaseModel<FilterModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18034")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class FontModel : BaseModel<FontModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class NegativeModel : BaseModel<NegativeModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    //[System.Xml.Serialization.XmlRootAttribute(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class PropertiesModel : BaseModel<PropertiesModel>
-    {
-    }
 
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class PropertyModel : BaseModel<PropertyModel>
-    {
-    }
-
-    [XmlInclude(typeof(NumericErrorModel))]
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
-    public partial class BaseErrorModel : BaseModel<BaseErrorModel>
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class DatetimeErrorModel : BaseErrorModel
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class NumericErrorModel : BaseErrorModel
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class PercentageErrorModel : NumericErrorModel
-    {
-    }
-
-    [GeneratedCode("System.Xml", "4.0.30319.18033")]
-    [Serializable()]
-    //[DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
-    public partial class ScientificErrorModel : NumericErrorModel
-    {
-    }
 
     [XmlInclude(typeof(RealDataTypeModel))]
     [XmlInclude(typeof(NumericDataTypeModel))]
