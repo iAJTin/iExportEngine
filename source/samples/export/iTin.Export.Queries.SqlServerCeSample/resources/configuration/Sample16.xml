@@ -14,11 +14,11 @@
       <Filter Key="AudFilter" Field="AUD" Criterial="GreatherThan" Value="6,2" Active="No"/>    
     </Filters>
     <Styles>
-      <Style Name="HeaderStyle">
-        <Content Color="#ED7D31">
-          <Alignment Horizontal="Left"/>
-          <Text/>
-        </Content>
+      <Style Name="HeaderStyle">        
+        <Content Color="#ED7D31">           
+          <Alignment Horizontal="Left"/>            
+          <Text/>        
+        </Content>                     
         <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
       </Style>
       <Style Name="DateValueStyle">

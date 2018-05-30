@@ -187,43 +187,162 @@
       <SubType>code</SubType>
       <DependentUpon>PropertyModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Root\Export\ExportModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ExportModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Export\Table\Charts\ChartsModel.designer.cs">
+      <DependentUpon>ChartsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Export\Table\Charts\Chart\ChartModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ChartModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Root\Export\Table\Output\OutputModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>OutputModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\Base\BaseConditionModel.designer.cs">
+    <Compile Include="Model\Root\Resources\Filters\DataFiltersModel.designer.cs" />
+    <Compile Include="Model\Root\Resources\Filters\Filter\DataFilterModel.designer.cs">
+      <DependentUpon>DataFilterModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Fixed\FixedItemModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FixedItemModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Fixed\FixedModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>FixedModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Fixed\Pieces\PiecesModel.designer.cs">
+      <DependentUpon>PiecesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Fixed\Pieces\Piece\PieceModel.designer.cs">
+      <DependentUpon>PieceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Groups\GroupsModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>GroupsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Groups\Group\Field\GroupItemModel.designer.cs">
+      <DependentUpon>GroupItemModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Groups\Group\GroupModel.designer.cs">
+      <DependentUpon>GroupModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Hosts\HostsModel.designer.cs">
+      <DependentUpon>HostsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Hosts\Host\Document\DocumentModel.designer.cs">
+      <DependentUpon>DocumentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Hosts\Host\Document\DocumentFooter\DocumentFooterModel.designer.cs">
+      <DependentUpon>DocumentFooterModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Hosts\Host\Document\DocumentHeader\DocumentHeaderModel.designer.cs">
+      <DependentUpon>DocumentHeaderModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Hosts\Host\HostModel.designer.cs">
+      <DependentUpon>HostModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Conditions\Base\BaseConditionModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>BaseConditionModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\ZeroCondition.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\ZeroCondition.designer.cs">
+    <Compile Include="Model\Root\Resources\Conditions\Condition\ZeroCondition.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Condition\ZeroCondition.designer.cs">
       <DependentUpon>ZeroCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MaximumCondition.designer.cs">
+    <Compile Include="Model\Root\Resources\Conditions\Condition\MaximumCondition.designer.cs">
       <DependentUpon>MaximumCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MinimumCondition.designer.cs">
+    <Compile Include="Model\Root\Resources\Conditions\Condition\MinimumCondition.designer.cs">
       <DependentUpon>MinimumCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\RemarksCondition.designer.cs">
+    <Compile Include="Model\Root\Resources\Conditions\Condition\RemarksCondition.designer.cs">
       <DependentUpon>RemarksCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\Base\BaseConditionModel.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MaximumCondition.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\MinimumCondition.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\WhenChangeConditionModel.designer.cs">
+    <Compile Include="Model\Root\Resources\Conditions\Base\BaseConditionModel.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Condition\MaximumCondition.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Condition\MinimumCondition.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Condition\WhenChangeConditionModel.designer.cs">
       <DependentUpon>WhenChangeConditionModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\Conditions\ConditionsModel.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\ConditionsModel.designer.cs">
+    <Compile Include="Model\Root\Resources\Conditions\ConditionsModel.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\ConditionsModel.designer.cs">
       <DependentUpon>ConditionsModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Root\Global\Resources\ResourcesModel.designar.cs">
+    <Compile Include="Model\Root\Resources\Images\ImagesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ImagesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\Base\BaseEffectModel.designer.cs">
+      <DependentUpon>BaseEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\BrightnessEffectModel.designer.cs">
+      <DependentUpon>BrightnessEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\DarkEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>DarkEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\DisabledEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>DisabledEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleBlueEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>GrayScaleBlueEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>GrayScaleEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleGreenEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>GrayScaleGreenEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleRedEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>GrayScaleRedEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\MoreBrightnessEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MoreBrightnessEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\MoreDarkEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>MoreDarkEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\OpacityEffectModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>OpacityEffectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Images\Image\ImageModel.designer.cs">
+      <DependentUpon>ImageModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Lines\Base\BaseLineModel.designer.cs">
+      <DependentUpon>BaseLineModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Lines\LinesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>LinesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Lines\Line\EmptyLine\EmptyLineModel.designer.cs">
+      <DependentUpon>EmptyLineModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Lines\Line\TextLine\TextLineModel.designer.cs">
+      <DependentUpon>TextLineModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Lines\Line\TextLine\Text\TextModel.designer.cs">
+      <DependentUpon>TextModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\ResourcesModel.designar.cs">
       <SubType>code</SubType>
       <DependentUpon>ResourcesModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Root\Export\Table\Charts\Base\BaseChartModel.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Base\ICondition.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Base\ICondition.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownChartTypes.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownOperator.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownMiniChartEmptyValuesAs.cs" />
@@ -279,10 +398,10 @@
     </Compile>
     <Compile Include="Model\Root\Export\Table\Charts\MiniChart\MiniChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ConditionItemsModel.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\RemarksCondition.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.DataFiltersModel.cs" />
-    <Compile Include="Model\Root\Global\Resources\Conditions\Condition\WhenChangeConditionModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Filters.DataFilterModel.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Condition\RemarksCondition.cs" />
+    <Compile Include="Model\Root\Resources\Filters\DataFiltersModel.cs" />
+    <Compile Include="Model\Root\Resources\Conditions\Condition\WhenChangeConditionModel.cs" />
+    <Compile Include="Model\Root\Resources\Filters\Filter\DataFilterModel.cs" />
     <Compile Include="Model\Root\Export\Table\Charts\MiniChart\MiniChartModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>MiniChartModel.cs</DependentUpon>
@@ -340,6 +459,70 @@
       <SubType>code</SubType>
       <DependentUpon>ExportsModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Root\References\Reference\ReferenceModel.designer.cs">
+      <DependentUpon>ReferenceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\References\ReferencesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ReferencesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\StylesModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>StylesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Borders\BordersModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>BordersModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Borders\Border\BorderModel.designer.cs">
+      <DependentUpon>BorderModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\Alignment\ContentAlignmentModel.designer.cs">
+      <DependentUpon>ContentAlignmentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\ContentModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ContentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Base\BaseDataTypeModel.designer.cs">
+      <DependentUpon>BaseDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\DatetimeDataTypeModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>DatetimeDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Numeric\NumberDataTypeModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>NumberDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Numeric\CurrencyDataTypeModel.designer.cs">
+      <DependentUpon>CurrencyDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Numeric\Base\NumericDataTypeModel.designer.cs">
+      <DependentUpon>NumericDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\PercentageDataTypeModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>PercentageDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Base\RealDataTypeModel.designer.cs">
+      <DependentUpon>RealDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\ScientificDataTypeModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>ScientificDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\TextDataTypeModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>TextDataTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\Pattern\PatternModel.designer.cs">
+      <SubType>code</SubType>
+      <DependentUpon>PatternModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Root\Resources\Styles\Style\StyleModel.designer.cs">
+      <DependentUpon>StyleModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Providers\DataSetProvider.cs" />
     <Compile Include="Providers\XmlProvider.cs" />
     <Compile Include="AspNet\Extensions\StreamExtensions.cs" />
@@ -385,66 +568,66 @@
     <Compile Include="Inputs\JsonInput.cs" />
     <Compile Include="Inputs\XmlInput.cs" />
     <Compile Include="ComponentModel\BindableProperty.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseComplexModelCollection.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseLineModel.cs" />
+    <Compile Include="Model\Root\ComponentModel\Base\BaseComplexModelCollection.cs" />
+    <Compile Include="Model\Root\Resources\Lines\Base\BaseLineModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Const\KnownInputPacketFormat.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownBorderPosition.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownBorderLineStyle.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownPatternType.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownLineType.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.References.ReferenceModel.cs" />
+    <Compile Include="Model\Root\References\Reference\ReferenceModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ColumnsHeadersModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Fields.PacketFieldModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Export.BlockLines.Block.BlockLineItemModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Export.BlockLines.BlockLineModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Exports.Export.BlockLinesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Lines.TextLine.TextModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Lines.TextLineModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Lines.EmptyLineModel.cs" />
+    <Compile Include="Model\Root\Resources\Lines\Line\TextLine\Text\TextModel.cs" />
+    <Compile Include="Model\Root\Resources\Lines\Line\TextLine\TextLineModel.cs" />
+    <Compile Include="Model\Root\Resources\Lines\Line\EmptyLine\EmptyLineModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Headers.ColumnHeader.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.Document.HeaderModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.Document.FooterModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.LinesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Style.BordersModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.BorderModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.PatternModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.StylesModel.cs" />
+    <Compile Include="Model\Root\Resources\Hosts\Host\Document\DocumentHeader\DocumentHeaderModel.cs" />
+    <Compile Include="Model\Root\Resources\Hosts\Host\Document\DocumentFooter\DocumentFooterModel.cs" />
+    <Compile Include="Model\Root\Resources\Lines\LinesModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Borders\BordersModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Borders\Border\BorderModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\Pattern\PatternModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\StylesModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownUnit.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Messages.Message.MailAttachmentsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.MailMessagesModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.Behaviors.Mail.Server.ServerCredentialsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.FixedItemModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.Item.PiecesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.FixedModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.HostsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.GroupsModel.cs" />
+    <Compile Include="Model\Root\Resources\Fixed\FixedItemModel.cs" />
+    <Compile Include="Model\Root\Resources\Fixed\Pieces\PiecesModel.cs" />
+    <Compile Include="Model\Root\Resources\Fixed\FixedModel.cs" />
+    <Compile Include="Model\Root\Resources\Hosts\HostsModel.cs" />
+    <Compile Include="Model\Root\Resources\Groups\GroupsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.FieldsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.Plot.ChartSeriesModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.PlotsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.ChartsModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\ChartsModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Exporter.BehaviorsModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseSimpleModelCollection.cs" />
+    <Compile Include="Model\Root\ComponentModel\Base\BaseSimpleModelCollection.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Logo.LogoImageModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.ReferencesModel.cs" />
+    <Compile Include="Model\Root\References\ReferencesModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\FlipModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.ImageModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.ImagesModel.cs" />
-    <Compile Include="Model\Root\Global\Resources\ResourcesModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.OpacityEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.DarkEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.MoreDarkEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.MoreBrightnessEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.BrightnessEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleBlueEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleGreenEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleRedEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.GrayScaleEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Images.Image.Effects.DisabledEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseEffectModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.HostModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\ImageModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\ImagesModel.cs" />
+    <Compile Include="Model\Root\Resources\ResourcesModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\OpacityEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\DarkEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\MoreDarkEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\MoreBrightnessEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\BrightnessEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleBlueEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleGreenEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleRedEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\GrayScaleEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\DisabledEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Images\Image\Effects\Effect\Base\BaseEffectModel.cs" />
+    <Compile Include="Model\Root\Resources\Hosts\Host\HostModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownDocumentOrientation.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownDocumentSize.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Hosts.Host.DocumentModel.cs" />
+    <Compile Include="Model\Root\Resources\Hosts\Host\Document\DocumentModel.cs" />
     <Compile Include="Model\Root\ExportsModel.cs">
       <SubType>code</SubType>
     </Compile>
@@ -555,35 +738,35 @@
     <Compile Include="Model\Root\ComponentModel\Enums\KnownDataType.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\Error\ScientificErrorModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\Error\PercentageErrorModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.ScientificDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.PercentageDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\ScientificDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\PercentageDataTypeModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\Error\DatetimeErrorModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownDatetimeFormat.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.DatetimeDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.CurrencyDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\DatetimeDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Numeric\CurrencyDataTypeModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownCulture.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.TextDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.NumberDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\TextDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Numeric\NumberDataTypeModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\NegativeModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\Error\NumericErrorModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\Error\Base\BaseErrorModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\CommentModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownNegativeSign.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownBasicColor.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.NumericDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.RealDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseDataTypeModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.ContentModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Numeric\Base\NumericDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Real\Base\RealDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\DataType\Base\BaseDataTypeModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\ContentModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownHorizontalAlignment.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownVerticalAlignment.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.Style.Content.ContentAlignmentModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\Content\Alignment\ContentAlignmentModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\FontModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Styles.StyleModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Fixed.Item.Pieces.PieceModel.cs" />
+    <Compile Include="Model\Root\Resources\Styles\Style\StyleModel.cs" />
+    <Compile Include="Model\Root\Resources\Fixed\Pieces\Piece\PieceModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Const\KnownItemGroupSeparator.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Groups.Group.GroupItemModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Groups.GroupModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.ChartModel.cs" />
+    <Compile Include="Model\Root\Resources\Groups\Group\Field\GroupItemModel.cs" />
+    <Compile Include="Model\Root\Resources\Groups\Group\GroupModel.cs" />
+    <Compile Include="Model\Root\Export\Table\Charts\Chart\ChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartLegendModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.ChartBorderModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Root.Export.Table.Charts.Chart.Plots.Plot.Series.ChartSerieModel.cs" />
@@ -605,7 +788,7 @@
     <Compile Include="Model\Root\ComponentModel\Shared\PropertiesModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Shared\PropertyModel.cs" />
     <Compile Include="Model\Root\Export\Table\TableModel.cs" />
-    <Compile Include="Model\Classes\ModelSchema.Root.Exports.ExportModel.cs" />
+    <Compile Include="Model\Root\Export\ExportModel.cs" />
     <Compile Include="Model\Root\ComponentModel\Enums\KnownOutputTarget.cs" />
     <Compile Include="Drawing\Extensions\ColorExtensions.cs" />
     <Compile Include="ComponentModel\Writer\Metadata\WriterOptionsAttribute.cs" />
@@ -683,7 +866,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\Root\Export\Table\Charts\Chart\" />
+    <Folder Include="Model\Root\Resources\Styles\Effects\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
