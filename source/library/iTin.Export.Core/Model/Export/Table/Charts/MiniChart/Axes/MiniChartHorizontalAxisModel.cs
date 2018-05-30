@@ -3,8 +3,10 @@ namespace iTin.Export.Model
 {
     using System.ComponentModel;
     using System.Diagnostics;
+    using System.Drawing;
     using System.Xml.Serialization;
 
+    using Drawing.Helper;
     using Helpers;
 
     public partial class MiniChartHorizontalAxisModel
@@ -120,12 +122,41 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultAxisType)]
         public string Type
         {
-            get => GetStaticBindingValue(_axisType);
+            get => GetStaticBindingValue(_axisType).ToUpperInvariant();
             set
             {
                 SentinelHelper.ArgumentNull(value);
 
                 _axisType = value;
+            }
+        }
+        #endregion
+
+        #region [public] (bool) IsDateAxis: Gets or sets 
+        public bool IsDateAxis
+        {
+            get
+            {
+                if (Type.Equals(DefaultAxisType))
+                {
+                    return false;
+                }
+
+                var fields = Parent.Parent.Owner.Parent.Fields;
+                var field = fields[Type];
+                var canContinue = field.Value.TryGetStyle(out var style);
+                if (!canContinue)
+                {
+                    return false;
+                }
+
+                bool isDateTime = style.Content.DataType is DatetimeDataTypeModel;
+                if (!isDateTime)
+                {
+                    return false;
+                }
+
+                return true;
             }
         }
         #endregion
@@ -141,6 +172,38 @@ namespace iTin.Export.Model
             RightToLeft == DefaultRightToLeft && 
             Show == DefaultShow && 
             Type == DefaultAxisType;
+        #endregion
+
+        #endregion
+
+        #region public methods
+
+        #region [public] (Color) GetColor(): Gets a reference to the color structure preferred for this axis
+        /// <summary>
+        /// Gets a reference to the <see cref="T:System.Drawing.Color" /> structure preferred for this axis.
+        /// </summary>
+        /// <returns>
+        /// <see cref="T:System.Drawing.Color"/> structure that represents a .NET color.
+        /// </returns>
+        public Color GetColor()
+        {
+            return Color.Equals(DefaultAxisColor) 
+                ? System.Drawing.Color.Black 
+                : ColorHelper.GetColorFromString(Color);
+        }
+        #endregion
+
+        #region [public] (BaseDataFieldModel) GetAxisField(): Gets a reference to the field which acts as date axis field
+        public BaseDataFieldModel GetAxisField()
+        {
+            if (Type.Equals(DefaultAxisType))
+            {
+                return null;
+            }
+
+            var fields = Parent.Parent.Owner.Parent.Fields;
+            return fields[Type];
+        }
         #endregion
 
         #endregion

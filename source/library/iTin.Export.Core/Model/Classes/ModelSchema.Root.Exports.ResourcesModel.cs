@@ -396,6 +396,8 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
+        [XmlArrayItem("MaximumCondition", typeof(MaximumCondition), IsNullable = false)]
+        [XmlArrayItem("MinimumCondition", typeof(MinimumCondition), IsNullable = false)]
         [XmlArrayItem("RemarksCondition", typeof(RemarksCondition), IsNullable = false)]
         [XmlArrayItem("WhenChangeCondition", typeof(WhenChangeConditionModel), IsNullable = false)]
         public ConditionsModel Conditions

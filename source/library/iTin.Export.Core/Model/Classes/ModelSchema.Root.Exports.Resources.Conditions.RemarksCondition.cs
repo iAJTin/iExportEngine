@@ -13,7 +13,7 @@ namespace iTin.Export.Model
     {
         #region public static properties
 
-        #region [public] {static} (LogicalConditionModel) Empty: Gets an empty condition
+        #region [public] {static} (RemarksCondition) Empty: Gets an empty condition
         /// <summary>
         /// Gets an empty condition.
         /// </summary>

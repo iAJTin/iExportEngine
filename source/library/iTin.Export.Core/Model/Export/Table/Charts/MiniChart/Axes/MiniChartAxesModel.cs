@@ -48,7 +48,7 @@ namespace iTin.Export.Model
         public MiniChartModel Parent => _parent;
         #endregion
 
-        #region [public] (MiniChartVerticalAxisModel) Horizontal: Gets or sets a reference that contains the visual setting of vertical axis
+        #region [public] (MiniChartVerticalAxisModel) Vertical: Gets or sets a reference that contains the visual setting of vertical axis
         public MiniChartVerticalAxisModel Vertical
         {
             get

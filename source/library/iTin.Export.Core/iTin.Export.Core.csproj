@@ -113,6 +113,8 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Class.BaseConditionModel.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.MaximumCondition.cs" />
+    <Compile Include="Model\Classes\ModelSchema.Root.Exports.Resources.Conditions.MinimumCondition.cs" />
     <Compile Include="Model\Export\Table\Charts\Base\BaseChartModel.cs" />
     <Compile Include="Model\Classes\ModelSchema.Abstract.Interface.ICondition.cs" />
     <Compile Include="Model\Classes\ModelSchema.Enum.KnownChartTypes.cs" />

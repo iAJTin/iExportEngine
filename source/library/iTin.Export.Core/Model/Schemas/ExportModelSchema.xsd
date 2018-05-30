@@ -902,14 +902,28 @@
   <!-- Conditions: Types -->
   <xs:group id="ConditionsType" name="ConditionsType">
     <xs:choice>
-      <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="MaximumCondition" type="MaximumCondition"  minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a field condition. Defines the style that will be applied to the value of the field when its value is the maximum
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MinimumCondition" type="MinimumCondition"  minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Represents a field condition. Defines the style that will be applied to the value of the field when its value is the minimum
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RemarksCondition" type="RemarksCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RemarksCondition" type="RemarksCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
             Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
@@ -970,6 +984,35 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <!-- Conditions: MaximumCondition -->
+  <xs:complexType name="MaximumCondition" id="MaximumCondition">
+    <xs:complexContent>
+      <xs:extension base="BaseConditionModel">
+        <xs:attribute name="Style" type="ElementNameString" use="required">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Conditions: MinimumCondition -->
+  <xs:complexType name="MinimumCondition" id="MinimumCondition">
+    <xs:complexContent>
+      <xs:extension base="BaseConditionModel">
+        <xs:attribute name="Style" type="ElementNameString" use="required">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              The name of the style that will be applied when the condition occurs. Only strings composed of letters, numbers and special characters Are only allow strings made ​​up of letters, numbers and following special chars '_ - # @ % $'.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
   <!-- Resources: Filters -->
   <xs:complexType name="DataFiltersModel" id="DataFiltersModel">
@@ -5394,7 +5437,9 @@
   <!--                                                                                                           -->
   <!-- Class                Description                                                                          -->
   <!-- ========================================================================================================= -->
-  <!-- LogicalCondition     Occurs when the result of the condition is true.                                     -->
+  <!-- MaximumCondition     Occurs when the result of the condition is maximum value.                            -->
+  <!-- MinimumCondition     Occurs when the result of the condition is minimum value.                            -->
+  <!-- RemarksCondition     Occurs when the result of the condition is true.                                     -->
   <!-- WhenChangeCondition  Occurs when the value of the specified field changes.                                -->
   <xs:complexType name="BaseConditionModel" abstract="true">
     <xs:all>

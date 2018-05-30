@@ -430,6 +430,8 @@ namespace iTin.Export.Model
     {
     }
 
+    [XmlInclude(typeof(MaximumCondition))]
+    [XmlInclude(typeof(MinimumCondition))]
     [XmlInclude(typeof(RemarksCondition))]
     [XmlInclude(typeof(WhenChangeConditionModel))]
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
@@ -449,6 +451,24 @@ namespace iTin.Export.Model
     [DesignerCategory("code")]
     [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
     public partial class RemarksCondition : BaseConditionModel
+    {
+    }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable()]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class MaximumCondition : BaseConditionModel
+    {
+    }
+
+    [GeneratedCode("System.Xml", "4.0.30319.18033")]
+    [Serializable()]
+    //[DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    public partial class MinimumCondition : BaseConditionModel
     {
     }
 

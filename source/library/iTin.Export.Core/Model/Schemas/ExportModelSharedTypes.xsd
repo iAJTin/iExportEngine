@@ -651,7 +651,7 @@
 
   <!-- miniChartHorizontalAxisType. Represents a list of known mini-chart horizontal axis type. -->
   <xs:simpleType name="miniChartHorizontalAxisType" id ="miniChartHorizontalAxisType">
-    <xs:union memberTypes="shortCutStaticBindingType miniChartHorizontalAxisTypeEnum bindingType staticBindType"/>
+    <xs:union memberTypes="shortCutStaticBindingType miniChartHorizontalAxisTypeEnum FieldNameString bindingType staticBindType"/>
   </xs:simpleType>
 
   <!-- miniChartVerticalAxisValue. Represents a list of known mini-chart vertical axis min/max values. -->

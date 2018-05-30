@@ -1,7 +1,4 @@
 ﻿
-using iTin.Export.Drawing.Helper;
-using OfficeOpenXml.Sparkline;
-
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -13,6 +10,7 @@ namespace iTin.Export.Writers.OpenXml.Office
 
     using OfficeOpenXml;
     using OfficeOpenXml.Drawing.Chart;
+    using OfficeOpenXml.Sparkline;
 
     using ComponentModel;
     using ComponentModel.Writer;
@@ -609,10 +607,20 @@ namespace iTin.Export.Writers.OpenXml.Office
                             if (miniChart.Axes.Horizontal.Show == YesNo.Yes)
                             {
                                 sparkline.DisplayXAxis = true;
-                                var color = miniChart.Axes.Horizontal.Color == "Automatic"
-                                    ? Color.Black
-                                    : ColorHelper.GetColorFromString(miniChart.Axes.Horizontal.Color);
-                                sparkline.ColorAxis.SetColor(color);
+                                sparkline.ColorAxis.SetColor(miniChart.Axes.Horizontal.GetColor());
+                            }
+
+                            sparkline.DateAxisRange = null;
+                            var isHorizontalDateAxis = miniChart.Axes.Horizontal.IsDateAxis;
+                            if (isHorizontalDateAxis)
+                            {
+                                var horizontalAxisField = miniChart.Axes.Horizontal.GetAxisField();
+                                if (horizontalAxisField != null)
+                                {
+                                    var dateFielColumnIndex = tableLocation.X + items.IndexOf(horizontalAxisField) + 1;
+                                    var dateFieldRange = ExcelCellBase.GetAddress(dataSerieY + 1, dateFielColumnIndex, rowsCount + dataSerieY, dateFielColumnIndex);
+                                    sparkline.DateAxisRange = worksheet.Cells[dateFieldRange];
+                                }
                             }
 
                             // Vertical axis
