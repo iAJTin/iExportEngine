@@ -93,9 +93,9 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="SEKRates" 
-           Filter="AudFilter">
+           Filter="AudFilter">      
       <Conditions Keys="MaximumMYR"/>
-      <Exporter>
+      <Exporter>            
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
       <Fields>
@@ -166,7 +166,7 @@
         <Field Name="USD" Alias="USD">
           <Header Style="HeaderStyle"/>
           <Value Style="LastFiedlDecimalValueStyle"/>
-        </Field>
+        </Field>    
       </Fields>
       <Output>
         <Path>~\output\sample9x\fromconfigfile</Path>

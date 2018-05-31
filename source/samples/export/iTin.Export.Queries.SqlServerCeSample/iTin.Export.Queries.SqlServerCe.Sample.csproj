@@ -113,6 +113,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Labels\" />
     <Folder Include="output\" />
   </ItemGroup>
   <ItemGroup>
