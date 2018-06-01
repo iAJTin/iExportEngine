@@ -390,7 +390,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (OfficeProperties) SetDocumentFooterFromModel(this ExcelHeaderFooter, DocumentFooterModel):  Sets the footer document from model
+        #region [public] {static} (ExcelHeaderFooter) SetDocumentFooterFromModel(this ExcelHeaderFooter, DocumentFooterModel):  Sets the footer document from model
         /// <summary>
         /// Sets the footer document from model.
         /// </summary>
@@ -406,24 +406,56 @@ namespace OfficeOpenXml
 
             if (string.IsNullOrEmpty(footer.Data))
             {
+                //reference.OddFooter.CenteredText = $"Page {ExcelHeaderFooter.PageNumber} of {ExcelHeaderFooter.NumberOfPages}";
+                //reference.OddHeader.CenteredText = "&24&U&\"Arial,Regular Bold\" Inventory";
                 return reference;
+
             }
 
-            //switch (footer.Alignment)
-            //{
-            //    case KnownHeaderFooterAlignment.Right:
-            //        reference.OddFooter.RightAlignedText = footer.Data;
-            //        break;
+            switch (footer.Alignment)
+            {
+                case KnownHeaderFooterAlignment.Right:
+                    reference.OddFooter.RightAlignedText = footer.Data;
+                    break;
 
-            //    case KnownHeaderFooterAlignment.Left:
-            //        reference.OddFooter.LeftAlignedText = footer.Data;
-            //        break;
+                case KnownHeaderFooterAlignment.Left:
+                    reference.OddFooter.LeftAlignedText = footer.Data;
+                    break;
 
-            //    default:
-            //    case KnownHeaderFooterAlignment.Center:
-            //        reference.OddFooter.CenteredText = footer.Data;
-            //        break;
-            //}
+                default:
+                case KnownHeaderFooterAlignment.Center:
+                    reference.OddFooter.CenteredText = footer.Data;
+                    break;
+            }
+
+            return reference;
+        }
+        #endregion
+
+        #region [public] {static} (ExcelWorksheetView) SetDocumentFooterFromModel(this ExcelWorksheetView, DocumentModel): Sets the document view from model
+        /// <summary>
+        /// Sets the document view from model.
+        /// </summary>
+        /// <param name="reference">The document view properties.</param>
+        /// <param name="document">Document model information.</param>
+        /// <returns>
+        /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header.
+        /// </returns>
+        public static ExcelWorksheetView SetDocumentViewFromModel(this ExcelWorksheetView reference, DocumentModel document)
+        {
+            SentinelHelper.ArgumentNull(reference);
+            SentinelHelper.ArgumentNull(document);
+
+            switch (document.View)
+            {
+                case KnownDocumentView.Design:
+                    reference.PageLayoutView = true;
+                    break;
+
+                case KnownDocumentView.Print:
+                    reference.PageBreakView = true;
+                    break;
+            }
 
             return reference;
         }

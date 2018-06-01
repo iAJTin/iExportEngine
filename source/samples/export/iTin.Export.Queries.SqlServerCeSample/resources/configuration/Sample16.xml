@@ -4,17 +4,31 @@
   <Global.Resources>  
     <Hosts>
       <Host Key="xlsx">
-        <Document Orientation="Landscape" Size="A4">
+        <Document Orientation="Landscape" Size="A4" View="Design">
           <Metadata>
             <Title>Document title</Title>
             <Author>Document author</Author>
             <Company>Company</Company>
             <Comments>Document comments</Comments>
           </Metadata>
-          <Header Data="&quot;&amp;24&amp;U&amp;Inventory" Alignment="Center"/>
-          <Footer Data="Page" Alignment="Center"/>
+          <Header Data="&amp;24&amp;U&amp; Inventory" Alignment="Center">
+            <Sections>
+              <Section Data="&quot;&amp;24&amp;U&amp;Inventory" Alignment="Left" Type="Odd"/>
+              <Section Data="right" Alignment="Right" Type="Odd"/>
+              <Section Data="center" Alignment="Center" Type="Odd"/>
+            </Sections>
+          </Header>
+
+          <Footer Alignment="Center">
+            <Sections>
+              <Section Text="left" Alignment="Left"/>
+              <Section Text="right" Alignment="Right"/>
+              <Section Text="center" Alignment="Center"/>
+            </Sections>
+          </Footer>
           <Margins Bottom="20" Left="20" Right="20" Top="20"/>
-        </Document>
+        
+      </Document>
       </Host>
     </Hosts>
     <Conditions>      

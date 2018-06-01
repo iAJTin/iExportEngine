@@ -41,6 +41,11 @@ namespace iTin.Export.Model
     ///       <td align="center">Yes</td>
     ///       <td>Preferred orientation of document. The default is <see cref="F:iTin.Export.Model.KnownDocumentOrientation.Portrait" />.</td>
     ///     </tr>
+    ///     <tr>
+    ///       <td><see cref="P:iTin.Export.Model.DocumentModel.View" /></td>
+    ///       <td align="center">Normal</td>
+    ///       <td>Preferred document view. The default is <see cref="F:iTin.Export.Model.KnownDocumentView.Normal" />.</td>
+    ///     </tr>
     ///   </tbody>
     /// </table>
     /// <para><strong>Elements</strong></para>
@@ -93,6 +98,9 @@ namespace iTin.Export.Model
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const KnownDocumentView DefaultDocumentView = KnownDocumentView.Normal;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const KnownDocumentSize DefaultSize = KnownDocumentSize.A4;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -111,6 +119,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MarginsModel _margins;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private KnownDocumentView _view;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private KnownDocumentSize _size;
@@ -132,6 +143,7 @@ namespace iTin.Export.Model
         {
             Size = DefaultSize;
             Orientation = DefaultOrientation;
+            View = DefaultDocumentView;
         }
         #endregion
 
@@ -375,6 +387,21 @@ namespace iTin.Export.Model
         }
         #endregion
 
+        #region [public] (KnownDocumentView) View: Gets or sets the preferred document view.
+        [XmlAttribute]
+        [DefaultValue(DefaultDocumentView)]
+        public KnownDocumentView View
+        {
+            get => _view;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _view = value;
+            }
+        }
+        #endregion
+
         #region [public] (HostModel) Parent: Gets the parent element of the element
         /// <summary>
         /// Gets the parent element of the element.
@@ -459,31 +486,12 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-        /// <inheritdoc />
-        /// <include file="..\..\iTin.Export.Documentation.Common.xml" path="Common/Model/Public/Overrides/Properties/Property[@name='IsDefault']/*" />
-        public override bool IsDefault => Margins.IsDefault &&
-                                          Size.Equals(DefaultSize) &&
-                                          Orientation.Equals(DefaultOrientation);
-        #endregion
-
-        #endregion
-
-        #region public override methods
-
-        #region [public] {override} (string) ToString(): Returns a string that represents the current object
-        /// <summary>
-        /// Returns a string that represents the current data type.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="T:System.String" /> that represents the current object.
-        /// </returns>
-        /// <remarks>
-        /// This method <see cref="M:iTin.Export.Model.DocumentModel.ToString"/> returns a string that includes the size and orientation of document.
-        /// </remarks>
-        public override string ToString()
-        {
-            return $"Size=\"{Size}\", Orientation={Orientation}";
-        }
+        public override bool IsDefault => 
+            base.IsDefault &&
+            Margins.IsDefault &&
+            Size.Equals(DefaultSize) &&
+            Orientation.Equals(DefaultOrientation) &&
+            View.Equals(DefaultDocumentView);
         #endregion
 
         #endregion

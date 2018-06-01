@@ -5,11 +5,6 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    using Helpers;
-
-    /// <inheritdoc />
-    /// <summary>
-    /// </summary>
     public partial class DocumentHeaderModel
     {
         #region private constants
@@ -77,7 +72,6 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-
         public override bool IsDefault =>
             base.IsDefault &&
             Data.Equals(DefaultData) &&

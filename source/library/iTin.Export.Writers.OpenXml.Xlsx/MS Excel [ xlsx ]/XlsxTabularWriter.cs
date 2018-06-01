@@ -756,8 +756,12 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    #region sets document metadata
+                    #region sets document view
                     var document = Host.Document;
+                    worksheet.View.SetDocumentViewFromModel(document);
+                    #endregion
+
+                    #region sets document metadata
                     worksheet.Workbook.Properties.SetDocumentMetadataFromModel(document.Metadata);
                     #endregion
 
@@ -800,9 +804,6 @@ namespace iTin.Export.Writers.OpenXml.Office
                     worksheet.PrinterSettings.PrintArea = worksheet.Cells[printAreaRange];
                     worksheet.PrinterSettings.RepeatRows = worksheet.Cells[repeatRowsRange];
                     #endregion
-
-                    worksheet.View.PageLayoutView = true;
-                    //worksheet.View.PageBreakView = true;
 
                     #region save
                     Result.Add(excel.GetAsByteArray());
