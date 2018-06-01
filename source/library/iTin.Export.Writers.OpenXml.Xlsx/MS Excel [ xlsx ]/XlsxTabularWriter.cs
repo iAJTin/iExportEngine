@@ -465,7 +465,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                     {
                         try
                         {
-                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                            worksheet.Cells.AutoFitColumns(0); 
                         }
                         catch (Exception)
                         {
@@ -756,6 +756,16 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
+                    #region sets document metadata
+                    var document = Host.Document;
+                    worksheet.Workbook.Properties.SetDocumentMetadataFromModel(document.Metadata);
+                    #endregion
+
+                    #region sets document header/footer
+                    worksheet.HeaderFooter.SetDocumentHeaderFromModel(document.Header);
+                    worksheet.HeaderFooter.SetDocumentFooterFromModel(document.Footer);
+                    #endregion
+
                     #region sets page orientation, margins and size
                     var printAreaRangeY2 = location.Y;
                     var repeatRowsRangeY2 = printAreaRangeY2;
@@ -776,15 +786,23 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
 
                     var repeatRowsRange = $"{1}:{repeatRowsRangeY2}";
-                    var printAreaRange = ExcelCellBase.GetAddress(1, 1, printAreaRangeY2 + rowsCount, location.X + items.Count - 1, true);
+                    var printAreaRange =
+                        ExcelCellBase.GetAddress(
+                            1,
+                            1,
+                            printAreaRangeY2 + rowsCount - 1,
+                            location.X + items.Count - 1,
+                            true);
 
-                    var document = Host.Document;
                     worksheet.PrinterSettings.PaperSize = document.Size.ToEppPaperSize();
                     worksheet.PrinterSettings.Orientation = document.Orientation.ToEppOrientation();
                     worksheet.PrinterSettings.SetMarginsFromModel(document.Margins);
                     worksheet.PrinterSettings.PrintArea = worksheet.Cells[printAreaRange];
                     worksheet.PrinterSettings.RepeatRows = worksheet.Cells[repeatRowsRange];
                     #endregion
+
+                    worksheet.View.PageLayoutView = true;
+                    //worksheet.View.PageBreakView = true;
 
                     #region save
                     Result.Add(excel.GetAsByteArray());

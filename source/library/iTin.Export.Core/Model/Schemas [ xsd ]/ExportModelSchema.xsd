@@ -246,20 +246,44 @@
   <!-- Host: Document -->
   <xs:complexType name="DocumentModel" id="DocumentModel">
     <xs:all>
+      <xs:element name="Metadata" type="DocumentMetadataModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contains information related to footers.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Footer" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Contains information related to footers.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
-          <xs:attribute name="Margin" type="xs:double" use="optional">
-            <xs:annotation>
-              <xs:documentation>Specifies the distance in millimeters from the top of the page to the footer.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
           <xs:attribute name="Data" type="xs:string" use="optional">
             <xs:annotation>
               <xs:documentation>Contains the content for the footer.</xs:documentation>
             </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Alignment" use="optional" default="Center">
+            <xs:annotation>
+              <xs:documentation>Specifies the distance in millimeters from the top of the page to the header.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType id="KnownHeaderFooterAlignment">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Right">
+                  <xs:annotation>
+                    <xs:documentation>Right alignment</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="Center">
+                  <xs:annotation>
+                    <xs:documentation>Center alignment</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="Left">
+                  <xs:annotation>
+                    <xs:documentation>Left alignment</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
           </xs:attribute>
         </xs:complexType>
       </xs:element>
@@ -268,15 +292,34 @@
           <xs:documentation>Contains information related to headers.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
-          <xs:attribute name="Margin" type="xs:double" use="optional">
-            <xs:annotation>
-              <xs:documentation>Specifies the distance in millimeters from the top of the page to the header.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
           <xs:attribute name="Data" type="xs:string" use="optional">
             <xs:annotation>
               <xs:documentation>Contains the content for the header.</xs:documentation>
             </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Alignment" use="optional" default="Center">
+            <xs:annotation>
+              <xs:documentation>Specifies the distance in millimeters from the top of the page to the header.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType id="KnownHeaderFooterAlignment1">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Right">
+                  <xs:annotation>
+                    <xs:documentation>Right alignment</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="Center">
+                  <xs:annotation>
+                    <xs:documentation>Center alignment</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="Left">
+                  <xs:annotation>
+                    <xs:documentation>Left alignment</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
           </xs:attribute>
         </xs:complexType>
       </xs:element>
@@ -408,6 +451,64 @@
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
+  </xs:complexType>
+
+  <!-- Document: Metadata -->
+  <xs:complexType name="DocumentMetadataModel" id="DocumentMetadataModel">
+    <xs:all>
+      <xs:element name="Title" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document title.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Subject" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document subject.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Author" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document author.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Manager" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document manager.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Company" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document company.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document category.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Keywords" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document keywords.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Comments" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document comments.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Url" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document hyperlink base.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
   </xs:complexType>
 
   <!-- Document: Header -->

@@ -50,6 +50,10 @@ namespace iTin.Export.Model
     ///     <description>Description</description>
     ///   </listheader>
     ///   <item>
+    ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Metadata" /></term> 
+    ///     <description>Represents metadata properties of a document. Allow define metadata information (Title, Company, Url, etc...).</description>
+    ///   </item>
+    ///   <item>
     ///     <term><see cref="P:iTin.Export.Model.DocumentModel.Header" /></term> 
     ///     <description>Represents header properties of a document. Allow define margin and data.</description>
     ///   </item>
@@ -95,7 +99,10 @@ namespace iTin.Export.Model
         private const KnownDocumentOrientation DefaultOrientation = KnownDocumentOrientation.Portrait;
         #endregion
 
-        #region field members
+        #region private members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private DocumentMetadataModel _metadata;
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private DocumentFooterModel _footer;
 
@@ -131,6 +138,24 @@ namespace iTin.Export.Model
         #endregion
 
         #region public properties
+
+        #region [public] (DocumentHeaderModel) Header: Gets or sets a reference to header document configuration, it allow define margin and data
+        public DocumentMetadataModel Metadata
+        {
+            get
+            {
+                if (_metadata == null)
+                {
+                    _metadata = new DocumentMetadataModel();
+                }
+
+                _metadata.SetParent(this);
+
+                return _metadata;
+            }
+            set => _metadata = value;
+        }
+        #endregion
 
         #region [public] (DocumentHeaderModel) Header: Gets or sets a reference to header document configuration, it allow define margin and data
         /// <summary>

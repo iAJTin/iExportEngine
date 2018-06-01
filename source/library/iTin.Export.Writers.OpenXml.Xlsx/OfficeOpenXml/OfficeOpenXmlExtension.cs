@@ -271,10 +271,10 @@ namespace OfficeOpenXml
             var units = margins.Units;
             if (units == KnownUnit.Millimeters)
             {
-                settings.TopMargin = (decimal)(margins.Top / 10f / 2.54f);
-                settings.LeftMargin = (decimal)(margins.Left / 10f / 2.54f);
-                settings.RightMargin = (decimal)(margins.Right / 10f / 2.54f);
-                settings.BottomMargin = (decimal)(margins.Bottom / 10f / 2.54f);
+                settings.TopMargin = (decimal)margins.Top * 0.039370m;
+                settings.LeftMargin = (decimal)margins.Left * 0.039370m;
+                settings.RightMargin = (decimal)margins.Right * 0.039370m;
+                settings.BottomMargin = (decimal)margins.Bottom * 0.039370m;
             }
             else
             {
@@ -287,5 +287,160 @@ namespace OfficeOpenXml
             return settings;
         }
         #endregion
+
+        #region [public] {static} (OfficeProperties) SetDocumentMetadataFromModel(this OfficeProperties, DocumentMetadataModel): Sets the document metadata from model
+        /// <summary>
+        /// Sets the document metadata from model.
+        /// </summary>
+        /// <param name="properties">The document properties.</param>
+        /// <param name="metadata">Model metadata information.</param>
+        /// <returns>
+        /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document metadata.
+        /// </returns>
+        public static OfficeProperties SetDocumentMetadataFromModel(this OfficeProperties properties, DocumentMetadataModel metadata)
+        {
+            SentinelHelper.ArgumentNull(properties);
+            SentinelHelper.ArgumentNull(metadata);
+
+            if (!string.IsNullOrEmpty(metadata.Title))
+            {
+                properties.Title = metadata.Title;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Subject))
+            {
+                properties.Subject = metadata.Subject;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Author))
+            {
+                properties.Author = metadata.Author;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Manager))
+            {
+                properties.Manager = metadata.Manager;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Company))
+            {
+                properties.Company = metadata.Company;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Category))
+            {
+                properties.Category = metadata.Category;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Keywords))
+            {
+                properties.Keywords = metadata.Keywords;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Comments))
+            {
+                properties.Comments = metadata.Comments;
+            }
+
+            if (!string.IsNullOrEmpty(metadata.Url))
+            {
+                properties.HyperlinkBase = new Uri(metadata.Url);
+            }
+
+            return properties;
+        }
+        #endregion
+
+        #region [public] {static} (OfficeProperties) SetDocumentHeaderFromModel(this ExcelHeaderFooter, DocumentHeaderModel): Sets the header document from model
+        /// <summary>
+        /// Sets the header document from model.
+        /// </summary>
+        /// <param name="reference">The header document properties.</param>
+        /// <param name="header">Heder model information.</param>
+        /// <returns>
+        /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header.
+        /// </returns>
+        public static ExcelHeaderFooter SetDocumentHeaderFromModel(this ExcelHeaderFooter reference, DocumentHeaderModel header)
+        {
+            SentinelHelper.ArgumentNull(reference);
+            SentinelHelper.ArgumentNull(header);
+
+            if (string.IsNullOrEmpty(header.Data))
+            {
+                return reference;
+            }
+
+            switch (header.Alignment)
+            {
+                case KnownHeaderFooterAlignment.Right:
+                    reference.OddHeader.RightAlignedText = header.Data;
+                    break;
+
+                case KnownHeaderFooterAlignment.Left:
+                    reference.OddHeader.LeftAlignedText = header.Data;
+                    break;
+
+                default:
+                case KnownHeaderFooterAlignment.Center:
+                    reference.OddHeader.CenteredText = header.Data;
+                    break;
+            }
+
+            return reference;
+        }
+        #endregion
+
+        #region [public] {static} (OfficeProperties) SetDocumentFooterFromModel(this ExcelHeaderFooter, DocumentFooterModel):  Sets the footer document from model
+        /// <summary>
+        /// Sets the footer document from model.
+        /// </summary>
+        /// <param name="reference">The header document properties.</param>
+        /// <param name="footer">Footer model information.</param>
+        /// <returns>
+        /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header.
+        /// </returns>
+        public static ExcelHeaderFooter SetDocumentFooterFromModel(this ExcelHeaderFooter reference, DocumentFooterModel footer)
+        {
+            SentinelHelper.ArgumentNull(reference);
+            SentinelHelper.ArgumentNull(footer);
+
+            if (string.IsNullOrEmpty(footer.Data))
+            {
+                return reference;
+            }
+
+            //switch (footer.Alignment)
+            //{
+            //    case KnownHeaderFooterAlignment.Right:
+            //        reference.OddFooter.RightAlignedText = footer.Data;
+            //        break;
+
+            //    case KnownHeaderFooterAlignment.Left:
+            //        reference.OddFooter.LeftAlignedText = footer.Data;
+            //        break;
+
+            //    default:
+            //    case KnownHeaderFooterAlignment.Center:
+            //        reference.OddFooter.CenteredText = footer.Data;
+            //        break;
+            //}
+
+            return reference;
+        }
+        #endregion
     }
 }
+
+
+//// lets set the header text 
+//worksheet.HeaderFooter.OddHeader.CenteredText = "&24&U&\"Arial,Regular Bold\" Inventory";
+
+//// add the page number to the footer plus the total number of pages
+//worksheet.HeaderFooter.OddFooter.RightAlignedText = $"Page {ExcelHeaderFooter.PageNumber} of {ExcelHeaderFooter.NumberOfPages}";
+
+//// add the sheet name to the footer
+//worksheet.HeaderFooter.OddFooter.CenteredText = ExcelHeaderFooter.SheetName;
+
+//// add the file path to the footer
+//worksheet.HeaderFooter.OddFooter.LeftAlignedText = ExcelHeaderFooter.FilePath + ExcelHeaderFooter.FileName;
+

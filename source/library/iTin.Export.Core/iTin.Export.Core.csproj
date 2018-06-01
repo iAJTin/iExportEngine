@@ -112,6 +112,7 @@
     <Compile Include="ComponentModel\Patterns\StrategyPattern\IStrategy.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
+    <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterAlignment.cs" />
     <Compile Include="Model\ComponentModel\Shared\AlignmentModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>AlignmentModel.cs</DependentUpon>
@@ -407,6 +408,10 @@
     </Compile>
     <Compile Include="Model\Resources\Hosts\Host\Document\DocumentHeader\DocumentHeaderModel.designer.cs">
       <DependentUpon>DocumentHeaderModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Resources\Hosts\Host\Document\Metadata\DocumentMetadataModel.cs" />
+    <Compile Include="Model\Resources\Hosts\Host\Document\Metadata\DocumentMetadataModel.designer.cs">
+      <DependentUpon>DocumentMetadataModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Resources\Hosts\Host\HostModel.designer.cs">
       <DependentUpon>HostModel.cs</DependentUpon>

@@ -94,7 +94,7 @@ namespace iTin.Export.Model
         private const float DefaultBottom = 20f;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const KnownUnit DefaultUnits = KnownUnit.Inches;
+        private const KnownUnit DefaultUnits = KnownUnit.Millimeters;
         #endregion
 
         #region field members
@@ -463,11 +463,13 @@ namespace iTin.Export.Model
         /// <value>
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
-        public override bool IsDefault => Top.Equals(DefaultTop) &&
-                                          Right.Equals(DefaultRight) &&
-                                          Left.Equals(DefaultLeft) &&
-                                          Bottom.Equals(DefaultBottom) &&
-                                          Units.Equals(DefaultUnits);
+        public override bool IsDefault =>
+            base.IsDefault &&
+            Top.Equals(DefaultTop) &&
+            Right.Equals(DefaultRight) &&
+            Left.Equals(DefaultLeft) &&
+            Bottom.Equals(DefaultBottom) &&
+            Units.Equals(DefaultUnits);
         #endregion
 
         #endregion     

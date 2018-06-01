@@ -17,12 +17,12 @@ namespace iTin.Export.Model
         private const string DefaultData = "";
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const float DefaultMargin = 10f;
+        private const KnownHeaderFooterAlignment DefaultAlignment = KnownHeaderFooterAlignment.Center;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private float _margin;
+        private KnownHeaderFooterAlignment _alignment;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private DocumentModel _parent;
@@ -37,7 +37,7 @@ namespace iTin.Export.Model
         public DocumentHeaderModel()
         {
             Data = DefaultData;
-            Margin = DefaultMargin;
+            Alignment = DefaultAlignment;
         }
         #endregion
 
@@ -50,15 +50,13 @@ namespace iTin.Export.Model
         public string Data { get; set; }
 
         [XmlAttribute]
-        [DefaultValue(DefaultMargin)]
-        public float Margin
+        [DefaultValue(DefaultAlignment)]
+        public KnownHeaderFooterAlignment Alignment
         {
-            get => _margin;
+            get => _alignment;
             set
             {
-                SentinelHelper.IsTrue(value < 0, "El margen no puede ser menor que cero");
-
-                _margin = value;
+                _alignment = value;
             }
         }
 
@@ -79,27 +77,11 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
-        public override bool IsDefault => Data.Equals(DefaultData) && Margin.Equals(DefaultMargin);
-        #endregion
 
-        #endregion
-
-        #region public override methods
-
-        #region [public] {override} (string) ToString(): Returns a string that represents the current object
-        /// <summary>
-        /// Returns a string that represents the current data type.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="T:System.String" /> that represents the current object.
-        /// </returns>
-        /// <remarks>
-        /// This method <see cref="M:iTin.Export.Model.DocumentModel.ToString"/> returns a string that includes the size and orientation of document.
-        /// </remarks>
-        public override string ToString()
-        {
-            return $"Margin=\"{Margin}\"";
-        }
+        public override bool IsDefault =>
+            base.IsDefault &&
+            Data.Equals(DefaultData) &&
+            Alignment.Equals(DefaultAlignment);
         #endregion
 
         #endregion
