@@ -454,24 +454,24 @@
     <xs:attribute name="View" use="optional" default="Normal">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Specifies whether page view mode. The default is 'Normal'.
+          [Optional] Specifies the document view mode. The default is 'Normal'.
         </xs:documentation>
       </xs:annotation>
       <xs:simpleType id="KnownDocumentView">
         <xs:restriction base="xs:string">
           <xs:enumeration value="Normal">
             <xs:annotation>
-              <xs:documentation>Default page document view.</xs:documentation>
+              <xs:documentation>Shows the document in default mode.</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="Design">
             <xs:annotation>
-              <xs:documentation>Design page document view.</xs:documentation>
+              <xs:documentation>Shows the document in layout mode.</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="Print">
             <xs:annotation>
-              <xs:documentation>Break page document view.</xs:documentation>
+              <xs:documentation>Shows the document in print mode.</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
         </xs:restriction>

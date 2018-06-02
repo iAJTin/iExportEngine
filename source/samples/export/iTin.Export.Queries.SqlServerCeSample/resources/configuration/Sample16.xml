@@ -18,16 +18,19 @@
               <Section Data="center" Alignment="Center" Type="Odd"/>
             </Sections>
           </Header>
-
           <Footer Alignment="Center">
             <Sections>
-              <Section Text="left" Alignment="Left"/>
-              <Section Text="right" Alignment="Right"/>
-              <Section Text="center" Alignment="Center"/>
+              <Section Text="#FilePath\#FileName" Alignment="Left" Type="Odd"/>
+              <Section Text="#SheetName" Alignment="Center" Type="Odd"/>
+              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Odd"/>
+              
+              <!-- Si son iguales el type even no hace falta repetirlo -->
+              <Section Text="#FilePath\#FileName" Alignment="Left" Type="Even"/>
+              <Section Text="#SheetName" Alignment="Center" Type="Even"/>
+              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Even"/>
             </Sections>
           </Footer>
           <Margins Bottom="20" Left="20" Right="20" Top="20"/>
-        
       </Document>
       </Host>
     </Hosts>
