@@ -5,55 +5,26 @@ namespace iTin.Export.Model
     using System.Diagnostics;
     using System.Xml.Serialization;
 
-    public partial class DocumentHeaderModel
+    public partial class DocumentHeaderFooterModel
     {
-        #region private constants
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] 
-        private const string DefaultData = "";
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const KnownHeaderFooterAlignment DefaultAlignment = KnownHeaderFooterAlignment.Center;
-        #endregion
-
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownHeaderFooterAlignment _alignment;
-
+        private HeaderFooterSectionsModel _sections;
+        
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private DocumentModel _parent;
         #endregion
 
-        #region constructor/s
-
-        #region [public] DocumentHeaderModel(): Initializes a new instance of this class
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.DocumentHeaderModel"/> class.
-        /// </summary>
-        public DocumentHeaderModel()
-        {
-            Data = DefaultData;
-            Alignment = DefaultAlignment;
-        }
-        #endregion
-
-        #endregion
-
         #region public properties
 
-        [XmlAttribute]
-        [DefaultValue(DefaultData)]
-        public string Data { get; set; }
-
-        [XmlAttribute]
-        [DefaultValue(DefaultAlignment)]
-        public KnownHeaderFooterAlignment Alignment
+        #region [public] (HeaderFooterSectionsModel) Sections: Gets or sets a reference to 
+        [XmlArrayItem("Section", typeof(HeaderFooterSectionModel), IsNullable = false)]
+        public HeaderFooterSectionsModel Sections
         {
-            get => _alignment;
-            set
-            {
-                _alignment = value;
-            }
+            get => _sections ?? (_sections = new HeaderFooterSectionsModel(this));
+            set => _sections = value;
         }
+        #endregion
 
         #region [public] (DocumentModel) Parent: Gets the parent element of the element
         /// <summary>
@@ -72,10 +43,10 @@ namespace iTin.Export.Model
         #region public override properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
+
         public override bool IsDefault =>
             base.IsDefault &&
-            Data.Equals(DefaultData) &&
-            Alignment.Equals(DefaultAlignment);
+            Sections.IsDefault;
         #endregion
 
         #endregion
@@ -96,3 +67,4 @@ namespace iTin.Export.Model
         #endregion
     }
 }
+

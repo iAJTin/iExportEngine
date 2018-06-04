@@ -6,6 +6,7 @@ namespace OfficeOpenXml
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Globalization;
+    using System.Linq;
     using System.Text;
 
     using iTin.Export.ComponentModel;
@@ -351,81 +352,60 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [public] {static} (OfficeProperties) SetDocumentHeaderFromModel(this ExcelHeaderFooter, DocumentHeaderModel): Sets the header document from model
+        #region [public] {static} (OfficeProperties) SetDocumentHeaderFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
         /// <summary>
         /// Sets the header document from model.
         /// </summary>
         /// <param name="reference">The header document properties.</param>
-        /// <param name="header">Heder model information.</param>
+        /// <param name="header">Header or footer model information.</param>
         /// <returns>
         /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header.
         /// </returns>
-        public static ExcelHeaderFooter SetDocumentHeaderFromModel(this ExcelHeaderFooter reference, DocumentHeaderModel header)
+        public static ExcelHeaderFooter SetDocumentHeaderFromModel(this ExcelHeaderFooter reference, DocumentHeaderFooterModel header)
         {
             SentinelHelper.ArgumentNull(reference);
             SentinelHelper.ArgumentNull(header);
 
-            if (string.IsNullOrEmpty(header.Data))
+            bool hasSections = header.Sections.Any();
+            if (!hasSections)
             {
                 return reference;
             }
 
-            switch (header.Alignment)
+            var sections = header.Sections;
+            foreach (var section in sections)
             {
-                case KnownHeaderFooterAlignment.Right:
-                    reference.OddHeader.RightAlignedText = header.Data;
-                    break;
-
-                case KnownHeaderFooterAlignment.Left:
-                    reference.OddHeader.LeftAlignedText = header.Data;
-                    break;
-
-                default:
-                case KnownHeaderFooterAlignment.Center:
-                    reference.OddHeader.CenteredText = header.Data;
-                    break;
+                SetDocumentHeaderSectionFromModel(reference, section);
             }
 
             return reference;
         }
         #endregion
 
-        #region [public] {static} (ExcelHeaderFooter) SetDocumentFooterFromModel(this ExcelHeaderFooter, DocumentFooterModel):  Sets the footer document from model
+        #region [public] {static} (OfficeProperties) SetDocumentFooterFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
         /// <summary>
-        /// Sets the footer document from model.
+        /// Sets the header document from model.
         /// </summary>
         /// <param name="reference">The header document properties.</param>
-        /// <param name="footer">Footer model information.</param>
+        /// <param name="footer">Header or footer model information.</param>
         /// <returns>
         /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header.
         /// </returns>
-        public static ExcelHeaderFooter SetDocumentFooterFromModel(this ExcelHeaderFooter reference, DocumentFooterModel footer)
+        public static ExcelHeaderFooter SetDocumentFooterFromModel(this ExcelHeaderFooter reference, DocumentHeaderFooterModel footer)
         {
             SentinelHelper.ArgumentNull(reference);
             SentinelHelper.ArgumentNull(footer);
 
-            if (string.IsNullOrEmpty(footer.Data))
+            bool hasSections = footer.Sections.Any();
+            if (!hasSections)
             {
-                //reference.OddFooter.CenteredText = $"Page {ExcelHeaderFooter.PageNumber} of {ExcelHeaderFooter.NumberOfPages}";
-                //reference.OddHeader.CenteredText = "&24&U&\"Arial,Regular Bold\" Inventory";
                 return reference;
-
             }
 
-            switch (footer.Alignment)
+            var sections = footer.Sections;
+            foreach (var section in sections)
             {
-                case KnownHeaderFooterAlignment.Right:
-                    reference.OddFooter.RightAlignedText = footer.Data;
-                    break;
-
-                case KnownHeaderFooterAlignment.Left:
-                    reference.OddFooter.LeftAlignedText = footer.Data;
-                    break;
-
-                default:
-                case KnownHeaderFooterAlignment.Center:
-                    reference.OddFooter.CenteredText = footer.Data;
-                    break;
+                SetDocumentFooterSectionFromModel(reference, section);
             }
 
             return reference;
@@ -460,19 +440,94 @@ namespace OfficeOpenXml
             return reference;
         }
         #endregion
+
+
+        #region [private] {static} (OfficeProperties) SetDocumentHeaderSectionFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
+        /// <summary>
+        /// Sets the document header section from model.
+        /// </summary>
+        /// <param name="reference">The header or footer document properties.</param>
+        /// <param name="section">Footer section model information.</param>
+        /// <returns>
+        /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header section.
+        /// </returns>
+        public static ExcelHeaderFooter SetDocumentHeaderSectionFromModel(this ExcelHeaderFooter reference, HeaderFooterSectionModel section)
+        {
+            SentinelHelper.ArgumentNull(reference);
+            SentinelHelper.ArgumentNull(section);
+
+            if (string.IsNullOrEmpty(section.Text))
+            {
+                return reference;
+            }
+
+            ExcelHeaderFooterText header =
+                section.Type == KnownHeaderFooterSectionType.Odd
+                    ? reference.OddHeader
+                    : reference.EvenHeader;
+
+            switch (section.Alignment)
+            {
+                case KnownHeaderFooterAlignment.Right:
+                    header.RightAlignedText = section.Text;
+                    break;
+
+                case KnownHeaderFooterAlignment.Left:
+                    header.RightAlignedText = section.Text;
+                    break;
+
+                default:
+                case KnownHeaderFooterAlignment.Center:
+                    header.CenteredText = section.Text;
+                    break;
+            }
+
+            return reference;
+        }
+        #endregion
+
+        #region [private] {static} (OfficeProperties) SetDocumentFooterSectionFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
+        /// <summary>
+        /// Sets the document footer section from model.
+        /// </summary>
+        /// <param name="reference">The header or footer document properties.</param>
+        /// <param name="section">Fotter section model information.</param>
+        /// <returns>
+        /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document footer section.
+        /// </returns>
+        public static ExcelHeaderFooter SetDocumentFooterSectionFromModel(this ExcelHeaderFooter reference, HeaderFooterSectionModel section)
+        {
+            SentinelHelper.ArgumentNull(reference);
+            SentinelHelper.ArgumentNull(section);
+
+            if (string.IsNullOrEmpty(section.Text))
+            {
+                return reference;
+            }
+
+            ExcelHeaderFooterText footer = 
+                section.Type == KnownHeaderFooterSectionType.Odd
+                    ? reference.OddFooter
+                    : reference.EvenFooter;
+
+            switch (section.Alignment)
+            {
+                case KnownHeaderFooterAlignment.Right:
+                    footer.RightAlignedText = section.Text;
+                    break;
+
+                case KnownHeaderFooterAlignment.Left:
+                    footer.RightAlignedText = section.Text;
+                    break;
+
+                default:
+                case KnownHeaderFooterAlignment.Center:
+                    footer.CenteredText = section.Text;
+                    break;
+            }
+
+            return reference;
+        }
+        #endregion
     }
 }
-
-
-//// lets set the header text 
-//worksheet.HeaderFooter.OddHeader.CenteredText = "&24&U&\"Arial,Regular Bold\" Inventory";
-
-//// add the page number to the footer plus the total number of pages
-//worksheet.HeaderFooter.OddFooter.RightAlignedText = $"Page {ExcelHeaderFooter.PageNumber} of {ExcelHeaderFooter.NumberOfPages}";
-
-//// add the sheet name to the footer
-//worksheet.HeaderFooter.OddFooter.CenteredText = ExcelHeaderFooter.SheetName;
-
-//// add the file path to the footer
-//worksheet.HeaderFooter.OddFooter.LeftAlignedText = ExcelHeaderFooter.FilePath + ExcelHeaderFooter.FileName;
-

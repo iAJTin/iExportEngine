@@ -251,77 +251,15 @@
           <xs:documentation>Contains information related to footers.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Footer" minOccurs="0">
+      <xs:element name="Footer" type="DocumentHeaderFooterModel" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Contains information related to footers.</xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-          <xs:attribute name="Data" type="xs:string" use="optional">
-            <xs:annotation>
-              <xs:documentation>Contains the content for the footer.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Alignment" use="optional" default="Center">
-            <xs:annotation>
-              <xs:documentation>Specifies the distance in millimeters from the top of the page to the header.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType id="KnownHeaderFooterAlignment">
-              <xs:restriction base="xs:string">
-                <xs:enumeration value="Right">
-                  <xs:annotation>
-                    <xs:documentation>Right alignment</xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="Center">
-                  <xs:annotation>
-                    <xs:documentation>Center alignment</xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="Left">
-                  <xs:annotation>
-                    <xs:documentation>Left alignment</xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:attribute>
-        </xs:complexType>
       </xs:element>
-      <xs:element name="Header" minOccurs="0">
+      <xs:element name="Header" type="DocumentHeaderFooterModel" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Contains information related to headers.</xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-          <xs:attribute name="Data" type="xs:string" use="optional">
-            <xs:annotation>
-              <xs:documentation>Contains the content for the header.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="Alignment" use="optional" default="Center">
-            <xs:annotation>
-              <xs:documentation>Specifies the distance in millimeters from the top of the page to the header.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType id="KnownHeaderFooterAlignment1">
-              <xs:restriction base="xs:string">
-                <xs:enumeration value="Right">
-                  <xs:annotation>
-                    <xs:documentation>Right alignment</xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="Center">
-                  <xs:annotation>
-                    <xs:documentation>Center alignment</xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="Left">
-                  <xs:annotation>
-                    <xs:documentation>Left alignment</xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:attribute>
-        </xs:complexType>
       </xs:element>
       <xs:element name="Margins" type="MarginsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
@@ -478,6 +416,102 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
+
+  <!-- Document: HeaderFooter -->
+  <xs:complexType name="DocumentHeaderFooterModel" id="DocumentHeaderFooterModel">
+    <xs:all>
+      <xs:element name="Sections" type="HeaderFooterSectionsModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contains information related to headers or footer sections.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <!-- HeaderFooter: Sections -->
+  <xs:complexType name="HeaderFooterSectionsModel" id="HeaderFooterSectionsModel">
+    <xs:sequence>
+      <xs:element name="Section" type="HeaderFooterSectionModel" minOccurs="1" maxOccurs="6">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Contains a
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Sections: Section -->
+  <xs:complexType name="HeaderFooterSectionModel" id="HeaderFooterSectionModel">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Text" type="xs:string" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Section text The default is an empty string ("").
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Alignment" use="optional" default="Center">
+      <xs:annotation>
+        <xs:documentation>[Optional] Specifies ... The default is 'Center'.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType id="KnownHeaderFooterAlignment2">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Right">
+            <xs:annotation>
+              <xs:documentation>Right alignment</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Center">
+            <xs:annotation>
+              <xs:documentation>Center alignment</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Left">
+            <xs:annotation>
+              <xs:documentation>Left alignment</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Type" use="optional" default="Odd">
+      <xs:annotation>
+        <xs:documentation>Specifies ... The default is 'Odd'.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType id="KnownHeaderFooterSectionType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Odd">
+            <xs:annotation>
+              <xs:documentation>Odd</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Even">
+            <xs:annotation>
+              <xs:documentation>Even</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
 
   <!-- Document: Metadata -->
   <xs:complexType name="DocumentMetadataModel" id="DocumentMetadataModel">

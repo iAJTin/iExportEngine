@@ -112,10 +112,10 @@ namespace iTin.Export.Model
         private DocumentMetadataModel _metadata;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DocumentFooterModel _footer;
+        private DocumentHeaderFooterModel _footer;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DocumentHeaderModel _header;
+        private DocumentHeaderFooterModel _header;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MarginsModel _margins;
@@ -151,7 +151,7 @@ namespace iTin.Export.Model
 
         #region public properties
 
-        #region [public] (DocumentHeaderModel) Header: Gets or sets a reference to header document configuration, it allow define margin and data
+        #region [public] (DocumentHeaderModel) Metadata: Gets or sets a reference to 
         public DocumentMetadataModel Metadata
         {
             get
@@ -169,7 +169,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (DocumentHeaderModel) Header: Gets or sets a reference to header document configuration, it allow define margin and data
+        #region [public] (DocumentHeaderFooterModel) Header: Gets or sets a reference to header document configuration, it allow define margin and data
         /// <summary>
         /// Gets or sets a reference to header document configuration, it allow define margin and data.
         /// </summary>
@@ -206,13 +206,13 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        public DocumentHeaderModel Header
+        public DocumentHeaderFooterModel Header
         {
             get
             {
                 if (_header == null)
                 {
-                    _header = new DocumentHeaderModel();
+                    _header = new DocumentHeaderFooterModel();
                 }
 
                 _header.SetParent(this);
@@ -223,7 +223,7 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (DocumentFooterModel) Footer: Gets or sets a reference to footer document configuration, it allow define margin and data
+        #region [public] (DocumentHeaderFooterModel) Footer: Gets or sets a reference to footer document configuration, it allow define margin and data
         /// <summary>
         /// Gets or sets a reference to footer document configuration, it allow define margin and data.
         /// </summary>
@@ -260,13 +260,13 @@ namespace iTin.Export.Model
         /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
         /// </para>
         /// </remarks>
-        public DocumentFooterModel Footer
+        public DocumentHeaderFooterModel Footer
         {
             get
             {
                 if (_footer == null)
                 {
-                    _footer = new DocumentFooterModel();
+                    _footer = new DocumentHeaderFooterModel();
                 }
 
                 _footer.SetParent(this);

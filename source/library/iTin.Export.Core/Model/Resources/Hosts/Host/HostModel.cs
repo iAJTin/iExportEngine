@@ -53,7 +53,7 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class HostModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private HostsModel _owner;
 

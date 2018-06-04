@@ -11,23 +11,28 @@
             <Company>Company</Company>
             <Comments>Document comments</Comments>
           </Metadata>
-          <Header Data="&amp;24&amp;U&amp; Inventory" Alignment="Center">
+          <Header>
             <Sections>
-              <Section Data="&quot;&amp;24&amp;U&amp;Inventory" Alignment="Left" Type="Odd"/>
-              <Section Data="right" Alignment="Right" Type="Odd"/>
-              <Section Data="center" Alignment="Center" Type="Odd"/>
-            </Sections>
-          </Header>
-          <Footer Alignment="Center">
-            <Sections>
-              <Section Text="#FilePath\#FileName" Alignment="Left" Type="Odd"/>
-              <Section Text="#SheetName" Alignment="Center" Type="Odd"/>
               <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Odd"/>
-              
-              <!-- Si son iguales el type even no hace falta repetirlo -->
+              <!-- <Section Text="#FilePath\#FileName" Alignment="Left" Type="Odd"/>
+              <Section Text="#SheetName" Alignment="Center" Type="Odd"/>
+ 
+              Si son iguales el type even no hace falta repetirlo 
               <Section Text="#FilePath\#FileName" Alignment="Left" Type="Even"/>
               <Section Text="#SheetName" Alignment="Center" Type="Even"/>
-              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Even"/>
+              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Even"/>-->
+            </Sections>
+          </Header>
+          <Footer>
+            <Sections>
+              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Odd"/>
+              <!--<Section Text="#FilePath\#FileName" Alignment="Left" Type="Odd"/>
+              <Section Text="#SheetName" Alignment="Center" Type="Odd"/>
+              
+               Si son iguales el type even no hace falta repetirlo 
+              <Section Text="#FilePath\#FileName" Alignment="Left" Type="Even"/>
+              <Section Text="#SheetName" Alignment="Center" Type="Even"/>
+              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Even"/>-->
             </Sections>
           </Footer>
           <Margins Bottom="20" Left="20" Right="20" Top="20"/>

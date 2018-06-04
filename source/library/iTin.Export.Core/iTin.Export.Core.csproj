@@ -112,6 +112,7 @@
     <Compile Include="ComponentModel\Patterns\StrategyPattern\IStrategy.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
+    <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterSectionType.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownDocumentView.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterAlignment.cs" />
     <Compile Include="Model\ComponentModel\Shared\AlignmentModel.designer.cs">
@@ -401,14 +402,19 @@
     <Compile Include="Model\Resources\Hosts\HostsModel.designer.cs">
       <DependentUpon>HostsModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Resources\Hosts\Host\Document\HeaderFooter\HeaderFooterSections\HeaderFooterSectionsModel.cs" />
     <Compile Include="Model\Resources\Hosts\Host\Document\DocumentModel.designer.cs">
       <DependentUpon>DocumentModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Resources\Hosts\Host\Document\DocumentFooter\DocumentFooterModel.designer.cs">
-      <DependentUpon>DocumentFooterModel.cs</DependentUpon>
+    <Compile Include="Model\Resources\Hosts\Host\Document\HeaderFooter\DocumentHeaderFooterModel.designer.cs">
+      <DependentUpon>DocumentHeaderFooterModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Resources\Hosts\Host\Document\DocumentHeader\DocumentHeaderModel.designer.cs">
-      <DependentUpon>DocumentHeaderModel.cs</DependentUpon>
+    <Compile Include="Model\Resources\Hosts\Host\Document\HeaderFooter\HeaderFooterSections\HeaderFooterSectionsModel.designer.cs">
+      <DependentUpon>HeaderFooterSectionsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Resources\Hosts\Host\Document\HeaderFooter\HeaderFooterSections\HeaderFooterSection\HeaderFooterSectionModel.cs" />
+    <Compile Include="Model\Resources\Hosts\Host\Document\HeaderFooter\HeaderFooterSections\HeaderFooterSection\HeaderFooterSectionModel.designer.cs">
+      <DependentUpon>HeaderFooterSectionModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Resources\Hosts\Host\Document\Metadata\DocumentMetadataModel.cs" />
     <Compile Include="Model\Resources\Hosts\Host\Document\Metadata\DocumentMetadataModel.designer.cs">
@@ -757,8 +763,7 @@
     <Compile Include="Model\Resources\Lines\Line\TextLine\TextLineModel.cs" />
     <Compile Include="Model\Resources\Lines\Line\EmptyLine\EmptyLineModel.cs" />
     <Compile Include="Model\Export\Table\Headers\Header\ColumnHeader.cs" />
-    <Compile Include="Model\Resources\Hosts\Host\Document\DocumentHeader\DocumentHeaderModel.cs" />
-    <Compile Include="Model\Resources\Hosts\Host\Document\DocumentFooter\DocumentFooterModel.cs" />
+    <Compile Include="Model\Resources\Hosts\Host\Document\HeaderFooter\DocumentHeaderFooterModel.cs" />
     <Compile Include="Model\Resources\Lines\LinesModel.cs" />
     <Compile Include="Model\Resources\Styles\Style\Borders\BordersModel.cs" />
     <Compile Include="Model\Resources\Styles\Style\Borders\Border\BorderModel.cs" />
