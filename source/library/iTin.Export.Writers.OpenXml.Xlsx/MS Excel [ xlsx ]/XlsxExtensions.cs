@@ -1,6 +1,4 @@
 ﻿
-using OfficeOpenXml.Sparkline;
-
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System.Diagnostics.CodeAnalysis;
@@ -10,6 +8,7 @@ namespace iTin.Export.Writers.OpenXml.Office
     using OfficeOpenXml;
     using OfficeOpenXml.Drawing;
     using OfficeOpenXml.Drawing.Chart;
+    using OfficeOpenXml.Sparkline;
 
     using Helpers;
     using Model;

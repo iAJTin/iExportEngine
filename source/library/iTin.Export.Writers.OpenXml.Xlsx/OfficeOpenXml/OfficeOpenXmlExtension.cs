@@ -21,6 +21,8 @@ namespace OfficeOpenXml
     /// </summary>
     static class OfficeOpenXmlExtension
     {
+        #region public methods
+
         #region [public] {static} (void) AddErrorComment(this OfficeOpenXml.ExcelRangeBase, FieldValueInformation): Writes a error comment for specified cell
         /// <summary>
         /// Writes a error comment for specified cell.
@@ -86,20 +88,21 @@ namespace OfficeOpenXml
                 return;
             }
 
-            Image image;
-            var found = model.Image.TryGetImage(out image);
+            var found = model.Image.TryGetImage(out var image);
             if (!found)
             {
                 return;
             }
 
-            var logoWidth = model.LogoSize.Width == -1
-                                    ? image.Width
-                                    : model.LogoSize.Width;
+            var logoWidth = 
+                model.LogoSize.Width == -1
+                    ? image.Width
+                    : model.LogoSize.Width;
 
-            var logoHeight = model.LogoSize.Height == -1
-                                    ? image.Height
-                                    : model.LogoSize.Height;
+            var logoHeight =
+                model.LogoSize.Height == -1
+                    ? image.Height
+                    : model.LogoSize.Height;
 
             var logoNameBuilder = new StringBuilder();
             var coordenates = (CoordenatesModel)logoPosition.Mode;
@@ -113,7 +116,11 @@ namespace OfficeOpenXml
             var logo = worksheet.Drawings.AddPicture(logoNameBuilder.ToString(), image);
             logo.Locked = true;
             logo.SetSize(logoWidth, logoHeight);
-            logo.SetPosition(coordenates.TableCoordenates.Y - 1, 0, coordenates.TableCoordenates.X - 1, 0);
+            logo.SetPosition(
+                coordenates.TableCoordenates.Y - 1,
+                0, 
+                coordenates.TableCoordenates.X - 1,
+                0);
         }
         #endregion
 
@@ -441,8 +448,11 @@ namespace OfficeOpenXml
         }
         #endregion
 
+        #endregion
 
-        #region [private] {static} (OfficeProperties) SetDocumentHeaderSectionFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
+        #region private methods
+
+        #region [private] {static} (ExcelHeaderFooter) SetDocumentHeaderSectionFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
         /// <summary>
         /// Sets the document header section from model.
         /// </summary>
@@ -451,7 +461,7 @@ namespace OfficeOpenXml
         /// <returns>
         /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document header section.
         /// </returns>
-        public static ExcelHeaderFooter SetDocumentHeaderSectionFromModel(this ExcelHeaderFooter reference, HeaderFooterSectionModel section)
+        private static ExcelHeaderFooter SetDocumentHeaderSectionFromModel(this ExcelHeaderFooter reference, HeaderFooterSectionModel section)
         {
             SentinelHelper.ArgumentNull(reference);
             SentinelHelper.ArgumentNull(section);
@@ -461,24 +471,26 @@ namespace OfficeOpenXml
                 return reference;
             }
 
-            ExcelHeaderFooterText header =
+            var header =
                 section.Type == KnownHeaderFooterSectionType.Odd
                     ? reference.OddHeader
                     : reference.EvenHeader;
 
+            var parsedText = OfficeOpenXmlHelper.GetHeaderFooterParsedText(section.Text);
+
             switch (section.Alignment)
             {
                 case KnownHeaderFooterAlignment.Right:
-                    header.RightAlignedText = section.Text;
+                    header.RightAlignedText = parsedText;
                     break;
 
                 case KnownHeaderFooterAlignment.Left:
-                    header.RightAlignedText = section.Text;
+                    header.LeftAlignedText = parsedText;
                     break;
 
                 default:
                 case KnownHeaderFooterAlignment.Center:
-                    header.CenteredText = section.Text;
+                    header.CenteredText = parsedText;
                     break;
             }
 
@@ -486,7 +498,7 @@ namespace OfficeOpenXml
         }
         #endregion
 
-        #region [private] {static} (OfficeProperties) SetDocumentFooterSectionFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
+        #region [private] {static} (ExcelHeaderFooter) SetDocumentFooterSectionFromModel(this ExcelHeaderFooter, DocumentHeaderFooterModel): Sets the header document from model
         /// <summary>
         /// Sets the document footer section from model.
         /// </summary>
@@ -495,7 +507,7 @@ namespace OfficeOpenXml
         /// <returns>
         /// An <see cref="T:OfficeOpenXml.OfficeProperties"/> reference which contains the document footer section.
         /// </returns>
-        public static ExcelHeaderFooter SetDocumentFooterSectionFromModel(this ExcelHeaderFooter reference, HeaderFooterSectionModel section)
+        private static ExcelHeaderFooter SetDocumentFooterSectionFromModel(this ExcelHeaderFooter reference, HeaderFooterSectionModel section)
         {
             SentinelHelper.ArgumentNull(reference);
             SentinelHelper.ArgumentNull(section);
@@ -505,29 +517,33 @@ namespace OfficeOpenXml
                 return reference;
             }
 
-            ExcelHeaderFooterText footer = 
+            var footer = 
                 section.Type == KnownHeaderFooterSectionType.Odd
                     ? reference.OddFooter
                     : reference.EvenFooter;
 
+            var parsedText = OfficeOpenXmlHelper.GetHeaderFooterParsedText(section.Text);
+
             switch (section.Alignment)
             {
                 case KnownHeaderFooterAlignment.Right:
-                    footer.RightAlignedText = section.Text;
+                    footer.RightAlignedText = parsedText;
                     break;
 
                 case KnownHeaderFooterAlignment.Left:
-                    footer.RightAlignedText = section.Text;
+                    footer.LeftAlignedText = parsedText;
                     break;
 
                 default:
                 case KnownHeaderFooterAlignment.Center:
-                    footer.CenteredText = section.Text;
+                    footer.CenteredText = parsedText;
                     break;
             }
 
             return reference;
         }
+        #endregion
+
         #endregion
     }
 }

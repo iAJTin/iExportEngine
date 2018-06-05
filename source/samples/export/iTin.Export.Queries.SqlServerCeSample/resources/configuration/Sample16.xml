@@ -4,7 +4,7 @@
   <Global.Resources>  
     <Hosts>
       <Host Key="xlsx">
-        <Document Orientation="Landscape" Size="A4" View="Design">
+        <Document Orientation="Landscape" Size="A4" View="Normal">
           <Metadata>
             <Title>Document title</Title>
             <Author>Document author</Author>
@@ -13,19 +13,19 @@
           </Metadata>
           <Header>
             <Sections>
-              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Odd"/>
-              <!-- <Section Text="#FilePath\#FileName" Alignment="Left" Type="Odd"/>
-              <Section Text="#SheetName" Alignment="Center" Type="Odd"/>
+              <Section Text="@FileName" Alignment="Left" Type="Odd"/>
+              <Section Text="@SheetName" Alignment="Center" Type="Odd"/>
+              <Section Text="Page @PageNumber / @NumberOfPages" Alignment="Right" Type="Odd"/>
  
-              Si son iguales el type even no hace falta repetirlo 
+              <!-- Si son iguales el type even no hace falta repetirlo 
               <Section Text="#FilePath\#FileName" Alignment="Left" Type="Even"/>
               <Section Text="#SheetName" Alignment="Center" Type="Even"/>
-              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Even"/>-->
+              <Section Text="@SheetName" Alignment="Right" Type="Even"/>-->
             </Sections>
           </Header>
           <Footer>
             <Sections>
-              <Section Text="Page #PageNumber - #NumberOfPages" Alignment="Right" Type="Odd"/>
+              <Section Text="Page @PageNumber - @NumberOfPages" Alignment="Right" Type="Odd"/>
               <!--<Section Text="#FilePath\#FileName" Alignment="Left" Type="Odd"/>
               <Section Text="#SheetName" Alignment="Center" Type="Odd"/>
               

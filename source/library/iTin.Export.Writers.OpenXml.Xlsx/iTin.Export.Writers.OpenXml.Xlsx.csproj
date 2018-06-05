@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="OfficeOpenXml\Enums\KnownHeaderFooterConstants.cs" />
     <Compile Include="MS Excel [ xlsx ]\XlsxTabularWriter.cs" />
     <Compile Include="OfficeOpenXml\Drawing\Chart\ChartExtensions.cs" />
     <Compile Include="OfficeOpenXml\Drawing\Chart\ChartHelper.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="OfficeOpenXml\Drawing\Chart\KnownChartElement.cs" />
     <Compile Include="OfficeOpenXml\Drawing\Chart\Xml\ChartXmlExtensions.cs" />
     <Compile Include="OfficeOpenXml\Drawing\DrawingExtensions.cs" />
+    <Compile Include="OfficeOpenXml\OfficeOpenXmlHelper.cs" />
     <Compile Include="OfficeOpenXml\OfficeOpenXmlExtension.cs" />
     <Compile Include="OfficeOpenXml\Style\StyleExtensions.cs" />
     <Compile Include="OfficeOpenXml\Utils\iTin\ChartXmlHelper.cs" />
