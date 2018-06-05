@@ -20,6 +20,14 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- FreezePanesAttribute: Freeze panes -->
+  <xs:simpleType name="FreezePanesAttribute" id="FreezePanesAttribute">
+    <xs:restriction base="integerArrayWhereMinValueIsOneType">
+      <xs:length value="2" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- NormalSizeAttribute: Normal size attribute, each element is greater or equal to 1 -->
   <xs:simpleType name="NormalSizeAttribute" id="NormalSizeAttribute">
     <xs:restriction base="integerArrayWhereMinValueIsOneType">

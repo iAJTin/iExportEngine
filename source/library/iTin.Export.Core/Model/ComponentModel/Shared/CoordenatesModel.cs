@@ -10,14 +10,13 @@ namespace iTin.Export.Model
 
     using Helpers;
 
-    /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Coordenates/Class[@name="info"]/*'/>
     public partial class CoordenatesModel : ICloneable
     {
         #region private static readonly
         private static readonly int[] DefaultCoordenates = { 1, 1 };
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private int[] _coordenates;
         #endregion

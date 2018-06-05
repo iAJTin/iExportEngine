@@ -118,6 +118,11 @@
         <Font Name="Calibri" Color="White" Size="11" Bold="Yes"/>
       </Style>
     </Styles>
+    <Shapes>
+      <Shape>
+
+      </Shape>
+    </Shapes>
   </Global.Resources>
 
   <Export Name="sample16" Current="Yes">
@@ -127,7 +132,8 @@
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="SEKRates" 
-           Filter="AudFilter">      
+           Filter="AudFilter"
+           FreezePanes="2 2">      
       <Conditions Keys="MaximumMYR"/>
       <Exporter>            
         <Writer Name="XlsxTabularWriter"/>

@@ -810,6 +810,19 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                     #endregion
 
+                    #region add freeze panes
+                    worksheet.View.FreezePanes(Table.FreezePanesPoint.Y, Table.FreezePanesPoint.X);
+                    #endregion
+
+                    //This set the outline for column 4 and 5 and hide them
+                    //worksheet.Column(4).OutlineLevel = 1;
+                    //worksheet.Column(4).Collapsed = true;
+
+                    //worksheet.Column(5).OutlineLevel = 2;
+                    //worksheet.Column(5).Collapsed = true;
+                    //worksheet.OutLineSummaryRight = true;
+
+
                     #region save
                     Result.Add(excel.GetAsByteArray());
                     #endregion

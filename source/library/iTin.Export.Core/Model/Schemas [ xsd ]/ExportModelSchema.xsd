@@ -1515,6 +1515,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="FreezePanes" type="FreezePanesAttribute" use="optional" default="1 1">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Allows freezes the columns/rows to left and above the cell. The default is (1 1).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- Table: Logo -->

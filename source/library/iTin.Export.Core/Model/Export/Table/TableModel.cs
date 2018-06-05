@@ -1,6 +1,7 @@
 ﻿
 namespace iTin.Export.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics;
@@ -34,7 +35,14 @@ namespace iTin.Export.Model
         private const YesNo DefaultShowColumnHeaders = YesNo.Yes;
         #endregion
 
+        #region private static readonly
+        private static readonly int[] DefaultFreezePanes = { 1, 1 };
+        #endregion
+
         #region private members
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private int[] _freezePanes;
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _autoFilter;
 
@@ -84,12 +92,12 @@ namespace iTin.Export.Model
         #region constructor/s
 
         #region [public] TableModel(): Initializes a new instance of this class
-        /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Table/Public/Constructors/Constructor[@name="ctor1"]/*'/>
         public TableModel()
         {
             Host = DefaultHost;
             Alias = DefaultAlias;
             AutoFilter = DefaultAutoFilter;
+            FreezePanes = DefaultFreezePanes;
             ShowGridLines = DefaultShowGridLines;
             AutoFitColumns = DefaultAutoFitColumns;
             ShowColumnHeaders = DefaultShowColumnHeaders;
@@ -165,6 +173,34 @@ namespace iTin.Export.Model
         #region [public] (string) Filter: Gets or sets the data filter to apply.
         [XmlAttribute]
         public string Filter { get; set; }
+        #endregion
+
+        #region [public] (int[]) FreezePanes: Gets or sets an array of integers that represent the freeze panes coordenates
+        [XmlAttribute]
+        [CLSCompliant(false)]
+        [DefaultValue(new[] { 1, 1 })]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        public int[] FreezePanes
+        {
+            get => _freezePanes ?? (_freezePanes = DefaultFreezePanes);
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                SentinelHelper.IsTrue(value.Length > 2, "Máximo 2 valores");
+                SentinelHelper.IsTrue(value[0] < 0, "La coordenada horizontal no puede ser menor que cero");
+                SentinelHelper.IsTrue(value[1] < 0, "La coordenada vertical no puede ser menor que cero");
+
+                _freezePanes = value;
+            }
+        }
+        #endregion
+
+        #region [public] (Point) FreezePanesPoint: Gets freeze panes as point
+        public Point FreezePanesPoint => new Point(FreezePanes[0], FreezePanes[1]);
         #endregion
 
         #region [public] (YesNo) ShowGridLines: Gets or sets a value indicating whether show grid lines
