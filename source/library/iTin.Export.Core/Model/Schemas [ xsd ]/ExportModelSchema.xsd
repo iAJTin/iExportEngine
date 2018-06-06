@@ -165,6 +165,22 @@
 
   <!-- Headers: Header -->
   <xs:complexType name="ColumnHeader" id="ColumnHeader">
+    <xs:all>
+      <xs:element name="Group" type="ColumnHeaderGroup" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines group column behavior.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
     <xs:attribute name="From" type="xs:string" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
@@ -202,6 +218,39 @@
     </xs:attribute>
   </xs:complexType>
 
+  <!-- Header: Group -->
+  <xs:complexType name="ColumnHeaderGroup" id="ColumnHeaderGroup">
+    <xs:all>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Collapsed" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Indicates whether group its show as collapsed. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Level" type="xs:nonNegativeInteger" use="optional" default="1">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Defines the depth level of the group. The default is '1'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Show" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether displays the column group. The default 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
 
   <!-- Resources: Hosts -->
   <xs:complexType name="HostsModel" id="HostsModel">

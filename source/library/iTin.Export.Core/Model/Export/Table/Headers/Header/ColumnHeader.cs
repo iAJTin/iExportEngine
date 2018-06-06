@@ -21,7 +21,7 @@ namespace iTin.Export.Model
         private const string DefaultStyle = "Default";
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _from;
 
@@ -36,6 +36,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private ColumnHeaderGroup _group;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ColumnHeadersModel _owner;
@@ -108,6 +111,26 @@ namespace iTin.Export.Model
         {
             get => _text;
             set => _text = value;
+        }
+        #endregion
+
+        #region [public] (ColumnHeaderGroup) Group: Gets the group header information
+        [XmlElement]
+        public ColumnHeaderGroup Group
+        {
+            get
+            {
+                if (_group != null)
+                {
+                    return _group;
+                }
+
+                _group = new ColumnHeaderGroup();
+                _group.SetParent(this);
+
+                return _group;
+            }
+            set => _group = value;
         }
         #endregion
 

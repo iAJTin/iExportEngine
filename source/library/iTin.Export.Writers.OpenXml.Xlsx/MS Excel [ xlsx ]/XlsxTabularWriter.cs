@@ -214,6 +214,8 @@ namespace iTin.Export.Writers.OpenXml.Office
                             cell.StyleName = columnHeader.Style ?? StyleModel.NameOfDefaultStyle;
                             cell.Merge = columnHeader.Show == YesNo.Yes;
                             cell.Value = columnHeader.Show == YesNo.Yes ? columnHeader.Text : string.Empty;
+
+                            worksheet.AddColumnGroupFromModel(columnHeader);                            
                         }
                     }
                     #endregion
@@ -231,7 +233,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                         var header = field.Header;
                         var column = items.IndexOf(field);
 
-                        var cell = worksheet.Cells[y, x + column];
+                        var cell = worksheet.Cells[y, x + column];                        
                         cell.Value = field.Alias;
                         cell.StyleName = header.Style ?? StyleModel.NameOfDefaultStyle;
                     }
@@ -821,7 +823,6 @@ namespace iTin.Export.Writers.OpenXml.Office
                     //worksheet.Column(5).OutlineLevel = 2;
                     //worksheet.Column(5).Collapsed = true;
                     //worksheet.OutLineSummaryRight = true;
-
 
                     #region save
                     Result.Add(excel.GetAsByteArray());

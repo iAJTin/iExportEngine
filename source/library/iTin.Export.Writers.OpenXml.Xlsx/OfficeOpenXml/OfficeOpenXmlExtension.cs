@@ -448,6 +448,37 @@ namespace OfficeOpenXml
         }
         #endregion
 
+        #region [public] {static} (void) AddColumnGroupFromModel(this ExcelWorksheet, ColumnHeaderModel): Adds column group from model
+        /// <summary>
+        /// Adds column group from model.
+        /// </summary>
+        /// <param name="worksheet">The worksheet.</param>
+        /// <param name="column">The column header definition.</param>
+        /// <returns>
+        /// Returns a new <see cref="T:OfficeOpenXml.ExcelRange" /> which contains de column header representation.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException">The value specified is <c>null</c>.</exception>
+        public static void AddColumnGroupFromModel(this ExcelWorksheet worksheet, ColumnHeaderModel column)
+        {
+            SentinelHelper.ArgumentNull(worksheet);
+            SentinelHelper.ArgumentNull(column);
+
+            var group = column.Group;
+            var showGroup = group.Show == YesNo.Yes;
+            if (!showGroup)
+            {
+                return;
+            }
+
+            var fields = column.Owner.Parent.Fields;
+            var fromField = fields[column.From];
+            var from = fields.IndexOf(fromField) + 1;
+           
+            worksheet.Column(from).OutlineLevel = group.Level;            
+            worksheet.Column(from).Collapsed = group.Collpased == YesNo.Yes;
+        }
+        #endregion
+
         #endregion
 
         #region private methods

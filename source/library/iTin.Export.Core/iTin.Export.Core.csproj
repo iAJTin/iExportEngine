@@ -360,6 +360,10 @@
     <Compile Include="Model\Export\Table\Headers\Header\ColumnHeaderModel.designer.cs">
       <DependentUpon>ColumnHeader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Export\Table\Headers\Header\Group\ColumnHeaderGroup.cs" />
+    <Compile Include="Model\Export\Table\Headers\Header\Group\ColumnHeaderGroup.designer.cs">
+      <DependentUpon>ColumnHeaderGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Export\Table\Logo\Image\LogoImageModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>LogoImageModel.cs</DependentUpon>

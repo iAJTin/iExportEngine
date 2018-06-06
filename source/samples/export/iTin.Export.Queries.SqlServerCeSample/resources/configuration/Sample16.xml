@@ -55,6 +55,13 @@
         </Content>                     
         <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
       </Style>
+      <Style Name="HeaderTopStyle">        
+        <Content Color="#ED7D31">           
+          <Alignment Horizontal="Center"/>            
+          <Text/>        
+        </Content>                     
+        <Font Name="Calibri" Size="14" Color="White" Bold="Yes"/>
+      </Style>
       <Style Name="DateValueStyle">
         <Borders>
           <Border Position="Left" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
@@ -133,11 +140,29 @@
            AutoFitColumns="Yes"
            Alias="SEKRates" 
            Filter="AudFilter"
-           FreezePanes="2 2">      
+           FreezePanes="2 3">      
       <Conditions Keys="MaximumMYR"/>
       <Exporter>            
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
+      <Headers>
+        <Header From="DATE" To="DATE" Style="HeaderTopStyle"/>
+        <Header From="AUD" To="CHF" Text="Header1" Style="HeaderTopStyle">
+          <Group Show="Yes"/>
+        </Header>
+        <Header From="DKK" To="GBP" Text="Header2" Style="HeaderTopStyle">
+          <Group Show="Yes"/>
+        </Header>
+        <Header From="HKD" To="MYR" Text="Header3" Style="HeaderTopStyle">          
+          <Group Show="Yes"/>
+        </Header>
+        <Header From="NOK" To="THB" Text="Header4" Style="HeaderTopStyle">          
+          <Group Show="Yes"/>
+        </Header>
+        <Header From="TRY" To="USD" Text="Header5" Style="HeaderTopStyle">
+          <Group Show="Yes" Level="2"/>
+        </Header>
+      </Headers>
       <Fields>
         <Field Name="DATE" Alias="Date">
           <Header Style="HeaderStyle"/>
@@ -221,14 +246,14 @@
             <Horizontal Type="Date" Show="Yes"/>
             <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
-          <Type Active="Line">
-            <Line>              
+          <Type Active="Column">
+            <Column>
               <Serie Color="#376092"/>
               <Points>
                 <High Color="Red"/>
               </Points>
-            </Line>
-          </Type>
+            </Column>            
+          </Type>        
         </MiniChart>
       </Charts>
     </Table>
