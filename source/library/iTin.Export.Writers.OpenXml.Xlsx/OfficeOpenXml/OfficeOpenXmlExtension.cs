@@ -472,10 +472,16 @@ namespace OfficeOpenXml
 
             var fields = column.Owner.Parent.Fields;
             var fromField = fields[column.From];
+            var toField = fields[column.To];
+
             var from = fields.IndexOf(fromField) + 1;
-           
-            worksheet.Column(from).OutlineLevel = group.Level;            
-            worksheet.Column(from).Collapsed = group.Collpased == YesNo.Yes;
+            var to = fields.IndexOf(toField) + 1;
+
+            for (var i = from; i <= to; i++)
+            {
+                worksheet.Column(i).OutlineLevel = group.Level;
+                worksheet.Column(i).Collapsed = group.Collapsed == YesNo.Yes;
+            }
         }
         #endregion
 

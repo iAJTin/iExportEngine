@@ -40,14 +40,34 @@
       </Host>
     </Hosts>
     <Conditions>      
-      <MaximumCondition Key="MaximumMYR" Field="MYR" Style="MaximumMYRStyle" EntireRow="No" Active="Yes"/>
-      <MinimumCondition Key="MinimumMYR" Field="MYR" Style="MaximumMYRStyle" EntireRow="No" Active="No"/>
+      <MaximumCondition Key="MaximumMYR" Field="MYR" Style="MaximumMYRStyle" EntireRow="No" Active="No"/>
+      <MinimumCondition Key="MinimumMYR" Field="MYR" Style="MinimumMYRStyle" EntireRow="No" Active="Yes"/>
       <RemarksCondition Key="RemarksMYR" Field="MYR" Criterial="EqualTo" Value="2,04500" Style="RemarksMYRStyle" EntireRow="No" Active="No"/>
     </Conditions>
     <Filters>
       <Filter Key="AudFilter" Field="AUD" Criterial="GreatherThan" Value="6,2" Active="No"/>    
     </Filters>
+    <Images>
+      <Image Key="banner">
+        <Effects>
+          <Opacity percent="90"/>
+        </Effects>
+        <Path>~\Resources\Images\banner-careers.png</Path>
+      </Image>
+    </Images>
+    <Lines>
+      <TextLine Key="ReportTitleLine" Style="ReportTitleStyle">
+        <Text Merge="17">Invoice report from configuration file</Text>
+      </TextLine>
+    </Lines>
     <Styles>
+      <Style Name="ReportTitleStyle">        
+        <Content>           
+          <Alignment Horizontal="Left"/>            
+          <Text/>        
+        </Content>                     
+        <Font Name="Calibri" Size="18" Bold="Yes"/>
+      </Style>
       <Style Name="HeaderStyle">        
         <Content Color="#ED7D31">           
           <Alignment Horizontal="Left"/>            
@@ -124,24 +144,47 @@
         </Content>
         <Font Name="Calibri" Color="White" Size="11" Bold="Yes"/>
       </Style>
+      <Style Name="MinimumMYRStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#ED7D31" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="Green">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="5" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Color="White" Size="11" Bold="Yes"/>
+      </Style>
     </Styles>
-    <Shapes>
-      <Shape>
-
-      </Shape>
-    </Shapes>
   </Global.Resources>
 
   <Export Name="sample16" Current="Yes">
     <Description>EPPlus - Sample 16</Description>
+    <BlockLines>
+      <Block Key="Block01">
+        <Location>
+          <ByCoordenates Coordenates="1 3"/>
+        </Location>
+        <Items Keys="ReportTitleLine"/>
+      </Block>
+    </BlockLines>
     <Table Host="xlsx"
            Name="Rates"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
+           ShowGridLines="No"
            Alias="SEKRates" 
            Filter="AudFilter"
-           FreezePanes="2 3">      
-      <Conditions Keys="MaximumMYR"/>
+           FreezePanes="2 6">      
+      <Conditions Keys="MinimumMYR"/>
+      <Logo>
+        <Image Key="banner"/>
+        <Location>
+          <ByCoordenates Coordenates="3 1"/>
+        </Location>
+      </Logo>
+      <Location>
+        <ByCoordenates Coordenates="1 4"/>
+      </Location>
       <Exporter>            
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
@@ -150,17 +193,13 @@
         <Header From="AUD" To="CHF" Text="Header1" Style="HeaderTopStyle">
           <Group Show="Yes"/>
         </Header>
-        <Header From="DKK" To="GBP" Text="Header2" Style="HeaderTopStyle">
-          <Group Show="Yes"/>
-        </Header>
+        <Header From="DKK" To="GBP" Text="Header2" Style="HeaderTopStyle"/>
         <Header From="HKD" To="MYR" Text="Header3" Style="HeaderTopStyle">          
-          <Group Show="Yes"/>
+          <Group Show="Yes" Level="2" Collapsed="Yes"/>
         </Header>
-        <Header From="NOK" To="THB" Text="Header4" Style="HeaderTopStyle">          
-          <Group Show="Yes"/>
-        </Header>
+        <Header From="NOK" To="THB" Text="Header4" Style="HeaderTopStyle"/>
         <Header From="TRY" To="USD" Text="Header5" Style="HeaderTopStyle">
-          <Group Show="Yes" Level="2"/>
+          <Group Show="Yes"/>
         </Header>
       </Headers>
       <Fields>

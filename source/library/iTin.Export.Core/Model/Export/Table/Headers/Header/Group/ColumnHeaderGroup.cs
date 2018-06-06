@@ -45,7 +45,7 @@ namespace iTin.Export.Model
         {
             Show = DefaultShow;
             Level = DefaultLevel;
-            Collpased = DefaultCollapsed;
+            Collapsed = DefaultCollapsed;
         }
         #endregion
 
@@ -56,7 +56,7 @@ namespace iTin.Export.Model
         #region [public] (YesNo) Collpased: Gets or sets a value indicating whether group its show as collapsed.
         [XmlAttribute]
         [DefaultValue(DefaultCollapsed)]
-        public YesNo Collpased
+        public YesNo Collapsed
         {
             get => GetStaticBindingValue(_collapsed.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
             set
@@ -113,7 +113,7 @@ namespace iTin.Export.Model
         /// </value>
         public override bool IsDefault =>
             base.IsDefault &&
-            Collpased.Equals(DefaultCollapsed) &&
+            Collapsed.Equals(DefaultCollapsed) &&
             Level.Equals(DefaultLevel) &&
             Show.Equals(DefaultShow);
         #endregion
