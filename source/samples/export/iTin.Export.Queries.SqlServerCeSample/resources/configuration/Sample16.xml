@@ -51,6 +51,7 @@
       <Image Key="banner">
         <Effects>
           <Opacity percent="90"/>
+          <GrayScale/>
         </Effects>
         <Path>~\Resources\Images\banner-careers.png</Path>
       </Image>
@@ -169,12 +170,12 @@
     </BlockLines>
     <Table Host="xlsx"
            Name="Rates"
-           AutoFilter="Yes"
-           AutoFitColumns="Yes"
-           ShowGridLines="No"
            Alias="SEKRates" 
+           AutoFilter="Yes"
+           FreezePanes="2 6"     
+           ShowGridLines="No"
            Filter="AudFilter"
-           FreezePanes="2 6">      
+           AutoFitColumns="Yes">
       <Conditions Keys="MinimumMYR"/>
       <Logo>
         <Image Key="banner"/>
