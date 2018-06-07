@@ -164,5 +164,29 @@ namespace iTin.Export.Queries.SqlServerCe.Sample.Properties {
                 this["SEKRatesXmlInput"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SalesData.xml")]
+        public string SalesDataInput {
+            get {
+                return ((string)(this["SalesDataInput"]));
+            }
+            set {
+                this["SalesDataInput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\SalesDataConf.xml")]
+        public string SalesDataConf {
+            get {
+                return ((string)(this["SalesDataConf"]));
+            }
+            set {
+                this["SalesDataConf"] = value;
+            }
+        }
     }
 }

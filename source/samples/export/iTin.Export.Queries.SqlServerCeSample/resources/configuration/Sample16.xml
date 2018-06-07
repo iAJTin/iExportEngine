@@ -170,9 +170,9 @@
     </BlockLines>
     <Table Host="xlsx"
            Name="Rates"
-           Alias="SEKRates" 
+           Alias="SEKRates"
            AutoFilter="Yes"
-           FreezePanes="2 6"     
+           FreezePanes="2 6"
            ShowGridLines="No"
            Filter="AudFilter"
            AutoFitColumns="Yes">

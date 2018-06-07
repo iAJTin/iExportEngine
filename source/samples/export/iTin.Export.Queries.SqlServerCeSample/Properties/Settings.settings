@@ -42,5 +42,11 @@
     <Setting Name="SEKRatesXmlInput" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\input\SEKRatesXmlInput.xml</Value>
     </Setting>
+    <Setting Name="SalesDataInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\SalesData.xml</Value>
+    </Setting>
+    <Setting Name="SalesDataConf" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\SalesDataConf.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
