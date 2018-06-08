@@ -7,6 +7,12 @@
         <Document Orientation="Landscape" Size="A4"/>
       </Host>
     </Hosts>
+    <Groups>
+      <Group Name="Name">
+        <Field Name="FirstName" Separator="Space"/>
+        <Field Name="LastName"/>
+      </Group>
+    </Groups>
     <Styles>
       <Style Name="HeaderStyle">        
         <Content Color="#4674C1">           
@@ -15,13 +21,53 @@
         </Content>                     
         <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
       </Style>
-      <Style Name="StringValueStyle">
+      <Style Name="StringLeftValueStyle">
         <Borders>
           <Border Position="Left" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
           <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
         </Borders>
         <Content Color="#D9E1F1" AlternateColor="White">
           <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="StringValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="DateValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Alignment Horizontal="Right"/>
+          <DateTime Format="Short Date"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="NumericValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
+        </Content>        
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="NumericRightValueStyle">
+        <Borders>
+          <Border Position="Right" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
         </Content>
         <Font Name="Calibri" Size="11"/>
       </Style>
@@ -41,7 +87,7 @@
       <Fields>
         <Field Name="Title" Alias="Title">
           <Header Style="HeaderStyle"/>
-          <Value Style="StringValueStyle"/>
+          <Value Style="StringLeftValueStyle"/>
         </Field>
         <Field Name="FirstName" Alias="FirstName">
           <Header Style="HeaderStyle"/>
@@ -51,21 +97,25 @@
           <Header Style="HeaderStyle"/>
           <Value Style="StringValueStyle"/>
         </Field>
-        <Field Name="OrderDate" Alias="OrderDate">
+        <Group Name="Name" Alias="Name">
           <Header Style="HeaderStyle"/>
           <Value Style="StringValueStyle"/>
+        </Group>
+        <Field Name="OrderDate" Alias="OrderDate">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DateValueStyle"/>
         </Field>
         <Field Name="SubTotal" Alias="SubTotal">
           <Header Style="HeaderStyle"/>
-          <Value Style="StringValueStyle"/>
+          <Value Style="NumericValueStyle"/>
         </Field>
         <Field Name="Tax" Alias="Tax">
           <Header Style="HeaderStyle"/>
-          <Value Style="StringValueStyle"/>
+          <Value Style="NumericValueStyle"/>
         </Field>
         <Field Name="Total" Alias="Total">
           <Header Style="HeaderStyle"/>
-          <Value Style="StringValueStyle"/>
+          <Value Style="NumericRightValueStyle"/>
         </Field>
       </Fields>
       <Output>

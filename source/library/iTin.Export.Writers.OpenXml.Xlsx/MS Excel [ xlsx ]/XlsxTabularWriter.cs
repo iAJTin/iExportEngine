@@ -815,9 +815,21 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #region add freeze panes
                     if (Host.Document.View == KnownDocumentView.Normal)
                     {
-                        worksheet.View.FreezePanes(Table.FreezePanesPoint.Y, Table.FreezePanesPoint.X);
+                        if (Table.FreezePanesPoint.X != 1 && Table.FreezePanesPoint.Y != 1)
+                        {
+                            worksheet.View.FreezePanes(Table.FreezePanesPoint.Y, Table.FreezePanesPoint.X);
+                        }
                     }
                     #endregion
+
+                    var range1 = worksheet.Cells["A1:H501"];
+                    var wsPivot = worksheet.Workbook.Worksheets.Add("PivotSimple");
+                    var pivotTable1 = wsPivot.PivotTables.Add(wsPivot.Cells["A1"], range1, "PerEmploee");
+
+                    pivotTable1.RowFields.Add(pivotTable1.Fields[3]);
+                    var dataField = pivotTable1.DataFields.Add(pivotTable1.Fields[5]);
+                    dataField.Format = "#,##0";
+                    pivotTable1.DataOnRows = true;
 
                     #region save
                     Result.Add(excel.GetAsByteArray());
