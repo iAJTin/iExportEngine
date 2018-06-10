@@ -72,6 +72,43 @@
         <Font Name="Calibri" Size="11"/>
       </Style>
     </Styles>
+    <Pivots>
+      <Pivot 
+        Key="PivotTablePerEmploee"
+        Name ="PerEmploee"
+        Alias="PivotSimple"
+        AutoFitColumns="Yes"
+        DataOnRows="Yes">
+        <Location>
+          <ByCoordenates Coordenates="1 1"/>
+        </Location>
+        <Data>
+          <Rows>
+            <Row Field="Name"/>
+          </Rows>
+          <Values>
+            <Value Field="SubTotal"/>
+          </Values>
+        </Data>
+        <Charts>
+          <Chart  Size="600 400"  >
+            <Location>
+              <ByCoordenates Coordenates="8 1"/>
+            </Location>
+            <Legend Show="Yes">
+              <Border Show="Yes"/>
+              <Font Size="12" Bold="Yes"/>
+            </Legend>
+            <Axes>
+              <Primary>
+                <Values GridLines="Major"/>
+              </Primary>
+            </Axes>
+          </Chart>
+        </Charts>
+      </Pivot>
+    </Pivots>
+
   </Global.Resources>
 
   <Export Name="sample16" Current="Yes">
@@ -80,7 +117,11 @@
            Name="SalesData"
            Alias="SalesData"
            AutoFilter="Yes"
-           AutoFitColumns="Yes">
+           AutoFitColumns="Yes"
+           Pivot="PivotTablePerEmploee">
+      <Location>
+        <ByCoordenates Coordenates="1 1"/>
+      </Location>
       <Exporter>            
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
@@ -118,11 +159,40 @@
           <Value Style="NumericRightValueStyle"/>
         </Field>
       </Fields>
+      <Charts>
+        <Chart Size="800 600">
+          <Location>
+            <ByCoordenates Coordenates="8 1"/>
+          </Location>
+          <Legend Show="Yes">
+            <Border Show="Yes"/>
+            <Font Size="12" Bold="Yes"/>
+          </Legend>
+          <Axes>
+            <Primary>
+              <Values GridLines="Major"/>
+            </Primary>
+          </Axes>
+          <Plots>
+            <Plot Name="plot1">
+              <Series>
+                <Serie Type="AreaStacked" Axis="Period" Field="EUROPE" Name="Europe" Color="#285A8F"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AFRICA" Name="AFRICA" Color="#336EA9"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="ASIA" Name="ASIA" Color="#3572B1"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="NORTHAMERICA" Name="NORTHAMERICA" Color="#628AC5"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="SOUTHAMERICA" Name="SOUTHAMERICA" Color="#93ADCD"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AUSTRALIA" Name="AUSTRALIA" Color="#BCCCDE"/>
+              </Series>
+            </Plot>
+          </Plots>
+        </Chart>
+      </Charts>
       <Output>
         <Path>~\output\sample9x\fromconfigfile</Path>
         <File>SalesData</File>
       </Output>
     </Table>
+
   </Export>
   
 </Exports>

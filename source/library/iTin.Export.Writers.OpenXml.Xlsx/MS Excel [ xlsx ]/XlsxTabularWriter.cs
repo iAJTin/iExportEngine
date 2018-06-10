@@ -831,6 +831,48 @@ namespace iTin.Export.Writers.OpenXml.Office
                     dataField.Format = "#,##0";
                     pivotTable1.DataOnRows = true;
 
+                    var chartp = wsPivot.Drawings.AddChart("PivotChart", eChartType.Pie, pivotTable1);
+                    chartp.SetPosition(1, 0, 4, 0);
+                    chartp.SetSize(600, 400);
+                    
+
+
+                    chartp.
+
+                    //var wsPivot2 = pck.Workbook.Worksheets.Add("PivotDateGrp");
+                    //var pivotTable2 = wsPivot2.PivotTables.Add(wsPivot2.Cells["A3"], dataRange, "PerEmploeeAndQuarter");
+
+                    //pivotTable2.RowFields.Add(pivotTable2.Fields["Name"]);
+
+                    ////Add a rowfield
+                    //var rowField = pivotTable2.RowFields.Add(pivotTable2.Fields["OrderDate"]);
+
+                    ////This is a date field so we want to group by Years and quaters. This will create one additional field for years.
+                    //rowField.AddDateGrouping(eDateGroupBy.Years | eDateGroupBy.Quarters);
+
+                    ////Get the Quaters field and change the texts
+                    //var quaterField = pivotTable2.Fields.GetDateGroupField(eDateGroupBy.Quarters);
+                    //quaterField.Items[0].Text = "<"; //Values below min date, but we use auto so its not used
+                    //quaterField.Items[1].Text = "Q1";
+                    //quaterField.Items[2].Text = "Q2";
+                    //quaterField.Items[3].Text = "Q3";
+                    //quaterField.Items[4].Text = "Q4";
+                    //quaterField.Items[5].Text = ">"; //Values above max date, but we use auto so its not used
+
+                    ////Add a pagefield
+                    //var pageField = pivotTable2.PageFields.Add(pivotTable2.Fields["Title"]);
+
+                    ////Add the data fields and format them
+                    //dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["SubTotal"]);
+                    //dataField.Format = "#,##0";
+                    //dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["Tax"]);
+                    //dataField.Format = "#,##0";
+                    //dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["Freight"]);
+                    //dataField.Format = "#,##0";
+
+                    ////We want the datafields to appear in columns
+                    //pivotTable2.DataOnRows = false;
+
                     #region save
                     Result.Add(excel.GetAsByteArray());
                     #endregion
