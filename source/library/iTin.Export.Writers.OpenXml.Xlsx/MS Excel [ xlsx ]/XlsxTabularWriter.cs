@@ -834,8 +834,9 @@ namespace iTin.Export.Writers.OpenXml.Office
                     var chartp = wsPivot.Drawings.AddChart("PivotChart", eChartType.Pie, pivotTable1);
                     chartp.SetPosition(1, 0, 4, 0);
                     chartp.SetSize(600, 400);
-                    
 
+                    var hl = new ExcelHyperLink("Statistics!A1", "Statistics");
+                    hl.
 
                     chartp.
 

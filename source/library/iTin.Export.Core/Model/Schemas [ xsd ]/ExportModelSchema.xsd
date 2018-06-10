@@ -4995,8 +4995,110 @@
     <xs:attributeGroup ref="aggregateCommonAttributes" />
   </xs:complexType>
 
+
   <!-- Header -->
   <xs:complexType name="FieldHeaderModel" id="FieldHeaderModel">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="HyperLink" type="HeaderHyperLinkModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Create a shortcut that jumps to another location in the current book or opens a document stored on a network server, an intranet or the Internet.
+              When you click, it jumps to the location that is displayed or opens the document you specified.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defining the list of additional custom properties for this header.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="fieldCommonAttributes" />
+  </xs:complexType>
+
+  <!-- Header -> HyperLink -->
+  <xs:complexType name="HeaderHyperLinkModel" id="HeaderHyperLinkModel">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Web" type="WebHyperLinkModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines a shortcut that jumps to an Internet or intranet page.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="File" type="FileHyperLinkModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines a shortcut to a document stored on a network server or local file system.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Location" type="LocationHyperLinkModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Defines a shortcut that jumps to another location in the current or another sheet.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defining the list of additional custom properties for this header.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Tooltip" type="hyperLinkTooltipType" use="optional" default="FieldAlias">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Defines tooltip text. The default is 'FieldAlias'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Show" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether displays hyperlink. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- HyperLink -> Location -->
+  <xs:complexType name="LocationHyperLinkModel" id="LocationHyperLinkModel">
+    <xs:all>
+      <xs:element name="ByCoordenates" type="CoordenatesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines the hyperlink location by row and column.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defining the list of additional custom properties for this header.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Sheet" type="xs:string" use="optional" default="Current">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Defines linked sheet name. The default value is 'Current'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- HyperLink -> Web -->
+  <xs:complexType name="WebHyperLinkModel" id="WebHyperLinkModel">
     <xs:all>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
@@ -5006,8 +5108,42 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
-    <xs:attributeGroup ref="fieldCommonAttributes" />
+    <xs:attribute name="Address" type="xs:string" use="optional" default="">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Sets the linked web page address. The default value is ''.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
+
+  <!-- HyperLink -> File -->
+  <xs:complexType name="FileHyperLinkModel" id="FileHyperLinkModel">
+    <xs:all>
+      <xs:element name="Path" type="pathType" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The linked file path. To specify a relative path use the character (~).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filename" type="freeStringType" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            The linked file name. The following chars are not allowed '&lt; &gt; | " : * \ ? /'
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this output node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
 
   <!-- Value -->
   <xs:complexType name="FieldValueModel" id="FieldValueModel">

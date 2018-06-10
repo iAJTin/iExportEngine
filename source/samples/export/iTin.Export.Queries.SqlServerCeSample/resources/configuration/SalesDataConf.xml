@@ -108,7 +108,6 @@
         </Charts>
       </Pivot>
     </Pivots>
-
   </Global.Resources>
 
   <Export Name="sample16" Current="Yes">
@@ -117,8 +116,7 @@
            Name="SalesData"
            Alias="SalesData"
            AutoFilter="Yes"
-           AutoFitColumns="Yes"
-           Pivot="PivotTablePerEmploee">
+           AutoFitColumns="Yes">
       <Location>
         <ByCoordenates Coordenates="1 1"/>
       </Location>
@@ -127,8 +125,13 @@
       </Exporter>
       <Fields>
         <Field Name="Title" Alias="Title">
-          <Header Style="HeaderStyle"/>
+          <Header Style="HeaderStyle">
+            <HyperLink Tooltip="FieldAlias" Show="Yes">
+              <Web Address="ddfd"/>
+            </HyperLink>
+          </Header>
           <Value Style="StringLeftValueStyle"/>
+          <Aggregate />
         </Field>
         <Field Name="FirstName" Alias="FirstName">
           <Header Style="HeaderStyle"/>
@@ -139,7 +142,7 @@
           <Value Style="StringValueStyle"/>
         </Field>
         <Group Name="Name" Alias="Name">
-          <Header Style="HeaderStyle"/>
+          <Header Style="HeaderStyle"/>     
           <Value Style="StringValueStyle"/>
         </Group>
         <Field Name="OrderDate" Alias="OrderDate">
@@ -159,34 +162,6 @@
           <Value Style="NumericRightValueStyle"/>
         </Field>
       </Fields>
-      <Charts>
-        <Chart Size="800 600">
-          <Location>
-            <ByCoordenates Coordenates="8 1"/>
-          </Location>
-          <Legend Show="Yes">
-            <Border Show="Yes"/>
-            <Font Size="12" Bold="Yes"/>
-          </Legend>
-          <Axes>
-            <Primary>
-              <Values GridLines="Major"/>
-            </Primary>
-          </Axes>
-          <Plots>
-            <Plot Name="plot1">
-              <Series>
-                <Serie Type="AreaStacked" Axis="Period" Field="EUROPE" Name="Europe" Color="#285A8F"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="AFRICA" Name="AFRICA" Color="#336EA9"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="ASIA" Name="ASIA" Color="#3572B1"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="NORTHAMERICA" Name="NORTHAMERICA" Color="#628AC5"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="SOUTHAMERICA" Name="SOUTHAMERICA" Color="#93ADCD"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="AUSTRALIA" Name="AUSTRALIA" Color="#BCCCDE"/>
-              </Series>
-            </Plot>
-          </Plots>
-        </Chart>
-      </Charts>
       <Output>
         <Path>~\output\sample9x\fromconfigfile</Path>
         <File>SalesData</File>
@@ -196,3 +171,12 @@
   </Export>
   
 </Exports>
+
+<!--<Links>
+  <Link Text="LinkText" ToolTip="Tooltip">
+    <Location>
+      <ByCoordenates Coordenates="1 1"/>
+    </Location>
+    <Style Name="sss"/>
+  </Link>
+</Links>-->

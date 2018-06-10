@@ -3857,10 +3857,10 @@
 
 
   <!-- ====================================== -->
-  <!-- Definition of condition operators       -->
+  <!-- Definition of condition operators      -->
   <!-- ====================================== -->
 
-  <!-- Operator. Operator names. -->
+  <!-- Operator. Operator names -->
   <xs:simpleType name="operatorNameType">
     <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
       <xs:documentation xml:lang="en">
@@ -3934,7 +3934,7 @@
       </xs:restriction>
   </xs:simpleType>
 
-  <!-- Short cut: Operators. -->
+  <!-- Short cut: Operators -->
   <xs:simpleType name="operatorType" id ="operatorType">
     <xs:union memberTypes="shortCutStaticBindingType operatorNameType"/>
   </xs:simpleType>

@@ -676,4 +676,36 @@
   <xs:simpleType name="miniChartTypeActiveValue" id ="miniChartTypeActiveValue">
     <xs:union memberTypes="shortCutStaticBindingType miniChartTypeActiveValueEnum bindingType staticBindType"/>
   </xs:simpleType>
+
+  <!-- Hyperlink. Tooltip known values -->
+  <xs:simpleType name="hyperLinkKnownTooltipType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        List of available known tooltips
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FieldAlias">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Shows field alias as tooltip
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FieldName">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Shows field name as tooltip
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Hyperlink. Tooltip attribute -->
+  <xs:simpleType name="hyperLinkTooltipType" id ="hyperLinkTooltipType">
+    <xs:union memberTypes="shortCutStaticBindingType hyperLinkKnownTooltipType xs:string"/>
+  </xs:simpleType>
+
 </xs:schema>
+
