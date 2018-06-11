@@ -72,42 +72,6 @@
         <Font Name="Calibri" Size="11"/>
       </Style>
     </Styles>
-    <Pivots>
-      <Pivot 
-        Key="PivotTablePerEmploee"
-        Name ="PerEmploee"
-        Alias="PivotSimple"
-        AutoFitColumns="Yes"
-        DataOnRows="Yes">
-        <Location>
-          <ByCoordenates Coordenates="1 1"/>
-        </Location>
-        <Data>
-          <Rows>
-            <Row Field="Name"/>
-          </Rows>
-          <Values>
-            <Value Field="SubTotal"/>
-          </Values>
-        </Data>
-        <Charts>
-          <Chart  Size="600 400"  >
-            <Location>
-              <ByCoordenates Coordenates="8 1"/>
-            </Location>
-            <Legend Show="Yes">
-              <Border Show="Yes"/>
-              <Font Size="12" Bold="Yes"/>
-            </Legend>
-            <Axes>
-              <Primary>
-                <Values GridLines="Major"/>
-              </Primary>
-            </Axes>
-          </Chart>
-        </Charts>
-      </Pivot>
-    </Pivots>
   </Global.Resources>
 
   <Export Name="sample16" Current="Yes">
@@ -123,15 +87,14 @@
       <Exporter>            
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
-      <Fields>
+      <Fields Pivot="PivotTablePerEmploee">
         <Field Name="Title" Alias="Title">
           <Header Style="HeaderStyle">
-            <HyperLink Tooltip="FieldAlias" Show="Yes">
-              <Web Address="ddfd"/>
+            <HyperLink Tooltip="FieldAlias" Style="Current" Show="Yes">
+              <Web Address="www.microsoft.com"/>
             </HyperLink>
           </Header>
           <Value Style="StringLeftValueStyle"/>
-          <Aggregate />
         </Field>
         <Field Name="FirstName" Alias="FirstName">
           <Header Style="HeaderStyle"/>
@@ -162,6 +125,42 @@
           <Value Style="NumericRightValueStyle"/>
         </Field>
       </Fields>
+      <!--<Pivots>
+        <Pivot 
+          Key="PivotTablePerEmploee"
+          Name ="PerEmploee"
+          Alias="PivotSimple"
+          AutoFitColumns="Yes"
+          DataOnRows="Yes">
+          <Location>
+            <ByCoordenates Coordenates="1 1"/>
+          </Location>
+          <Data>
+            <Rows>
+              <Row Field="Name"/>
+            </Rows>
+            <Values>
+              <Value Field="SubTotal"/>
+            </Values>
+          </Data>
+          <Charts>
+            <Chart  Size="600 400"  >
+              <Location>
+                <ByCoordenates Coordenates="8 1"/>
+              </Location>
+              <Legend Show="Yes">
+                <Border Show="Yes"/>
+                <Font Size="12" Bold="Yes"/>
+              </Legend>
+              <Axes>
+                <Primary>
+                  <Values GridLines="Major"/>
+                </Primary>
+              </Axes>
+            </Chart>
+          </Charts>
+        </Pivot>
+      </Pivots>-->
       <Output>
         <Path>~\output\sample9x\fromconfigfile</Path>
         <File>SalesData</File>
@@ -180,3 +179,40 @@
     <Style Name="sss"/>
   </Link>
 </Links>-->
+
+<!--<Pivots>
+  <Pivot 
+    Key="PivotTablePerEmploee"
+    Name ="PerEmploee"
+    Alias="PivotSimple"
+    AutoFitColumns="Yes"
+    DataOnRows="Yes">
+    <Location>
+      <ByCoordenates Coordenates="1 1"/>
+    </Location>
+    <Data>
+      <Rows>
+        <Row Field="Name"/>
+      </Rows>
+      <Values>
+        <Value Field="SubTotal"/>
+      </Values>
+    </Data>
+    <Charts>
+      <Chart  Size="600 400"  >
+        <Location>
+          <ByCoordenates Coordenates="8 1"/>
+        </Location>
+        <Legend Show="Yes">
+          <Border Show="Yes"/>
+          <Font Size="12" Bold="Yes"/>
+        </Legend>
+        <Axes>
+          <Primary>
+            <Values GridLines="Major"/>
+          </Primary>
+        </Axes>
+      </Chart>
+    </Charts>
+  </Pivot>
+</Pivots>-->

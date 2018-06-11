@@ -835,10 +835,10 @@ namespace iTin.Export.Writers.OpenXml.Office
                     chartp.SetPosition(1, 0, 4, 0);
                     chartp.SetSize(600, 400);
 
-                    var hl = new ExcelHyperLink("Statistics!A1", "Statistics");
-                    hl.
+                    //var hl = new ExcelHyperLink("Statistics!A1", "Statistics");
+                    //hl.
 
-                    chartp.
+                    //chartp.
 
                     //var wsPivot2 = pck.Workbook.Worksheets.Add("PivotDateGrp");
                     //var pivotTable2 = wsPivot2.PivotTables.Add(wsPivot2.Cells["A3"], dataRange, "PerEmploeeAndQuarter");

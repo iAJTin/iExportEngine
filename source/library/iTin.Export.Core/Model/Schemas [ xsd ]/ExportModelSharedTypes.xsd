@@ -707,5 +707,28 @@
     <xs:union memberTypes="shortCutStaticBindingType hyperLinkKnownTooltipType xs:string"/>
   </xs:simpleType>
 
+  <!-- Hyperlink. Styles known values -->
+  <xs:simpleType name="hyperLinkKnownStyleType">
+    <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:documentation xml:lang="en">
+        List of available known tooltip styles
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Current">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Uses the current field header style.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Hyperlink. Style attribute -->
+  <xs:simpleType name="hyperLinkStyleType" id ="hyperLinkStyleType">
+    <xs:union memberTypes="ElementNameString hyperLinkKnownStyleType"/>
+  </xs:simpleType>
+
 </xs:schema>
 

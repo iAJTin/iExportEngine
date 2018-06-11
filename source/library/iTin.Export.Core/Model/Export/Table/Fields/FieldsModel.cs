@@ -1,4 +1,6 @@
 ﻿
+using System.Xml.Serialization;
+
 namespace iTin.Export.Model
 {
     using System;
@@ -81,6 +83,9 @@ namespace iTin.Export.Model
         #endregion
 
         #endregion
+
+        [XmlAttribute]        
+        public string Pivot { get; set; }
 
         #region public methods
 
