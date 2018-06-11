@@ -112,6 +112,7 @@
     <Compile Include="ComponentModel\Patterns\StrategyPattern\IStrategy.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Functions\BuiltInFunctions.cs" />
+    <Compile Include="Model\ComponentModel\Enums\KnownHyperLinkTooltip.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterSectionType.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownDocumentView.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterAlignment.cs" />
@@ -150,7 +151,11 @@
       <SubType>code</SubType>
       <DependentUpon>FieldAggegateModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ComponentModel\Shared\FieldHeaderModel.designer.cs">
+    <Compile Include="Model\ComponentModel\Shared\FieldHeader\HyperLink\FieldHeaderHyperLink.cs" />
+    <Compile Include="Model\ComponentModel\Shared\FieldHeader\HyperLink\FieldHeaderHyperLink.designer.cs">
+      <DependentUpon>FieldHeaderHyperLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ComponentModel\Shared\FieldHeader\FieldHeaderModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>FieldHeaderModel.cs</DependentUpon>
     </Compile>
@@ -353,6 +358,10 @@
     </Compile>
     <Compile Include="Model\Export\Table\Fields\Field\PacketFieldModel.designer.cs">
       <DependentUpon>PacketFieldModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Export\Table\Fields\Pivot\PivotModel.cs" />
+    <Compile Include="Model\Export\Table\Fields\Pivot\PivotModel.designer.cs">
+      <DependentUpon>PivotModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Export\Table\Headers\ColumnsHeadersModel.designer.cs">
       <DependentUpon>ColumnsHeadersModel.cs</DependentUpon>
@@ -910,7 +919,7 @@
     <Compile Include="Model\Export\Table\Fields\Field\DataFieldModel.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownFieldType.cs" />
     <Compile Include="Model\ComponentModel\Shared\FieldAggegateModel.cs" />
-    <Compile Include="Model\ComponentModel\Shared\FieldHeaderModel.cs" />
+    <Compile Include="Model\ComponentModel\Shared\FieldHeader\FieldHeaderModel.cs" />
     <Compile Include="Model\ComponentModel\Shared\FieldValueModel.cs" />
     <Compile Include="Model\Export\Table\Fields\Field\Base\BaseDataFieldModel.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownAggregateLocation.cs" />

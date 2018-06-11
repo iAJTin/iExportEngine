@@ -86,8 +86,8 @@
       </Location>
       <Exporter>            
         <Writer Name="XlsxTabularWriter"/>
-      </Exporter>
-      <Fields Pivot="PivotTablePerEmploee">
+      </Exporter>     
+      <Fields>        
         <Field Name="Title" Alias="Title">
           <Header Style="HeaderStyle">
             <HyperLink Tooltip="FieldAlias" Style="Current" Show="Yes">
@@ -124,6 +124,11 @@
           <Header Style="HeaderStyle"/>
           <Value Style="NumericRightValueStyle"/>
         </Field>
+        <Pivot>
+          <Location>
+            <ByCoordenates Coordenates="1 1"/>
+          </Location>
+        </Pivot>        
       </Fields>
       <!--<Pivots>
         <Pivot 

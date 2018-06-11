@@ -7,75 +7,20 @@ namespace iTin.Export.Model
 
     using Helpers;
 
-    /// <inheritdoc />
-    /// <summary>
-    /// Reference to visual setting of header of the data field.
-    /// </summary>
-    /// <remarks>
-    /// <para>Belongs to: <strong><c>Field</c></strong>, please see <see cref="T:iTin.Export.Model.DataFieldModel" /><br />
-    /// - Or - <strong><c>Fixed</c></strong>, please see <see cref="T:iTin.Export.Model.FixedFieldModel" /><br />
-    /// - Or - <strong><c>Gap</c></strong>, please see <see cref="T:iTin.Export.Model.GapFieldModel" /><br /> 
-    /// - Or - <strong><c>Group</c></strong>, please see <see cref="T:iTin.Export.Model.GroupFieldModel" /><br />.
-    /// <code lang="xml" title="ITEE Object Element Usage">
-    /// &lt;Header .../&gt;
-    /// </code>
-    /// </para>
-    /// <para><strong>Attributes</strong></para>
-    /// <table>
-    ///   <thead>
-    ///     <tr>
-    ///       <th>Attribute</th>
-    ///       <th>Optional</th>
-    ///       <th>Description</th>
-    ///       </tr>
-    ///   </thead>
-    ///   <tbody>
-    ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FieldAggregateModel.Style" /></td>
-    ///       <td align="center">No</td>
-    ///       <td>Name of a style defined in the list of styles. The default is "<c>Default</c>".</td>
-    ///     </tr>
-    ///     <tr>
-    ///       <td><see cref="P:iTin.Export.Model.FieldAggregateModel.Show" /></td>
-    ///       <td align="center">Yes</td>
-    ///       <td>Determines visibility of the element. The default is <see cref="F:iTin.Export.Model.YesNo.No" />.</td>
-    ///     </tr>
-    ///   </tbody>
-    /// </table>
-    /// <para>
-    /// <para><strong>Compatibility table with native writers.</strong></para>
-    /// <table>
-    ///   <thead>
-    ///     <tr>
-    ///       <th>Comma-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br /><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br /><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br /><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
-    ///     </tr>
-    ///   </thead>
-    ///   <tbody>
-    ///     <tr>
-    ///       <td align="center">X</td>
-    ///       <td align="center">X</td>
-    ///       <td align="center">X</td>
-    ///       <td align="center">X</td>
-    ///     </tr>
-    ///   </tbody>
-    /// </table>
-    /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
-    /// </para>
-    /// </remarks>
-    public partial class FieldHeaderModel
+    public partial class FieldHeaderHyperLink
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const YesNo DefaultShow = YesNo.Yes;
+        private const YesNo DefaultShow = YesNo.No;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const string DefaultStyle = "Default";
+        private const string DefaultStyle = "Current";
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string DefaultTooltip = "FieldAlias";
         #endregion
 
-        #region field member
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 
@@ -83,19 +28,23 @@ namespace iTin.Export.Model
         private string _style;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private BaseDataFieldModel _parent;
+        private string _tooltip;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private FieldHeaderModel _parent;
         #endregion
 
         #region constructor/s
 
-        #region [public] FieldHeaderModel(): Initializes a new instance of this class
+        #region [public] FieldHeaderHyperLink(): Initializes a new instance of this class
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.FieldHeaderModel" /> class.
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.FieldHeaderHyperLink" /> class.
         /// </summary>
-        public FieldHeaderModel()
+        public FieldHeaderHyperLink()
         {
             Show = DefaultShow;
             Style = DefaultStyle;
+            Tooltip = DefaultTooltip;
         }
         #endregion
 
@@ -103,16 +52,37 @@ namespace iTin.Export.Model
 
         #region public properties
 
-        #region [public] (YesNo) Show: Gets or sets a value that determines whether the visibility of the element
+        #region [public] (YesNo) Show: Gets or sets a value that determines whether displays hyperlink
+        [XmlAttribute]
+        [DefaultValue(DefaultTooltip)]
+        public string Tooltip
+        {
+            get => _tooltip;
+            set => _tooltip = value;
+        }
+        #endregion
+
+        #region [public] (FieldHeaderModel) Parent: Gets the parent element of the element
         /// <summary>
-        /// Gets or sets a value that determines visibility of the element
+        /// Gets the parent element of the element.
+        /// </summary>
+        /// <value>
+        /// The element that represents the container element of the element.
+        /// </value>
+        [Browsable(false)]
+        public FieldHeaderModel Parent => _parent;
+        #endregion
+
+        #region [public] (YesNo) Show: Gets or sets a value that determines whether displays hyperlink
+        /// <summary>
+        /// Gets or sets a value that determines whether displays hyperlink. The default is <see cref="YesNo.No"/>.
         /// </summary>
         /// <value>
         /// <see cref="iTin.Export.Model.YesNo.Yes" /> if the item is displayed; otherwise, <strong><see cref="iTin.Export.Model.YesNo.No"/></strong>. The default is <see cref="iTin.Export.Model.YesNo.No" />.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
-        /// &lt;Header Show="Yes|No" ...&gt;
+        /// &lt;Hyperlink Show="Yes|No" ...&gt;
         /// ...
         /// &lt;/Header&gt;
         /// </code>
@@ -152,17 +122,6 @@ namespace iTin.Export.Model
                 _show = value;
             }
         }
-        #endregion
-
-        #region [public] (BaseDataFieldModel) Parent: Gets the parent element of the element
-        /// <summary>
-        /// Gets the parent element of the element.
-        /// </summary>
-        /// <value>
-        /// The element that represents the container element of the element.
-        /// </value>
-        [Browsable(false)]
-        public BaseDataFieldModel Parent => _parent;
         #endregion
 
         #region [public] (string) Style: Gets or sets one of the styles defined in the element styles
@@ -252,7 +211,7 @@ namespace iTin.Export.Model
         /// </returns>
         public bool CheckStyleName()
         {
-            return Style.Equals(DefaultStyle) || Parent.Owner.Parent.Parent.Owner.Resources.Styles.Contains(Style);
+            return Style.Equals(DefaultStyle) || Parent.Parent.Owner.Parent.Parent.Owner.Resources.Styles.Contains(Style);
         }
         #endregion
 
@@ -292,7 +251,7 @@ namespace iTin.Export.Model
             try
             {
                 var field = Parent;
-                var fields = field.Owner;
+                var fields = field.Parent.Owner;
                 var table = fields.Parent;
                 var export = table.Parent;
                 resource = export.Resources.GetStyleResourceByName(Style);
@@ -339,12 +298,12 @@ namespace iTin.Export.Model
 
         #region internal methods
 
-        #region [internal] (void) SetParent(BaseDataFieldModel): Sets the parent element of the element
+        #region [internal] (void) SetParent(FieldHeaderModel): Sets the parent element of the element
         /// <summary>
         /// Sets the parent element of the element.
         /// </summary>
         /// <param name="reference">Reference to parent.</param>
-        internal void SetParent(BaseDataFieldModel reference)
+        internal void SetParent(FieldHeaderModel reference)
         {
             _parent = reference;
         }

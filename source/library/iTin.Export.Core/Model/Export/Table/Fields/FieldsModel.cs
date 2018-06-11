@@ -84,8 +84,6 @@ namespace iTin.Export.Model
 
         #endregion
 
-        [XmlAttribute]        
-        public string Pivot { get; set; }
 
         #region public methods
 

@@ -1683,46 +1683,20 @@
   <!-- Table: Fields -->
   <xs:complexType name="FieldsModel" id="FieldsModel">
     <xs:sequence>
-      <xs:choice>
-        <xs:element name="Field" type="DataFieldModel"  minOccurs="1" maxOccurs="unbounded">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Represents a data field.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element name="Fixed" type="FixedFieldModel" minOccurs="0" maxOccurs="unbounded">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Represents a piece of a field fixed-width data.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element name="Gap" type="GapFieldModel" minOccurs="0" maxOccurs="unbounded">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Represents an empty data field.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element name="Group" type="GroupFieldModel" minOccurs="0" maxOccurs="unbounded">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Represents a field as union of several data field.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element name="Packet" type="PacketFieldModel"  minOccurs="1" maxOccurs="unbounded">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Represents a packet data field.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:choice>
+      <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>   
+  </xs:complexType>
+
+  <xs:complexType name="PivotModel" id="PivotModel">
+    <xs:sequence>
+      <xs:element name="Location" type="LocationModel" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Contains a collection of pieces. Each element is a new collection of smaller fields resulting from splitting a reference field.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
-    <xs:attribute name="Pivot" type="xs:string"/>
-    <xs:anyAttribute namespace="##any" processContents="lax"/>
   </xs:complexType>
 
   <!-- Table: Fixed -->
@@ -4212,43 +4186,46 @@
 
   <!-- Fields: Types -->
   <xs:group id="FieldType" name="FieldType">
-    <xs:choice>
-      <xs:element name="Field" type="DataFieldModel"  minOccurs="1" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a data field.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Fixed" type="FixedFieldModel" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a piece of a field fixed-width data.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Gap" type="GapFieldModel" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents an empty data field.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Group" type="GroupFieldModel" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a field as union of several data field.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Packet" type="PacketFieldModel"  minOccurs="1" maxOccurs="unbounded">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Represents a packet data field.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:choice>   
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Field" type="DataFieldModel"  minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Represents a data field.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Fixed" type="FixedFieldModel" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Represents a piece of a field fixed-width data.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Gap" type="GapFieldModel" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Represents an empty data field.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Group" type="GroupFieldModel" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Represents a field as union of several data field.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Packet" type="PacketFieldModel"  minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Represents a packet data field.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="Pivot" type="PivotModel"/>
+    </xs:sequence>
   </xs:group>
 
   <!-- Fields: Field -->
