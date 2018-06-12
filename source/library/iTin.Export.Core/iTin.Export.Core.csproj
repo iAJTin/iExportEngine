@@ -159,6 +159,10 @@
       <SubType>code</SubType>
       <DependentUpon>FieldHeaderModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ComponentModel\Shared\FieldHeader\HyperLink\WebHyperLink\WebHyperLink.cs" />
+    <Compile Include="Model\ComponentModel\Shared\FieldHeader\HyperLink\WebHyperLink\WebHyperLink.designer.cs">
+      <DependentUpon>WebHyperLink.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ComponentModel\Shared\FieldValueModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>FieldValueModel.cs</DependentUpon>

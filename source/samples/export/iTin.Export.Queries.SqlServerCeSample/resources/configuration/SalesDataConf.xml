@@ -91,7 +91,7 @@
         <Field Name="Title" Alias="Title">
           <Header Style="HeaderStyle">
             <HyperLink Tooltip="FieldAlias" Style="Current" Show="Yes">
-              <Web Address="www.microsoft.com"/>
+              <Web Address="http://www.microsoft.com"/>
             </HyperLink>
           </Header>
           <Value Style="StringLeftValueStyle"/>

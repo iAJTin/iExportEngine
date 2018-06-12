@@ -52,6 +52,11 @@ namespace iTin.Export.Model
 
         #region public properties
 
+        [XmlElement("Web", typeof(WebHyperLink))]
+        //[XmlElement("File", typeof(WriterModel))]
+        //[XmlElement("Location", typeof(XsltModel))]
+        public object Current { get; set; }
+
         #region [public] (YesNo) Show: Gets or sets a value that determines whether displays hyperlink
         [XmlAttribute]
         [DefaultValue(DefaultTooltip)]

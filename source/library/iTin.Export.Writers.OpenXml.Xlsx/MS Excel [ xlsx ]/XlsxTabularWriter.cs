@@ -1,4 +1,6 @@
 ﻿
+using System.Runtime.InteropServices;
+
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -236,6 +238,42 @@ namespace iTin.Export.Writers.OpenXml.Office
                         var cell = worksheet.Cells[y, x + column];                        
                         cell.Value = field.Alias;
                         cell.StyleName = header.Style ?? StyleModel.NameOfDefaultStyle;
+
+                        var showHyperLink = header.HyperLink.Show == YesNo.Yes;
+                        if (!showHyperLink)
+                        {
+                            continue;
+                        }
+                        
+                        string tooltip;
+                        if (header.HyperLink.Tooltip.Equals(KnownHyperLinkTooltip.FieldName.ToString()))
+                        {
+                            tooltip = BaseDataFieldModel.GetFieldNameFrom(header.Parent);
+                        }
+                        else if (header.HyperLink.Tooltip.Equals(KnownHyperLinkTooltip.FieldAlias.ToString()))
+                        {
+                            tooltip = header.Parent.Alias;
+                        }
+                        else
+                        {
+                            tooltip = header.HyperLink.Tooltip;
+                        }
+
+                        var hyperLinkStyle = header.Style ?? StyleModel.NameOfDefaultStyle;
+                        if (!header.HyperLink.Style.Equals("Current"))
+                        {
+                            hyperLinkStyle = header.HyperLink.Style;
+                        }
+
+                        var hyperLinkType = header.HyperLink.Current.GetType().Name;
+                        switch (hyperLinkType)
+                        {
+                            case "WebHyperLink":
+                                var webHyperLink = (WebHyperLink) header.HyperLink.Current;
+                                cell.Hyperlink = new ExcelHyperLink(webHyperLink.Address); //, tooltip);                                
+                                //cell.StyleName = hyperLinkStyle;
+                                break;
+                        }
                     }
                     #endregion
 

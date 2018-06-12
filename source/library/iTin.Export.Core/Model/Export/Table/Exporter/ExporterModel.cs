@@ -65,7 +65,7 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class ExporterModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private TableModel _parent;
 
