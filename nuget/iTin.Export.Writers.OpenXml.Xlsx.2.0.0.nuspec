@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>iTin.Export.Writers.OpenXml.Xlsx</id>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <title>iTin.Export.Writers.OpenXml.Xlsx</title>
         <authors>iTin</authors>
         <owners>iTin</owners>
@@ -14,11 +14,11 @@
         <copyright>Copyright © 2016 iAJTin</copyright>
         <tags>excel xlsx xls office export engine parsing parse itin</tags>
         <dependencies>
-            <dependency id="iTin.Export.Core" version="1.0.0" />
+            <dependency id="iTin.Export.Core" version="2.0.0" />
         </dependencies>   
     </metadata>
     <files>
-        <file src="..\source\library\iTin.Export.Writers.OpenXml.Xlsx\bin\Release\iTin.Export.Writers.OpenXml.Xlsx.dll" target="lib\net40\iTin.Export.Writers.OpenXml.Xlsx.dll" />
+        <file src="..\source\library\iTin.Export.Writers.OpenXml.Xlsx\bin\Debug\iTin.Export.Writers.OpenXml.Xlsx.dll" target="lib\net40\iTin.Export.Writers.OpenXml.Xlsx.dll" />
         <file src="..\references\EPPlus.4.1.0.0\net40\EPPlus.dll" target="lib\net40\EPPlus.dll" />
     </files>
 </package>

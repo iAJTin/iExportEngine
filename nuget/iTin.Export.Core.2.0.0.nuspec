@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>iTin.Export.Core</id>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <title>iTin.Export.Core</title>
         <authors>iTin</authors>
         <owners>iTin</owners>
@@ -16,7 +16,7 @@
     </metadata>
     <files>
         <file src="..\source\library\iTin.Export.Core\readme.txt" target="content\readme.txt" />
-        <file src="..\source\library\iTin.Export.Core\bin\Release\iTin.Export.Core.dll" target="lib\net40\iTin.Export.Core.dll" />
+        <file src="..\source\library\iTin.Export.Core\bin\Debug\iTin.Export.Core.dll" target="lib\net40\iTin.Export.Core.dll" />
         <file src="..\references\Ionic.Zip.1.9.1.8\net40\Ionic.Zip.dll" target="lib\net40\Ionic.Zip.dll" />
     </files>
 </package>

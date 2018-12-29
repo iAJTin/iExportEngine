@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>iTin.Export.Writers.OpenXml.DocX</id>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <title>iTin.Export.Writers.OpenXml.DocX</title>
         <authors>iTin</authors>
         <owners>iTin</owners>
@@ -14,11 +14,11 @@
         <copyright>Copyright © 2016 iAJTin</copyright>
         <tags>word docx doc office export engine parsing parse itin</tags>
         <dependencies>
-            <dependency id="iTin.Export.Core" version="1.0.0" />
+            <dependency id="iTin.Export.Core" version="2.0.0" />
         </dependencies>
     </metadata>
     <files>
-       <file src="..\source\library\iTin.Export.Writers.OpenXml.DocX\bin\Release\iTin.Export.Writers.OpenXml.DocX.dll" target="lib\net40\iTin.Export.Writers.OpenXml.DocX.dll" />
+       <file src="..\source\library\iTin.Export.Writers.OpenXml.DocX\bin\Debug\iTin.Export.Writers.OpenXml.DocX.dll" target="lib\net40\iTin.Export.Writers.OpenXml.DocX.dll" />
        <file src="..\references\DocX.1.0.0.13\net40\DocX.dll" target="lib\net40\DocX.dll" />
     </files>
 </package>
