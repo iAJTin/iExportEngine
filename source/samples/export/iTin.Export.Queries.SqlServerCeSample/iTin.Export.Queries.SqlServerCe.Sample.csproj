@@ -36,9 +36,6 @@
     <Reference Include="DocX">
       <HintPath>..\..\..\..\references\DocX.1.0.0.13\net40\DocX.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=4.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\EPPlus.4.5.1\lib\net40\EPPlus.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
