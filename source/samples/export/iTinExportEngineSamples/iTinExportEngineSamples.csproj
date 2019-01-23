@@ -70,13 +70,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\configuration\Sample01.xml">
+    <Content Include="resources\configuration\EPPlusSamples\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\input\Inventory.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="output\EPPlusSamples\" />
+    <Folder Include="output\iTinExportEngine\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

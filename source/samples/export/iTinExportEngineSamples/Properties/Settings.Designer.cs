@@ -12,7 +12,7 @@ namespace iTinExportEngineSamples.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -23,27 +23,21 @@ namespace iTinExportEngineSamples.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Inventory.xml")]
         public string InventoryXmlInput {
             get {
                 return ((string)(this["InventoryXmlInput"]));
             }
-            set {
-                this["InventoryXmlInput"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\Sample01.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample01.xml")]
         public string Sample01Configuration {
             get {
                 return ((string)(this["Sample01Configuration"]));
-            }
-            set {
-                this["Sample01Configuration"] = value;
             }
         }
     }

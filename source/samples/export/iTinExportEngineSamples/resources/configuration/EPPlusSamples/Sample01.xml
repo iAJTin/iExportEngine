@@ -136,7 +136,7 @@
       </Fields>
       <Output>
         <Path>~\output\EPPlusSamples\</Path>
-        <File>sample01-file</File>
+        <File>sample01-from-config-file</File>
       </Output>
     </Table>
   </Export>
