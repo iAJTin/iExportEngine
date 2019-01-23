@@ -3,7 +3,15 @@
 
   <Global.Resources>  
     <Hosts>
-      <Host Key="xlsx"/>
+      <Host Key="xlsx">
+        <Document View="Design">
+          <Header>
+            <Sections>
+              <Section Alignment="Center" Text="Inventory"/>              
+            </Sections>
+          </Header>
+        </Document>
+      </Host>
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
