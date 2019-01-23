@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="iTinExportEngineSamples.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InventoryXmlInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\Inventory.xml</Value>
+    </Setting>
+    <Setting Name="Sample01Configuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\Sample01.xml</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
