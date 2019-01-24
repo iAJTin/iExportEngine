@@ -1,12 +1,24 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="iTinExportEngineSamples.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="InventoryXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\Inventory.xml</Value>
     </Setting>
+    <Setting Name="ProductsXmlInput" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\input\Products.xml</Value>
+    </Setting>
     <Setting Name="Sample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="Sample05Configuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample05.xml</Value>
+    </Setting>
+    <Setting Name="SalesXmlInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\Sales.xml</Value>
+    </Setting>
+    <Setting Name="Sample09Configuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample09.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

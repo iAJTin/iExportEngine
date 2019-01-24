@@ -12,7 +12,7 @@ namespace iTinExportEngineSamples.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -34,10 +34,55 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Products.xml")]
+        public string ProductsXmlInput {
+            get {
+                return ((string)(this["ProductsXmlInput"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample01.xml")]
         public string Sample01Configuration {
             get {
                 return ((string)(this["Sample01Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample05.xml")]
+        public string Sample05Configuration {
+            get {
+                return ((string)(this["Sample05Configuration"]));
+            }
+            set {
+                this["Sample05Configuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Sales.xml")]
+        public string SalesXmlInput {
+            get {
+                return ((string)(this["SalesXmlInput"]));
+            }
+            set {
+                this["SalesXmlInput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample09.xml")]
+        public string Sample09Configuration {
+            get {
+                return ((string)(this["Sample09Configuration"]));
+            }
+            set {
+                this["Sample09Configuration"] = value;
             }
         }
     }
