@@ -50,8 +50,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Sample09.cs" />
+    <Compile Include="Sample06.cs" />
     <Compile Include="Sample05.cs" />
+    <Compile Include="Sample04.cs" />
+    <Compile Include="Sample03.cs" />
+    <Compile Include="Sample02.cs" />
     <Compile Include="Sample01.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,16 +75,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\configuration\EPPlusSamples\Sample09.xml">
+    <Content Include="resources\configuration\EPPlusSamples\Sample06.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\EPPlusSamples\Sample05.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\EPPlusSamples\Sample04.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\EPPlusSamples\Sample03.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\EPPlusSamples\Sample02.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\EPPlusSamples\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\input\Inventory.xml" />
+    <Content Include="resources\input\SalesData.xml" />
+    <Content Include="resources\input\SEKRates.xml" />
+    <Content Include="resources\input\StockProducts.xml" />
     <Content Include="resources\input\Products.xml" />
     <Content Include="resources\input\Sales.xml" />
   </ItemGroup>

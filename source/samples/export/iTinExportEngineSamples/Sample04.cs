@@ -8,10 +8,10 @@ namespace iTinExportEngineSamples
 
     using Properties;
 
-    public class Sample05
+    public class Sample04
     {
-        private const string EpplusHeader = " · Running sample 5 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Use pivottables";
+        private const string EpplusHeader = " · Running sample 4 (From configuration file)";
+        private const string FirstSampleStepText   = "  - Use charts with more than one charttype and secondary axis";
 
         /// <summary>
         /// Runs the sample.
@@ -21,10 +21,10 @@ namespace iTinExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var input = new Uri(Settings.Default.SalesDataXmlInput, UriKind.Relative);
+            var input = new Uri(Settings.Default.StockProducts, UriKind.Relative);
             var export = new XmlInput(input);
 
-            var configuration = new Uri(Settings.Default.Sample05Configuration, UriKind.Relative);
+            var configuration = new Uri(Settings.Default.Sample04Configuration, UriKind.Relative);
             export.Export(ExportSettings.ImportFrom(configuration));
         }
     }

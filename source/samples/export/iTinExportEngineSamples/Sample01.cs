@@ -6,6 +6,8 @@ namespace iTinExportEngineSamples
     using iTin.Export;
     using iTin.Export.Inputs;
 
+    using Properties;
+
     public class Sample01
     {
         private const string EpplusHeader = " · Running sample 1 (From configuration file)";
@@ -19,10 +21,10 @@ namespace iTinExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var input = new Uri(Properties.Settings.Default.InventoryXmlInput, UriKind.Relative);
+            var input = new Uri(Settings.Default.InventoryXmlInput, UriKind.Relative);
             var export = new XmlInput(input);
 
-            var configuration = new Uri(Properties.Settings.Default.Sample01Configuration, UriKind.Relative);
+            var configuration = new Uri(Settings.Default.Sample01Configuration, UriKind.Relative);
             export.Export(ExportSettings.ImportFrom(configuration));
         }
     }

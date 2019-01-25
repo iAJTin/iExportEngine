@@ -6,10 +6,12 @@ namespace iTinExportEngineSamples
     using iTin.Export;
     using iTin.Export.Inputs;
 
-    public class Sample09
+    using Properties;
+
+    public class Sample02
     {
-        private const string EpplusHeader = " · Running sample 9 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Use charts with more than one charttype and secondary axis";
+        private const string EpplusHeader = " · Running sample 2 (From configuration file)";
+        private const string FirstSampleStepText   = "  - Equals to Sample 1 and add 2 new rows and a Piechart";
 
         /// <summary>
         /// Runs the sample.
@@ -19,10 +21,10 @@ namespace iTinExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var input = new Uri(Properties.Settings.Default.SalesXmlInput, UriKind.Relative);
+            var input = new Uri(Settings.Default.ProductsXmlInput, UriKind.Relative);
             var export = new XmlInput(input);
 
-            var configuration = new Uri(Properties.Settings.Default.Sample09Configuration, UriKind.Relative);
+            var configuration = new Uri(Settings.Default.Sample02Configuration, UriKind.Relative);
             export.Export(ExportSettings.ImportFrom(configuration));
         }
     }

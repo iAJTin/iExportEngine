@@ -23,11 +23,6 @@
           <Text/>
         </Content>
       </Style>
-      <Style Name="DateTimeStandardWithBorderStyle" Inherits="ValueTextStyle">
-        <Content Color="#B6DDE9" AlternateColor="#D7EEF7">
-          <Text/>
-        </Content>
-      </Style>
       <Style Name="NumericStandardStyle">
         <Content Color="#B6DDE9" AlternateColor="#D7EEF7">
           <Alignment Horizontal="Right"/>
@@ -56,10 +51,10 @@
     </Styles>
   </Global.Resources>
 
-  <Export Name="sample91" Current="Yes">
-    <Description>Sample 9 - A table linked to a stacked area chart</Description>
+  <Export Name="sample4" Current="Yes">
+    <Description>Sample 4 - A table linked to a stacked area chart</Description>
     <Table Host="xlsx"
-           Name="Sales"
+           Name="Product"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
            Alias="Stacked area chart">
@@ -67,37 +62,32 @@
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
       <Fields>
-        <Field Name="Period" Alias="Period">
+        <Field Name="ID" Alias="ID">
           <Header Style="HeaderStyle"/>
-          <Value Style="DateTimeStandardWithBorderStyle"/>            
+          <Value Style="NumericStandardStyle"/>            
           <Aggregate Location="Bottom" Type="Text" Style="HeaderStyle" Text="Total" Show="Yes"/>
         </Field>
-        <Field Name="EUROPE" Alias="Europe">
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueTextStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="STOCK" Alias="Items in Stock">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="AFRICA" Alias="Africa">
+        <Field Name="PURCHASEPRICE" Alias="Purchase Price">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="ASIA" Alias="Asia">
+        <Field Name="PRICE" Alias="Price">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="NORTHAMERICA" Alias="North America">
-          <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
-        </Field>
-        <Field Name="SOUTHAMERICA" Alias="South America">
-          <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
-        </Field>
-        <Field Name="AUSTRALIA" Alias="Australia">
+        <Field Name="PROFIT" Alias="Profit">
           <Header Style="HeaderStyle"/>
           <Value Style="NumericStandardStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
@@ -120,12 +110,13 @@
           <Plots>
             <Plot Name="plot1">
               <Series>
-                <Serie Type="AreaStacked" Axis="Period" Field="EUROPE" Name="Europe" Color="#285A8F"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="AFRICA" Name="AFRICA" Color="#336EA9"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="ASIA" Name="ASIA" Color="#3572B1"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="NORTHAMERICA" Name="NORTHAMERICA" Color="#628AC5"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="SOUTHAMERICA" Name="SOUTHAMERICA" Color="#93ADCD"/>
-                <Serie Type="AreaStacked" Axis="Period" Field="AUSTRALIA" Name="AUSTRALIA" Color="#BCCCDE"/>
+                <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PROFIT" Name="Profit" Color="#285A8F"/>
+                <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PURCHASEPRICE" Name="Purchase Price" Color="#336EA9"/>
+              </Series>
+            </Plot>
+            <Plot UseSecondaryAxis="Yes" Name="plot2">
+              <Series>
+                <Serie Type="Line" Axis="PRODUCT" Field="STOCK" Name="Items in Stock" Color="Gray"/>
               </Series>
             </Plot>
           </Plots>
@@ -133,7 +124,7 @@
       </Charts>
       <Output>
         <Path>~\output\EPPlusSamples\</Path>
-        <File>sample09-from-config-file</File>
+        <File>sample04-from-config-file</File>
       </Output>
     </Table>
   </Export>
