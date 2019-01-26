@@ -195,24 +195,7 @@
             <Horizontal Type="DATE" Show="Yes"/>
             <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
-          <Type Active="Line">
-            <Column>
-              <Serie Color="#376092"/>
-              <Points>
-                <High Color="Red"/>
-              </Points>
-            </Column>
-          </Type>
-        </MiniChart>
-        <MiniChart Field="CAD" EmptyValuesAs="Connect">
-          <Location>
-            <ByCoordenates Coordenates="3 16"/>
-          </Location>
-          <Axes>
-            <Horizontal Type="DATE" Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
-          </Axes>
-          <Type Active="Line">            
+          <Type Active="Column">
             <Column>
               <Serie Color="#376092"/>
               <Points>

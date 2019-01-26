@@ -7,100 +7,113 @@
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
-        <Content Color="#D7EEF7">
-          <Text/>
-        </Content>
-        <Font Bold="Yes"/>
-      </Style>
-      <Style Name="AggregateStyle" Inherits="HeaderStyle">
-        <Content>
-          <Alignment Horizontal="Right"/>
-          <Number Decimals="1"/>
-        </Content>
-      </Style>
-      <Style Name="ValueTextStyle">
-        <Content Color="#B6DDE9">
-          <Text/>
-        </Content>
-      </Style>
-      <Style Name="NumericStandardStyle">
-        <Content Color="#B6DDE9" AlternateColor="#D7EEF7">
-          <Alignment Horizontal="Right"/>
-          <Number Decimals="1"/>
-        </Content>
-      </Style>
-      <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
         <Borders>
-          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+          <Border Position="Top" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Bottom" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Left" Color="White" LineStyle="Continuous" Weight="Thick"/>
         </Borders>
-        <Content Color="#B6DDE9">
-          <Alignment Horizontal="Right"/>
-          <Number/>
+        <Content Color="#ED7D31">
+          <Text/>
         </Content>
+        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
       </Style>
-      <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content Color="#B6DDE9">
+      <Style Name="AggregateNumericStyle" Inherits="HeaderStyle">
+        <Content Color="#ED7D31">
+          <Alignment Horizontal="Right"/>
           <Number Decimals="0"/>
         </Content>
       </Style>
-      <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
-        <Content Color="#B6DDE9">
-          <Number Decimals="1"/>
+      <Style Name="AggregateDecimalStyle" Inherits="HeaderStyle">
+        <Content Color="#ED7D31">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="2"/>
         </Content>
+      </Style>
+      <Style Name="TextStyle">
+        <Borders>
+          <Border Position="Top" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Bottom" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Left" Color="White" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+        <Content Color="#F8CBAD" AlternateColor="#FCE4D6">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>      
+      <Style Name="NumericStyle" Inherits="TextStyle">
+        <Content Color="#F8CBAD" AlternateColor="#FCE4D6">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0"/>
+        </Content>
+      </Style>
+      <Style Name="DecimalStyle" Inherits="NumericStyle">
+        <Borders>
+          <Border Position="Top" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Bottom" Color="White" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Left" Color="White" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+        <Content Color="#F8CBAD" AlternateColor="#FCE4D6">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="2"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
       </Style>
     </Styles>
   </Global.Resources>
 
   <Export Name="sample4" Current="Yes">
-    <Description>Sample 4 - A table linked to a stacked area chart</Description>
+    <Description>Sample 4 - Use Charts With More Than One Chart Type And Secondary Axis</Description>
     <Table Host="xlsx"
            Name="Product"
            AutoFilter="Yes"
+           ShowGridLines="No"
            AutoFitColumns="Yes"
-           Alias="Stacked area chart">
+           Alias="Chart And Secondary Axis">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
       <Fields>
         <Field Name="ID" Alias="ID">
           <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>            
+          <Value Style="NumericStyle"/>            
           <Aggregate Location="Bottom" Type="Text" Style="HeaderStyle" Text="Total" Show="Yes"/>
         </Field>
         <Field Name="PRODUCT" Alias="Product">
           <Header Style="HeaderStyle"/>
-          <Value Style="ValueTextStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+          <Value Style="TextStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="HeaderStyle" Show="Yes"/>
         </Field>
         <Field Name="STOCK" Alias="Items in Stock">
           <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+          <Value Style="NumericStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateNumericStyle" Show="Yes"/>
         </Field>
         <Field Name="PURCHASEPRICE" Alias="Purchase Price">
           <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+          <Value Style="DecimalStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateDecimalStyle" Show="Yes"/>
         </Field>
         <Field Name="PRICE" Alias="Price">
           <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+          <Value Style="DecimalStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateDecimalStyle" Show="Yes"/>
         </Field>
         <Field Name="PROFIT" Alias="Profit">
           <Header Style="HeaderStyle"/>
-          <Value Style="NumericStandardStyle"/>
-          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+          <Value Style="DecimalStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateDecimalStyle" Show="Yes"/>
         </Field>
       </Fields>
       <Charts>
         <Chart Size="800 600">
           <Location>
-            <ByCoordenates Coordenates="11 1"/>
+            <ByCoordenates Coordenates="8 1"/>
           </Location>
           <Legend Show="Yes">
-            <Border Show="Yes"/>
-            <Font Size="12" Bold="Yes"/>
+            <Font Name="Calibri" Size="10"/>
           </Legend>
           <Axes>
             <Primary>
@@ -110,7 +123,7 @@
           <Plots>
             <Plot Name="plot1">
               <Series>
-                <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PROFIT" Name="Profit" Color="#285A8F"/>
+                <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PROFIT" Name="Profit" Color="#ED7D31"/>                  
                 <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PURCHASEPRICE" Name="Purchase Price" Color="#336EA9"/>
               </Series>
             </Plot>

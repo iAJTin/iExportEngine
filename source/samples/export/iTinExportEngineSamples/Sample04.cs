@@ -10,8 +10,8 @@ namespace iTinExportEngineSamples
 
     public class Sample04
     {
-        private const string EpplusHeader = " · Running sample 4 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Use charts with more than one charttype and secondary axis";
+        private const string EpplusHeader = " · Running sample 4 (From Configuration File)";
+        private const string FirstSampleStepText   = "  - Use Charts With More Than One Chart Type And Secondary Axis";
 
         /// <summary>
         /// Runs the sample.

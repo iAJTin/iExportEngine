@@ -358,7 +358,13 @@ namespace iTin.Export.ComponentModel.Provider
         public IEnumerable<XElement> ToXml()
         {
             CreateInputXml();
-            return LoadXmlFromFile(InputUri.OriginalString, Input.Model.Table.Name);
+
+            return 
+                LoadXmlFromFile(
+                    InputUri.OriginalString, 
+                    CanCreateInputXml 
+                        ? Input.Model.Table.Name.ToUpperInvariant() 
+                        : Input.Model.Table.Name);
         }
         #endregion
 

@@ -10,8 +10,8 @@ namespace iTinExportEngineSamples
 
     public class Sample01
     {
-        private const string EpplusHeader = " · Running sample 1 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Simply creates a new workbook from scratch. The workbook contains one worksheet with a simple invertory list";
+        private const string EpplusHeader = " · Running Sample 1 (From Configuration File)";
+        private const string FirstSampleStepText   = "  - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List";
 
         /// <summary>
         /// Runs the sample.

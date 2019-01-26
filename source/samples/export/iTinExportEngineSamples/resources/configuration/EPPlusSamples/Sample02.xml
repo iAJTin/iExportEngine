@@ -7,7 +7,7 @@
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
-        <Content Color="Navy">
+        <Content Color="#00008B">
           <Alignment Horizontal="Left"/>
           <Text/>
         </Content>
@@ -135,17 +135,17 @@
         </Field>
       </Fields>
       <Charts>
-        <Chart Size="640 300">
+        <Chart Size="600 300">
           <Location>
             <ByCoordenates Coordenates="6 1"/>
           </Location>
           <Title>
             <Text>Total</Text>
-            <Font Size="12" Bold="Yes"/>
+            <Font Name="Calibri" Size="18"/>
           </Title>
           <Legend Show="Yes">
             <Border Show="Yes"/>
-            <Font Size="12" Bold="Yes"/>
+            <Font Name="Calibri"/>
           </Legend>
           <Plots>
             <Plot Name="plot1">              

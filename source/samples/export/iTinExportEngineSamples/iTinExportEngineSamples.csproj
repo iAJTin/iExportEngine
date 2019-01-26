@@ -50,6 +50,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Sample07.cs" />
     <Compile Include="Sample06.cs" />
     <Compile Include="Sample05.cs" />
     <Compile Include="Sample04.cs" />
@@ -75,6 +76,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\configuration\EPPlusSamples\Sample07.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\EPPlusSamples\Sample06.xml">
       <SubType>Designer</SubType>
     </Content>

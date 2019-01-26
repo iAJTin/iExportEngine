@@ -10,8 +10,8 @@ namespace iTinExportEngineSamples
 
     public class Sample03
     {
-        private const string EpplusHeader = " · Running sample 3 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Use stacked charts";
+        private const string EpplusHeader = " · Running sample 3 (From Configuration File)";
+        private const string FirstSampleStepText   = "  - Use Stacked Charts";
 
         /// <summary>
         /// Runs the sample.

@@ -11,8 +11,8 @@ namespace iTinExportEngineSamples
 
     public class Sample06
     {
-        private const string EpplusHeader = " · Running sample 6 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Use mini charts";
+        private const string EpplusHeader = " · Running Sample 6 (From Configuration File)";
+        private const string FirstSampleStepText   = "  - Use Mini Charts";
 
         /// <summary>
         /// Runs the sample.

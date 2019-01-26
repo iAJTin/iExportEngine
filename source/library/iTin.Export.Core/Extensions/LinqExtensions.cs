@@ -150,14 +150,14 @@ namespace iTin.Export
         /// </returns>
         public static DataTable ToDataTable<T>(this IEnumerable items, string name)
         {
-            var table = new DataTable(name);
+            var table = new DataTable(name.ToUpperInvariant());
             var properties = TypeDescriptor.GetProperties(typeof(T));
             foreach (PropertyDescriptor prop in properties)
             {
                 table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
             }
 
-            var list = items.Cast<T>(); //.ToList();
+            var list = items.Cast<T>();
             foreach (var item in list)
             {
                 var row = table.NewRow();

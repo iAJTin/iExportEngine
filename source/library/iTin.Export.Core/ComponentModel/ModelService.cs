@@ -1,6 +1,4 @@
 ﻿
-using iTin.Export.ComponentModel.Patterns;
-
 namespace iTin.Export.ComponentModel
 {
     using System.Collections.Generic;

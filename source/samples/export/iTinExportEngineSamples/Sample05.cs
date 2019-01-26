@@ -10,8 +10,8 @@ namespace iTinExportEngineSamples
 
     public class Sample05
     {
-        private const string EpplusHeader = " · Running sample 5 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Use pivottables";
+        private const string EpplusHeader = " · Running Sample 5 (From Configuration File)";
+        private const string FirstSampleStepText   = "  - Use Pivot Tables";
 
         /// <summary>
         /// Runs the sample.

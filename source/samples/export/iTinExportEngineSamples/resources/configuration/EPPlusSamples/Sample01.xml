@@ -15,7 +15,7 @@
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
-        <Content Color="Navy">
+        <Content Color="#00008B">
           <Alignment Horizontal="Left"/>
           <Text/>
         </Content>

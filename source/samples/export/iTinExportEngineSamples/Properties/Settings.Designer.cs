@@ -67,6 +67,18 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SEKRates.xml")]
+        public string SEKRatesXmlInput {
+            get {
+                return ((string)(this["SEKRatesXmlInput"]));
+            }
+            set {
+                this["SEKRatesXmlInput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\StockProducts.xml")]
         public string StockProducts {
             get {
@@ -148,13 +160,13 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SEKRates.xml")]
-        public string SEKRatesXmlInput {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample07.xml")]
+        public string Sample07Configuration {
             get {
-                return ((string)(this["SEKRatesXmlInput"]));
+                return ((string)(this["Sample07Configuration"]));
             }
             set {
-                this["SEKRatesXmlInput"] = value;
+                this["Sample07Configuration"] = value;
             }
         }
     }

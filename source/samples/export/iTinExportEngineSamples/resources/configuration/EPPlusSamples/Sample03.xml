@@ -7,49 +7,44 @@
     </Hosts>
     <Styles>
       <Style Name="HeaderStyle">
-        <Content Color="#D7EEF7">
+        <Borders>
+          <Border Position="Top" Color="#5B9BD5" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Left" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+        <Content Color="#DDEBF7">
           <Text/>
         </Content>
-        <Font Bold="Yes"/>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="AggregateTotalStyle" Inherits="HeaderStyle">
+        <Borders>
+          <Border Position="Top" Color="#5B9BD5" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Bottom" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
       </Style>
       <Style Name="AggregateStyle" Inherits="HeaderStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
         <Content>
           <Alignment Horizontal="Right"/>
           <Number Decimals="1"/>
         </Content>
-      </Style>
-      <Style Name="ValueTextStyle">
-        <Content Color="#B6DDE9">
-          <Text/>
-        </Content>
-      </Style>
-      <Style Name="DateTimeStandardWithBorderStyle" Inherits="ValueTextStyle">
-        <Content Color="#B6DDE9" AlternateColor="#D7EEF7">
-          <Text/>
-        </Content>
-      </Style>
-      <Style Name="NumericStandardStyle">
-        <Content Color="#B6DDE9" AlternateColor="#D7EEF7">
-          <Alignment Horizontal="Right"/>
-          <Number Decimals="1"/>
-        </Content>
-      </Style>
-      <Style Name="NumericStandardWithBorderStyle" Inherits="NumericStandardStyle">
+      </Style>      
+      <Style Name="DateTimeStyle">
         <Borders>
-          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+          <Border Position="Left" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
         </Borders>
-        <Content Color="#B6DDE9">
+        <Content Color="#BDD7EE" AlternateColor="#DDEBF7">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="NumericStandardStyle" Inherits="DateTimeStyle">
+        <Content Color="#BDD7EE" AlternateColor="#DDEBF7">
           <Alignment Horizontal="Right"/>
-          <Number/>
-        </Content>
-      </Style>
-      <Style Name="NumericWithoutDecimalsStyle" Inherits="NumericStandardStyle">
-        <Content Color="#B6DDE9">
-          <Number Decimals="0"/>
-        </Content>
-      </Style>
-      <Style Name="NumericWithoutDecimalsWithBorderStyle" Inherits="NumericStandardWithBorderStyle">
-        <Content Color="#B6DDE9">
           <Number Decimals="1"/>
         </Content>
       </Style>
@@ -61,7 +56,8 @@
     <Table Host="xlsx"
            Name="Sales"
            AutoFilter="Yes"
-           AutoFitColumns="Yes"
+           AutoFitColumns="Yes" 
+           ShowGridLines="No"           
            Alias="Stacked area chart">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>
@@ -69,8 +65,8 @@
       <Fields>
         <Field Name="Period" Alias="Period">
           <Header Style="HeaderStyle"/>
-          <Value Style="DateTimeStandardWithBorderStyle"/>            
-          <Aggregate Location="Bottom" Type="Text" Style="HeaderStyle" Text="Total" Show="Yes"/>
+          <Value Style="DateTimeStyle"/>            
+          <Aggregate Location="Bottom" Type="Text" Style="AggregateTotalStyle" Text="Total" Show="Yes"/>
         </Field>
         <Field Name="EUROPE" Alias="Europe">
           <Header Style="HeaderStyle"/>
@@ -110,11 +106,11 @@
           </Location>
           <Legend Show="Yes">
             <Border Show="Yes"/>
-            <Font Size="12" Bold="Yes"/>
+            <Font Name="Calibri" Size="10"/>
           </Legend>
           <Axes>
-            <Primary>
-              <Values GridLines="Major"/>
+            <Primary>              
+              <Values GridLines="Major"/>                
             </Primary>
           </Axes>
           <Plots>

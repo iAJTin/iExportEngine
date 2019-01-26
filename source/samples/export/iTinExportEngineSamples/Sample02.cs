@@ -10,8 +10,8 @@ namespace iTinExportEngineSamples
 
     public class Sample02
     {
-        private const string EpplusHeader = " · Running sample 2 (From configuration file)";
-        private const string FirstSampleStepText   = "  - Equals to Sample 1 and add 2 new rows and a Piechart";
+        private const string EpplusHeader = " · Running Sample 2 (From Configuration File)";
+        private const string FirstSampleStepText   = "  - Equals To Sample 1 And Adds 2 New rows And A Piechart";
 
         /// <summary>
         /// Runs the sample.
