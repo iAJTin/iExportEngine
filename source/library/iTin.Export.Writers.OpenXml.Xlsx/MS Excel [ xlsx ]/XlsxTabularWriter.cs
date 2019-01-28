@@ -900,18 +900,18 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    var range1 = worksheet.Cells["A1:H501"];
-                    var wsPivot = worksheet.Workbook.Worksheets.Add("PivotSimple");
-                    var pivotTable1 = wsPivot.PivotTables.Add(wsPivot.Cells["A1"], range1, "PerEmploee");
+                    ////var range1 = worksheet.Cells["A1:H501"];
+                    ////var wsPivot = worksheet.Workbook.Worksheets.Add("PivotSimple");
+                    ////var pivotTable1 = wsPivot.PivotTables.Add(wsPivot.Cells["A1"], range1, "PerEmploee");
 
-                    pivotTable1.RowFields.Add(pivotTable1.Fields[3]);
-                    var dataField = pivotTable1.DataFields.Add(pivotTable1.Fields[5]);
-                    dataField.Format = "#,##0";
-                    pivotTable1.DataOnRows = true;
+                    ////pivotTable1.RowFields.Add(pivotTable1.Fields[3]);
+                    ////var dataField = pivotTable1.DataFields.Add(pivotTable1.Fields[5]);
+                    ////dataField.Format = "#,##0";
+                    ////pivotTable1.DataOnRows = true;
 
-                    var chartp = wsPivot.Drawings.AddChart("PivotChart", eChartType.Pie, pivotTable1);
-                    chartp.SetPosition(1, 0, 4, 0);
-                    chartp.SetSize(600, 400);
+                    ////var chartp = wsPivot.Drawings.AddChart("PivotChart", eChartType.Pie, pivotTable1);
+                    ////chartp.SetPosition(1, 0, 4, 0);
+                    ////chartp.SetSize(600, 400);
 
                     //var hl = new ExcelHyperLink("Statistics!A1", "Statistics");
                     //hl.
