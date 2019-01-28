@@ -2044,7 +2044,45 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- MiniChart column location. List of possible types of minichart column locations. -->
+  <xs:simpleType name="MiniChartColumnLocationListType">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="Top">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Minichart location at the top.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bottom">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Minichart location at the bottom.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
 
+  <!-- MiniChart row location. List of possible types of minichart row locations. -->
+  <xs:simpleType name="MiniChartRowLocationListType">
+    <xs:restriction base ="xs:string">
+      <xs:enumeration value="Right">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Minichart location at the right.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Left">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Minichart location at the left.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
 
 
   <!-- ====================================== -->

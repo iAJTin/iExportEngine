@@ -1,8 +1,10 @@
 ﻿
 namespace iTin.Export.Model
 {
+    using System;
     using System.ComponentModel;
     using System.Diagnostics;
+    using System.Drawing;
     using System.Xml.Serialization;
 
     using Helpers;
@@ -103,9 +105,17 @@ namespace iTin.Export.Model
         private const YesNo DefaultDisplayHidden = YesNo.No;
         #endregion
 
+        #region private static readonly
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private static readonly int[] DefaultCellSize = { -1, -1 };
+        #endregion
+
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MiniChartAxesModel _axes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private int[] _cellSize;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _displayHidden;
@@ -116,8 +126,8 @@ namespace iTin.Export.Model
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _field;
 
-        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        //private LocationModel _location;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private MiniChartLocationModel _location;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private MiniChartTypeModel _type;
@@ -134,7 +144,8 @@ namespace iTin.Export.Model
         {
             DisplayHidden = DefaultDisplayHidden;
             EmptyValueAs = DefaultEmptyValueAs;
-        } 
+            Size = DefaultCellSize;
+        }
         #endregion
 
         #endregion
@@ -218,12 +229,12 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (LocationModel) Location: Gets or sets a reference which contains the chart location on the host
-        //public LocationModel Location
-        //{
-        //    get => _location ?? (_location = new LocationModel());
-        //    set => _location = value;
-        //}
+        #region [public] (MiniChartLocationModel) Location: Gets or sets a reference which contains the mini chart location on the host
+        public MiniChartLocationModel Location
+        {
+            get => _location ?? (_location = new MiniChartLocationModel());
+            set => _location = value;
+        }
         #endregion
 
         #region [public] (MiniChartTypeModel) Type: Gets or sets a reference that contains the visual setting of chart types
@@ -242,6 +253,30 @@ namespace iTin.Export.Model
             }
             set => _type = value;
         }
+        #endregion
+
+        #region [public] (int[]) Size: Gets or sets an array of integers that represent the table location
+        [XmlAttribute]
+        [CLSCompliant(false)]
+        [DefaultValue(new[] { -1, -1 })]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        public int[] Size
+        {
+            get => _cellSize ?? (_cellSize = DefaultCellSize);
+            set
+            {
+                if (value != null)
+                {
+                    SentinelHelper.IsTrue(value.Length > 2, "Máximo 2 valores");
+
+                    _cellSize = value;
+                }
+            }
+        }
+        #endregion
+
+        #region [public] (Size) CellSize: Gets cell size
+        public Size CellSize => new Size(Size[0], Size[1]);
         #endregion
 
         #endregion

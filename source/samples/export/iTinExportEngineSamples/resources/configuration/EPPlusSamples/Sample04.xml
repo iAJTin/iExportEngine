@@ -48,7 +48,7 @@
           <Number Decimals="0"/>
         </Content>
       </Style>
-      <Style Name="DecimalStyle" Inherits="NumericStyle">
+      <Style Name="DecimalStyle">
         <Borders>
           <Border Position="Top" Color="White" LineStyle="Continuous" Weight="Thick"/>
           <Border Position="Right" Color="White" LineStyle="Continuous" Weight="Thick"/>
@@ -116,20 +116,29 @@
             <Font Name="Calibri" Size="10"/>
           </Legend>
           <Axes>
-            <Primary>
+            <Primary>              
               <Values GridLines="Major"/>
             </Primary>
+            <Secondary>
+              <Values>
+                <Labels Position="High"/>
+                <Values Maximun="50"/>
+              </Values>
+              <Category>
+                <Labels Position="High"/>
+              </Category>
+            </Secondary>
           </Axes>
           <Plots>
             <Plot Name="plot1">
               <Series>
-                <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PROFIT" Name="Profit" Color="#ED7D31"/>                  
                 <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PURCHASEPRICE" Name="Purchase Price" Color="#336EA9"/>
+                <Serie Type="ColumnStacked" Axis="PRODUCT" Field="PROFIT" Name="Profit" Color="#ED7D31"/>                  
               </Series>
             </Plot>
-            <Plot UseSecondaryAxis="Yes" Name="plot2">
+            <Plot UseSecondaryAxis="Yes" Name="plot2">              
               <Series>
-                <Serie Type="Line" Axis="PRODUCT" Field="STOCK" Name="Items in Stock" Color="Gray"/>
+                <Serie Type="Line" Axis="ID" Field="STOCK" Name="Items in Stock" Color="Gray"/>                  
               </Series>
             </Plot>
           </Plots>

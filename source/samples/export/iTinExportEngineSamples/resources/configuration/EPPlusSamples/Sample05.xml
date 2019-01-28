@@ -110,13 +110,47 @@
           <Header Style="HeaderStyle"/>
           <Value Style="NumericRightValueStyle"/>
         </Field>
+        <!--<Pivots>
+          <Pivot 
+            Key="PivotTablePerEmploee"
+            Name ="PerEmploee"
+            Alias="PivotSimple"
+            AutoFitColumns="Yes"
+            DataOnRows="Yes">
+            <Location>
+              <ByCoordenates Coordenates="1 1"/>
+            </Location>
+            <Data>
+              <Rows>
+                <Row Field="Name"/>
+              </Rows>
+              <Values>
+                <Value Field="SubTotal"/>
+              </Values>
+            </Data>
+            <Charts>
+              <Chart  Size="600 400"  >
+                <Location>
+                  <ByCoordenates Coordenates="8 1"/>
+                </Location>
+                <Legend Show="Yes">
+                  <Border Show="Yes"/>
+                  <Font Size="12" Bold="Yes"/>
+                </Legend>
+                <Axes>
+                  <Primary>
+                    <Values GridLines="Major"/>
+                  </Primary>
+                </Axes>
+              </Chart>
+            </Charts>
+          </Pivot>
+        </Pivots>-->
       </Fields>
       <Output>
         <Path>~\output\EPPlusSamples\</Path>
         <File>sample05-from-config-file</File>
       </Output>
     </Table>
-
   </Export>
-
 </Exports>

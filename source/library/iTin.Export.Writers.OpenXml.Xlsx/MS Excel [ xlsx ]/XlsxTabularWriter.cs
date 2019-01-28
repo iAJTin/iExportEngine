@@ -622,16 +622,56 @@ namespace iTin.Export.Writers.OpenXml.Office
                                 dataSerieY++;
                             }
 
+                            if (hasBottomAggregates)
+                            {
+                                dataSerieY++;
+                            }
+
                             var item = items[miniChart.Field];
                             if (item == null)
                             {
                                 continue;
                             }
 
-                            var locationRange = ExcelCellBase.GetAddress(18, 2);
+                            Point offset = Point.Empty;
+                            var locationModel = miniChart.Location;
+                            switch (locationModel.LocationType)
+                            {
+                                case KnownMiniChartElementPosition.ByColumn:
+                                    offset = new Point(0, ((ByColumnLocationModel)locationModel.Mode).Offset);
+                                    break;
+
+                                case KnownMiniChartElementPosition.ByRow:
+                                    offset = new Point(((ByRowLocationModel)locationModel.Mode).Offset, 0);
+                                    break;
+
+                                case KnownMiniChartElementPosition.ByCoordenates:
+                                    offset = ((CoordenatesModel)locationModel.Mode).TableCoordenates;
+                                    break;
+
+                                case KnownMiniChartElementPosition.Relative:
+                                    offset = ((CoordenatesModel)locationModel.Mode).TableCoordenates;
+                                    break;
+                            }
+
                             var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
+                            var locationRange = ExcelCellBase.GetAddress(rowsCount + dataSerieY + offset.Y + 1, fieldColumnIndex + offset.X);
                             var dataRange = ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex);
 
+                            // Apply Cell size                           
+                            if (miniChart.CellSize.Width != -1)
+                            {
+                                var minichartColumn = fieldColumnIndex + offset.X;
+                                worksheet.Column(minichartColumn).Width = miniChart.CellSize.Width;
+                            }
+
+                            if (miniChart.CellSize.Height != -1)
+                            {
+                                var minichartRow = rowsCount + dataSerieY + offset.Y + 1;
+                                worksheet.Row(minichartRow).Height = miniChart.CellSize.Height;
+                            }
+
+                            // Create Minichart
                             var sparkline = worksheet.SparklineGroups.Add(
                                 miniChart.Type.Active.ToEppeSparklineType(), 
                                 worksheet.Cells[locationRange], 

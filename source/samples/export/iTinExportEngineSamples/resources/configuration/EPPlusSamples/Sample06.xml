@@ -5,7 +5,19 @@
     <Hosts>
       <Host Key="xlsx"/>
     </Hosts>
+    <Lines>
+      <TextLine Key="ColumnMiniChartLine" Style="ColumnMiniChartLineStyle">
+        <Text>Column</Text>
+      </TextLine>
+    </Lines>
     <Styles>
+      <Style Name="ColumnMiniChartLineStyle">
+        <Content>
+          <Alignment Vertical="Bottom"/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
       <Style Name="ReportTitleStyle">
         <Content>
           <Alignment Horizontal="Left"/>
@@ -104,10 +116,19 @@
 
   <Export Name="sample6" Current="Yes">
     <Description>Sample 6 - Use Mini charts</Description>
+    <BlockLines>
+      <Block Key="Block01">
+        <Location>          
+          <ByCoordenates Coordenates="1 14"/>
+        </Location>
+        <Items Keys="ColumnMiniChartLine"/>
+      </Block>
+    </BlockLines>
     <Table Host="xlsx"
            Name="Rates"
            Alias="SEKRates"
            AutoFilter="Yes"
+           ShowGridLines="No"
            AutoFitColumns="Yes">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>
@@ -187,12 +208,267 @@
         <File>sample06-from-config-file</File>
       </Output>
       <Charts>
-        <MiniChart Field="AUD" EmptyValuesAs="Zero">
+        <MiniChart Field="AUD" EmptyValuesAs="Zero" Size="-1 40">
           <Location>
-            <ByCoordenates Coordenates="2 14"/>
+            <ByColumn Offset="1"/>
           </Location>
           <Axes>
-            <Horizontal Type="DATE" Show="Yes"/>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="CAD" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="CHF" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="DKK" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="EUR" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="GBP" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="HKD" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="JPY" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="MYR" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="NOK" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="NZD" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="RUB" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="SEK" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="THB" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="TRY" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
+            <Vertical Max="Automatic" Min="Automatic"/>
+          </Axes>
+          <Type Active="Column">
+            <Column>
+              <Serie Color="#376092"/>
+              <Points>
+                <High Color="Red"/>
+              </Points>
+            </Column>
+          </Type>
+        </MiniChart>
+        <MiniChart Field="USD" EmptyValuesAs="Zero" Size="-1 40">
+          <Location>
+            <ByColumn Offset="1"/>
+          </Location>
+          <Axes>
+            <Horizontal Show="Yes"/>
             <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">

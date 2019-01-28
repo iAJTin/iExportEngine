@@ -12,6 +12,14 @@
   <!-- Element Attributes -->
   <!-- ================== -->
 
+  <!-- CellSizeAttribute: MiniChart cell size -->
+  <xs:simpleType name="CellSizeAttribute" id="CellSizeAttribute">
+    <xs:restriction base="integerArrayWhereMinValueIsMinusOneType">
+      <xs:length value="2" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- LocationAttribute: Logo's location -->
   <xs:simpleType name="LocationAttribute" id="LocationAttribute">
     <xs:restriction base="integerArrayWhereMinValueIsOneType">

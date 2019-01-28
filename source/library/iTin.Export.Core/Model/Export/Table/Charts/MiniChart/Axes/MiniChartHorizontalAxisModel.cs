@@ -137,7 +137,7 @@ namespace iTin.Export.Model
         {
             get
             {
-                if (Type.Equals(DefaultAxisType))
+                if (Type.Equals(DefaultAxisType.ToUpperInvariant()))
                 {
                     return false;
                 }
