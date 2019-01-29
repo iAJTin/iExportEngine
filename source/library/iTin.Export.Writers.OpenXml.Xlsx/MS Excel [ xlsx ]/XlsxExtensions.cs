@@ -2,6 +2,7 @@
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Drawing;
     using System.Globalization;
     using System.Text;
 
@@ -789,6 +790,36 @@ namespace iTin.Export.Writers.OpenXml.Office
                 default:
                     return eDispBlanksAs.Gap;
             }
+        }
+        #endregion
+
+        #region [public] {static} (Color) GetMiniChartSerieColor(this MiniChartTypeModel): Returns mini chart serie color
+        /// <summary>
+        /// Returns mini chart serie color.
+        /// </summary>
+        /// <param name="model">Model.</param>
+        /// <returns>
+        /// A <see cref="T:System.Drawing.Color" /> value.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException">The value specified is <c>null</c>.</exception>
+        public static Color GetMiniChartSerieColor(this MiniChartTypeModel model)
+        {
+            SentinelHelper.ArgumentNull(model);
+
+            var result = Color.Transparent;
+            switch (model.Active)
+            {
+                case KnownMiniChartType.Column:
+                    return model.Column.Serie.GetColor();
+
+                case KnownMiniChartType.Line:
+                    return model.Line.Serie.GetColor();
+
+                case KnownMiniChartType.WinLoss:
+                    return model.WinLoss.Serie.GetColor();
+            }
+
+            return result;
         }
         #endregion
     }

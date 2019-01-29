@@ -3672,20 +3672,6 @@
             </xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element name="ByRow" type="ByRowLocationModel" minOccurs="0" maxOccurs="1">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Minichart relative location by row and column..
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element name="Relative" type="RelativeLocationModel" minOccurs="0" maxOccurs="1">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Minichart relative location by row and column.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
       </xs:choice>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
@@ -3718,54 +3704,7 @@
     <xs:attribute name="Offset" type="xs:nonNegativeInteger" use="optional" default="0">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Preferred row size. The default is default's row.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-
-  <!-- Location: ByRow -->
-  <xs:complexType name="ByRowLocationModel" id="ByRowLocationModel">
-    <xs:all>
-      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Defines custom properties for this node. Contains a list of keys item with name / value.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:all>
-    <xs:attribute name="Location" type="MiniChartRowLocationListType" use="optional" default="Right">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Location. The default is 'Right'.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Offset" type="xs:nonNegativeInteger" use="optional" default="0">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Preferred row size. The default is default's row.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  
-  <!-- Location: Relative -->
-  <xs:complexType name="RelativeLocationModel" id="RelativeLocationModel">
-    <xs:all>
-      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Defines custom properties for this node. Contains a list of keys item with name / value.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:all>
-    <xs:attribute name="Coordenates" type="LocationAttribute" use="optional" default="1 1">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          [Optional] Location of element, sets the x and y coordinates where the element begins. The default is '1 1'.
+          [Optional] Preferred row size. The default is 0.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

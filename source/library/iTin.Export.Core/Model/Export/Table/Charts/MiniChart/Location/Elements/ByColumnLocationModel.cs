@@ -15,7 +15,7 @@ namespace iTin.Export.Model
         private const int DefaultOffset = 0;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const KnownMiniChartLocation DefaultLocation = KnownMiniChartLocation.Bottom;
+        private const KnownMiniChartColumnLocation DefaultLocation = KnownMiniChartColumnLocation.Bottom;
         #endregion
 
         #region private field members
@@ -23,7 +23,7 @@ namespace iTin.Export.Model
         private int _offset;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownMiniChartLocation _location;
+        private KnownMiniChartColumnLocation _location;
         #endregion
 
         #region constructor/s
@@ -40,10 +40,10 @@ namespace iTin.Export.Model
 
         #region public properties
 
-        #region [public] (KnownMiniChartLocation) Location: Gets or sets preferred location in which to add the minichart
+        #region [public] (KnownMiniChartColumnLocation) Location: Gets or sets preferred location in which to add the minichart
         [XmlAttribute]
         [DefaultValue(DefaultLocation)]
-        public KnownMiniChartLocation Location
+        public KnownMiniChartColumnLocation Location
         {
             get => _location;
             set

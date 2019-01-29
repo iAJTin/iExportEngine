@@ -8,9 +8,9 @@ namespace iTin.Export.Model
 
     [GeneratedCode("System.Xml", "4.0.30319.18033")]
     [Serializable]
-    //[DebuggerStepThrough()]
+    //[DebuggerStepThrough]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0")]
+    [XmlRoot(Namespace = "http://schemas.itin.com/export/engine/2014/configuration/v1.0", IsNullable = true)]
     public partial class MiniChartAxesModel : BaseModel<MiniChartAxesModel>
     {
     }

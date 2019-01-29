@@ -2,11 +2,7 @@
 namespace iTin.Export.Model
 {
     using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
     using System.Xml.Serialization;
-
-    using Helpers;
 
     public partial class MiniChartLocationModel
     {
@@ -26,9 +22,6 @@ namespace iTin.Export.Model
                     case "ByColumnLocationModel":
                         return KnownMiniChartElementPosition.ByColumn;
 
-                    case "ByRowLocationModel":
-                        return KnownMiniChartElementPosition.ByRow;
-
                     case "CoordenatesModel":
                         return KnownMiniChartElementPosition.ByCoordenates;
 
@@ -45,7 +38,6 @@ namespace iTin.Export.Model
                 switch (LocationType)
                 {
                     case KnownMiniChartElementPosition.ByColumn:
-                    case KnownMiniChartElementPosition.ByRow:
                         return false;
 
                     case KnownMiniChartElementPosition.ByCoordenates:
@@ -59,8 +51,6 @@ namespace iTin.Export.Model
 
         [XmlElement("ByColumn", typeof(ByColumnLocationModel))]
         [XmlElement("ByCoordenates", typeof(CoordenatesModel))]
-        [XmlElement("ByRow", typeof(ByRowLocationModel))]
-        [XmlElement("Relative", typeof(RelativeLocationModel))]
         public object Mode { get; set; }
 
         public override bool IsDefault => LocationType.Equals(KnownMiniChartElementPosition.ByColumn);

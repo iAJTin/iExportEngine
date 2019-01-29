@@ -1,6 +1,4 @@
 ﻿
-using System.Runtime.InteropServices;
-
 namespace iTin.Export.Writers.OpenXml.Office
 {
     using System;
@@ -51,16 +49,6 @@ namespace iTin.Export.Writers.OpenXml.Office
         /// </value>
         private GlobalResourcesModel Resources => Provider.Input.Resources;
         #endregion
-
-        //#region [private] (ModelService) Service: Gets service reference to render
-        ///// <summary>
-        ///// Gets service reference to render.
-        ///// </summary>
-        ///// <value>
-        ///// The service.
-        ///// </value>
-        //public ModelService Service => ModelService.Instance;
-        //#endregion
 
         #region [private] (TableModel) Table: Gets a reference to the model table
         /// <summary>
@@ -633,41 +621,36 @@ namespace iTin.Export.Writers.OpenXml.Office
                                 continue;
                             }
 
-                            Point offset = Point.Empty;
+                            Point chartOffset = Point.Empty;
+                            Point chartLocation = Point.Empty;
                             var locationModel = miniChart.Location;
                             switch (locationModel.LocationType)
                             {
                                 case KnownMiniChartElementPosition.ByColumn:
-                                    offset = new Point(0, ((ByColumnLocationModel)locationModel.Mode).Offset);
-                                    break;
-
-                                case KnownMiniChartElementPosition.ByRow:
-                                    offset = new Point(((ByRowLocationModel)locationModel.Mode).Offset, 0);
+                                    var byColumnMode = (ByColumnLocationModel)locationModel.Mode;
+                                    chartOffset = new Point(0, byColumnMode.Location == KnownMiniChartColumnLocation.Bottom ? byColumnMode.Offset : -byColumnMode.Offset);
+                                    chartLocation = new Point(chartOffset.X, byColumnMode.Location == KnownMiniChartColumnLocation.Bottom ? rowsCount + dataSerieY + chartOffset.Y + 1 : tableLocation.Y + chartOffset.Y);
                                     break;
 
                                 case KnownMiniChartElementPosition.ByCoordenates:
-                                    offset = ((CoordenatesModel)locationModel.Mode).TableCoordenates;
-                                    break;
-
-                                case KnownMiniChartElementPosition.Relative:
-                                    offset = ((CoordenatesModel)locationModel.Mode).TableCoordenates;
+                                    chartLocation = ((CoordenatesModel)locationModel.Mode).TableCoordenates;
                                     break;
                             }
 
                             var fieldColumnIndex = tableLocation.X + items.IndexOf(item) + 1;
-                            var locationRange = ExcelCellBase.GetAddress(rowsCount + dataSerieY + offset.Y + 1, fieldColumnIndex + offset.X);
                             var dataRange = ExcelCellBase.GetAddress(dataSerieY + 1, fieldColumnIndex, rowsCount + dataSerieY, fieldColumnIndex);
+                            var locationRange = ExcelCellBase.GetAddress(chartLocation.Y < 1 ? 1: chartLocation.Y, locationModel.IsAbosulte ? chartLocation.X : fieldColumnIndex + chartLocation.X);
 
                             // Apply Cell size                           
                             if (miniChart.CellSize.Width != -1)
                             {
-                                var minichartColumn = fieldColumnIndex + offset.X;
+                                var minichartColumn = locationModel.IsAbosulte ? chartOffset.X : fieldColumnIndex + chartOffset.X;
                                 worksheet.Column(minichartColumn).Width = miniChart.CellSize.Width;
                             }
 
                             if (miniChart.CellSize.Height != -1)
                             {
-                                var minichartRow = rowsCount + dataSerieY + offset.Y + 1;
+                                var minichartRow = chartLocation.Y < 1 ? 1 : chartLocation.Y;
                                 worksheet.Row(minichartRow).Height = miniChart.CellSize.Height;
                             }
 
@@ -678,18 +661,11 @@ namespace iTin.Export.Writers.OpenXml.Office
                                 worksheet.Cells[dataRange]);
 
                             sparkline.DisplayHidden = miniChart.DisplayHidden == YesNo.Yes;
-                            sparkline.ColorSeries.SetColor(miniChart.Type.Column.Serie.GetColor());
+                            sparkline.ColorSeries.SetColor(miniChart.Type.GetMiniChartSerieColor());
                             sparkline.DisplayEmptyCellsAs = miniChart.EmptyValueAs.ToEppeDisplayBlanksAs();
 
                             // Axes
                             // Horizontal axis
-                            sparkline.RightToLeft = miniChart.Axes.Horizontal.RightToLeft == YesNo.Yes;
-                            if (miniChart.Axes.Horizontal.Show == YesNo.Yes)
-                            {
-                                sparkline.DisplayXAxis = true;
-                                sparkline.ColorAxis.SetColor(miniChart.Axes.Horizontal.GetColor());
-                            }
-
                             sparkline.DateAxisRange = null;
                             var isHorizontalDateAxis = miniChart.Axes.Horizontal.IsDateAxis;
                             if (isHorizontalDateAxis)
@@ -701,6 +677,13 @@ namespace iTin.Export.Writers.OpenXml.Office
                                     var dateFieldRange = ExcelCellBase.GetAddress(dataSerieY + 1, dateFielColumnIndex, rowsCount + dataSerieY, dateFielColumnIndex);
                                     sparkline.DateAxisRange = worksheet.Cells[dateFieldRange];
                                 }
+                            }
+
+                            sparkline.RightToLeft = miniChart.Axes.Horizontal.RightToLeft == YesNo.Yes;
+                            if (miniChart.Axes.Horizontal.Show == YesNo.Yes)
+                            {
+                                sparkline.DisplayXAxis = true;
+                                sparkline.ColorAxis.SetColor(miniChart.Axes.Horizontal.GetColor());
                             }
 
                             // Vertical axis
@@ -900,58 +883,6 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    ////var range1 = worksheet.Cells["A1:H501"];
-                    ////var wsPivot = worksheet.Workbook.Worksheets.Add("PivotSimple");
-                    ////var pivotTable1 = wsPivot.PivotTables.Add(wsPivot.Cells["A1"], range1, "PerEmploee");
-
-                    ////pivotTable1.RowFields.Add(pivotTable1.Fields[3]);
-                    ////var dataField = pivotTable1.DataFields.Add(pivotTable1.Fields[5]);
-                    ////dataField.Format = "#,##0";
-                    ////pivotTable1.DataOnRows = true;
-
-                    ////var chartp = wsPivot.Drawings.AddChart("PivotChart", eChartType.Pie, pivotTable1);
-                    ////chartp.SetPosition(1, 0, 4, 0);
-                    ////chartp.SetSize(600, 400);
-
-                    //var hl = new ExcelHyperLink("Statistics!A1", "Statistics");
-                    //hl.
-
-                    //chartp.
-
-                    //var wsPivot2 = pck.Workbook.Worksheets.Add("PivotDateGrp");
-                    //var pivotTable2 = wsPivot2.PivotTables.Add(wsPivot2.Cells["A3"], dataRange, "PerEmploeeAndQuarter");
-
-                    //pivotTable2.RowFields.Add(pivotTable2.Fields["Name"]);
-
-                    ////Add a rowfield
-                    //var rowField = pivotTable2.RowFields.Add(pivotTable2.Fields["OrderDate"]);
-
-                    ////This is a date field so we want to group by Years and quaters. This will create one additional field for years.
-                    //rowField.AddDateGrouping(eDateGroupBy.Years | eDateGroupBy.Quarters);
-
-                    ////Get the Quaters field and change the texts
-                    //var quaterField = pivotTable2.Fields.GetDateGroupField(eDateGroupBy.Quarters);
-                    //quaterField.Items[0].Text = "<"; //Values below min date, but we use auto so its not used
-                    //quaterField.Items[1].Text = "Q1";
-                    //quaterField.Items[2].Text = "Q2";
-                    //quaterField.Items[3].Text = "Q3";
-                    //quaterField.Items[4].Text = "Q4";
-                    //quaterField.Items[5].Text = ">"; //Values above max date, but we use auto so its not used
-
-                    ////Add a pagefield
-                    //var pageField = pivotTable2.PageFields.Add(pivotTable2.Fields["Title"]);
-
-                    ////Add the data fields and format them
-                    //dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["SubTotal"]);
-                    //dataField.Format = "#,##0";
-                    //dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["Tax"]);
-                    //dataField.Format = "#,##0";
-                    //dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["Freight"]);
-                    //dataField.Format = "#,##0";
-
-                    ////We want the datafields to appear in columns
-                    //pivotTable2.DataOnRows = false;
-
                     #region save
                     Result.Add(excel.GetAsByteArray());
                     #endregion
@@ -967,3 +898,55 @@ namespace iTin.Export.Writers.OpenXml.Office
         #endregion
     }
 }
+
+////var range1 = worksheet.Cells["A1:H501"];
+////var wsPivot = worksheet.Workbook.Worksheets.Add("PivotSimple");
+////var pivotTable1 = wsPivot.PivotTables.Add(wsPivot.Cells["A1"], range1, "PerEmploee");
+
+////pivotTable1.RowFields.Add(pivotTable1.Fields[3]);
+////var dataField = pivotTable1.DataFields.Add(pivotTable1.Fields[5]);
+////dataField.Format = "#,##0";
+////pivotTable1.DataOnRows = true;
+
+////var chartp = wsPivot.Drawings.AddChart("PivotChart", eChartType.Pie, pivotTable1);
+////chartp.SetPosition(1, 0, 4, 0);
+////chartp.SetSize(600, 400);
+
+//var hl = new ExcelHyperLink("Statistics!A1", "Statistics");
+//hl.
+
+//chartp.
+
+//var wsPivot2 = pck.Workbook.Worksheets.Add("PivotDateGrp");
+//var pivotTable2 = wsPivot2.PivotTables.Add(wsPivot2.Cells["A3"], dataRange, "PerEmploeeAndQuarter");
+
+//pivotTable2.RowFields.Add(pivotTable2.Fields["Name"]);
+
+////Add a rowfield
+//var rowField = pivotTable2.RowFields.Add(pivotTable2.Fields["OrderDate"]);
+
+////This is a date field so we want to group by Years and quaters. This will create one additional field for years.
+//rowField.AddDateGrouping(eDateGroupBy.Years | eDateGroupBy.Quarters);
+
+////Get the Quaters field and change the texts
+//var quaterField = pivotTable2.Fields.GetDateGroupField(eDateGroupBy.Quarters);
+//quaterField.Items[0].Text = "<"; //Values below min date, but we use auto so its not used
+//quaterField.Items[1].Text = "Q1";
+//quaterField.Items[2].Text = "Q2";
+//quaterField.Items[3].Text = "Q3";
+//quaterField.Items[4].Text = "Q4";
+//quaterField.Items[5].Text = ">"; //Values above max date, but we use auto so its not used
+
+////Add a pagefield
+//var pageField = pivotTable2.PageFields.Add(pivotTable2.Fields["Title"]);
+
+////Add the data fields and format them
+//dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["SubTotal"]);
+//dataField.Format = "#,##0";
+//dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["Tax"]);
+//dataField.Format = "#,##0";
+//dataField = pivotTable2.DataFields.Add(pivotTable2.Fields["Freight"]);
+//dataField.Format = "#,##0";
+
+////We want the datafields to appear in columns
+//pivotTable2.DataOnRows = false;

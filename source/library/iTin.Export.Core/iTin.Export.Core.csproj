@@ -114,7 +114,7 @@
     <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterSectionType.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownDocumentView.cs" />
     <Compile Include="Model\ComponentModel\Enums\KnownHeaderFooterAlignment.cs" />
-    <Compile Include="Model\ComponentModel\Enums\KnownMiniChartLocation.cs" />
+    <Compile Include="Model\ComponentModel\Enums\KnownMiniChartColumnLocation.cs" />
     <Compile Include="Model\ComponentModel\Shared\AlignmentModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>AlignmentModel.cs</DependentUpon>
@@ -122,10 +122,6 @@
     <Compile Include="Model\ComponentModel\Shared\CommentModel.designer.cs">
       <SubType>code</SubType>
       <DependentUpon>CommentModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Location\Elements\RelativeLocationModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Location\Elements\RelativeLocationModel.designer.cs">
-      <DependentUpon>RelativeLocationModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ComponentModel\Shared\CoordenatesModel.designer.cs">
       <SubType>code</SubType>
@@ -269,10 +265,6 @@
     <Compile Include="Model\Export\Table\Charts\MiniChart\Location\Elements\ByColumnLocationModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Location\Elements\ByColumnLocationModel.designer.cs">
       <DependentUpon>ByColumnLocationModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Location\Elements\ByRowLocationModel.cs" />
-    <Compile Include="Model\Export\Table\Charts\MiniChart\Location\Elements\ByRowLocationModel.designer.cs">
-      <DependentUpon>ByRowLocationModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Export\Table\Charts\MiniChart\Location\MiniChartLocationModel.cs" />
     <Compile Include="Model\Export\Table\Charts\MiniChart\Location\MiniChartLocationModel.designer.cs">
