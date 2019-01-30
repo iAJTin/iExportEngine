@@ -93,7 +93,7 @@
       <xs:element name="Hosts" type="HostsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Collection of user-defined groups. Each element is result from the union of several data field.
+            Collection of hosts. Each element defines a host container.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -258,7 +258,7 @@
       <xs:element name="Host" type="HostModel" minOccurs="1" maxOccurs="unbounded">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains a
+            Defines a host container properties.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -271,7 +271,7 @@
       <xs:element name="Document" type="DocumentModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a document. Allow define size, orientation and margins.
+            Represents a document. Allow define size, orientation, margins, view type, header, footer and document metadata.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -286,7 +286,7 @@
     <xs:attribute name="Key" type="xs:string" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] The alias of the table. The default is an empty string ("").
+          [Optional] The host identifier. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -295,19 +295,14 @@
   <!-- Host: Document -->
   <xs:complexType name="DocumentModel" id="DocumentModel">
     <xs:all>
-      <xs:element name="Metadata" type="DocumentMetadataModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Contains information related to footers.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="Footer" type="DocumentHeaderFooterModel" minOccurs="0" maxOccurs="1">
         <xs:annotation>
-          <xs:documentation>Contains information related to footers.</xs:documentation>
+          <xs:documentation>Defines the visual setting of document footer.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Header" type="DocumentHeaderFooterModel" minOccurs="0" maxOccurs="1">
         <xs:annotation>
-          <xs:documentation>Contains information related to headers.</xs:documentation>
+          <xs:documentation>Defines the visual setting of document header.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Margins" type="MarginsModel" minOccurs="0" maxOccurs="1">
@@ -316,6 +311,11 @@
             Represents margins of a document. Allow define top margin, right margin, bottom margin and left margin of a document.
             All margins are measured in mm.
           </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Metadata" type="DocumentMetadataModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Defines document metadata. Allow define document title, author, company, url and more...</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
@@ -466,7 +466,7 @@
     </xs:attribute>
   </xs:complexType>
 
-  <!-- Document: HeaderFooter -->
+  <!-- Document: Header/Footer -->
   <xs:complexType name="DocumentHeaderFooterModel" id="DocumentHeaderFooterModel">
     <xs:all>
       <xs:element name="Sections" type="HeaderFooterSectionsModel" minOccurs="0" maxOccurs="1">
@@ -484,13 +484,13 @@
     </xs:all>
   </xs:complexType>
 
-  <!-- HeaderFooter: Sections -->
+  <!-- Header/Footer: Sections -->
   <xs:complexType name="HeaderFooterSectionsModel" id="HeaderFooterSectionsModel">
     <xs:sequence>
       <xs:element name="Section" type="HeaderFooterSectionModel" minOccurs="1" maxOccurs="6">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains a
+            Defines a header or footer document section. Allow define the text, alignment and type.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -511,29 +511,29 @@
     <xs:attribute name="Text" type="xs:string" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Section text The default is an empty string ("").
+          [Optional] Section text. The default is an empty string ("").
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Alignment" use="optional" default="Center">
       <xs:annotation>
-        <xs:documentation>[Optional] Specifies ... The default is 'Center'.</xs:documentation>
+        <xs:documentation>[Optional] Specifies section alignment. The default is 'Center'.</xs:documentation>
       </xs:annotation>
       <xs:simpleType id="KnownHeaderFooterAlignment2">
         <xs:restriction base="xs:string">
           <xs:enumeration value="Right">
             <xs:annotation>
-              <xs:documentation>Right alignment</xs:documentation>
+              <xs:documentation>Right position</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="Center">
             <xs:annotation>
-              <xs:documentation>Center alignment</xs:documentation>
+              <xs:documentation>Center position</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="Left">
             <xs:annotation>
-              <xs:documentation>Left alignment</xs:documentation>
+              <xs:documentation>Left position</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
         </xs:restriction>
@@ -541,7 +541,7 @@
     </xs:attribute>
     <xs:attribute name="Type" use="optional" default="Odd">
       <xs:annotation>
-        <xs:documentation>Specifies ... The default is 'Odd'.</xs:documentation>
+        <xs:documentation>[Optional] Specifies section type. The default is 'Odd'.</xs:documentation>
       </xs:annotation>
       <xs:simpleType id="KnownHeaderFooterSectionType">
         <xs:restriction base="xs:string">
@@ -559,133 +559,6 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
-
-
-
-  <!-- Document: Metadata -->
-  <xs:complexType name="DocumentMetadataModel" id="DocumentMetadataModel">
-    <xs:all>
-      <xs:element name="Title" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document title.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Subject" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document subject.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Author" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document author.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Manager" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document manager.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Company" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document company.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document category.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Keywords" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document keywords.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Comments" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document comments.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Url" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Document hyperlink base.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            Defines custom properties for this table node. Contains a list of keys item with name / value.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:all>
-  </xs:complexType>
-
-  <!-- Document: Header -->
-  <!--
-    <xs:complexType name="MarginsModel" id="MarginsModel">
-      <xs:all>
-        <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
-          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-            <xs:documentation xml:lang="en">
-              Defines custom properties for this table node. Contains a list of keys item with name / value.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:all>
-      <xs:attribute name="Units" use="optional" default="Millimeters">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            [Optional] Preferred units of margins. The default is 'Millimeters'.
-          </xs:documentation>
-        </xs:annotation>
-        <xs:simpleType id="KnownUnit">
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="Inches">
-              <xs:annotation>
-                <xs:documentation xml:lang="en">
-                  Margins measured in inches
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="Millimeters">
-              <xs:annotation>
-                <xs:documentation xml:lang="en">
-                  Margins measured in millimeters
-                </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="Top" type="xs:double" use="optional" default="20">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            [Optional] Specifies the size in millimeters of the top margin. The default is '20'.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Right" type="xs:double" use="optional" default="20">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            [Optional] Specifies the size in millimeters of the right margin. The default is '20'.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Bottom" type="xs:double" use="optional" default="20">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            [Optional] Specifies the size in millimeters of the bottom margin. The default is '20'.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="Left" type="xs:double" use="optional" default="20">
-        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-          <xs:documentation xml:lang="en">
-            [Optional] Specifies the size in millimeters of the left margin. The default is '20'.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-    </xs:complexType>-->
 
   <!-- Document: Margins -->
   <xs:complexType name="MarginsModel" id="MarginsModel">
@@ -751,6 +624,64 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+  </xs:complexType>
+    
+  <!-- Document: Metadata -->
+  <xs:complexType name="DocumentMetadataModel" id="DocumentMetadataModel">
+    <xs:all>
+      <xs:element name="Title" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document title.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Subject" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document subject.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Author" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document author.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Manager" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document manager.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Company" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document company.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document category.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Keywords" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document keywords.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Comments" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document comments.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Url" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Document hyperlink base.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="PropertiesModel" minOccurs="0" maxOccurs="1">
+        <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+          <xs:documentation xml:lang="en">
+            Defines custom properties for this table node. Contains a list of keys item with name / value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
   </xs:complexType>
 
 
@@ -2322,7 +2253,9 @@
       <xs:element name="MiniChart" type="MiniChartModel" minOccurs="0" maxOccurs="unbounded">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a user-defined minichart.
+            Represents a user-defined minichart. Very small chart located in a spreadsheet cell that provides a visual representation of data. 
+            Use sparklines to reflect the trends of a series of values, such as periodic increases or reductions and economic cycles, 
+            or to highlight minimum and maximum values. Place the sparkline near the corresponding data for a greater visual impact.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3591,21 +3524,21 @@
       <xs:element name="Location" type="MiniChartLocationModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Defines the mini-chart location on the host, this can be by coordinates or by column or by row. You can only choose one of them. If this tag does not define the defaults is by column
+            Defines minichart location on the host, this can be by absolute coordinates or by column. You can only choose one of them. If this tag is not defined the default will be by column.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Axes" type="MiniChartAxesModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the visual setting of the mini-chart axes.
+            Defines the visual settings of the mini-chart axes.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Type" type="MiniChartTypeModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Defines the mini-chart type configuration.
+            Defines the type of minichart and its visual configuration.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3620,7 +3553,7 @@
     <xs:attribute name="Field" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Name of field that contains data.
+          Field name that contains the data. One of the fields that belong to the table.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -3641,14 +3574,14 @@
     <xs:attribute name="Size" type="CellSizeAttribute" use="optional" default="-1 -1">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Width and height of minichart cell. The default is '-1 -1' for automatic host size.
+          [Optional] Defines preferred width and height of cell that contains to this minichart. The default is '-1 -1', indicates automatic size defined by host.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="Show" type="YesNo" use="optional" default="Yes">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Determines whether displays the mini-chart. The default 'Yes'.
+          [Optional] Determines whether displays the minichart. The default 'Yes'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -3717,14 +3650,14 @@
       <xs:element name="Horizontal" type="MiniChartHorizontalAxesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the visual setting of horizontal axis.
+            Defines the visual setting of horizontal axis.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Vertical" type="MiniChartVerticalAxesModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the visual setting of vertical axis.
+            Defines the visual setting of vertical axis.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3759,7 +3692,7 @@
     <xs:attribute name="Color" type="miniChartHorizontalAxisColor" use="optional" default="White">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Preferred axis color. The default is 'Automatic'.
+          [Optional] Preferred axis color. The default is 'White'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -3814,21 +3747,21 @@
         <xs:element name="Column" type="MiniChartColumnTypeModel" minOccurs="0" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Defines a column mini-chart.
+              Defines a column-type mini-chart and its visual configuration.
             </xs:documentation>
           </xs:annotation>
         </xs:element>
         <xs:element name="Line" type="MiniChartLineTypeModel" minOccurs="0" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Defines a line mini-chart.
+              Defines a line-type mini-chart and its visual configuration.
             </xs:documentation>
           </xs:annotation>
         </xs:element>
         <xs:element name="Win-Loss" type="MiniChartWinLossTypeModel" minOccurs="0" maxOccurs="1">
           <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
             <xs:documentation xml:lang="en">
-              Defines a win-loss mini-chart.
+              Defines a win-loss-type mini-chart and its visual configuration.
             </xs:documentation>
           </xs:annotation>
         </xs:element>
@@ -3844,7 +3777,7 @@
     <xs:attribute name="Active" type="miniChartTypeActiveValue" use="optional" default="Column">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] Preferred mini-chart type to draw. The default is 'Column'.
+          [Optional] Preferred minichart type to draw. The default is 'Column'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -3856,14 +3789,14 @@
       <xs:element name="Serie" type="MiniChartColumnSerieModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the data series to draw.
+            Defines the data series to draw.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Points" type="MiniChartColumnPointsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values.
+            Defines the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -3939,14 +3872,14 @@
       <xs:element name="Serie" type="MiniChartLineSerieModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the data series to draw.
+            Defines the data series to draw.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Points" type="MiniChartLinePointsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, markers points, highest and lowest value as well as negative values.
+            Defines the significant points of the drawn series. It includes the visual configuration of the starting, ending point, markers points, highest and lowest value as well as negative values.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -4037,14 +3970,14 @@
       <xs:element name="Serie" type="MiniChartWinLossSerieModel" minOccurs="1" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the data series to draw.
+            Defines the data series to draw.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Points" type="MiniChartWinLossPointsModel" minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Contains the definition of the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values.
+            Defines the significant points of the drawn series. It includes the visual configuration of the starting, ending point, highest and lowest value as well as negative values.
           </xs:documentation>
         </xs:annotation>
       </xs:element>

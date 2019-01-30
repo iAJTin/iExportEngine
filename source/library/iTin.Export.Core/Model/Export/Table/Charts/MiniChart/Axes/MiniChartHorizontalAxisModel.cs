@@ -22,7 +22,7 @@ namespace iTin.Export.Model
         private const YesNo DefaultRightToLeft = YesNo.No;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const YesNo DefaultShow = YesNo.Yes;
+        private const YesNo DefaultShow = YesNo.No;
         #endregion
 
         #region private members

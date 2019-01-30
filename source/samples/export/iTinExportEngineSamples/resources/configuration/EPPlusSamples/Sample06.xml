@@ -3,7 +3,15 @@
 
   <Global.Resources>
     <Hosts>
-      <Host Key="xlsx"/>
+      <Host Key="xlsx">
+        <Document>
+          <Metadata>
+            <Author>iTin</Author>
+            <Company>iTin</Company>
+            <Title>How To Use Mini Charts</Title>
+          </Metadata>
+        </Document>      
+      </Host>
     </Hosts>
     <Lines>
       <TextLine Key="ColumnMiniChartLine" Style="MiniChartTextStyle">
@@ -224,7 +232,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -241,7 +248,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -258,7 +264,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -275,7 +280,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -292,7 +296,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -309,7 +312,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -326,7 +328,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -343,7 +344,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -360,7 +360,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -377,7 +376,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -394,7 +392,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -411,7 +408,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -428,7 +424,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -445,7 +440,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -462,7 +456,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -479,7 +472,6 @@
           </Location>
           <Axes>
             <Horizontal Show="Yes"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
           </Axes>
           <Type Active="Column">
             <Column>
@@ -497,8 +489,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>              
@@ -511,8 +502,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -525,8 +515,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -539,8 +528,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -553,8 +541,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -567,8 +554,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -581,8 +567,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -595,8 +580,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -609,8 +593,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -623,8 +606,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -637,8 +619,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -651,8 +632,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -665,8 +645,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -679,8 +658,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -693,8 +671,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
@@ -707,8 +684,7 @@
             <ByColumn Offset="3"/>
           </Location>
           <Axes>
-            <Horizontal Show="No" Type="Date"/>
-            <Vertical Max="Automatic" Min="Automatic"/>
+            <Horizontal Type="Date"/>
           </Axes>
           <Type Active="Line">
             <Line>
