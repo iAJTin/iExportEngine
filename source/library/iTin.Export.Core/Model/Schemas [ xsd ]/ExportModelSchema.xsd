@@ -1463,7 +1463,7 @@
     <xs:attribute name="Host" type="FieldNameType" use="required">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          Name of the table. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # * @ % $'.
+          Host container identifier name. Determines document configuration. Are only allow strings made ​​up of letters, numbers and following special chars '_ - # * @ % $'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

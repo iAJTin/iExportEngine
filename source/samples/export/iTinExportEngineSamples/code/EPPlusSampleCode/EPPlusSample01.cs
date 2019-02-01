@@ -1,5 +1,5 @@
 ﻿
-namespace iTinExportEngineSamples
+namespace iTinExportEngineSamples.EPPlusSamples
 {
     using System;
 
@@ -8,7 +8,7 @@ namespace iTinExportEngineSamples
 
     using Properties;
 
-    public class Sample01
+    public class EPPlusSample01
     {
         private const string EpplusHeader = " · Running Sample 1 (From Configuration File)";
         private const string FirstSampleStepText   = "  - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List";
@@ -21,11 +21,11 @@ namespace iTinExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var input = new Uri(Settings.Default.InventoryXmlInput, UriKind.Relative);
-            var export = new XmlInput(input);
+            var inputDataFile = new Uri(Settings.Default.InventoryXmlInput, UriKind.Relative);
+            var input = new XmlInput(inputDataFile);
 
             var configuration = new Uri(Settings.Default.Sample01Configuration, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(configuration));
+            input.Export(ExportSettings.ImportFrom(configuration));
         }
     }
 }

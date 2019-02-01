@@ -1,34 +1,20 @@
 ﻿
-namespace iTinExportEngineSamples
+namespace iTinExportEngineSamples.EPPlusSamples
 {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
     using iTin.Export;
-    using iTin.Export.ComponentModel.Input;
     using iTin.Export.Inputs;
 
+    using Models;
     using Properties;
 
-    public class Sample07
+    public class EPPlusSample07
     {
         private const string EpplusHeader = " · Running Sample 7 (From Configuration File)";
         private const string FirstSampleStepText   = "  - Creates A New Workbook From Custom Enumerated Data Type (1000 rows)";
-
-        /// <summary>
-        /// Custom data definition.
-        /// </summary>
-        private class CustomData
-        {
-            public int Index { get; set; }
-
-            public string Text { get; set; }
-
-            public DateTime Date { get; set; }
-
-            public double Number { get; set; }
-        }
 
         /// <summary>
         /// Runs the sample.
@@ -38,21 +24,20 @@ namespace iTinExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var input = new Uri(Settings.Default.SEKRatesXmlInput, UriKind.Relative);
-            BaseInput export = new EnumerableInput<CustomData>(BuildCustomData(rows), "Sample7");
+            var input = new EnumerableInput<CustomDataModel>(BuildCustomData(rows), "Sample7");
 
             var configuration = new Uri(Settings.Default.Sample07Configuration, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(configuration));
+            input.Export(ExportSettings.ImportFrom(configuration));
         }
 
-        private static IEnumerable<CustomData> BuildCustomData(int rows)
+        private static IEnumerable<CustomDataModel> BuildCustomData(int rows)
         {
             var rnd = new Random();
-            var collection = new Collection<CustomData>();
+            var collection = new Collection<CustomDataModel>();
 
             for (int row = 1; row <= rows; row++)
             {
-                collection.Add(new CustomData
+                collection.Add(new CustomDataModel
                 {
                     Index = row,
                     Text = $"Row {row}",

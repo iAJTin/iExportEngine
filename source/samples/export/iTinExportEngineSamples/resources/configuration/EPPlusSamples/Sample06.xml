@@ -128,8 +128,8 @@
   <Export Name="sample6" Current="Yes">
     <Description>Sample 6 - How To Use Mini Charts</Description>
     <BlockLines>
-      <Block Key="Line01">
-        <Location>
+      <Block Key="Line01">        
+        <Location>          
           <ByCoordenates Coordenates="1 15"/>
         </Location>
         <Items Keys="ColumnMiniChartLine"/>
@@ -220,10 +220,6 @@
           <Value Style="LastFiedlDecimalValueStyle"/>
         </Field>
       </Fields>
-      <Output>
-        <Path>~\output\EPPlusSamples\</Path>
-        <File>sample06-from-config-file</File>
-      </Output>
       <Charts>
         <!-- MiniCharts > Column -->
         <MiniChart Field="AUD" EmptyValuesAs="Zero" Size="-1 40">
@@ -693,6 +689,10 @@
           </Type>
         </MiniChart>
       </Charts>
+      <Output>
+        <Path>~\output\EPPlusSamples\</Path>
+        <File>sample06-from-config-file</File>
+      </Output>
     </Table>
   </Export>
 

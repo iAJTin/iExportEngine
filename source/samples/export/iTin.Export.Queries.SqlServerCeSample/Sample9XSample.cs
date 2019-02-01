@@ -45,8 +45,8 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
 
             //Console.WriteLine(FourStepText);
             //Console.WriteLine(FirstSampleStepText);
-            ////var sample90ModelConfiguration = CreateSample90Model();
-            ////export.Export(ExportSettings.CreateFromModel(sample90ModelConfiguration, "sample90"));
+            //var sample90ModelConfiguration = CreateSample90Model();
+            //export.Export(ExportSettings.CreateFromModels(sample90ModelConfiguration, "sample90"));
 
             //Console.WriteLine(SecondSampleStepText);
             //var sample90ChartModelConfiguration = CreateChartSample90Model();

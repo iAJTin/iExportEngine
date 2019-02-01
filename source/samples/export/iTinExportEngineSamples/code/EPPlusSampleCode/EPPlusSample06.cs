@@ -1,5 +1,5 @@
 ﻿
-namespace iTinExportEngineSamples
+namespace iTinExportEngineSamples.EPPlusSamples
 {
     using System;
 
@@ -9,7 +9,7 @@ namespace iTinExportEngineSamples
 
     using Properties;
 
-    public class Sample06
+    public class EPPlusSample06
     {
         private const string EpplusHeader = " · Running Sample 6 (From Configuration File)";
         private const string FirstSampleStepText   = "  - Use Mini Charts";
@@ -22,11 +22,11 @@ namespace iTinExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var input = new Uri(Settings.Default.SEKRatesXmlInput, UriKind.Relative);
-            BaseInput export = new XmlInput(input);
+            var inputDataFile = new Uri(Settings.Default.SEKRatesXmlInput, UriKind.Relative);
+            var input = new XmlInput(inputDataFile);
 
             var configuration = new Uri(Settings.Default.Sample06Configuration, UriKind.Relative);
-            export.Export(ExportSettings.ImportFrom(configuration));
+            input.Export(ExportSettings.ImportFrom(configuration));
         }
     }
 }
