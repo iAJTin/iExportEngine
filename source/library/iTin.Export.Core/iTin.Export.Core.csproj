@@ -1073,7 +1073,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DotNetZip">
-      <Version>1.13.0</Version>
+      <Version>1.13.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
