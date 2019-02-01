@@ -41,5 +41,8 @@
     <Setting Name="Sample07Configuration" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample07.xml</Value>
     </Setting>
+    <Setting Name="ExportEngineSample01" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\iTinExportEngine\Sample01.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

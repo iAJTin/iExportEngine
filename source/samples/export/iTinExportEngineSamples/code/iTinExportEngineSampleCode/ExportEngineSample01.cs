@@ -24,7 +24,7 @@ namespace iTinExportEngineSamples.iTinSamples
             var inputDataFile = new Uri(Settings.Default.InventoryXmlInput, UriKind.Relative);
             var input = new XmlInput(inputDataFile);
 
-            var configuration = new Uri(Settings.Default.Sample01Configuration, UriKind.Relative);
+            var configuration = new Uri(Settings.Default.ExportEngineSample01, UriKind.Relative);
             input.Export(ExportSettings.ImportFrom(configuration));
         }
     }

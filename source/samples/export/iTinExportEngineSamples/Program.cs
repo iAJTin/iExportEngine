@@ -5,6 +5,7 @@ namespace iTinExportEngineSamples
     using System.Diagnostics;
 
     using EPPlusSamples;
+    using iTinSamples;
 
     class Program
     {
@@ -91,6 +92,15 @@ namespace iTinExportEngineSamples
             #endregion
 
             #region iTinExportEngine Samples
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            // From configuration File 
+            Watch.Start();
+            ExportEngineSample01.RunFromConfigurationFileSample();
+            sample01Time = Watch.Elapsed;
+            Watch.Stop();
+            #endregion
+
             #endregion
 
             #region Writes Output
