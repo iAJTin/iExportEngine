@@ -176,7 +176,7 @@
            ShowGridLines="No"
            Filter="AudFilter"
            AutoFitColumns="Yes">
-      <Conditions Keys="MinimumMYR"/>
+      <Conditions Keys="MinimumMYR"/>        
       <Logo>
         <Image Key="banner"/>
         <Location>

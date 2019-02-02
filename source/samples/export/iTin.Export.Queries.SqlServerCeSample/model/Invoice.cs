@@ -6,7 +6,7 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
     public class Invoice
     {
         public const string InvoiceQuery = @"SELECT 
-                                                [IVC].[INVOICEID] AS [ID], 
+                                             [IVC].[INVOICEID] AS [ID], 
                                              [IVC].[INVOICEDATE] AS [DATE], 
                                              [CST].[FIRSTNAME] AS [CUSTOMERFIRSTNAME], 
                                              [CST].[LASTNAME] AS [CUSTOMERLASTNAME], 

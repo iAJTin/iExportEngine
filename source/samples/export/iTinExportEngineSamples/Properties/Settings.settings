@@ -2,47 +2,80 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="iTinExportEngineSamples.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="ChinookDatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=|DataDirectory|\Resources\Database\ChinookDatabase.sdf</Value>
+    </Setting>
     <Setting Name="InventoryXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\Inventory.xml</Value>
+    </Setting>
+    <Setting Name="InvoiceXmlInput" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\input\Invoice.xml</Value>
     </Setting>
     <Setting Name="ProductsXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\Products.xml</Value>
     </Setting>
-    <Setting Name="SalesXmlInput" Type="System.String" Scope="User">
+    <Setting Name="SalesXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\Sales.xml</Value>
     </Setting>
-    <Setting Name="SalesDataXmlInput" Type="System.String" Scope="User">
+    <Setting Name="SalesDataXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\SalesData.xml</Value>
     </Setting>
-    <Setting Name="SEKRatesXmlInput" Type="System.String" Scope="User">
+    <Setting Name="SEKRatesXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\SEKRates.xml</Value>
     </Setting>
-    <Setting Name="StockProducts" Type="System.String" Scope="User">
+    <Setting Name="StockProducts" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\StockProducts.xml</Value>
     </Setting>
-    <Setting Name="Sample01Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample01.xml</Value>
+    <Setting Name="EPPlusSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample01.xml</Value>
     </Setting>
-    <Setting Name="Sample02Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample02.xml</Value>
+    <Setting Name="EPPlusSample02Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample02.xml</Value>
     </Setting>
-    <Setting Name="Sample03Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample03.xml</Value>
+    <Setting Name="EPPlusSample03Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample03.xml</Value>
     </Setting>
-    <Setting Name="Sample04Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample04.xml</Value>
+    <Setting Name="EPPlusSample04Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample04.xml</Value>
     </Setting>
-    <Setting Name="Sample05Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample05.xml</Value>
+    <Setting Name="EPPlusSample05Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample05.xml</Value>
     </Setting>
-    <Setting Name="Sample06Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample06.xml</Value>
+    <Setting Name="EPPlusSample06Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample06.xml</Value>
     </Setting>
-    <Setting Name="Sample07Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlusSamples\Sample07.xml</Value>
+    <Setting Name="EPPlusSample07Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample07.xml</Value>
     </Setting>
-    <Setting Name="ExportEngineSample01" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\iTinExportEngine\Sample01.xml</Value>
+    <Setting Name="ExportEngineSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample02Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample02.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample03Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample03.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample04Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample04.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample05Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample05.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample06Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample06.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample07Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample07.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample08Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample08.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample09Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample09.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample10Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample10.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

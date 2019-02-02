@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx">
+        <Document Orientation="Landscape" Size="A3">
+          <Metadata>
+            <Author>Your Name</Author>
+            <Company>Your Company</Company>
+            <Comments>How to use simple filters</Comments>
+            <Title>Sample05</Title>
+          </Metadata>
+          <Margins Bottom="10" Top="10" Right="10" Left="10" Units="Millimeters"/>
+        </Document>
+      </Host>
+    </Hosts>
+    <Groups>
+      <Group Name="CustomerName">
+        <Field Name="CUSTOMERFIRSTNAME" Separator=", "/>
+        <Field Name="CUSTOMERLASTNAME"/>
+      </Group>
+    </Groups>
+    <Images>
+      <Image Key="banner">
+        <Effects>
+          <GrayScale/>
+          <Opacity percent="90"/>
+        </Effects>
+        <Path>~\resources\images\banner-careers.png</Path>
+      </Image>
+    </Images>
+    <Filters>
+      <Filter Key="TotalFilter" Field="TOTAL" Criterial="EqualTo" Value="3.98"/>
+    </Filters>
+    <Styles>
+      <Style Name="HeaderDecimalStyle">
+        <Content Color="#ED7D31">
+          <Alignment Horizontal="Right"/>
+          <Number Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Color="White" Size="12" Bold="Yes"/>
+      </Style>
+      <Style Name="HeaderStringStyle">
+        <Borders>
+          <Border Position="Bottom" Color="Black" LineStyle="Continuous" Weight="Medium"/>
+        </Borders>
+        <Content Color="#ED7D31">
+          <Alignment/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Color="White" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="HeaderStringNoBorderStyle">
+        <Content Color="#ED7D31">
+          <Alignment/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Color="White" Size="12" Bold="Yes"/>
+      </Style>
+      <Style Name="HeaderNumericStyle">
+        <Content Color="#ED7D31">
+          <Alignment Horizontal ="Right"/>
+          <Number Decimals="0"/>
+        </Content>
+        <Font Name="Calibri" Color="White" Size="12" Bold="Yes"/>
+      </Style>
+      <Style Name="ValueDatetimeStyle">
+        <Content Color="#FCE4D6">
+          <Alignment/>
+          <DateTime Format="Short Date"/>
+        </Content>
+        <Font Name="Calibri"/>
+      </Style>
+      <Style Name="ValueDecimalStyle">
+        <Content Color="#FCE4D6">
+          <Alignment Horizontal="Right"/>
+          <Number Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri"/>
+      </Style>
+      <Style Name="ValueNumericStyle">
+        <Content Color="#ED7D31">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0"/>
+        </Content>
+        <Font Name="Calibri" Color="White"/>
+      </Style>
+      <Style Name="ValueStringStyle">
+        <Content Color="#FCE4D6">
+          <Alignment/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri"/>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="Sample05" Current="Yes">
+    <Description>How to use simple filters</Description>
+    <Table Host="xlsx"
+           Name="Invoice"
+           AutoFilter="Yes"
+           Filter="TotalFilter"
+           AutoFitColumns="Yes"
+           FreezePanes="2 6"
+           ShowGridLines="No"
+           Alias="Invoice">
+      <Location>
+        <ByCoordenates Coordenates="1 3"/>
+      </Location>
+      <Logo>
+        <Image Key="banner"/>
+        <Location>
+          <ByCoordenates Coordenates="4 1"/>
+        </Location>
+      </Logo>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Headers>
+        <Header From="ID" To="DATE" Style="HeaderStringNoBorderStyle" Text="Invoice"/>
+        <Header From="CustomerName" To="CUSTOMEREMAIL" Style="HeaderStringNoBorderStyle" Text="Customer information"/>
+        <Header From="BILLINGADDRESS" To="TOTAL" Style="HeaderStringNoBorderStyle" Text="Billing information"/>
+      </Headers>
+      <Fields>
+        <Field Name="ID" Alias="Id">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueNumericStyle"/>
+          <Aggregate Location="Top" Type="Count" Style="HeaderNumericStyle" Show="Yes"/>
+        </Field>
+        <Field Name="DATE" Alias="Date">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueDatetimeStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Group Name="CustomerName" Alias="Customer">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Group>
+        <Field Name="CUSTOMERPHONE" Alias="Phone">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="CUSTOMEREMAIL" Alias="Email">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="BILLINGADDRESS" Alias="Address">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="BILLINGCITY" Alias="City">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="BILLINGSTATE" Alias="State">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="BILLINGCOUNTRY" Alias="Country">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="BILLINGPOSTALCODE" Alias="Postal Code">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueStringStyle"/>
+          <Aggregate Location="Top" Type="Text" Style="HeaderStringNoBorderStyle" Text="" Show="Yes"/>
+        </Field>
+        <Field Name="TOTAL" Alias="Total">
+          <Header Style="HeaderStringStyle"/>
+          <Value Style="ValueDecimalStyle"/>
+          <Aggregate Location="Top" Type="Sum" Style="HeaderDecimalStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\ExportEngineSamples\</Path>
+        <File>sample05-from-config-file</File>
+      </Output>
+    </Table>
+  </Export>
+
+</Exports>

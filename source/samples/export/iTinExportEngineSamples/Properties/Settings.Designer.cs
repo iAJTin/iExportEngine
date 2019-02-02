@@ -12,7 +12,7 @@ namespace iTinExportEngineSamples.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,6 +20,15 @@ namespace iTinExportEngineSamples.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Resources\\Database\\ChinookDatabase.sdf")]
+        public string ChinookDatabaseConnectionString {
+            get {
+                return ((string)(this["ChinookDatabaseConnectionString"]));
             }
         }
         
@@ -34,6 +43,15 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Invoice.xml")]
+        public string InvoiceXmlInput {
+            get {
+                return ((string)(this["InvoiceXmlInput"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Products.xml")]
         public string ProductsXmlInput {
             get {
@@ -41,144 +59,192 @@ namespace iTinExportEngineSamples.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Sales.xml")]
         public string SalesXmlInput {
             get {
                 return ((string)(this["SalesXmlInput"]));
             }
-            set {
-                this["SalesXmlInput"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SalesData.xml")]
         public string SalesDataXmlInput {
             get {
                 return ((string)(this["SalesDataXmlInput"]));
             }
-            set {
-                this["SalesDataXmlInput"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\SEKRates.xml")]
         public string SEKRatesXmlInput {
             get {
                 return ((string)(this["SEKRatesXmlInput"]));
             }
-            set {
-                this["SEKRatesXmlInput"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\StockProducts.xml")]
         public string StockProducts {
             get {
                 return ((string)(this["StockProducts"]));
             }
-            set {
-                this["StockProducts"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample01.xml")]
+        public string EPPlusSample01Configuration {
+            get {
+                return ((string)(this["EPPlusSample01Configuration"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample01.xml")]
-        public string Sample01Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample02.xml")]
+        public string EPPlusSample02Configuration {
             get {
-                return ((string)(this["Sample01Configuration"]));
+                return ((string)(this["EPPlusSample02Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample02.xml")]
-        public string Sample02Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample03.xml")]
+        public string EPPlusSample03Configuration {
             get {
-                return ((string)(this["Sample02Configuration"]));
-            }
-            set {
-                this["Sample02Configuration"] = value;
+                return ((string)(this["EPPlusSample03Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample03.xml")]
-        public string Sample03Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample04.xml")]
+        public string EPPlusSample04Configuration {
             get {
-                return ((string)(this["Sample03Configuration"]));
-            }
-            set {
-                this["Sample03Configuration"] = value;
+                return ((string)(this["EPPlusSample04Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample04.xml")]
-        public string Sample04Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample05.xml")]
+        public string EPPlusSample05Configuration {
             get {
-                return ((string)(this["Sample04Configuration"]));
-            }
-            set {
-                this["Sample04Configuration"] = value;
+                return ((string)(this["EPPlusSample05Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample05.xml")]
-        public string Sample05Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample06.xml")]
+        public string EPPlusSample06Configuration {
             get {
-                return ((string)(this["Sample05Configuration"]));
-            }
-            set {
-                this["Sample05Configuration"] = value;
+                return ((string)(this["EPPlusSample06Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample06.xml")]
-        public string Sample06Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlus\\Sample07.xml")]
+        public string EPPlusSample07Configuration {
             get {
-                return ((string)(this["Sample06Configuration"]));
-            }
-            set {
-                this["Sample06Configuration"] = value;
+                return ((string)(this["EPPlusSample07Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\EPPlusSamples\\Sample07.xml")]
-        public string Sample07Configuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample01.xml")]
+        public string ExportEngineSample01Configuration {
             get {
-                return ((string)(this["Sample07Configuration"]));
-            }
-            set {
-                this["Sample07Configuration"] = value;
+                return ((string)(this["ExportEngineSample01Configuration"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\iTinExportEngine\\Sample01.xml")]
-        public string ExportEngineSample01 {
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample02.xml")]
+        public string ExportEngineSample02Configuration {
             get {
-                return ((string)(this["ExportEngineSample01"]));
+                return ((string)(this["ExportEngineSample02Configuration"]));
             }
-            set {
-                this["ExportEngineSample01"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample03.xml")]
+        public string ExportEngineSample03Configuration {
+            get {
+                return ((string)(this["ExportEngineSample03Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample04.xml")]
+        public string ExportEngineSample04Configuration {
+            get {
+                return ((string)(this["ExportEngineSample04Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample05.xml")]
+        public string ExportEngineSample05Configuration {
+            get {
+                return ((string)(this["ExportEngineSample05Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample06.xml")]
+        public string ExportEngineSample06Configuration {
+            get {
+                return ((string)(this["ExportEngineSample06Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample07.xml")]
+        public string ExportEngineSample07Configuration {
+            get {
+                return ((string)(this["ExportEngineSample07Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample08.xml")]
+        public string ExportEngineSample08Configuration {
+            get {
+                return ((string)(this["ExportEngineSample08Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample09.xml")]
+        public string ExportEngineSample09Configuration {
+            get {
+                return ((string)(this["ExportEngineSample09Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample10.xml")]
+        public string ExportEngineSample10Configuration {
+            get {
+                return ((string)(this["ExportEngineSample10Configuration"]));
             }
         }
     }

@@ -43,7 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="code\iTinExportEngineSampleCode\ExportEngineSample01.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample03.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample08.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample07.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample06.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample05.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample04.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample02.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample01.cs" />
     <Compile Include="models\CustomData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,14 +59,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample01FromCode.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample07.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample06.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample05.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample04.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample03.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample02.cs" />
-    <Compile Include="code\EPPlusSampleCode\EPPlusSample01.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample01FromCode.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample07.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample06.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample05.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample04.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample03.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample02.cs" />
+    <Compile Include="code\EPPlusSamples\EPPlusSample01.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -79,32 +86,55 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\configuration\EPPlusSamples\Sample07.xml">
+    <Content Include="resources\configuration\EPPlus\Sample07.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlusSamples\Sample06.xml">
+    <Content Include="resources\configuration\EPPlus\Sample06.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlusSamples\Sample05.xml">
+    <Content Include="resources\configuration\EPPlus\Sample05.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlusSamples\Sample04.xml">
+    <Content Include="resources\configuration\EPPlus\Sample04.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlusSamples\Sample03.xml">
+    <Content Include="resources\configuration\EPPlus\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlusSamples\Sample02.xml">
+    <Content Include="resources\configuration\EPPlus\Sample02.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlusSamples\Sample01.xml">
+    <Content Include="resources\configuration\EPPlus\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\iTinExportEngine\Sample01.xml">
+    <Content Include="resources\configuration\ExportEngine\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample08.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample07.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample06.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample05.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample04.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample02.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample01.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\functions\iTin.Export.Queries.SqlServerCe.Functions.dll" />
     <Content Include="resources\images\banner-careers.png" />
     <Content Include="resources\input\Inventory.xml" />
+    <Content Include="resources\input\Invoice.xml" />
     <Content Include="resources\input\SalesData.xml" />
     <Content Include="resources\input\SEKRates.xml" />
     <Content Include="resources\input\StockProducts.xml" />
@@ -113,7 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="output\EPPlusSamples\" />
-    <Folder Include="output\iTinExportEngineSamples\" />
+    <Folder Include="output\ExportEngineSamples\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
