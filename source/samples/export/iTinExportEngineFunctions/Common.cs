@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iTin.Export.Queries.SqlServerCe.Functions
+namespace iTinExportEngineFunctions
 {
     public static class Common
     {

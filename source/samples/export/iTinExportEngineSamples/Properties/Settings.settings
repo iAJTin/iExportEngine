@@ -11,6 +11,9 @@
     <Setting Name="InvoiceXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\Invoice.xml</Value>
     </Setting>
+    <Setting Name="PacketXmlInput" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\input\Packet.xml</Value>
+    </Setting>
     <Setting Name="ProductsXmlInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\Products.xml</Value>
     </Setting>

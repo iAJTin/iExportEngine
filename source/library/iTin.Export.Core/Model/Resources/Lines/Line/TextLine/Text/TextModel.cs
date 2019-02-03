@@ -18,14 +18,20 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const YesNo DefaultShow = YesNo.Yes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string DefaultValue = "";
         #endregion
 
-        #region field members
+        #region private field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _style;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _value;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private TextLineModel _owner;
@@ -39,10 +45,9 @@ namespace iTin.Export.Model
         /// </summary>
         public TextModel()
         {
-            Merge = DefaultMerge;
             Show = DefaultShow;
-            //Style = "Default";
-            Value = string.Empty;
+            Merge = DefaultMerge;
+            Value = DefaultValue;
         }
         #endregion
 
@@ -68,6 +73,13 @@ namespace iTin.Export.Model
         public TextLineModel Owner => _owner;
         #endregion
 
+        #region [public] (YesNo) Show: Gets or sets a value that determines whether displays the text
+        /// <summary>
+        /// Gets or sets a value that determines whether displays the text. The default is <see cref="T:iTin.Export.Model.YesNo.Yes"/>.
+        /// </summary>
+        /// <value>
+        /// <see cref="T:iTin.Export.Model.YesNo.Yes"/> if displays the title; otherwise, <see cref="T:iTin.Export.Model.YesNo.No"/>. 
+        /// </value>
         [XmlAttribute]
         [DefaultValue(DefaultShow)]
         public YesNo Show
@@ -80,10 +92,17 @@ namespace iTin.Export.Model
                 _show = value;
             }
         }
+        #endregion
 
         #region [public] (string) Style: Gets or sets one of the styles defined in the element styles
+        /// <summary>
+        /// Gets or sets one of the styles defined in the element styles.
+        /// </summary>
+        /// <value>
+        /// Name of a style defined in the list of styles.
+        /// Are only allow strings made ​​up of letters, numbers and following special chars <strong>'<c>_ - # @ % $</c>'</strong>.
+        /// </value>
         [XmlAttribute]
-        //[DefaultValue("Default")]
         public string Style
         {
             get => _style;
@@ -97,9 +116,21 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (string) Value: Gets or sets
+        #region [public] (string) Value: Gets or sets text value
+        /// <summary>
+        /// Gets or sets text value..
+        /// </summary>
+        /// <value>
         [XmlText]
-        public string Value { get; set; }
+        public string Value
+        {
+            get => GetStaticBindingValue(_value.ToString());
+            set
+            {
+                _value = value;
+            }
+        }
+
         #endregion
 
         #endregion

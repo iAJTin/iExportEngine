@@ -13,6 +13,7 @@ namespace iTin.Export.Model
     using System.Xml.Serialization;
 
     using Helpers;
+    using iTin.Export.ComponentModel;
 
     /// <summary>
     /// Base class for model elements. 
@@ -247,22 +248,22 @@ namespace iTin.Export.Model
             }
 
             var assemblies = new List<Assembly> { GetType().Assembly };
-            //var references = ModelService.Instance.References;
-            //foreach (var reference in references)
-            //{
-            //    var assemblyName = reference.Assembly.ToUpperInvariant();
-            //    var hasExtension = assemblyName.EndsWith(".DLL");
-            //    if (!hasExtension)
-            //    {
-            //        assemblyName = string.Concat(assemblyName, ".DLL");
-            //    }
+            var references = ModelService.Instance.References;
+            foreach (var reference in references)
+            {
+                var assemblyName = reference.Assembly.ToUpperInvariant();
+                var hasExtension = assemblyName.EndsWith(".DLL");
+                if (!hasExtension)
+                {
+                    assemblyName = string.Concat(assemblyName, ".DLL");
+                }
 
-            //    var assemblyRelativePath = reference.Path;
-            //    var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
-            //    var qualifiedAssemblyPathParsed = PathHelper.GetRelativeFilePathParsed(qualifiedAssemblyPath, root);
-            //    var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
-            //    assemblies.Add(assembly);
-            //}
+                var assemblyRelativePath = reference.Path;
+                var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
+                var qualifiedAssemblyPathParsed = PathHelper.GetRelativeFilePathParsed(qualifiedAssemblyPath); //, root);
+                var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
+                assemblies.Add(assembly);
+            }
 
             object returnValue;
             var targetValue = value.Replace("{", string.Empty).Replace("}", string.Empty).Trim();

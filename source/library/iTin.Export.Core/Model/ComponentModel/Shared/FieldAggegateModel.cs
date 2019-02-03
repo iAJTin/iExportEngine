@@ -99,7 +99,7 @@ namespace iTin.Export.Model
         private const KnownAggregateLocation DefaultLocation = KnownAggregateLocation.Top;
         #endregion
 
-        #region field members
+        #region private field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 

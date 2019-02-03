@@ -14,7 +14,7 @@ namespace iTinExportEngineSamples.EPPlusSamples
     public class EPPlusSample07
     {
         private const string EpplusHeader = " · Running Sample 7 (From Configuration File)";
-        private const string FirstSampleStepText   = "  - Creates A New Workbook From Custom Enumerated Data Type (1000 rows)";
+        private const string FirstSampleStepText   = "  - Creates A New Workbook From Custom Enumerated Data Type (5000 rows)";
 
         /// <summary>
         /// Runs the sample.

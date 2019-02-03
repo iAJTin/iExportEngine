@@ -30,6 +30,8 @@ namespace iTinExportEngineSamples
         private static TimeSpan engineSample06Time;
         private static TimeSpan engineSample07Time;
         private static TimeSpan engineSample08Time;
+        private static TimeSpan engineSample09Time;
+        private static TimeSpan engineSample10Time;
 
         static void Main(string[] args)
         {
@@ -97,10 +99,10 @@ namespace iTinExportEngineSamples
             Watch.Reset();
             #endregion
 
-            #region Sample 7 - Creates A New Workbook From Custom Enumerated Data Type
+            #region Sample 7 - Creates A New Workbook From Custom Enumerated Data Type (5000 rows)
             Watch.Start();
             Console.WriteLine();
-            EPPlusSample07.RunFromCodeSample(1000);
+            EPPlusSample07.RunFromCodeSample(5000);
             eppSample07Time = Watch.Elapsed;
             Watch.Reset();
             #endregion
@@ -198,17 +200,39 @@ namespace iTinExportEngineSamples
             Console.WriteLine();
             ExportEngineSample07.RunFromConfigurationFileSample();
             engineSample07Time = Watch.Elapsed;
-            Watch.Stop();
+            Watch.Reset();
 
             #endregion
 
-            #region Sample 8 - How to use binded functions
+            #region Sample 8 - How to use gap field type
 
             // From configuration File 
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample08.RunFromConfigurationFileSample();
             engineSample08Time = Watch.Elapsed;
+            Watch.Reset();
+
+            #endregion
+
+            #region Sample 9 - How to use fixed width field type
+
+            // From configuration File 
+            Watch.Start();
+            Console.WriteLine();
+            ExportEngineSample09.RunFromConfigurationFileSample();
+            engineSample09Time = Watch.Elapsed;
+            Watch.Reset();
+
+            #endregion
+
+            #region Sample 10 - How to use binded functions
+
+            // From configuration File 
+            Watch.Start();
+            Console.WriteLine();
+            ExportEngineSample10.RunFromConfigurationFileSample();
+            engineSample10Time = Watch.Elapsed;
             Watch.Stop();
 
             #endregion
@@ -222,7 +246,9 @@ namespace iTinExportEngineSamples
                 engineSample05Time,
                 engineSample06Time,
                 engineSample07Time,
-                engineSample08Time);
+                engineSample08Time,
+                engineSample09Time,
+                engineSample10Time);
             #endregion
 
             #endregion
@@ -255,9 +281,9 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@"            {0:00}:{1:00}.{2:00}                {3:00}:{4:00}.{5:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10, codeTotalTime.Minutes, codeTotalTime.Seconds, codeTotalTime.Milliseconds / 10);
         }
 
-        private static void WriteExportEngineElapsedTime(TimeSpan ts1, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7, TimeSpan ts8)
+        private static void WriteExportEngineElapsedTime(TimeSpan ts1, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7, TimeSpan ts8, TimeSpan ts9, TimeSpan ts10)
         {
-            var configurationTotalTime = ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7 + ts8;
+            var configurationTotalTime = ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7 + ts8 + ts9 + ts10;
 
             Console.WriteLine();
             Console.WriteLine(@"                        Elapsed Time");
@@ -273,6 +299,8 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" Sample6        {0:00}:{1:00}.{2:00}", ts6.Minutes, ts6.Seconds, ts6.Milliseconds / 10, ts6.Minutes, ts6.Seconds, ts6.Milliseconds / 10);
             Console.WriteLine(@" Sample7        {0:00}:{1:00}.{2:00}", ts7.Minutes, ts7.Seconds, ts7.Milliseconds / 10, ts7.Minutes, ts7.Seconds, ts7.Milliseconds / 10);
             Console.WriteLine(@" Sample8        {0:00}:{1:00}.{2:00}", ts8.Minutes, ts8.Seconds, ts8.Milliseconds / 10, ts8.Minutes, ts8.Seconds, ts8.Milliseconds / 10);
+            Console.WriteLine(@" Sample9        {0:00}:{1:00}.{2:00}", ts9.Minutes, ts9.Seconds, ts9.Milliseconds / 10, ts9.Minutes, ts9.Seconds, ts9.Milliseconds / 10);
+            Console.WriteLine(@" Sample10       {0:00}:{1:00}.{2:00}", ts10.Minutes, ts10.Seconds, ts10.Milliseconds / 10, ts10.Minutes, ts10.Seconds, ts10.Milliseconds / 10);
             Console.WriteLine(new string('-', 46));
             Console.WriteLine(@"                {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
             Console.WriteLine();

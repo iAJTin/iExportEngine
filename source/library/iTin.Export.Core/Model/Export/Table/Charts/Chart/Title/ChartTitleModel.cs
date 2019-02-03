@@ -98,7 +98,7 @@ namespace iTin.Export.Model
         private const KnownAxisOrientation DefaultOrientation = KnownAxisOrientation.Horizontal;
         #endregion
 
-        #region field members
+        #region private field members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 

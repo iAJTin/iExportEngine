@@ -247,5 +247,17 @@ namespace iTinExportEngineSamples.Properties {
                 return ((string)(this["ExportEngineSample10Configuration"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Packet.xml")]
+        public string PacketXmlInput {
+            get {
+                return ((string)(this["PacketXmlInput"]));
+            }
+            set {
+                this["PacketXmlInput"] = value;
+            }
+        }
     }
 }

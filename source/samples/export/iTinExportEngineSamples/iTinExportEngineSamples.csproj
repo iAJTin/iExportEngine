@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="code\ExportEngineSamples\ExportEngineSample03.cs" />
     <Compile Include="code\ExportEngineSamples\ExportEngineSample08.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample10.cs" />
+    <Compile Include="code\ExportEngineSamples\ExportEngineSample09.cs" />
     <Compile Include="code\ExportEngineSamples\ExportEngineSample07.cs" />
     <Compile Include="code\ExportEngineSamples\ExportEngineSample06.cs" />
     <Compile Include="code\ExportEngineSamples\ExportEngineSample05.cs" />
@@ -107,10 +109,16 @@
     <Content Include="resources\configuration\EPPlus\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample08.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\ExportEngine\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample08.xml">
+    <Content Include="resources\configuration\ExportEngine\Sample10.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample09.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\ExportEngine\Sample07.xml">
@@ -131,8 +139,9 @@
     <Content Include="resources\configuration\ExportEngine\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\functions\iTin.Export.Queries.SqlServerCe.Functions.dll" />
+    <Content Include="resources\functions\iTinExportEngineFunctions.dll" />
     <Content Include="resources\images\banner-careers.png" />
+    <Content Include="resources\input\Packet.xml" />
     <Content Include="resources\input\Inventory.xml" />
     <Content Include="resources\input\Invoice.xml" />
     <Content Include="resources\input\SalesData.xml" />

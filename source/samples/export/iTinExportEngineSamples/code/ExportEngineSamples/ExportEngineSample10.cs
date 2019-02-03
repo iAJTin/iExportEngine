@@ -8,10 +8,10 @@ namespace iTinExportEngineSamples.ExportEngineSamples
 
     using Properties;
 
-    public class ExportEngineSample08
+    public class ExportEngineSample10
     {
-        private const string EpplusHeader = " · Running Sample 8 (From Configuration File)";
-        private const string FirstSampleStepText = "  - How to use gap field type";
+        private const string EpplusHeader = " · Running Sample 10 (From Configuration File)";
+        private const string FirstSampleStepText = "  - How to use binded functions";
 
         /// <summary>
         /// Runs the sample.
@@ -21,10 +21,10 @@ namespace iTinExportEngineSamples.ExportEngineSamples
             Console.WriteLine(EpplusHeader);
             Console.WriteLine(FirstSampleStepText);
 
-            var inputDataFile = new Uri(Settings.Default.InventoryXmlInput, UriKind.Relative);
+            var inputDataFile = new Uri(Settings.Default.InvoiceXmlInput, UriKind.Relative);
             var input = new XmlInput(inputDataFile);
 
-            var configuration = new Uri(Settings.Default.ExportEngineSample08Configuration, UriKind.Relative);
+            var configuration = new Uri(Settings.Default.ExportEngineSample10Configuration, UriKind.Relative);
             input.Export(ExportSettings.ImportFrom(configuration));
         }
     }
