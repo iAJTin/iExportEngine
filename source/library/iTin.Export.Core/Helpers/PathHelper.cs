@@ -18,7 +18,7 @@ namespace iTin.Export.Helpers
         /// Valid full path.
         /// </returns>
         /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-        public static string GetRelativeFilePathParsed(string targetPath, object baseObject = null)
+        public static string ResolveRelativePath(string targetPath, object baseObject = null)
         {
             SentinelHelper.ArgumentNull(targetPath);
 

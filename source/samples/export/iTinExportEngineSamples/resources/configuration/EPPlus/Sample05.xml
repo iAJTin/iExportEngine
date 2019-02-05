@@ -148,7 +148,7 @@
         </Pivots>-->
       </Fields>
       <Output>
-        <Path>~\output\EPPlusSamples\</Path>
+        <Path>~\output\EPPlus\</Path>
         <File>sample05-from-config-file</File>
       </Output>
     </Table>

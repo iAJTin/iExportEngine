@@ -691,7 +691,7 @@
         </MiniChart>
       </Charts>
       <Output>
-        <Path>~\output\EPPlusSamples\</Path>
+        <Path>~\output\EPPlus\</Path>
         <File>sample06-from-config-file</File>
       </Output>
     </Table>

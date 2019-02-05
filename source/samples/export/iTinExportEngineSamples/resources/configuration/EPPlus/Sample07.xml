@@ -80,7 +80,7 @@
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\EPPlusSamples\</Path>
+        <Path>~\output\EPPlus\</Path>
         <File>sample07-from-config-file</File>
       </Output>
     </Table>

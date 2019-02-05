@@ -246,7 +246,7 @@
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\ExportEngineSamples\</Path>
+        <Path>~\output\ExportEngine\</Path>
         <File>sample10-from-config-file</File>
       </Output>
     </Table>

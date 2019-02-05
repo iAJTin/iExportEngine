@@ -32,6 +32,8 @@ namespace iTinExportEngineSamples
         private static TimeSpan engineSample08Time;
         private static TimeSpan engineSample09Time;
         private static TimeSpan engineSample10Time;
+        private static TimeSpan engineSample11Time;
+        private static TimeSpan engineSample12Time;
 
         static void Main(string[] args)
         {
@@ -233,6 +235,26 @@ namespace iTinExportEngineSamples
             Console.WriteLine();
             ExportEngineSample10.RunFromConfigurationFileSample();
             engineSample10Time = Watch.Elapsed;
+            Watch.Reset();
+
+            #endregion
+
+            #region Sample 11 - Custom output filename from code
+
+            Watch.Start();
+            Console.WriteLine();
+            ExportEngineSample11.RunFromConfigurationFileSample();
+            engineSample11Time = Watch.Elapsed;
+            Watch.Reset();
+
+            #endregion
+
+            #region Sample 12 - Custom output filename from binding
+
+            Watch.Start();
+            Console.WriteLine();
+            ExportEngineSample12.RunFromConfigurationFileSample();
+            engineSample12Time = Watch.Elapsed;
             Watch.Stop();
 
             #endregion
@@ -248,7 +270,9 @@ namespace iTinExportEngineSamples
                 engineSample07Time,
                 engineSample08Time,
                 engineSample09Time,
-                engineSample10Time);
+                engineSample10Time,
+                engineSample11Time,
+                engineSample12Time);
             #endregion
 
             #endregion
@@ -281,9 +305,9 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@"            {0:00}:{1:00}.{2:00}                {3:00}:{4:00}.{5:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10, codeTotalTime.Minutes, codeTotalTime.Seconds, codeTotalTime.Milliseconds / 10);
         }
 
-        private static void WriteExportEngineElapsedTime(TimeSpan ts1, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7, TimeSpan ts8, TimeSpan ts9, TimeSpan ts10)
+        private static void WriteExportEngineElapsedTime(TimeSpan ts1, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7, TimeSpan ts8, TimeSpan ts9, TimeSpan ts10, TimeSpan ts11, TimeSpan ts12)
         {
-            var configurationTotalTime = ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7 + ts8 + ts9 + ts10;
+            var configurationTotalTime = ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7 + ts8 + ts9 + ts10 + ts11 + ts12;
 
             Console.WriteLine();
             Console.WriteLine(@"                        Elapsed Time");
@@ -301,6 +325,8 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" Sample8        {0:00}:{1:00}.{2:00}", ts8.Minutes, ts8.Seconds, ts8.Milliseconds / 10, ts8.Minutes, ts8.Seconds, ts8.Milliseconds / 10);
             Console.WriteLine(@" Sample9        {0:00}:{1:00}.{2:00}", ts9.Minutes, ts9.Seconds, ts9.Milliseconds / 10, ts9.Minutes, ts9.Seconds, ts9.Milliseconds / 10);
             Console.WriteLine(@" Sample10       {0:00}:{1:00}.{2:00}", ts10.Minutes, ts10.Seconds, ts10.Milliseconds / 10, ts10.Minutes, ts10.Seconds, ts10.Milliseconds / 10);
+            Console.WriteLine(@" Sample11       {0:00}:{1:00}.{2:00}", ts11.Minutes, ts11.Seconds, ts11.Milliseconds / 10, ts11.Minutes, ts11.Seconds, ts11.Milliseconds / 10);
+            Console.WriteLine(@" Sample12       {0:00}:{1:00}.{2:00}", ts12.Minutes, ts12.Seconds, ts12.Milliseconds / 10, ts12.Minutes, ts12.Seconds, ts12.Milliseconds / 10);
             Console.WriteLine(new string('-', 46));
             Console.WriteLine(@"                {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
             Console.WriteLine();

@@ -124,7 +124,7 @@ namespace iTin.Export.Model
         [XmlText]
         public string Value
         {
-            get => GetStaticBindingValue(_value.ToString());
+            get => GetStaticBindingValue(_value);
             set
             {
                 _value = value;

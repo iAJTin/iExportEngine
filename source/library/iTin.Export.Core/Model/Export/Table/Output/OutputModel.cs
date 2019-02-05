@@ -71,11 +71,16 @@ namespace iTin.Export.Model
         [XmlElement]
         public string File
         {
-            get => _file;
+            get => GetStaticBindingValue(_file);
             set
             {
                 SentinelHelper.ArgumentNull(value);
-                SentinelHelper.IsFalse(FileHelper.IsValidFileName(value), new InvalidFileNameException(ErrorMessageHelper.ModelFileNameErrorMessage("File", value)));
+                bool isStaticBinding = value.Trim().StartsWith("{StaticBinding:");
+                if (!isStaticBinding)
+                {
+                    SentinelHelper.IsFalse(FileHelper.IsValidFileName(value), new InvalidFileNameException(ErrorMessageHelper.ModelFileNameErrorMessage("File", value)));
+                }
+
                 _file = value;
             }
         }
@@ -116,11 +121,16 @@ namespace iTin.Export.Model
         [Description("The output file path. To specify a relative path use the character (~).")]
         public string Path
         {
-            get => _path;
+            
+            get => GetStaticBindingValue(_path);
             set
             {
                 SentinelHelper.ArgumentNull(value);
-                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("Path", value)));
+                bool isStaticBinding = value.Trim().StartsWith("{StaticBinding:");
+                if (!isStaticBinding)
+                {
+                    SentinelHelper.IsFalse(RegularExpressionHelper.IsValidPath(value), new InvalidPathNameException(ErrorMessageHelper.ModelPathErrorMessage("Path", value)));
+                }
 
                 _path = value;
             }

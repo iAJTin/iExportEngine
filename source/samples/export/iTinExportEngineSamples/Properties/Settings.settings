@@ -80,5 +80,11 @@
     <Setting Name="ExportEngineSample10Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample10.xml</Value>
     </Setting>
+    <Setting Name="ExportEngineSample11Configuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">~\resources\configuration\ExportEngine\Sample11.xml</Value>
+    </Setting>
+    <Setting Name="ExportEngineSample12Configuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample12.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

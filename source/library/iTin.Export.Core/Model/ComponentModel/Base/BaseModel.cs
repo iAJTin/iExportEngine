@@ -260,7 +260,7 @@ namespace iTin.Export.Model
 
                 var assemblyRelativePath = reference.Path;
                 var qualifiedAssemblyPath = string.Concat(assemblyRelativePath, assemblyName);
-                var qualifiedAssemblyPathParsed = PathHelper.GetRelativeFilePathParsed(qualifiedAssemblyPath); //, root);
+                var qualifiedAssemblyPathParsed = PathHelper.ResolveRelativePath(qualifiedAssemblyPath); //, root);
                 var assembly = Assembly.LoadFile(qualifiedAssemblyPathParsed);
                 assemblies.Add(assembly);
             }

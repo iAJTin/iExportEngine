@@ -421,7 +421,7 @@ namespace iTin.Export.Model
         /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
         public string ParseRelativeFilePath(string relativePath)
         {
-            return PathHelper.GetRelativeFilePathParsed(relativePath, this);
+            return PathHelper.ResolveRelativePath(relativePath, this);
         }
         #endregion
 

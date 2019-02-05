@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
 
-  <Global.Resources>  
+  <Global.Resources>
     <Hosts>
       <Host Key="xlsx">
         <Document>
           <Metadata>
             <Author>Your Name</Author>
-            <Comments>Equals to EPPlus sample 1 with an image banner with effects and custom data table location</Comments>
+            <Comments>Custom output filename from code</Comments>
             <Company>Your Company</Company>
-            <Title>Sample01</Title>
-          </Metadata>          
+            <Title>Sample11</Title>
+          </Metadata>
         </Document>
       </Host>
     </Hosts>
@@ -114,8 +114,8 @@
     </Styles>
   </Global.Resources>
 
-  <Export Name="Sample01" Current="Yes">
-    <Description>Equals to EPPlus sample 1 with an image banner with effects and custom data table location</Description>
+  <Export Name="Sample11" Current="Yes">
+    <Description>Custom output filename from code</Description>
     <Table Host="xlsx"
            Name="Inventory"
            AutoFilter="Yes"
@@ -131,7 +131,7 @@
         </Location>
       </Logo>
       <Exporter>
-        <Writer Name="XlsxTabularWriter"/>           
+        <Writer Name="XlsxTabularWriter"/>
       </Exporter>
       <Fields>
         <Field Name="ID" Alias="ID">
@@ -161,10 +161,10 @@
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\ExportEngine\</Path>
-        <File>sample01-from-config-file</File>
+        <Path></Path>
+        <File></File>
       </Output>
     </Table>
   </Export>
-  
+
 </Exports>

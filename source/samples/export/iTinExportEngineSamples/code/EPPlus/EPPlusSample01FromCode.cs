@@ -137,7 +137,7 @@ namespace iTinExportEngineSamples.EPPlusSamples
                                 AutoFitColumns = YesNo.Yes,
                                 Alias = "Inventory",
                                 Exporter = {Current = new WriterModel {Name = "XlsxTabularWriter"}},
-                                Output = {Path = @"~\output\EPPlusSamples\", File = "sample01-from-code"},
+                                Output = {Path = @"~\output\EPPlus\", File = "sample01-from-code"},
                                 Fields =
                                 {
                                     new DataFieldModel

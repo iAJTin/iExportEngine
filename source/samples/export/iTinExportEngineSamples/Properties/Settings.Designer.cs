@@ -50,6 +50,18 @@ namespace iTinExportEngineSamples.Properties {
             }
         }
         
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Packet.xml")]
+        public string PacketXmlInput {
+            get {
+                return ((string)(this["PacketXmlInput"]));
+            }
+            set {
+                this["PacketXmlInput"] = value;
+            }
+        }
+        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Products.xml")]
@@ -250,13 +262,25 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\Packet.xml")]
-        public string PacketXmlInput {
+        [global::System.Configuration.DefaultSettingValueAttribute("~\\resources\\configuration\\ExportEngine\\Sample11.xml")]
+        public string ExportEngineSample11Configuration {
             get {
-                return ((string)(this["PacketXmlInput"]));
+                return ((string)(this["ExportEngineSample11Configuration"]));
             }
             set {
-                this["PacketXmlInput"] = value;
+                this["ExportEngineSample11Configuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\ExportEngine\\Sample12.xml")]
+        public string ExportEngineSample12Configuration {
+            get {
+                return ((string)(this["ExportEngineSample12Configuration"]));
+            }
+            set {
+                this["ExportEngineSample12Configuration"] = value;
             }
         }
     }

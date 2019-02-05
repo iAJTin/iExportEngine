@@ -407,7 +407,7 @@ namespace iTin.Export.Model
                     break;
             }
 
-            return PathHelper.GetRelativeFilePathParsed(relativePathIsRooted ? $"~{relativePath}" : relativePath, model);
+            return PathHelper.ResolveRelativePath(relativePathIsRooted ? $"~{relativePath}" : relativePath, model);
         }
         #endregion
 

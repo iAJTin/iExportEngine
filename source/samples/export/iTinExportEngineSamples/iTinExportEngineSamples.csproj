@@ -43,16 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample03.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample08.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample10.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample09.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample07.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample06.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample05.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample04.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample02.cs" />
-    <Compile Include="code\ExportEngineSamples\ExportEngineSample01.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample03.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample08.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample12.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample11.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample10.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample09.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample07.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample06.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample05.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample04.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample02.cs" />
+    <Compile Include="code\ExportEngine\ExportEngineSample01.cs" />
     <Compile Include="models\CustomData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,14 +63,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="code\EPPlusSamples\EPPlusSample01FromCode.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample07.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample06.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample05.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample04.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample03.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample02.cs" />
-    <Compile Include="code\EPPlusSamples\EPPlusSample01.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample01FromCode.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample07.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample06.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample05.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample04.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample03.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample02.cs" />
+    <Compile Include="code\EPPlus\EPPlusSample01.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -115,6 +117,12 @@
     <Content Include="resources\configuration\ExportEngine\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample12.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\ExportEngine\Sample11.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="resources\configuration\ExportEngine\Sample10.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -151,8 +159,8 @@
     <Content Include="resources\input\Sales.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="output\EPPlusSamples\" />
-    <Folder Include="output\ExportEngineSamples\" />
+    <Folder Include="output\EPPlus\" />
+    <Folder Include="output\ExportEngine\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

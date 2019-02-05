@@ -145,7 +145,7 @@
         </Chart>
       </Charts>
       <Output>
-        <Path>~\output\EPPlusSamples\</Path>
+        <Path>~\output\EPPlus\</Path>
         <File>sample04-from-config-file</File>
       </Output>
     </Table>
