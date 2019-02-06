@@ -1,7 +1,7 @@
 # TextModel.Show Property 
 Additional header content 
 
-\[Missing <summary> documentation for "P:iTin.Export.Model.TextModel.Show"\]
+Gets or sets a value that determines whether displays the text. The default is Yes.
 
 **Namespace:**&nbsp;<a href="N_iTin_Export_Model">iTin.Export.Model</a><br />**Assembly:**&nbsp;iTin.Export.Core (in iTin.Export.Core.dll) Version: 2.0.0.0 (2.0.0.0)
 
@@ -21,7 +21,7 @@ Public Property Show As YesNo
 
 
 #### Property Value
-Type: <a href="T_iTin_Export_Model_YesNo">YesNo</a><br />\[Missing <value> documentation for "P:iTin.Export.Model.TextModel.Show"\]
+Type: <a href="T_iTin_Export_Model_YesNo">YesNo</a><br />Yes if displays the title; otherwise, No.
 
 ## Remarks
 \[Missing <remarks> documentation for "P:iTin.Export.Model.TextModel.Show"\]

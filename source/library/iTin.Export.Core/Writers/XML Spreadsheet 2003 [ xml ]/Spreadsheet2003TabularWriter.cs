@@ -36,14 +36,14 @@ namespace iTin.Export.Writers
         {          
             get
             {
-                var parsedFilePath = Provider.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.Output);
+                var parsedFilePath = Provider.Input.Model.ResolveRelativePath(KnownRelativeFilePath.Output);
                 var filename = Path.GetFileName(parsedFilePath);
                 var outputFileDir = parsedFilePath.Replace(filename, string.Empty);
 
                 var behavior = Provider.Input.Model.Table.Exporter.Behaviors.Get<TransformFileBehaviorModel>() ?? TransformFileBehaviorModel.Default;
                 var outputTransformDir = behavior.IsDefault
                     ? outputFileDir
-                    : Provider.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.TransformFileBehaviorDir);
+                    : Provider.Input.Model.ResolveRelativePath(KnownRelativeFilePath.TransformFileBehaviorDir);
 
                 var headerBuilder = new StringBuilder();
                 headerBuilder.Append("attachment; filename=");

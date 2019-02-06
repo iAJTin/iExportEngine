@@ -393,7 +393,7 @@ namespace iTin.Export.Model
 
         #region public methods
 
-        #region [public] (string) ParseRelativeFilePath(KnownRelativeFilePath): Gets a valid full path from a relative path
+        #region [public] (string) ResolveRelativePath(KnownRelativeFilePath): Gets a valid full path from a relative path
         /// <summary>
         /// Gets a valid full path from a relative path.
         /// </summary>
@@ -402,7 +402,7 @@ namespace iTin.Export.Model
         /// The valid full path.
         /// </returns>
         /// <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-        public string ParseRelativeFilePath(KnownRelativeFilePath element)
+        public string ResolveRelativePath(KnownRelativeFilePath element)
         {
             SentinelHelper.IsEnumValid(element);
 

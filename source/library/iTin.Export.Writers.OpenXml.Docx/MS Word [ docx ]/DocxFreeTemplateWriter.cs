@@ -52,7 +52,7 @@ namespace iTin.Export.Writers.OpenXml.Office
         protected override void Execute()
         {
             var tempTemplate = FileHelper.GetUniqueTempRandomFile();
-            var originalTemplate = Provider.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.Template);
+            var originalTemplate = Provider.Input.Model.ResolveRelativePath(KnownRelativeFilePath.Template);
 
             File.Copy(originalTemplate, tempTemplate.OriginalString);
 

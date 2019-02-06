@@ -1,7 +1,7 @@
 # TextModel.Style Property 
 Additional header content 
 
-\[Missing <summary> documentation for "P:iTin.Export.Model.TextModel.Style"\]
+Gets or sets one of the styles defined in the element styles.
 
 **Namespace:**&nbsp;<a href="N_iTin_Export_Model">iTin.Export.Model</a><br />**Assembly:**&nbsp;iTin.Export.Core (in iTin.Export.Core.dll) Version: 2.0.0.0 (2.0.0.0)
 
@@ -21,7 +21,7 @@ Public Property Style As String
 
 
 #### Property Value
-Type: String<br />\[Missing <value> documentation for "P:iTin.Export.Model.TextModel.Style"\]
+Type: String<br />Name of a style defined in the list of styles. Are only allow strings made ​​up of letters, numbers and following special chars <strong>'`_ - # @ % $`'</strong>.
 
 ## Remarks
 \[Missing <remarks> documentation for "P:iTin.Export.Model.TextModel.Style"\]

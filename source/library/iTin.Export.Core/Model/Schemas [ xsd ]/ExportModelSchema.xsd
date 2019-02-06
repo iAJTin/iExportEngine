@@ -1694,6 +1694,13 @@
         </xs:annotation>
       </xs:element>
     </xs:all>
+    <xs:attribute name="Create" type="YesNo" use="optional" default="Yes">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Use this attribute to try create the specified path if not exist. The default is 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="Target" use="optional" default="Windows">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">

@@ -1,4 +1,4 @@
-# ExportModel.ParseRelativeFilePath Method 
+# ExportModel.ResolveRelativePath Method 
 Additional header content 
 
 Gets a valid full path from a relative path.
@@ -9,21 +9,21 @@ Gets a valid full path from a relative path.
 
 **C#**<br />
 ``` C#
-public string ParseRelativeFilePath(
-	string relativePath
+public string ResolveRelativePath(
+	KnownRelativeFilePath element
 )
 ```
 
 **VB**<br />
 ``` VB
-Public Function ParseRelativeFilePath ( 
-	relativePath As String
+Public Function ResolveRelativePath ( 
+	element As KnownRelativeFilePath
 ) As String
 ```
 
 
 #### Parameters
-&nbsp;<dl><dt>relativePath</dt><dd>Type: System.String<br />The relative path to parsed.</dd></dl>
+&nbsp;<dl><dt>element</dt><dd>Type: <a href="T_iTin_Export_Model_KnownRelativeFilePath">iTin.Export.Model.KnownRelativeFilePath</a><br />The element.</dd></dl>
 
 #### Return Value
 Type: String<br />The valid full path.
@@ -32,7 +32,7 @@ Type: String<br />The valid full path.
 &nbsp;<table><tr><th>Exception</th><th>Condition</th></tr><tr><td>InvalidEnumArgumentException</td><td>The value specified is outside the range of valid values.</td></tr></table>
 
 ## Remarks
-\[Missing <remarks> documentation for "M:iTin.Export.Model.ExportModel.ParseRelativeFilePath(System.String)"\]
+\[Missing <remarks> documentation for "M:iTin.Export.Model.ExportModel.ResolveRelativePath(iTin.Export.Model.KnownRelativeFilePath)"\]
 
 ## See Also
 

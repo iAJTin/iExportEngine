@@ -376,7 +376,7 @@ namespace iTin.Export.Model
         private static void CopyToTransformOutputDirectory(IWriter writer)
         {
             var root = writer.Provider.Input.Model;
-            var outputDirectory = root.ParseRelativeFilePath(KnownRelativeFilePath.TransformFileBehaviorDir);
+            var outputDirectory = root.ResolveRelativePath(KnownRelativeFilePath.TransformFileBehaviorDir);
             
             var existOutputDirectory = Directory.Exists(outputDirectory);
             if (!existOutputDirectory)

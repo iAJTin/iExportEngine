@@ -248,8 +248,8 @@ namespace iTin.Export.ComponentModel.Provider
             {
                 #region Xslt
                 case KnownExporter.Xslt:
-                    var output = root.ParseRelativeFilePath(KnownRelativeFilePath.Output);
-                    var transform = root.ParseRelativeFilePath(KnownRelativeFilePath.Transform);
+                    var output = root.ResolveRelativePath(KnownRelativeFilePath.Output);
+                    var transform = root.ResolveRelativePath(KnownRelativeFilePath.Transform);
 
                     settings.OutputFile = new Uri(output);
                     settings.TransformFile = new Uri(transform);

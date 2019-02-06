@@ -343,9 +343,19 @@ namespace iTin.Export.ComponentModel.Writer
         private void CopyResultsToOutputDirectory()
         {
             var root = Provider.Input.Model;
-            var outputFullPath = root.ParseRelativeFilePath(KnownRelativeFilePath.Output);
+            var outputFullPath = root.ResolveRelativePath(KnownRelativeFilePath.Output);
             var outputDirectory = Path.GetDirectoryName(outputFullPath);
 
+            var tryCreateDirectory = root.Table.Output.Create;
+            if (tryCreateDirectory == YesNo.Yes)
+            {
+                var exist = Directory.Exists(outputDirectory);
+                if (!exist)
+                {
+                    Directory.CreateDirectory(outputDirectory);
+                }
+            }
+            
             var searchPattern = $"*.{WriterMetadata.Extension}";
             FileHelper.CopyFiles(FileHelper.TinExportTempDirectory, outputDirectory, searchPattern, true);
         }
@@ -402,7 +412,7 @@ namespace iTin.Export.ComponentModel.Writer
         /// <exception cref="System.InvalidOperationException">If can't create writer file.</exception>
         private void GenerateTemporaryOutputFiles()
         {                
-            var outputFullPath = Provider.Input.Model.ParseRelativeFilePath(KnownRelativeFilePath.Output);
+            var outputFullPath = Provider.Input.Model.ResolveRelativePath(KnownRelativeFilePath.Output);
             var outputFileName = Path.GetFileName(outputFullPath);
 
             var isTransformationFile = IsTransformationFile;

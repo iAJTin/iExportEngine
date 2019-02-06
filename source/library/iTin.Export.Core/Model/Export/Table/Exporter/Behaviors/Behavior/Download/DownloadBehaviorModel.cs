@@ -215,7 +215,7 @@ namespace iTin.Export.Model
             if (LocalCopy == YesNo.No)
             {
                 var root = writer.Provider.Input.Model;
-                var outputFullPath = root.ParseRelativeFilePath(KnownRelativeFilePath.Output);
+                var outputFullPath = root.ResolveRelativePath(KnownRelativeFilePath.Output);
                 var outputDirectory = Path.GetDirectoryName(outputFullPath);
 
                 var filenameWithoutExtension = Path.GetFileNameWithoutExtension(filename);

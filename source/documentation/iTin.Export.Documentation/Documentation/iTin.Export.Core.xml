@@ -6312,21 +6312,21 @@
       <exception cref="T:System.ArgumentNullException">If <paramref name="value" /> is <b>null</b>.</exception>
       <exception cref="T:iTin.Export.Model.InvalidIdentifierNameException">If <paramref name="value" /> not is a valid field identifier name.</exception>
     </member>
-    <member name="M:iTin.Export.Model.ExportModel.ParseRelativeFilePath(iTin.Export.Model.KnownRelativeFilePath)">
-      <summary>
-            Gets a valid full path from a relative path.
-            </summary>
-      <param name="element">The element.</param>
-      <returns>
-            The valid full path.
-            </returns>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
-    </member>
     <member name="M:iTin.Export.Model.ExportModel.ParseRelativeFilePath(System.String)">
       <summary>
             Gets a valid full path from a relative path.
             </summary>
       <param name="relativePath">The relative path to parsed.</param>
+      <returns>
+            The valid full path.
+            </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">The value specified is outside the range of valid values.</exception>
+    </member>
+    <member name="M:iTin.Export.Model.ExportModel.ResolveRelativePath(iTin.Export.Model.KnownRelativeFilePath)">
+      <summary>
+            Gets a valid full path from a relative path.
+            </summary>
+      <param name="element">The element.</param>
       <returns>
             The valid full path.
             </returns>
@@ -13797,6 +13797,16 @@
         </markup>
       </summary>
     </member>
+    <member name="P:iTin.Export.Model.OutputModel.Create">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:iTin.Export.Model.OutputModel.Create</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
     <member name="P:iTin.Export.Model.OutputModel.EndOfFile">
       <summary>
         <markup>
@@ -15902,23 +15912,13 @@
     </member>
     <member name="P:iTin.Export.Model.TextModel.Show">
       <summary>
-        <markup>
-          <include item="SMCMissingTag">
-            <parameter>summary</parameter>
-            <parameter>P:iTin.Export.Model.TextModel.Show</parameter>
-          </include>
-        </markup>
-      </summary>
+            Gets or sets a value that determines whether displays the text. The default is <see cref="T:iTin.Export.Model.YesNo.Yes" />.
+            </summary>
     </member>
     <member name="P:iTin.Export.Model.TextModel.Style">
       <summary>
-        <markup>
-          <include item="SMCMissingTag">
-            <parameter>summary</parameter>
-            <parameter>P:iTin.Export.Model.TextModel.Style</parameter>
-          </include>
-        </markup>
-      </summary>
+            Gets or sets one of the styles defined in the element styles.
+            </summary>
     </member>
     <member name="P:iTin.Export.Model.TextModel.Value">
       <summary>

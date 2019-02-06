@@ -14,6 +14,9 @@ namespace iTin.Export.Model
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const YesNo DefaultCreatePath = YesNo.Yes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const KnownOutputTarget DefaultTarget = KnownOutputTarget.Windows;
         #endregion
 
@@ -23,6 +26,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _path;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private YesNo _createPath;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private TableModel _parent;
@@ -38,12 +44,28 @@ namespace iTin.Export.Model
         public OutputModel()
         {
             Target = DefaultTarget;
+            Create = DefaultCreatePath;
         }
         #endregion
 
         #endregion
 
         #region public properties
+
+        #region [public] (YesNo) Create: Gets or sets a value indicating whether try create the specified path if not exist
+        [XmlAttribute]
+        [DefaultValue(DefaultCreatePath)]
+        public YesNo Create
+        {
+            get => GetStaticBindingValue(_createPath.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _createPath = value;
+            }
+        }
+        #endregion
 
         #region [public] (string) EndOfFile: Gets representation for end of file mark
         /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Output/Public/Properties/Property[@name="EndOfFile"]/*'/>
@@ -161,7 +183,7 @@ namespace iTin.Export.Model
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance contains the default
         /// <include file='..\..\iTin.Export.Documentation.Common.xml' path='Common/Model/Public/Overrides/Properties/Property[@name="IsDefault"]/*'/>
-        public override bool IsDefault => Target.Equals(DefaultTarget);
+        public override bool IsDefault => Create.Equals(DefaultCreatePath) && Target.Equals(DefaultTarget);
         #endregion
 
         #endregion
@@ -177,7 +199,7 @@ namespace iTin.Export.Model
         {
             try
             {
-                return new Uri(Parent.Parent.ParseRelativeFilePath(KnownRelativeFilePath.Output));
+                return new Uri(Parent.Parent.ResolveRelativePath(KnownRelativeFilePath.Output));
             }
             catch
             {
