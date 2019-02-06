@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>  
+    <Hosts>
+      <Host Key="txt"/>
+    </Hosts>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="#00008B">
+          <Alignment Horizontal="Left"/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="IdValueStyle">
+        <Content>
+          <Alignment Horizontal="Left"/>
+          <Number Decimals="0"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="IdAggregateStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="ProductValueStyle">
+        <Content>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="ProductAggregateStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="QuantityValueStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="QuantityAggregateStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="PriceValueStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="PriceAggregateStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="ValueValueStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+      </Style>
+      <Style Name="ValueAggregateStyle">
+        <Borders>
+          <Border Position="Top" Color="Black" LineStyle="Continuous" Weight="Thin"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="Sample01" Current="Yes">
+    <Description>TXT - Sample 1</Description>
+    <Table Host="txt"
+           Name="Inventory"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes"
+           Alias="Inventory">
+      <Exporter>
+        <Writer Name="TsvWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="ID" Alias="ID">
+          <Header Style="HeaderStyle"/>
+          <Value Style="IdValueStyle"/>
+          <Aggregate Location="Bottom" Style="IdAggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRODUCT" Alias="Product">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ProductValueStyle"/>
+          <Aggregate Location="Bottom" Style="ProductAggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="QUANTITY" Alias="Quantity">
+          <Header Style="HeaderStyle"/>
+          <Value Style="QuantityValueStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="QuantityAggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="PRICE" Alias="Price">
+          <Header Style="HeaderStyle"/>
+          <Value Style="PriceValueStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="PriceAggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="VALUE" Alias="Value">
+          <Header Style="HeaderStyle"/>
+          <Value Style="ValueValueStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="ValueAggregateStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\txt\</Path>
+        <File>sample01-from-config-file</File>
+      </Output>
+    </Table>
+  </Export>
+  
+</Exports>

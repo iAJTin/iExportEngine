@@ -30,61 +30,82 @@
       <Value Profile="(Default)">..\..\resources\input\StockProducts.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample01Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample01.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample01.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample02Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample02.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample02.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample03Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample03.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample03.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample04Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample04.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample04.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample05Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample05.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample05.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample06Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample06.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample06.xml</Value>
     </Setting>
     <Setting Name="EPPlusSample07Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\EPPlus\Sample07.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample07.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample01Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample01.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample01.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample02Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample02.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample02.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample03Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample03.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample03.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample04Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample04.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample04.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample05Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample05.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample05.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample06Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample06.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample06.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample07Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample07.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample07.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample08Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample08.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample08.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample09Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample09.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample09.xml</Value>
     </Setting>
     <Setting Name="ExportEngineSample10Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample10.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample10.xml</Value>
     </Setting>
-    <Setting Name="ExportEngineSample11Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">~\resources\configuration\ExportEngine\Sample11.xml</Value>
+    <Setting Name="ExportEngineSample11Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">~\resources\configuration\xlsx\ExportEngine\Sample11.xml</Value>
     </Setting>
-    <Setting Name="ExportEngineSample12Configuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\resources\configuration\ExportEngine\Sample12.xml</Value>
+    <Setting Name="ExportEngineSample12Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample12.xml</Value>
+    </Setting>
+    <Setting Name="MDSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\md\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="DocxSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\docx\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="PdfSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\pdf\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="CsvSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\csv\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="TxtSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\txt\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="SpreadsheetSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\spreadsheet\Sample01.xml</Value>
+    </Setting>
+    <Setting Name="SqlSample01Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\sql\Sample01.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

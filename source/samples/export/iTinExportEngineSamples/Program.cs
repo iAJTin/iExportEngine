@@ -6,9 +6,11 @@ namespace iTinExportEngineSamples
 
     using EPPlusSamples;
     using ExportEngineSamples;
+    using MarkdownSamples;
 
     class Program
     {
+        #region private members
         private const string LastStepText = " Finished Without Errors. Press Any Key...";
 
         private static readonly Stopwatch Watch = new Stopwatch();
@@ -35,12 +37,116 @@ namespace iTinExportEngineSamples
         private static TimeSpan engineSample11Time;
         private static TimeSpan engineSample12Time;
 
+        private static TimeSpan mdSample01Time;
+        private static TimeSpan xmlSample01Time;
+        private static TimeSpan docxSample01Time;
+        private static TimeSpan sqlSample01Time;
+        private static TimeSpan txtSample01Time;
+        private static TimeSpan csvSample01Time;
+        private static TimeSpan pdfSample01Time;
+        #endregion
+
         static void Main(string[] args)
         {
+            #region Comma-Separated Values [ csv ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run Comma-Separated Values Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            CsvSample01.RunFromConfigurationFileSample();
+            csvSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WriteCsvElapsedTime(csvSample01Time);
+            #endregion
+
+            #endregion
+
+            #region Tab-Separated Values [ txt ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run Tab-Separated Values Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            TxtSample01.RunFromConfigurationFileSample();
+            txtSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WriteTxtElapsedTime(txtSample01Time);
+            #endregion
+
+            #endregion
+
+            #region SQL Script [ sql ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run SQL Script Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            SqlSample01.RunFromConfigurationFileSample();
+            sqlSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WriteSqlElapsedTime(sqlSample01Time);
+            #endregion
+
+            #endregion
+
+            #region XML Spreadsheet 2003 [ xml ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run XML Spreadsheet 2003 Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            SpreadsheetSample01.RunFromConfigurationFileSample();
+            xmlSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WriteXMLSpreadsheetElapsedTime(xmlSample01Time);
+            #endregion
+
+            #endregion
+
+            #region MS Excel [ xlsx ]
+
             #region EPPlus Samples
 
             #region Header
             Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
             Console.WriteLine(@"Run EPPlus Samples");
             Console.WriteLine(new string('=', 90));
             Console.WriteLine();
@@ -127,6 +233,7 @@ namespace iTinExportEngineSamples
 
             #region Header
             Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
             Console.WriteLine(@"Run ExportEngine Samples");
             Console.WriteLine(new string('=', 90));
             Console.WriteLine();
@@ -255,7 +362,7 @@ namespace iTinExportEngineSamples
             Console.WriteLine();
             ExportEngineSample12.RunFromConfigurationFileSample();
             engineSample12Time = Watch.Elapsed;
-            Watch.Stop();
+            Watch.Reset();
 
             #endregion
 
@@ -277,7 +384,79 @@ namespace iTinExportEngineSamples
 
             #endregion
 
+            #endregion
+
+            #region MS Word [ docx ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run MS Word Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            DocxSample01.RunFromConfigurationFileSample();
+            docxSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WriteWordElapsedTime(docxSample01Time);
+            #endregion
+
+            #endregion
+
+            #region Portable Document Format [ pdf ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run Portable Document Format Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            PdfSample01.RunFromConfigurationFileSample();
+            pdfSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WritePdfElapsedTime(pdfSample01Time);
+            #endregion
+
+            #endregion
+
+            #region Markdown [ md ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run Markdown Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            MDSample01.RunFromConfigurationFileSample();
+            mdSample01Time = Watch.Elapsed;
+            Watch.Stop();
+            #endregion
+
+            #region Summary
+            WriteMarkdownElapsedTime(mdSample01Time);
+            #endregion
+
+            #endregion
+
             #region Exit app
+            Console.WriteLine();
             Console.WriteLine(LastStepText);
             Console.ReadKey();
             #endregion
@@ -294,7 +473,7 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" EPPlus     From                From");
             Console.WriteLine(@" Summary    Configuration       Code");
             Console.WriteLine(new string('=', 46));
-            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00}                {3:00}:{4:00}.{5:00}", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10, ts1c.Minutes, ts1c.Seconds, ts1c.Milliseconds / 10);
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00}            {3:00}:{4:00}.{5:00}", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10, ts1c.Minutes, ts1c.Seconds, ts1c.Milliseconds / 10);
             Console.WriteLine(@" Sample2    {0:00}:{1:00}.{2:00}", ts2.Minutes, ts2.Seconds, ts2.Milliseconds / 10);
             Console.WriteLine(@" Sample3    {0:00}:{1:00}.{2:00}", ts3.Minutes, ts3.Seconds, ts3.Milliseconds / 10);
             Console.WriteLine(@" Sample4    {0:00}:{1:00}.{2:00}", ts4.Minutes, ts4.Seconds, ts4.Milliseconds / 10);
@@ -302,7 +481,7 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" Sample6    {0:00}:{1:00}.{2:00}", ts6.Minutes, ts6.Seconds, ts6.Milliseconds / 10);
             Console.WriteLine(@" Sample7    {0:00}:{1:00}.{2:00}", ts7.Minutes, ts7.Seconds, ts7.Milliseconds / 10);
             Console.WriteLine(new string('-', 46));
-            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}                {3:00}:{4:00}.{5:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10, codeTotalTime.Minutes, codeTotalTime.Seconds, codeTotalTime.Milliseconds / 10);
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}            {3:00}:{4:00}.{5:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10, codeTotalTime.Minutes, codeTotalTime.Seconds, codeTotalTime.Milliseconds / 10);
         }
 
         private static void WriteExportEngineElapsedTime(TimeSpan ts1, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7, TimeSpan ts8, TimeSpan ts9, TimeSpan ts10, TimeSpan ts11, TimeSpan ts12)
@@ -329,6 +508,118 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" Sample12       {0:00}:{1:00}.{2:00}", ts12.Minutes, ts12.Seconds, ts12.Milliseconds / 10, ts12.Minutes, ts12.Seconds, ts12.Milliseconds / 10);
             Console.WriteLine(new string('-', 46));
             Console.WriteLine(@"                {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteMarkdownElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" Markdown   From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteWordElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" MS Word    From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WritePdfElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" PDF        From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteCsvElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" CSV        From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteTxtElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" TXT        From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteXMLSpreadsheetElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" XML        From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteSqlElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" SQL        From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
             Console.WriteLine();
         }
     }

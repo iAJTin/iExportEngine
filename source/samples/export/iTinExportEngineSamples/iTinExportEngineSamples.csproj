@@ -43,18 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="code\ExportEngine\ExportEngineSample03.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample08.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample12.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample11.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample10.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample09.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample07.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample06.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample05.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample04.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample02.cs" />
-    <Compile Include="code\ExportEngine\ExportEngineSample01.cs" />
+    <Compile Include="code\SQL Script [ sql ]\SqlSample01.cs" />
+    <Compile Include="code\XML Spreadsheet 2003 [ xml ]\SpreadsheetSample01.cs" />
+    <Compile Include="code\Tab-Separated Values [ txt ]\TxtSample01.cs" />
+    <Compile Include="code\Markdown [ md ]\MDSample01.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample03.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample08.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample12.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample11.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample10.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample09.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample07.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample06.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample05.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample04.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample02.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample01.cs" />
+    <Compile Include="code\MS Word [ docx ]\DocxSample01.cs" />
+    <Compile Include="code\Comma-Separated Values [ csv ]\CsvSample01.cs" />
+    <Compile Include="code\Portable Document Format [ pdf ]\PdfSample01.cs" />
     <Compile Include="models\CustomData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,14 +70,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="code\EPPlus\EPPlusSample01FromCode.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample07.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample06.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample05.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample04.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample03.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample02.cs" />
-    <Compile Include="code\EPPlus\EPPlusSample01.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample01FromCode.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample07.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample06.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample05.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample04.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample03.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample02.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample01.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -84,67 +91,96 @@
       <Project>{6cd99304-9218-4c77-8deb-f37fbf2217b9}</Project>
       <Name>iTin.Export.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\library\iTin.Export.Writers.Adobe\iTin.Export.Writers.Adobe.csproj">
+      <Project>{abb9fa61-4bbf-4183-8f9a-eef4595ad567}</Project>
+      <Name>iTin.Export.Writers.Adobe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\library\iTin.Export.Writers.OpenXml.Docx\iTin.Export.Writers.OpenXml.Docx.csproj">
+      <Project>{12c77613-8d87-48d3-bc74-ef020ca3a567}</Project>
+      <Name>iTin.Export.Writers.OpenXml.Docx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\library\iTin.Export.Writers.OpenXml.Xlsx\iTin.Export.Writers.OpenXml.Xlsx.csproj">
       <Project>{38e0a78c-3e9e-4998-89a0-b1500034e761}</Project>
       <Name>iTin.Export.Writers.OpenXml.Xlsx</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\configuration\EPPlus\Sample07.xml">
+    <Content Include="resources\configuration\docx\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlus\Sample06.xml">
+    <Content Include="resources\configuration\md\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlus\Sample05.xml">
+    <Content Include="resources\configuration\csv\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlus\Sample04.xml">
+    <Content Include="resources\configuration\spreadsheet\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlus\Sample03.xml">
+    <Content Include="resources\configuration\sql\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlus\Sample02.xml">
+    <Content Include="resources\configuration\txt\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\EPPlus\Sample01.xml">
+    <Content Include="resources\configuration\pdf\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample08.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample07.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample03.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample06.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample12.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample05.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample11.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample04.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample10.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample09.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample02.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample07.xml">
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample06.xml">
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample08.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample05.xml">
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample04.xml">
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample12.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample02.xml">
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample11.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\ExportEngine\Sample01.xml">
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample10.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample09.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample07.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample06.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample05.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample04.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample02.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\functions\iTinExportEngineFunctions.dll" />
@@ -159,8 +195,7 @@
     <Content Include="resources\input\Sales.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="output\EPPlus\" />
-    <Folder Include="output\ExportEngine\" />
+    <Folder Include="output\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

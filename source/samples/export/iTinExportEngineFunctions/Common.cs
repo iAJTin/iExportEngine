@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace iTinExportEngineFunctions
 {
+    using System;
+
     public static class Common
     {
         /// <summary>
@@ -56,7 +57,7 @@ namespace iTinExportEngineFunctions
         {
             get
             {
-                return @"~\output\ExportEngine\";
+                return @"~\output\xlsx\ExportEngine\";
             }
         }
     }

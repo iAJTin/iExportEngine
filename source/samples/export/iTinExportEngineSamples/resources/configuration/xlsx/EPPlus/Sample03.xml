@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx"/>
+    </Hosts>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Borders>
+          <Border Position="Top" Color="#5B9BD5" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Left" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+        <Content Color="#DDEBF7">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+      <Style Name="AggregateTotalStyle" Inherits="HeaderStyle">
+        <Borders>
+          <Border Position="Top" Color="#5B9BD5" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Bottom" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+      </Style>
+      <Style Name="AggregateStyle" Inherits="HeaderStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="1"/>
+        </Content>
+      </Style>      
+      <Style Name="DateTimeStyle">
+        <Borders>
+          <Border Position="Left" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+          <Border Position="Right" Color="#9BC2E6" LineStyle="Continuous" Weight="Thick"/>
+        </Borders>
+        <Content Color="#BDD7EE" AlternateColor="#DDEBF7">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="NumericStandardStyle" Inherits="DateTimeStyle">
+        <Content Color="#BDD7EE" AlternateColor="#DDEBF7">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="1"/>
+        </Content>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="sample3" Current="Yes">
+    <Description>Sample 3 - A table linked to a stacked area chart</Description>
+    <Table Host="xlsx"
+           Name="Sales"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes" 
+           ShowGridLines="No"           
+           Alias="Stacked area chart">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="Period" Alias="Period">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DateTimeStyle"/>            
+          <Aggregate Location="Bottom" Type="Text" Style="AggregateTotalStyle" Text="Total" Show="Yes"/>
+        </Field>
+        <Field Name="EUROPE" Alias="Europe">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="AFRICA" Alias="Africa">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="ASIA" Alias="Asia">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="NORTHAMERICA" Alias="North America">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="SOUTHAMERICA" Alias="South America">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+        <Field Name="AUSTRALIA" Alias="Australia">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericStandardStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="AggregateStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Charts>
+        <Chart Size="800 600">
+          <Location>
+            <ByCoordenates Coordenates="11 1"/>
+          </Location>
+          <Legend Show="Yes">
+            <Border Show="Yes"/>
+            <Font Name="Calibri" Size="10"/>
+          </Legend>
+          <Axes>
+            <Primary>              
+              <Values GridLines="Major"/>                
+            </Primary>
+          </Axes>
+          <Plots>
+            <Plot Name="plot1">
+              <Series>
+                <Serie Type="AreaStacked" Axis="Period" Field="EUROPE" Name="Europe" Color="#285A8F"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AFRICA" Name="AFRICA" Color="#336EA9"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="ASIA" Name="ASIA" Color="#3572B1"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="NORTHAMERICA" Name="NORTHAMERICA" Color="#628AC5"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="SOUTHAMERICA" Name="SOUTHAMERICA" Color="#93ADCD"/>
+                <Serie Type="AreaStacked" Axis="Period" Field="AUSTRALIA" Name="AUSTRALIA" Color="#BCCCDE"/>
+              </Series>
+            </Plot>
+          </Plots>
+        </Chart>
+      </Charts>
+      <Output>
+        <Path>~\output\xlsx\EPPlus\</Path>
+        <File>sample03-from-config-file</File>
+      </Output>
+    </Table>
+  </Export>
+
+</Exports>
