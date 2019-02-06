@@ -106,6 +106,9 @@
            Alias="Inventory">
       <Exporter>
         <Writer Name="Spreadsheet2003TabularWriter"/>
+        <Behaviors>          
+          <TransformFile Save="Yes"/>
+        </Behaviors>
       </Exporter>
       <Fields>
         <Field Name="ID" Alias="ID">
