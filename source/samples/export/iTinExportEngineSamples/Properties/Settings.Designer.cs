@@ -325,7 +325,7 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\spreadsheet\\Sample01.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\xml\\Sample01.xml")]
         public string SpreadsheetSample01Configuration {
             get {
                 return ((string)(this["SpreadsheetSample01Configuration"]));

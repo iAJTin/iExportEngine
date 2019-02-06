@@ -102,7 +102,7 @@
       <Value Profile="(Default)">..\..\resources\configuration\txt\Sample01.xml</Value>
     </Setting>
     <Setting Name="SpreadsheetSample01Configuration" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\resources\configuration\spreadsheet\Sample01.xml</Value>
+      <Value Profile="(Default)">..\..\resources\configuration\xml\Sample01.xml</Value>
     </Setting>
     <Setting Name="SqlSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\sql\Sample01.xml</Value>

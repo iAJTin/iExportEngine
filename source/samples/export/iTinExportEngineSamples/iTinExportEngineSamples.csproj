@@ -114,7 +114,7 @@
     <Content Include="resources\configuration\csv\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\spreadsheet\Sample01.xml">
+    <Content Include="resources\configuration\xml\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\sql\Sample01.xml">
