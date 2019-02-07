@@ -191,7 +191,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSeparator)]
         public YesNo Separator
         {
-            get => GetStaticBindingValue(_separator.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_separator.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

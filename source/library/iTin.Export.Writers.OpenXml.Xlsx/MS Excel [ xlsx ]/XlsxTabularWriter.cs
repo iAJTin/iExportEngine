@@ -142,6 +142,7 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                     #region add worksheet
                     var worksheet = excel.Workbook.Worksheets.Add(WorkSheetName);
+                    excel.Workbook.Worksheets.Add("ssss");
                     worksheet.View.ShowGridLines = Table.ShowGridLines == YesNo.Yes;
                     #endregion
 
@@ -258,8 +259,9 @@ namespace iTin.Export.Writers.OpenXml.Office
                         {
                             case "WebHyperLink":
                                 var webHyperLink = (WebHyperLink) header.HyperLink.Current;
-                                cell.Hyperlink = new ExcelHyperLink(webHyperLink.Address); //, tooltip);                                
-                                //cell.StyleName = hyperLinkStyle;
+                                cell.Hyperlink = new ExcelHyperLink(@"\\Mac\Dropbox\PhotoGrid_1513687137832.jpg"); // ssss!A1", "nando");
+                                cell.StyleName = hyperLinkStyle;
+                                
                                 break;
                         }
                     }
@@ -365,6 +367,23 @@ namespace iTin.Export.Writers.OpenXml.Office
                             {
                                 cell.FormulaR1C1 = formula.Resolve();
                             }
+                        }
+                    }
+                    #endregion
+
+                    #region sets fields's width
+
+                    for (var col = 0; col < items.Count; col++)
+                    {
+                        var field = items[col];
+                        var column = worksheet.Column(x + col);
+                        if (field.WidthValue.Equals(double.NaN))
+                        {
+                            column.BestFit = true;
+                        }
+                        else
+                        {
+                            column.Width = field.WidthValue;
                         }
                     }
                     #endregion

@@ -470,7 +470,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultSSL)]
         public YesNo SSL
         {
-            get => GetStaticBindingValue(_ssl.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_ssl.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

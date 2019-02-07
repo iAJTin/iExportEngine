@@ -5664,6 +5664,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="Width" type="FieldWidth" use="optional" default="Default">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] User defined width of a field, choose an item from the list or indicate the preferred size. The default is 'Default'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- Defines a base class for the different behaviors of an exporter.                                          -->

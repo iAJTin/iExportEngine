@@ -57,6 +57,10 @@
   <!-- Definition of common data types -->
   <!-- =============================== -->
 
+  <xs:simpleType id="FieldWidth" name="FieldWidth">
+    <xs:union memberTypes=" shortCutStaticBindingType fieldWidthType xs:double bindingType staticBindType"/>
+  </xs:simpleType>
+
   <!-- YesNo: Boolean type. -->
   <xs:simpleType id="YesNo" name="YesNo">
     <xs:union memberTypes="shortCutStaticBindingType yesNoType bindingType staticBindType"/>

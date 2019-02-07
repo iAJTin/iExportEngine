@@ -1,8 +1,10 @@
 
 namespace iTin.Export.Model
 {
+    using iTin.Export.Helpers;
     using System.ComponentModel;
     using System.Diagnostics;
+    using System.Globalization;
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
@@ -38,6 +40,11 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class BaseDataFieldModel
     {
+        #region private constants
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const string DefaultWidth = "Default";
+        #endregion
+
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _alias;
@@ -47,6 +54,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private FieldsModel _owner;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _width;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XElement _dataSource;
@@ -426,6 +436,49 @@ namespace iTin.Export.Model
         }
         #endregion
 
+        #region [public] (string) Width: Gets or sets a value that contains the column field width
+        [XmlAttribute]
+        [DefaultValue(DefaultWidth)]
+        public string Width
+        {
+            get
+            {
+                _width = string.IsNullOrEmpty(_width) ? DefaultWidth : GetStaticBindingValue(_width);                    
+                return _width;                
+            }
+            set
+            {
+                SentinelHelper.ArgumentNull(value);
+
+                _width = value;
+            }
+        }
+        #endregion
+
+
+        public double WidthValue
+        {
+            get
+            {
+                var ok = int.TryParse(Width, out int fieldWidth);
+                if (!ok)
+                {
+                    if (Width.ToUpperInvariant() == "DEFAULT")
+                    {
+                        return 9.1d;
+                    }
+                    else
+                    {
+                        return double.NaN;
+                    }
+                }
+                else
+                {
+                    return fieldWidth / 100.0d;
+                }
+            }
+        }
+
         #endregion
 
         #region public override properties
@@ -438,9 +491,11 @@ namespace iTin.Export.Model
         /// <value>
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
-        public override bool IsDefault => Value.IsDefault &&
-                                          Header.IsDefault &&
-                                          Aggregate.IsDefault;
+        public override bool IsDefault => 
+            Width.ToUpperInvariant().Equals(DefaultWidth) &&
+            Header.IsDefault &&
+            Value.IsDefault &&
+            Aggregate.IsDefault;
         #endregion
 
         #endregion
@@ -517,7 +572,7 @@ namespace iTin.Export.Model
         /// </remarks>
         public override string ToString()
         {
-            return $"Alias=\"{Alias}\"";
+            return $"Alias=\"{Alias}\", Width={Width}";
         }
         #endregion
 

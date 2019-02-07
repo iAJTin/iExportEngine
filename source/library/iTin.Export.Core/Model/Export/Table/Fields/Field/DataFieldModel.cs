@@ -128,10 +128,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="Writers.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="Writers.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="Writers.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="Writers.Spreadsheet2003TabularWriter" /></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>

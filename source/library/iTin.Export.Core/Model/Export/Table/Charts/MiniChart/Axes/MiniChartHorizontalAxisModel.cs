@@ -92,7 +92,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultRightToLeft)]
         public YesNo RightToLeft
         {
-            get => GetStaticBindingValue(_rightToLeft.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_rightToLeft.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

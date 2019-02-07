@@ -190,7 +190,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultDisplayHidden)]
         public YesNo DisplayHidden
         {
-            get => _displayHidden.ToString().ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => _displayHidden.ToString().ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

@@ -261,7 +261,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultUseSecondaryAxis)]
         public YesNo UseSecondaryAxis
         {
-            get => GetStaticBindingValue(_useSecondaryAxis.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_useSecondaryAxis.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

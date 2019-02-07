@@ -481,7 +481,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultFontBold)]
         public YesNo Bold
         {
-            get => GetStaticBindingValue(_bold.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_bold.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -557,7 +557,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultFontItalic)]
         public YesNo Italic
         {
-            get => GetStaticBindingValue(_italic.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_italic.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -633,7 +633,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultFontUnderline)]
         public YesNo Underline
         {
-            get => GetStaticBindingValue(_underline.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_underline.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

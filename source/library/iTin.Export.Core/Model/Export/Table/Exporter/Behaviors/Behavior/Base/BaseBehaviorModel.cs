@@ -144,7 +144,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultExecute)]
         public YesNo CanExecute
         {
-            get => GetStaticBindingValue(_canExecute.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_canExecute.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

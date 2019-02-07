@@ -51,7 +51,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultActive)]
         public YesNo Active
         {
-            get => GetStaticBindingValue(_active.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_active.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);
@@ -66,7 +66,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultEntireRow)]
         public YesNo EntireRow
         {
-            get => GetStaticBindingValue(_entrireRow.ToString()).ToLowerInvariant() == "no" ? YesNo.No : YesNo.Yes;
+            get => GetStaticBindingValue(_entrireRow.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
             set
             {
                 SentinelHelper.IsEnumValid(value);

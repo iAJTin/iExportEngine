@@ -109,14 +109,12 @@
     <Description>EPPlus - Sample 1</Description>
     <Table Host="xlsx"
            Name="Inventory"
-           AutoFilter="Yes"
-           AutoFitColumns="Yes"
            Alias="Inventory">
       <Exporter>
         <Writer Name="XlsxTabularWriter"/>
       </Exporter>
       <Fields>
-        <Field Name="ID" Alias="ID">
+        <Field Name="ID" Alias="ID" Width="930">
           <Header Style="HeaderStyle"/>
           <Value Style="IdValueStyle"/>
           <Aggregate Location="Bottom" Style="IdAggregateStyle" Show="Yes"/>
@@ -136,7 +134,7 @@
           <Value Style="PriceValueStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="PriceAggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="VALUE" Alias="Value">
+        <Field Name="VALUE" Alias="Value" Width="BestFit">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueValueStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="ValueAggregateStyle" Show="Yes"/>
