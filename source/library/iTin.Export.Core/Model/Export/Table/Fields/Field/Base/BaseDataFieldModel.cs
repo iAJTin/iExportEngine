@@ -73,6 +73,17 @@ namespace iTin.Export.Model
         private FieldAggregateModel _aggregate;
         #endregion
 
+        #region constructor/s
+
+        #region [public] BaseDataFieldModel(): Initializes a new instance of this class
+        public BaseDataFieldModel()
+        {
+            Width = DefaultWidth;
+        }
+        #endregion
+
+        #endregion
+
         #region public abstract properties
 
         #region [public] {abstract} (KnownFieldType) FieldType: Gets a value indicating data field type
@@ -443,11 +454,7 @@ namespace iTin.Export.Model
         [DefaultValue(DefaultWidth)]
         public string Width
         {
-            get
-            {
-                _width = string.IsNullOrEmpty(_width) ? DefaultWidth : GetStaticBindingValue(_width);
-                return _width;
-            }
+            get => GetStaticBindingValue(_width);
             set
             {
                 SentinelHelper.ArgumentNull(value);
