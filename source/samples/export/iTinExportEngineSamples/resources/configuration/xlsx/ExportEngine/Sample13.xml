@@ -4,12 +4,13 @@
   <Global.Resources>  
     <Hosts>
       <Host Key="xlsx">
-        <Document View="Design">
-          <Header>
-            <Sections>
-              <Section Alignment="Center" Text="Inventory"/>              
-            </Sections>
-          </Header>
+        <Document>
+          <Metadata>
+            <Author>Your Name</Author>
+            <Comments>How to change the width of the fields</Comments>
+            <Company>Your Company</Company>
+            <Title>Sample13</Title>
+          </Metadata>          
         </Document>
       </Host>
     </Hosts>
@@ -105,46 +106,45 @@
     </Styles>
   </Global.Resources>
 
-  <Export Name="Sample01" Current="Yes">
-    <Description>EPPlus - Sample 1</Description>
+  <Export Name="Sample013" Current="Yes">
+    <Description>How to change the width of the fields</Description>
     <Table Host="xlsx"
            Name="Inventory"
            AutoFilter="Yes"
-           AutoFitColumns="Yes"
            Alias="Inventory">
       <Exporter>
-        <Writer Name="XlsxTabularWriter"/>
+        <Writer Name="XlsxTabularWriter"/>           
       </Exporter>
-      <Fields>        
-        <Field Name="ID" Alias="ID">
+      <Fields>
+        <Field Name="ID" Alias="ID" Width="2000">
           <Header Style="HeaderStyle"/>
           <Value Style="IdValueStyle"/>
           <Aggregate Location="Bottom" Style="IdAggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="PRODUCT" Alias="Product">
+        <Field Name="PRODUCT" Alias="Product" Width="Default">
           <Header Style="HeaderStyle"/>
           <Value Style="ProductValueStyle"/>
           <Aggregate Location="Bottom" Style="ProductAggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="QUANTITY" Alias="Quantity">
+        <Field Name="QUANTITY" Alias="Quantity" Width="BestFit">
           <Header Style="HeaderStyle"/>
           <Value Style="QuantityValueStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="QuantityAggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="PRICE" Alias="Price">
+        <Field Name="PRICE" Alias="Price" Width="2000">
           <Header Style="HeaderStyle"/>
           <Value Style="PriceValueStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="PriceAggregateStyle" Show="Yes"/>
         </Field>
-        <Field Name="VALUE" Alias="Value">
+        <Field Name="VALUE" Alias="Value" Width="2000">
           <Header Style="HeaderStyle"/>
           <Value Style="ValueValueStyle"/>
           <Aggregate Location="Bottom" Type="Sum" Style="ValueAggregateStyle" Show="Yes"/>
         </Field>
       </Fields>
       <Output>
-        <Path>~\output\xlsx\EPPlus\</Path>
-        <File>sample01-from-config-file</File>
+        <Path>~\output\xlsx\ExportEngine\</Path>
+        <File>sample13-from-config-file</File>
       </Output>
     </Table>
   </Export>

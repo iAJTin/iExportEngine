@@ -4364,6 +4364,20 @@
         <xs:union memberTypes="KnownItemGroupSeparator xs:string" />
       </xs:simpleType>
     </xs:attribute>
+    <xs:attribute name="Trim" type="YesNo" use="optional" default="No">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether to apply string trim mode. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="TrimMode" type="KnownTrimMode" use="optional" default="All">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Use this attribute to specify trim mode for strings. The default is 'All'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- Styles: Style -->
@@ -5667,7 +5681,7 @@
     <xs:attribute name="Width" type="FieldWidth" use="optional" default="Default">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] User defined width of a field, choose an item from the list or indicate the preferred size. The default is 'Default'.
+          [Optional] preferred width of field, choose an item from the list or indicate size as multiply of 100 (ex. 9.3 => 930) The default is 'Default'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

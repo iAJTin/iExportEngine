@@ -85,7 +85,10 @@
     </Setting>
     <Setting Name="ExportEngineSample12Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample12.xml</Value>
-    </Setting>
+    </Setting>	
+	<Setting Name="ExportEngineSample13Configuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample13.xml</Value>
+    </Setting>	
     <Setting Name="MDSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\md\Sample01.xml</Value>
     </Setting>

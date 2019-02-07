@@ -394,7 +394,8 @@ namespace iTin.Export.Model
                             }
                             else
                             {
-                                groupValue = asAttribute.Value;
+                                groupField.DataSource = Parent.DataSource;
+                                groupValue = groupField.GetValue(); //asAttribute.Value;
                             }
 
                             builder.Append(groupValue);

@@ -17,7 +17,7 @@
     </Hosts>
     <Groups>
       <Group Name="CustomerName">
-        <Field Name="CUSTOMERFIRSTNAME" Separator=", "/>
+        <Field Name="CUSTOMERFIRSTNAME" Trim="Yes" Separator=", "/>
         <Field Name="CUSTOMERLASTNAME"/>
       </Group>
     </Groups>

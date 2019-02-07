@@ -1,12 +1,12 @@
 
 namespace iTin.Export.Model
 {
-    using iTin.Export.Helpers;
     using System.ComponentModel;
     using System.Diagnostics;
-    using System.Globalization;
     using System.Xml.Linq;
     using System.Xml.Serialization;
+
+    using Helpers;
 
     /// <inheritdoc />
     /// <summary>
@@ -41,8 +41,10 @@ namespace iTin.Export.Model
     public partial class BaseDataFieldModel
     {
         #region private constants
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DefaultWidth = "Default";
+
         #endregion
 
         #region private members
@@ -235,8 +237,7 @@ namespace iTin.Export.Model
         #endregion
 
         #region [public] (string) Condition: Gets or sets the alias of data field
-        [XmlAttribute]
-        public string Condition { get; set; }
+        [XmlAttribute] public string Condition { get; set; }
         #endregion
 
         #region [public] (XElement) DataSource: Gets or sets a reference for pieces data
@@ -256,6 +257,7 @@ namespace iTin.Export.Model
                 {
                     _dataSource = value;
                 }
+
                 ////else
                 ////{
                 ////    throw new InvalidOperationException("InvalidOperation_DataSourceNotSupported");
@@ -443,8 +445,8 @@ namespace iTin.Export.Model
         {
             get
             {
-                _width = string.IsNullOrEmpty(_width) ? DefaultWidth : GetStaticBindingValue(_width);                    
-                return _width;                
+                _width = string.IsNullOrEmpty(_width) ? DefaultWidth : GetStaticBindingValue(_width);
+                return _width;
             }
             set
             {
@@ -454,30 +456,6 @@ namespace iTin.Export.Model
             }
         }
         #endregion
-
-
-        public double WidthValue
-        {
-            get
-            {
-                var ok = int.TryParse(Width, out int fieldWidth);
-                if (!ok)
-                {
-                    if (Width.ToUpperInvariant() == "DEFAULT")
-                    {
-                        return 9.1d;
-                    }
-                    else
-                    {
-                        return double.NaN;
-                    }
-                }
-                else
-                {
-                    return fieldWidth / 100.0d;
-                }
-            }
-        }
 
         #endregion
 
@@ -572,13 +550,29 @@ namespace iTin.Export.Model
         /// </remarks>
         public override string ToString()
         {
-            return $"Alias=\"{Alias}\", Width={Width}";
+            return $"Alias=\"{Alias}\", Width=\"{Width}\"";
         }
         #endregion
 
         #endregion
 
         #region public methods
+
+        #region [public] (double) CalculateWidthValue(): Calculates field width from Width property.
+        public double CalculateWidthValue()
+        {
+            var ok = int.TryParse(Width, out int fieldWidth);
+            if (!ok)
+            {
+                return 
+                    Width.ToUpperInvariant() == "DEFAULT" 
+                        ? 9.140625d
+                        : double.NaN;
+            }
+
+            return fieldWidth / 100.0d;
+        }
+        #endregion
 
         #region [public] (void) SetOwner(FieldsModel): Sets the element that owns this
         /// <summary>

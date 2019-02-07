@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample13.cs" />
     <Compile Include="code\SQL Script [ sql ]\SqlSample01.cs" />
     <Compile Include="code\XML Spreadsheet 2003 [ xml ]\SpreadsheetSample01.cs" />
     <Compile Include="code\Tab-Separated Values [ txt ]\TxtSample01.cs" />
@@ -112,6 +113,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\csv\Sample01.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\ExportEngine\Sample13.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\xml\Sample01.xml">

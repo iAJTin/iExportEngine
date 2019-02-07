@@ -142,8 +142,29 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                     #region add worksheet
                     var worksheet = excel.Workbook.Worksheets.Add(WorkSheetName);
-                    excel.Workbook.Worksheets.Add("ssss");
+                    //excel.Workbook.Worksheets.Add("ssss");
                     worksheet.View.ShowGridLines = Table.ShowGridLines == YesNo.Yes;
+                    #endregion
+
+                    #region sets fields's width
+                    if (Table.AutoFitColumns == YesNo.No)
+                    {
+                        for (var col = 0; col < items.Count; col++)
+                        {
+                            var field = items[col];
+                            var width = field.CalculateWidthValue();
+                            var column = worksheet.Column(x + col);
+                            var isBestFit = width.Equals(double.NaN);
+                            if (isBestFit)
+                            {
+                                column.BestFit = true;
+                            }
+                            else
+                            {
+                                column.Width = width;
+                            }
+                        }
+                    }
                     #endregion
 
                     #region add styles
@@ -367,23 +388,6 @@ namespace iTin.Export.Writers.OpenXml.Office
                             {
                                 cell.FormulaR1C1 = formula.Resolve();
                             }
-                        }
-                    }
-                    #endregion
-
-                    #region sets fields's width
-
-                    for (var col = 0; col < items.Count; col++)
-                    {
-                        var field = items[col];
-                        var column = worksheet.Column(x + col);
-                        if (field.WidthValue.Equals(double.NaN))
-                        {
-                            column.BestFit = true;
-                        }
-                        else
-                        {
-                            column.Width = field.WidthValue;
                         }
                     }
                     #endregion
