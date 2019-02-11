@@ -1,5 +1,5 @@
 ﻿
-namespace iTinExportEngineSamples.MarkdownSamples
+namespace iTinExportEngineSamples.PortableDocumentFormat
 {
     using System;
 

@@ -4,9 +4,12 @@ namespace iTinExportEngineSamples
     using System;
     using System.Diagnostics;
 
+    using DocxSamples;
     using EPPlusSamples;
     using ExportEngineSamples;
     using MarkdownSamples;
+    using NativeWriters;
+    using PortableDocumentFormat;
 
     class Program
     {

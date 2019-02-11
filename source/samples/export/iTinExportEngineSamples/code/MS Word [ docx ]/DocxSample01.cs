@@ -1,5 +1,5 @@
 ﻿
-namespace iTinExportEngineSamples.MarkdownSamples
+namespace iTinExportEngineSamples.DocxSamples
 {
     using System;
 
