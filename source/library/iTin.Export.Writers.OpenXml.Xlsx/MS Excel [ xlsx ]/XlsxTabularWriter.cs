@@ -1,7 +1,6 @@
 ﻿
 namespace iTin.Export.Writers.OpenXml.Office
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
     using System.Drawing;
@@ -294,9 +293,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                         y++;
                     }
 
-                    var conditions = Table.Conditions.Items.ToList();
-                    var hasConditions = conditions.Any();
-                    var fieldDictionary = new Dictionary<BaseDataFieldModel, int>(); 
+                    var fieldDictionary = new Dictionary<BaseDataFieldModel, int>();
                     for (var row = 0; row < rowsCount; row++)
                     {                        
                         var rowData = rows[row];
@@ -313,36 +310,12 @@ namespace iTin.Export.Writers.OpenXml.Office
 
                             var value = field.Value.GetValue(Provider.SpecialChars);
                             var valueLenght = value.FormattedValue.Length;
+
                             var cell = worksheet.Cells[y + row, x + col];
                             cell.Value = value.Value;                        
                             cell.AddErrorComment(value);
-
-                            if (hasConditions)
-                            {
-                                foreach (var condition in conditions)
-                                {
-                                    if (condition.Active == YesNo.No)
-                                    {
-                                        continue;
-                                    }
-
-                                    var styleToApply = condition.Apply();
-                                    if (styleToApply == null)
-                                    {
-                                        continue;
-                                    }
-
-                                    cell.StyleName = styleToApply;
-                                }
-                            }
-                            else
-                            {
-                                cell.StyleName = row.IsOdd()
-                                    ? $"{value.Style.Name}_Alternate"
-                                    : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
-                            }
-
                             cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
+                            cell.StyleName = row.IsOdd() ? $"{value.Style.Name}_Alternate" : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
 
                             if (!fieldDictionary.ContainsKey(field))
                             {
@@ -388,6 +361,40 @@ namespace iTin.Export.Writers.OpenXml.Office
                             {
                                 cell.FormulaR1C1 = formula.Resolve();
                             }
+                        }
+                    }
+                    #endregion
+
+                    #region conditions
+                    var cols = items.Count - 1; 
+                    var conditions = Table.Conditions.Items.ToList();
+                    foreach (var condition in conditions)
+                    {
+                        if (condition.Active == YesNo.No)
+                        {
+                            continue;
+                        }
+
+                        var field = items.GetBy(condition.Field);
+                        var col = items.IndexOf(field);
+                        Service.SetCurrentCol(col);
+                        for (var row = 0; row < rowsCount; row++)
+                        {
+                            Service.SetCurrentRow(row);
+                            field.DataSource = rows[row];
+                            Service.SetCurrentField(field);
+
+                            var conditionResult = condition.Evaluate();
+                            if (!conditionResult.CanApply)
+                            {
+                                continue;
+                            }
+
+                            var cell = condition.EntireRow == YesNo.Yes
+                                ? worksheet.Cells[y + row, x, y + row, x + cols]
+                                : worksheet.Cells[y + row, x + col];
+
+                            cell.StyleName = conditionResult.Style;
                         }
                     }
                     #endregion
@@ -511,19 +518,17 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
                     #endregion
 
-                    #region autofitcolumns?
+                    #region autofitcolumns
                     if (Table.AutoFitColumns == YesNo.Yes)
                     {
                         try
                         {
-                            worksheet.Cells.AutoFitColumns(0); 
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
                         }
-                        catch (Exception)
+                        catch
                         {
-                            // ignored
+                            worksheet.AutoFitGroupColumns(fieldDictionary, this);
                         }
-
-                        worksheet.AutoFitGroupColumns(fieldDictionary, this);
                     }
                     #endregion
 
@@ -973,3 +978,103 @@ namespace iTin.Export.Writers.OpenXml.Office
 
 ////We want the datafields to appear in columns
 //pivotTable2.DataOnRows = false;
+
+
+//if (hasConditions)
+//{
+//    foreach (var condition in conditions)
+//    {
+//        if (condition.Active == YesNo.No)
+//        {
+//            continue;
+//        }
+
+//        var styleToApply = condition.Apply();
+//        if (styleToApply == null)
+//        {
+//            continue;
+//        }
+
+//        cell.StyleName = styleToApply;
+//    }
+//}
+//else
+//{
+//    cell.StyleName = row.IsOdd()
+//        ? $"{value.Style.Name}_Alternate"
+//        : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+//}
+
+//cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
+
+//if (!fieldDictionary.ContainsKey(field))
+//{
+//    fieldDictionary.Add(field, valueLenght);
+//}
+//else
+//{
+//    var entry = fieldDictionary[field];
+//    if (valueLenght > entry)
+//    {
+//        fieldDictionary[field] = valueLenght;
+//    }
+//}
+//    }
+//}
+
+
+
+
+//if (condition.EntireRow == YesNo.Yes)
+//{
+//    for (var row = 0; row < rowsCount; row++)
+//    {
+//        var rowData = rows[row];
+//        Service.SetCurrentRow(row);
+//        Service.SetCurrentCol(fldIdx);
+//        fld.DataSource = rowData;
+//        Service.SetCurrentField(fld);
+
+//        var canApplyCondition = condition.CanApply(row, fldIdx);
+//        if (!canApplyCondition)
+//        {
+//            continue;
+//        }
+
+//        var cell = worksheet.Cells[y + row, x + fldIdx];
+//        cell.StyleName = ((RemarksCondition)condition).Style;
+//    }
+//}
+//else
+//{
+//    var normalizedConditionFieldName = condition.Field.ToUpperInvariant();
+//    for (var row = 0; row < rowsCount; row++)
+//    {
+//        var rowData = rows[row];
+
+//        Service.SetCurrentRow(row);
+//        for (var col = 0; col < items.Count; col++)
+//        {
+//            Service.SetCurrentCol(col);
+
+//            var tableField = items[col];
+//            tableField.DataSource = rowData;
+//            Service.SetCurrentField(tableField);
+
+//            var normalizedTableFieldName = BaseDataFieldModel.GetFieldNameFrom(tableField).ToUpperInvariant();
+//            if (normalizedConditionFieldName != normalizedTableFieldName)
+//            {
+//                continue;
+//            }
+
+//            var canApplyCondition = condition.CanApply();
+//            if (!canApplyCondition)
+//            {
+//                continue;
+//            }
+
+//            var cell = worksheet.Cells[y + row, x + col];
+//            cell.StyleName = ((RemarksCondition)condition).Style;
+//        }
+//    }
+//}

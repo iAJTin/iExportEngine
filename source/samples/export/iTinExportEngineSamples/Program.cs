@@ -218,13 +218,13 @@ namespace iTinExportEngineSamples
 
             #region Summary
             WriteEPPlusElapsedTime(
-                eppSample01Time, 
-                eppSample01CodeTime, 
-                eppSample02Time, 
-                eppSample03Time, 
-                eppSample04Time, 
-                eppSample05Time, 
-                eppSample06Time, 
+                eppSample01Time,
+                eppSample01CodeTime,
+                eppSample02Time,
+                eppSample03Time,
+                eppSample04Time,
+                eppSample05Time,
+                eppSample06Time,
                 eppSample07Time);
             #endregion
 
@@ -249,132 +249,108 @@ namespace iTinExportEngineSamples
             #endregion
 
             #region Sample 2 - How to use group fields, Creates a new customer field
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample02.RunFromConfigurationFileSample();
             engineSample02Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 3 - How to creates a column header fields
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample03.RunFromConfigurationFileSample();
             engineSample03Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 4 - Sample with groups, headers, banner and aggregate's functions
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample04.RunFromConfigurationFileSample();
             engineSample04Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 5 - How to use simple filters
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample05.RunFromConfigurationFileSample();
             engineSample05Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 6 - How to use conditions
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample06.RunFromConfigurationFileSample();
             engineSample06Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 7 - How to add block lines
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample07.RunFromConfigurationFileSample();
             engineSample07Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 8 - How to use gap field type
-
-            // From configuration File 
+            //From configuration File
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample08.RunFromConfigurationFileSample();
             engineSample08Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 9 - How to use fixed width field type
-
             // From configuration File 
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample09.RunFromConfigurationFileSample();
             engineSample09Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 10 - How to use binded functions
-
             // From configuration File 
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample10.RunFromConfigurationFileSample();
             engineSample10Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 11 - Custom output filename from code
-
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample11.RunFromConfigurationFileSample();
             engineSample11Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 12 - Custom output filename from binding
-
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample12.RunFromConfigurationFileSample();
             engineSample12Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Sample 13 - How to change the width of the fields
-
             Watch.Start();
             Console.WriteLine();
             ExportEngineSample13.RunFromConfigurationFileSample();
             engineSample13Time = Watch.Elapsed;
             Watch.Reset();
-
             #endregion
 
             #region Summary

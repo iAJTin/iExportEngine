@@ -46,6 +46,16 @@ namespace iTin.Export.ComponentModel
         public string FormattedValue { get; set; }
         #endregion
 
+        #region [public] (bool) IsDateTime: 
+        /// <summary>
+        /// Gets or sets the data.
+        /// </summary>
+        /// <value>
+        /// The data.
+        /// </value>
+        public bool IsDateTime { get; set; }
+        #endregion
+
         #region [public] (bool) IsErrorValue: 
         /// <summary>
         /// Gets or sets a value indicating whether [is error value].
@@ -74,6 +84,16 @@ namespace iTin.Export.ComponentModel
         /// The data.
         /// </value>
         public bool IsNumeric { get; set; }
+        #endregion
+
+        #region [public] (bool) IsText: 
+        /// <summary>
+        /// Gets or sets the data.
+        /// </summary>
+        /// <value>
+        /// The data.
+        /// </value>
+        public bool IsText { get; set; }
         #endregion
 
         #region [public] (bool) NegativeColor: 

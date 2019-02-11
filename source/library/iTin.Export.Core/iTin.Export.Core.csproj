@@ -395,6 +395,7 @@
       <SubType>code</SubType>
       <DependentUpon>OutputModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Resources\Conditions\Result\ConditionResult.cs" />
     <Compile Include="Model\Resources\Filters\DataFiltersModel.designer.cs" />
     <Compile Include="Model\Resources\Filters\Filter\DataFilterModel.designer.cs">
       <DependentUpon>DataFilterModel.cs</DependentUpon>

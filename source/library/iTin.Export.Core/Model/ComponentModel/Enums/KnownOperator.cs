@@ -2,7 +2,7 @@
 namespace iTin.Export.Model
 {
     /// <summary>
-    /// Specifies the orientation of a control on the drawing surface.
+    /// Specifies 
     /// </summary>
     public enum KnownOperator
     {

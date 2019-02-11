@@ -3,15 +3,29 @@ namespace iTin.Export.Model
 {
     using System;
     using System.Diagnostics;
-    using System.Linq;
+    using System.Globalization;
     using System.Xml.Serialization;
 
     using ComponentModel;
     using Helpers;
 
+    /// <summary>
+    /// Represents a field condition. Defines the style that will be applied to the field when it met specified condition.
+    /// </summary>
     public partial class RemarksCondition : ICloneable
     {
-        #region public static properties
+        #region private memebrs
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _style;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string _value;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private KnownOperator _operator;
+        #endregion
+
+        #region public static readonly properties
 
         #region [public] {static} (RemarksCondition) Empty: Gets an empty condition
         /// <summary>
@@ -25,18 +39,7 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region private memebrs
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private KnownOperator _operator;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _style;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _value;
-        #endregion
-
-        #region public override properties
+        #region public override readonly properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
@@ -52,21 +55,7 @@ namespace iTin.Export.Model
 
         #endregion
 
-        #region public properties
-
-        #region [public] (string) Criterial: Gets or sets
-        [XmlAttribute]
-        public KnownOperator Criterial
-        {
-            get => _operator; // GetStaticBindingValue(_operator);
-            set
-            {
-                SentinelHelper.IsEnumValid(value);
-
-                _operator = value;
-            }
-        }
-        #endregion
+        #region public readonly properties
 
         #region [public] (bool) IsEmpty: Gets a value indicating whether this condition is an empty condition
         /// <summary>
@@ -78,7 +67,111 @@ namespace iTin.Export.Model
         public bool IsEmpty => IsDefault;
         #endregion
 
-        #region [public] (string) Style: Gets or sets
+        #endregion
+
+        #region public properties
+
+        #region [public] (KnownOperator) Criterial: Gets or sets a value that represents the criteria to apply to the field of this condition
+        /// <summary>
+        /// Gets or sets a value that represents the criteria to apply to the field of this condition. 
+        /// </summary>
+        /// <value>
+        /// One of the enumeration values <see cref ="T:iTin.Export.Model.KnownOperator"/>.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;RemarksValue Criterial="EqualTo|NotEqualTo|LessThan|LessOrEqualThan|GreatherThan|GreatherOrEqualsThan|In|Like|Beetween" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Global.Resources&gt;
+        ///   &lt;Conditions&gt;
+        ///     &lt;RemarksValue Key="eq" Active="Yes" Field="TOTAL" Criterial="EqualTo" Value="10" EntireRow="No" Style="eqTotalStyle"/&gt;
+        ///     ...
+        ///   &lt;/Conditions&gt;
+        /// &lt;/Global.Resources&gt;
+        /// </code>
+        /// </example>
+        [XmlAttribute]
+        public KnownOperator Criterial
+        {
+            get => (KnownOperator)Enum.Parse(typeof(KnownOperator), GetStaticBindingValue(_operator.ToString()));
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _operator = value;
+            }
+        }
+        #endregion
+
+        #region [public] (string) Style: Gets or sets a value that represents the style that is applied when the condition is met
+        /// <summary>
+        /// Gets or sets a value that represents the style that is applied when the condition is met.
+        /// </summary>
+        /// <value>
+        /// A <see cref ="T:System.String"/> that represents the style that is applied when the condition is met.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;RemarksValue Style="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Global.Resources&gt;
+        ///   &lt;Conditions&gt;
+        ///     &lt;RemarksValue Key="eq" Active="Yes" Field="TOTAL" Criterial="EqualTo" Value="10" EntireRow="No" Style="eqTotalStyle"/&gt;
+        ///     ...
+        ///   &lt;/Conditions&gt;
+        /// &lt;/Global.Resources&gt;
+        /// </code>
+        /// </example>
         [XmlAttribute]
         public string Style
         {
@@ -86,14 +179,57 @@ namespace iTin.Export.Model
             set
             {
                 SentinelHelper.ArgumentNull(value);
-                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(this.GetType().Name, "Style", value)));
+                SentinelHelper.IsFalse(RegularExpressionHelper.IsValidIdentifier(value), new InvalidIdentifierNameException(ErrorMessageHelper.ModelIdentifierNameErrorMessage(GetType().Name, "Style", value)));
 
                 _style = value;
             }
         }
         #endregion
 
-        #region [public] (string) Value: Gets or sets
+        #region [public] (string) Value: Defines the value associated with the specified condition that the condition must meet
+        /// <summary>
+        /// Defines the value associated with the specified condition that the condition must meet.
+        /// </summary>
+        /// <value>
+        /// A <see cref ="T:System.String"/> that contains criterial value.
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;RemarksValue Value="string" .../&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Global.Resources&gt;
+        ///   &lt;Conditions&gt;
+        ///     &lt;RemarksValue Key="eq" Active="Yes" Field="TOTAL" Criterial="EqualTo" Value="10" EntireRow="No" Style="eqTotalStyle"/&gt;
+        ///     ...
+        ///   &lt;/Conditions&gt;
+        /// &lt;/Global.Resources&gt;
+        /// </code>
+        /// </example>
         [XmlAttribute]
         public string Value
         {
@@ -111,12 +247,19 @@ namespace iTin.Export.Model
 
         #region public override methods
 
-        #region [public] {override} (string) Apply(int, int, FieldValueInformation): 
-        public override string Apply(int row, int col, FieldValueInformation target)
+        #region [public] {override} (ConditionResult) Evaluate(int, int, FieldValueInformation): Returns result of evaluates condition
+        /// <summary>
+        /// Returns result of evaluates condition.
+        /// </summary>
+        /// <param name="row">Data row</param>
+        /// <param name="col">Field column</param>
+        /// <param name="target">Field data</param>
+        /// <returns>
+        /// A <see cref="T:iTin.Export.Model.ConditionResult"/> object that contains evaluate result.
+        /// </returns>
+        public override ConditionResult Evaluate(int row, int col, FieldValueInformation target)
         {
-            return EntireRow == YesNo.No
-                ? NonEntireRowApplyImpl(row, target)
-                : EntireRowApplyImpl(row, target);
+            return new ConditionResult {CanApply = EvaluateCriterial(Criterial, target, Value, Locale), Style = Style};
         }
         #endregion
 
@@ -124,7 +267,7 @@ namespace iTin.Export.Model
 
         #region public methods
 
-        #region [public] (LogicalConditionModel) Clone(): Clones this instance
+        #region [public] (RemarksCondition) Clone(): Clones this instance
         /// <summary>
         /// Clones this instance.
         /// </summary>
@@ -139,176 +282,225 @@ namespace iTin.Export.Model
 
         #region private static methods
 
-        #region [private] {static} (bool) EvaluateCriterial(KnownOperator, string, string): 
-        private static bool EvaluateCriterial(KnownOperator op, string dataValue, string testValue)
+        #region [private] {static} (bool) EvaluateCriterial(KnownOperator, FieldValueInformation, string, KnownCulture): Evaluates criterial
+        /// <summary>
+        /// Evaluates criterial
+        /// </summary>
+        /// <param name="op">Operator</param>
+        /// <param name="context">Field data context</param>
+        /// <param name="testValue">Value to evaluate</param>
+        /// <param name="locale">Culture to use with field data value</param>
+        /// <returns>
+        /// <c>true</c> if it meets the criteria; otherwise <c>false</c>.
+        /// </returns>
+        private static bool EvaluateCriterial(KnownOperator op, FieldValueInformation context, string testValue, KnownCulture locale)
         {
             bool result = false;
+
+            var culture = locale == KnownCulture.Current
+                ? CultureInfo.CurrentUICulture
+                : new CultureInfo(locale.ToString());
 
             switch (op)
             {
                 #region Criterial: Beetween
-                case KnownOperator.Beetween:
-                {
-                    var values = testValue.Split(' ').ToList();
-                    var totalValues = values.Count;
-                    if (totalValues != 2)
-                    {
-                        throw new ArgumentOutOfRangeException();
-                    }
+                //case KnownOperator.Beetween:
+                //    {
+                //        var values = testValue.Split(' ').ToList();
+                //        var totalValues = values.Count;
+                //        if (totalValues != 2)
+                //        {
+                //            throw new ArgumentOutOfRangeException();
+                //        }
 
-                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
-                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+                //        var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                //        var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
 
-                    var leftValueAsSpanishFormat = values[0].Replace(".", ",");
-                    var okLeftValueDecimal = decimal.TryParse(leftValueAsSpanishFormat, out decimal leftValueAsDecimal);
+                //        var leftValueAsSpanishFormat = values[0].Replace(".", ",");
+                //        var okLeftValueDecimal = decimal.TryParse(leftValueAsSpanishFormat, out decimal leftValueAsDecimal);
 
-                    var rightValueAsSpanishFormat = values[1].Replace(".", ",");
-                    var okRightValueDecimal = decimal.TryParse(rightValueAsSpanishFormat, out decimal rightValueAsDecimal);
+                //        var rightValueAsSpanishFormat = values[1].Replace(".", ",");
+                //        var okRightValueDecimal = decimal.TryParse(rightValueAsSpanishFormat, out decimal rightValueAsDecimal);
 
-                    var canContinue = okValueDecimal && okLeftValueDecimal && okRightValueDecimal;
-                    if (!canContinue)
-                    {
-                        break;
-                    }
+                //        var canContinue = okValueDecimal && okLeftValueDecimal && okRightValueDecimal;
+                //        if (!canContinue)
+                //        {
+                //            break;
+                //        }
 
-                    if (dataValueAsDecimal >= leftValueAsDecimal && dataValueAsDecimal >= rightValueAsDecimal)
-                    {
-                        result = true;
-                    }
-                    break;
-                }
+                //        if (dataValueAsDecimal >= leftValueAsDecimal && dataValueAsDecimal >= rightValueAsDecimal)
+                //        {
+                //            result = true;
+                //        }
+                //        break;
+                //    }
                 #endregion
 
                 #region Criterial: EqualTo
                 case KnownOperator.EqualTo:
-                    if (dataValue.Equals(testValue))
+
+                    if (context.IsText)
                     {
-                        result = true;
+                        var left = context.Value.ToString();
+                        var right = testValue;
+                        return left.Equals(right);
+                    }
+
+                    if (context.IsNumeric)
+                    {
+                        var left = decimal.Parse(context.Value.ToString(), culture);
+                        var right = decimal.Parse(testValue, culture);
+                        return left.Equals(right);
+                    }
+
+                    if (context.IsDateTime)
+                    {
+                        var left = DateTime.Parse(context.Value.ToString(), culture);
+                        var right = DateTime.Parse(testValue, culture);
+
+                        return left.Equals(right);
                     }
                     break;
                 #endregion
 
                 #region Criterial: GreatherOrEqualsThan
-                case KnownOperator.GreatherOrEqualsThan:
-                {
-                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
-                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+                //case KnownOperator.GreatherOrEqualsThan:
+                //    {
+                //        var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                //        var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
 
-                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
-                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+                //        var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                //        var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
 
-                    var canContinue = okValueDecimal && okTestValueDecimal;
-                    if (!canContinue)
-                    {
-                        break;
-                    }
+                //        var canContinue = okValueDecimal && okTestValueDecimal;
+                //        if (!canContinue)
+                //        {
+                //            break;
+                //        }
 
-                    if (dataValueAsDecimal >= testValueAsDecimal)
-                    {
-                        result = true;
-                    }
-                    break;
-                }
+                //        if (dataValueAsDecimal >= testValueAsDecimal)
+                //        {
+                //            result = true;
+                //        }
+                //        break;
+                //    }
                 #endregion
 
                 #region Criterial: GreatherThan
-                case KnownOperator.GreatherThan:
-                {
-                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
-                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+                //case KnownOperator.GreatherThan:
+                //    {
+                //        var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                //        var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
 
-                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
-                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+                //        var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                //        var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
 
-                    var canContinue = okValueDecimal && okTestValueDecimal;
-                    if (!canContinue)
-                    {
-                        break;
-                    }
+                //        var canContinue = okValueDecimal && okTestValueDecimal;
+                //        if (!canContinue)
+                //        {
+                //            break;
+                //        }
 
-                    if (dataValueAsDecimal > testValueAsDecimal)
-                    {
-                        result = true;
-                    }
-                    break;
-                }
+                //        if (dataValueAsDecimal > testValueAsDecimal)
+                //        {
+                //            result = true;
+                //        }
+                //        break;
+                //    }
                 #endregion
 
                 #region Criterial: In
-                case KnownOperator.In:
-                {
-                    var inValues = testValue.Split(' ').ToList();
-                    if (dataValue.In(inValues))
-                    {
-                        result = true;
-                    }
-                    break;
-                }
+                //case KnownOperator.In:
+                //    {
+                //        var inValues = testValue.Split(' ').ToList();
+                //        if (dataValue.In(inValues))
+                //        {
+                //            result = true;
+                //        }
+                //        break;
+                //    }
                 #endregion
 
                 #region Criterial: LessOrEqualThan
-                case KnownOperator.LessOrEqualThan:
-                {
-                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
-                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+                //case KnownOperator.LessOrEqualThan:
+                //    {
+                //        var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                //        var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
 
-                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
-                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+                //        var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                //        var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
 
-                    var canContinue = okValueDecimal && okTestValueDecimal;
-                    if (!canContinue)
-                    {
-                        break;
-                    }
+                //        var canContinue = okValueDecimal && okTestValueDecimal;
+                //        if (!canContinue)
+                //        {
+                //            break;
+                //        }
 
-                    if (dataValueAsDecimal <= testValueAsDecimal)
-                    {
-                        result = true;
-                    }
-                    break;
-                }
+                //        if (dataValueAsDecimal <= testValueAsDecimal)
+                //        {
+                //            result = true;
+                //        }
+                //        break;
+                //    }
                 #endregion
 
                 #region Criterial: LessThan
-                case KnownOperator.LessThan:
-                {
-                    var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
-                    var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
+                //case KnownOperator.LessThan:
+                //    {
+                //        var dataValueAsSpanishFormat = dataValue.Replace(".", ",");
+                //        var okValueDecimal = decimal.TryParse(dataValueAsSpanishFormat, out decimal dataValueAsDecimal);
 
-                    var testValueAsSpanishFormat = testValue.Replace(".", ",");
-                    var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
+                //        var testValueAsSpanishFormat = testValue.Replace(".", ",");
+                //        var okTestValueDecimal = decimal.TryParse(testValueAsSpanishFormat, out decimal testValueAsDecimal);
 
-                    var canContinue = okValueDecimal && okTestValueDecimal;
-                    if (!canContinue)
-                    {
-                        break;
-                    }
+                //        var canContinue = okValueDecimal && okTestValueDecimal;
+                //        if (!canContinue)
+                //        {
+                //            break;
+                //        }
 
-                    if (dataValueAsDecimal < testValueAsDecimal)
-                    {
-                        result = true;
-                    }
-                    break;
-                }
+                //        if (dataValueAsDecimal < testValueAsDecimal)
+                //        {
+                //            result = true;
+                //        }
+                //        break;
+                //    }
                 #endregion
 
                 #region Criterial: Like
-                case KnownOperator.Like:
-                    if (dataValue.Contains(testValue))
-                    {
-                        result = true;
-                    }
-                    break;
+                //case KnownOperator.Like:
+                //    if (dataValue.Contains(testValue))
+                //    {
+                //        result = true;
+                //    }
+                //    break;
                 #endregion
 
                 #region Criterial: NotEqualTo
                 case KnownOperator.NotEqualTo:
-                    if (!dataValue.Equals(testValue))
+                    if (context.IsText)
                     {
-                        result = true;
+                        var left = context.Value.ToString();
+                        var right = testValue;
+                        return !left.Equals(right);
+                    }
+
+                    if (context.IsNumeric)
+                    {
+                        var left = decimal.Parse(context.Value.ToString(), culture);
+                        var right = decimal.Parse(testValue, culture);
+                        return !left.Equals(right);
+                    }
+
+                    if (context.IsDateTime)
+                    {
+                        var left = DateTime.Parse(context.Value.ToString(), culture);
+                        var right = DateTime.Parse(testValue, culture);
+
+                        return !left.Equals(right);
                     }
                     break;
-                #endregion
+                    #endregion
             }
 
             return result;
@@ -330,57 +522,6 @@ namespace iTin.Export.Model
         object ICloneable.Clone()
         {
             return Clone();
-        }
-        #endregion
-
-        #region [private] (string) EntireRowApplyImpl(int, FieldValueInformation): 
-        private string EntireRowApplyImpl(int row, FieldValueInformation target)
-        {
-            var rows = Service.RawDataFiltered;
-            var rowData = rows[row];
-
-            var normalizedField = Field.ToUpperInvariant();
-            var fieldValue = rowData.Attribute(normalizedField).Value;
-
-            string conditionStyle = null;
-            var applyStyle = EvaluateCriterial(Criterial, fieldValue, Value);
-            if (applyStyle)
-            {
-                conditionStyle = Style;
-            }
-
-            return conditionStyle ?? (row.IsOdd()
-                       ? $"{target.Style.Name}_Alternate"
-                       : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
-        }
-        #endregion
-
-        #region [private] (string) NonEntireRowApplyImpl(int, FieldValueInformation): 
-        private string NonEntireRowApplyImpl(int row, FieldValueInformation target)
-        {
-            var normalizedField = Field.ToUpperInvariant();
-            var normalizedFieldName = BaseDataFieldModel.GetFieldNameFrom(Service.CurrentField).ToUpperInvariant();
-            if (normalizedField != normalizedFieldName)
-            {
-                return row.IsOdd()
-                    ? $"{target.Style.Name}_Alternate"
-                    : target.Style.Name ?? StyleModel.NameOfDefaultStyle;
-            }
-
-            var rows = Service.RawDataFiltered;
-            var rowData = rows[row];
-            var fieldValue = rowData.Attribute(normalizedField).Value;
-
-            string conditionStyle = null;
-            var applyStyle = EvaluateCriterial(Criterial, fieldValue, Value);
-            if (applyStyle)
-            {
-                conditionStyle = Style;
-            }
-
-            return conditionStyle ?? (row.IsOdd()
-                       ? $"{target.Style.Name}_Alternate"
-                       : target.Style.Name ?? StyleModel.NameOfDefaultStyle);
         }
         #endregion
 

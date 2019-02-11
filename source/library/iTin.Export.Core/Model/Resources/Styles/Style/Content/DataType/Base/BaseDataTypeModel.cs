@@ -448,7 +448,9 @@ namespace iTin.Export.Model
             {
                 Value = value,
                 Comment = null,
+                IsText = false,
                 IsNumeric = true,
+                IsDateTime = false,
                 IsNegative = false,
                 IsErrorValue = false,
                 FormattedValue = value,
@@ -506,6 +508,7 @@ namespace iTin.Export.Model
                         culture = CultureInfo.CreateSpecificCulture(ExportsModel.GetXmlEnumAttributeFromItem(datetime.Locale));
                     }
 
+                    result.IsDateTime = true;
                     result.IsNumeric = false;
                     var isValidDateTimeValue = DateTime.TryParse(value, out var datetimeValue);
                     if (isValidDateTimeValue)
@@ -515,7 +518,7 @@ namespace iTin.Export.Model
                     }
                     else
                     {
-                        var error = datetime.Error;
+                        var error = datetime.Error;                        
                         result.IsErrorValue = true;
                         result.Value = error.Value;
                         result.Comment = error.Comment;
@@ -714,6 +717,7 @@ namespace iTin.Export.Model
 
                 #region Type: Text
                 case KnownDataType.Text:
+                    result.IsText = true;
                     result.IsNumeric = false;
                     break;
                 #endregion

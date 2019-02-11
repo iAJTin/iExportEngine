@@ -65,10 +65,10 @@ namespace iTin.Export.Model
     /// <table>
     ///   <thead>
     ///     <tr>
-    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+    ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter" /></th>
+    ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter" /></th>
+    ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter" /></th>
+    ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter" /></th>
     ///     </tr>
     ///   </thead>
     ///   <tbody>
@@ -100,10 +100,10 @@ namespace iTin.Export.Model
     {
         #region private constants
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const KnownCulture DefaultLocale = KnownCulture.Current;
+        private const KnownCulture LocaleDefault = KnownCulture.Current;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private KnownCulture _locale;
         #endregion
@@ -116,7 +116,7 @@ namespace iTin.Export.Model
         /// </summary>
         public CurrencyDataTypeModel()
         {
-            _locale = DefaultLocale;
+            _locale = LocaleDefault;
         }
         #endregion
 
@@ -129,7 +129,7 @@ namespace iTin.Export.Model
         /// Gets or sets preferred output culture.
         /// </summary>
         /// <value>
-        /// One of the <see cref="T:iTin.Export.Model.KnownCulture" /> values. The default is <see cref="iTin.Export.Model.KnownCulture.Current" />.
+        /// One of the <see cref="T:iTin.Export.Model.KnownCulture" /> values. The default is <see cref="KnownCulture.Current" />.
         /// </value>
         /// <remarks>
         /// <code lang="xml" title="ITEE Object Element Usage">
@@ -142,10 +142,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter" /></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -174,7 +174,7 @@ namespace iTin.Export.Model
         /// </code>
         /// </example>
         [XmlAttribute]
-        [DefaultValue(DefaultLocale)]
+        [DefaultValue(LocaleDefault)]
         public KnownCulture Locale
         {
             get => _locale;
@@ -192,14 +192,14 @@ namespace iTin.Export.Model
 
                 _locale = isValidLocale 
                     ? value 
-                    : DefaultLocale;
+                    : LocaleDefault;
             }
         }
         #endregion
 
         #endregion
 
-        #region public override properties
+        #region public override readonly properties
 
         #region [public] {overide} (bool) IsDefault: Gets a value indicating whether this instance is default
         /// <inheritdoc />
@@ -209,7 +209,7 @@ namespace iTin.Export.Model
         /// <value>
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
-        public override bool IsDefault => base.IsDefault && Locale.Equals(DefaultLocale);
+        public override bool IsDefault => base.IsDefault && Locale.Equals(LocaleDefault);
         #endregion
 
         #endregion
@@ -239,7 +239,7 @@ namespace iTin.Export.Model
         /// <param name="reference">The reference.</param>
         public void Combine(CurrencyDataTypeModel reference)
         {
-            if (Locale.Equals(DefaultLocale))
+            if (Locale.Equals(LocaleDefault))
             {
                 Locale = reference.Locale;
             }

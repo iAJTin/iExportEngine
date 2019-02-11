@@ -1043,38 +1043,38 @@
   <!-- Conditions: Types -->
   <xs:group id="ConditionsType" name="ConditionsType">
     <xs:choice>
-      <xs:element name="MaximumCondition" type="MaximumCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="MaximumValue" type="MaximumValueCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a field condition. Defines the style that will be applied to the value of the field when its value is the maximum
+            Represents a field condition. Defines the style that will be applied to the field when its value is the maximum
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="MinimumCondition" type="MinimumCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="MinimumValue" type="MinimumValueCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a field condition. Defines the style that will be applied to the value of the field when its value is the minimum
+            Represents a field condition. Defines the style that will be applied to the field when its value is the minimum
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RemarksCondition" type="RemarksCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="RemarksValue" type="RemarksValueCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
+            Represents a field condition. Defines the style that will be applied to the field when it met specified condition
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="WhenChangeCondition" type="WhenChangeCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="WhenChangeValue" type="WhenChangeValueCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a field condition. Defines the style that will be applied to the value of the field when it changes its value
+            Represents a field condition. Defines the style that will be applied to the field when it changes its value
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ZeroCondition" type="ZeroCondition"  minOccurs="0" maxOccurs="1">
+      <xs:element name="ZeroValue" type="ZeroValueCondition"  minOccurs="0" maxOccurs="1">
         <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
           <xs:documentation xml:lang="en">
-            Represents a field condition. Defines the style that will be applied to the value of the field when its value is zero
+            Represents a field condition. Defines the style that will be applied to the field when its value is zero
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -1083,8 +1083,8 @@
 
 
 
-  <!-- Conditions: MaximumCondition -->
-  <xs:complexType name="MaximumCondition" id="MaximumCondition">
+  <!-- Conditions: MaximumValueCondition -->
+  <xs:complexType name="MaximumValueCondition" id="MaximumValueCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="Style" type="ElementNameString" use="required">
@@ -1098,8 +1098,8 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- Conditions: MinimumCondition -->
-  <xs:complexType name="MinimumCondition" id="MinimumCondition">
+  <!-- Conditions: MinimumValueCondition -->
+  <xs:complexType name="MinimumValueCondition" id="MinimumValueCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="Style" type="ElementNameString" use="required">
@@ -1113,8 +1113,8 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- Conditions: RemarksCondition -->
-  <xs:complexType name="RemarksCondition" id="RemarksCondition">
+  <!-- Conditions: RemarksValueCondition -->
+  <xs:complexType name="RemarksValueCondition" id="RemarksValueCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="Criterial" type="operatorType" use="required">
@@ -1142,8 +1142,8 @@
     </xs:complexContent>
   </xs:complexType>
   
-  <!-- Conditions: WhenChangeCondition -->
-  <xs:complexType name="WhenChangeCondition" id="WhenChangeCondition">
+  <!-- Conditions: WhenChangeValueCondition -->
+  <xs:complexType name="WhenChangeValueCondition" id="WhenChangeValueCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="FirstSwapStyle" type="ElementNameString" use="required">
@@ -1164,8 +1164,8 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- Conditions: ZeroCondition -->
-  <xs:complexType name="ZeroCondition" id="ZeroCondition">
+  <!-- Conditions: ZeroValueCondition -->
+  <xs:complexType name="ZeroValueCondition" id="ZeroValueCondition">
     <xs:complexContent>
       <xs:extension base="BaseConditionModel">
         <xs:attribute name="Style" type="ElementNameString" use="required">
@@ -4137,8 +4137,14 @@
             </xs:documentation>
           </xs:annotation>
         </xs:element>
+        <xs:element name="Pivot" type="PivotModel" minOccurs="0" maxOccurs="1">
+          <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:documentation xml:lang="en">
+              Represents a pivot table.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>        
       </xs:choice>
-      <xs:element name="Pivot" type="PivotModel"/>
     </xs:sequence>
   </xs:group>
 
@@ -5519,7 +5525,7 @@
     <xs:attribute name="Show" type="YesNo" default="Yes" use="optional">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <documentation xml:lang="en">
-          [Optional] Determines visibility of the element. The default is 'No'.
+          [Optional] Determines visibility of the element. The default is 'Yes'.
         </documentation>
       </xs:annotation>
     </xs:attribute>
@@ -5671,17 +5677,10 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="Condition" type="freeStringType" use="optional" default="">
-      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
-        <xs:documentation xml:lang="en">
-          User-defined condition.
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
     <xs:attribute name="Width" type="FieldWidth" use="optional" default="Default">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
-          [Optional] preferred width of field, choose an item from the list or indicate size as multiply of 100 (ex. 9.3 => 930) The default is 'Default'.
+          [Optional] Preferred width of field, choose an item from the list or indicate a size as multiply of 100 (ex. 9.3 => 930). The default is 'Default'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -5810,6 +5809,13 @@
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
           [Optional] Determines whether styles affect the entire row or only the defined field. The default is 'No'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Locale" type="knownCultureListType" use="optional" default="Current">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">
+          [Optional] Use this attribute for select data field culture. The default is 'Current'.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

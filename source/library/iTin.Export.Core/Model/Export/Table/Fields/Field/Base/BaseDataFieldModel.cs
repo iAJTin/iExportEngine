@@ -43,22 +43,16 @@ namespace iTin.Export.Model
         #region private constants
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private const string DefaultWidth = "Default";
+        private const string WidthDefault = "Default";
 
         #endregion
 
         #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _alias;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private YesNo _show;
+        private string _width;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private FieldsModel _owner;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string _width;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XElement _dataSource;
@@ -75,10 +69,14 @@ namespace iTin.Export.Model
 
         #region constructor/s
 
-        #region [public] BaseDataFieldModel(): Initializes a new instance of this class
-        public BaseDataFieldModel()
+        #region [protected] BaseDataFieldModel(): Initializes a new instance of this class
+        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:iTin.Export.Model.BaseDataFieldModel" /> class.
+        /// </summary>
+        protected BaseDataFieldModel()
         {
-            Width = DefaultWidth;
+            Width = WidthDefault;
         }
         #endregion
 
@@ -119,10 +117,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter" /></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -148,19 +146,19 @@ namespace iTin.Export.Model
         /// </code>
         /// <code lang="cs">
         /// DataFieldModel lineField = new DataFieldModel
+        ///                            {
+        ///                                Name = "##LINE",
+        ///                                Alias = "Line",
+        ///                                Value = new FieldValueModel { Style = "LineValue" },
+        ///                                Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
+        ///                                Aggregate = new FieldAggregateModel
         ///                                {
-        ///                                    Name = "##LINE",
-        ///                                    Alias = "Line",
-        ///                                    Value = new FieldValueModel { Style = "LineValue" },
-        ///                                    Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
-        ///                                    Aggregate = new FieldAggregateModel
-        ///                                                    {
-        ///                                                        Show = YesNo.Yes,
-        ///                                                        Style = "TopAggregate", 
-        ///                                                        Location = KnownAggregateLocation.Top,
-        ///                                                        AggregateType = KnownAggregateType.Count,
-        ///                                                    },
-        ///                                };
+        ///                                    Show = YesNo.Yes,
+        ///                                    Style = "TopAggregate", 
+        ///                                    Location = KnownAggregateLocation.Top,
+        ///                                    AggregateType = KnownAggregateType.Count
+        ///                                }
+        ///                            };
         /// </code>
         /// </example>
         public FieldAggregateModel Aggregate
@@ -198,10 +196,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -224,19 +222,19 @@ namespace iTin.Export.Model
         /// </code>
         /// <code lang="cs">
         /// DataFieldModel lineField = new DataFieldModel
+        ///                            {
+        ///                                Name = "##LINE",
+        ///                                Alias = "Line",
+        ///                                Value = new FieldValueModel { Style = "LineValue" },
+        ///                                Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
+        ///                                Aggregate = new FieldAggregateModel
         ///                                {
-        ///                                    Name = "##LINE",
-        ///                                    Alias = "Line",
-        ///                                    Value = new FieldValueModel { Style = "LineValue" },
-        ///                                    Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
-        ///                                    Aggregate = new FieldAggregateModel
-        ///                                                    {
-        ///                                                        Show = YesNo.Yes,
-        ///                                                        Style = "TopAggregate", 
-        ///                                                        Location = KnownAggregateLocation.Top,
-        ///                                                        AggregateType = KnownAggregateType.Count,
-        ///                                                    },
-        ///                                };
+        ///                                    Show = YesNo.Yes,
+        ///                                    Style = "TopAggregate", 
+        ///                                    Location = KnownAggregateLocation.Top,
+        ///                                    AggregateType = KnownAggregateType.Count,
+        ///                                }
+        ///                            };
         /// </code>
         /// </example>
         [XmlAttribute]
@@ -245,10 +243,6 @@ namespace iTin.Export.Model
         //    get => GetValueByReflection(Owner.Parent.Parent, _alias);
         //    set => _alias = value;
         //}
-        #endregion
-
-        #region [public] (string) Condition: Gets or sets the alias of data field
-        [XmlAttribute] public string Condition { get; set; }
         #endregion
 
         #region [public] (XElement) DataSource: Gets or sets a reference for pieces data
@@ -268,11 +262,6 @@ namespace iTin.Export.Model
                 {
                     _dataSource = value;
                 }
-
-                ////else
-                ////{
-                ////    throw new InvalidOperationException("InvalidOperation_DataSourceNotSupported");
-                ////}
             }
         }
         #endregion
@@ -296,10 +285,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -325,19 +314,19 @@ namespace iTin.Export.Model
         /// </code>
         /// <code lang="cs">
         /// DataFieldModel lineField = new DataFieldModel
-        ///                                {
-        ///                                    Name = "##LINE",
-        ///                                    Alias = "Line",
-        ///                                    Value = new FieldValueModel { Style = "LineValue" },
-        ///                                    Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
-        ///                                    Aggregate = new FieldAggregateModel
-        ///                                                    {
-        ///                                                        Show = YesNo.Yes,
-        ///                                                        Style = "TopAggregate", 
-        ///                                                        Location = KnownAggregateLocation.Top,
-        ///                                                        AggregateType = KnownAggregateType.Count,
-        ///                                                    },
-        ///                                };
+        ///                            {
+        ///                                 Name = "##LINE",
+        ///                                 Alias = "Line",
+        ///                                 Value = new FieldValueModel { Style = "LineValue" },
+        ///                                 Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
+        ///                                 Aggregate = new FieldAggregateModel
+        ///                                 {
+        ///                                     Show = YesNo.Yes,
+        ///                                     Style = "TopAggregate", 
+        ///                                     Location = KnownAggregateLocation.Top,
+        ///                                     AggregateType = KnownAggregateType.Count
+        ///                                 }
+        ///                            };
         /// </code>
         /// </example>
         public FieldHeaderModel Header
@@ -388,10 +377,10 @@ namespace iTin.Export.Model
         /// <table>
         ///   <thead>
         ///     <tr>
-        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></th>
-        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></th>
-        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></th>
-        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></th>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter" /></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter" /></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter" /></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter" /></th>
         ///     </tr>
         ///   </thead>
         ///   <tbody>
@@ -408,7 +397,7 @@ namespace iTin.Export.Model
         /// </remarks>
         /// <example>
         /// In the following example shows how create a data field.
-        /// <code lang="xml">
+        /// <code lang="xml" title="ITEE Object Element Usage">
         ///   &lt;Field Name="##LINE" Alias="Line"&gt;
         ///     &lt;Header Style="CommonHeader" Show="Yes"/&gt;
         ///     &lt;Value Style="LineValue"/&gt;
@@ -417,19 +406,19 @@ namespace iTin.Export.Model
         /// </code>
         /// <code lang="cs">
         /// DataFieldModel lineField = new DataFieldModel
+        ///                            {
+        ///                                Name = "##LINE",
+        ///                                Alias = "Line",
+        ///                                Value = new FieldValueModel { Style = "LineValue" },
+        ///                                Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
+        ///                                Aggregate = new FieldAggregateModel
         ///                                {
-        ///                                    Name = "##LINE",
-        ///                                    Alias = "Line",
-        ///                                    Value = new FieldValueModel { Style = "LineValue" },
-        ///                                    Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
-        ///                                    Aggregate = new FieldAggregateModel
-        ///                                                    {
-        ///                                                        Show = YesNo.Yes,
-        ///                                                        Style = "TopAggregate", 
-        ///                                                        Location = KnownAggregateLocation.Top,
-        ///                                                        AggregateType = KnownAggregateType.Count,
-        ///                                                    },
-        ///                                };
+        ///                                    Show = YesNo.Yes,
+        ///                                    Style = "TopAggregate", 
+        ///                                    Location = KnownAggregateLocation.Top,
+        ///                                    AggregateType = KnownAggregateType.Count
+        ///                                }
+        ///                            };
         /// </code>
         /// </example>
         public FieldValueModel Value
@@ -449,9 +438,68 @@ namespace iTin.Export.Model
         }
         #endregion
 
-        #region [public] (string) Width: Gets or sets a value that contains the column field width
+        #region [public] (string) Width: Gets or sets the preferred width of field
+        /// <summary>
+        /// Gets or sets the preferred width of field, indicate a size as multiply of 100 (ex. 9.3 => 930). The default is 'Default'.
+        /// </summary>
+        /// <value>
+        /// A <see cref="T:System.String"/> that represents a size as multiply of 100 (ex. 9.3 => 930).
+        /// </value>
+        /// <remarks>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Field|Fixed|Gap|Group Width="Default|BestFit|A number as multiply of 100" ...&gt;
+        ///   ...
+        /// &lt;/Field|Fixed|Gap|Group&gt;
+        /// </code>
+        /// <para>
+        /// <para><strong>Compatibility table with native writers.</strong></para>
+        /// <table>
+        ///   <thead>
+        ///     <tr>
+        ///       <th>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></th>
+        ///       <th>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></th>
+        ///       <th>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></th>
+        ///       <th>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></th>
+        ///     </tr>
+        ///   </thead>
+        ///   <tbody>
+        ///     <tr>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">No has effect</td>
+        ///       <td align="center">X</td>
+        ///     </tr>
+        ///   </tbody>
+        /// </table>
+        /// A <strong><c>X</c></strong> value indicates that the writer supports this element.
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <code lang="xml" title="ITEE Object Element Usage">
+        /// &lt;Field Name="##LINE" Alias="Line" Width="BestFit"&gt;
+        /// ...
+        /// &lt;/Field&gt;
+        /// </code>
+        /// <code lang="cs">
+        /// DataFieldModel lineField = new DataFieldModel
+        ///                            {
+        ///                                Name = "##LINE",
+        ///                                Alias = "Line",
+        ///                                Width = "BestFit",
+        ///                                Value = new FieldValueModel { Style = "LineValue" },
+        ///                                Header = new FieldHeaderModel { Style = "CommonHeader", Show = YesNo.Yes },
+        ///                                Aggregate = new FieldAggregateModel
+        ///                                {
+        ///                                    Show = YesNo.Yes,
+        ///                                    Style = "TopAggregate", 
+        ///                                    Location = KnownAggregateLocation.Top,
+        ///                                    AggregateType = KnownAggregateType.Count,
+        ///                                }
+        ///                            };
+        /// </code>
+        /// </example>
         [XmlAttribute]
-        [DefaultValue(DefaultWidth)]
+        [DefaultValue(WidthDefault)]
         public string Width
         {
             get => GetStaticBindingValue(_width);
@@ -477,7 +525,7 @@ namespace iTin.Export.Model
         /// <strong>true</strong> if this instance contains the default; otherwise, <strong>false</strong>.
         /// </value>
         public override bool IsDefault => 
-            Width.ToUpperInvariant().Equals(DefaultWidth) &&
+            Width.ToUpperInvariant().Equals(WidthDefault) &&
             Header.IsDefault &&
             Value.IsDefault &&
             Aggregate.IsDefault;
@@ -565,10 +613,16 @@ namespace iTin.Export.Model
 
         #region public methods
 
-        #region [public] (double) CalculateWidthValue(): Calculates field width from Width property.
+        #region [public] (double) CalculateWidthValue(): Calculates field width from Width property measured in points
+        /// <summary>
+        /// Calculates field width from Width property measured in points.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.Double"/> value thats contains the field width measured in points
+        /// </returns>
         public double CalculateWidthValue()
         {
-            var ok = int.TryParse(Width, out int fieldWidth);
+            var ok = int.TryParse(Width, out var fieldWidth);
             if (!ok)
             {
                 return 

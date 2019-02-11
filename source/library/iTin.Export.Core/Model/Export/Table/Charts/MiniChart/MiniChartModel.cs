@@ -80,10 +80,10 @@ namespace iTin.Export.Model
     /// <para><strong>Compatibility table with native writers.</strong></para>
     /// <list type="table">
     ///   <listheader>
-    ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.CsvWriter"/></term>
-    ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.Native.TsvWriter"/></term>
-    ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter"/></term>
-    ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter"/></term>
+    ///     <term>Comma-Separated Values<br/><see cref="T:iTin.Export.Writers.CsvWriter"/></term>
+    ///     <term>Tab-Separated Values<br/><see cref="T:iTin.Export.Writers.TsvWriter"/></term>
+    ///     <term>SQL Script<br/><see cref="T:iTin.Export.Writers.SqlScriptWriter"/></term>
+    ///     <term>XML Spreadsheet 2003<br/><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter"/></term>
     ///   </listheader>
     ///   <item>
     ///     <term></term>

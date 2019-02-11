@@ -92,19 +92,19 @@ namespace iTin.Export.Model
         ///     <description>Description</description>
         ///   </listheader>
         ///   <item>
-        ///     <term><see cref="T:iTin.Export.Writers.Native.CsvWriter" /></term>
+        ///     <term><see cref="T:iTin.Export.Writers.CsvWriter" /></term>
         ///     <description>CSV (comma-delimited) (*.csv). In iTin.Export assembly</description>
         ///   </item>
         ///   <item>
-        ///     <term><see cref="T:iTin.Export.Writers.Native.TsvWriter" /></term>
+        ///     <term><see cref="T:iTin.Export.Writers.TsvWriter" /></term>
         ///     <description>Text (tab-delimited) (*.txt). In iTin.Export assembly</description>
         ///   </item>
         ///   <item>
-        ///     <term><see cref="T:iTin.Export.Writers.Native.SqlScriptWriter" /></term>
+        ///     <term><see cref="T:iTin.Export.Writers.SqlScriptWriter" /></term>
         ///     <description>SQL Script (*.sql). In iTin.Export assembly</description>
         ///   </item>
         ///   <item>
-        ///     <term><see cref="T:iTin.Export.Writers.Native.Spreadsheet2003TabularWriter" /></term>
+        ///     <term><see cref="T:iTin.Export.Writers.Spreadsheet2003TabularWriter" /></term>
         ///     <description>XML Spreadsheet 2003 (*.xml) in iTin.Export assembly</description>
         ///   </item>
         ///   <item>
