@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample09.cs" />
+    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample08.cs" />
     <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample13.cs" />
     <Compile Include="code\SQL Script [ sql ]\SqlSample01.cs" />
     <Compile Include="code\XML Spreadsheet 2003 [ xml ]\SpreadsheetSample01.cs" />
@@ -113,6 +115,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\csv\Sample01.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample09.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\xlsx\EPPlus\Sample08.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\xlsx\ExportEngine\Sample13.xml">

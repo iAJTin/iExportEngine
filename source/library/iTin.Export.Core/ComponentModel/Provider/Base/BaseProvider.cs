@@ -359,12 +359,7 @@ namespace iTin.Export.ComponentModel.Provider
         {
             CreateInputXml();
 
-            return 
-                LoadXmlFromFile(
-                    InputUri.OriginalString, 
-                    CanCreateInputXml 
-                        ? Input.Model.Table.Name.ToUpperInvariant() 
-                        : Input.Model.Table.Name);
+            return LoadXmlFromFile(InputUri.OriginalString, Input.Model.Table.Name);
         }
         #endregion
 

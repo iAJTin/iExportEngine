@@ -25,6 +25,8 @@ namespace iTinExportEngineSamples
         private static TimeSpan eppSample05Time;
         private static TimeSpan eppSample06Time;
         private static TimeSpan eppSample07Time;
+        private static TimeSpan eppSample08Time;
+        private static TimeSpan eppSample09Time;
         private static TimeSpan eppSample01CodeTime;
 
         private static TimeSpan engineSample01Time;
@@ -219,6 +221,22 @@ namespace iTinExportEngineSamples
             Watch.Reset();
             #endregion
 
+            #region Sample 8 - Create a spreadsheet but where only the headers are shown
+            Watch.Start();
+            Console.WriteLine();
+            EPPlusSample08.RunFromConfigurationFileSample();
+            eppSample08Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Sample 9 - Create a spreadsheet where the value of a field is not displayed
+            Watch.Start();
+            Console.WriteLine();
+            EPPlusSample09.RunFromConfigurationFileSample();
+            eppSample09Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
             #region Summary
             WriteEPPlusElapsedTime(
                 eppSample01Time,
@@ -228,7 +246,9 @@ namespace iTinExportEngineSamples
                 eppSample04Time,
                 eppSample05Time,
                 eppSample06Time,
-                eppSample07Time);
+                eppSample07Time,
+                eppSample08Time,
+                eppSample09Time);
             #endregion
 
             #endregion
@@ -453,9 +473,9 @@ namespace iTinExportEngineSamples
             #endregion
         }
 
-        private static void WriteEPPlusElapsedTime(TimeSpan ts1, TimeSpan ts1c, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7)
+        private static void WriteEPPlusElapsedTime(TimeSpan ts1, TimeSpan ts1c, TimeSpan ts2, TimeSpan ts3, TimeSpan ts4, TimeSpan ts5, TimeSpan ts6, TimeSpan ts7, TimeSpan ts8, TimeSpan ts9)
         {
-            var configurationTotalTime = ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7;
+            var configurationTotalTime = ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7 + ts8 + ts9;
             var codeTotalTime = ts1c;
 
             Console.WriteLine();
@@ -471,6 +491,8 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" Sample5    {0:00}:{1:00}.{2:00}", ts5.Minutes, ts5.Seconds, ts5.Milliseconds / 10);
             Console.WriteLine(@" Sample6    {0:00}:{1:00}.{2:00}", ts6.Minutes, ts6.Seconds, ts6.Milliseconds / 10);
             Console.WriteLine(@" Sample7    {0:00}:{1:00}.{2:00}", ts7.Minutes, ts7.Seconds, ts7.Milliseconds / 10);
+            Console.WriteLine(@" Sample8    {0:00}:{1:00}.{2:00}", ts8.Minutes, ts8.Seconds, ts8.Milliseconds / 10);
+            Console.WriteLine(@" Sample9    {0:00}:{1:00}.{2:00}", ts9.Minutes, ts9.Seconds, ts9.Milliseconds / 10);
             Console.WriteLine(new string('-', 46));
             Console.WriteLine(@"            {0:00}:{1:00}.{2:00}            {3:00}:{4:00}.{5:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10, codeTotalTime.Minutes, codeTotalTime.Seconds, codeTotalTime.Milliseconds / 10);
         }

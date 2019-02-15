@@ -146,11 +146,11 @@ namespace iTin.Export
         /// <param name="items">Target items.</param>
         /// <param name="name">Table name.</param>
         /// <returns>
-        ///   <see cref="T:System.Data.DataTable" /> which contains the specified rows.
+        /// <see cref="T:System.Data.DataTable" /> which contains the specified rows.
         /// </returns>
         public static DataTable ToDataTable<T>(this IEnumerable items, string name)
         {
-            var table = new DataTable(name.ToUpperInvariant());
+            var table = new DataTable(name);
             var properties = TypeDescriptor.GetProperties(typeof(T));
             foreach (PropertyDescriptor prop in properties)
             {

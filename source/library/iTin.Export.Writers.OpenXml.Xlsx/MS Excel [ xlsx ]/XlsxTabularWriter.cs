@@ -183,28 +183,33 @@ namespace iTin.Export.Writers.OpenXml.Office
                     var hasTopAggregates = topAggregates.Any();
                     if (hasTopAggregates)
                     {
-                        foreach (var field in topAggregates)
+                        if (Table.ShowDataValues == YesNo.Yes)
                         {
-                            var aggregate = field.Aggregate;
-                            var formula = new ExcelFormulaResolver(aggregate)
+                            foreach (var field in topAggregates)
                             {
-                                StartRow = hasColumnheaders && Table.ShowColumnHeaders == YesNo.Yes ? 3 : 2,
-                                EndRow = hasColumnheaders && Table.ShowColumnHeaders == YesNo.Yes ? rowsCount + 2 : rowsCount + 1,
-                                HasAutoFilter = Table.AutoFilter,
-                            };
+                                var aggregate = field.Aggregate;
+                                var formula = new ExcelFormulaResolver(aggregate)
+                                {
+                                    StartRow = hasColumnheaders && Table.ShowColumnHeaders == YesNo.Yes ? 3 : 2,
+                                    EndRow = hasColumnheaders && Table.ShowColumnHeaders == YesNo.Yes
+                                        ? rowsCount + 2
+                                        : rowsCount + 1,
+                                    HasAutoFilter = Table.AutoFilter,
+                                };
 
-                            var column = items.IndexOf(field);
-                            var cell = worksheet.Cells[y, x + column];
-                            cell.StyleName = aggregate.Style ?? StyleModel.NameOfDefaultStyle;
+                                var column = items.IndexOf(field);
+                                var cell = worksheet.Cells[y, x + column];
+                                cell.StyleName = aggregate.Style ?? StyleModel.NameOfDefaultStyle;
 
-                            var type = aggregate.AggregateType;
-                            if (type == KnownAggregateType.Text)
-                            {
-                                cell.Value = formula.Resolve();
-                            }
-                            else
-                            {
-                                cell.FormulaR1C1 = formula.Resolve();
+                                var type = aggregate.AggregateType;
+                                if (type == KnownAggregateType.Text)
+                                {
+                                    cell.Value = formula.Resolve();
+                                }
+                                else
+                                {
+                                    cell.FormulaR1C1 = formula.Resolve();
+                                }
                             }
                         }
                     }
@@ -294,39 +299,44 @@ namespace iTin.Export.Writers.OpenXml.Office
                     }
 
                     var fieldDictionary = new Dictionary<BaseDataFieldModel, int>();
-                    for (var row = 0; row < rowsCount; row++)
-                    {                        
-                        var rowData = rows[row];
-
-                        Service.SetCurrentRow(row);
-                        for (var col = 0; col < items.Count; col++)
+                    if (Table.ShowDataValues == YesNo.Yes)
+                    {
+                        for (var row = 0; row < rowsCount; row++)
                         {
-                            Service.SetCurrentCol(col);
+                            var rowData = rows[row];
 
-                            var field = items[col];
-                            field.DataSource = rowData;
-
-                            Service.SetCurrentField(field);
-
-                            var value = field.Value.GetValue(Provider.SpecialChars);
-                            var valueLenght = value.FormattedValue.Length;
-
-                            var cell = worksheet.Cells[y + row, x + col];
-                            cell.Value = value.Value;                        
-                            cell.AddErrorComment(value);
-                            cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
-                            cell.StyleName = row.IsOdd() ? $"{value.Style.Name}_Alternate" : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
-
-                            if (!fieldDictionary.ContainsKey(field))
+                            Service.SetCurrentRow(row);
+                            for (var col = 0; col < items.Count; col++)
                             {
-                                fieldDictionary.Add(field, valueLenght);
-                            }
-                            else
-                            {
-                                var entry = fieldDictionary[field];
-                                if (valueLenght > entry)
+                                Service.SetCurrentCol(col);
+
+                                var field = items[col];
+                                field.DataSource = rowData;
+
+                                Service.SetCurrentField(field);
+
+                                var value = field.Value.GetValue(Provider.SpecialChars);
+                                var valueLenght = value.FormattedValue.Length;
+
+                                var cell = worksheet.Cells[y + row, x + col];
+                                cell.Value = value.Value;
+                                cell.AddErrorComment(value);
+                                cell.Style.WrapText = field.FieldType == KnownFieldType.Group;
+                                cell.StyleName = row.IsOdd()
+                                    ? $"{value.Style.Name}_Alternate"
+                                    : value.Style.Name ?? StyleModel.NameOfDefaultStyle;
+
+                                if (!fieldDictionary.ContainsKey(field))
                                 {
-                                    fieldDictionary[field] = valueLenght;
+                                    fieldDictionary.Add(field, valueLenght);
+                                }
+                                else
+                                {
+                                    var entry = fieldDictionary[field];
+                                    if (valueLenght > entry)
+                                    {
+                                        fieldDictionary[field] = valueLenght;
+                                    }
                                 }
                             }
                         }
@@ -336,30 +346,33 @@ namespace iTin.Export.Writers.OpenXml.Office
                     #region add bottom aggregates
                     var fieldsWithBottomAggregates = items.GetRange(KnownAggregateLocation.Bottom).ToList();
                     var hasBottomAggregates = fieldsWithBottomAggregates.Any();
-                    if (hasBottomAggregates)
+                    if (Table.ShowDataValues == YesNo.Yes)
                     {
-                        foreach (var field in fieldsWithBottomAggregates)
+                        if (hasBottomAggregates)
                         {
-                            var aggregate = field.Aggregate;
-                            var formula = new ExcelFormulaResolver(aggregate)
+                            foreach (var field in fieldsWithBottomAggregates)
                             {
-                                EndRow = -1,
-                                StartRow = -rowsCount,
-                                HasAutoFilter = Table.AutoFilter,
-                            };
+                                var aggregate = field.Aggregate;
+                                var formula = new ExcelFormulaResolver(aggregate)
+                                {
+                                    EndRow = -1,
+                                    StartRow = -rowsCount,
+                                    HasAutoFilter = Table.AutoFilter,
+                                };
 
-                            var column = items.IndexOf(field);
-                            var cell = worksheet.Cells[y + rowsCount, x + column];
-                            cell.StyleName = aggregate.Style ?? StyleModel.NameOfDefaultStyle;
+                                var column = items.IndexOf(field);
+                                var cell = worksheet.Cells[y + rowsCount, x + column];
+                                cell.StyleName = aggregate.Style ?? StyleModel.NameOfDefaultStyle;
 
-                            var type = aggregate.AggregateType;
-                            if (type == KnownAggregateType.Text)
-                            {
-                                cell.Value = formula.Resolve();
-                            }
-                            else
-                            {
-                                cell.FormulaR1C1 = formula.Resolve();
+                                var type = aggregate.AggregateType;
+                                if (type == KnownAggregateType.Text)
+                                {
+                                    cell.Value = formula.Resolve();
+                                }
+                                else
+                                {
+                                    cell.FormulaR1C1 = formula.Resolve();
+                                }
                             }
                         }
                     }

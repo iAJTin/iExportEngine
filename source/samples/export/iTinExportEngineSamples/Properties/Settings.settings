@@ -50,6 +50,12 @@
     <Setting Name="EPPlusSample07Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample07.xml</Value>
     </Setting>
+    <Setting Name="EPPlusSample08Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample08.xml</Value>
+    </Setting>
+    <Setting Name="EPPlusSample09Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\xlsx\EPPlus\Sample09.xml</Value>
+    </Setting>
     <Setting Name="ExportEngineSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample01.xml</Value>
     </Setting>
@@ -85,10 +91,10 @@
     </Setting>
     <Setting Name="ExportEngineSample12Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample12.xml</Value>
-    </Setting>	
-	<Setting Name="ExportEngineSample13Configuration" Type="System.String" Scope="User">
+    </Setting>
+    <Setting Name="ExportEngineSample13Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\xlsx\ExportEngine\Sample13.xml</Value>
-    </Setting>	
+    </Setting>
     <Setting Name="MDSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\md\Sample01.xml</Value>
     </Setting>

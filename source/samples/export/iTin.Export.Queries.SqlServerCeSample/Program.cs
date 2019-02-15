@@ -13,6 +13,9 @@ namespace iTin.Export.Queries.SqlServerCe.Sample
 
         static void Main(string[] args)
         {
+
+            InvoiceDataSetSample.RunSample();
+
             Watch.Start();
             Sample9XSample.RunSample();
             _sample9XTime = Watch.Elapsed;

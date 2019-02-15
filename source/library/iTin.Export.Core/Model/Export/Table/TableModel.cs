@@ -33,6 +33,9 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const YesNo DefaultShowColumnHeaders = YesNo.Yes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private const YesNo DefaultShowDataValues = YesNo.Yes;
         #endregion
 
         #region private static readonly
@@ -87,6 +90,10 @@ namespace iTin.Export.Model
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ConditionsItemModel _conditions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private YesNo _showDataValues;
+
         #endregion
 
         #region constructor/s
@@ -236,6 +243,27 @@ namespace iTin.Export.Model
                 SentinelHelper.IsEnumValid(value);
 
                 _showColumnHeaders = value;
+            }
+        }
+        #endregion
+
+        #region [public] (YesNo) ShowDataValues: Gets or sets a value that indicates whether the data is displayed
+        /// <summary>
+        /// Gets or sets a value that indicates whether the data is displayed.
+        /// </summary>
+        /// <value>
+        /// <see cref="YesNo.Yes"/> if the data is displayed; otherwise, <see cref="YesNo.No"/>.
+        /// </value>
+        [XmlAttribute]
+        [DefaultValue(DefaultShowDataValues)]
+        public YesNo ShowDataValues
+        {
+            get => GetStaticBindingValue(_showDataValues.ToString()).ToUpperInvariant() == "NO" ? YesNo.No : YesNo.Yes;
+            set
+            {
+                SentinelHelper.IsEnumValid(value);
+
+                _showDataValues = value;
             }
         }
         #endregion
@@ -397,6 +425,7 @@ namespace iTin.Export.Model
                                           AutoFilter.Equals(DefaultAutoFilter) &&
                                           ShowGridLines.Equals(DefaultShowGridLines) &&
                                           AutoFitColumns.Equals(DefaultAutoFitColumns) &&
+                                          ShowDataValues.Equals(DefaultShowDataValues) &&
                                           ShowColumnHeaders.Equals(DefaultShowColumnHeaders);
         //Logo.IsDefault &&
         //Charts.IsDefault &&

@@ -1488,6 +1488,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="ShowDataValues" type="YesNo" use="optional" default="Yes">
+      <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:documentation xml:lang="en">
+          [Optional] Determines whether shows filed data values. The default is 'Yes'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="Filter" type="freeStringType" use="optional" default="">
       <xs:annotation xmlns="http://www.w3.org/2001/XMLSchema">
         <xs:documentation xml:lang="en">
@@ -1615,7 +1622,7 @@
   <xs:complexType name="FieldsModel" id="FieldsModel">
     <xs:sequence>
       <xs:group ref="FieldType" minOccurs="1" maxOccurs="unbounded"/>
-    </xs:sequence>   
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="PivotModel" id="PivotModel">
