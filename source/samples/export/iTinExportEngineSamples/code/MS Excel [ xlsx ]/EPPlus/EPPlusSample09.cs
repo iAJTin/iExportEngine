@@ -21,7 +21,7 @@ namespace iTinExportEngineSamples.EPPlusSamples
             Console.WriteLine(Header);
             Console.WriteLine(FirstSampleStepText);
 
-            var inputDataFile = new Uri(Settings.Default.SalesDataXmlInput, UriKind.Relative);
+            var inputDataFile = new Uri(Settings.Default.InventoryXmlInput, UriKind.Relative);
             var input = new XmlInput(inputDataFile);
 
             var configuration = new Uri(Settings.Default.EPPlusSample09Configuration, UriKind.Relative);

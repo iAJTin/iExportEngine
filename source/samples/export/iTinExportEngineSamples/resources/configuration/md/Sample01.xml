@@ -18,7 +18,7 @@
           <Alignment Horizontal="Left"/>
           <Number Decimals="0"/>
         </Content>
-        <Font Name="Calibri" Size="11"/>
+        <Font Name="Calibri" Size="11" Underline="Yes" />
       </Style>
       <Style Name="IdAggregateStyle">
         <Borders>
@@ -103,6 +103,7 @@
            Name="Inventory"
            AutoFilter="Yes"
            AutoFitColumns="Yes"
+           ShowDataValues="Yes"
            Alias="Inventory">
       <Exporter>
         <Writer Name="MarkdownWriter"/>

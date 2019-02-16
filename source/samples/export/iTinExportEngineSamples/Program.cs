@@ -54,6 +54,29 @@ namespace iTinExportEngineSamples
 
         static void Main(string[] args)
         {
+            #region Markdown [ md ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run Markdown Samples");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
+            Watch.Start();
+            MDSample01.RunFromConfigurationFileSample();
+            mdSample01Time = Watch.Elapsed;
+            Watch.Stop();
+            #endregion
+
+            #region Summary
+            WriteMarkdownElapsedTime(mdSample01Time);
+            #endregion
+
+            #endregion
+
             #region Comma-Separated Values [ csv ]
 
             #region Header
@@ -443,28 +466,6 @@ namespace iTinExportEngineSamples
 
             #endregion
 
-            #region Markdown [ md ]
-
-            #region Header
-            Console.WriteLine();
-            Console.WriteLine(new string('=', 90));
-            Console.WriteLine(@"Run Markdown Samples");
-            Console.WriteLine(new string('=', 90));
-            Console.WriteLine();
-            #endregion
-
-            #region Sample 1 - Simply Creates A New Workbook From Scratch. The Workbook Contains One Worksheet With A Simple Invertory List
-            Watch.Start();
-            MDSample01.RunFromConfigurationFileSample();
-            mdSample01Time = Watch.Elapsed;
-            Watch.Stop();
-            #endregion
-
-            #region Summary
-            WriteMarkdownElapsedTime(mdSample01Time);
-            #endregion
-
-            #endregion
 
             #region Exit app
             Console.WriteLine();

@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Drawing;
+
 namespace iTin.Export.Writers
 {
     using System.Collections.ObjectModel;
@@ -36,6 +39,16 @@ namespace iTin.Export.Writers
 
         #region private properties
 
+        #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
+        /// <summary>
+        /// Gets a reference to the model global resources.
+        /// </summary>
+        /// <value>
+        /// Reference to the model global resources.
+        /// </value>
+        private GlobalResourcesModel Resources => Provider.Input.Resources;
+        #endregion
+
         #region [private] (TableModel) Table: Gets a reference to the table
         /// <summary>
         /// Gets a reference to the table.
@@ -67,30 +80,144 @@ namespace iTin.Export.Writers
             var rows = Service.RawDataFiltered;
 
             // headers
+            var idx = 0;
+            _documentBuilder.Append("|");
             var headerValues = fields.Select(field => field.Header.Show == YesNo.No ? string.Empty : ParseField(field.Alias)).ToList();
-            _documentBuilder.Append("|");
-            _documentBuilder.Append(string.Join("|", headerValues.ToArray()));
-            _documentBuilder.Append(Table.Output.NewLineDelimiter);
-            _documentBuilder.AppendLine("|");
-
-            // data values
-            _documentBuilder.Append("|");
-            foreach (var row in rows)
+            var fontStyles = fields.Select(field => Resources.Styles.GetBy(field.Header.Style).Font.FontStyles);
+            foreach (var fontStyle in fontStyles)
             {
-                var values = new Collection<string>();
-                foreach (var field in fields)
+                if (fontStyle == FontStyle.Bold)
                 {
-                    field.DataSource = row;
-                    var value = field.Value.GetValue(Provider.SpecialChars);
-                    var parsedValue = ParseField(value.FormattedValue);
-                    values.Add(parsedValue);
+                    headerValues[idx] = $"**{headerValues[idx]}**";
+                }
+                else if (fontStyle == FontStyle.Italic)
+                {
+                    headerValues[idx] = $"*{headerValues[idx]}*";
+                }
+                else if (fontStyle == FontStyle.Underline)
+                {
+                    headerValues[idx] = $"<u>{headerValues[idx]}</u>";
+                }
+                else if (fontStyle == FontStyle.Strikeout)
+                {
+                    headerValues[idx] = $"~~{headerValues[idx]}~~";
+                }
+                else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic)
+                {
+                    headerValues[idx] = $"***{headerValues[idx]}***";
+                }
+                else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline)
+                {
+                    headerValues[idx] = $"***<u>{headerValues[idx]}</u>***";
+                }
+                else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline && (fontStyle & FontStyle.Strikeout) == FontStyle.Strikeout)
+                {
+                    headerValues[idx] = $"~~***<u>{headerValues[idx]}</u>***~~";
                 }
 
-                // add values.
-                _documentBuilder.Append(string.Join("|", values.ToArray()));
+                idx++;
+            }
 
-                // new line defined in output tag.
+            _documentBuilder.Append(string.Join("|", headerValues.ToArray()));
+            _documentBuilder.Append("|");
+            _documentBuilder.Append(Table.Output.NewLineDelimiter);
+
+
+            // data styles
+            if (Table.ShowDataValues == YesNo.Yes)
+            {
+                _documentBuilder.Append("|");
+                var alignments = fields.Select(field => Resources.Styles.GetBy(field.Value.Style).Content.Alignment.Horizontal);
+                foreach (var alignment in alignments)
+                {
+
+                    switch (alignment)
+                    {
+                        case KnownHorizontalAlignment.Center:
+                            _documentBuilder.Append(" :----: ");
+                            break;
+
+                        case KnownHorizontalAlignment.Left:
+                            _documentBuilder.Append(" :---- ");
+                            break;
+
+                        case KnownHorizontalAlignment.Right:
+                            _documentBuilder.Append(" ----: ");
+                            break;
+
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+                    _documentBuilder.Append("|");
+                }
+
                 _documentBuilder.Append(Table.Output.NewLineDelimiter);
+            }
+
+            // data values
+            if (Table.ShowDataValues == YesNo.Yes)
+            {
+                _documentBuilder.Append("|");
+                var valueFontStyles = fields.Select(field => Resources.Styles.GetBy(field.Value.Style).Font.FontStyles).ToList();
+                foreach (var row in rows)
+                {
+                    idx = 0;
+                    var values = new Collection<string>();
+                    foreach (var field in fields)
+                    {                        
+                        field.DataSource = row;
+                        var value = field.Value.GetValue(Provider.SpecialChars);
+                        var parsedValue = ParseField(value.FormattedValue);
+                        values.Add(parsedValue);
+                    }
+
+                    foreach (var fontStyle in valueFontStyles)
+                    {
+                        if (fontStyle == FontStyle.Bold)
+                        {
+                            values[idx] = $"**{values[idx]}**";
+                        }
+                        else if (fontStyle == FontStyle.Italic)
+                        {
+                            values[idx] = $"*{values[idx]}*";
+                        }
+                        else if (fontStyle == FontStyle.Underline)
+                        {
+                            values[idx] = $"<u>{values[idx]}</u>";
+                        }
+                        else if (fontStyle == FontStyle.Strikeout)
+                        {
+                            values[idx] = $"~~{values[idx]}~~";
+                        }
+                        else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic)
+                        {
+                            values[idx] = $"***{values[idx]}***";
+                        }
+                        else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline)
+                        {
+                            values[idx] = $"***<u>{values[idx]}</u>***";
+                        }
+                        else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline && (fontStyle & FontStyle.Strikeout) == FontStyle.Strikeout)
+                        {
+                            values[idx] = $"~~***<u>{values[idx]}</u>***~~";
+                        }
+                    
+                        idx++;
+                    }
+
+                    // add values.
+                    _documentBuilder.Append(string.Join("|", values.ToArray()));
+
+                    // new line defined in output tag.
+                    _documentBuilder.Append(Table.Output.NewLineDelimiter);
+                }
+            }
+            else
+            {
+                _documentBuilder.Append("|");
+                _documentBuilder.Append(string.Join("|", fields.Select(field => "---")));                   
+                _documentBuilder.AppendLine("|");
             }
 
             // end of file
