@@ -466,7 +466,6 @@ namespace iTinExportEngineSamples
 
             #endregion
 
-
             #region Exit app
             Console.WriteLine();
             Console.WriteLine(LastStepText);

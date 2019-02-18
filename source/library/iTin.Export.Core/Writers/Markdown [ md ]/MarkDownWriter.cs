@@ -1,16 +1,13 @@
 ﻿
-using System;
-using System.Drawing;
-
 namespace iTin.Export.Writers
 {
     using System.Collections.ObjectModel;
     using System.ComponentModel.Composition;
     using System.Diagnostics;
-    using System.Globalization;
     using System.Linq;
     using System.Text;
 
+    using ComponentModel;
     using ComponentModel.Writer;
     using Model;
 
@@ -79,49 +76,24 @@ namespace iTin.Export.Writers
             // get target data
             var rows = Service.RawDataFiltered;
 
+            // get header styles
+            var headerStyles = fields.Select(field => Resources.Styles.GetBy(field.Header.Style).Font.FontStyles).ToList();
+            var valueStyles = fields.Select(field => Resources.Styles.GetBy(field.Value.Style).Font.FontStyles).ToList();
+            var aggregateStyles = fields.Select(field => Resources.Styles.GetBy(field.Aggregate.Style).Font.FontStyles).ToList();
+
             // headers
             var idx = 0;
             _documentBuilder.Append("|");
             var headerValues = fields.Select(field => field.Header.Show == YesNo.No ? string.Empty : ParseField(field.Alias)).ToList();
-            var fontStyles = fields.Select(field => Resources.Styles.GetBy(field.Header.Style).Font.FontStyles);
-            foreach (var fontStyle in fontStyles)
+            foreach (var fontStyle in headerStyles)
             {
-                if (fontStyle == FontStyle.Bold)
-                {
-                    headerValues[idx] = $"**{headerValues[idx]}**";
-                }
-                else if (fontStyle == FontStyle.Italic)
-                {
-                    headerValues[idx] = $"*{headerValues[idx]}*";
-                }
-                else if (fontStyle == FontStyle.Underline)
-                {
-                    headerValues[idx] = $"<u>{headerValues[idx]}</u>";
-                }
-                else if (fontStyle == FontStyle.Strikeout)
-                {
-                    headerValues[idx] = $"~~{headerValues[idx]}~~";
-                }
-                else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic)
-                {
-                    headerValues[idx] = $"***{headerValues[idx]}***";
-                }
-                else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline)
-                {
-                    headerValues[idx] = $"***<u>{headerValues[idx]}</u>***";
-                }
-                else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline && (fontStyle & FontStyle.Strikeout) == FontStyle.Strikeout)
-                {
-                    headerValues[idx] = $"~~***<u>{headerValues[idx]}</u>***~~";
-                }
-
+                headerValues[idx] = string.Format(fontStyle.ToMarkdownStylePattern(), headerValues[idx]);
                 idx++;
             }
 
             _documentBuilder.Append(string.Join("|", headerValues.ToArray()));
             _documentBuilder.Append("|");
             _documentBuilder.Append(Table.Output.NewLineDelimiter);
-
 
             // data styles
             if (Table.ShowDataValues == YesNo.Yes)
@@ -130,25 +102,7 @@ namespace iTin.Export.Writers
                 var alignments = fields.Select(field => Resources.Styles.GetBy(field.Value.Style).Content.Alignment.Horizontal);
                 foreach (var alignment in alignments)
                 {
-
-                    switch (alignment)
-                    {
-                        case KnownHorizontalAlignment.Center:
-                            _documentBuilder.Append(" :----: ");
-                            break;
-
-                        case KnownHorizontalAlignment.Left:
-                            _documentBuilder.Append(" :---- ");
-                            break;
-
-                        case KnownHorizontalAlignment.Right:
-                            _documentBuilder.Append(" ----: ");
-                            break;
-
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
+                    _documentBuilder.Append(alignment.ToMarkdownTextAlignment());
                     _documentBuilder.Append("|");
                 }
 
@@ -159,7 +113,6 @@ namespace iTin.Export.Writers
             if (Table.ShowDataValues == YesNo.Yes)
             {
                 _documentBuilder.Append("|");
-                var valueFontStyles = fields.Select(field => Resources.Styles.GetBy(field.Value.Style).Font.FontStyles).ToList();
                 foreach (var row in rows)
                 {
                     idx = 0;
@@ -172,38 +125,10 @@ namespace iTin.Export.Writers
                         values.Add(parsedValue);
                     }
 
-                    foreach (var fontStyle in valueFontStyles)
+                    foreach (var fontStyle in valueStyles)         
                     {
-                        if (fontStyle == FontStyle.Bold)
-                        {
-                            values[idx] = $"**{values[idx]}**";
-                        }
-                        else if (fontStyle == FontStyle.Italic)
-                        {
-                            values[idx] = $"*{values[idx]}*";
-                        }
-                        else if (fontStyle == FontStyle.Underline)
-                        {
-                            values[idx] = $"<u>{values[idx]}</u>";
-                        }
-                        else if (fontStyle == FontStyle.Strikeout)
-                        {
-                            values[idx] = $"~~{values[idx]}~~";
-                        }
-                        else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic)
-                        {
-                            values[idx] = $"***{values[idx]}***";
-                        }
-                        else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline)
-                        {
-                            values[idx] = $"***<u>{values[idx]}</u>***";
-                        }
-                        else if ((fontStyle & FontStyle.Bold) == FontStyle.Bold && (fontStyle & FontStyle.Italic) == FontStyle.Italic && (fontStyle & FontStyle.Underline) == FontStyle.Underline && (fontStyle & FontStyle.Strikeout) == FontStyle.Strikeout)
-                        {
-                            values[idx] = $"~~***<u>{values[idx]}</u>***~~";
-                        }
-                    
-                        idx++;
+                        values[idx] = string.Format(fontStyle.ToMarkdownStylePattern(), values[idx]);
+                     idx++;
                     }
 
                     // add values.
@@ -218,6 +143,47 @@ namespace iTin.Export.Writers
                 _documentBuilder.Append("|");
                 _documentBuilder.Append(string.Join("|", fields.Select(field => "---")));                   
                 _documentBuilder.AppendLine("|");
+            }
+
+            // add bottom aggregates
+            var fieldsWithBottomAggregates = fields.GetRange(KnownAggregateLocation.Bottom).ToList();
+            var hasBottomAggregates = fieldsWithBottomAggregates.Any();
+            if (Table.ShowDataValues == YesNo.Yes)
+            {
+                if (hasBottomAggregates)
+                {
+                    _documentBuilder.Append("|");
+                    idx = 0;
+                    var values = new Collection<string>();
+                    foreach (var field in fieldsWithBottomAggregates)
+                    {
+                        var aggregate = field.Aggregate;
+                        var formula = new NonTabularFormulaResolver(aggregate)
+                        {
+                            Data = rows.Select(attr => attr.Attribute(BaseDataFieldModel.GetFieldNameFrom(field)).Value)
+                        };
+
+                        values.Add(formula.Resolve());
+                    }
+
+                    foreach (var fontStyle in aggregateStyles)
+                    {
+                        if (string.IsNullOrEmpty(values[idx]))
+                        {
+                            idx++;
+                            continue;
+                        }
+
+                        values[idx] = string.Format(fontStyle.ToMarkdownStylePattern(), values[idx]);
+                        idx++;
+                    }
+
+                    // add values.
+                    _documentBuilder.Append(string.Join("|", values.ToArray()));
+
+                    // new line defined in output tag.
+                    _documentBuilder.Append(Table.Output.NewLineDelimiter);
+                }
             }
 
             // end of file
@@ -252,7 +218,7 @@ namespace iTin.Export.Writers
             return result;
         }
         #endregion
-        
+
         #endregion
     }
 }

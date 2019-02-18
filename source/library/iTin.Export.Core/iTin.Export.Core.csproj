@@ -1012,6 +1012,7 @@
     <Compile Include="Extensions\XsltExtensions.cs" />
     <Compile Include="Writers\Comma-Separated Values [ csv ]\CsvWriter.cs" />
     <Compile Include="Writers\Markdown [ md ]\MarkdownWriter.cs" />
+    <Compile Include="Writers\Markdown [ md ]\MarkdownExtensions.cs" />
     <Compile Include="Writers\SQL Script [ sql ]\SqlScriptWriter.cs" />
     <Compile Include="Writers\Tab-Separated Values [ txt ]\TsvWriter.cs" />
     <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\KnownlSpreadsheet2003Expression.cs" />

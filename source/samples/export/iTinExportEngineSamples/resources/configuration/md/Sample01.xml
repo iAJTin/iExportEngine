@@ -112,7 +112,7 @@
         <Field Name="ID" Alias="ID">
           <Header Style="HeaderStyle"/>
           <Value Style="IdValueStyle"/>
-          <Aggregate Location="Bottom" Style="IdAggregateStyle" Show="Yes"/>
+          <Aggregate Location="Bottom"  Style="IdAggregateStyle" Show="Yes"/>
         </Field>
         <Field Name="PRODUCT" Alias="Product">
           <Header Style="HeaderStyle"/>
