@@ -31,7 +31,7 @@ namespace iTinExportEngineSamples.ExportEngineSamples
             var models = ExportsModel.LoadFromFile(configurationFile);
             var model = models.Items.FirstOrDefault();
             model.Table.Output.File = "sample11-custom-file-name-from-code";
-            model.Table.Output.Path = @"~\output\xlsx\ExportEngine\";
+            model.Table.Output.Path = @"~\output\writer\xlsx\ExportEngine\";
 
             input.Export(ExportSettings.CreateFromModels(models, "Sample11"));
         }

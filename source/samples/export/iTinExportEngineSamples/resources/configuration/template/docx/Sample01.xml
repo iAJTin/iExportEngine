@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>  
+    <Hosts>
+      <Host Key="docx"/>
+    </Hosts>
+  </Global.Resources>
+
+  <Export Name="Sample01" Current="Yes">
+    <Description>Generate docx files from template file</Description>
+    <Table Host="docx"
+           Name="Mailing"
+           Alias="Template Sample Export">
+      <Exporter>
+        <Template>
+          <File>~\resources\input\template\DocxSampleTemplate.docx</File>
+          <Writer Name="DocxFreeTemplateWriter">
+            <Filter Author="*" Company="*" Version="*"/>              
+            <Settings FieldPrefix="@@" TrimFields="Yes"/>             
+          </Writer>
+        </Template>
+      </Exporter>
+      <Output>
+        <Path>~\output\template\docx\</Path>
+        <File>sample01-from-template-file</File>
+      </Output>
+    </Table>
+  </Export>
+  
+</Exports>

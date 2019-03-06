@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx"/>
+    </Hosts>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="Navy">
+          <Alignment Horizontal="Center"/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="NumberValueStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="StringValueStyle">
+        <Content Color="LightGray">
+          <Alignment Horizontal="Left"/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="DateValueStyle">
+        <Content>
+          <Alignment Horizontal="Right"/>
+          <DateTime Format="Short Date"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="DecimalValueStyle">
+        <Content Color="LightGray">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="2" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="DecimalValueAggregateStyle">
+        <Content Color="LightGray">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="2" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11" Bold="Yes"/>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="sample7" Current="Yes">
+    <Description>Sample 7 - Use Mini charts</Description>
+    <Table Host="xlsx"
+           Name="Sample7"
+           Alias="Sample7" FreezePanes="1 2"
+           AutoFitColumns="Yes">
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="INDEX" Alias="Index">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumberValueStyle"/>
+        </Field>
+        <Field Name="TEXT" Alias="Text">
+          <Header Style="HeaderStyle"/>
+          <Value Style="StringValueStyle"/>
+        </Field>
+        <Field Name="DATE" Alias="Date">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DateValueStyle"/>
+        </Field>
+        <Field Name="NUMBER" Alias="Number">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DecimalValueStyle"/>
+          <Aggregate Location="Bottom" Type="Sum" Style="DecimalValueAggregateStyle" Show="Yes"/>
+        </Field>
+      </Fields>
+      <Output>
+        <Path>~\output\writer\xlsx\EPPlus\</Path>
+        <File>sample07-from-config-file</File>
+      </Output>
+    </Table>
+  </Export>
+
+</Exports>

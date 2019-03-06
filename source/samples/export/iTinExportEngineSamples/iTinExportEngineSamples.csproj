@@ -88,6 +88,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="resources\input\template\DocxSampleTemplate.docx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\library\iTin.Export.Core\iTin.Export.Core.csproj">
@@ -108,103 +109,106 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\configuration\docx\Sample01.xml">
+    <Content Include="resources\configuration\template\docx\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\md\Sample01.xml">
+    <Content Include="resources\configuration\writer\docx\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\csv\Sample01.xml">
+    <Content Include="resources\configuration\writer\md\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample09.xml">
+    <Content Include="resources\configuration\writer\csv\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample08.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample09.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample13.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample08.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xml\Sample01.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample13.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\sql\Sample01.xml">
+    <Content Include="resources\configuration\writer\xml\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\txt\Sample01.xml">
+    <Content Include="resources\configuration\writer\sql\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\pdf\Sample01.xml">
+    <Content Include="resources\configuration\writer\txt\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample07.xml">
+    <Content Include="resources\configuration\writer\pdf\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample06.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample07.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample05.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample06.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample04.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample05.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample03.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample04.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample02.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\EPPlus\Sample01.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample02.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample08.xml">
+    <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample03.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample08.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample12.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample03.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample11.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample12.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample10.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample11.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample09.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample10.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample07.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample09.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample06.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample07.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample05.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample06.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample04.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample05.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample02.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample04.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="resources\configuration\xlsx\ExportEngine\Sample01.xml">
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample02.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\writer\xlsx\ExportEngine\Sample01.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\functions\iTinExportEngineFunctions.dll" />
     <Content Include="resources\images\banner-careers.png" />
-    <Content Include="resources\input\Packet.xml" />
-    <Content Include="resources\input\Inventory.xml" />
-    <Content Include="resources\input\Invoice.xml" />
-    <Content Include="resources\input\SalesData.xml" />
-    <Content Include="resources\input\SEKRates.xml" />
-    <Content Include="resources\input\StockProducts.xml" />
-    <Content Include="resources\input\Products.xml" />
-    <Content Include="resources\input\Sales.xml" />
+    <Content Include="resources\input\xml\Packet.xml" />
+    <Content Include="resources\input\xml\Inventory.xml" />
+    <Content Include="resources\input\xml\Invoice.xml" />
+    <Content Include="resources\input\xml\SalesData.xml" />
+    <Content Include="resources\input\xml\SEKRates.xml" />
+    <Content Include="resources\input\xml\StockProducts.xml" />
+    <Content Include="resources\input\xml\Products.xml" />
+    <Content Include="resources\input\xml\Sales.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="output\" />

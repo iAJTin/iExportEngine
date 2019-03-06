@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Exports xmlns="http://schemas.itin.com/export/engine/2014/configuration/v1.0">
+
+  <Global.Resources>
+    <Hosts>
+      <Host Key="xlsx">
+        <Document Orientation="Landscape" Size="A4"/>
+      </Host>
+    </Hosts>
+    <Styles>
+      <Style Name="HeaderStyle">
+        <Content Color="#4674C1">
+          <Alignment Horizontal="Left"/>
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11" Color="White" Bold="Yes"/>
+      </Style>
+      <Style Name="StringLeftValueStyle">
+        <Borders>
+          <Border Position="Left" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="StringValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Text/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="DateValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Alignment Horizontal="Right"/>
+          <DateTime Format="Short Date"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="NumericValueStyle">
+        <Borders>
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+      <Style Name="NumericRightValueStyle">
+        <Borders>
+          <Border Position="Right" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+          <Border Position="Bottom" Color="#8FAAD9" LineStyle="Continuous" Weight="Thick" />
+        </Borders>
+        <Content Color="#D9E1F1" AlternateColor="White">
+          <Alignment Horizontal="Right"/>
+          <Number Decimals="0" Separator="Yes"/>
+        </Content>
+        <Font Name="Calibri" Size="11"/>
+      </Style>
+    </Styles>
+  </Global.Resources>
+
+  <Export Name="sample5" Current="Yes">
+    <Description>Sample 5 - Pivottables</Description>
+    <Table Host="xlsx"
+           Name="SalesData"
+           Alias="SalesData"
+           AutoFilter="Yes"
+           AutoFitColumns="Yes">
+      <Location>
+        <ByCoordenates Coordenates="1 1"/>
+      </Location>
+      <Exporter>
+        <Writer Name="XlsxTabularWriter"/>
+      </Exporter>
+      <Fields>
+        <Field Name="Title" Alias="Title">
+          <Header Style="HeaderStyle"/>
+          <Value Style="StringLeftValueStyle"/>
+        </Field>
+        <Field Name="FirstName" Alias="FirstName">
+          <Header Style="HeaderStyle"/>
+          <Value Style="StringValueStyle"/>
+        </Field>
+        <Field Name="LastName" Alias="LastName">
+          <Header Style="HeaderStyle"/>
+          <Value Style="StringValueStyle"/>
+        </Field>
+        <Field Name="OrderDate" Alias="OrderDate">
+          <Header Style="HeaderStyle"/>
+          <Value Style="DateValueStyle"/>
+        </Field>
+        <Field Name="SubTotal" Alias="SubTotal">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericValueStyle"/>
+        </Field>
+        <Field Name="Tax" Alias="Tax">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericValueStyle"/>
+        </Field>
+        <Field Name="Total" Alias="Total">
+          <Header Style="HeaderStyle"/>
+          <Value Style="NumericRightValueStyle"/>
+        </Field>
+        <!--<Pivots>
+          <Pivot 
+            Key="PivotTablePerEmploee"
+            Name ="PerEmploee"
+            Alias="PivotSimple"
+            AutoFitColumns="Yes"
+            DataOnRows="Yes">
+            <Location>
+              <ByCoordenates Coordenates="1 1"/>
+            </Location>
+            <Data>
+              <Rows>
+                <Row Field="Name"/>
+              </Rows>
+              <Values>
+                <Value Field="SubTotal"/>
+              </Values>
+            </Data>
+            <Charts>
+              <Chart  Size="600 400"  >
+                <Location>
+                  <ByCoordenates Coordenates="8 1"/>
+                </Location>
+                <Legend Show="Yes">
+                  <Border Show="Yes"/>
+                  <Font Size="12" Bold="Yes"/>
+                </Legend>
+                <Axes>
+                  <Primary>
+                    <Values GridLines="Major"/>
+                  </Primary>
+                </Axes>
+              </Chart>
+            </Charts>
+          </Pivot>
+        </Pivots>-->
+      </Fields>
+      <Output>
+        <Path>~\output\writer\xlsx\EPPlus\</Path>
+        <File>sample05-from-config-file</File>
+      </Output>
+    </Table>
+  </Export>
+</Exports>

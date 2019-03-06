@@ -68,7 +68,7 @@ namespace iTinExportEngineSamples
             Watch.Start();
             MDSample01.RunFromConfigurationFileSample();
             mdSample01Time = Watch.Elapsed;
-            Watch.Stop();
+            Watch.Reset();
             #endregion
 
             #region Summary
@@ -457,7 +457,7 @@ namespace iTinExportEngineSamples
             Watch.Start();
             PdfSample01.RunFromConfigurationFileSample();
             pdfSample01Time = Watch.Elapsed;
-            Watch.Reset();
+            Watch.Stop();
             #endregion
 
             #region Summary

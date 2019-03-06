@@ -11,13 +11,7 @@ namespace iTinExportEngineFunctions
         /// <value>
         /// The current date time.
         /// </value>
-        public static DateTime GetCurrentDatetime
-        {
-            get
-            {
-                return DateTime.Now;                
-            }
-        }
+        public static DateTime GetCurrentDatetime => DateTime.Now;
 
         /// <summary>
         /// Gets the timespan.
@@ -25,13 +19,7 @@ namespace iTinExportEngineFunctions
         /// <value>
         /// The timespan.
         /// </value>
-        public static TimeSpan GetCurrentTimeSpan
-        {
-            get
-            {
-                return DateTime.Now.TimeOfDay;
-            }
-        }
+        public static TimeSpan GetCurrentTimeSpan => DateTime.Now.TimeOfDay;
 
         /// <summary>
         /// Gets sample12 filename
@@ -39,13 +27,7 @@ namespace iTinExportEngineFunctions
         /// <value>
         /// Sample12 filename
         /// </value>
-        public static string GetSample12Filename
-        {
-            get
-            {
-                return "sample12-custom-file-name-from-binding";
-            }
-        }
+        public static string GetSample12Filename => "sample12-custom-file-name-from-binding";
 
         /// <summary>
         /// Gets sample12 path
@@ -53,12 +35,6 @@ namespace iTinExportEngineFunctions
         /// <value>
         /// Sample12 path
         /// </value>
-        public static string GetSample12Path
-        {
-            get
-            {
-                return @"~\output\xlsx\ExportEngine\";
-            }
-        }
+        public static string GetSample12Path => @"~\output\writer\xlsx\ExportEngine\";
     }
 }
