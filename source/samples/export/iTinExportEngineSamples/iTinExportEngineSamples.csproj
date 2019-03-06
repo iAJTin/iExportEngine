@@ -43,28 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample09.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample08.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample13.cs" />
-    <Compile Include="code\SQL Script [ sql ]\SqlSample01.cs" />
-    <Compile Include="code\XML Spreadsheet 2003 [ xml ]\SpreadsheetSample01.cs" />
-    <Compile Include="code\Tab-Separated Values [ txt ]\TxtSample01.cs" />
-    <Compile Include="code\Markdown [ md ]\MDSample01.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample03.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample08.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample12.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample11.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample10.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample09.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample07.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample06.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample05.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample04.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample02.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample01.cs" />
-    <Compile Include="code\MS Word [ docx ]\DocxSample01.cs" />
-    <Compile Include="code\Comma-Separated Values [ csv ]\CsvSample01.cs" />
-    <Compile Include="code\Portable Document Format [ pdf ]\PdfSample01.cs" />
+    <Compile Include="code\template\MS Word [ docx ]\DocxTemplateSample01.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample09.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample08.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample13.cs" />
+    <Compile Include="code\writer\SQL Script [ sql ]\SqlSample01.cs" />
+    <Compile Include="code\writer\XML Spreadsheet 2003 [ xml ]\SpreadsheetSample01.cs" />
+    <Compile Include="code\writer\Tab-Separated Values [ txt ]\TxtSample01.cs" />
+    <Compile Include="code\writer\Markdown [ md ]\MDSample01.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample03.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample08.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample12.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample11.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample10.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample09.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample07.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample06.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample05.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample04.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample02.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample01.cs" />
+    <Compile Include="code\writer\MS Word [ docx ]\DocxSample01.cs" />
+    <Compile Include="code\writer\Comma-Separated Values [ csv ]\CsvSample01.cs" />
+    <Compile Include="code\writer\Portable Document Format [ pdf ]\PdfSample01.cs" />
     <Compile Include="models\CustomData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,14 +74,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample01FromCode.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample07.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample06.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample05.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample04.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample03.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample02.cs" />
-    <Compile Include="code\MS Excel [ xlsx ]\EPPlus\EPPlusSample01.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample01FromCode.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample07.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample06.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample05.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample04.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample03.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample02.cs" />
+    <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample01.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

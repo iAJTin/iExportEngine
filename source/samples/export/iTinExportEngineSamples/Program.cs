@@ -4,12 +4,13 @@ namespace iTinExportEngineSamples
     using System;
     using System.Diagnostics;
 
-    using DocxSamples;
-    using EPPlusSamples;
-    using ExportEngineSamples;
-    using MarkdownSamples;
-    using NativeWriters;
-    using PortableDocumentFormat;
+    using Templates.Docx;
+
+    using Writers.Docx;
+    using Writers.Markdown;
+    using Writers.Native;
+    using Writers.PortableDocumentFormat;
+    using Writers.Xlsx;
 
     class Program
     {
@@ -50,10 +51,41 @@ namespace iTinExportEngineSamples
         private static TimeSpan txtSample01Time;
         private static TimeSpan csvSample01Time;
         private static TimeSpan pdfSample01Time;
+
+        private static TimeSpan docxTemplateSample01Time;
         #endregion
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            #region template
+
+            #region MS Word [ docx ]
+
+            #region Header
+            Console.WriteLine();
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine(@"Run MS Word Template Sample");
+            Console.WriteLine(new string('=', 90));
+            Console.WriteLine();
+            #endregion
+
+            #region Sample 1 - Simply Creates docx mailing.
+            Watch.Start();
+            DocxTemplateSample01.RunFromConfigurationFileSample();
+            docxTemplateSample01Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
+            #region Summary
+            WriteWordTemplateElapsedTime(docxTemplateSample01Time);
+            #endregion
+
+            #endregion
+
+            #endregion
+
+            #region writers
+
             #region Markdown [ md ]
 
             #region Header
@@ -466,6 +498,8 @@ namespace iTinExportEngineSamples
 
             #endregion
 
+            #endregion
+
             #region Exit app
             Console.WriteLine();
             Console.WriteLine(LastStepText);
@@ -629,6 +663,22 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@"                    Elapsed Time");
             Console.WriteLine(@"            ----------------------------");
             Console.WriteLine(@" SQL        From                From");
+            Console.WriteLine(@" Summary    Configuration       Code");
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(new string('-', 46));
+            Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
+            Console.WriteLine();
+        }
+
+        private static void WriteWordTemplateElapsedTime(TimeSpan ts1)
+        {
+            var configurationTotalTime = ts1;
+
+            Console.WriteLine();
+            Console.WriteLine(@"                    Elapsed Time");
+            Console.WriteLine(@"            ----------------------------");
+            Console.WriteLine(@" Template   From                From");
             Console.WriteLine(@" Summary    Configuration       Code");
             Console.WriteLine(new string('=', 46));
             Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
