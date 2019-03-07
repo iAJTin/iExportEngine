@@ -66,8 +66,5 @@ namespace iTin.Export
         /// Total defined-styles.
         /// </value>
         public static int TotalStyles => ModelService.Instance.Resources.Styles.Count;
-
-
-        public static string AlternateColorSample => "red";
     }
 }

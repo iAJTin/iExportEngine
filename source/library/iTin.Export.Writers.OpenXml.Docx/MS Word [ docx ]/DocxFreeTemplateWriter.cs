@@ -63,11 +63,11 @@ namespace iTin.Export.Writers.OpenXml.Office
             var prefix = Template.Writer.Settings.FieldPrefix;
             var trimField = Template.Writer.Settings.TrimFields == YesNo.Yes;
 
-            using (var stream = StreamHelper.AsMemoryStreamFromFile(tempTemplate.OriginalString))
+            foreach (var row in rows)
             {
-                using (var document = DocX.Load(stream.Clone()))
+                using (var stream = StreamHelper.AsMemoryStreamFromFile(tempTemplate.OriginalString))
                 {
-                    foreach (var row in rows)
+                    using (var document = DocX.Load(stream))
                     {
                         var attributes = row.Attributes();
                         var templateField = new StringBuilder();
@@ -164,54 +164,3 @@ namespace iTin.Export.Writers.OpenXml.Office
         #endregion
     }
 }
-
-//using (var document = DocX.Load(tempTemplate.OriginalString)) // stream = StreamHelper.AsMemoryStreamFromFile(tempTemplate.OriginalString))
-//{
-//    //var document = DocX.Load(tempTemplate.OriginalString); //stream);
-
-//    foreach (var row in rows)
-//    {
-//        var attributes = row.Attributes();
-//        var templateField = new StringBuilder();
-//        foreach (var attribute in attributes)
-//        {
-//            templateField.Clear();
-//            templateField.Append(prefix);
-//            templateField.Append(attribute.Name);
-//            templateField.Append(sufix);
-
-//            var hasTables = document.Tables.Any();
-//            var matches = document.FindUniqueByPattern(templateField.ToString(), RegexOptions.IgnoreCase);
-//            if (!matches.Any() && !hasTables)
-//            {
-//                continue;
-//            }
-
-//            var value = attribute.Value;
-
-//            if (trimField)
-//            {
-//                switch (trimmode)
-//                {
-//                    case KnownTrimMode.All:
-//                        value = value.Trim();
-//                        break;
-
-//                    case KnownTrimMode.Start:
-//                        value = value.TrimStart();
-//                        break;
-
-//                    case KnownTrimMode.End:
-//                        value = value.TrimEnd();
-//                        break;
-//                }
-//            }
-
-//            document.ReplaceText(templateField.ToString(), value);
-//        }
-
-//        ms = new MemoryStream();
-//        document.SaveAs(ms);
-//        Result.Add(ms.ToArray());
-//    }
-//}
