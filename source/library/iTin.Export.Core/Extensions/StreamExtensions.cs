@@ -1,8 +1,10 @@
 ﻿
 namespace iTin.Export
 {
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Linq;
 
     using Helpers;
 
@@ -55,6 +57,45 @@ namespace iTin.Export
             }
 
             return buffer;
+        }
+        #endregion
+
+        #region [public] {static} (Stream) Clone(this Stream): Create a new object that is a copy of specified instance
+        /// <summary>
+        /// Create a new object that is a copy of the current instance.
+        /// </summary>
+        /// <param name="stream">Stream to clone.</param>
+        /// <returns>
+        /// A new <see cref="T:System.IO.Stream" /> that is a copy of specified instance.
+        /// </returns>
+        public static Stream Clone(this Stream stream)
+        {
+            SentinelHelper.ArgumentNull(stream, nameof(stream));
+
+            var ms = new MemoryStream();
+            stream.CopyTo(ms);
+            ms.Position = 0;
+
+            return ms;
+        }
+        #endregion
+
+        #region [public] {static} (IEnumerable<Stream>) Clone(this IEnumerable<Stream>): Create a new object that is a copy of specified instance
+        /// <summary>
+        /// Create a new object that is a copy of the current instance.
+        /// </summary>
+        /// <param name="items">Stream to clone.</param>
+        /// <returns>
+        /// A new <see cref="T:System.IO.Stream" /> that is a copy of specified instance.
+        /// </returns>
+        public static IEnumerable<Stream> Clone(this IEnumerable<Stream> items)
+        {
+            IList<Stream> streamList = items as IList<Stream> ?? items.ToList();
+            SentinelHelper.ArgumentNull(streamList, nameof(items));
+
+            List<Stream> clonedList = streamList.Select(item => item.Clone()).ToList();
+
+            return clonedList;
         }
         #endregion
 
