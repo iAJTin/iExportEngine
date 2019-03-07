@@ -206,10 +206,14 @@ namespace iTin.Export.ComponentModel.Writer
         /// <param name="settings">Export settings.</param>
         public void Generate(ExportSettings settings)
         {
-            var hasFields = Provider.Input.Model.Table.HasFields;
-            if (!hasFields)
+            var currentExporterType = Provider.Input.Model.Table.Exporter.ExporterType;
+            if (currentExporterType != KnownExporter.Template)
             {
-                return;
+                var hasFields = Provider.Input.Model.Table.HasFields;
+                if (!hasFields)
+                {
+                    return;
+                }
             }
 
             ModelService.Instance.SetWriter(this);

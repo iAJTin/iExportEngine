@@ -10,7 +10,7 @@
   <Export Name="Sample01" Current="Yes">
     <Description>Generate docx files from template file</Description>
     <Table Host="docx"
-           Name="Mailing"
+           Name="R740D01"
            Alias="Template Sample Export">
       <Exporter>
         <Template>

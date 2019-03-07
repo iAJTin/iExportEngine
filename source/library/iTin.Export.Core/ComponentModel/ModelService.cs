@@ -104,7 +104,6 @@ namespace iTin.Export.ComponentModel
                 if (!hasDataFilter)
                 {
                     return RawData;
-
                 }
 
                 DataFilterModel filter = Resources.Filters.GetBy(CurrentModel.Table.Filter);

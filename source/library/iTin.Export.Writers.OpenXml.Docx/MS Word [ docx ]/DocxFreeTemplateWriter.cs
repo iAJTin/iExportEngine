@@ -57,60 +57,61 @@ namespace iTin.Export.Writers.OpenXml.Office
             File.Copy(originalTemplate, tempTemplate.OriginalString);
 
             var rows = GetRowData();
+            var ms = new MemoryStream();
             var sufix = Template.Writer.Settings.FieldSufix;
             var trimmode = Template.Writer.Settings.TrimMode;
             var prefix = Template.Writer.Settings.FieldPrefix;
             var trimField = Template.Writer.Settings.TrimFields == YesNo.Yes;
-            using (var stream = StreamHelper.AsMemoryStreamFromFile(tempTemplate.OriginalString))
+
+            using (var document = DocX.Load(tempTemplate.OriginalString)) // stream = StreamHelper.AsMemoryStreamFromFile(tempTemplate.OriginalString))
             {
-                using (var document = DocX.Load(stream))
+                //var document = DocX.Load(tempTemplate.OriginalString); //stream);
+                
+                foreach (var row in rows)
                 {
-                    foreach (var row in rows)
+                    var attributes = row.Attributes();
+                    var templateField = new StringBuilder();
+                    foreach (var attribute in attributes)
                     {
-                        var attributes = row.Attributes();
-                        var templateField = new StringBuilder();
-                        foreach (var attribute in attributes)
+                        templateField.Clear();
+                        templateField.Append(prefix);
+                        templateField.Append(attribute.Name);
+                        templateField.Append(sufix);
+
+                        var hasTables = document.Tables.Any();
+                        var matches = document.FindUniqueByPattern(templateField.ToString(), RegexOptions.IgnoreCase);
+                        if (!matches.Any() && !hasTables)
                         {
-                            templateField.Clear();
-                            templateField.Append(prefix);
-                            templateField.Append(attribute.Name);
-                            templateField.Append(sufix);
+                            continue;
+                        }
 
-                            var hasTables = document.Tables.Any();
-                            var matches = document.FindUniqueByPattern(templateField.ToString(), RegexOptions.IgnoreCase);
-                            if (!matches.Any() && !hasTables)
+                        var value = attribute.Value;
+
+                        if (trimField)
+                        {
+                            switch (trimmode)
                             {
-                                continue;
+                                case KnownTrimMode.All:
+                                    value = value.Trim();
+                                    break;
+
+                                case KnownTrimMode.Start:
+                                    value = value.TrimStart();
+                                    break;
+
+                                case KnownTrimMode.End:
+                                    value = value.TrimEnd();
+                                    break;
                             }
+                        }
 
-                            var value = attribute.Value;
-
-                            if (trimField)
-                            {
-                                switch (trimmode)
-                                {
-                                    case KnownTrimMode.All:
-                                        value = value.Trim();
-                                        break;
-
-                                    case KnownTrimMode.Start:
-                                        value = value.TrimStart();
-                                        break;
-
-                                    case KnownTrimMode.End:
-                                        value = value.TrimEnd();
-                                        break;
-                                }
-                            }
-
-                            document.ReplaceText(templateField.ToString(), value);
-                        }                                                
+                        document.ReplaceText(templateField.ToString(), value);
                     }
 
-                    document.Save();                                                         
-                }  
-                 
-                Result.Add(stream.ToArray());
+                    ms = new MemoryStream();
+                    document.SaveAs(ms);
+                    Result.Add(ms.ToArray());
+                }
             }
 
             File.Delete(tempTemplate.OriginalString);
