@@ -81,7 +81,7 @@ namespace iTin.Export.Writers
             _documentBuilder.Append(table.Output.EndOfFile);
 
             // add document to result list.
-            Result.Add(Encoding.UTF8.GetBytes(_documentBuilder.ToString()));
+            Result.Add(Encoding.Unicode.GetBytes(_documentBuilder.ToString()));
         }
         #endregion
 

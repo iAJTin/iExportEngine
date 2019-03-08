@@ -134,7 +134,7 @@
           <Aggregate Location="Bottom" Type="Sum" Style="ValueAggregateStyle" Show="Yes"/>
         </Field>
       </Fields>
-      <Output>
+      <Output Target="Windows">
         <Path>~\output\writer\csv\</Path>
         <File>sample01-from-config-file</File>
       </Output>
