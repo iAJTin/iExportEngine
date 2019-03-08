@@ -32,7 +32,7 @@ namespace iTin.Export.Writers
 
         #region private static readonly members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private static readonly string[] SpecialChars = { "\'", "\"" };
+        private static readonly string[] SpecialChars = { "\'", "\''" };
         #endregion
 
         #region private members
@@ -89,7 +89,16 @@ namespace iTin.Export.Writers
                     field.DataSource = row;
                     var value = field.Value.GetValue(Provider.SpecialChars);
                     var parsedValue = ParseField(value.FormattedValue);
-                    values.Add(parsedValue);
+                     
+                    values.Add(
+                        value.IsText 
+                            ? $"'{parsedValue}'" 
+                            : value.IsNumeric
+                                ? parsedValue.Replace(",", ".")
+                                : value.IsDateTime 
+                                    ? $"'{parsedValue}'" 
+                                    : parsedValue);
+                    //https://stackoverflow.com/questions/12957635/sql-query-to-insert-datetime-in-sql-server
                 }
 
                 CreateSqlSentence(values);
