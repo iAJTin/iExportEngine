@@ -29,7 +29,7 @@
     <Setting Name="StockProducts" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\xml\StockProducts.xml</Value>
     </Setting>
-	<Setting Name="DocxSampleTemplateInput" Type="System.String" Scope="Application">
+    <Setting Name="DocxSampleTemplateInput" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\input\template\DocxSampleTemplate.docx</Value>
     </Setting>
     <Setting Name="EPPlusSample01Configuration" Type="System.String" Scope="Application">
@@ -101,6 +101,9 @@
     <Setting Name="MDSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\writer\md\Sample01.xml</Value>
     </Setting>
+    <Setting Name="MDSample02Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\resources\configuration\writer\md\Sample02.xml</Value>
+    </Setting>
     <Setting Name="DocxSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\writer\docx\Sample01.xml</Value>
     </Setting>
@@ -119,7 +122,7 @@
     <Setting Name="SqlSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\writer\sql\Sample01.xml</Value>
     </Setting>
-    <Setting Name="DocxTemplateSample01Configuration" Type="System.String" Scope="User">
+    <Setting Name="DocxTemplateSample01Configuration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">..\..\resources\configuration\template\docx\Sample01.xml</Value>
     </Setting>
   </Settings>

@@ -468,8 +468,8 @@ namespace iTin.Export.Writers.OpenXml.Office
                                             
                                         case KnownLineType.TextLine:
                                             var textLine = (TextLineModel)line;
-                                            var itemss = textLine.Items;
-                                            foreach (var item in itemss)
+                                            var lineItems = textLine.Items;
+                                            foreach (var item in lineItems)
                                             {
                                                 if (item.Show == YesNo.No)
                                                 {

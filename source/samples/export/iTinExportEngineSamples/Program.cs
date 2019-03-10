@@ -45,6 +45,7 @@ namespace iTinExportEngineSamples
         private static TimeSpan engineSample13Time;
 
         private static TimeSpan mdSample01Time;
+        private static TimeSpan mdSample02Time;
         private static TimeSpan xmlSample01Time;
         private static TimeSpan docxSample01Time;
         private static TimeSpan sqlSample01Time;
@@ -103,8 +104,15 @@ namespace iTinExportEngineSamples
             Watch.Reset();
             #endregion
 
+            #region Sample 2 - How to add block lines
+            Watch.Start();
+            MDSample02.RunFromConfigurationFileSample();
+            mdSample02Time = Watch.Elapsed;
+            Watch.Reset();
+            #endregion
+
             #region Summary
-            WriteMarkdownElapsedTime(mdSample01Time);
+            WriteMarkdownElapsedTime(mdSample01Time, mdSample02Time);
             #endregion
 
             #endregion
@@ -559,9 +567,9 @@ namespace iTinExportEngineSamples
             Console.WriteLine();
         }
 
-        private static void WriteMarkdownElapsedTime(TimeSpan ts1)
+        private static void WriteMarkdownElapsedTime(TimeSpan ts1, TimeSpan ts2)
         {
-            var configurationTotalTime = ts1;
+            var configurationTotalTime = ts1 + ts2;
 
             Console.WriteLine();
             Console.WriteLine(@"                    Elapsed Time");
@@ -570,6 +578,7 @@ namespace iTinExportEngineSamples
             Console.WriteLine(@" Summary    Configuration       Code");
             Console.WriteLine(new string('=', 46));
             Console.WriteLine(@" Sample1    {0:00}:{1:00}.{2:00} ", ts1.Minutes, ts1.Seconds, ts1.Milliseconds / 10);
+            Console.WriteLine(@" Sample2    {0:00}:{1:00}.{2:00} ", ts2.Minutes, ts2.Seconds, ts2.Milliseconds / 10);
             Console.WriteLine(new string('-', 46));
             Console.WriteLine(@"            {0:00}:{1:00}.{2:00}", configurationTotalTime.Minutes, configurationTotalTime.Seconds, configurationTotalTime.Milliseconds / 10);
             Console.WriteLine();

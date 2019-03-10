@@ -81,6 +81,68 @@ namespace iTin.Export.Writers
             var valueStyles = fields.Select(field => Resources.Styles.GetBy(field.Value.Style).Font.FontStyles).ToList();
             var aggregateStyles = fields.Select(field => Resources.Styles.GetBy(field.Aggregate.Style).Font.FontStyles).ToList();
 
+            // Block lines
+            var blocklines = Provider.Input.Model.BlockLines;
+            var hasBlockLines = blocklines.Any();
+            if (hasBlockLines)
+            {
+                foreach (var blockline in blocklines)
+                {
+                    if (blockline.Show == YesNo.No)
+                    {
+                        continue;
+                    }
+
+                    var keyLines = blockline.Items.Keys;
+                    foreach (var keyLine in keyLines)
+                    {
+                        var line = Resources.Lines.GetBy(keyLine);
+                        if (line.Show == YesNo.No)
+                        {
+                            continue;
+                        }
+
+                        var times = line.Repeat == 0 ? 1 : line.Repeat;
+                        for (var i = 1; i <= times; i++)
+                        {
+                            var lineType = line.LineType;
+                            switch (lineType)
+                            {
+                                case KnownLineType.EmptyLine:
+                                    var emptyLine = (EmptyLineModel) line;
+                                    if (emptyLine.Show == YesNo.No)
+                                    {
+                                        continue;
+                                    }
+
+                                    _documentBuilder.AppendLine();
+                                    break;
+
+                                case KnownLineType.TextLine:
+                                    var textLine = (TextLineModel)line;
+                                    var items = textLine.Items;
+                                    var values = new Collection<string>();
+                                    foreach (var item in items)
+                                    {
+                                        if (item.Show == YesNo.No)
+                                        {
+                                            continue;
+                                        }
+
+                                        values.Add(item.Value);
+                                    }
+
+                                    _documentBuilder.Append($"### {string.Join("\t", values)}");
+                                    _documentBuilder.AppendLine();
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                _documentBuilder.AppendLine();
+            }
+
             // headers
             var idx = 0;
             _documentBuilder.Append("|");

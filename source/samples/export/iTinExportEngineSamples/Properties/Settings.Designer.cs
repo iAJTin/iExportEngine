@@ -106,6 +106,15 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\input\\template\\DocxSampleTemplate.docx")]
+        public string DocxSampleTemplateInput {
+            get {
+                return ((string)(this["DocxSampleTemplateInput"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\writer\\xlsx\\EPPlus\\Sample01.xml")]
         public string EPPlusSample01Configuration {
             get {
@@ -313,6 +322,15 @@ namespace iTinExportEngineSamples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\writer\\md\\Sample02.xml")]
+        public string MDSample02Configuration {
+            get {
+                return ((string)(this["MDSample02Configuration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\writer\\docx\\Sample01.xml")]
         public string DocxSample01Configuration {
             get {
@@ -365,15 +383,12 @@ namespace iTinExportEngineSamples.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\resources\\configuration\\template\\docx\\Sample01.xml")]
         public string DocxTemplateSample01Configuration {
             get {
                 return ((string)(this["DocxTemplateSample01Configuration"]));
-            }
-            set {
-                this["DocxTemplateSample01Configuration"] = value;
             }
         }
     }

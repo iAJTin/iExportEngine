@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="code\template\MS Word [ docx ]\DocxTemplateSample01.cs" />
+    <Compile Include="code\writer\Markdown [ md ]\MDSample02.cs" />
     <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample09.cs" />
     <Compile Include="code\writer\MS Excel [ xlsx ]\EPPlus\EPPlusSample08.cs" />
     <Compile Include="code\writer\MS Excel [ xlsx ]\ExportEngine\ExportEngineSample13.cs" />
@@ -120,6 +121,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\writer\csv\Sample01.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="resources\configuration\writer\md\Sample02.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="resources\configuration\writer\xlsx\EPPlus\Sample09.xml">

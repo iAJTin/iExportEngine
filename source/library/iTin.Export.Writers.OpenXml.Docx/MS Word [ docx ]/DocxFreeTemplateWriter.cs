@@ -57,7 +57,6 @@ namespace iTin.Export.Writers.OpenXml.Office
             File.Copy(originalTemplate, tempTemplate.OriginalString);
 
             var rows = GetRowData().ToList();
-            var ms = new MemoryStream();
             var sufix = Template.Writer.Settings.FieldSufix;
             var trimmode = Template.Writer.Settings.TrimMode;
             var prefix = Template.Writer.Settings.FieldPrefix;
@@ -108,7 +107,7 @@ namespace iTin.Export.Writers.OpenXml.Office
                             document.ReplaceText(templateField.ToString(), value);
                         }
 
-                        ms = new MemoryStream();
+                        var ms = new MemoryStream();
                         document.SaveAs(ms);
                         Result.Add(ms.ToArray());
                     }
