@@ -12,8 +12,8 @@ namespace iTin.Export.Model
     using System.Xml;
     using System.Xml.Serialization;
 
+    using ComponentModel;
     using Helpers;
-    using iTin.Export.ComponentModel;
 
     /// <summary>
     /// Base class for model elements. 
