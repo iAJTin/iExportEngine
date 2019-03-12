@@ -73,7 +73,7 @@ namespace iTin.Export.Model
         private const float DefaultTransparency = 0.0f;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 

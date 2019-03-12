@@ -90,7 +90,7 @@ namespace iTin.Export.Model
         private const KnownLegendLocation DefaultLocation = KnownLegendLocation.Right;
         #endregion
 
-        #region field member
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
 

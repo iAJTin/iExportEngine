@@ -103,7 +103,7 @@ namespace iTin.Export.Model
         private const KnownWidthLineStyle DefaultWidth = KnownWidthLineStyle.Thin;
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private YesNo _show;
         

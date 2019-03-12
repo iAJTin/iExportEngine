@@ -86,7 +86,7 @@ namespace iTin.Export.Model
         private const string DefaultColor = "Black";
         #endregion
 
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _axis;
 

@@ -57,7 +57,7 @@ namespace iTin.Export.Model
     /// </remarks>
     public partial class ChartAxesModel
     {
-        #region field members
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ChartModel _parent;
 

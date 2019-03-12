@@ -8,7 +8,7 @@ namespace iTin.Export.Model
     /// <include file='..\..\iTin.Export.Documentation.xml' path='Model/Property/Class[@name="info"]/*'/>
     public partial class PropertyModel : ICloneable
     {
-        #region field members
+        #region private fields
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private PropertiesModel _owner;
         #endregion

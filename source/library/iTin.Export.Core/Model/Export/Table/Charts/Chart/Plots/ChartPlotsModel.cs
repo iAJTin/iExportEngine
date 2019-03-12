@@ -11,7 +11,7 @@ namespace iTin.Export.Model
     /// </summary>
     public partial class ChartPlotsModel
     {
-        #region private fields
+        #region private members
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private ChartBorderModel _border;
         #endregion
