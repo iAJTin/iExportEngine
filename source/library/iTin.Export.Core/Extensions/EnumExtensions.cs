@@ -12,6 +12,15 @@ namespace iTin.Export
     public static class EnumExtensions
     {
         /// <summary>
+        /// Converts a value of the enumerated type <see cref="YesNo"/> to boolean representation
+        /// </summary>
+        /// <param name="value">Value to convert.</param>
+        /// <returns>
+        /// <c>true</c> if value is <c>Yes</c>; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool AsBoolean(this YesNo value) => value == YesNo.Yes;
+
+        /// <summary>
         /// Returns index in the enum type.
         /// </summary>
         /// <param name="item">Target item.</param>
