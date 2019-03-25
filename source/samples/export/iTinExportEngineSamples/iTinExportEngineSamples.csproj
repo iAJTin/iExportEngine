@@ -86,6 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Help\Writers.md" />
+    <None Include="Help\Templates.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -216,6 +218,8 @@
     <Content Include="resources\input\xml\Sales.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Help\assets\templates\" />
+    <Folder Include="Help\assets\writers\" />
     <Folder Include="output\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

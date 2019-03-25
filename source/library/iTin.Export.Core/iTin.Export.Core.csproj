@@ -1021,6 +1021,7 @@
     <Compile Include="Writers\XML Spreadsheet 2003 [ xml ]\Spreadsheet2003TabularWriter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="file1.md" />
     <None Include="Model\Schemas [ xsd ]\ExportModelSchema.xsd">
       <SubType>Designer</SubType>
     </None>
