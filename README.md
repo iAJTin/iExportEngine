@@ -442,8 +442,8 @@ My email address is fdo.garcia.vega@gmail.com
 
 [img0]: ./assets/writers/csv_sample01.png "csv sample1 output"
 [img1]: ./assets/writers/csv_excel_view_sample01.png "csv MS Excel view sample1 output"
-[img2]: ./assets/writers/md_Sample01.png "Markdown sample1 output"
-[img3]: ./assets/writers/md_Sample02.png "Markdown sample2 output"
+[img2]: ./assets/writers/md_sample01.png "Markdown sample1 output"
+[img3]: ./assets/writers/md_sample02.png "Markdown sample2 output"
 [img4]: ./assets/writers/xlsx_epplus_Sample01.png "EPPlus sample1 output"
 [img5]: ./assets/writers/xlsx_epplus_Sample01_Code.png "EPPlus sample1 from code output"
 [img6]: ./assets/writers/xlsx_epplus_Sample02.png "EPPlus sample2 output"
