@@ -14,7 +14,7 @@
 
   _Input template_
 
-  ![TemplateOutputFolder.png][img1]
+  ![TemplateOutputFolder.png][img50]
 
 - **Data input** (For simplicity an **xml** file has been used as input)
 
@@ -101,17 +101,17 @@
 
   _Output folder_
 
-  ![TemplateOutputFolder.png][img2]
+  ![TemplateOutputFolder.png][img51]
 
   _First output file (sample01-from-template-file0.docx)_
 
-  ![TemplateOutputFolder.png][img3]
+  ![TemplateOutputFolder.png][img52]
 
   _Last output file (sample01-from-template-file9.docx))_
 
-  ![TemplateOutputFolder.png][img4]
+  ![TemplateOutputFolder.png][img53]
 
-[img1]: ./assets/templates/DocxSampleTemplate.png "Template file"
-[img2]: ./assets/templates/TemplateOutputFolder.png "Output folder"
-[img3]: ./assets/templates/sample01-from-template-file0.png "First file (sample01-from-template-file0.docx)"
-[img4]: ./assets/templates/sample01-from-template-file9.png "First file (sample01-from-template-file9.docx)"
+[img50]: ./assets/templates/DocxSampleTemplate.png "Template file"
+[img51]: ./assets/templates/TemplateOutputFolder.png "Output folder"
+[img52]: ./assets/templates/sample01-from-template-file0.png "First file (sample01-from-template-file0.docx)"
+[img53]: ./assets/templates/sample01-from-template-file9.png "First file (sample01-from-template-file9.docx)"

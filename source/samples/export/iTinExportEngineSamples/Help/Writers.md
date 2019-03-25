@@ -10,6 +10,10 @@ Using the native writer **CsvWriter**, allows you to create **.csv** files.
 
 Creates a simple inventory list.
 
+ - Text View
+![CSV sample 1 output][img0]
+
+ - MS Excel View
 ![CSV sample 1 output][img1]
 
 ### 2. Markdown [ md ]
@@ -210,7 +214,11 @@ Using the native writer **TsvWriter**, allows you to create **.txt** files.
 
 Equals to **CSV sample1**
 
+- Text View
 ![Txt sample 1 output][img30]
+
+- MS Excel View
+![Txt sample 1 output][img31]
 
 ### 8. XML Spreadsheet 2003 [ xml ]
 
@@ -220,9 +228,10 @@ Using the native writer **Spreadsheet2003TabularWriter**, allows you to create *
 
 Equals to **EPPlus sample1**
 
-![Xml Spreadsheet 2003 sample 1 output][img31]
+![Xml Spreadsheet 2003 sample 1 output][img32]
 
-[img1]: ./assets/writers/CSV_Sample01.png "CSV sample1 output"
+[img0]: ./assets/writers/csv_sample01.png "csv sample1 output"
+[img1]: ./assets/writers/csv_excel_view_sample01.png "csv MS Excel view sample1 output"
 [img2]: ./assets/writers/md_Sample01.png "Markdown sample1 output"
 [img3]: ./assets/writers/md_Sample02.png "Markdown sample2 output"
 [img4]: ./assets/writers/xlsx_epplus_Sample01.png "EPPlus sample1 output"
@@ -252,5 +261,6 @@ Equals to **EPPlus sample1**
 [img28]: ./assets/writers/pdf_sample01.png "Pdf sample1 output"
 [img29]: ./assets/writers/sql_sample01.png "Sql sample1 output"
 [img30]: ./assets/writers/txt_sample01.png "Txt sample1 output"
-[img31]: ./assets/writers/xml_spreadsheet_2003_sample01.png "Xml Sql sample1 output"
+[img31]: ./assets/writers/txt_excel_view_sample01.png "Txt MS Excel view sample1 output"
+[img32]: ./assets/writers/xml_spreadsheet_2003_sample01.png "Xml Sql sample1 output"
 
