@@ -126,7 +126,7 @@ Same as **Sample1** but by code.
 
 #### Sample2
 
-Equals **Sample1** and A Piechart.
+Equals **Sample1** and a Piechart.
 
 ![EPPlus sample 2 output][img6]
 
@@ -312,16 +312,6 @@ Equals to **EPPlus sample1**
 
 ![Xml Spreadsheet 2003 sample 1 output][img32]
 
-
-#### Sample1
-
-Creates a simple inventory list.
-
- - Text View
-![CSV sample 1 output][img0]
-
- - MS Excel View
-![CSV sample 1 output][img1]
 
 ## Template samples
 

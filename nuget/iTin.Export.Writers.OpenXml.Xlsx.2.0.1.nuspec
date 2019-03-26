@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>iTin.Export.Writers.OpenXml.Xlsx</id>
+        <version>2.0.1</version>
+        <title>iTin.Export.Writers.OpenXml.Xlsx</title>
+        <authors>iTin</authors>
+        <owners>iTin</owners>
+        <license type="expression">MIT</license>
+        <projectUrl>https://github.com/iAJTin/iExportEngine</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Contains a xslx writer for iTin Export Engine</description>
+        <copyright>Copyright © 2016 iAJTin</copyright>
+        <tags>excel xlsx xls office export engine parsing parse itin</tags>
+        <dependencies>
+          <dependency id="iTin.Export.Core" version="2.0.1" />
+          <dependency id="EPPlus" version="4.5.3.1" />
+        </dependencies>   
+    </metadata>
+    <files>
+        <file src="..\source\library\iTin.Export.Writers.OpenXml.Xlsx\bin\Debug\iTin.Export.Writers.OpenXml.Xlsx.dll" target="lib\net40\iTin.Export.Writers.OpenXml.Xlsx.dll" />
+    </files>
+</package>

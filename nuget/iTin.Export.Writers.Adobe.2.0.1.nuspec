@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>iTin.Export.Writers.Adobe</id>
+        <version>2.0.1</version>
+        <title>iTin.Export.Writers.Adobe</title>
+        <authors>iTin</authors>
+        <owners>iTin</owners>
+        <license type="expression">MIT</license> 
+        <projectUrl>https://github.com/iAJTin/iExportEngine</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/iAJTin/iExportEngine/master/nuget/iTin.Export.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Contains a pdf native writer for iTin Export Engine</description>
+        <tags>pdf adobe office export engine parsing parse itin</tags>
+        <copyright>Copyright © 2016 iAJTin</copyright>
+        <dependencies>
+          <dependency id="iTin.Export.Core" version="2.0.1" />
+          <dependency id="iTextSharp" version="5.5.13" />
+        </dependencies>   
+    </metadata>
+    <files>
+        <file src="..\source\library\iTin.Export.Writers.Adobe\bin\Debug\iTin.Export.Writers.Adobe.dll" target="lib\net40\iTin.Export.Writers.Adobe.dll" />
+    </files>
+</package>
