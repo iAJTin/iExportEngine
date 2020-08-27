@@ -428,7 +428,9 @@ Equals to **EPPlus sample1**
 
 If you have found **iExportEngine** useful at work or in a personal project, I would love to hear about it. If you have decided not to use **iExportEngine**, please send me and email stating why this is so. I will use this feedback to improve **iExportEngine** in future releases.
 
-My email address is fdo.garcia.vega@gmail.com
+My email address is 
+
+![email.png][email] 
 
 [img0]: ./assets/writers/csv_sample01.png "csv sample1 output"
 [img1]: ./assets/writers/csv_excel_view_sample01.png "MS Excel view sample1 output"
@@ -467,3 +469,5 @@ My email address is fdo.garcia.vega@gmail.com
 [img51]: ./assets/templates/TemplateOutputFolder.png "Output folder"
 [img52]: ./assets/templates/sample01-from-template-file0.png "First file (sample01-from-template-file0.docx)"
 [img53]: ./assets/templates/sample01-from-template-file9.png "First file (sample01-from-template-file9.docx)"
+
+[email]: ./assets/email.png "email"
