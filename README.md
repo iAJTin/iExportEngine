@@ -18,6 +18,8 @@ You can export easily data from XML, DataSets, typed ArrayList, DataRow array in
 
 # Install via NuGet
 
+- From nuget gallery
+
 <table>
   <tr>
     <td>
@@ -69,6 +71,19 @@ You can export easily data from XML, DataSets, typed ArrayList, DataRow array in
     </td>
   </tr>
 </table>
+
+- From package manager console
+
+```PM> Install-Package iTin.Export.Core```
+
+
+```PM> Install-Package iTin.Export.Writers.Adobe```
+
+
+```PM> Install-Package iTin.Export.Writers.OpenXml.Xlsx```
+
+
+```PM> Install-Package iTin.Export.Writers.OpenXml.DocX```
 
 # Samples Project (iTinExportEngineSamples)
 
