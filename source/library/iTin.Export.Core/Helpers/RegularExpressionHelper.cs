@@ -121,6 +121,5 @@ namespace iTin.Export.Helpers
 
             return val.IsMatch(value);
         }
-
     }
 }

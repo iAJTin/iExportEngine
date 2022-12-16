@@ -1,8 +1,8 @@
 ﻿
+using System.ComponentModel.Composition;
+
 namespace iTin.Export.ComponentModel.Input
 {
-    using System.ComponentModel.Composition;
-
     using Model;
 
     /// <summary>

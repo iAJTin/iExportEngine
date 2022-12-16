@@ -1,14 +1,14 @@
 ﻿
+using System;
+
+using iTin.Export;
+using iTin.Export.Inputs;
+using iTin.Export.Model;
+
+using iTinExportEngineSamples.Properties;
+
 namespace iTinExportEngineSamples.Writers.Xlsx
 {
-    using System;
-
-    using iTin.Export;
-    using iTin.Export.Inputs;
-    using iTin.Export.Model;
-
-    using Properties;    
-
     public class EPPlusSample01FromCode
     {
         private const string Header = " · Running Sample 1 (From Code)";

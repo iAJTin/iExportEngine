@@ -10,7 +10,6 @@ namespace iTin.Export.Writers
     /// </summary>
     static class MarkdownExtensions
     {
-        #region [public] {static} (string) ToMarkdownTextAlignment(this KnownHorizontalAlignment): Returns appropiate Markdown syntax for specfied alignment
         /// <summary>
         /// Returns appropiate <c>Markdown</c> syntax for specfied alignment.
         /// </summary>
@@ -35,9 +34,7 @@ namespace iTin.Export.Writers
 
             return result;
         }
-        #endregion
 
-        #region [public] {static} (string) ToMarkdownStylePattern(this FontStyle): Returns appropiate Markdown syntax for specfied style(s)
         /// <summary>
         /// Returns appropiate <c>Markdown</c> syntax for specfied style(s).
         /// </summary>
@@ -147,6 +144,5 @@ namespace iTin.Export.Writers
 
             return pattern;
         }
-        #endregion
     }
 }

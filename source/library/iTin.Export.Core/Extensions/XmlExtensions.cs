@@ -1,9 +1,9 @@
 ﻿
+using System.Collections.Generic;
+using System.Xml.Linq;
+
 namespace iTin.Export
 {
-    using System.Collections.Generic;
-    using System.Xml.Linq;
-
     using Helpers;
 
     /// <summary>

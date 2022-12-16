@@ -1,16 +1,16 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using iTin.Export;
+using iTin.Export.Inputs;
+
+using iTinExportEngineSamples.Models;
+using iTinExportEngineSamples.Properties;
+
 namespace iTinExportEngineSamples.Writers.Xlsx
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-
-    using iTin.Export;
-    using iTin.Export.Inputs;
-
-    using Models;
-    using Properties;
-
     public class EPPlusSample07
     {
         private const string Header = " · Running Sample 7 (From Configuration File)";

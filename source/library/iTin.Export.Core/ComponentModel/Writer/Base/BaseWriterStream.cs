@@ -11,19 +11,16 @@ namespace iTin.Export.ComponentModel.Writer
     {
         #region protected properties
 
-        #region [protected] (ModelService) Service: Gets a reference to service render
         /// <summary>
         /// Gets a reference to service render.
         /// </summary>
         /// <value>The service.</value>
         protected ModelService Service => ModelService.Instance;
-        #endregion
 
         #endregion
 
         #region public override properties
 
-        #region [public] {override} (KnownWriterIdentifier) WriterIdentifier: Gets a value than identifies the type of writer
         /// <summary>
         /// Gets a value than identifies the type of writer.
         /// </summary>
@@ -31,13 +28,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// Always returns ​the <see cref="T:iTin.Export.ComponentModel.Writers.KnownWriterIdentifier.WriterStream" /> value.
         /// </value>
         public override KnownWriterIdentifier WriterIdentifier => KnownWriterIdentifier.WriterStream;
-        #endregion
        
         #endregion
 
         #region public methods
 
-        #region [public] (void) CreateStream(): Creates a new non based writer for markup languages
         /// <summary>
         /// Creates a new non based writer for markup languages.
         /// </summary>
@@ -45,7 +40,6 @@ namespace iTin.Export.ComponentModel.Writer
         {
             Stream = new MemoryStream();
         }
-        #endregion
 
         #endregion
     }

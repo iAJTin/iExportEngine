@@ -172,7 +172,7 @@
                   <xsl:value-of select="$testValueOfID" disable-output-escaping="yes" />
                 </Data>
                 <xsl:if test="string(number(@ID))='NaN'">
-                  <Comment ss:Autor="FERNANDOGARC2C9\fernandogarciavega">
+                  <Comment ss:Autor="DESKTOP-5FLQ159\fdoga">
                     <ss:Data xmlns="http://www.w3.org/TR/REC-html40">
                       <Font html:Face="Segoe UI" html:Size="10" html:Color="#000000">
                         <xsl:value-of select="@ID" />
@@ -201,7 +201,7 @@
                   <xsl:value-of select="$testValueOfQUANTITY" disable-output-escaping="yes" />
                 </Data>
                 <xsl:if test="string(number(@QUANTITY))='NaN'">
-                  <Comment ss:Autor="FERNANDOGARC2C9\fernandogarciavega">
+                  <Comment ss:Autor="DESKTOP-5FLQ159\fdoga">
                     <ss:Data xmlns="http://www.w3.org/TR/REC-html40">
                       <Font html:Face="Segoe UI" html:Size="10" html:Color="#000000">
                         <xsl:value-of select="@QUANTITY" />
@@ -224,7 +224,7 @@
                   <xsl:value-of select="$testValueOfPRICE" disable-output-escaping="yes" />
                 </Data>
                 <xsl:if test="string(number(@PRICE))='NaN'">
-                  <Comment ss:Autor="FERNANDOGARC2C9\fernandogarciavega">
+                  <Comment ss:Autor="DESKTOP-5FLQ159\fdoga">
                     <ss:Data xmlns="http://www.w3.org/TR/REC-html40">
                       <Font html:Face="Segoe UI" html:Size="10" html:Color="#000000">
                         <xsl:value-of select="@PRICE" />
@@ -247,7 +247,7 @@
                   <xsl:value-of select="$testValueOfVALUE" disable-output-escaping="yes" />
                 </Data>
                 <xsl:if test="string(number(@VALUE))='NaN'">
-                  <Comment ss:Autor="FERNANDOGARC2C9\fernandogarciavega">
+                  <Comment ss:Autor="DESKTOP-5FLQ159\fdoga">
                     <ss:Data xmlns="http://www.w3.org/TR/REC-html40">
                       <Font html:Face="Segoe UI" html:Size="10" html:Color="#000000">
                         <xsl:value-of select="@VALUE" />

@@ -1,13 +1,13 @@
 ﻿
+using System;
+
+using iTin.Export;
+using iTin.Export.Inputs;
+
+using iTinExportEngineSamples.Properties;
+
 namespace iTinExportEngineSamples.Writers.Xlsx
 {
-    using System;
-
-    using iTin.Export;
-    using iTin.Export.Inputs;
-
-    using Properties;
-
     public class ExportEngineSample07
     {
         private const string Header = " · Running Sample 7 (From Configuration File)";

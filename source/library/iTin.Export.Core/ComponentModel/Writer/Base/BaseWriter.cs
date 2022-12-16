@@ -1,14 +1,14 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-
     using AspNet.ComponentModel;
     using Helpers;
     using Model;
@@ -22,17 +22,22 @@ namespace iTin.Export.ComponentModel.Writer
     public abstract class BaseWriter : IWriter
     {
         #region protected constants
+
         /// <summary>
         /// Preferred alternate style name sufix.
         /// </summary>
         protected const string AlternateStyleNameSufix = "_Alternate";
+
         #endregion
 
         #region private constants
+
         private const string TransformFileExtensionConst = "xslt";
+
         #endregion
 
         #region private field members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly Collection<byte[]> _result;
 
@@ -41,11 +46,11 @@ namespace iTin.Export.ComponentModel.Writer
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private bool _disposed;
+
         #endregion
 
         #region constructor/s
 
-        #region [protected] BaseWriter(): Initializes a new instance of the class
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseWriter" /> class.
         /// </summary>
@@ -54,13 +59,11 @@ namespace iTin.Export.ComponentModel.Writer
             _result = new Collection<byte[]>();
             _optionsMetadataInformation = new WriterOptionsMetadata(this);
         }
-        #endregion
 
         #endregion
 
         #region public properties
 
-        #region [public] (Provider) Provider: Gets or sets a reference to provider for export
         /// <inheritdoc />
         /// <summary>
         /// Gets or sets a reference to provider for export.
@@ -69,9 +72,7 @@ namespace iTin.Export.ComponentModel.Writer
         /// Reference to provider to export.
         /// </value>
         public IProvider Provider { get; set; }
-        #endregion
 
-        #region [public] (Stream) Stream: Gets a reference to writer's stream
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to writer's stream.
@@ -80,9 +81,7 @@ namespace iTin.Export.ComponentModel.Writer
         /// Writer's stream reference.
         /// </value>
         public Stream Stream { get; internal set; }
-        #endregion
 
-        #region [public] (string) TransformFileExtension: Gets the transform file extension
         /// <inheritdoc />
         /// <summary>
         /// Gets the transform file extension.
@@ -91,9 +90,7 @@ namespace iTin.Export.ComponentModel.Writer
         /// A <see cref="T:System.String" /> that contains the transform file extension.
         /// </value>
         public string TransformFileExtension => TransformFileExtensionConst;
-        #endregion
 
-        #region [public] (WriterOptionsMetadata) WriterMetadata: Gets a reference that contains the extended information about this writer
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference that contains the extended information about this writer.
@@ -102,13 +99,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// A <see cref="T:iTin.Export.ComponentModel.Writer.WriterOptionsMetadata" /> that contains the extended information about this writer.
         /// </value>
         public WriterOptionsMetadata WriterMetadata => _optionsMetadataInformation;
-        #endregion
 
         #endregion
 
         #region public virtual properties
 
-        #region [public] {virtual} (HttpResponseEx) ResponseEx: Gets a reference to an object HttpResponseEx than contains the MIME type of the output stream and response header for a ASP.NET operation
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to an object <see cref="T:iTin.Export.AspNet.ComponentModel.HttpResponseEx" /> than contains the <strong>MIME</strong> type of the output stream and response header for a <strong>ASP.NET</strong> operation.
@@ -136,9 +131,7 @@ namespace iTin.Export.ComponentModel.Writer
                 };
             }
         }
-        #endregion
 
-        #region [public] {virtual} (bool) IsTransformationFile: Gets a value indicating whether this writer generates a transformation file to be processed later
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this writer generates a transformation file to be processed later.
@@ -147,13 +140,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// <strong>true</strong> if generated transform file; otherwise, <strong>false</strong>.
         /// </value>
         public virtual bool IsTransformationFile => false;
-        #endregion
 
         #endregion
 
         #region public abstract properties
 
-        #region [public] {abstract} (KnownWriterIdentifier) WriterIdentifier: Gets a value than identifies the type of writer
         /// <inheritdoc />
         /// <summary>
         /// Gets a value than identifies the type of writer.
@@ -162,13 +153,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// One of the <see cref="T:iTin.Export.ComponentModel.Writer.KnownWriterIdentifier" /> values which identifies the writer type.
         /// </value>
         public abstract KnownWriterIdentifier WriterIdentifier { get; }
-        #endregion
 
         #endregion
 
         #region protected properties
 
-        #region [protected] (Collection<byte[]>) Result: Gets enumerable of byte array containing data info
         /// <summary>
         /// Gets enumerable of byte array containing data info.
         /// </summary>
@@ -176,13 +165,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// Result of export.
         /// </value>
         protected Collection<byte[]> Result => _result;
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (void) Dispose(): Implement IDisposable. Clean managed and unmanaged resources
         /// <inheritdoc />
         /// <summary>
         /// Implement IDisposable. Clean managed and unmanaged resources.
@@ -196,9 +183,7 @@ namespace iTin.Export.ComponentModel.Writer
             // from executing a second time.
             GC.SuppressFinalize(this);
         }
-        #endregion
 
-        #region [public] (void) Generate(ExportSettings): Generates writer output
         /// <inheritdoc />
         /// <summary>
         /// Generates writer output.
@@ -226,13 +211,11 @@ namespace iTin.Export.ComponentModel.Writer
             ProcessTransformFileBehavior();
             Provider.Input.Model.Table.Exporter.Behaviors.Execute(this, settings);
         }
-        #endregion
 
         #endregion
 
         #region public virtual methods
 
-        #region [public] {virtual} (IEnumerable<byte[]>) GetAsByteArrayEnumerable(): Returns the result file as a enumeration of byte array
         /// <inheritdoc />
         /// <summary>
         /// Returns the writer result file as a enumeration of byte array
@@ -240,28 +223,21 @@ namespace iTin.Export.ComponentModel.Writer
         /// <returns>
         /// A enumeration of array of bytes than contains the writer result file content.
         /// </returns>
-        public virtual IEnumerable<byte[]> GetAsByteArrayEnumerable()
-        {
-            return Result;
-        }
-        #endregion
+        public virtual IEnumerable<byte[]> GetAsByteArrayEnumerable() => Result;
 
         #endregion
 
         #region protected abstract methods
 
-        #region [protected] {abstract} (void) Execute(): Generates output in the format supported by each specialized class
         /// <summary>
         /// Generates output in the format supported by each specialized class.
         /// </summary>
         protected abstract void Execute();
-        #endregion
 
         #endregion
 
         #region protected virtual methods
 
-        #region [protected] {virtual} (void) ReleaseManagedResources(): Releasing managed resources
         /// <summary>
         /// Releasing managed resources.
         /// </summary>
@@ -271,22 +247,18 @@ namespace iTin.Export.ComponentModel.Writer
 
             DeleteTemporaryOutputFiles();
         }    
-        #endregion
 
-        #region [protected] {virtual} (void) ReleaseUnmanagedResources(): Releasing unmanaged resources
         /// <summary>
         /// Releasing unmanaged resources.
         /// </summary>
         protected virtual void ReleaseUnmanagedResources()
         {
         }
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (void) CleanOrCreateTemporaryDirectory(): Clean or create temporary work directory and returns it
         /// <summary>
         /// Clean or create temporary work directory and returns it.
         /// </summary>
@@ -309,9 +281,7 @@ namespace iTin.Export.ComponentModel.Writer
                 Directory.CreateDirectory(tempDirectory);
             }
         }
-        #endregion
 
-        #region [private] {static} (void) DeleteTemporaryOutputFiles(): Removes the directory and intermediates files
         /// <summary>
         /// Removes the directory and intermediates files.
         /// </summary>
@@ -334,13 +304,11 @@ namespace iTin.Export.ComponentModel.Writer
             {
             }
         }
-        #endregion
 
         #endregion
 
         #region private methods
 
-        #region [private] (void) CopyResultsToOutputDirectory(): Copies the results to output directory
         /// <summary>
         /// Copies the results to output directory.
         /// </summary>
@@ -363,7 +331,6 @@ namespace iTin.Export.ComponentModel.Writer
             var searchPattern = $"*.{WriterMetadata.Extension}";
             FileHelper.CopyFiles(FileHelper.TinExportTempDirectory, outputDirectory, searchPattern, true);
         }
-        #endregion
 
         #region [private] (void) Dispose(bool): Releasing managed and unmanaged resources
         /// <summary>
@@ -409,7 +376,6 @@ namespace iTin.Export.ComponentModel.Writer
         }
         #endregion
 
-        #region [private] (void) GenerateTemporaryOutputFiles(): Generates temporary output files
         /// <summary>
         /// Generates temporary output files.
         /// </summary>
@@ -477,9 +443,7 @@ namespace iTin.Export.ComponentModel.Writer
                 throw new InvalidOperationException(Resources.ErrorMessage.TransformOperationError);
             }
         }
-        #endregion
 
-        #region [private] (void) ProcessTransformFileBehavior(): Processes the transform file behavior
         /// <summary>
         /// Processes the transform file behavior.
         /// </summary>
@@ -488,7 +452,6 @@ namespace iTin.Export.ComponentModel.Writer
             var transformBehavior = Provider.Input.Model.Table.Exporter.Behaviors.Get<TransformFileBehaviorModel>();
             transformBehavior?.Execute(this);
         }
-        #endregion
 
         #endregion
     }

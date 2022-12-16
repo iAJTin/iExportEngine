@@ -1,13 +1,13 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Diagnostics;
+using System.Linq;
+
 namespace iTin.Export.ComponentModel.Provider
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.Composition;
-    using System.ComponentModel.Composition.Hosting;
-    using System.Diagnostics;
-    using System.Linq;
-
     using Helpers;
     using Input;
     using Resources;
@@ -21,19 +21,22 @@ namespace iTin.Export.ComponentModel.Provider
     internal sealed class ProvidersCache
     {
         #region private readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly CompositionContainer _container;
+
         #endregion
 
         #region private members
+
         [ImportMany(AllowRecomposition = true)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)] 
         private List<Lazy<IProvider, IProviderOptions>> _providers;
+
         #endregion
 
         #region private constructor/s
 
-        #region [private] ProvidersCache(IInput): Initializes a new instance of the class.
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.ComponentModel.Provider.ProvidersCache" /> class.
         /// </summary>
@@ -42,13 +45,11 @@ namespace iTin.Export.ComponentModel.Provider
         {
             _container = GetCompositionContainer(input);
         }
-        #endregion
 
         #endregion
 
         #region public static methods
 
-        #region [public] {static} (ProvidersCache) Instance(IInput): Gets a reference to the cache of available providers
         /// <summary>
         /// Gets a reference to the cache of available providers.
         /// </summary>
@@ -60,13 +61,11 @@ namespace iTin.Export.ComponentModel.Provider
         {
             return new ProvidersCache(input);
         }
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (IProvider) GetProvider(InputOptionsMetadata): Gets the provider specified from cache
         /// <summary>
         /// Gets the provider specified from cache.
         /// </summary>
@@ -89,13 +88,11 @@ namespace iTin.Export.ComponentModel.Provider
 
             throw new InvalidOperationException(ErrorMessage.CacheWriterNotFound);
         }
-        #endregion
 
         #endregion
 
         #region private methods
 
-        #region [private] (CompositionContainer) GetCompositionContainer(IInput): Gets provider repository
         /// <summary>
         /// Gets provider repository.
         /// </summary>
@@ -123,10 +120,6 @@ namespace iTin.Export.ComponentModel.Provider
                     container = tempContainer;
                     tempContainer = null;
                 }
-                catch
-                {
-                    throw;
-                }
                 finally
                 {
                     tempContainer?.Dispose();
@@ -135,7 +128,6 @@ namespace iTin.Export.ComponentModel.Provider
 
             return container;
         }
-        #endregion
 
         #endregion
     }

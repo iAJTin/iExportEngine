@@ -1,9 +1,9 @@
 ﻿
+using System;
+using System.ComponentModel.Composition;
+
 namespace iTin.Export.ComponentModel.Provider
 {
-    using System;
-    using System.ComponentModel.Composition;
-
     /// <summary>
     /// Declares extra metadata to a provider.
     /// All providers created by <strong>iTin Export Engine</strong> are based in <a href="http://msdn.microsoft.com/es-es/library/dd460648.aspx">Managed Extensibility Framework <strong>(MEF)</strong></a>.

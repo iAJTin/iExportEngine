@@ -14,7 +14,6 @@ namespace iTin.Export.AspNet
     {
         #region public static methods
 
-        #region [public] {static} (void) Download(this Stream, string, HttpResponse): Downloads the specified data with the name specified in fileName.
         /// <summary>
         /// Downloads the specified data with the name specified in <paramref name="fileName"/>.
         /// </summary>
@@ -36,13 +35,11 @@ namespace iTin.Export.AspNet
 
             target.DownloadImpl(info);
         }
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (void) DownloadImpl(this Stream, HttpResponseEx): Downloads specified file with the extended response information
         /// <summary>
         /// Downloads the specified file in <paramref name="info"/>.
         /// </summary>
@@ -59,7 +56,6 @@ namespace iTin.Export.AspNet
             info.Response.Flush();
             info.Response.End();
         }
-        #endregion
 
         #endregion
     }

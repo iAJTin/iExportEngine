@@ -1,10 +1,10 @@
 ﻿
+using System;
+using System.IO;
+using System.Xml.Xsl;
+
 namespace iTin.Export
 {
-    using System;
-    using System.IO;
-    using System.Xml.Xsl;
-
     using Helpers;
 
     /// <summary>

@@ -1,8 +1,8 @@
 ﻿
+using System.IO;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System.IO;
-
     /// <summary>
     /// Declares a writer which is non-based in an markup language.
     /// </summary>

@@ -1,17 +1,17 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel.Composition;
-    using System.ComponentModel.Composition.Hosting;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-
     using Helpers;
     using Model;
 
@@ -24,32 +24,39 @@ namespace iTin.Export.ComponentModel.Writer
     internal sealed class WritersCache
     {
         #region private static readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly object SyncLock = new object();
+
         #endregion
 
         #region private static volatile members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static volatile WritersCache _instance;
+
         #endregion
 
         #region private readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly CompositionContainer _container;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly List<FileSystemWatcher> _watchers;
+
         #endregion
 
         #region private members
+
         [ImportMany(AllowRecomposition = true)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)] 
         private List<Lazy<IWriter, IWriterOptions>> _writers;
+
         #endregion
 
         #region constructor/s
 
-        #region [private] WritersCache(WritersCacheSettings): Initializes a new instance of the class.
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.ComponentModel.Writer.WritersCache" /> class.
         /// </summary>
@@ -62,13 +69,11 @@ namespace iTin.Export.ComponentModel.Writer
             _watchers = new List<FileSystemWatcher>();
             _container = GetCompositionContainer(settings);
         }
-        #endregion
 
         #endregion
 
         #region finalizer
 
-        #region ~WritersCache(): Finalizes this instance
         /// <summary>
         /// Finalizes an instance of the <see cref="T:iTin.Export.ComponentModel.Writer.WritersCache"/> class.
         /// </summary>
@@ -90,13 +95,11 @@ namespace iTin.Export.ComponentModel.Writer
 
             _instance = null;
         }
-        #endregion
 
         #endregion
 
         #region public static methods
 
-        #region [public] {static} (WritersCache) Instance(WritersCacheSettings): Gets a reference to the cache of available writers
         /// <summary>
         /// Gets a reference to the cache of available writers.
         /// </summary>
@@ -123,9 +126,7 @@ namespace iTin.Export.ComponentModel.Writer
 
             return _instance;
         }
-        #endregion
 
-        #region [public] {static} (WritersCacheSettings) CreateWriterSettingsFromModel(WriterModelBase): Creates the settings from specified model
         /// <summary>
         /// Creates the settings from specified model.
         /// </summary>
@@ -163,13 +164,11 @@ namespace iTin.Export.ComponentModel.Writer
 
             return new WritersCacheSettings { Items = itemsPath };
         }
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (IWriter) GetWriter(WriterModel): Gets the writer specified from cache
         /// <summary>
         /// Gets the writer specified from cache.
         /// </summary>
@@ -177,7 +176,6 @@ namespace iTin.Export.ComponentModel.Writer
         /// <returns>
         /// Writer instance.
         /// </returns>
-        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public IWriter GetWriter(WriterModel model)
         {
             SentinelHelper.ArgumentNull(model);
@@ -220,13 +218,11 @@ namespace iTin.Export.ComponentModel.Writer
 
             throw new InvalidOperationException(Resources.ErrorMessage.CacheWriterNotFound);
         }
-        #endregion
 
         #endregion
 
         #region private event handles
 
-        #region [private] (void) OnWriterWatcherChanged(object, FileSystemEventArgs): Called when writer watcher changed
         /// <summary>
         /// Called when writer watcher changed.
         /// </summary>
@@ -236,13 +232,11 @@ namespace iTin.Export.ComponentModel.Writer
         {
             ((DirectoryCatalog)_container.Catalog).Refresh();
         }
-        #endregion
 
         #endregion
 
         #region private methods
 
-        #region [private] (CompositionContainer) GetCompositionContainer(WritersCacheSettings): Gets writers repository
         /// <summary>
         /// Gets writers repository.
         /// </summary>
@@ -274,16 +268,9 @@ namespace iTin.Export.ComponentModel.Writer
                 try
                 {
                     tempContainer = new CompositionContainer(catalog);
-                    try
-                    {
-                        tempContainer.ComposeParts(this);
-                        container = tempContainer;
-                        tempContainer = null;
-                    }
-                    catch (CompositionException)
-                    {
-                        throw;
-                    }
+                    tempContainer.ComposeParts(this);
+                    container = tempContainer;
+                    tempContainer = null;
                 }
                 finally
                 {
@@ -293,9 +280,7 @@ namespace iTin.Export.ComponentModel.Writer
 
             return container;
         }
-        #endregion
 
-        #region [private] (FileSystemWatcher) GetWriterWatcher(string): Gets watcher to the writer's path
         /// <summary>
         /// Gets watcher to the writer's path.
         /// </summary>
@@ -324,7 +309,6 @@ namespace iTin.Export.ComponentModel.Writer
 
             return watcher;
         }
-        #endregion
 
         #endregion
     }

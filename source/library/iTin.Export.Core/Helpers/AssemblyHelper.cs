@@ -1,10 +1,10 @@
 ﻿
+using System;
+using System.IO;
+using System.Reflection;
+
 namespace iTin.Export.Helpers
 {
-    using System;
-    using System.IO;
-    using System.Reflection;
-
     /// <summary> 
     /// Static class which contains methods for retrieve <see cref="T:System.Assembly" /> information.
     /// </summary>

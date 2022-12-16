@@ -1,12 +1,12 @@
 ﻿
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Text;
+using System.Xml;
+
 namespace iTin.Export.Writers
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.Text;
-    using System.Xml;
-
     using Helpers;
     using Model;
 
@@ -15,7 +15,6 @@ namespace iTin.Export.Writers
     /// </summary>
     static class Spreadsheet2003Extensions
     {
-        #region [public] {static} (string) ToSpreadsheet(this FieldAggregateModel, YesNo): Gets the appropriate formula for this aggregate
         /// <summary>
         /// Gets the appropriate formula for this aggregate.
         /// </summary>
@@ -71,9 +70,7 @@ namespace iTin.Export.Writers
 
             return result;
         }
-        #endregion
 
-        #region [public] {static} (string) ToSpreadsheetDataFormat(this string, BaseDataTypeModel): Gets data format from model
         /// <summary>
         /// Gets data format from model.
         /// </summary>
@@ -222,9 +219,7 @@ namespace iTin.Export.Writers
                 #endregion
             }
         }
-        #endregion
 
-        #region [public] {static} (string) ToSpreadsheetDataType(this KnownDataType): Converts generic data type to spreadsheet datatype
         /// <summary>
         /// Converts generic data type to spreadsheet data type.
         /// </summary>
@@ -251,9 +246,7 @@ namespace iTin.Export.Writers
                     return "String";
             }
         }
-        #endregion
 
-        #region [public] {static} (int) ToSpreadsheetPaperSize(this KnownDocumentSize): Converter for KnownDocumentSize enumeration type to int value
         /// <summary>
         /// Converter for <see cref="T:iTin.Export.Model.KnownDocumentSize"/> enumeration type to <see cref="T:System.Int32"/>.
         /// </summary>
@@ -318,9 +311,7 @@ namespace iTin.Export.Writers
 
             return paperSize;
         }
-        #endregion
 
-        #region [public] {static} (void) WriteDataFieldErrorComment(this XmlWriter, string, Style): Writes a error comment for specified field
         /// <summary>
         /// Writes a error comment for specified field.
         /// </summary>
@@ -388,9 +379,7 @@ namespace iTin.Export.Writers
                 Spreadsheet2003Helper.WriteErrorComment(writer, xmlFieldName, commentModel, autorComment);
             writer.WriteXsltEndIf();
         }
-        #endregion
 
-        #region [public] {static} (void) WriteDataFieldErrorComment(this XmlWriter, FixedFieldModel, Style): Writes a error comment for specified field
         /// <summary>
         /// Writes a error comment for specified field.
         /// </summary>
@@ -458,9 +447,7 @@ namespace iTin.Export.Writers
                 Spreadsheet2003Helper.WriteErrorComment(writer, xmlFieldName, commentModel, autorComment);
             writer.WriteXsltEndIf();
         }
-        #endregion
 
-        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, string, StyleModel, string): Writes a test for specified data field and returns the appropiate format for this data field
         /// <summary>
         /// Writes a test for specified data field and returns the appropriate format for this data field.
         /// </summary>
@@ -679,9 +666,7 @@ namespace iTin.Export.Writers
 
             return valueBuilder.ToString();
         }
-        #endregion
 
-        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, FixedFieldModel, FixedItemModel, StyleModel): Writes a test for specified data field and returns the appropiate format for this data field
         /// <summary>
         /// Writes a test for specified fixed data field and returns the appropriate format for this data field.
         /// </summary>
@@ -919,9 +904,7 @@ namespace iTin.Export.Writers
 
             return valueBuilder.ToString();
         }
-        #endregion
 
-        #region [public] {static} (string) WriteTestSpreadsheet2003Field(this XmlWriter, GroupFieldModel, GroupModel): Writes a test for specified group field and returns the appropiate format for this data field
         /// <summary>
         /// Writes a test for specified group field and returns the appropriate format for this data field.
         /// </summary>
@@ -932,7 +915,6 @@ namespace iTin.Export.Writers
         /// <returns>
         /// A <see cref="T:System.String" /> containing the appropriate format for this group field.
         /// </returns>
-        [SuppressMessage("Microsoft.Globalization", "CA1303:No pasar cadenas literal como parámetros localizados", MessageId = "System.Xml.XmlWriter.WriteComment(System.String)")]
         public static string WriteTestSpreadsheet2003Field(this XmlWriter writer, GroupFieldModel field, GroupModel groupModel, TableModel table)
         {
             var fieldName = field.Name;
@@ -1184,6 +1166,5 @@ namespace iTin.Export.Writers
 
             return valueBuilder.ToString();
         }
-        #endregion
     }
 }

@@ -1,9 +1,9 @@
 ﻿
+using System.Collections.Generic;
+using System.Data;
+
 namespace iTin.Export.Inputs
 {
-    using System.Collections.Generic;
-    using System.Data;
-
     using ComponentModel.Input;
     using Helpers;
     using Providers;

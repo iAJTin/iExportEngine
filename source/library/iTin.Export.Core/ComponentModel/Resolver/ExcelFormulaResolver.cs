@@ -1,9 +1,9 @@
 ﻿
+using System.Diagnostics;
+using System.Globalization;
+
 namespace iTin.Export.ComponentModel
 {
-    using System.Diagnostics;
-    using System.Globalization;
-
     using Model;
 
     /// <summary>
@@ -12,13 +12,14 @@ namespace iTin.Export.ComponentModel
     public class ExcelFormulaResolver
     {
         #region private readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly FieldAggregateModel _model;
+
         #endregion
 
         #region constructor/s
 
-        #region [public] ExcelFormulaResolver(FieldAggregateModel): Initializes a new instance of the class
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.ComponentModel.ExcelFormulaResolver" /> class.
         /// </summary>
@@ -27,13 +28,11 @@ namespace iTin.Export.ComponentModel
         {
             _model = aggregate;
         }
-        #endregion
 
         #endregion
 
         #region public properties
 
-        #region [public] (int) EndRow: Gets or sets a value that represents the end row of the range
         /// <summary>
         /// Gets or sets a value that represents the end row of the range.
         /// </summary>
@@ -41,9 +40,7 @@ namespace iTin.Export.ComponentModel
         /// End row of the range.
         /// </value>
         public int EndRow { private get; set; }
-        #endregion
 
-        #region [public] (YesNo) HasAutofilter: Gets or sets a value indicating whether the auto filter is enabled
         /// <summary>
         /// Gets or sets a value indicating whether the auto filter is enabled.
         /// </summary>
@@ -51,9 +48,7 @@ namespace iTin.Export.ComponentModel
         /// <c>true</c> if auto filter is enabled; otherwise, <c>false</c>.
         /// </value>
         public YesNo HasAutoFilter { private get; set; }
-        #endregion
 
-        #region [public] (int) StartRow: Gets or sets a value that represents the start row of the range
         /// <summary>
         /// Gets or sets a value that represents the start row of the range.
         /// </summary>
@@ -61,13 +56,11 @@ namespace iTin.Export.ComponentModel
         /// Start row of the range.
         /// </value>
         public int StartRow { private get; set; }
-        #endregion
 
         #endregion
             
         #region public methods
 
-        #region [public] (string) Resolve(): Returns string containing aggregate's formula
         /// <summary>
         /// Returns string containing aggregate's formula.
         /// </summary>
@@ -117,7 +110,6 @@ namespace iTin.Export.ComponentModel
 
             return result;
         }
-        #endregion
 
         #endregion
     }

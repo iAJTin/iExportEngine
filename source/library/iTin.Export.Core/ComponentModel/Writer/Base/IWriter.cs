@@ -1,10 +1,10 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-
     using AspNet.ComponentModel;
     using Provider;
 

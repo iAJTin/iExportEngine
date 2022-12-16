@@ -1,9 +1,9 @@
 
+using System;
+using System.CodeDom.Compiler;
+
 namespace iTin.Export.Model
 {
-    using System;
-    using System.CodeDom.Compiler;
-
     /// <summary>
     /// Specifies known locations for mini-charts by column
     /// </summary>

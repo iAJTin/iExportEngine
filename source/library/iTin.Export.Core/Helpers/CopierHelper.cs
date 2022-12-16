@@ -1,11 +1,11 @@
 ﻿
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 namespace iTin.Export.Helpers
 {
-    using System;
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
-
     /// <summary> 
     /// Static class than contains methods for cloning objects.
     /// </summary>

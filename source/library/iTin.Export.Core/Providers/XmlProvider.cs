@@ -1,10 +1,10 @@
 ﻿
+using System;
+using System.ComponentModel.Composition;
+using System.Diagnostics;
+
 namespace iTin.Export.Providers
 {
-    using System;
-    using System.ComponentModel.Composition;
-    using System.Diagnostics;
-
     using ComponentModel.Provider;
     using Helpers;
 

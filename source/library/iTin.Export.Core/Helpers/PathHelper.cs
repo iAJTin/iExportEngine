@@ -1,9 +1,9 @@
 ﻿
+using System;
+using System.IO;
+
 namespace iTin.Export.Helpers
 {
-    using System;
-    using System.IO;
-
     /// <summary>
     /// Helper class for build relative and absolute path's.
     /// </summary>

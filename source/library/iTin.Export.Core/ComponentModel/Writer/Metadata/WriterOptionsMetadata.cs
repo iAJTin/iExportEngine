@@ -1,10 +1,10 @@
 
+using System;
+using System.Diagnostics;
+using System.Linq;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System;
-    using System.Diagnostics;
-    using System.Linq;
-
     /// <summary>
     /// Defines a value that contains the detailed information of a <see cref="T:iTin.Export.ComponentModel.Writer.IWriter" />.
     /// </summary>
@@ -168,7 +168,6 @@ namespace iTin.Export.ComponentModel.Writer
 
         #region public override methods
 
-        #region [public] {override} (bool) Equals(object obj): Determines whether the specified object is equal to this instance
         /// <summary>
         /// Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
         /// </summary>
@@ -184,35 +183,25 @@ namespace iTin.Export.ComponentModel.Writer
             }
 
             var other = (WriterOptionsMetadata)obj;
+
             return other.GetHashCode() == GetHashCode();
         }
-        #endregion
 
-        #region [public] {override} (int) GetHashCode(): Returns a hash code for this instance
         /// <summary>
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
         /// </returns>
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
-        #endregion
+        public override int GetHashCode() => ToString().GetHashCode();
 
-        #region [public] {override} (string) ToString(): Returns a string that represents the current object
         /// <summary>
         /// Returns a <see cref="T:System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
         /// A <see cref="T:System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
-        {
-            return $"Name=\"{Name}\", Author=\"{Author}\", Company=\"{Company}\", Version={Version}";
-        }
-        #endregion
+        public override string ToString() => $"Name=\"{Name}\", Author=\"{Author}\", Company=\"{Company}\", Version={Version}";
 
         #endregion
     }

@@ -1,9 +1,9 @@
 ﻿
+using System.Data;
+using System.Linq;
+
 namespace iTin.Export.Inputs
 {
-    using System.Data;
-    using System.Linq;
-
     using ComponentModel.Input;
     using Helpers;
     using Providers;

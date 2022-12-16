@@ -1,8 +1,8 @@
 ﻿
+using System;
+
 namespace iTin.Export
 {
-    using System;
-
     using ComponentModel;
 
     /// <summary>

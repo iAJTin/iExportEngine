@@ -1,12 +1,11 @@
 ﻿
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Mail;
+
 namespace iTin.Export.Helpers
 {
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Net;
-    using System.Net.Mail;
-
     using Model;
 
     /// <summary>
@@ -15,13 +14,14 @@ namespace iTin.Export.Helpers
     class MailHelper
     {
         #region private members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly MailServerModel server;
+
         #endregion
 
         #region constructor/s
 
-        #region [public] MailHelper(MailServerModel): Initializes a new instance of this class
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Helper.Mail" /> class.
         /// </summary>
@@ -32,13 +32,11 @@ namespace iTin.Export.Helpers
 
             this.server = server;
         }
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (void) SendMail(string, MailMessage): Sends mail with specified credential synchronously
         /// <summary>
         /// Sends mail with specified credential synchronously.
         /// </summary>
@@ -51,16 +49,13 @@ namespace iTin.Export.Helpers
                                               
             SendMail(credential, message, false);                
         }
-        #endregion
 
-        #region [public] (void) SendMail(string, MailMessage, bool): Sends mail with specified credential synchronously or asynchronously
         /// <summary>
         /// Sends mail with specified credential synchronously or asynchronously.
         /// </summary>
         /// <param name="credential">The name of credential.</param>
         /// <param name="message">Message to send.</param>
         /// <param name="asAsync">if is <strong>true</strong> send mail asynchronously.</param>
-        [SuppressMessage("Microsoft.Reliability", "CA2000:Eliminar (Dispose) objetos antes de perder el ámbito")]
         public void SendMail(string credential, MailMessage message, bool asAsync)
         {
             SentinelHelper.ArgumentNull(message);
@@ -92,13 +87,11 @@ namespace iTin.Export.Helpers
                 client.Send(message);               
             }
         }
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (void) SendCompletedCallback(object, AsyncCompletedEventArgs): Sends the completed callback
         /// <summary>
         /// Sends the completed callback.
         /// </summary>
@@ -120,7 +113,6 @@ namespace iTin.Export.Helpers
                 message.Dispose();
             }                
         }
-        #endregion
 
         #endregion
     }

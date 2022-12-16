@@ -1,13 +1,13 @@
 ﻿
+using System;
+
+using iTin.Export;
+using iTin.Export.Inputs;
+
+using iTinExportEngineSamples.Properties;
+
 namespace iTinExportEngineSamples.Writers.PortableDocumentFormat
 {
-    using System;
-
-    using iTin.Export;
-    using iTin.Export.Inputs;
-
-    using Properties;
-
     public class PdfSample01
     {
         private const string Header = " · Running Sample 1 (From Configuration File)";

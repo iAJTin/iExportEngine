@@ -1,13 +1,13 @@
 ﻿
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+
 namespace iTin.Export
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Linq;
-
     /// <summary>
     /// Static class than contains extension methods for generic enumerable objects.
     /// </summary> 

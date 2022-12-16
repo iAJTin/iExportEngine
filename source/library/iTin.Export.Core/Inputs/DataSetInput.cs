@@ -1,8 +1,8 @@
 ﻿
+using System.Data;
+
 namespace iTin.Export.Inputs
 {
-    using System.Data;
-
     using ComponentModel.Input;
     using Providers;
 

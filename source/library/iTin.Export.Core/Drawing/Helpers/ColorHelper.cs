@@ -12,7 +12,6 @@ namespace iTin.Export.Drawing.Helper
     {
         #region public static methods
 
-        #region [public] {static} (Color) GetColorFromString(string): Returns a color structure from its name, its hexdecimal encoding or from color space definition.
         /// <summary>
         /// Returns a new <see cref="T:System.Drawing.Color"/> structure from its name, its hexdecimal encoding or from color space definition.
         /// </summary>
@@ -127,9 +126,7 @@ namespace iTin.Export.Drawing.Helper
 
             return Color.FromName(value);
         }
-        #endregion
 
-        #region [public] {static} (Color) MergeColors(Color, float, Color, float): Combine two colors with relative percentages.
         /// <summary>
         /// Combine two colors with relative percentages.
         /// </summary>
@@ -140,13 +137,8 @@ namespace iTin.Export.Drawing.Helper
         /// <returns>
         /// Returns a new <see cref="T:System.Drawing.Color" /> structure as result of the combination.
         /// </returns>
-        public static Color MergeColors(Color color1, float percent1, Color color2, float percent2)
-        {
-            return MergeColors(color1, percent1, color2, percent2, Color.Empty, 0f);
-        }
-        #endregion
+        public static Color MergeColors(Color color1, float percent1, Color color2, float percent2) => MergeColors(color1, percent1, color2, percent2, Color.Empty, 0f);
 
-        #region [public] {static} (Color) MergeColors(Color, float, Color, float, Color, float): Combine three colors with relative percentages.
         /// <summary>
         /// Combinar tres colores con porcentajes relativos.
         /// </summary>
@@ -197,9 +189,7 @@ namespace iTin.Export.Drawing.Helper
 
             return Color.FromArgb(red, green, blue);
         }
-        #endregion
 
-        #region [public] {static} (Color) ToGray(Color): Converts specified color to grayscale.
         /// <summary>
         /// Converts specified color to grayscale.
         /// </summary>
@@ -213,9 +203,7 @@ namespace iTin.Export.Drawing.Helper
             color = Color.FromArgb(gray, gray, gray);
             return color;
         }
-        #endregion
 
-        #region [public] {static} (string) ToHex(Color): Returns the hexadecimal encoding of a color.
         /// <summary>
         /// Returns the hexadecimal encoding of a color.
         /// </summary>
@@ -248,9 +236,7 @@ namespace iTin.Export.Drawing.Helper
         {
             return value.ToHex();
         }
-    #endregion
 
-        #region [public] {static} (Color) ToTransparencyLevel(Color, int): Sets transparency level of specified color.
         /// <summary>
         /// Sets transparency level of specified color.
         /// </summary>
@@ -272,13 +258,11 @@ namespace iTin.Export.Drawing.Helper
             color = Color.FromArgb(opacity, color);
             return color;
         }
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (Color) FromSpaceColor(string): A color obtained from the color percentage of each of its components.
         /// <summary>
         /// A color obtained from the color percentage of each of its components.
         /// </summary>
@@ -307,7 +291,6 @@ namespace iTin.Export.Drawing.Helper
 
             return Color.FromArgb((int)r, (int)g, (int)b);
         }
-        #endregion
 
         #endregion
     }

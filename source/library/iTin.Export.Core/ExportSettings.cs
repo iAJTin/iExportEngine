@@ -1,13 +1,12 @@
 ﻿
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Xml.Schema;
+
 namespace iTin.Export
 {
-    using System;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Text;
-    using System.Xml.Schema;
-
     using Helpers;
     using Model;
 
@@ -17,16 +16,17 @@ namespace iTin.Export
     public class ExportSettings
     {
         #region private field members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Uri _outputFile;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Uri _transformFile;
+
         #endregion
 
         #region public properties
 
-        #region [public] (string) From: Gets or sets a value indicating name of the data model to use
         /// <summary>
         /// Gets or sets a value indicating name of the data model to use.
         /// </summary>
@@ -34,9 +34,7 @@ namespace iTin.Export
         /// A <see cref="T:System.String" /> which contains the name of the data model to use. 
         /// </value>        
         public string From { get; set; }
-        #endregion
 
-        #region [public] (bool) IsEmpty: Gets a value indicating whether this object is empty
         /// <summary>
         /// Gets a value indicating whether this object is empty.
         /// </summary>
@@ -44,9 +42,7 @@ namespace iTin.Export
         /// <strong>true</strong> if empty; otherwise, <strong>false</strong>.
         /// </value>        
         public bool IsEmpty => OutputFile == null && TransformFile == null;
-        #endregion
        
-        #region [public] (Uri) OutputFile: Gets or set a value that represents the path of the output file
         /// <summary>
         /// Gets or sets a value that represents the path of the output file.
         /// </summary>
@@ -62,9 +58,7 @@ namespace iTin.Export
                 _outputFile = value;
             }
         }
-        #endregion
 
-        #region [public] (Uri) TransformFile: Gets or set a value that represents the path of the transform file
         /// <summary>
         /// Gets or sets a value that represents the path of the transform file.
         /// </summary>
@@ -80,13 +74,11 @@ namespace iTin.Export
                 _transformFile = value;
             }
         }
-        #endregion
 
         #endregion
 
         #region protected properties
 
-        #region [protected] {internal} (Uri) ConfigurationFile: Gets or sets a value that represents the path of the configuration file
         /// <summary>
         /// Gets or sets a value that represents the path of the configuration file.
         /// </summary>
@@ -95,13 +87,11 @@ namespace iTin.Export
         /// </value>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Uri ConfigurationFile { get; set; }
-        #endregion
 
         #endregion
 
         #region private properties
 
-        #region [private] (bool) HasConfiguration: Gets a value indicating whether this object is empty
         /// <summary>
         /// Gets a value indicating whether this object is empty.
         /// </summary>
@@ -110,13 +100,11 @@ namespace iTin.Export
         /// </value>        
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private bool HasConfiguration => ConfigurationFile != null;
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (ExportsModel) LoadModelFrom(Uri): Import general properties from a configuration file
         /// <summary>
         /// Import general properties from a configuration file.
         /// </summary>
@@ -156,13 +144,11 @@ namespace iTin.Export
 
             return model;
         }
-        #endregion
 
         #endregion
 
         #region public static methods
 
-        #region [public] {static} (ExportSettings) ImportFrom(Uri): Returns a export settings object reference from a configuration file
         /// <summary>
         /// Returns a export settings object reference from a configuration file.
         /// </summary>
@@ -171,14 +157,8 @@ namespace iTin.Export
         /// A <see cref="T:iTin.Export.ExportSettings" /> object that represents export settings.
         /// </returns>
         /// <exception cref="System.IO.FileNotFoundException">File exception</exception>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
-        public static ExportSettings ImportFrom(Uri configuration)
-        {
-            return ImportFrom(configuration, string.Empty);
-        }
-        #endregion
+        public static ExportSettings ImportFrom(Uri configuration) => ImportFrom(configuration, string.Empty);
 
-        #region [public] {static} (ExportSettings) ImportFrom(Uri, string): Returns a reference which contains specified export data model from the specified configuration file
         /// <summary>
         /// Returns a reference which contains specified export data model from the specified configuration file
         /// </summary>
@@ -188,7 +168,6 @@ namespace iTin.Export
         /// A <see cref="T:iTin.Export.ExportSettings" /> object that represents export settings.
         /// </returns>
         /// <exception cref="System.IO.FileNotFoundException">File exception</exception>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
         public static ExportSettings ImportFrom(Uri configuration, string from)
         {
             SentinelHelper.ArgumentNull(configuration);
@@ -208,9 +187,7 @@ namespace iTin.Export
 
             return settings;
         }
-        #endregion
 
-        #region [public] {static} (ExportSettings) CreateFromModels(ExportsModel): Returns a export settings object reference from a data model
         /// <summary>
         /// Returns a export settings object reference from a data model.
         /// </summary>
@@ -218,14 +195,8 @@ namespace iTin.Export
         /// <returns>
         /// A <see cref="T:iTin.Export.ExportSettings" /> object that represents export settings.
         /// </returns>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
-        public static ExportSettings CreateFromModels(ExportsModel model)
-        {
-            return CreateFromModels(model, string.Empty);
-        }
-        #endregion
+        public static ExportSettings CreateFromModels(ExportsModel model) => CreateFromModels(model, string.Empty);
 
-        #region [public] {static} (ExportSettings) CreateFromModels(ExportsModel, string): Returns a reference which contains specified export data model from the specified data model
         /// <summary>
         /// Returns a reference which contains specified export data model from the specified data model.
         /// </summary>
@@ -235,7 +206,6 @@ namespace iTin.Export
         /// A <see cref="T:iTin.Export.ExportSettings" /> object that represents export settings.
         /// </returns>
         /// <exception cref="System.IO.FileNotFoundException">File exception</exception>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
         public static ExportSettings CreateFromModels(ExportsModel model, string from)
         {
             SentinelHelper.ArgumentNull(from);
@@ -259,9 +229,7 @@ namespace iTin.Export
 
             return settings;
         }
-        #endregion
 
-        #region [public] {static} (bool) TryGetConfigurationFile(ExportSettings, out Uri): Try to get the configuration file from a ExportSettings reference. Returns a value indicating if it was possible to obtain the configuration file
         /// <summary>
         /// Try to get the configuration file from a <see cref="T:iTin.Export.ExportSettings" /> reference. Returns a value indicating if it was possible to obtain the configuration file.
         /// </summary>
@@ -270,7 +238,6 @@ namespace iTin.Export
         /// <returns>
         /// <strong>true</strong> if it was possible to obtain the configuration file; otherwise <strong>false</strong>.
         /// </returns>
-        [SuppressMessage("Microsoft.Design", "CA1062:Validar argumentos de métodos públicos", MessageId = "0")]
         public static bool TryGetConfigurationFile(ExportSettings settings, out Uri configuration)
         {
             SentinelHelper.ArgumentNull(settings);
@@ -285,7 +252,6 @@ namespace iTin.Export
             configuration = null;
             return false;
         }
-        #endregion
 
         #endregion
     }

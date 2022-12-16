@@ -1,12 +1,11 @@
 ﻿
+using System;
+
+using iTin.Export;
+using iTin.Export.Inputs;
+
 namespace iTinExportEngineSamples.Writers.Xlsx
 {
-    using System;
-
-    using iTin.Export;
-    using iTin.Export.ComponentModel.Input;
-    using iTin.Export.Inputs;
-
     using Properties;
 
     public class EPPlusSample06

@@ -1,9 +1,9 @@
 
+using System;
+using System.ComponentModel;
+
 namespace iTin.Export.ComponentModel
 {
-    using System;
-    using System.ComponentModel;
-
     /// <summary>
     /// Especifica una descripción para un elemento de tipo enumerado.
     /// </summary>

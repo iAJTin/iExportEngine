@@ -1,12 +1,12 @@
 ﻿
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+
 namespace iTin.Export.Writers
 {
-    using System.Collections.ObjectModel;
-    using System.ComponentModel.Composition;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Text;
-
     using ComponentModel;
     using ComponentModel.Writer;
     using Model;
@@ -20,23 +20,28 @@ namespace iTin.Export.Writers
     public class MarkdownWriter : BaseWriterDirect
     {
         #region private constant members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private const string DelimiterChar = "\t";
+
         #endregion
 
         #region private static readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly char[] IllegalChars = { '"', ';', DelimiterChar.ToCharArray()[0] };
+
         #endregion
 
         #region private members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private StringBuilder _documentBuilder;
+
         #endregion
 
         #region private properties
 
-        #region [private] (GlobalResourcesModel) Resources: Gets a reference to the model global resources
         /// <summary>
         /// Gets a reference to the model global resources.
         /// </summary>
@@ -44,9 +49,7 @@ namespace iTin.Export.Writers
         /// Reference to the model global resources.
         /// </value>
         private GlobalResourcesModel Resources => Provider.Input.Resources;
-        #endregion
 
-        #region [private] (TableModel) Table: Gets a reference to the table
         /// <summary>
         /// Gets a reference to the table.
         /// </summary>
@@ -54,13 +57,11 @@ namespace iTin.Export.Writers
         /// Reference to the model table.
         /// </value>
         private TableModel Table => Provider.Input.Model.Table;
-        #endregion
 
         #endregion
 
         #region protected override methods
 
-        #region [protected] {override} (void) Execute(): Generates the output in tab-separated values ​​format
         /// <inheritdoc />
         /// <summary>
         /// Generates the output in tab-separated values ​​format.
@@ -254,13 +255,11 @@ namespace iTin.Export.Writers
             // add document to result list.
             Result.Add(Encoding.UTF8.GetBytes(_documentBuilder.ToString()));
         }
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (string) ParseField(string): Gets parsed value
         /// <summary>
         /// Gets parsed value.
         /// </summary>
@@ -279,7 +278,6 @@ namespace iTin.Export.Writers
 
             return result;
         }
-        #endregion
 
         #endregion
     }

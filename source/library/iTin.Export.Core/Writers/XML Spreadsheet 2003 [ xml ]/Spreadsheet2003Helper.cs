@@ -1,9 +1,9 @@
 ﻿
+using System.Globalization;
+using System.Xml;
+
 namespace iTin.Export.Writers
 {
-    using System.Globalization;
-    using System.Xml;
-
     using Drawing;
     using Model;
 

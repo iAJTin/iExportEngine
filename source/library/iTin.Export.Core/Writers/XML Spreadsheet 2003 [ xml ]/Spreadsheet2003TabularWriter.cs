@@ -1,14 +1,14 @@
 ﻿
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+
 namespace iTin.Export.Writers
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.Composition;
-    using System.Drawing;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-
     using AspNet.ComponentModel;
     using ComponentModel.Writer;
     using Drawing.Helper;
@@ -24,7 +24,6 @@ namespace iTin.Export.Writers
     {
         #region public override properties
 
-        #region [public] {override} (HttpResponseEx) ResponseEx: Gets a reference to an object HttpResponseEx containing the MIME type of the output stream and response header for a ASP.NET operation
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to an object <see cref="T:iTin.Export.AspNet.ComponentModel.HttpResponseEx" /> than contains the <strong>MIME</strong> type of the output stream and response header for a <strong>ASP.NET</strong> operation.
@@ -62,9 +61,7 @@ namespace iTin.Export.Writers
                 };
             }
         }
-        #endregion
         
-        #region [public] {override} (bool) IsTransformationFile: Gets a value indicating that this writer generates a transformation file to be processed later
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating that this writer generates a transformation file to be processed later.
@@ -73,13 +70,11 @@ namespace iTin.Export.Writers
         /// Always returns <strong>true</strong> value.
         /// </value>
         public override bool IsTransformationFile => true;
-        #endregion
 
         #endregion
 
         #region private properties
 
-        #region [private] (FixedModel) Fixed: Gets a reference to the resource fixed
         /// <summary>
         /// Gets a reference to the resource fixed.
         /// </summary>
@@ -87,7 +82,6 @@ namespace iTin.Export.Writers
         /// Reference to the resource fixed.
         /// </value>
         private FixedModel Fixed => Resources.Fixed;
-        #endregion
 
         #region [private] (GroupsModel) Groups: Gets a reference to the resource groups
         /// <summary>
@@ -210,7 +204,6 @@ namespace iTin.Export.Writers
 
         #region protected override methods
 
-        #region [protected] {override} (void) Execute(): Generates output in MS Excel format
         /// <inheritdoc />
         /// <summary>
         /// Generates output in MS Excel format.
@@ -236,13 +229,11 @@ namespace iTin.Export.Writers
                 WriteEndWorkbook();
             WriteEndDocument();
         }
-        #endregion
 
         #endregion
 
         #region private methods
 
-        #region [private] (void) WriteBeginDocument(): Top of the document
         /// <summary>
         /// Top of the document.
         /// </summary>
@@ -250,9 +241,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteStartDocument();
         }
-        #endregion
 
-        #region [private] (void) WriteExcelApplication(): Create the header of a MS Excel document
         /// <summary>
         /// Create the header of a MS Excel document.
         /// </summary>
@@ -281,9 +270,7 @@ namespace iTin.Export.Writers
                         Writer.WriteString("progid=\"Excel.Sheet\"");
                     Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteVariableDeclaration(): Create global variables
         /// <summary>
         /// Create global variables.
         /// </summary>
@@ -344,9 +331,7 @@ namespace iTin.Export.Writers
                 Writer.WriteAttributeString("select", "$__rows + " + y2.ToString(CultureInfo.InvariantCulture));
             Writer.WriteEndElement();                
         }
-        #endregion
 
-        #region [private] (void) WriteStartWorkbook(): Add a new book to MS Excel
         /// <summary>
         /// Add a new book to MS Excel.
         /// </summary>
@@ -357,9 +342,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteStartElement("Workbook");
         }
-        #endregion
 
-        #region [private] (void) WriteOfficeDocumentSettings(): Adds OfficeDocumentSettings element
         /// <summary>
         /// Adds OfficeDocumentSettings element.
         /// </summary>
@@ -374,9 +357,7 @@ namespace iTin.Export.Writers
                 Writer.WriteEndElement();
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteStartStyles(): Add MS Excel styles
         /// <summary>
         /// Add MS Excel styles.
         /// </summary>
@@ -387,9 +368,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteStartElement("Styles");
         }
-        #endregion
 
-        #region [private] (void) WriteStyles(): Add user-defined styles
         /// <summary>
         /// Add user-defined styles.
         /// </summary>
@@ -419,9 +398,7 @@ namespace iTin.Export.Writers
                 WriteUserDefinedStyle(style, true);
             }
         }
-        #endregion
 
-        #region [private] (void) WriteDefaultStyle(): Add default style
         /// <summary>
         /// Add default style.
         /// </summary>
@@ -457,9 +434,7 @@ namespace iTin.Export.Writers
                 Writer.WriteEndElement();
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteUserDefinedStyle(StyleModel, [bool wrap]): Add style to the collection of styles MS Excel
         /// <summary>
         /// Add style to the collection of styles MS Excel. <paramref name="wrap" /> default is <strong>false</strong>.
         /// </summary>
@@ -533,9 +508,7 @@ namespace iTin.Export.Writers
                 Writer.WriteEndElement();
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteBorder(BorderModel): Add border to the collection of borders MS Excel
         /// <summary>
         /// Add border to the collection of borders MS Excel
         /// </summary>
@@ -552,9 +525,7 @@ namespace iTin.Export.Writers
                 Writer.WriteAttributeString("ss:Weight", border.Weight.IndexOf().ToString(CultureInfo.InvariantCulture));
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteEndStyles(): Ends the definition of styles
         /// <summary>
         /// Ends the definition of styles.
         /// </summary>
@@ -562,9 +533,7 @@ namespace iTin.Export.Writers
             {
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteStartWorksheet(): Adds a new sheet to book
         /// <summary>
         /// Adds a new sheet to book.
         /// </summary>
@@ -576,9 +545,7 @@ namespace iTin.Export.Writers
             Writer.WriteStartElement("Worksheet");
             Writer.WriteAttributeString("ss:Name", WorkSheetName);
         }
-        #endregion
 
-        #region [private] (void) WriteNamedRanges(): Add named ranges to sheet
         /// <summary>
         /// Add named ranges to sheet.
         /// </summary>
@@ -597,9 +564,7 @@ namespace iTin.Export.Writers
                 WriteNamedRange(KnownSpreadsheetExpression.PrintTitlesNamedRange, KnownSpreadsheetExpression.PrintTitlesRangePattern, false);
             WriteEndNames();
         }
-        #endregion
 
-        #region [private] (void) WriteStartNames(): Add start of named ranges
         /// <summary>
         /// Add start of named ranges.
         /// </summary>
@@ -610,9 +575,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteStartElement("Names");
         }
-        #endregion
 
-        #region [private] (void) WriteNamedRange(string, string, bool, bool): Add new named range to the collection
         /// <summary>
         /// Add new named range to the collection.
         /// </summary>
@@ -638,9 +601,7 @@ namespace iTin.Export.Writers
                 }
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteEndNames(): Ends the definition of named ranges
         /// <summary>
         /// Ends the definition of named ranges.
         /// </summary>
@@ -648,9 +609,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteStartTable(): Add a new table to sheet
         /// <summary>
         /// Add a new table to sheet.
         /// For more information, please see <see cref="TableModel"/>.
@@ -662,9 +621,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteStartElement("Table");
         }
-        #endregion
 
-        #region [private] (void) WriteTableContent(): Add headers, aggregates, and data
         /// <summary>
         /// Add headers, aggregates, and data.
         /// </summary>
@@ -680,9 +637,7 @@ namespace iTin.Export.Writers
             WriteRowDetail();
             WriteBottomAggregates();
         }
-        #endregion
 
-        #region [private] (void) WriteColumnWidths(): Add column sizes
         /// <summary>
         /// Add column sizes.
         /// </summary>
@@ -700,9 +655,7 @@ namespace iTin.Export.Writers
                 Writer.WriteEndElement();
             }
         }
-        #endregion
 
-        #region [private] (void) WriteTopAggregates(): Add top aggregates
         /// <summary>
         /// Add top aggregates.
         /// </summary>
@@ -755,9 +708,7 @@ namespace iTin.Export.Writers
 
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteHeader(): Add headers
         /// <summary>
         /// Add headers.
         /// </summary>
@@ -802,9 +753,7 @@ namespace iTin.Export.Writers
 
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteRowDetail(): Add row data
         /// <summary>
         /// Add row data.
         /// </summary>
@@ -925,9 +874,7 @@ namespace iTin.Export.Writers
                 Writer.WriteEndElement();
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteBottomAggregates(): Add bottom aggregates
         /// <summary>
         /// Add bottom aggregates.
         /// </summary>
@@ -974,9 +921,7 @@ namespace iTin.Export.Writers
 
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteEndTable(): Ends the definition of table
         /// <summary>
         /// Ends the definition of table.
         /// </summary>
@@ -984,9 +929,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteWorkSheetOptions(): Ends the definition of table
         /// <summary>
         /// Ends the definition of table.
         /// </summary>
@@ -997,9 +940,7 @@ namespace iTin.Export.Writers
                 WriteWorkSheetOptionsPageSetup();
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteWorkSheetOptionsPageSetup():
         /// <summary>
         /// Ends the definition of table.
         /// </summary>
@@ -1065,9 +1006,7 @@ namespace iTin.Export.Writers
             Writer.WriteStartElement("DoNotDisplayGridlines");
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteAutoFilter(): Add filters
         /// <summary>
         /// Add filters.
         /// </summary>
@@ -1081,9 +1020,7 @@ namespace iTin.Export.Writers
                 WriteAutoFilterItem(KnownSpreadsheetExpression.TableRangePattern);
             }
         }
-        #endregion
 
-        #region [private] (void) WriteAutoFilterItem(string): Add a new filter
         /// <summary>
         /// Add a new filter.
         /// </summary>
@@ -1098,9 +1035,7 @@ namespace iTin.Export.Writers
                 Writer.WriteAttributeString("xmlns", "urn:schemas-microsoft-com:office:excel");
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteEndWorksheet(): Ends the definition of sheet
         /// <summary>
         /// Ends the definition of sheet.
         /// </summary>
@@ -1108,9 +1043,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteEndWorkbook(): Ends the definition of book
         /// <summary>
         /// Ends the definition of book.
         /// </summary>
@@ -1118,9 +1051,7 @@ namespace iTin.Export.Writers
         {
             Writer.WriteEndElement();
         }
-        #endregion
 
-        #region [private] (void) WriteEndDocument(): Ends MS Excel document
         /// <summary>
         /// Ends MS Excel document.
         /// </summary>
@@ -1130,7 +1061,6 @@ namespace iTin.Export.Writers
             Writer.WriteEndElement();
             Writer.Flush();
         }
-        #endregion
 
         #endregion
     }

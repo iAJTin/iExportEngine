@@ -1,13 +1,13 @@
 ﻿
+using System;
+using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Primitives;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+
 namespace iTin.Export.ComponentModel
 {
-    using System;
-    using System.ComponentModel.Composition.Hosting;
-    using System.ComponentModel.Composition.Primitives;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-
     public class SafeDirectoryCatalog : ComposablePartCatalog
     {
         private readonly AggregateCatalog _catalog;

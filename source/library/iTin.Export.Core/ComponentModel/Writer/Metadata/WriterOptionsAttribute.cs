@@ -1,9 +1,9 @@
 ﻿
+using System;
+using System.ComponentModel.Composition;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System;
-    using System.ComponentModel.Composition;
-
     /// <summary>
     /// Declares extra metadata to a writer.
     /// All writers created by <strong>iTin Export Engine</strong> are based in <a href="http://msdn.microsoft.com/es-es/library/dd460648.aspx">Managed Extensibility Framework <strong>(MEF)</strong></a>.

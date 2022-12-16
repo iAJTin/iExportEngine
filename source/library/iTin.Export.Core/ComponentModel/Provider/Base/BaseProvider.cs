@@ -1,17 +1,17 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+
 namespace iTin.Export.ComponentModel.Provider
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Xml;
-    using System.Xml.Linq;
-
     using Helpers;
     using Input;
     using Model;
@@ -43,18 +43,21 @@ namespace iTin.Export.ComponentModel.Provider
     public abstract class BaseProvider : IProvider
     {
         #region private static readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly char[] EmptySpecialCharsArray = { };
+
         #endregion
 
         #region private readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly ProviderOptionsMetadata _optionsMetadataInformation;
+
         #endregion
 
         #region constructor/s
 
-        #region [protected] BaseProvider(): Initializes a new instance of the class
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.ComponentModel.Provider.BaseProvider"/> class.
         /// </summary>
@@ -64,13 +67,11 @@ namespace iTin.Export.ComponentModel.Provider
             InputUri = FileHelper.GetUniqueTempRandomFile();
             _optionsMetadataInformation = new ProviderOptionsMetadata(this);
         }
-        #endregion
 
         #endregion
 
         #region public properties
 
-        #region [public] (InputDataModel) Input: Gets a reference to the input data model
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to the data model.
@@ -79,9 +80,7 @@ namespace iTin.Export.ComponentModel.Provider
         /// Reference to data model.
         /// </value>
         public InputDataModel Input { get; private set; }
-        #endregion
 
-        #region [public] (ProviderOptionsMetadata) ProviderMetadata: Gets a reference that contains the metadata information about this provider
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference that contains the metadata information about this provider.
@@ -90,9 +89,7 @@ namespace iTin.Export.ComponentModel.Provider
         /// A <see cref="T:iTin.Export.ComponentModel.AdapterMetadataInformation" /> that contains the extended information about this provider.
         /// </value>
         public ProviderOptionsMetadata ProviderMetadata => _optionsMetadataInformation;
-        #endregion
 
-        #region [public] (Uri) InputUri: Gets a reference to input file
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to input file.
@@ -101,9 +98,7 @@ namespace iTin.Export.ComponentModel.Provider
         /// Reference to the input file.
         /// </value>
         public Uri InputUri { get; protected set; }
-        #endregion
 
-        #region [public] (IEnumerable<char>) SpecialChars: Gets an special char array
         /// <inheritdoc />
         /// <summary>
         /// Gets or sets an special char array.
@@ -112,13 +107,11 @@ namespace iTin.Export.ComponentModel.Provider
         /// Special char array.
         /// </value>
         public IEnumerable<char> SpecialChars { get; protected set; }
-        #endregion
 
         #endregion
 
         #region public virtual properties
         
-        #region [public] {virtual} (bool) CanCreateInputXml: Gets a value indicating whether you can create an Xml file from the current instance of the object
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether you can create an <strong>Xml</strong> file from the current instance of the object.
@@ -127,9 +120,7 @@ namespace iTin.Export.ComponentModel.Provider
         /// <strong>true</strong> if you can create an <strong>XML</strong>; otherwise, <strong>false</strong>.
         /// </value>
         public virtual bool CanCreateInputXml => false;
-        #endregion
 
-        #region [public] {virtual} (bool) CanGetDataTable: Gets a value indicating whether this instance can get data table
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether this instance can get data table.
@@ -138,13 +129,11 @@ namespace iTin.Export.ComponentModel.Provider
         /// <strong>true</strong> if this instance can get data table; otherwise, <strong>false</strong>.
         /// </value>
         public virtual bool CanGetDataTable => false;
-        #endregion
 
         #endregion
 
         #region protected static properties
 
-        #region [protected] {static} (IEnumerable<char>) EmptySpecialChars(): Gets the empty special chars
         /// <summary>
         /// Gets the empty special chars.
         /// </summary>
@@ -152,13 +141,11 @@ namespace iTin.Export.ComponentModel.Provider
         /// Empty special chars array.
         /// </returns>
         protected static IEnumerable<char> EmptySpecialChars => (char[])EmptySpecialCharsArray.Clone();
-        #endregion
 
         #endregion
 
         #region public static methods
 
-        #region [public] {static} (string) Parse(string, IEnumerable<char>): Parse an string and replace the special chars defined in specialChars by a hexadecimal pattern
         /// <summary>
         /// Parse an <see cref="T:System.String" /> and replace the special chars defined in <paramref name="specialChars"/> by a hexadecimal pattern.
         /// </summary>
@@ -198,13 +185,11 @@ namespace iTin.Export.ComponentModel.Provider
 
             return parsedField;
         }
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (void) CreateInputXml(): Creates the Xml source file
         /// <inheritdoc />
         /// <summary>
         /// Creates the <c>Xml</c> source file from.
@@ -216,9 +201,7 @@ namespace iTin.Export.ComponentModel.Provider
                 OnCreateInputXml();
             }
         }
-        #endregion
 
-        #region [public] (void) SetInputDataModel(InputDataModel): Add a data model to this provider
         /// <inheritdoc />
         /// <summary>
         /// Add a data model to this provider.
@@ -228,9 +211,7 @@ namespace iTin.Export.ComponentModel.Provider
         {
             Input = model;
         }
-        #endregion
 
-        #region [public] (void) Export(ExportSettings): Export specified input data model with this provider by applying the specified writer in configuration file
         /// <inheritdoc />
         /// <summary>
         /// Export specified input data model with this provider by applying the specified writer in configuration file.
@@ -294,9 +275,7 @@ namespace iTin.Export.ComponentModel.Provider
                 #endregion
             }
         }
-        #endregion
 
-        #region [public] (string) Parse(string): Parse an String and replace the special chars defined in SpecialChars by a hexadecimal pattern
         /// <inheritdoc />
         /// <summary>
         /// Parse an <see cref="T:System.String" /> and replace the special chars defined in <see cref="P:iTin.Export.ComponentModel.BaseTarget.SpecialChars" /> by a hexadecimal pattern.
@@ -310,13 +289,8 @@ namespace iTin.Export.ComponentModel.Provider
         /// ####: Represents ASCII char code in Hexadecimal format
         /// If the argument <paramref name="value" /> does not contain any <see cref="P:iTin.Export.ComponentModel.BaseTarget.SpecialChars" /> returns the argument unchanged.
         /// </remarks>        
-        public string Parse(string value)
-        {
-            return Parse(value, SpecialChars);
-        }
-        #endregion
+        public string Parse(string value) => Parse(value, SpecialChars);
 
-        #region [public] (void) SetSpecialChars(IEnumerable<char>): Sets an special char array to this provider
         /// <inheritdoc />
         /// <summary>
         /// Sets an special char array to this provider.
@@ -326,9 +300,7 @@ namespace iTin.Export.ComponentModel.Provider
         {
             SpecialChars = value;
         }
-        #endregion
 
-        #region [public] (DataTable) ToDataTable(): Gets a reference to the DataTable object that contains the data this instance
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to the <see cref="T:System.Data.DataTable" /> object that contains the data this instance.
@@ -345,9 +317,7 @@ namespace iTin.Export.ComponentModel.Provider
 
             throw new InvalidOperationException();
         }
-        #endregion
 
-        #region [public] (IEnumerable<XElement>) ToXml(): Gets a reference to the enumerable list object that contains the data this instance
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to the <see cref="T:System.Collections.Generic.IEnumerable`1" /> object that contains the data this instance.
@@ -361,30 +331,23 @@ namespace iTin.Export.ComponentModel.Provider
 
             return LoadXmlFromFile(InputUri.OriginalString, Input.Model.Table.Name);
         }
-        #endregion
 
         #endregion
 
         #region public override methods
 
-        #region [public] {override} (string) ToString(): Returns a string than represents the current object
         /// <summary>
         /// Returns a string that represents the current data type.
         /// </summary>
         /// <returns>
         /// A <see cref="T:System.String" /> than represents the current object.
         /// </returns>
-        public override string ToString()
-        {
-            return $"Type=\"{GetType().Name}\"";
-        }
-        #endregion
+        public override string ToString() => $"Type=\"{GetType().Name}\"";
 
         #endregion
 
         #region protected static methods
 
-        #region [protected] {static} (IEnumerable<XElement>) LoadXmlFromFile(string, string): Retrieves Xml content of specified table in a file
         /// <summary>
         /// Retrieves <c>Xml</c> content of specified <paramref name="table" /> in a file.
         /// </summary>
@@ -419,22 +382,18 @@ namespace iTin.Export.ComponentModel.Provider
 
             return nodes;
         }
-        #endregion
         
         #endregion
         
         #region protected virtual methods
 
-        #region [protected] {virtual} (void) OnCreateInputXml(): Concrete implementation by object type
         /// <summary>
         /// Concrete implementation by object type.
         /// </summary>
         protected virtual void OnCreateInputXml()
         {
         }
-        #endregion
 
-        #region [protected] {virtual} (DataTable) OnGetDataTable(): Concrete implementation by object type
         /// <summary>
         /// Concrete implementation by object type.
         /// </summary>
@@ -445,7 +404,6 @@ namespace iTin.Export.ComponentModel.Provider
         {
             return null;
         }
-        #endregion
 
         #endregion
     }

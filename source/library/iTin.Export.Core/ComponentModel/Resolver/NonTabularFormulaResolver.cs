@@ -1,12 +1,12 @@
 ﻿
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
+
 namespace iTin.Export.ComponentModel
 {
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.Linq;
-
     using Model;
 
     /// <summary>
@@ -15,13 +15,14 @@ namespace iTin.Export.ComponentModel
     public class NonTabularFormulaResolver
     {
         #region private readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly FieldAggregateModel _model;
+
         #endregion
 
         #region constructor/s
 
-        #region [public] NonTabularFormulaResolver(FieldAggregateModel): Initializes a new instance of the class
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.ComponentModel.NonTabularFormulaResolver" /> class.
         /// </summary>
@@ -30,13 +31,11 @@ namespace iTin.Export.ComponentModel
         {
             _model = aggregate;
         }
-        #endregion
 
         #endregion
 
         #region public properties
 
-        #region [public] (IEnumerable<string>) Data: Gets or sets a value that represents data values
         /// <summary>
         /// Gets or sets a value that represents data values.
         /// </summary>
@@ -44,13 +43,11 @@ namespace iTin.Export.ComponentModel
         /// Data values.
         /// </value>
         public IEnumerable<string> Data { private get; set; }
-        #endregion
 
         #endregion
             
         #region public methods
 
-        #region [public] (string) Resolve(): Returns a string containing the result
         /// <summary>
         /// Returns a string containing the result.
         /// </summary>
@@ -132,7 +129,6 @@ namespace iTin.Export.ComponentModel
 
             return result;
         }
-        #endregion
 
         #endregion
     }

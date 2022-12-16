@@ -1,10 +1,10 @@
 ﻿
+using System;
+using System.Runtime.InteropServices;
+using System.Security;
+
 namespace iTin.Export
 {
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Security;
-
     /// <summary>
     /// Static class than contains extension methods for objects of type <see cref="System.Security.SecureString" />.
     /// </summary>

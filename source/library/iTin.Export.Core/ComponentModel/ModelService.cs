@@ -1,12 +1,12 @@
 ﻿
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Linq;
+using System.Xml.Linq;
+
 namespace iTin.Export.ComponentModel
 {
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Xml.Linq;
-
     using Model;
     using Provider;
     using Writer;
@@ -41,57 +41,40 @@ namespace iTin.Export.ComponentModel
 
         #region public properties
 
-        #region [public] (int) CurrentCol:
         /// <summary>
         /// 
         /// </summary>
         public int CurrentCol { get; private set; }
-        #endregion
 
-        #region [public] (BaseDataFieldModel) CurrentField:
         /// <summary>
         /// 
         /// </summary>
         public BaseDataFieldModel CurrentField { get; private set; }
-        #endregion
 
-        #region [public] (int) CurrentRow:
         /// <summary>
         /// 
         /// </summary>
         public int CurrentRow { get; private set; }
 
-        #endregion
-
-        #region [public] (ExportModel) CurrentModel:
         /// <summary>
         /// 
         /// </summary>
         public ExportModel CurrentModel => _writer.Provider.Input.Model;
-        #endregion
 
-        #region [public] (IProvider) Provider:
         /// <summary>
         /// 
         /// </summary>
         public IProvider Provider => _writer.Provider;
-        #endregion
 
-        #region [public] (ExportsModel) Root:
         /// <summary>
         /// 
         /// </summary>
         public ExportsModel Root => _writer.Provider.Input.GetRoot();
-        #endregion
 
-        #region [public] (XElement[]) RawData:
         /// <summary>
         /// 
         /// </summary>
         public XElement[] RawData { get; private set ;}
-        #endregion
-
-        #region [public] (XElement[]) RawData:
 
         /// <summary>
         /// 
@@ -123,28 +106,21 @@ namespace iTin.Export.ComponentModel
                 return (XElement[])rows.ToArray().Clone();
             }
         }
-        #endregion
 
-
-        #region [public] (ReferencesModel) References:
         /// <summary>
         /// 
         /// </summary>
         public ReferencesModel References => _writer.Provider.Input.References;
-        #endregion
 
-        #region [public] (GlobalResourcesModel) Resources:
         /// <summary>
         /// 
         /// </summary>
         public GlobalResourcesModel Resources => _writer.Provider.Input.Resources;
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (void) SetCurrentCol(int): 
         /// <summary>
         /// 
         /// </summary>
@@ -153,7 +129,6 @@ namespace iTin.Export.ComponentModel
         {            
             CurrentCol = col;
         }
-        #endregion
 
         #region [public] (void) SetCurrentField(BaseDataFieldModel): 
         /// <summary>
@@ -220,22 +195,16 @@ namespace iTin.Export.ComponentModel
 
         #region public override methods
 
-        #region [public] {override} (string) ToString(): Returns a string that represents this instance
         /// <summary>
         /// Returns a <see cref="T:System.String" /> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
-        public override string ToString()
-        {
-            return $"Model=\"{CurrentModel.Name}\", Writer=\"{_writer.WriterMetadata.Name}\", Provider=\"{Provider.ProviderMetadata.Name}\"";
-        }
-        #endregion
+        public override string ToString() => $"Model=\"{CurrentModel.Name}\", Writer=\"{_writer.WriterMetadata.Name}\", Provider=\"{Provider.ProviderMetadata.Name}\"";
 
         #endregion
 
         #region internal methods
 
-        #region [internal] (void) SetWriter(IWriter):
         /// <summary>
         /// 
         /// </summary>
@@ -245,7 +214,6 @@ namespace iTin.Export.ComponentModel
             _writer = writer;
             RawData = (XElement[])_writer.Provider.ToXml().ToArray().Clone();
         }
-        #endregion
 
         #endregion
     }

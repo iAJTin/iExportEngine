@@ -1,8 +1,8 @@
 ﻿
+using System.Xml;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System.Xml;
-
     /// <summary>
     /// Declares a writer which is based in an markup language.
     /// </summary>

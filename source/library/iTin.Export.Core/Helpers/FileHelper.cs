@@ -1,23 +1,24 @@
 ﻿
+using System;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+
 namespace iTin.Export.Helpers
 {
-    using System;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-
     /// <summary> 
     /// Static class than contains methods for manipulating files.
     /// </summary>
     public static class FileHelper
     {
         #region private constants
+
         private const string TinExportTempDirectoryName = "iTin.Export";
+
         #endregion
 
         #region public static properties
 
-        #region [public] {static} (string) TinExportTempDirectory: Gets the export temporary directory
         /// <summary>
         /// Gets the export temporary directory.
         /// </summary>
@@ -34,13 +35,11 @@ namespace iTin.Export.Helpers
                 return tempDirectory;
             }
         }
-        #endregion
 
         #endregion
 
         #region public static methods
 
-        #region [public] {static} (void) CopyFiles(string, string, string, bool): Copies the files
         /// <summary>
         /// Copies the files.
         /// </summary>
@@ -62,9 +61,7 @@ namespace iTin.Export.Helpers
                 File.Copy(item, target, overrides);
             }
         }
-        #endregion
 
-        #region [public] {static} (Uri) GetUniqueTempRandomFile: Returns a temp Uri for a new file
         /// <summary>
         /// Returns a temp <see cref="T:System.Uri"/>.
         /// </summary>
@@ -79,9 +76,7 @@ namespace iTin.Export.Helpers
 
             return new Uri(path);
         }
-        #endregion
 
-        #region [public] {static} (bool) IsValidFileName(string): Determines whether name is a valid name for a file
         /// <summary>
         /// Determines whether <paramref name="name" /> is a valid name for a file.
         /// </summary>
@@ -89,11 +84,8 @@ namespace iTin.Export.Helpers
         /// <returns>
         /// <strong>true</strong> if <paramref name="name" /> is a valid file name; otherwise, <strong>false</strong>.
         /// </returns>
-        public static bool IsValidFileName(string name)
-        {
-            return Path.GetInvalidFileNameChars().All(c => !name.Contains(c.ToString(CultureInfo.InvariantCulture)));
-        }
-        #endregion
+        public static bool IsValidFileName(string name) => 
+            Path.GetInvalidFileNameChars().All(c => !name.Contains(c.ToString(CultureInfo.InvariantCulture)));
 
         #endregion
     }

@@ -1,8 +1,8 @@
 
+using System.Collections.Generic;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Represents <see cref="T:iTin.Export.ComponentModel.Writer.WritersCache" /> settings.
     /// </summary>

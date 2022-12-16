@@ -1,11 +1,11 @@
 ﻿
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Xml;
+
 namespace iTin.Export.ComponentModel.Writer
 {
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-    using System.Xml;
-
     using Model;
 
     /// <summary>
@@ -16,7 +16,6 @@ namespace iTin.Export.ComponentModel.Writer
     {
         #region public override properties
 
-        #region [public] {override} (KnownWriterIdentifier) WriterIdentifier: Gets a value than identifies the type of writer
         /// <inheritdoc />
         /// <summary>
         /// Gets a value than identifies the type of writer.
@@ -25,13 +24,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// Always returns ​the <see cref="F:iTin.Export.ComponentModel.Writer.KnownWriterIdentifier.WriterXml" /> value.
         /// </value>
         public override KnownWriterIdentifier WriterIdentifier => KnownWriterIdentifier.WriterXml;
-        #endregion
 
         #endregion
 
         #region public properties
 
-        #region [public] (XmlWriter) Writer: Gets a reference to based writer for markup languages
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to based writer for markup languages​​.
@@ -40,13 +37,11 @@ namespace iTin.Export.ComponentModel.Writer
         /// Reference to writer.
         /// </value>
         public XmlWriter Writer { get; private set; }
-        #endregion
 
         #endregion
 
         #region public methods
 
-        #region [public] (void) CreateWriter(): Creates a new writer for markup languages
         /// <inheritdoc />
         /// <summary>
         /// Creates a new writer for markup languages.
@@ -56,13 +51,11 @@ namespace iTin.Export.ComponentModel.Writer
             Stream = new MemoryStream();
             CreateWriter(Stream);
         }
-        #endregion
 
         #endregion
 
         #region public override methods
 
-        #region [public] {override} (IEnumerable<byte[]>) GetAsByteArrayEnumerable(): Returns the result file as a enumeration of byte array
         /// <inheritdoc />
         /// <summary>
         /// Returns the writer result file as a enumeration of byte array
@@ -76,25 +69,21 @@ namespace iTin.Export.ComponentModel.Writer
 
             return Result;
         }
-        #endregion
 
         #endregion
 
         #region protected properties
 
-        #region [protected] (ModelService) Service: Gets a reference to service render
         /// <summary>
         /// Gets a reference to service render.
         /// </summary>
         /// <value>The service.</value>
         protected ModelService Service => ModelService.Instance;
-        #endregion
 
         #endregion
 
         #region protected override methods
 
-        #region [protected] {override} (void) ReleaseManagedResources(): Releasing managed resources
         /// <inheritdoc />
         /// <summary>
         /// Releasing managed resources.
@@ -105,13 +94,11 @@ namespace iTin.Export.ComponentModel.Writer
 
             Writer?.Close();
         }
-        #endregion
 
     #endregion
 
         #region private methods
 
-        #region [private] (void) CreateWriter(stream): Creates a new writer for markup languages with specified stream
         /// <summary>
         /// Creates a new writer for markup languages with specified stream.
         /// </summary>
@@ -149,7 +136,6 @@ namespace iTin.Export.ComponentModel.Writer
                 tempWriter?.Close();
             }
         }
-        #endregion
 
         #endregion
     }

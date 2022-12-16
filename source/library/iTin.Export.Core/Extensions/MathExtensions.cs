@@ -13,10 +13,7 @@ namespace iTin.Export
         /// <returns>
         /// <b>true</b> if value is odd; <b>false</b> otherwise.
         /// </returns>
-        public static bool IsOdd(this int value)
-        {
-            return value % 2 != 0;
-        }
+        public static bool IsOdd(this int value) => value % 2 != 0;
 
         /// <summary>
         /// Gets a value indicating whether the parametre is odd.
@@ -25,10 +22,7 @@ namespace iTin.Export
         /// <returns>
         /// <b>true</b> if value is odd; <b>false</b> otherwise.
         /// </returns>
-        public static bool IsOdd(this uint value)
-        {
-            return value % 2 != 0;
-        }
+        public static bool IsOdd(this uint value) => value % 2 != 0;
 
 
         /// <summary>
@@ -38,10 +32,7 @@ namespace iTin.Export
         /// <returns>
         /// <b>true</b> if value is odd; <b>false</b> otherwise.
         /// </returns>
-        public static bool IsOdd(this short value)
-        {
-            return value % 2 != 0;
-        }
+        public static bool IsOdd(this short value) => value % 2 != 0;
 
         /// <summary>
         /// Gets a value indicating whether the parametre is odd.
@@ -50,10 +41,7 @@ namespace iTin.Export
         /// <returns>
         /// <b>true</b> if value is odd; <b>false</b> otherwise.
         /// </returns>
-        public static bool IsOdd(this ushort value)
-        {
-            return value % 2 != 0;
-        }
+        public static bool IsOdd(this ushort value) => value % 2 != 0;
 
         /// <summary>
         /// Gets a value indicating whether the parametre is odd.
@@ -62,10 +50,7 @@ namespace iTin.Export
         /// <returns>
         /// <b>true</b> if value is odd; <b>false</b> otherwise.
         /// </returns>
-        public static bool IsOdd(this long value)
-        {
-            return value % 2 != 0;
-        }
+        public static bool IsOdd(this long value) => value % 2 != 0;
 
         /// <summary>
         /// Gets a value indicating whether the parametre is odd.
@@ -74,9 +59,6 @@ namespace iTin.Export
         /// <returns>
         /// <b>true</b> if value is odd; <b>false</b> otherwise.
         /// </returns>
-        public static bool IsOdd(this ulong value)
-        {
-            return value % 2 != 0;
-        }
+        public static bool IsOdd(this ulong value) => value % 2 != 0;
     }
 }

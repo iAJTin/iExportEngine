@@ -1,11 +1,11 @@
 ﻿
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+
 namespace iTin.Export
 {
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Linq;
-
     using Helpers;
 
     /// <summary>

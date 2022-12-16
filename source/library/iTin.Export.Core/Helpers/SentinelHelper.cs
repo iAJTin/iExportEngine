@@ -1,13 +1,13 @@
 ﻿
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+
 namespace iTin.Export.Helpers
 {
-    using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.Linq;
-
     /// <summary>
     /// Static class than contains methods for perform tests and validate data types and parameters.
     /// <para><strong>- Warning -</strong></para>

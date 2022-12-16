@@ -1,8 +1,8 @@
 ﻿
+using System.ComponentModel.Composition;
+
 namespace iTin.Export.ComponentModel.Provider
 {
-    using System.ComponentModel.Composition;
-
     /// <summary>
     /// Provider parameters
     /// </summary>

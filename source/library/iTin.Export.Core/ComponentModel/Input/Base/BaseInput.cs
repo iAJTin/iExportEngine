@@ -1,12 +1,12 @@
 ﻿
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Xml.Schema;
+
 namespace iTin.Export.ComponentModel.Input
 {
-    using System;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Text;
-    using System.Xml.Schema;
-
     using Helpers;
     using Model;
     using Provider;
@@ -58,13 +58,14 @@ namespace iTin.Export.ComponentModel.Input
     public abstract class BaseInput : IInput
     {
         #region private readonly members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly InputOptionsMetadata _optionsMetadataInformation;
+
         #endregion
 
         #region constructor/s
 
-        #region [protected] BaseInput(object): Initializes a new instance of the class
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.ComponentModel.Inputs.BaseInput" /> class.
         /// </summary>
@@ -74,13 +75,11 @@ namespace iTin.Export.ComponentModel.Input
             Data = data;
             _optionsMetadataInformation = new InputOptionsMetadata(this);
         }
-        #endregion
 
         #endregion
 
         #region public properties
 
-        #region [public] (object) Data: Gets a reference that contains the input data to export
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference that contains the input data to export.
@@ -92,7 +91,6 @@ namespace iTin.Export.ComponentModel.Input
         {
             get; protected set;
         }
-        #endregion
 
         #region [public] (InputOptionsMetadata) InputMetadata: Gets a reference that contains the metadata information about this input
         /// <inheritdoc />
@@ -109,7 +107,6 @@ namespace iTin.Export.ComponentModel.Input
 
         #region public methods
 
-        #region [public] (void) Export(ExportSettings): Exports the input data using the specified configuration in xml configuration file
         /// <inheritdoc />
         /// <summary>
         /// Exports the input data using the specified configuration in xml configuration file.
@@ -178,13 +175,11 @@ namespace iTin.Export.ComponentModel.Input
 
             ////var s = ((TextLineModel)root.Resources.Lines[1]).GetStyle();
         }
-        #endregion
 
         #endregion
 
         #region private static methods
 
-        #region [private] {static} (ExportsModel) LoadModelFrom(Uri): Import general properties from a configuration file
         /// <summary>
         /// Import general properties from a configuration file.
         /// </summary>
@@ -224,7 +219,6 @@ namespace iTin.Export.ComponentModel.Input
 
             return model;
         }
-        #endregion
 
         #endregion
     }

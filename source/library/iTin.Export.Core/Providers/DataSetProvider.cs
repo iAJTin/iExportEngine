@@ -1,12 +1,12 @@
 ﻿
+using System;
+using System.ComponentModel.Composition;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
+
 namespace iTin.Export.Providers
 {
-    using System;
-    using System.ComponentModel.Composition;
-    using System.Data;
-    using System.Diagnostics;
-    using System.IO;
-
     using ComponentModel.Provider;
     using Helpers;
 
@@ -20,13 +20,14 @@ namespace iTin.Export.Providers
     public class DataSetProvider : BaseProvider
     {
         #region private field members
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly DataSet _dataSet;
+
         #endregion
 
         #region constructor/s
 
-        #region [public] DataSetProvider(ProviderParameters): Initializes a new instance of the class
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="T:iTin.Export.Providers.DataSetProvider" /> class.
@@ -37,7 +38,6 @@ namespace iTin.Export.Providers
             : this((DataSet)SentinelHelper.PassThroughNonNull(constructorParams).Data)
         {
         }
-        #endregion
 
         #region [public] DataSetProvider(DataSet): Initializes a new instance of the class
         /// <inheritdoc />
@@ -55,7 +55,6 @@ namespace iTin.Export.Providers
 
         #region public override properties
 
-        #region [public] {override} (bool) CanCreateSourceXml: Gets a value indicating whether you can create an Xml file from the current instance of the object
         /// <inheritdoc />
         /// <summary>
         /// Gets a value indicating whether you can create an <strong>Xml</strong> file from the current instance of the object.
@@ -64,7 +63,6 @@ namespace iTin.Export.Providers
         /// Always returns <strong>true</strong>.
         /// </value>
         public override bool CanCreateInputXml => true;
-        #endregion
 
         #region [public] {override} (bool) CanGetDataTable: Gets a value indicating whether this instance can get data table
         /// <inheritdoc />
@@ -81,7 +79,6 @@ namespace iTin.Export.Providers
 
         #region protected override methods
 
-        #region [protected] {override} (void) OnCreateInputXml(): Concrete implementation by object type
         /// <inheritdoc />
         /// <summary>
         /// Concrete implementation by object type.
@@ -134,9 +131,7 @@ namespace iTin.Export.Providers
                 }
             }
         }
-        #endregion
 
-        #region [public] {override} (DataTable) OnGetDataTable(): Gets a reference to the DataTable object that contains the data this instance
         /// <inheritdoc />
         /// <summary>
         /// Gets a reference to the <see cref="T:System.Data.DataTable" /> object that contains the data this instance.
@@ -164,7 +159,6 @@ namespace iTin.Export.Providers
 
             return dt;
         }
-        #endregion
 
         #endregion
     }

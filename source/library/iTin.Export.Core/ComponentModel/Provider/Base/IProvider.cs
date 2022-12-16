@@ -1,11 +1,11 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Xml.Linq;
+
 namespace iTin.Export.ComponentModel.Provider
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Xml.Linq;
-
     using Input;
 
     /// <summary>
